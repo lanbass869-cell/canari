@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,26 +7,35 @@
 <style>
 body { font-family: -apple-system, sans-serif; margin: 2em; background: #0d1117; color: #c9d1d9; }
 h1 { color: #58a6ff; }
+h2 { color: #79c0ff; margin-top: 1.5em; }
 .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
 .pass { background: #238636; color: #fff; }
 .pass-with-findings { background: #9e6a03; color: #fff; }
 .fail { background: #da3633; color: #fff; }
 .unsupported { background: #6e7681; color: #fff; }
-table { border-collapse: collapse; width: 100%%; margin-top: 1em; }
+table { border-collapse: collapse; width: 100%; margin-top: 1em; }
 th, td { border: 1px solid #30363d; padding: 6px 12px; text-align: left; }
 th { background: #161b22; color: #58a6ff; }
 tr:hover { background: #161b22; }
-#stats { display: flex; gap: 1em; margin: 1em 0; }
+#stats { display: flex; gap: 1em; margin: 1em 0; flex-wrap: wrap; }
 .stat { background: #161b22; padding: 1em; border-radius: 6px; border: 1px solid #30363d; }
 .stat .num { font-size: 2em; font-weight: bold; color: #58a6ff; }
 #file-input { margin: 1em 0; padding: 8px; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px; }
+#chain-input { margin: 1em 0; padding: 8px; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px; }
+.chain-node { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 0.8em; margin: 0.5em 0; }
+.chain-arrow { color: #58a6ff; font-size: 1.2em; margin: 0.3em 0; text-align: center; }
+.chain-meta { color: #8b949e; font-size: 0.85em; margin-top: 0.3em; }
+.chain-digest { font-family: monospace; color: #79c0ff; font-size: 0.8em; }
+.revocation-tag { background: #da3633; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 0.75em; margin-left: 0.5em; }
 </style>
 </head>
 <body>
 <h1>Canari</h1>
-<p>Agent Component Verification Ledger - weekly scans, signed attestations, drift monitoring</p>
-<p>Load a feed JSON file: <input type="file" id="file-input" accept=".json" onchange="loadFeed(this)"></p>
+<p>Agent Component Verification Ledger - weekly scans, signed attestations, drift monitoring, supersession chains</p>
+<p>Load a feed JSON: <input type="file" id="file-input" accept=".json" onchange="loadFeed(this)"></p>
+<p>Load attestation bundles (multi-select) for chain view: <input type="file" id="chain-input" accept=".json" multiple onchange="loadChains(this)"></p>
 <div id="stats"></div>
+<div id="chain-view"></div>
 <div id="content"></div>
 <script>
 function loadFeed(input) {
@@ -38,6 +48,139 @@ function loadFeed(input) {
   };
   reader.readAsText(file);
 }
+
+function loadChains(input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+  const bundles = [];
+  let loaded = 0;
+  for (const f of files) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const j = JSON.parse(e.target.result);
+        if (j.envelope && j.payload) bundles.push(j.payload);
+        else if (j._type) bundles.push(j); // raw payload without envelope
+      } catch(err) {}
+      loaded++;
+      if (loaded === files.length) renderChains(bundles);
+    };
+    reader.readAsText(f);
+  }
+}
+
+function digestOf(payload) {
+  // Simple content hash for display (real verification uses DSSE envelope)
+  const s = JSON.stringify(payload, Object.keys(payload).sort());
+  let h = 0;
+  for (let i = 0; i < s.length; i++) { h = ((h << 5) - h + s.charCodeAt(i)) | 0; }
+  return "sha256-" + Math.abs(h).toString(16).padStart(8, "0");
+}
+
+function renderChains(attestations) {
+  const container = document.getElementById("chain-view");
+  if (!attestations.length) {
+    container.innerHTML = "<p>No valid attestations loaded.</p>";
+    return;
+  }
+
+  // Build chain map: digest -> attestation
+  const byDigest = {};
+  const chains = []; // head nodes (no one supersedes them = latest)
+
+  for (const att of attestations) {
+    const d = digestOf(att);
+    byDigest[d] = att;
+    att._canari_digest = d;
+  }
+
+  // Find chain heads: attestations that are NOT superseded by any other
+  const supersededSet = new Set();
+  for (const att of attestations) {
+    if (att.supersedes) supersededSet.add(att.supersedes);
+  }
+  for (const att of attestations) {
+    if (!supersededSet.has(att._canari_digest)) chains.push(att);
+  }
+
+  let html = "<h2>Supersession Chains (" + chains.length + " chains, " + attestations.length + " attestations)</h2>";
+
+  for (const head of chains) {
+    html += "<div class='chain-node'>";
+    html += renderChainNode(head);
+    // Walk backwards via supersedes
+    let current = head;
+    let depth = 0;
+    while (current && current.supersedes && depth < 20) {
+      const prev = byDigest[current.supersedes];
+      html += "<div class='chain-arrow'>&#8593; supersedes</div>";
+      if (prev) {
+        html += "<div class='chain-node'>" + renderChainNode(prev) + "</div>";
+        current = prev;
+      } else {
+        html += "<div class='chain-node'><em>predecessor not loaded (digest: <span class='chain-digest'>" + current.supersedes + "</span>)</em></div>";
+        break;
+      }
+      depth++;
+    }
+    html += "</div>";
+    html += "<hr style='border-color:#30363d;margin:1.5em 0'>";
+  }
+
+  container.innerHTML = html;
+}
+
+function renderChainNode(att) {
+  const v = att.verdict || "?";
+  const name = (att.subject || {}).name || "?";
+  const version = (att.subject || {}).version || "?";
+  const registry = (att.subject || {}).registry || "?";
+  const sha = (att.subject || {}).artifact_sha256 || "?";
+  const generated = att.generated_at || "?";
+  const expires = att.expires_at || "?";
+  const digest = att._canari_digest || "?";
+
+  let html = "<strong>" + name + "</strong> v" + version + " <span class='chain-digest'>" + registry + "</span>";
+  html += " <span class='" + v + " badge'>" + v + "</span>";
+
+  // native provenance badge
+  const np = att.native_provenance;
+  if (np && np.present) {
+    const npColor = np.v1_verified === true ? "#238636" : "#9e6a03";
+    const npLabel = np.v1_verified === true ? "provenance verified" : "provenance present";
+    html += " <span style='background:" + npColor + ";color:#fff;padding:1px 6px;border-radius:4px;font-size:0.75em;'>" + npLabel + "</span>";
+  }
+
+  // revocations
+  const rel = att.related_revocations || [];
+  if (rel.length > 0) {
+    html += " <span class='revocation-tag'>" + rel.length + " related revocations</span>";
+  }
+
+  html += "<div class='chain-meta'>";
+  html += "digest: <span class='chain-digest'>" + digest + "</span> | ";
+  html += "sha256: <span class='chain-digest'>" + sha.substring(0, 16) + "...</span> | ";
+  html += "generated: " + generated + " | expires: " + expires;
+
+  if (att.supersedes) {
+    html += " | supersedes: <span class='chain-digest'>" + att.supersedes.substring(0, 20) + "...</span>";
+  }
+  html += "</div>";
+
+  // check summary
+  const checks = att.checks || [];
+  if (checks.length > 0) {
+    const passCount = checks.filter(c => c.verdict === "pass").length;
+    html += "<div class='chain-meta'>checks: " + passCount + "/" + checks.length + " pass";
+    if (checks.length <= 5) {
+      html += " (" + checks.map(c => c.id + ":" + c.verdict).join(", ") + ")";
+    }
+    html += "</div>";
+  }
+
+  return html;
+}
+
 function render(feed) {
   const stats = document.getElementById("stats");
   let html = "";
@@ -47,10 +190,16 @@ function render(feed) {
   }
   html += "<div class='stat'><div class='num'>" + (feed.total || feed.items?.length || 0) + "</div><div>total</div></div>";
   if (feed.errors) html += "<div class='stat'><div class='num' style='color:red'>" + feed.errors + "</div><div>errors</div></div>";
+  if (feed.deep_scan) {
+    html += "<div class='stat'><div class='num'>" + feed.deep_scan.total + "</div><div>deep scan</div></div>";
+  }
+  if (feed.metadata_scan) {
+    html += "<div class='stat'><div class='num'>" + feed.metadata_scan.total + "</div><div>metadata</div></div>";
+  }
   stats.innerHTML = html;
 
   const items = feed.items || [];
-  let table = "<table><tr><th>Component</th><th>Registry</th><th>Version</th><th>Verdict</th></tr>";
+  let table = "<h2>Attestations</h2><table><tr><th>Component</th><th>Registry</th><th>Version</th><th>Verdict</th></tr>";
   for (const item of items) {
     const v = item.verdict || "error";
     table += "<tr><td>" + (item.name || "?") + "</td><td>" + (item.registry || "?") + "</td><td>" + (item.version || "?") + "</td>";
