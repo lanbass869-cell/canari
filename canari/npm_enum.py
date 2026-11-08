@@ -184,7 +184,10 @@ def mcp_registry_enumerate(limit=500):
         if not servers:
             break
         for s in servers:
-            results.append({"name": s.get("name", ""), "version": s.get("version", ""),
+            sname = s.get("name", "")
+            if not sname:  # skip entries with no name (schema requires minLength=1)
+                continue
+            results.append({"name": sname, "version": s.get("version", ""),
                             "registry": "mcp-registry", "homepage": s.get("homepage", "")})
         cursor = d.get("next_cursor") or d.get("nextCursor") or ""
         if not cursor:
@@ -209,6 +212,8 @@ def dsh_enumerate(limit=500, with_security=True):
     results = []
     for p in plugins:
         name = p.get("name", "")
+        if not name:  # skip entries with no name (schema requires minLength=1)
+            continue
         author = p.get("author", "")
         versions = p.get("versions") or {}
         entry = {

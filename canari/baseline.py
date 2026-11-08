@@ -26,7 +26,7 @@ import os
 import sys
 
 from canari.schema import _PREDICATE_TYPE
-from canari.signing import generate_keypair, sign_attestation, export_public_key
+from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair
 from canari.state import FileLock, StateStore
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
@@ -203,7 +203,8 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     state = StateStore(os.path.join(out_dir, "state.json"))
 
     if signer is None:
-        signer, pub_key = generate_keypair()
+        key_path = os.path.join(out_dir, "private_key.pem")
+        signer, pub_key, _ = load_or_generate_keypair(key_path)
 
     # scenario hash: the check-list definition itself (L1.1..L2.3 meta-only)
     scenario_def = json.dumps({
@@ -222,7 +223,9 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     n_err = n_skip = 0
     for i, pkg in enumerate(top):
         name = pkg["name"]
-        safe = name.replace("/", "_").replace("@", "")
+        safe = name.replace("/", "_").replace("@", "").replace("\\", "_").replace("..", "_")
+        # additional safety: remove any remaining path separators or parent refs
+        safe = "".join(c for c in safe if c.isalnum() or c in "._-")
         pack = None
         for attempt in range(3):
             try:
@@ -344,7 +347,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     os.makedirs(att_dir, exist_ok=True)
     os.makedirs(feed_dir, exist_ok=True)
     if signer is None:
-        signer, pub_key = generate_keypair()
+        key_path = os.path.join(out_dir, "private_key.pem")
+        signer, pub_key, _ = load_or_generate_keypair(key_path)
 
     state = StateStore(os.path.join(out_dir, "state.json"))
 
@@ -376,7 +380,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         if prev_state and prev_state.get("attestation_digest"):
             att["supersedes"] = prev_state["attestation_digest"]
         signed = sign_attestation(att, signer)
-        safe = name.replace("/", "_").replace("@", "")
+        safe = name.replace("/", "_").replace("@", "").replace("\\", "_").replace("..", "_")
+        # additional safety: remove any remaining path separators or parent refs
+        safe = "".join(c for c in safe if c.isalnum() or c in "._-")
         bpath = os.path.join(att_dir, "%s_%s.bundle.json" % (prefix, safe))
         with open(bpath, "w", encoding="utf-8") as f:
             json.dump({"envelope": signed["envelope"], "payload": signed["payload"]}, f, ensure_ascii=False)

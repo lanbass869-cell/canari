@@ -83,3 +83,36 @@ def verify_signed(envelope_dict: dict, public_key_dict: dict):
 def export_public_key(public_key) -> str:
     """Public key as canonical JSON string (what we publish in keyring)."""
     return json.dumps(public_key.to_dict(), ensure_ascii=False, sort_keys=True)
+
+
+def save_private_key(signer, path: str):
+    """Persist signer private key (PEM) to a file for cross-run key reuse.
+    Without this, every run generates a new keypair and all previous bundles
+    fail signature verification (documented in baseline.py run())."""
+    with open(path, "wb") as f:
+        f.write(signer.private_bytes)
+
+
+def load_private_key(path: str):
+    """Load a persisted private key (PEM). Returns CryptoSigner or None.
+    Uses cryptography library to parse PEM -> CryptoSigner constructor."""
+    try:
+        from cryptography.hazmat.primitives.serialization import load_pem_private_key
+        pem = open(path, "rb").read()
+        priv_key = load_pem_private_key(pem, password=None)
+        return CryptoSigner(priv_key)
+    except Exception:
+        return None
+
+
+def load_or_generate_keypair(key_path: str):
+    """Load persisted private key or generate a new one. Returns (signer, pub_key, is_new).
+    This is the correct way to maintain a stable signing identity across runs."""
+    import os
+    if os.path.exists(key_path):
+        signer = load_private_key(key_path)
+        if signer is not None:
+            return signer, signer.public_key, False
+    signer, pub_key = generate_keypair()
+    save_private_key(signer, key_path)
+    return signer, pub_key, True
