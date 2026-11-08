@@ -124,3 +124,109 @@ def latest_version_info(packument: dict) -> dict:
         "deprecated": bool(v.get("deprecated")),
     }
 
+
+# ============================================================
+# PyPI adapter
+# ============================================================
+PYPI_SIMPLE = "https://pypi.org/simple"
+PYPI_JSON = "https://pypi.org/pypi"
+
+def pypi_enumerate(prefix="mcp-server-", limit=500):
+    import re as _re
+    url = PYPI_SIMPLE + "/"
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with _opener().open(req, timeout=120) as r:
+        html = r.read().decode("utf-8", errors="replace")
+    names = _re.findall(r'>(.*?)</a>', html)
+    matched = [n for n in names if n.lower().startswith(prefix.lower())][:limit]
+    results = []
+    for name in matched:
+        try:
+            jurl = PYPI_JSON + "/" + urllib.parse.quote(name, safe="") + "/json"
+            jreq = urllib.request.Request(jurl, headers={"User-Agent": UA})
+            with _opener().open(jreq, timeout=30) as r2:
+                d2 = json.loads(r2.read().decode("utf-8"))
+            info = d2.get("info", {})
+            dists = d2.get("urls", [])
+            sha256 = dists[0]["digests"]["sha256"] if dists else ""
+            results.append({"name": name, "version": info.get("version", ""),
+                            "description": (info.get("summary") or "")[:200],
+                            "registry": "pypi", "artifact_sha256": sha256,
+                            "tarball": dists[0]["url"] if dists else "",
+                            "maintainers": [info.get("author", "") or info.get("author_email", "")],
+                            "links": {"homepage": info.get("home_page", "")}})
+        except Exception as e:
+            results.append({"name": name, "registry": "pypi", "error": str(e)[:100]})
+    return results
+
+# ============================================================
+# MCP Registry adapter
+# ============================================================
+MCP_REGISTRY = "https://registry.modelcontextprotocol.io"
+
+def mcp_registry_enumerate(limit=500):
+    results = []
+    cursor = ""
+    while len(results) < limit:
+        url = MCP_REGISTRY + "/v0/servers?limit=100"
+        if cursor:
+            url += "&cursor=" + urllib.parse.quote(cursor)
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with _opener().open(req, timeout=30) as r:
+                d = json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            print("[registry] error:", str(e)[:80])
+            break
+        servers = d.get("servers", [])
+        if not servers:
+            break
+        for s in servers:
+            results.append({"name": s.get("name", ""), "version": s.get("version", ""),
+                            "registry": "mcp-registry", "homepage": s.get("homepage", "")})
+        cursor = d.get("next_cursor") or d.get("nextCursor") or ""
+        if not cursor:
+            break
+    return results[:limit]
+
+# ============================================================
+# dsh.so adapter (reference conclusions, not re-scan)
+# ============================================================
+DSH_REGISTRY = "https://dsh.so"
+
+def dsh_enumerate(limit=200):
+    results = []
+    url = DSH_REGISTRY + "/data/install/"
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    try:
+        with _opener().open(req, timeout=30) as r:
+            d = json.loads(r.read().decode("utf-8"))
+        if isinstance(d, list):
+            for item in d[:limit]:
+                results.append({"name": item.get("name", ""), "version": item.get("version", ""),
+                                "registry": "dsh-registry", "existing_verdict": item.get("level", "")})
+        elif isinstance(d, dict):
+            for k, v in list(d.items())[:limit]:
+                results.append({"name": k, "version": (v or {}).get("version", ""),
+                                "registry": "dsh-registry", "existing_verdict": (v or {}).get("level", "")})
+    except Exception as e:
+        print("[dsh] error:", str(e)[:80])
+    return results
+
+# ============================================================
+# Retraction propagation (MemTether pattern)
+# ============================================================
+def propagate_revocation(revoked_name, revoked_author, all_components):
+    from difflib import SequenceMatcher
+    related = []
+    for comp in all_components:
+        cname = comp.get("name", "")
+        if cname == revoked_name:
+            continue
+        if revoked_author and revoked_author in (comp.get("maintainers") or []):
+            related.append({"name": cname, "relation": "same-author"})
+            continue
+        ratio = SequenceMatcher(None, revoked_name.lower(), cname.lower()).ratio()
+        if ratio >= 0.85 and len(revoked_name) > 4:
+            related.append({"name": cname, "relation": "name-variant"})
+    return related

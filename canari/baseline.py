@@ -28,7 +28,8 @@ import sys
 from canari.schema import _PREDICATE_TYPE
 from canari.signing import generate_keypair, sign_attestation, export_public_key
 from canari.state import FileLock, StateStore
-from canari.npm_enum import enumerate_top, fetch_packument, latest_version_info
+from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
+                            pypi_enumerate, mcp_registry_enumerate, dsh_enumerate)
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
@@ -319,3 +320,121 @@ if __name__ == "__main__":
 
 
 
+
+def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
+              signer=None, pub_key=None, out_dir=None):
+    """Multi-registry scan: npm + PyPI + MCP Registry + dsh.so -> unified attestations + feed."""
+    out_dir = out_dir or OUT_DIR
+    att_dir = os.path.join(out_dir, "attestations")
+    feed_dir = os.path.join(out_dir, "feed")
+    os.makedirs(att_dir, exist_ok=True)
+    os.makedirs(feed_dir, exist_ok=True)
+    if signer is None:
+        signer, pub_key = generate_keypair()
+
+    scenario_def = json.dumps({"level": "L1-L2-multi-registry",
+                               "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"]},
+                              sort_keys=True).encode("utf-8")
+    scenario_sha256 = hashlib.sha256(scenario_def).hexdigest()
+    all_results = []
+    total_errors = 0
+
+    def _make_att(name, version, registry, sha, host_class, checks, verdict, tools, ev_refs):
+        return {"_type": _PREDICATE_TYPE,
+                "subject": {"name": name, "version": version, "registry": registry,
+                            "artifact_sha256": sha or "0" * 64, "maintainers": []},
+                "host": {"class": host_class, "host_version": "registry-meta-v1"},
+                "scenario_sha256": scenario_sha256, "checks": checks, "verdict": verdict,
+                "checker": {"kind": "automation", "id": "canari-m1", "tools": tools},
+                "evidence_refs": ev_refs,
+                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
+                "expires_at": _expiry(), "generated_at": _now(),
+                "signature": {"envelope": "DSSE", "keyid": "", "sig": "", "payload_type": _PREDICATE_TYPE}}
+
+    def _save_att(att, prefix, name):
+        signed = sign_attestation(att, signer)
+        safe = name.replace("/", "_").replace("@", "")
+        bpath = os.path.join(att_dir, "%s_%s.bundle.json" % (prefix, safe))
+        with open(bpath, "w", encoding="utf-8") as f:
+            json.dump({"envelope": signed["envelope"], "payload": signed["payload"]}, f, ensure_ascii=False)
+        return bpath
+
+    # npm
+    print("[multi] npm (%d)..." % npm_limit)
+    for pkg in enumerate_top(limit=npm_limit):
+        name = pkg["name"]
+        try:
+            pack = fetch_packument(name)
+            lv = latest_version_info(pack)
+            sha = _download_sha256(lv["tarball"], timeout=120)
+            checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
+                      {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
+            verdict = "pass" if sha else "fail"
+            att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
+                            ["canari-m1/0.1"], ["npm-packument:" + name])
+            bpath = _save_att(att, "npm", name)
+            all_results.append({"name": name, "registry": "npm", "version": lv["version"],
+                                "verdict": verdict, "bundle": bpath})
+        except Exception as e:
+            total_errors += 1
+            all_results.append({"name": name, "registry": "npm", "status": "error"})
+
+    # PyPI
+    print("[multi] PyPI (%d)..." % pypi_limit)
+    for pkg in pypi_enumerate(limit=pypi_limit):
+        name = pkg["name"]
+        if "error" in pkg:
+            total_errors += 1
+            continue
+        sha = pkg.get("artifact_sha256", "")
+        checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
+                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
+        att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
+                        "pass" if sha else "fail", ["canari-m1/0.1"], ["pypi-json:" + name])
+        bpath = _save_att(att, "pypi", name)
+        all_results.append({"name": name, "registry": "pypi", "version": pkg.get("version", ""),
+                            "verdict": att["verdict"], "bundle": bpath})
+
+    # MCP Registry
+    print("[multi] MCP Registry (%d)..." % registry_limit)
+    for pkg in mcp_registry_enumerate(limit=registry_limit):
+        name = pkg["name"]
+        att = _make_att(name, pkg.get("version", ""), "npm", "", "mcp",
+                        [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}],
+                        "pass-with-findings", ["canari-m1/0.1"], ["mcp-registry:" + name])
+        bpath = _save_att(att, "mcpreg", name)
+        all_results.append({"name": name, "registry": "mcp-registry", "version": pkg.get("version", ""),
+                            "verdict": "pass-with-findings", "bundle": bpath})
+
+    # dsh.so (reference, not re-scan)
+    print("[multi] dsh.so (%d)..." % dsh_limit)
+    for pkg in dsh_enumerate(limit=dsh_limit):
+        name = pkg.get("name", "")
+        att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
+                        [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}],
+                        "pass-with-findings", ["dsh-so-referenced"], ["dsh-so:" + name])
+        bpath = _save_att(att, "dsh", name)
+        all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
+                            "verdict": "pass-with-findings", "bundle": bpath})
+
+    # unified feed
+    by_reg, by_verdict = {}, {}
+    for r in all_results:
+        by_reg[r.get("registry", "?")] = by_reg.get(r.get("registry", "?"), 0) + 1
+        v = r.get("verdict", "error")
+        by_verdict[v] = by_verdict.get(v, 0) + 1
+    feed = {"feed_version": 2, "generated_at": _now(), "scenario_sha256": scenario_sha256,
+            "total": len(all_results), "errors": total_errors,
+            "by_registry": by_reg, "by_verdict": by_verdict,
+            "items": [{"name": r["name"], "registry": r.get("registry", ""),
+                       "version": r.get("version", ""), "verdict": r.get("verdict", "error")}
+                      for r in all_results]}
+    feed_path = os.path.join(feed_dir, "feed-multi-%s.json" % datetime.date.today().strftime("%Y%m%d"))
+    with open(feed_path, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=1)
+    key_path = os.path.join(out_dir, "public_key.json")
+    with open(key_path, "w", encoding="utf-8") as f:
+        f.write(export_public_key(pub_key))
+    print("[multi] done: %d total, %d errors | by_registry: %s" % (len(all_results), total_errors, by_reg))
+    return {"total": len(all_results), "errors": total_errors, "feed": feed_path,
+            "by_registry": by_reg, "results": all_results}
