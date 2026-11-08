@@ -149,8 +149,6 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
 
     n_fail = sum(1 for c in checks if c["verdict"] == "fail")
     n_unsup = sum(1 for c in checks if c["verdict"] == "unsupported")
-    n_fail = sum(1 for c in checks if c["verdict"] == "fail")
-    n_unsup = sum(1 for c in checks if c["verdict"] == "unsupported")
     if n_fail:
         verdict = "fail"
     elif n_unsup == len(checks):
@@ -609,8 +607,14 @@ def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
         len(meta_diff["unchanged"]), len(meta_diff["removed"])))
 
     # Save metadata into state (separate from deep-scan state)
+    # Don't overwrite sha256 that was set by deep_scan for the same component
     for r in all_meta:
-        state.set_component(r["name"], r.get("version", ""), "", "")
+        existing = state.get_component(r["name"])
+        if existing and existing.get("sha256"):
+            # keep the deep-scan sha256, only update version
+            existing["version"] = r.get("version", "")
+        else:
+            state.set_component(r["name"], r.get("version", ""), "", "")
     state.save()
     lock.__exit__()
 

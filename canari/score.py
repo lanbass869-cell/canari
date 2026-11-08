@@ -23,7 +23,7 @@ def score(out_dir: str, public_key: dict = None) -> dict:
     if not os.path.isdir(att_dir):
         return {"error": "no attestations directory"}
 
-    bundles = sorted(os.listdir(att_dir))
+    bundles = sorted(f for f in os.listdir(att_dir) if f.endswith(".bundle.json"))
     total = len(bundles)
     if total == 0:
         return {"error": "empty attestation store"}

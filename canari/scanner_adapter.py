@@ -114,6 +114,8 @@ def findings_to_checks(data):
     Returns list of check dicts suitable for attestation["checks"].
     Also returns the run-level verdict.
     """
+    if data is None:
+        data = {}
     if "error" in data:
         return [{"id": "L3.1_SCANNER_ERROR", "verdict": "error",
                  "tool": "repo-forensics/adapter",
