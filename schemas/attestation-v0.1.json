@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentcheck.dev/schemas/attestation-v0.1.json",
+  "title": "Agent Component Verification Attestation v0.1",
+  "description": "Signed, offline-verifiable verification conclusion for an AI agent component (MCP server / agent skill / DSH plugin). One attestation = one scan run against one artifact hash in one host context. Component STATE is derived by consumers from the attestation sequence, not stored here. Format is a domain-specific in-toto/SCITT predicate; envelope is DSSE.",
+  "type": "object",
+  "required": [
+    "_type",
+    "subject",
+    "host",
+    "scenario_sha256",
+    "checks",
+    "verdict",
+    "checker",
+    "evidence_completeness",
+    "generated_at",
+    "signature"
+  ],
+  "properties": {
+    "_type": {
+      "const": "https://agentcheck.dev/attestation/v0.1"
+    },
+    "subject": {
+      "description": "被验真的组件制品。绑定制品哈希而非包名——包名会变，哈希不会。",
+      "type": "object",
+      "required": ["name", "version", "registry", "artifact_sha256"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string" },
+        "registry": { "enum": ["npm", "pypi", "github", "dsh-registry"] },
+        "artifact_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "homepage": { "type": "string" },
+        "maintainers": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "host": {
+      "description": "结论绑定的宿主上下文。换宿主/换版本 = 结论失效，需重验。",
+      "type": "object",
+      "required": ["class", "host_version"],
+      "properties": {
+        "class": { "enum": ["mcp", "agent-skill", "dsh-plugin", "generic"] },
+        "host_version": { "type": "string" },
+        "host_meta": { "type": "object" }
+      }
+    },
+    "scenario_sha256": {
+      "description": "检测场景定义（扫描清单+参数+期望）的 SHA-256。场景变了结论就作废——可复现性的锚。",
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "checks": {
+      "description": "逐检查项结论。ID 命名遵循 L{level}.{seq}_{NAME} 稳定命名（学 dsh.so），一旦发布不可复用旧 ID 表达新语义。",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "verdict", "tool"],
+        "properties": {
+          "id": { "type": "string", "examples": ["L1.1_REGISTRY_PRESENT", "L3.2_INSTALL_SCRIPT_DETECTED"] },
+          "verdict": { "enum": ["pass", "fail", "skip", "unsupported", "error"] },
+          "tool": { "type": "string", "description": "产生该结论的扫描器名+版本" },
+          "evidence_ref": { "type": "string", "description": "指向原始扫描输出的引用（digest 或路径）" },
+          "duration_ms": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "verdict": {
+      "description": "本次 run 的总体结论（run 级，非组件级）。'pass' 仅为风险信号，非安全保证。",
+      "enum": ["pass", "pass-with-findings", "fail", "unsupported", "error"]
+    },
+    "checker": {
+      "type": "object",
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": { "enum": ["automation", "human", "bot"] },
+        "id": { "type": "string" },
+        "tools": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "原始扫描输出引用（digest/路径/SARIF 位置）"
+    },
+    "evidence_completeness": {
+      "description": "证据完整性披露。缺失必须显式上报，绝不合成 pass（学 dsh-testkit：unsupported ≠ failed ≠ pass）。",
+      "type": "object",
+      "properties": {
+        "dropped_logs": { "type": "integer", "minimum": 0 },
+        "missing_observers": { "type": "array", "items": { "type": "string" } },
+        "truncated_fields": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "expires_at": {
+      "description": "结论有效期（建议 7 天，仿 dsh.so）。过期自动 stale，需复检。",
+      "type": "string",
+      "format": "date-time"
+    },
+    "supersedes": {
+      "description": "被本工件取代的前一 attestation digest。取代链不删除——历史永远可重建（MemTether supersession 语义）。",
+      "type": "string"
+    },
+    "related_revocations": {
+      "description": "同源失效传播摘要：与本组件同作者/同名变体/依赖链上游的关联失效事件（MemTether retraction propagation 语义）。仅标注关联，不做恶意判定。",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "relation", "ref"],
+        "properties": {
+          "name": { "type": "string" },
+          "relation": { "enum": ["same-author", "name-variant", "dependency", "same-repo"] },
+          "ref": { "type": "string" }
+        }
+      }
+    },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "signature": {
+      "description": "DSSE envelope 签名。验证器仅依赖公钥，离线可用。",
+      "type": "object",
+      "required": ["envelope", "keyid", "sig", "payload_type"],
+      "properties": {
+        "envelope": { "const": "DSSE" },
+        "keyid": { "type": "string" },
+        "sig": { "type": "string" },
+        "payload_type": { "const": "https://agentcheck.dev/attestation/v0.1" }
+      }
+    }
+  }
+}
