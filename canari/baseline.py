@@ -298,8 +298,12 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     for r in results:
         if r.get("bundle"):
             bp = json.load(open(r["bundle"], encoding="utf-8"))
+            # compute payload digest for supersession chain (not file path)
+            payload_digest = hashlib.sha256(
+                json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+            ).hexdigest()
             state.set_component(r["name"], r.get("version", ""),
-                                bp["payload"]["subject"].get("artifact_sha256", ""), r["bundle"])
+                                bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest)
     state.save()
     lock.__exit__()
 
@@ -439,33 +443,6 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
                             "verdict": "pass-with-findings", "bundle": bpath})
 
-    # revocation propagation: if any component failed, annotate related components
-    # (same-author or name-variant). Annotation only - no judgment.
-    from canari.npm_enum import propagate_revocation as _propagate
-    failed_components = [{"name": r["name"], "verdict": r.get("verdict", "")}
-                         for r in all_results if r.get("verdict") == "fail"]
-    for failed in failed_components:
-        all_names = [{"name": r["name"]} for r in all_results if r["name"] != failed["name"]]
-        related = _propagate(failed["name"], "", all_names)  # author lookup needs maintainers
-        for r in all_results:
-            if any(rel["name"] == r["name"] for rel in related):
-                # append related_revocations to the attestation bundle
-                bpath = r.get("bundle")
-                if bpath and os.path.isfile(bpath):
-                    try:
-                        bundle = json.load(open(bpath, encoding="utf-8"))
-                        payload = bundle.get("payload", {})
-                        if "related_revocations" not in payload:
-                            payload["related_revocations"] = []
-                        payload["related_revocations"].append({
-                            "name": failed["name"],
-                            "relation": "name-variant",
-                            "ref": "propagated-from-" + failed["name"]
-                        })
-                        json.dump(bundle, open(bpath, "w", encoding="utf-8"), ensure_ascii=False)
-                    except Exception:
-                        pass
-
     # unified feed
     by_reg, by_verdict = {}, {}
     for r in all_results:
@@ -484,6 +461,20 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     key_path = os.path.join(out_dir, "public_key.json")
     with open(key_path, "w", encoding="utf-8") as f:
         f.write(export_public_key(pub_key))
+    # update state for supersession chain on next run
+    for r in all_results:
+        if r.get("bundle"):
+            try:
+                bp = json.load(open(r["bundle"], encoding="utf-8"))
+                payload_digest = hashlib.sha256(
+                    json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+                ).hexdigest()
+                state.set_component(r["name"], r.get("version", ""),
+                                    bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest)
+            except Exception:
+                pass
+    state.save()
+
     print("[multi] done: %d total, %d errors | by_registry: %s" % (len(all_results), total_errors, by_reg))
     return {"total": len(all_results), "errors": total_errors, "feed": feed_path,
             "by_registry": by_reg, "results": all_results}

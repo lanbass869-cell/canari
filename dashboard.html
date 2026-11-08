@@ -38,6 +38,11 @@ tr:hover { background: #161b22; }
 <div id="chain-view"></div>
 <div id="content"></div>
 <script>
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
 function loadFeed(input) {
   const file = input.files[0];
   if (!file) return;
@@ -111,12 +116,14 @@ function renderChains(attestations) {
     // Walk backwards via supersedes
     let current = head;
     let depth = 0;
-    while (current && current.supersedes && depth < 20) {
+    const visited = new Set([head._canari_digest]);
+    while (current && current.supersedes && depth < 20 && !visited.has(current.supersedes)) {
       const prev = byDigest[current.supersedes];
       html += "<div class='chain-arrow'>&#8593; supersedes</div>";
       if (prev) {
         html += "<div class='chain-node'>" + renderChainNode(prev) + "</div>";
         current = prev;
+        visited.add(prev._canari_digest);
       } else {
         html += "<div class='chain-node'><em>predecessor not loaded (digest: <span class='chain-digest'>" + current.supersedes + "</span>)</em></div>";
         break;
@@ -140,7 +147,7 @@ function renderChainNode(att) {
   const expires = att.expires_at || "?";
   const digest = att._canari_digest || "?";
 
-  let html = "<strong>" + name + "</strong> v" + version + " <span class='chain-digest'>" + registry + "</span>";
+  let html = "<strong>" + esc(name) + "</strong> v" + version + " <span class='chain-digest'>" + registry + "</span>";
   html += " <span class='" + v + " badge'>" + v + "</span>";
 
   // native provenance badge
@@ -202,7 +209,7 @@ function render(feed) {
   let table = "<h2>Attestations</h2><table><tr><th>Component</th><th>Registry</th><th>Version</th><th>Verdict</th></tr>";
   for (const item of items) {
     const v = item.verdict || "error";
-    table += "<tr><td>" + (item.name || "?") + "</td><td>" + (item.registry || "?") + "</td><td>" + (item.version || "?") + "</td>";
+    table += "<tr><td>" + esc(item.name || "?") + "</td><td>" + esc(item.registry || "?") + "</td><td>" + esc(item.version || "?") + "</td>";
     table += "<td><span class='" + v + " badge'>" + v + "</span></td></tr>";
   }
   table += "</table>";

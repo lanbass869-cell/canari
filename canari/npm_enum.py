@@ -142,6 +142,8 @@ def pypi_enumerate(prefix="mcp-server-", limit=500):
     results = []
     for name in matched:
         try:
+            import time as _t
+            _t.sleep(0.3)  # rate limit: ~200 req/min stays well under PyPI's threshold
             jurl = PYPI_JSON + "/" + urllib.parse.quote(name, safe="") + "/json"
             jreq = urllib.request.Request(jurl, headers={"User-Agent": UA})
             with _opener().open(jreq, timeout=30) as r2:
@@ -217,6 +219,8 @@ def dsh_enumerate(limit=500, with_security=True):
             "repository": p.get("repository", ""),
         }
         if with_security and author and name:
+            import time as _t
+            _t.sleep(0.2)  # rate limit per-plugin calls
             try:
                 iurl = DSH_INSTALL_FMT.format(author=author, name=name)
                 ireq = urllib.request.Request(iurl, headers={"User-Agent": UA})
