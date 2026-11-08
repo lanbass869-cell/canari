@@ -1,0 +1,84 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0wIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW1ldGEvMC4xIl19LCAiY2hlY2tzIjogW3siZHVyYXRpb25fbXMiOiAwLCAiaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiY2FuYXJpLW1ldGEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwxLjJfVkVSU0lPTl9SRVNPTFZFRCIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAic2hhMjU2IGNvbXB1dGVkIGZyb20gdGFyYmFsbCBkb3dubG9hZDsgbnBtIHBhY2t1bWVudCBzaGE1MTI6NWIzZmJlODRlNWJiZGQyOS4uLiIsICJpZCI6ICJMMi4xX0FSVElGQUNUX0hBU0giLCAidG9vbCI6ICJjYW5hcmktbWV0YS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMl9NQUlOVEFJTkVSX1NFVCIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJpZCI6ICJMMi4zX01BTklGRVNUX0ZJRUxEUyIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6Z2l0bmV4dXMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNVQwNDo0ODoyMloiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDhUMDQ6NDg6MjJaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjQxOTQ1YjAxZmEwMjU1MWJhNDZkMjdmZmFiZGRjMjJkMmY0N2QxOGRkNmNkNjc2NTJlMTJlYThjZjRmMzdlYjkiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogIjVjYTg4Njg5NWNiMjZlZDRlMzk1M2Y2ZDE2MzEzYWMzMjE5MjliMWVmMDM3MzlmYWVkNjY3NmZlMmE3ZTE1MmEiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMWY5ZTA4NWI0YjUzNmQzZWE1MDMxMzRiZTY1ODI5ZWVhZTI0YTJkNzkyZGZmODNlYzZkNTNhY2M5MWY2NGY2OWIwOGExNTIyYjg0OWJlZGVhODIwOWM0NTgzYzdjNWYzMjE1OTU1ZWM3NGNlMzI5YTZhZTA1YzhiY2I4ZjJhMGYifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICI5NjM5MWE2ZDY2ZDQ0OGJmMDk3ODA4NDk1MWU5Y2VlMzdlNTQzYjc1ZTQ0NWNmOWFkMmNkMTM1OGQ3ZDE0MWUxIiwgImhvbWVwYWdlIjogImh0dHBzOi8vZ2l0aHViLmNvbS9hYmhpZ3lhbnBhdHdhcmkvR2l0TmV4dXMjcmVhZG1lIiwgIm1haW50YWluZXJzIjogWyJhYmhpZ3lhbjc3NyIsICJ6YW5kZXItcmF5Y3JhZnQiXSwgIm5hbWUiOiAiZ2l0bmV4dXMiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMS42LjEyIn0sICJ2ZXJkaWN0IjogInBhc3MifQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "5ca886895cb26ed4e3953f6d16313ac321929b1ef03739faed6676fe2a7e152a",
+    "sig": "dGTmq38i2dw6uIDO6Z4kajsc3uC3pdvc8PuAMKhLar/EGoyz8RAR+S10yP3+yq5IpTtN1oCAGkIUCGBjrqN1Aw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "gitnexus",
+   "version": "1.6.12",
+   "registry": "npm",
+   "artifact_sha256": "96391a6d66d448bf0978084951e9cee37e543b75e445cf9ad2cd1358d7d141e1",
+   "homepage": "https://github.com/abhigyanpatwari/GitNexus#readme",
+   "maintainers": [
+    "abhigyan777",
+    "zander-raycraft"
+   ]
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "41945b01fa02551ba46d27ffabddc22d2f47d18dd6cd67652e12ea8cf4f37eb9",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1",
+    "duration_ms": 0
+   },
+   {
+    "id": "L1.2_VERSION_RESOLVED",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1",
+    "evidence_ref": "sha256 computed from tarball download; npm packument sha512:5b3fbe84e5bbdd29..."
+   },
+   {
+    "id": "L2.2_MAINTAINER_SET",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   },
+   {
+    "id": "L2.3_MANIFEST_FIELDS",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m0",
+   "tools": [
+    "canari-meta/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:gitnexus"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T04:48:22Z",
+  "generated_at": "2026-11-08T04:48:22Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "5ca886895cb26ed4e3953f6d16313ac321929b1ef03739faed6676fe2a7e152a",
+   "sig": "7464e6ab7f22d9dc3ab880cee99e246a3b1cdee0b7a5dbdcf0fb8030a84b6abfc41a8cb3f11011f92d74c8fdfecaae48a53b4dd680801a4214086063aea37503",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

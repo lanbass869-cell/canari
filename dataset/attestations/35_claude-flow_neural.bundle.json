@@ -1,0 +1,83 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0wIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW1ldGEvMC4xIl19LCAiY2hlY2tzIjogW3siZHVyYXRpb25fbXMiOiAwLCAiaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiY2FuYXJpLW1ldGEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwxLjJfVkVSU0lPTl9SRVNPTFZFRCIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAic2hhMjU2IGNvbXB1dGVkIGZyb20gdGFyYmFsbCBkb3dubG9hZDsgbnBtIHBhY2t1bWVudCBzaGE1MTI6YmJkMTM4OGI1ODIyYmM5NS4uLiIsICJpZCI6ICJMMi4xX0FSVElGQUNUX0hBU0giLCAidG9vbCI6ICJjYW5hcmktbWV0YS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMl9NQUlOVEFJTkVSX1NFVCIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJpZCI6ICJMMi4zX01BTklGRVNUX0ZJRUxEUyIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGNsYXVkZS1mbG93L25ldXJhbCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE1VDA0OjQ2OjA2WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOFQwNDo0NjowNloiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNDE5NDViMDFmYTAyNTUxYmE0NmQyN2ZmYWJkZGMyMmQyZjQ3ZDE4ZGQ2Y2Q2NzY1MmUxMmVhOGNmNGYzN2ViOSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiNWNhODg2ODk1Y2IyNmVkNGUzOTUzZjZkMTYzMTNhYzMyMTkyOWIxZWYwMzczOWZhZWQ2Njc2ZmUyYTdlMTUyYSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJjZDM5NmM2OTg0MDNiMjljYmYwYTU4NzQwYzA1MTY0N2NjMzVkOWE5ZWEzNjViNDNkNjc2Mjg2YjgxYzQyMjU4M2QzOTRjNmU4NTk2MTYwYTYyNGE1ZTAxMjJkZTgyZGI4OWNkYTI5NjA5MzEwZTc4ZGNhZTcxZjlhNzhhNGYwOSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjJjNzFjM2VjODhiYWYzNzQ2OGU3YmMzOTNhYjc0MTUxOTBlM2ZkODI2OTZmYzU4ZTNjZTJkNTQ1MTQ4NDg0MDQiLCAiaG9tZXBhZ2UiOiAiaHR0cHM6Ly9naXRodWIuY29tL3J1dm5ldC9ydWZsbyIsICJtYWludGFpbmVycyI6IFsicnV2bmV0Il0sICJuYW1lIjogIkBjbGF1ZGUtZmxvdy9uZXVyYWwiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMy4wLjMifSwgInZlcmRpY3QiOiAicGFzcyJ9",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "5ca886895cb26ed4e3953f6d16313ac321929b1ef03739faed6676fe2a7e152a",
+    "sig": "qqhnlAC0Fkk0a6j/lJ/HpY5EOmoY1/+OQMKv6Md48lbI8X/rtG7a9jit+IkAQCM/OckQfbC6Jy9VbzeHMSNeCw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@claude-flow/neural",
+   "version": "3.0.3",
+   "registry": "npm",
+   "artifact_sha256": "2c71c3ec88baf37468e7bc393ab7415190e3fd82696fc58e3ce2d54514848404",
+   "homepage": "https://github.com/ruvnet/ruflo",
+   "maintainers": [
+    "ruvnet"
+   ]
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "41945b01fa02551ba46d27ffabddc22d2f47d18dd6cd67652e12ea8cf4f37eb9",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1",
+    "duration_ms": 0
+   },
+   {
+    "id": "L1.2_VERSION_RESOLVED",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1",
+    "evidence_ref": "sha256 computed from tarball download; npm packument sha512:bbd1388b5822bc95..."
+   },
+   {
+    "id": "L2.2_MAINTAINER_SET",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   },
+   {
+    "id": "L2.3_MANIFEST_FIELDS",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m0",
+   "tools": [
+    "canari-meta/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@claude-flow/neural"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T04:46:06Z",
+  "generated_at": "2026-11-08T04:46:06Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "5ca886895cb26ed4e3953f6d16313ac321929b1ef03739faed6676fe2a7e152a",
+   "sig": "aaa8679400b41649346ba8ff949fc7a58e443a6a18d7ff8e40c2afe8c778f256c8f17febb46edaf638adf8890040233f39c9107db0ba272f556f378731235e0b",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

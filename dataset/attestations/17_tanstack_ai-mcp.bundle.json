@@ -1,0 +1,85 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0wIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW1ldGEvMC4xIl19LCAiY2hlY2tzIjogW3siZHVyYXRpb25fbXMiOiAwLCAiaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiY2FuYXJpLW1ldGEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwxLjJfVkVSU0lPTl9SRVNPTFZFRCIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAic2hhMjU2IGNvbXB1dGVkIGZyb20gdGFyYmFsbCBkb3dubG9hZDsgbnBtIHBhY2t1bWVudCBzaGE1MTI6OTdlODgwZjk5ZWY3NjZhNy4uLiIsICJpZCI6ICJMMi4xX0FSVElGQUNUX0hBU0giLCAidG9vbCI6ICJjYW5hcmktbWV0YS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMl9NQUlOVEFJTkVSX1NFVCIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJpZCI6ICJMMi4zX01BTklGRVNUX0ZJRUxEUyIsICJ0b29sIjogImNhbmFyaS1tZXRhLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QHRhbnN0YWNrL2FpLW1jcCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE1VDA0OjQyOjM2WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOFQwNDo0MjozNloiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNDE5NDViMDFmYTAyNTUxYmE0NmQyN2ZmYWJkZGMyMmQyZjQ3ZDE4ZGQ2Y2Q2NzY1MmUxMmVhOGNmNGYzN2ViOSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiNWNhODg2ODk1Y2IyNmVkNGUzOTUzZjZkMTYzMTNhYzMyMTkyOWIxZWYwMzczOWZhZWQ2Njc2ZmUyYTdlMTUyYSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI5YTA4NWFiZWFjZGM5N2Y3NTNlY2QyODM1YmE0MTBhMThlOWFlMWVkNTI4NzM2NTlkZTEyYjk5ZWUzOTc5ZjhjZjQ3MWJkYzUwN2E0NmEwOGMxMmI4MzhkZWJkZmMxODg1YTdlMzA2MDVlZTcwYjg2NDk5YTIwNzJiMzMwNmEwMCJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogImFjNGIzMDZjM2JjNDM4MGZkZDAyMzg3MDgyZjA1NGI1ZjgwMWI0MzdiOGY4ZDNkMDhmMzg4MGI4MmQ1OTNkZTgiLCAiaG9tZXBhZ2UiOiAiaHR0cHM6Ly90YW5zdGFjay5jb20vYWkiLCAibWFpbnRhaW5lcnMiOiBbInRhbm5lcmxpbnNsZXkiLCAiYWxlbXR1emxhayIsICJrZXZpbnZhbmR5Il0sICJuYW1lIjogIkB0YW5zdGFjay9haS1tY3AiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMS4xLjAifSwgInZlcmRpY3QiOiAicGFzcyJ9",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "5ca886895cb26ed4e3953f6d16313ac321929b1ef03739faed6676fe2a7e152a",
+    "sig": "OOcTTTDKtgHn076t1mSQKww0a3JMvEFr0sR1GQydsA9sQnWcdhzBXb8vGDbxJMDblIjqW4x2J3/ITQe3IK0gCw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@tanstack/ai-mcp",
+   "version": "1.1.0",
+   "registry": "npm",
+   "artifact_sha256": "ac4b306c3bc4380fdd02387082f054b5f801b437b8f8d3d08f3880b82d593de8",
+   "homepage": "https://tanstack.com/ai",
+   "maintainers": [
+    "tannerlinsley",
+    "alemtuzlak",
+    "kevinvandy"
+   ]
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "41945b01fa02551ba46d27ffabddc22d2f47d18dd6cd67652e12ea8cf4f37eb9",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1",
+    "duration_ms": 0
+   },
+   {
+    "id": "L1.2_VERSION_RESOLVED",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1",
+    "evidence_ref": "sha256 computed from tarball download; npm packument sha512:97e880f99ef766a7..."
+   },
+   {
+    "id": "L2.2_MAINTAINER_SET",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   },
+   {
+    "id": "L2.3_MANIFEST_FIELDS",
+    "verdict": "pass",
+    "tool": "canari-meta/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m0",
+   "tools": [
+    "canari-meta/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@tanstack/ai-mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T04:42:36Z",
+  "generated_at": "2026-11-08T04:42:36Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "5ca886895cb26ed4e3953f6d16313ac321929b1ef03739faed6676fe2a7e152a",
+   "sig": "38e7134d30cab601e7d3beadd664902b0c346b724cbc416bd2c475190c9db00f6c42759c761cc15dbf2f1836f124c0db9488ea5b8c76277fc84d07b720ad200b",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

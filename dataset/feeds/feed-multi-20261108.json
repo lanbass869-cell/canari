@@ -1,0 +1,1784 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-08T06:43:27Z",
+ "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27",
+ "total": 294,
+ "errors": 7,
+ "by_registry": {
+  "npm": 100,
+  "pypi": 94,
+  "mcp-registry": 100
+ },
+ "by_verdict": {
+  "pass": 191,
+  "fail": 2,
+  "error": 1,
+  "pass-with-findings": 100
+ },
+ "items": [
+  {
+   "name": "agent-install",
+   "registry": "npm",
+   "version": "0.0.8",
+   "verdict": "pass"
+  },
+  {
+   "name": "@earendil-works/pi-mcp",
+   "registry": "npm",
+   "version": "1.5.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "eve",
+   "registry": "npm",
+   "version": "1.0.0-rc.6",
+   "verdict": "pass"
+  },
+  {
+   "name": "@wonderwhy-er/desktop-commander",
+   "registry": "npm",
+   "version": "0.3.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@lovable.dev/mcp-js",
+   "registry": "npm",
+   "version": "3.4.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@posthog/mcp",
+   "registry": "npm",
+   "version": "1.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "agent-device",
+   "registry": "npm",
+   "version": "0.21.36",
+   "verdict": "pass"
+  },
+  {
+   "name": "evmole",
+   "registry": "npm",
+   "version": "0.9.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcporter",
+   "registry": "npm",
+   "version": "0.17.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "rea-agents",
+   "registry": "npm",
+   "version": "6.8.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "pi-mcp-adapter",
+   "registry": "npm",
+   "version": "7.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@langchain/mcp-adapters",
+   "registry": "npm",
+   "version": "2.0.2",
+   "verdict": "fail"
+  },
+  {
+   "name": "add-mcp",
+   "registry": "npm",
+   "version": "2.6.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "pi-mcp-extension",
+   "registry": "npm",
+   "version": "1.14.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "yahoo-finance2",
+   "registry": "npm",
+   "version": "4.0.5",
+   "verdict": "fail"
+  },
+  {
+   "name": "@zereight/mcp-gitlab",
+   "registry": "npm",
+   "version": "2.3.22",
+   "verdict": "pass"
+  },
+  {
+   "name": "@tanstack/ai-mcp",
+   "registry": "npm",
+   "version": "1.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@mcp-b/transports",
+   "registry": "npm",
+   "version": "6.0.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@sentry/mcp-server",
+   "registry": "npm",
+   "version": "0.49.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@mcp-b/webmcp-ts-sdk",
+   "registry": "npm",
+   "version": "6.0.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@mcp-b/global",
+   "registry": "npm",
+   "version": "6.0.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@azure/mcp",
+   "registry": "npm",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass"
+  },
+  {
+   "name": "agentdb",
+   "registry": "npm",
+   "version": "3.7.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "agentic-flow",
+   "registry": "npm",
+   "version": "3.4.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@claude-flow/cli",
+   "registry": "npm",
+   "version": "3.72.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@currents/mcp",
+   "registry": "npm",
+   "version": "2.7.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@sap-ux/fiori-docs-embeddings",
+   "registry": "npm",
+   "version": "1.2.8",
+   "verdict": "pass"
+  },
+  {
+   "name": "@kubb/mcp",
+   "registry": "npm",
+   "version": "5.16.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "metaharness",
+   "registry": "npm",
+   "version": "",
+   "verdict": "error"
+  },
+  {
+   "name": "@azure/mcp-linux-x64",
+   "registry": "npm",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass"
+  },
+  {
+   "name": "ruflo",
+   "registry": "npm",
+   "version": "3.72.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "n8n-mcp",
+   "registry": "npm",
+   "version": "2.101.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "@nitrostack/core",
+   "registry": "npm",
+   "version": "1.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@snowluma/mcp",
+   "registry": "npm",
+   "version": "2.4.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@claude-flow/neural",
+   "registry": "npm",
+   "version": "3.0.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "codex-multi-profile",
+   "registry": "npm",
+   "version": "2.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@traceloop/instrumentation-mcp",
+   "registry": "npm",
+   "version": "0.27.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@azure/mcp-win32-x64",
+   "registry": "npm",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass"
+  },
+  {
+   "name": "kordoc",
+   "registry": "npm",
+   "version": "4.24.53",
+   "verdict": "pass"
+  },
+  {
+   "name": "@mcpjam/sdk",
+   "registry": "npm",
+   "version": "10.3.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@tacticlaunch/mcp-linear",
+   "registry": "npm",
+   "version": "1.4.5",
+   "verdict": "pass"
+  },
+  {
+   "name": "gitnexus",
+   "registry": "npm",
+   "version": "1.6.12",
+   "verdict": "pass"
+  },
+  {
+   "name": "@letoribo/mcp-graphql-enhanced",
+   "registry": "npm",
+   "version": "4.16.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-hello-world",
+   "registry": "npm",
+   "version": "1.1.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@serdnaley/metabase-mcp",
+   "registry": "npm",
+   "version": "0.5.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@cloudbase/cloudbase-mcp",
+   "registry": "npm",
+   "version": "2.37.5",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-use",
+   "registry": "npm",
+   "version": "2.12.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@ericthered926/duckduckgo-mcp-server",
+   "registry": "npm",
+   "version": "0.6.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@mcp-use/cli",
+   "registry": "npm",
+   "version": "5.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "dsh-windows-mcp",
+   "registry": "npm",
+   "version": "0.2.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "@vantasdk/vanta-mcp-server",
+   "registry": "npm",
+   "version": "1.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@agents-dev/cli",
+   "registry": "npm",
+   "version": "0.9.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@imgly/codesign-mcp",
+   "registry": "npm",
+   "version": "0.6.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@azure/mcp-darwin-arm64",
+   "registry": "npm",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass"
+  },
+  {
+   "name": "@yawlabs/ctxlint",
+   "registry": "npm",
+   "version": "0.28.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@hasna/skills",
+   "registry": "npm",
+   "version": "0.10.94",
+   "verdict": "pass"
+  },
+  {
+   "name": "agnix",
+   "registry": "npm",
+   "version": "0.61.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@nanonets/graft",
+   "registry": "npm",
+   "version": "0.29.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@taiga-ai/mcp-server",
+   "registry": "npm",
+   "version": "0.37.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "opencode-mcp",
+   "registry": "npm",
+   "version": "3.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "loki-mode",
+   "registry": "npm",
+   "version": "11.138.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "tavily-mcp",
+   "registry": "npm",
+   "version": "0.2.22",
+   "verdict": "pass"
+  },
+  {
+   "name": "@meshy-ai/meshy-mcp-server",
+   "registry": "npm",
+   "version": "0.6.9",
+   "verdict": "pass"
+  },
+  {
+   "name": "@nest-openapi/mcp",
+   "registry": "npm",
+   "version": "0.1.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@microsoft/jsts-upgrade-assistant",
+   "registry": "npm",
+   "version": "0.1.16",
+   "verdict": "pass"
+  },
+  {
+   "name": "@prefecthq/fastmcp-ts",
+   "registry": "npm",
+   "version": "1.9.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@cyanheads/mcp-ts-core",
+   "registry": "npm",
+   "version": "0.13.21",
+   "verdict": "pass"
+  },
+  {
+   "name": "@microsoft/postgres-mcp",
+   "registry": "npm",
+   "version": "0.3.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "decocms",
+   "registry": "npm",
+   "version": "4.557.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@goke/mcp",
+   "registry": "npm",
+   "version": "0.1.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@elgato/mcp-server",
+   "registry": "npm",
+   "version": "0.1.8",
+   "verdict": "pass"
+  },
+  {
+   "name": "@bitbonsai/mcpvault",
+   "registry": "npm",
+   "version": "0.18.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "comfyui-mcp",
+   "registry": "npm",
+   "version": "0.52.206",
+   "verdict": "pass"
+  },
+  {
+   "name": "@benborla29/mcp-server-mysql",
+   "registry": "npm",
+   "version": "2.0.9",
+   "verdict": "pass"
+  },
+  {
+   "name": "@atlassian-dc-mcp/common",
+   "registry": "npm",
+   "version": "0.43.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "@aashari/mcp-server-atlassian-jira",
+   "registry": "npm",
+   "version": "3.3.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@gongrzhe/server-gmail-autoauth-mcp",
+   "registry": "npm",
+   "version": "1.1.11",
+   "verdict": "pass"
+  },
+  {
+   "name": "@cargo-ai/cli",
+   "registry": "npm",
+   "version": "1.0.143",
+   "verdict": "pass"
+  },
+  {
+   "name": "@next-ai-drawio/mcp-server",
+   "registry": "npm",
+   "version": "0.4.13",
+   "verdict": "pass"
+  },
+  {
+   "name": "@gleanwork/mcp-config-schema",
+   "registry": "npm",
+   "version": "5.4.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "hlims-mcp",
+   "registry": "npm",
+   "version": "1.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-from-openapi",
+   "registry": "npm",
+   "version": "2.9.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@kubb/plugin-mcp",
+   "registry": "npm",
+   "version": "5.4.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@juspay/neurolink",
+   "registry": "npm",
+   "version": "13.10.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "claude-flow",
+   "registry": "npm",
+   "version": "3.72.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "ai-hist",
+   "registry": "npm",
+   "version": "0.57.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "tiny-stdio-mcp-server",
+   "registry": "npm",
+   "version": "0.1.32",
+   "verdict": "pass"
+  },
+  {
+   "name": "freee-mcp",
+   "registry": "npm",
+   "version": "0.37.11",
+   "verdict": "pass"
+  },
+  {
+   "name": "@microsoft/clarity-mcp-server",
+   "registry": "npm",
+   "version": "2.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "convex-mcp-gateway",
+   "registry": "npm",
+   "version": "2.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "openapi-mcp-generator",
+   "registry": "npm",
+   "version": "5.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@foldkit/devtools-mcp",
+   "registry": "npm",
+   "version": "0.26.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@mcpjam/cli",
+   "registry": "npm",
+   "version": "6.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@agimon-ai/po-logsink",
+   "registry": "npm",
+   "version": "0.0.1-alpha.106",
+   "verdict": "pass"
+  },
+  {
+   "name": "malicious-mcp-server",
+   "registry": "npm",
+   "version": "1.5.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@json-render/mcp",
+   "registry": "npm",
+   "version": "0.22.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "@runpod/mcp-server",
+   "registry": "npm",
+   "version": "4.10.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "@bilig/headless",
+   "registry": "npm",
+   "version": "0.164.11",
+   "verdict": "pass"
+  },
+  {
+   "name": "@21st-dev/magic",
+   "registry": "npm",
+   "version": "0.2.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "@cocal/google-calendar-mcp",
+   "registry": "npm",
+   "version": "2.8.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-12306",
+   "registry": "pypi",
+   "version": "0.5.0.post20261103",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-2",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-3daistudio",
+   "registry": "pypi",
+   "version": "1.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aact",
+   "registry": "pypi",
+   "version": "0.5.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aact-fastmcp",
+   "registry": "pypi",
+   "version": "0.4.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-ableton-live",
+   "registry": "pypi",
+   "version": "1.8.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-abuseipdb",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-again",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-agentpay",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aidd",
+   "registry": "pypi",
+   "version": "0.1.23",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aidrac",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-ainternet",
+   "registry": "pypi",
+   "version": "0.2.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aistudio",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-akf",
+   "registry": "pypi",
+   "version": "1.6.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-akshare",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aliyun-observability",
+   "registry": "pypi",
+   "version": "1.0.8",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-alteryx",
+   "registry": "pypi",
+   "version": "0.2.22",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-altibase",
+   "registry": "pypi",
+   "version": "0.0.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-amonhen",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-analyzer",
+   "registry": "pypi",
+   "version": "0.4.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-ancestry",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-android",
+   "registry": "pypi",
+   "version": "0.3.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-anki",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-apache-airflow",
+   "registry": "pypi",
+   "version": "0.2.10",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-apache-airflow-fastmcp",
+   "registry": "pypi",
+   "version": "0.2.9",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-appwrite",
+   "registry": "pypi",
+   "version": "2.4.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-architect",
+   "registry": "pypi",
+   "version": "0.2.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-as",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-ascom",
+   "registry": "pypi",
+   "version": "0.4.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-askecho-search-infinity",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-atlassian",
+   "registry": "pypi",
+   "version": "0.0.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-attom",
+   "registry": "pypi",
+   "version": "0.0.12",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-audit",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-autocad-lisp-helper",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-awsdocs",
+   "registry": "pypi",
+   "version": "0.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-aws-kb-retrieval",
+   "registry": "pypi",
+   "version": "0.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-b24",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-baidu-digitalhuman",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-baidu-maps",
+   "registry": "pypi",
+   "version": "0.2.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-baidu-maps-enhanced",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-baige",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bailian-image",
+   "registry": "pypi",
+   "version": "1.0.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bailian-video-synthesis",
+   "registry": "pypi",
+   "version": "1.0.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bb",
+   "registry": "pypi",
+   "version": "0.2.15",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bedrock-image",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-beehiiv",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bigdata",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bigquery",
+   "registry": "pypi",
+   "version": "0.3.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bigquery-fastmcp",
+   "registry": "pypi",
+   "version": "0.3.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bigquery-kosshii2",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-biliscribe",
+   "registry": "pypi",
+   "version": "0.9.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bitbucket",
+   "registry": "pypi",
+   "version": "0.13.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bmi-calculator",
+   "registry": "pypi",
+   "version": "0.2.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-booking",
+   "registry": "pypi",
+   "version": "0.2.5",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-botak",
+   "registry": "pypi",
+   "version": "0.1.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-box",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-brave-search",
+   "registry": "pypi",
+   "version": "0.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-brewfather",
+   "registry": "pypi",
+   "version": "0.3.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bugpk-music",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-bwt",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-c8y",
+   "registry": "pypi",
+   "version": "0.1.17",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cal",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-calculator",
+   "registry": "pypi",
+   "version": "0.2.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-canyougrab",
+   "registry": "pypi",
+   "version": "1.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-ccapi",
+   "registry": "pypi",
+   "version": "1.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-ccxt",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cdek",
+   "registry": "pypi",
+   "version": "0.6.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-celery",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-changelog",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-chatgpt-app",
+   "registry": "pypi",
+   "version": "0.1.5",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-clash-verge",
+   "registry": "pypi",
+   "version": "0.1.4",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cloudmonitor",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-code-assist",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-code-extractor",
+   "registry": "pypi",
+   "version": "0.4.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-codetree",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-coding",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-coindesk",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-colab-exec",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-collector",
+   "registry": "pypi",
+   "version": "0.0.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-composer",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-consignspace",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-context-in",
+   "registry": "pypi",
+   "version": "0.2.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-converter",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-copilot",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-coverage-report",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cpp-format",
+   "registry": "pypi",
+   "version": "0.3.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-creator",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cronpilot",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-currency-history",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cvm",
+   "registry": "pypi",
+   "version": "0.1.12",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cxzja-music",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cxzja-qmkg",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-cxzja-qqmusic",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass"
+  },
+  {
+   "name": "mcp-server-dagster",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "name": "",
+   "registry": "mcp-registry",
+   "version": "",
+   "verdict": "pass-with-findings"
+  }
+ ]
+}

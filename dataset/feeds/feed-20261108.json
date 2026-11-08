@@ -1,0 +1,365 @@
+{
+ "feed_version": 1,
+ "generated_at": "2026-11-08T04:49:56Z",
+ "scenario_sha256": "41945b01fa02551ba46d27ffabddc22d2f47d18dd6cd67652e12ea8cf4f37eb9",
+ "count": 50,
+ "fetch_errors": 0,
+ "verdicts": {
+  "pass": 50,
+  "pass-with-findings": 0,
+  "fail": 0,
+  "unsupported": 0
+ },
+ "items": [
+  {
+   "name": "agent-install",
+   "version": "0.0.8",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "01_agent-install.bundle.json"
+  },
+  {
+   "name": "@earendil-works/pi-mcp",
+   "version": "1.5.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "02_earendil-works_pi-mcp.bundle.json"
+  },
+  {
+   "name": "eve",
+   "version": "1.0.0-rc.6",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "03_eve.bundle.json"
+  },
+  {
+   "name": "@wonderwhy-er/desktop-commander",
+   "version": "0.3.1",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "04_wonderwhy-er_desktop-commander.bundle.json"
+  },
+  {
+   "name": "@lovable.dev/mcp-js",
+   "version": "3.4.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "05_lovable.dev_mcp-js.bundle.json"
+  },
+  {
+   "name": "@posthog/mcp",
+   "version": "1.0.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "06_posthog_mcp.bundle.json"
+  },
+  {
+   "name": "agent-device",
+   "version": "0.21.36",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "07_agent-device.bundle.json"
+  },
+  {
+   "name": "evmole",
+   "version": "0.9.4",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "08_evmole.bundle.json"
+  },
+  {
+   "name": "mcporter",
+   "version": "0.17.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "09_mcporter.bundle.json"
+  },
+  {
+   "name": "rea-agents",
+   "version": "6.8.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "10_rea-agents.bundle.json"
+  },
+  {
+   "name": "pi-mcp-adapter",
+   "version": "7.0.1",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "11_pi-mcp-adapter.bundle.json"
+  },
+  {
+   "name": "@langchain/mcp-adapters",
+   "version": "2.0.2",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "12_langchain_mcp-adapters.bundle.json"
+  },
+  {
+   "name": "add-mcp",
+   "version": "2.6.1",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "13_add-mcp.bundle.json"
+  },
+  {
+   "name": "pi-mcp-extension",
+   "version": "1.14.4",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "14_pi-mcp-extension.bundle.json"
+  },
+  {
+   "name": "yahoo-finance2",
+   "version": "4.0.5",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "15_yahoo-finance2.bundle.json"
+  },
+  {
+   "name": "@zereight/mcp-gitlab",
+   "version": "2.3.22",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "16_zereight_mcp-gitlab.bundle.json"
+  },
+  {
+   "name": "@tanstack/ai-mcp",
+   "version": "1.1.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "17_tanstack_ai-mcp.bundle.json"
+  },
+  {
+   "name": "@mcp-b/transports",
+   "version": "6.0.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "18_mcp-b_transports.bundle.json"
+  },
+  {
+   "name": "@sentry/mcp-server",
+   "version": "0.49.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "19_sentry_mcp-server.bundle.json"
+  },
+  {
+   "name": "@mcp-b/webmcp-ts-sdk",
+   "version": "6.0.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "20_mcp-b_webmcp-ts-sdk.bundle.json"
+  },
+  {
+   "name": "@mcp-b/global",
+   "version": "6.0.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "21_mcp-b_global.bundle.json"
+  },
+  {
+   "name": "@azure/mcp",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "22_azure_mcp.bundle.json"
+  },
+  {
+   "name": "agentdb",
+   "version": "3.7.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "23_agentdb.bundle.json"
+  },
+  {
+   "name": "agentic-flow",
+   "version": "3.4.1",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "24_agentic-flow.bundle.json"
+  },
+  {
+   "name": "@claude-flow/cli",
+   "version": "3.72.2",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "25_claude-flow_cli.bundle.json"
+  },
+  {
+   "name": "@currents/mcp",
+   "version": "2.7.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "26_currents_mcp.bundle.json"
+  },
+  {
+   "name": "@sap-ux/fiori-docs-embeddings",
+   "version": "1.2.8",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "27_sap-ux_fiori-docs-embeddings.bundle.json"
+  },
+  {
+   "name": "@kubb/mcp",
+   "version": "5.16.1",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "28_kubb_mcp.bundle.json"
+  },
+  {
+   "name": "metaharness",
+   "version": "0.4.21",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "29_metaharness.bundle.json"
+  },
+  {
+   "name": "@azure/mcp-linux-x64",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "30_azure_mcp-linux-x64.bundle.json"
+  },
+  {
+   "name": "ruflo",
+   "version": "3.72.2",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "31_ruflo.bundle.json"
+  },
+  {
+   "name": "n8n-mcp",
+   "version": "2.101.4",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "32_n8n-mcp.bundle.json"
+  },
+  {
+   "name": "@nitrostack/core",
+   "version": "1.1.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "33_nitrostack_core.bundle.json"
+  },
+  {
+   "name": "@snowluma/mcp",
+   "version": "2.4.2",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "34_snowluma_mcp.bundle.json"
+  },
+  {
+   "name": "@claude-flow/neural",
+   "version": "3.0.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "35_claude-flow_neural.bundle.json"
+  },
+  {
+   "name": "codex-multi-profile",
+   "version": "2.0.1",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "36_codex-multi-profile.bundle.json"
+  },
+  {
+   "name": "@traceloop/instrumentation-mcp",
+   "version": "0.27.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "37_traceloop_instrumentation-mcp.bundle.json"
+  },
+  {
+   "name": "@azure/mcp-win32-x64",
+   "version": "4.0.0-beta.6",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "38_azure_mcp-win32-x64.bundle.json"
+  },
+  {
+   "name": "kordoc",
+   "version": "4.24.53",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "39_kordoc.bundle.json"
+  },
+  {
+   "name": "@mcpjam/sdk",
+   "version": "10.3.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "40_mcpjam_sdk.bundle.json"
+  },
+  {
+   "name": "@tacticlaunch/mcp-linear",
+   "version": "1.4.5",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "41_tacticlaunch_mcp-linear.bundle.json"
+  },
+  {
+   "name": "gitnexus",
+   "version": "1.6.12",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "42_gitnexus.bundle.json"
+  },
+  {
+   "name": "@letoribo/mcp-graphql-enhanced",
+   "version": "4.16.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "43_letoribo_mcp-graphql-enhanced.bundle.json"
+  },
+  {
+   "name": "mcp-hello-world",
+   "version": "1.1.2",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "44_mcp-hello-world.bundle.json"
+  },
+  {
+   "name": "@serdnaley/metabase-mcp",
+   "version": "0.5.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "45_serdnaley_metabase-mcp.bundle.json"
+  },
+  {
+   "name": "@cloudbase/cloudbase-mcp",
+   "version": "2.37.5",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "46_cloudbase_cloudbase-mcp.bundle.json"
+  },
+  {
+   "name": "mcp-use",
+   "version": "2.12.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "47_mcp-use.bundle.json"
+  },
+  {
+   "name": "@ericthered926/duckduckgo-mcp-server",
+   "version": "0.6.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "48_ericthered926_duckduckgo-mcp-server.bundle.json"
+  },
+  {
+   "name": "@mcp-use/cli",
+   "version": "5.0.0",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "49_mcp-use_cli.bundle.json"
+  },
+  {
+   "name": "dsh-windows-mcp",
+   "version": "0.2.3",
+   "verdict": "pass",
+   "status": "ok",
+   "bundle_file": "50_dsh-windows-mcp.bundle.json"
+  }
+ ]
+}
