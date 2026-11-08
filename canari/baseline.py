@@ -592,3 +592,8 @@ def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
         deep_result.get("total", 0), len(all_meta),
         deep_result.get("total", 0) + len(all_meta)))
     return feed
+
+
+def propagate_revocation(revoked_name, revoked_author, all_components):
+    from canari.npm_enum import propagate_revocation as _prop
+    return _prop(revoked_name, revoked_author, all_components)
