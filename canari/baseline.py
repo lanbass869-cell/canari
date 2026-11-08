@@ -344,6 +344,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     if signer is None:
         signer, pub_key = generate_keypair()
 
+    state = StateStore(os.path.join(out_dir, "state.json"))
+
     scenario_def = json.dumps({"level": "L1-L2-multi-registry",
                                "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"]},
                               sort_keys=True).encode("utf-8")
@@ -366,7 +368,11 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             att["native_provenance"] = native_prov
         return att
 
-    def _save_att(att, prefix, name):
+    def _save_att(att, prefix, name, prev_state=None):
+        # supersession: if we have a previous attestation for this component,
+        # compute its digest and set supersedes pointer
+        if prev_state and prev_state.get("attestation_digest"):
+            att["supersedes"] = prev_state["attestation_digest"]
         signed = sign_attestation(att, signer)
         safe = name.replace("/", "_").replace("@", "")
         bpath = os.path.join(att_dir, "%s_%s.bundle.json" % (prefix, safe))
@@ -388,7 +394,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             np = native_ingest(name, lv["version"])
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
                             ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
-            bpath = _save_att(att, "npm", name)
+            bpath = _save_att(att, "npm", name, prev_state=state.get_component(name))
             all_results.append({"name": name, "registry": "npm", "version": lv["version"],
                                 "verdict": verdict, "bundle": bpath})
         except Exception as e:
@@ -434,6 +440,33 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         bpath = _save_att(att, "dsh", name)
         all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
                             "verdict": "pass-with-findings", "bundle": bpath})
+
+    # revocation propagation: if any component failed, annotate related components
+    # (same-author or name-variant). Annotation only - no judgment.
+    from canari.npm_enum import propagate_revocation as _propagate
+    failed_components = [{"name": r["name"], "verdict": r.get("verdict", "")}
+                         for r in all_results if r.get("verdict") == "fail"]
+    for failed in failed_components:
+        all_names = [{"name": r["name"]} for r in all_results if r["name"] != failed["name"]]
+        related = _propagate(failed["name"], "", all_names)  # author lookup needs maintainers
+        for r in all_results:
+            if any(rel["name"] == r["name"] for rel in related):
+                # append related_revocations to the attestation bundle
+                bpath = r.get("bundle")
+                if bpath and os.path.isfile(bpath):
+                    try:
+                        bundle = json.load(open(bpath, encoding="utf-8"))
+                        payload = bundle.get("payload", {})
+                        if "related_revocations" not in payload:
+                            payload["related_revocations"] = []
+                        payload["related_revocations"].append({
+                            "name": failed["name"],
+                            "relation": "name-variant",
+                            "ref": "propagated-from-" + failed["name"]
+                        })
+                        json.dump(bundle, open(bpath, "w", encoding="utf-8"), ensure_ascii=False)
+                    except Exception:
+                        pass
 
     # unified feed
     by_reg, by_verdict = {}, {}
