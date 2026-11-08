@@ -403,8 +403,10 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         sha = pkg.get("artifact_sha256", "")
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                   {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
+        pn = pypi_native_ingest(name)
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
-                        "pass" if sha else "fail", ["canari-m1/0.1"], ["pypi-json:" + name])
+                        "pass" if sha else "fail", ["canari-m1/0.1"], ["pypi-json:" + name],
+                        native_prov=pn)
         bpath = _save_att(att, "pypi", name)
         all_results.append({"name": name, "registry": "pypi", "version": pkg.get("version", ""),
                             "verdict": att["verdict"], "bundle": bpath})
