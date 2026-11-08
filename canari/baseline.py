@@ -27,6 +27,7 @@ import sys
 
 from canari.schema import _PREDICATE_TYPE
 from canari.signing import generate_keypair, sign_attestation, export_public_key
+from canari.state import FileLock, StateStore
 from canari.npm_enum import enumerate_top, fetch_packument, latest_version_info
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -186,6 +187,9 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     feed_dir = os.path.join(out_dir, "feed")
     os.makedirs(att_dir, exist_ok=True)
     os.makedirs(feed_dir, exist_ok=True)
+    lock = FileLock(os.path.join(out_dir, "run"))
+    lock.__enter__()
+    state = StateStore(os.path.join(out_dir, "state.json"))
 
     if signer is None:
         signer, pub_key = generate_keypair()
@@ -268,7 +272,7 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     with open(key_path, "w", encoding="utf-8") as f:
         f.write(export_public_key(pub_key))
 
-    summary = {"total": len(results), "fetch_errors": n_err, "skipped": n_skip,
+    summary = {"total": len(results), "diff": {}, "run_number": 0, "fetch_errors": n_err, "skipped": n_skip,
                "feed": feed_path, "key": key_path, "results": results}
     report_path = os.path.join(out_dir, "baseline_report.json")
     with open(report_path, "w", encoding="utf-8") as f:

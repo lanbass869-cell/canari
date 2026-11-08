@@ -30,7 +30,7 @@ def _opener():
     return urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
 
-def npm_search(text: str, size: int = 250, from_offset: int = 0, timeout: int = 30) -> dict:
+def npm_search_orig(text: str, size: int = 250, from_offset: int = 0, timeout: int = 30) -> dict:
     """One npm search call. Returns parsed JSON. Raises urllib errors."""
     url = "%s?text=%s&size=%d&from=%d" % (
         SEARCH_URL, urllib.parse.quote(text), size, from_offset)
@@ -85,6 +85,20 @@ def enumerate_top(limit: int = 50, dedupe=True) -> list:
     ranked = sorted(seen.values(),
                     key=lambda x: -(x.get("downloads") or {}).get("monthly", 0))
     return ranked[:limit]
+
+
+def npm_search(text, size=250, from_offset=0, timeout=30, retries=3):
+    import time
+    for attempt in range(retries):
+        try:
+            return npm_search_orig(text, size, from_offset, timeout)
+        except (urllib.error.HTTPError, TimeoutError, OSError) as e:
+            if attempt < retries - 1:
+                wait = 5 * (3 ** attempt)
+                print("[npm] retry", attempt+1, "/", retries)
+                time.sleep(wait)
+            else:
+                raise
 
 
 def fetch_packument(name: str, timeout: int = 90) -> dict:

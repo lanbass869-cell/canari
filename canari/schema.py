@@ -12,8 +12,10 @@ drift - the same pattern as MemTether's dual_repo_guard.
 import json
 import os
 
-_SCHEMA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                            "schemas", "attestation-v0.1.json")
+# schema lives inside the package (pip-installable); repo-level schemas/ is a
+# byte-copy for the sync test. Source of truth: the handover repo's draft.
+_SCHEMA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                            "attestation-v0.1.json")
 
 _PREDICATE_TYPE = "https://agentcheck.dev/attestation/v0.1"
 
