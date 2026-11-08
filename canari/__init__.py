@@ -1,4 +1,4 @@
-"""agentcheck - Agent Component Verification Ledger.
+"""Canari - Agent Component Verification Ledger.
 
 Cross-host attestation ledger for agent components (MCP servers / agent
 skills / DSH plugins). Weekly scans produce signed, offline-verifiable,
@@ -9,3 +9,4 @@ Zero-heavy-dependency philosophy (inherited from MemTether):
 """
 
 __version__ = "0.0.1"
+

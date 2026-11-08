@@ -6,7 +6,7 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from agentcheck.schema import load_schema, validate_attestation, is_gate_passing
+from canari.schema import load_schema, validate_attestation, is_gate_passing
 
 
 def _valid_att(**overrides):

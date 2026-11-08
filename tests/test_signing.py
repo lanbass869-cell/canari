@@ -8,7 +8,7 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from agentcheck.signing import generate_keypair, sign_attestation, verify_signed
+from canari.signing import generate_keypair, sign_attestation, verify_signed
 
 
 @pytest.fixture(scope="module")

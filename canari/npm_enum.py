@@ -14,7 +14,7 @@ stdlib way to force direct connection.
 import json
 import urllib.request
 
-UA = "agentcheck-m0/0.1 (research enumeration; contact: repo issues)"
+UA = "canari-m0/0.1 (research enumeration; contact: repo issues)"
 SEARCH_URL = "https://registry.npmjs.org/-/v1/search"
 
 # npm MCP discovery queries (lineE section 1.1)

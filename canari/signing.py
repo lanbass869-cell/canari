@@ -14,7 +14,7 @@ DSSE envelope in the bundle is the authoritative signature.
 """
 import json
 
-from agentcheck.schema import _PREDICATE_TYPE
+from canari.schema import _PREDICATE_TYPE
 
 try:
     from in_toto.models.metadata import Envelope

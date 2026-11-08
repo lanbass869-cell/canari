@@ -12,7 +12,7 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BUNDLED = os.path.join(HERE, "schemas", "attestation-v0.1.json")
 # update if the handover repo moves; missing source = SKIP not PASS
 SOURCE_CANDIDATES = [
-    r"E:\Temp\tbdig\feiyu-quanti\docs\agentcheck\attestation-v0.1.schema.json",
+    r"E:\Temp\tbdig\feiyu-quanti\docs\canari\attestation-v0.1.schema.json",
 ]
 
 

@@ -13,8 +13,8 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from agentcheck.signing import generate_keypair, sign_attestation
-from agentcheck.verify_cli import verify_bundle
+from canari.signing import generate_keypair, sign_attestation
+from canari.verify_cli import verify_bundle
 
 
 @pytest.fixture(scope="module")
@@ -34,12 +34,12 @@ def _att():
         "host": {"class": "mcp", "host_version": "registry-meta-v1"},
         "scenario_sha256": "b" * 64,
         "checks": [
-            {"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "agentcheck-meta/0.1", "duration_ms": 12},
-            {"id": "L2.1_ARTIFACT_HASH", "verdict": "unsupported", "tool": "agentcheck-meta/0.1",
+            {"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-meta/0.1", "duration_ms": 12},
+            {"id": "L2.1_ARTIFACT_HASH", "verdict": "unsupported", "tool": "canari-meta/0.1",
              "evidence_ref": "not downloaded"},
         ],
         "verdict": "pass-with-findings",
-        "checker": {"kind": "automation", "id": "agentcheck-m0", "tools": ["agentcheck-meta/0.1"]},
+        "checker": {"kind": "automation", "id": "canari-m0", "tools": ["canari-meta/0.1"]},
         "evidence_refs": ["npm-packument:demo-mcp"],
         "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
         "expires_at": "2026-11-15T00:00:00Z",

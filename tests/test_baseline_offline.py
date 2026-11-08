@@ -6,7 +6,7 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from agentcheck.baseline import build_attestation, _sha512_integrity_to_hex
+from canari.baseline import build_attestation, _sha512_integrity_to_hex
 
 SCENARIO = "c" * 64
 
@@ -28,7 +28,7 @@ class TestBuildAttestation:
     @pytest.fixture(autouse=True)
     def _mock_download(self, monkeypatch):
         """Tests are offline: fake successful tarball download."""
-        import agentcheck.baseline as bl
+        import canari.baseline as bl
         monkeypatch.setattr(bl, "_download_sha256", lambda url, timeout=60: "e" * 64)
 
     def _meta(self, **kw):
@@ -56,7 +56,7 @@ class TestBuildAttestation:
     def test_download_failure_fails_L21_and_zero_sha256(self, monkeypatch):
         # download FAILED (mock returns None) -> check FAIL; schema still
         # requires a valid hex string so we bind all-zeros and record failure.
-        import agentcheck.baseline as bl
+        import canari.baseline as bl
         monkeypatch.setattr(bl, "_download_sha256", lambda url, timeout=60: None)
         att = build_attestation("pkg-c", self._meta(),
                                 {"description": "d"}, SCENARIO)

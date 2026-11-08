@@ -2,9 +2,9 @@
 """schema.py - attestation JSON Schema loading + validation (M0 task 1).
 
 Single source of truth: schemas/attestation-v0.1.json, byte-copied from the
-private handover repo docs/agentcheck/attestation-v0.1.schema.json (commit
+private handover repo docs/canari/attestation-v0.1.schema.json (commit
 fd37b18). Field semantics live THERE; any semantic change must go through
-the WorkBuddy review line (HANDOVER-agentcheck.md section 5).
+the WorkBuddy review line (HANDOVER-canari.md section 5).
 
 The sync test (tests/test_schema_sync.py) fails loudly if the two copies
 drift - the same pattern as MemTether's dual_repo_guard.

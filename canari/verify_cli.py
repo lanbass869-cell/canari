@@ -19,8 +19,8 @@ import hashlib
 import json
 import sys
 
-from agentcheck.schema import load_schema, validate_attestation, is_gate_passing
-from agentcheck.signing import verify_signed
+from canari.schema import load_schema, validate_attestation, is_gate_passing
+from canari.signing import verify_signed
 
 
 def _fail(msg):
@@ -104,8 +104,8 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int
 
 def main(argv=None):
     ap = argparse.ArgumentParser(
-        prog="agentcheck-verify",
-        description="Offline verifier for agentcheck attestation bundles (DSSE/in-toto).")
+        prog="canari-verify",
+        description="Offline verifier for canari attestation bundles (DSSE/in-toto).")
     ap.add_argument("bundle", help="path to signed bundle JSON")
     ap.add_argument("--key", required=True, help="path to signer public key JSON")
     ap.add_argument("--verbose", "-v", action="store_true", help="print PASS checks too")

@@ -25,9 +25,9 @@ import json
 import os
 import sys
 
-from agentcheck.schema import _PREDICATE_TYPE
-from agentcheck.signing import generate_keypair, sign_attestation, export_public_key
-from agentcheck.npm_enum import enumerate_top, fetch_packument, latest_version_info
+from canari.schema import _PREDICATE_TYPE
+from canari.signing import generate_keypair, sign_attestation, export_public_key
+from canari.npm_enum import enumerate_top, fetch_packument, latest_version_info
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
@@ -78,7 +78,7 @@ def _download_sha256(tarball_url: str, timeout: int = 60):
         return None
 
 
-UA_CONST = "agentcheck-m0/0.1 (research; repo issues)"
+UA_CONST = "canari-m0/0.1 (research; repo issues)"
 
 
 def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256: str) -> dict:
@@ -86,14 +86,14 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
     checks = []
     # L1.1 packument fetchable = we got here
     checks.append({"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass",
-                   "tool": "agentcheck-meta/0.1", "duration_ms": meta.get("fetch_ms", 0)})
+                   "tool": "canari-meta/0.1", "duration_ms": meta.get("fetch_ms", 0)})
     # L1.2 version resolved
     if meta.get("version"):
         checks.append({"id": "L1.2_VERSION_RESOLVED", "verdict": "pass",
-                       "tool": "agentcheck-meta/0.1"})
+                       "tool": "canari-meta/0.1"})
     else:
         checks.append({"id": "L1.2_VERSION_RESOLVED", "verdict": "fail",
-                       "tool": "agentcheck-meta/0.1"})
+                       "tool": "canari-meta/0.1"})
     # L2.1 artifact hash: download the tarball (byte fetch, NO execution) and
     # compute sha256. Schema REQUIRES a valid 64-hex artifact_sha256, and an
     # attestation that does not bind to exact bytes is worthless anyway.
@@ -112,34 +112,34 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
         if sha512_hex:
             ev += "; npm packument sha512:" + sha512_hex[:16] + "..."
         checks.append({"id": "L2.1_ARTIFACT_HASH", "verdict": "pass",
-                       "tool": "agentcheck-meta/0.1", "evidence_ref": ev})
+                       "tool": "canari-meta/0.1", "evidence_ref": ev})
     elif sha512_hex:
         # download failed but npm publishes integrity - we cannot confirm
         # sha256 ourselves; schema forbids empty/invalid, so this check fails
         checks.append({"id": "L2.1_ARTIFACT_HASH", "verdict": "fail",
-                       "tool": "agentcheck-meta/0.1",
+                       "tool": "canari-meta/0.1",
                        "evidence_ref": "tarball download failed; npm sha512:" + sha512_hex[:16]})
     else:
         checks.append({"id": "L2.1_ARTIFACT_HASH", "verdict": "fail",
-                       "tool": "agentcheck-meta/0.1",
+                       "tool": "canari-meta/0.1",
                        "evidence_ref": "no dist.integrity in packument and download failed"})
     # L2.2 maintainers
     if meta.get("maintainers"):
         checks.append({"id": "L2.2_MAINTAINER_SET", "verdict": "pass",
-                       "tool": "agentcheck-meta/0.1"})
+                       "tool": "canari-meta/0.1"})
     else:
         checks.append({"id": "L2.2_MAINTAINER_SET", "verdict": "fail",
-                       "tool": "agentcheck-meta/0.1"})
+                       "tool": "canari-meta/0.1"})
     has_desc = bool(search_meta.get("description"))
     # L2.3 manifest fields - check-level enum has no 'pass-with-findings';
     # a missing description is a finding recorded via evidence_ref, check
     # stays pass, and the RUN verdict becomes pass-with-findings.
     if has_desc:
         checks.append({"id": "L2.3_MANIFEST_FIELDS", "verdict": "pass",
-                       "tool": "agentcheck-meta/0.1"})
+                       "tool": "canari-meta/0.1"})
     else:
         checks.append({"id": "L2.3_MANIFEST_FIELDS", "verdict": "pass",
-                       "tool": "agentcheck-meta/0.1",
+                       "tool": "canari-meta/0.1",
                        "evidence_ref": "finding: description empty"})
 
     n_fail = sum(1 for c in checks if c["verdict"] == "fail")
@@ -170,7 +170,7 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
         "scenario_sha256": scenario_sha256,
         "checks": checks,
         "verdict": verdict,
-        "checker": {"kind": "automation", "id": "agentcheck-m0", "tools": ["agentcheck-meta/0.1"]},
+        "checker": {"kind": "automation", "id": "canari-m0", "tools": ["canari-meta/0.1"]},
         "evidence_refs": ["npm-packument:" + name],
         "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
         "expires_at": _expiry(),
@@ -195,7 +195,7 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         "level": "L1-L2-meta-only",
         "checks": ["L1.1_REGISTRY_PRESENT", "L1.2_VERSION_RESOLVED",
                    "L2.1_ARTIFACT_HASH", "L2.2_MAINTAINER_SET", "L2.3_MANIFEST_FIELDS"],
-        "runner": "agentcheck-m0/0.1",
+        "runner": "canari-m0/0.1",
     }, sort_keys=True).encode("utf-8")
     scenario_sha256 = hashlib.sha256(scenario_def).hexdigest()
 
@@ -280,7 +280,7 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
 
 def main(argv=None):
     import argparse
-    ap = argparse.ArgumentParser(prog="agentcheck-baseline",
+    ap = argparse.ArgumentParser(prog="canari-baseline",
                                  description="M0 Top-50 npm MCP baseline scan")
     ap.add_argument("--limit", type=int, default=50)
     ap.add_argument("--out", default=None, help="output dir (default: <repo>/out)")
