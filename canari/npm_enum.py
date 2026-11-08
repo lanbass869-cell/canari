@@ -193,8 +193,8 @@ def mcp_registry_enumerate(limit=500):
 # dsh.so adapter (reference conclusions, not re-scan)
 # ============================================================
 DSH_MARKET_INDEX = "https://cdn.dsh.so/market/index.json"
-DSH_INSTALL_FMT = "https://www.dsh.so/data/install/{author}/{name}.json"
-DSH_SECURITY_FMT = "https://www.dsh.so/artifact/{author}/{name}-security.json"
+DSH_INSTALL_FMT = "https://dsh.so/data/install/@{author}/{name}.json"
+DSH_SECURITY_FMT = "https://dsh.so/artifact/@{author}/{name}.json"
 
 
 def dsh_enumerate(limit=500, with_security=True):

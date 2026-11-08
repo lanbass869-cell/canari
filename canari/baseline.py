@@ -29,8 +29,10 @@ from canari.schema import _PREDICATE_TYPE
 from canari.signing import generate_keypair, sign_attestation, export_public_key
 from canari.state import FileLock, StateStore
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
-                            pypi_enumerate, mcp_registry_enumerate, dsh_enumerate)
+                            pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
+                            _opener, UA)
 from canari.native import ingest as native_ingest
+from canari.pypi_native import ingest_pypi as pypi_native_ingest
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
@@ -415,7 +417,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     print("[multi] MCP Registry (%d)..." % registry_limit)
     for pkg in mcp_registry_enumerate(limit=registry_limit):
         name = pkg["name"]
-        att = _make_att(name, pkg.get("version", ""), "npm", "", "mcp",
+        att = _make_att(name, pkg.get("version", ""), "mcp-registry", "", "mcp",
                         [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}],
                         "pass-with-findings", ["canari-m1/0.1"], ["mcp-registry:" + name])
         bpath = _save_att(att, "mcpreg", name)

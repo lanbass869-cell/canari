@@ -42,7 +42,8 @@
             "npm",
             "pypi",
             "github",
-            "dsh-registry"
+            "dsh-registry",
+            "mcp-registry"
           ]
         },
         "artifact_sha256": {

@@ -1,1 +1,3 @@
-import sys`nfrom canari.verify_cli import main`nsys.exit(main())
+import sys
+from canari.verify_cli import main
+sys.exit(main())
