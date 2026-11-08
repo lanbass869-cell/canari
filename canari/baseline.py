@@ -272,7 +272,28 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     with open(key_path, "w", encoding="utf-8") as f:
         f.write(export_public_key(pub_key))
 
-    summary = {"total": len(results), "diff": {}, "run_number": 0, "fetch_errors": n_err, "skipped": n_skip,
+    # diff vs previous run + persist state
+    current_snapshot = {}
+    for r in results:
+        if r.get("bundle") and r.get("status") != "fetch_error":
+            bp = json.load(open(r["bundle"], encoding="utf-8"))
+            sha = bp["payload"]["subject"].get("artifact_sha256", "")
+            current_snapshot[r["name"]] = {"version": r.get("version", ""), "sha256": sha}
+
+    diff = state.diff(current_snapshot)
+    print("[diff] new=%d changed=%d unchanged=%d removed=%d" % (
+        len(diff["new"]), len(diff["changed"]), len(diff["unchanged"]), len(diff["removed"])))
+
+    for r in results:
+        if r.get("bundle"):
+            bp = json.load(open(r["bundle"], encoding="utf-8"))
+            state.set_component(r["name"], r.get("version", ""),
+                                bp["payload"]["subject"].get("artifact_sha256", ""), r["bundle"])
+    state.save()
+    lock.__exit__()
+
+    summary = {"total": len(results), "diff": diff, "run_number": state.run_count,
+               "fetch_errors": n_err, "skipped": n_skip,
                "feed": feed_path, "key": key_path, "results": results}
     report_path = os.path.join(out_dir, "baseline_report.json")
     with open(report_path, "w", encoding="utf-8") as f:
