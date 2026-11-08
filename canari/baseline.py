@@ -390,7 +390,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
 
     # npm
     print("[multi] npm (%d)..." % npm_limit)
-    for pkg in enumerate_top(limit=npm_limit):
+    try:
+        npm_pkgs = enumerate_top(limit=npm_limit)
+    except Exception as _e:
+        print("[multi] npm enumerate failed:", str(_e)[:80])
+        npm_pkgs = []
+    for pkg in npm_pkgs:
         name = pkg["name"]
         try:
             pack = fetch_packument(name)
@@ -411,7 +416,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
 
     # PyPI
     print("[multi] PyPI (%d)..." % pypi_limit)
-    for pkg in pypi_enumerate(limit=pypi_limit):
+    try:
+        pypi_pkgs = pypi_enumerate(limit=pypi_limit)
+    except Exception as _e:
+        print("[multi] PyPI enumerate failed:", str(_e)[:80])
+        pypi_pkgs = []
+    for pkg in pypi_pkgs:
         name = pkg["name"]
         if "error" in pkg:
             total_errors += 1
@@ -429,7 +439,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
 
     # MCP Registry
     print("[multi] MCP Registry (%d)..." % registry_limit)
-    for pkg in mcp_registry_enumerate(limit=registry_limit):
+    try:
+        mcp_pkgs = mcp_registry_enumerate(limit=registry_limit)
+    except Exception as _e:
+        print("[multi] MCP Registry enumerate failed:", str(_e)[:80])
+        mcp_pkgs = []
+    for pkg in mcp_pkgs:
         name = pkg["name"]
         att = _make_att(name, pkg.get("version", ""), "mcp-registry", "", "mcp",
                         [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}],
@@ -440,7 +455,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
 
     # dsh.so (reference, not re-scan)
     print("[multi] dsh.so (%d)..." % dsh_limit)
-    for pkg in dsh_enumerate(limit=dsh_limit):
+    try:
+        dsh_pkgs = dsh_enumerate(limit=dsh_limit)
+    except Exception as _e:
+        print("[multi] dsh.so enumerate failed:", str(_e)[:80])
+        dsh_pkgs = []
+    for pkg in dsh_pkgs:
         name = pkg.get("name", "")
         att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
                         [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}],

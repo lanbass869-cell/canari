@@ -132,11 +132,23 @@ PYPI_SIMPLE = "https://pypi.org/simple"
 PYPI_JSON = "https://pypi.org/pypi"
 
 def pypi_enumerate(prefix="mcp-server-", limit=500):
+    if limit <= 0:
+        return []
     import re as _re
     url = PYPI_SIMPLE + "/"
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with _opener().open(req, timeout=120) as r:
-        html = r.read().decode("utf-8", errors="replace")
+    html = None
+    for _attempt in range(3):
+        try:
+            with _opener().open(req, timeout=300) as r:
+                html = r.read().decode("utf-8", errors="replace")
+            break
+        except (TimeoutError, OSError) as _e:
+            if _attempt == 2:
+                print("[pypi] simple index download failed after 3 attempts:", str(_e)[:80])
+                return []  # failure is data, not crash
+    if html is None:
+        return []
     names = _re.findall(r'>(.*?)</a>', html)
     matched = [n for n in names if n.lower().startswith(prefix.lower())][:limit]
     results = []
@@ -203,6 +215,8 @@ DSH_SECURITY_FMT = "https://dsh.so/artifact/@{author}/{name}.json"
 
 
 def dsh_enumerate(limit=500, with_security=True):
+    if limit <= 0:
+        return []
     """Enumerate DSH plugins from dsh.so market index (10K+).
     References existing L1-L5 conclusions, does not re-scan."""
     req = urllib.request.Request(DSH_MARKET_INDEX, headers={"User-Agent": UA})
