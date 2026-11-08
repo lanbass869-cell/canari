@@ -383,7 +383,10 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         safe = name.replace("/", "_").replace("@", "").replace("\\", "_").replace("..", "_")
         # additional safety: remove any remaining path separators or parent refs
         safe = "".join(c for c in safe if c.isalnum() or c in "._-")
-        bpath = os.path.join(att_dir, "%s_%s.bundle.json" % (prefix, safe))
+        # content-addressed filename: include timestamp to prevent overwriting previous runs
+        # (supersession chain requires old bundles to persist on disk)
+        ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
+        bpath = os.path.join(att_dir, "%s_%s_%s.bundle.json" % (prefix, safe, ts))
         with open(bpath, "w", encoding="utf-8") as f:
             json.dump({"envelope": signed["envelope"], "payload": signed["payload"]}, f, ensure_ascii=False)
         return bpath
