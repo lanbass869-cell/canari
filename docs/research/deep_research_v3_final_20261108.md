@@ -46,7 +46,7 @@ Within this explosion, **Canari's claimed gap ("weekly monitoring + signed attes
 **Canari overlap:** HIGH. This is the "weekly monitoring + drift comparison" angle.
 **What is missing:** No signing, no attestation format, no cross-registry, no supersession, no install gate, no offline verification.
 
-**Code released:** Paper says "We release the panel, figure generator, and analysis code." But no GitHub repo found. No Zenodo record. No OSF record. **The dataset is NOT actually publicly available.**
+**[CORRECTED 2026-11-08 in v4]** The dataset IS public: Zenodo record 21798111, 'MCP Registry Drift Panel v1', CC-BY-4.0, 12 files verified live. v3's claim was wrong.
 
 **Threat level: CRITICAL.** This is a solo independent researcher who did exactly what Canari planned to do (longitudinal MCP monitoring). If they continue the research and add signing, Canari loses. However, they appear to have moved on (0 other MCP papers in their profile).
 

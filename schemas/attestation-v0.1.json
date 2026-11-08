@@ -23,24 +23,65 @@
     "subject": {
       "description": "被验真的组件制品。绑定制品哈希而非包名——包名会变，哈希不会。",
       "type": "object",
-      "required": ["name", "version", "registry", "artifact_sha256"],
+      "required": [
+        "name",
+        "version",
+        "registry",
+        "artifact_sha256"
+      ],
       "properties": {
-        "name": { "type": "string", "minLength": 1 },
-        "version": { "type": "string" },
-        "registry": { "enum": ["npm", "pypi", "github", "dsh-registry"] },
-        "artifact_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
-        "homepage": { "type": "string" },
-        "maintainers": { "type": "array", "items": { "type": "string" } }
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string"
+        },
+        "registry": {
+          "enum": [
+            "npm",
+            "pypi",
+            "github",
+            "dsh-registry"
+          ]
+        },
+        "artifact_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "homepage": {
+          "type": "string"
+        },
+        "maintainers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "host": {
       "description": "结论绑定的宿主上下文。换宿主/换版本 = 结论失效，需重验。",
       "type": "object",
-      "required": ["class", "host_version"],
+      "required": [
+        "class",
+        "host_version"
+      ],
       "properties": {
-        "class": { "enum": ["mcp", "agent-skill", "dsh-plugin", "generic"] },
-        "host_version": { "type": "string" },
-        "host_meta": { "type": "object" }
+        "class": {
+          "enum": [
+            "mcp",
+            "agent-skill",
+            "dsh-plugin",
+            "generic"
+          ]
+        },
+        "host_version": {
+          "type": "string"
+        },
+        "host_meta": {
+          "type": "object"
+        }
       }
     },
     "scenario_sha256": {
@@ -54,41 +95,105 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "verdict", "tool"],
+        "required": [
+          "id",
+          "verdict",
+          "tool"
+        ],
         "properties": {
-          "id": { "type": "string", "examples": ["L1.1_REGISTRY_PRESENT", "L3.2_INSTALL_SCRIPT_DETECTED"] },
-          "verdict": { "enum": ["pass", "fail", "skip", "unsupported", "error"] },
-          "tool": { "type": "string", "description": "产生该结论的扫描器名+版本" },
-          "evidence_ref": { "type": "string", "description": "指向原始扫描输出的引用（digest 或路径）" },
-          "duration_ms": { "type": "integer", "minimum": 0 }
+          "id": {
+            "type": "string",
+            "examples": [
+              "L1.1_REGISTRY_PRESENT",
+              "L3.2_INSTALL_SCRIPT_DETECTED"
+            ]
+          },
+          "verdict": {
+            "enum": [
+              "pass",
+              "fail",
+              "skip",
+              "unsupported",
+              "error"
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "description": "产生该结论的扫描器名+版本"
+          },
+          "evidence_ref": {
+            "type": "string",
+            "description": "指向原始扫描输出的引用（digest 或路径）"
+          },
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 0
+          }
         }
       }
     },
     "verdict": {
       "description": "本次 run 的总体结论（run 级，非组件级）。'pass' 仅为风险信号，非安全保证。",
-      "enum": ["pass", "pass-with-findings", "fail", "unsupported", "error"]
+      "enum": [
+        "pass",
+        "pass-with-findings",
+        "fail",
+        "unsupported",
+        "error"
+      ]
     },
     "checker": {
       "type": "object",
-      "required": ["kind", "id"],
+      "required": [
+        "kind",
+        "id"
+      ],
       "properties": {
-        "kind": { "enum": ["automation", "human", "bot"] },
-        "id": { "type": "string" },
-        "tools": { "type": "array", "items": { "type": "string" } }
+        "kind": {
+          "enum": [
+            "automation",
+            "human",
+            "bot"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "evidence_refs": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "原始扫描输出引用（digest/路径/SARIF 位置）"
     },
     "evidence_completeness": {
       "description": "证据完整性披露。缺失必须显式上报，绝不合成 pass（学 dsh-testkit：unsupported ≠ failed ≠ pass）。",
       "type": "object",
       "properties": {
-        "dropped_logs": { "type": "integer", "minimum": 0 },
-        "missing_observers": { "type": "array", "items": { "type": "string" } },
-        "truncated_fields": { "type": "array", "items": { "type": "string" } }
+        "dropped_logs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_observers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "truncated_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "expires_at": {
@@ -105,24 +210,98 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "relation", "ref"],
+        "required": [
+          "name",
+          "relation",
+          "ref"
+        ],
         "properties": {
-          "name": { "type": "string" },
-          "relation": { "enum": ["same-author", "name-variant", "dependency", "same-repo"] },
-          "ref": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "relation": {
+            "enum": [
+              "same-author",
+              "name-variant",
+              "dependency",
+              "same-repo"
+            ]
+          },
+          "ref": {
+            "type": "string"
+          }
         }
       }
     },
-    "generated_at": { "type": "string", "format": "date-time" },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "signature": {
       "description": "DSSE envelope 签名。验证器仅依赖公钥，离线可用。",
       "type": "object",
-      "required": ["envelope", "keyid", "sig", "payload_type"],
+      "required": [
+        "envelope",
+        "keyid",
+        "sig",
+        "payload_type"
+      ],
       "properties": {
-        "envelope": { "const": "DSSE" },
-        "keyid": { "type": "string" },
-        "sig": { "type": "string" },
-        "payload_type": { "const": "https://agentcheck.dev/attestation/v0.1" }
+        "envelope": {
+          "const": "DSSE"
+        },
+        "keyid": {
+          "type": "string"
+        },
+        "sig": {
+          "type": "string"
+        },
+        "payload_type": {
+          "const": "https://agentcheck.dev/attestation/v0.1"
+        }
+      }
+    },
+    "native_provenance": {
+      "description": "Native registry attestation (Sigstore provenance / PEP 740) ingested as an input signal. Presence of a native attestation is NOT a safety verdict - it proves WHO built the artifact, not WHAT it does.",
+      "type": "object",
+      "required": [
+        "present"
+      ],
+      "properties": {
+        "present": {
+          "type": "boolean"
+        },
+        "predicate_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "v1_verified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "v1_identity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "v1_error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "v0_presence_only": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verifier": {
+          "type": "string"
+        }
       }
     }
   }

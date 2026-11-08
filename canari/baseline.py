@@ -30,6 +30,7 @@ from canari.signing import generate_keypair, sign_attestation, export_public_key
 from canari.state import FileLock, StateStore
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate)
+from canari.native import ingest as native_ingest
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
@@ -158,7 +159,13 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
             for c in checks)
         verdict = "pass-with-findings" if has_findings else "pass"
 
-    return {
+    native_prov = None
+    try:
+        native_prov = native_ingest(name, meta.get("version", ""))
+    except Exception:
+        native_prov = None
+
+    result = {
         "_type": _PREDICATE_TYPE,
         "subject": {
             "name": name,
@@ -179,6 +186,9 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
         "generated_at": _now(),
         "signature": {"envelope": "DSSE", "keyid": "", "sig": "", "payload_type": _PREDICATE_TYPE},
     }
+    if native_prov is not None:
+        result["native_provenance"] = native_prov
+    return result
 
 
 def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict:
@@ -339,8 +349,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     all_results = []
     total_errors = 0
 
-    def _make_att(name, version, registry, sha, host_class, checks, verdict, tools, ev_refs):
-        return {"_type": _PREDICATE_TYPE,
+    def _make_att(name, version, registry, sha, host_class, checks, verdict, tools, ev_refs, native_prov=None):
+        att = {"_type": _PREDICATE_TYPE,
                 "subject": {"name": name, "version": version, "registry": registry,
                             "artifact_sha256": sha or "0" * 64, "maintainers": []},
                 "host": {"class": host_class, "host_version": "registry-meta-v1"},
@@ -350,6 +360,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                 "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
                 "expires_at": _expiry(), "generated_at": _now(),
                 "signature": {"envelope": "DSSE", "keyid": "", "sig": "", "payload_type": _PREDICATE_TYPE}}
+        if native_prov is not None:
+            att["native_provenance"] = native_prov
+        return att
 
     def _save_att(att, prefix, name):
         signed = sign_attestation(att, signer)
@@ -370,8 +383,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                       {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
             verdict = "pass" if sha else "fail"
+            np = native_ingest(name, lv["version"])
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
-                            ["canari-m1/0.1"], ["npm-packument:" + name])
+                            ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
             bpath = _save_att(att, "npm", name)
             all_results.append({"name": name, "registry": "npm", "version": lv["version"],
                                 "verdict": verdict, "bundle": bpath})
