@@ -44,3 +44,65 @@ Impact: PROVES scanner disagreement. Strengthens Canari.
 nirholas/mcp-notify. Monitors MCP Registry for changes. Smart diffing. Notifications. No signing. No attestation. No security verdicts. No cross-registry.
 
 Verdict: Change-notification tool. Complementary.
+
+## 2. Papers Proving the Problem
+
+| Paper | Date | Proves |
+|---|---|---|
+| 2611.01976 Tool Update Gap | 2026-11-01 | 97.6% ASR, 7 frameworks |
+| 2609.14119 Same Name | 2026-09 | 51.1% drift |
+| 2608.00997 89-Day Drift | 2026-08 | 11.9% change in 30d |
+| 2603.15727 AgentWorm | 2026-03 | Self-propagating attacks |
+| 2607.25619 SkillGate | 2026-07 | Runtime detection |
+| 2609.39352 Hiding in Plain Sight | 2026-09 | Skill poisoning |
+| 2610.11169 Skill Constellations | 2026-10 | 2.2M adoptions, no updates |
+| 2609.36879 SKILLLITE | 2026-09 | Scanner sensitivity 21-61% |
+
+## 3. Competing Papers
+
+| Paper | Overlap | Their gap |
+|---|---|---|
+| 2608.00997 89-Day | HIGH | No signing, no cross-registry |
+| 2609.14119 Same Name | HIGH | No attestation format |
+| 2605.24248 Admission | HIGH | No temporal monitoring |
+| 2609.02690 ACLE-MCP | MED | Hardware-only |
+| 2608.30387 Delegation | MED | Multi-agent only |
+| 2608.14074 Mandato | MED | Mandates only |
+
+## 4. Ecosystem Size
+
+| Registry | Count |
+|---|---|
+| npm MCP | ~3-5K unique |
+| PyPI MCP | 6,854 |
+| MCP Registry | ~19-22K |
+| DSH | 10,183 |
+| Total | ~39-43K |
+
+## 5. DSH Coverage
+
+Sampled 30: 26/30 (87%) have L5 install certs. All passed. One author (uckkk) has 1,269 plugins (12.5% spam signal).
+
+## 6. Honest Assessment
+
+Has: signed attestation, offline verify, supersession, bi-temporal, weekly scan, drift comparison, cross-registry feed, install gate, failure audit, two-tier scanning.
+
+Does NOT have: vulnerability detection, runtime monitoring, identity system, community contribution, 89-day dataset, RFC spec, institutional backing, users.
+
+Canari is 300 lines of core code. The gap is narrowing: 89-day paper, attested admission, mcp-notify all appeared in last 4 months.
+
+## 7. Differentiation
+
+Canari MUST compete on: signed portable conclusions + temporal history + cross-registry + install gate. NOT scanning depth.
+
+## 8. Critical Citation: 2605.24248
+
+Metere defines admission control (is tool allowed). Canari defines temporal monitoring (has tool changed). Complementary layers.
+
+## 9. Actions
+
+This week: rewrite paper pitch (not "first to measure" but "first to make actionable"). Contact Bharti and Metere.
+
+2-4 weeks: sentinel adapter, DSH full coverage, measurement paper.
+
+1-2 months: arXiv preprint, NLnet (2027-01-03), open dataset.
