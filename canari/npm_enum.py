@@ -192,41 +192,51 @@ def mcp_registry_enumerate(limit=500):
 # ============================================================
 # dsh.so adapter (reference conclusions, not re-scan)
 # ============================================================
-DSH_REGISTRY = "https://dsh.so"
+DSH_MARKET_INDEX = "https://cdn.dsh.so/market/index.json"
+DSH_INSTALL_FMT = "https://www.dsh.so/data/install/{author}/{name}.json"
+DSH_SECURITY_FMT = "https://www.dsh.so/artifact/{author}/{name}-security.json"
 
-def dsh_enumerate(limit=200):
+
+def dsh_enumerate(limit=500, with_security=True):
+    """Enumerate DSH plugins from dsh.so market index (10K+).
+    References existing L1-L5 conclusions, does not re-scan."""
+    req = urllib.request.Request(DSH_MARKET_INDEX, headers={"User-Agent": UA})
+    with _opener().open(req, timeout=60) as r:
+        d = json.loads(r.read().decode("utf-8"))
+    plugins = d.get("plugins", [])[:limit]
     results = []
-    url = DSH_REGISTRY + "/data/install/"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    try:
-        with _opener().open(req, timeout=30) as r:
-            d = json.loads(r.read().decode("utf-8"))
-        if isinstance(d, list):
-            for item in d[:limit]:
-                results.append({"name": item.get("name", ""), "version": item.get("version", ""),
-                                "registry": "dsh-registry", "existing_verdict": item.get("level", "")})
-        elif isinstance(d, dict):
-            for k, v in list(d.items())[:limit]:
-                results.append({"name": k, "version": (v or {}).get("version", ""),
-                                "registry": "dsh-registry", "existing_verdict": (v or {}).get("level", "")})
-    except Exception as e:
-        print("[dsh] error:", str(e)[:80])
+    for p in plugins:
+        name = p.get("name", "")
+        author = p.get("author", "")
+        versions = p.get("versions") or {}
+        entry = {
+            "name": name,
+            "author": author,
+            "version": versions.get("latest", "") if isinstance(versions, dict) else "",
+            "registry": "dsh-registry",
+            "repository": p.get("repository", ""),
+        }
+        if with_security and author and name:
+            try:
+                iurl = DSH_INSTALL_FMT.format(author=author, name=name)
+                ireq = urllib.request.Request(iurl, headers={"User-Agent": UA})
+                with _opener().open(ireq, timeout=15) as r2:
+                    idata = json.loads(r2.read().decode("utf-8"))
+                it = idata.get("installTest", {})
+                entry["install_level"] = it.get("level", "")
+                entry["install_verdict"] = it.get("verdict", "")
+                entry["install_state"] = it.get("state", "")
+            except Exception:
+                pass
+            try:
+                surl = DSH_SECURITY_FMT.format(author=author, name=name)
+                sreq = urllib.request.Request(surl, headers={"User-Agent": UA})
+                with _opener().open(sreq, timeout=15) as r3:
+                    sdata = json.loads(r3.read().decode("utf-8"))
+                entry["security_critical"] = (sdata.get("counts") or {}).get("critical", 0)
+                entry["security_files_scanned"] = sdata.get("filesScanned", 0)
+                entry["security_scanner"] = sdata.get("scannerVersion", "")
+            except Exception:
+                pass
+        results.append(entry)
     return results
-
-# ============================================================
-# Retraction propagation (MemTether pattern)
-# ============================================================
-def propagate_revocation(revoked_name, revoked_author, all_components):
-    from difflib import SequenceMatcher
-    related = []
-    for comp in all_components:
-        cname = comp.get("name", "")
-        if cname == revoked_name:
-            continue
-        if revoked_author and revoked_author in (comp.get("maintainers") or []):
-            related.append({"name": cname, "relation": "same-author"})
-            continue
-        ratio = SequenceMatcher(None, revoked_name.lower(), cname.lower()).ratio()
-        if ratio >= 0.85 and len(revoked_name) > 4:
-            related.append({"name": cname, "relation": "name-variant"})
-    return related
