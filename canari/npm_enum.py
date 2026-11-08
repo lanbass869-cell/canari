@@ -240,3 +240,19 @@ def dsh_enumerate(limit=500, with_security=True):
                 pass
         results.append(entry)
     return results
+
+
+def propagate_revocation(revoked_name, revoked_author, all_components):
+    from difflib import SequenceMatcher
+    related = []
+    for comp in all_components:
+        cname = comp.get('name', '')
+        if cname == revoked_name:
+            continue
+        if revoked_author and revoked_author in (comp.get('maintainers') or []):
+            related.append({'name': cname, 'relation': 'same-author'})
+            continue
+        ratio = SequenceMatcher(None, revoked_name.lower(), cname.lower()).ratio()
+        if ratio >= 0.85 and len(revoked_name) > 4:
+            related.append({'name': cname, 'relation': 'name-variant'})
+    return related
