@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Canari - Agent Component Verification Ledger</title>
+<style>
+body { font-family: -apple-system, sans-serif; margin: 2em; background: #0d1117; color: #c9d1d9; }
+h1 { color: #58a6ff; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.85em; font-weight: bold; }
+.pass { background: #238636; color: #fff; }
+.pass-with-findings { background: #9e6a03; color: #fff; }
+.fail { background: #da3633; color: #fff; }
+.unsupported { background: #6e7681; color: #fff; }
+table { border-collapse: collapse; width: 100%%; margin-top: 1em; }
+th, td { border: 1px solid #30363d; padding: 6px 12px; text-align: left; }
+th { background: #161b22; color: #58a6ff; }
+tr:hover { background: #161b22; }
+#stats { display: flex; gap: 1em; margin: 1em 0; }
+.stat { background: #161b22; padding: 1em; border-radius: 6px; border: 1px solid #30363d; }
+.stat .num { font-size: 2em; font-weight: bold; color: #58a6ff; }
+#file-input { margin: 1em 0; padding: 8px; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px; }
+</style>
+</head>
+<body>
+<h1>Canari</h1>
+<p>Agent Component Verification Ledger - weekly scans, signed attestations, drift monitoring</p>
+<p>Load a feed JSON file: <input type="file" id="file-input" accept=".json" onchange="loadFeed(this)"></p>
+<div id="stats"></div>
+<div id="content"></div>
+<script>
+function loadFeed(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try { render(JSON.parse(e.target.result)); }
+    catch(err) { document.getElementById("content").innerHTML = "<p style='color:red'>Invalid JSON: " + err.message + "</p>"; }
+  };
+  reader.readAsText(file);
+}
+function render(feed) {
+  const stats = document.getElementById("stats");
+  let html = "";
+  const regs = feed.by_registry || {};
+  for (const [reg, count] of Object.entries(regs)) {
+    html += "<div class='stat'><div class='num'>" + count + "</div><div>" + reg + "</div></div>";
+  }
+  html += "<div class='stat'><div class='num'>" + (feed.total || feed.items?.length || 0) + "</div><div>total</div></div>";
+  if (feed.errors) html += "<div class='stat'><div class='num' style='color:red'>" + feed.errors + "</div><div>errors</div></div>";
+  stats.innerHTML = html;
+
+  const items = feed.items || [];
+  let table = "<table><tr><th>Component</th><th>Registry</th><th>Version</th><th>Verdict</th></tr>";
+  for (const item of items) {
+    const v = item.verdict || "error";
+    table += "<tr><td>" + (item.name || "?") + "</td><td>" + (item.registry || "?") + "</td><td>" + (item.version || "?") + "</td>";
+    table += "<td><span class='" + v + " badge'>" + v + "</span></td></tr>";
+  }
+  table += "</table>";
+  document.getElementById("content").innerHTML = table;
+}
+</script>
+</body>
+</html>
