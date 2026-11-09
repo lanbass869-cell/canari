@@ -31,6 +31,8 @@ def fetch_attestations(name, version, timeout=30):
 
 
 def _classify_entries(attestations):
+    if not attestations or not isinstance(attestations, list):
+        return {"present": False, "predicate_types": [], "v1_cert_entries": [], "v0_key_entries": []}
     """Classify native bundle entries by verification path availability."""
     out = {"present": bool(attestations),
            "predicate_types": [], "v1_cert_entries": [], "v0_key_entries": []}
