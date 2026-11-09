@@ -434,6 +434,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
 
     state = StateStore(os.path.join(out_dir, "state.json"))
 
+    def _prev(registry, name):
+        """Previous state entry for (registry, name). Registry-qualified key first,
+        plain-name fallback keeps continuity with pre-qualification state files."""
+        return (state.get_component("%s:%s" % (registry, name))
+                or state.get_component(name))
+
     scenario_def = json.dumps({"level": "L1-L2-multi-registry",
                                "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"],
                                "runner_source_digest": _runner_source_digest()},
@@ -469,7 +475,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         # content-addressed filename: include timestamp to prevent overwriting previous runs
         # (supersession chain requires old bundles to persist on disk)
         ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
-        bpath = os.path.join(att_dir, "%s_%s_%s.bundle.json" % (prefix, safe, ts))
+        # BUG-78: digest suffix makes same-second writes of distinct payloads
+        # collision-free (second-granularity alone can overwrite)
+        digest8 = hashlib.sha256(
+            json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()[:8]
+        bpath = os.path.join(att_dir, "%s_%s_%s_%s.bundle.json" % (prefix, safe, ts, digest8))
         with open(bpath, "w", encoding="utf-8") as f:
             json.dump({"envelope": signed["envelope"], "payload": signed["payload"]}, f, ensure_ascii=False)
         return bpath
@@ -493,7 +504,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             np = native_ingest(name, lv["version"])
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
                             ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
-            bpath = _save_att(att, "npm", name, prev_state=state.get_component(name))
+            bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
             all_results.append({"name": name, "registry": "npm", "version": lv["version"],
                                 "verdict": verdict, "bundle": bpath})
         except Exception as e:
@@ -506,7 +517,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             att = _make_att(name, "", "npm", "", "mcp", checks, "error",
                             ["canari-m1/0.1"], ["npm-packument:" + name])
             try:
-                bpath = _save_att(att, "npm", name, prev_state=state.get_component(name))
+                bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
                 all_results.append({"name": name, "registry": "npm", "status": "error", "bundle": bpath})
             except Exception:
                 all_results.append({"name": name, "registry": "npm", "status": "error"})
@@ -535,7 +546,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         # H2: metadata anomaly vs previous scan snapshot (BUG-75 fix: state now
         # stores maintainers/homepage; first run = no previous = no findings)
         try:
-            prev_comp = state.get_component(name)
+            prev_comp = _prev("pypi", name)
             prev_meta = (prev_comp or {}).get("meta")
             if prev_meta:
                 cur_meta = {"maintainers": pkg.get("maintainers", []),
@@ -558,7 +569,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
                         verdict, ["canari-m1/0.1"], ["pypi-json:" + name],
                         native_prov=pn)
-        bpath = _save_att(att, "pypi", name)
+        bpath = _save_att(att, "pypi", name, prev_state=_prev("pypi", name))
         all_results.append({"name": name, "registry": "pypi", "version": pkg.get("version", ""),
                             "verdict": att["verdict"], "bundle": bpath})
 
@@ -574,7 +585,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         att = _make_att(name, pkg.get("version", ""), "mcp-registry", "", "mcp",
                         [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}],
                         "pass-with-findings", ["canari-m1/0.1"], ["mcp-registry:" + name])
-        bpath = _save_att(att, "mcpreg", name)
+        bpath = _save_att(att, "mcpreg", name, prev_state=_prev("mcp-registry", name))
         all_results.append({"name": name, "registry": "mcp-registry", "version": pkg.get("version", ""),
                             "verdict": "pass-with-findings", "bundle": bpath})
 
@@ -590,7 +601,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
                         [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}],
                         "pass-with-findings", ["dsh-so-referenced"], ["dsh-so:" + name])
-        bpath = _save_att(att, "dsh", name)
+        bpath = _save_att(att, "dsh", name, prev_state=_prev("dsh-registry", name))
         all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
                             "verdict": "pass-with-findings", "bundle": bpath})
 
@@ -624,7 +635,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                 payload_digest = hashlib.sha256(
                     json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
                 ).hexdigest()
-                state.set_component(r["name"], r.get("version", ""),
+                state.set_component("%s:%s" % (r.get("registry", "?"), r["name"]),
+                                    r.get("version", ""),
                                     bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest,
                                     meta=meta_snapshots.get(r["name"]))
             except Exception:

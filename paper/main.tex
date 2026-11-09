@@ -160,8 +160,8 @@ Canari is implemented in Python 3.13 with the following dependencies:
 \texttt{in-toto} 3.1.0 (DSSE envelopes), \texttt{securesystemslib} 1.6
 (Ed25519), \texttt{jsonschema} (schema validation), \texttt{sigstore-python} 4.5.1
 (native npm verification), \texttt{pypi-attestations} 0.0.31 (PyPI native).
-The codebase is $\sim$1{,}200 lines of Python across 8 modules, with 53 tests
-(52 passed, 1 skipped for no live PyPI attestation available).
+The codebase is $\sim$2{,}700 lines of Python across 17 modules, with 136 tests
+(135 passed, 1 skipped for no live PyPI attestation available).
 
 Adapters exist for four registries:
 \begin{itemize}[leftmargin=1.5em]
@@ -180,6 +180,32 @@ security-scan endpoints, CC-BY-4.0 licensed)
 The MCP Registry contains at least 50{,}000 entries (server + version records) spanning 19{,}330 distinct server names (live count, November 2026, full cursor pagination). A multi-registry run produced 243 attestations (npm: 100, PyPI: 94, MCP Registry:
 100) with 99.6\% schema integrity and zero hidden errors. Failure counts are
 publicly recorded in the feed (dead-letter audit).
+
+\subsection{Trust Heuristics}
+
+Three metadata-only trust heuristics run alongside the L1--L2 checks, adopted
+from trustcheck's malicious-package detection and adapted to cross-registry
+use. Each records a \texttt{finding:} evidence entry and upgrades the run
+verdict to \texttt{pass-with-findings}; the consumer's install-gate policy
+decides how findings affect installation.
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{L2.4 Release cadence.} Detects (a) release bursts ($\ge$5
+versions in 24\,h around the current release), (b) dormancy (the current
+release follows a $\ge$365-day gap), and (c) cadence acceleration (current
+interval $\le$1\,h while the median of prior intervals is $\ge$7 days).
+A live-data defect taught us the calibration cost of each rule: an early
+implementation flagged urllib3 and pip as ``dormant'' because a historical
+gap from 2009--2011 was counted; the fix measures only the gap into the
+current release, eliminating false positives on mature active packages.
+\item \textbf{L2.5 Metadata anomaly.} Compares maintainers and homepage
+against the previous scan's snapshot; a non-overlapping change is a finding
+(first scan has no baseline and yields no findings by construction).
+\item \textbf{L2.6 Typosquatting.} Damerau--Levenshtein distance against the
+co-enumerated namespace of the scan, with compact-name comparison and
+adaptive thresholds (distance $\le$1 for names $<$8 chars, else $\le$2,
+similarity $\ge$0.72).
+\end{itemize}
 
 \subsection{Native Provenance}
 

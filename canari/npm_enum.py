@@ -205,7 +205,22 @@ def mcp_registry_enumerate(limit=500):
         cursor = (d.get("metadata") or {}).get("nextCursor") or d.get("next_cursor") or d.get("nextCursor") or ""
         if not cursor:
             break
-    return results[:limit]
+    # BUG-78: registry pages contain one record per server VERSION. The ledger
+    # tracks components, so keep the highest version per name (last seen wins on
+    # unparseable versions) instead of emitting N bundles for the same component.
+    best = {}
+    for r in results:
+        key = r["name"]
+        prev = best.get(key)
+        if prev is None or _version_key(r.get("version", "")) >= _version_key(prev.get("version", "")):
+            best[key] = r
+    return list(best.values())[:limit]
+
+
+def _version_key(v):
+    import re as _re
+    parts = _re.findall(r"\d+", v or "")
+    return tuple(int(x) for x in parts[:6]) if parts else (-1,)
 
 # ============================================================
 # dsh.so adapter (reference conclusions, not re-scan)
