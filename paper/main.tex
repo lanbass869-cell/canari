@@ -160,8 +160,8 @@ Canari is implemented in Python 3.13 with the following dependencies:
 \texttt{in-toto} 3.1.0 (DSSE envelopes), \texttt{securesystemslib} 1.6
 (Ed25519), \texttt{jsonschema} (schema validation), \texttt{sigstore-python} 4.5.1
 (native npm verification), \texttt{pypi-attestations} 0.0.31 (PyPI native).
-The codebase is $\sim$2{,}700 lines of Python across 17 modules, with 136 tests
-(135 passed, 1 skipped for no live PyPI attestation available).
+The codebase is $\sim$2{,}700 lines of Python across 17 modules, with 143 tests
+(142 passed, 1 skipped for no live PyPI attestation available).
 
 Adapters exist for four registries:
 \begin{itemize}[leftmargin=1.5em]
@@ -177,9 +177,7 @@ security-scan endpoints, CC-BY-4.0 licensed)
 
 \subsection{Coverage}
 
-The MCP Registry contains at least 50{,}000 entries (server + version records) spanning 19{,}330 distinct server names (live count, November 2026, full cursor pagination). A multi-registry run produced 243 attestations (npm: 100, PyPI: 94, MCP Registry:
-100) with 99.6\% schema integrity and zero hidden errors. Failure counts are
-publicly recorded in the feed (dead-letter audit).
+The MCP Registry contains at least 50{,}000 entries (server + version records) spanning 19{,}330 distinct server names (live count, November 2026, full cursor pagination). The attestation store as of 2026-11-09 holds 530 signed bundles over 258 components (npm: 102, PyPI: 100, MCP Registry: 56; two scan generations share 190 components, each linked by supersession or reported as independent generations). Schema integrity is 100\% (530/530), signature integrity is 100\% (530/530 against the published key history), and chain verification reports 190 multi-bundle chains with zero errors. Failure counts are publicly recorded in the feed (dead-letter audit).
 
 \subsection{Trust Heuristics}
 

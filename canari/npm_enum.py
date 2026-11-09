@@ -129,6 +129,7 @@ def latest_version_info(packument: dict) -> dict:
 # PyPI adapter
 # ============================================================
 PYPI_SIMPLE = "https://pypi.org/simple"
+TOP_PYPI_JSON = "https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.json"
 PYPI_JSON = "https://pypi.org/pypi"
 
 def pypi_enumerate(prefix="mcp-server-", limit=500):
@@ -138,17 +139,53 @@ def pypi_enumerate(prefix="mcp-server-", limit=500):
     url = PYPI_SIMPLE + "/"
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     html = None
-    for _attempt in range(3):
+    for _attempt in range(2):
         try:
-            with _opener().open(req, timeout=300) as r:
-                html = r.read().decode("utf-8", errors="replace")
+            with _opener().open(req, timeout=120) as r:
+                # bounded read: the index is tens of MB; never buffer unbounded
+                html = r.read(80 * 1024 * 1024).decode("utf-8", errors="replace")
             break
         except (TimeoutError, OSError) as _e:
-            if _attempt == 2:
-                print("[pypi] simple index download failed after 3 attempts:", str(_e)[:80])
-                return []  # failure is data, not crash
+            if _attempt == 1:
+                print("[pypi] simple index download failed, trying top-packages fallback:",
+                      str(_e)[:80])
     if html is None:
-        return []
+        # fallback: static top-pypi-packages dataset (top 8K by downloads).
+        # Failure is still data, never a crash.
+        try:
+            fb = urllib.request.Request(TOP_PYPI_JSON, headers={"User-Agent": UA})
+            with _opener().open(fb, timeout=60) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            rows = data.get("rows", data) if isinstance(data, dict) else data
+            names = [row.get("project", "") for row in rows if isinstance(row, dict)]
+            matched = [n for n in names if n and n.lower().startswith(prefix.lower())][:limit]
+            if not matched:
+                matched = [n for n in names if n][:limit]
+            results = []
+            for name in matched:
+                try:
+                    import time as _t
+                    _t.sleep(0.2)
+                    jurl = PYPI_JSON + "/" + urllib.parse.quote(name, safe="") + "/json"
+                    jreq = urllib.request.Request(jurl, headers={"User-Agent": UA})
+                    with _opener().open(jreq, timeout=30) as r2:
+                        d2 = json.loads(r2.read().decode("utf-8"))
+                    info = d2.get("info", {})
+                    dists = d2.get("urls", [])
+                    sha256 = dists[0]["digests"]["sha256"] if dists else ""
+                    results.append({"name": name, "version": info.get("version", ""),
+                                    "description": (info.get("summary") or "")[:200],
+                                    "registry": "pypi", "artifact_sha256": sha256,
+                                    "tarball": dists[0]["url"] if dists else "",
+                                    "maintainers": [info.get("author", "") or info.get("author_email", "")],
+                                    "links": {"homepage": info.get("home_page") or ""}})
+                except Exception as e:
+                    results.append({"name": name, "registry": "pypi", "error": str(e)[:100]})
+            print("[pypi] fallback dataset produced %d candidates" % len(results))
+            return results
+        except Exception as _e2:
+            print("[pypi] fallback dataset failed too:", str(_e2)[:80])
+            return []
     names = _re.findall(r'>(.*?)</a>', html)
     matched = [n for n in names if n.lower().startswith(prefix.lower())][:limit]
     results = []

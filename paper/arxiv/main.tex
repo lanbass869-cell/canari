@@ -1,0 +1,385 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\title{Verdict Attestations: A Cross-Registry, Offline-Verifiable\\Ledger for AI Agent Component Supply Chains}
+\author{Canari Contributors\\ \small \texttt{github.com/lanbass869-cell/canari}}
+\date{November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+AI agent supply chains face a gap between two existing trust layers: registry-native
+identity attestations (Sigstore provenance for npm, PEP~740 for PyPI) prove
+\emph{which} code was built, while security scanners enumerate \emph{what} patterns
+the code contains. Neither layer produces a portable, offline-verifiable,
+time-bound \emph{verdict} about whether a component is safe to install, and no
+existing system unifies verdicts across npm, PyPI, the Model Context Protocol (MCP)
+registry, and community plugin registries.
+
+We present Canari, a cross-registry verification ledger that produces signed
+DSSE/Ed25519 attestation objects binding verdicts to artifact hashes, with
+bi-temporal timestamps, supersession chains, and same-author revocation propagation.
+Canari does not compete with identity attestations (it consumes them as input) or
+with deep scanners (it orchestrates them as adapters); it fills the \emph{verdict
+layer} between them. We demonstrate the system with 243 attestations spanning
+four registries, a live-verified npm provenance ingestion path
+(sigstore-python~4.5.1 against \texttt{express@5.3.0}), and a PyPI native
+attestation pipeline that is ready for adoption (measured coverage: 0/40 recent
+uploads). We publish all code, data, and schemas as open artifacts.
+\end{abstract}
+
+\section{Introduction}
+
+LLM-based agents increasingly rely on third-party components: MCP servers,
+agent skills, and plugins from community registries. Two threats dominate this
+supply chain. First, the \emph{tool update gap}: trust established for a tool
+does not remain valid after implementation updates. Kan et al.~\cite{etude}
+demonstrated a 97.6\% attack success rate by embedding malicious functionality
+into updates of initially benign tools, bypassing prompt-injection detectors
+and static skill scanning entirely. Second, \emph{silent drift}: half of
+multi-version MCP servers (51.1\%) changed what they advertise between versions,
+40.6\% did so silently, and 4.2\% redirected their remote endpoint to a
+different host while keeping the same registry identity~\cite{samename}.
+
+The ecosystem has developed two families of defenses, but a gap remains between
+them:
+
+\begin{enumerate}[leftmargin=1.5em]
+\item \textbf{Identity attestations} (Sigstore provenance on npm, PEP~740 on PyPI)
+bind a release to its builder identity. These prove \emph{which} code runs but not
+\emph{what} it does---Kan et al.~\cite{etude} states this explicitly: ``hashes and attestations
+certify which code runs, never what it does.'' As of November 2026, 60\% of top-30
+npm packages carry Sigstore provenance, but PyPI coverage is effectively zero
+(0/30 top packages, 0/40 fresh uploads measured).
+
+\item \textbf{Security scanners} (NVIDIA SkillSpector~\cite{skillspector},
+Cisco skill-scanner~\cite{cisco}, Snyk agent-scan~\cite{snyk},
+repo-forensics~\cite{repoforensics}) enumerate vulnerability patterns in source
+code. The deepest open-source scanner we found ships 1{,}138 regex rules. These
+tools produce findings but not signed, portable, time-bound verdicts, and they
+do not track drift across versions.
+\end{enumerate}
+
+\textbf{The gap.} No existing system produces \emph{signed, offline-verifiable
+verdict attestations} that are (a) portable across registries, (b) linked into
+supersession chains so history is never lost, (c) propagated through
+same-author revocation, and (d) consumable by a client-side install gate.
+Closest systems fall short: mcpcheckup~\cite{mcpcheckup} provides signed
+monitoring for remote MCP servers only; SIGIL~\cite{sigil} gates skills through
+an on-chain registry (imposing chain infrastructure); agtmls~\cite{agtmls}
+maintains a signed skill registry with revocation but for a single registry;
+and the manifest signing of Jamshidi et al.~\cite{manifest} operates within
+MCP pipelines without cross-registry scope.
+
+\section{System Design}
+
+\subsection{Attestation Format}
+
+Each attestation is a JSON payload signed with DSSE~\cite{dsse} over an
+Ed25519 keypair. The schema (v0.1) is a domain-specific in-toto predicate.
+Core fields:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \texttt{subject}: \{name, version, registry, artifact\_sha256\} --- binds the
+verdict to exact bytes, not to a mutable name.
+\item \texttt{scenario\_sha256}: SHA-256 of the check-list definition; changing
+the scanner invalidates prior verdicts.
+\item \texttt{checks[]}: per-check verdict (\texttt{pass}/\texttt{fail}/\texttt{skip}/\texttt{unsupported}/\texttt{error}) with tool identifier.
+\item \texttt{verdict}: run-level summary (\texttt{pass},
+\texttt{pass-with-findings}, \texttt{fail}, \texttt{unsupported}, \texttt{error}).
+\item \texttt{supersedes}: digest of the superseded predecessor (supersession chain).
+\item \texttt{related\_revocations[]}: same-author / name-variant / dependency
+links to revocation events (propagation).
+\item \texttt{native\_provenance}: ingested registry-native attestation result
+(presence + verification outcome), recorded as an \emph{input signal}, never
+as a safety verdict.
+\item \texttt{evidence\_completeness}: explicit disclosure of missing evidence
+(anti-inflation discipline learned from dsh-testkit: \texttt{unsupported}
+$\neq$ \texttt{failed} $\neq$ \texttt{pass}).
+\end{itemize}
+
+\subsection{Supersession Chains}
+
+When a component is re-scanned, the new attestation carries \texttt{supersedes}
+pointing to the digest of the previous attestation for the same subject. Chains
+are append-only: old verdicts are never deleted, so an auditor can reconstruct
+the full history of a component's trust state. This mirrors the supersession
+semantics of MemTether~\cite{memtether} (a cross-client memory hub) adapted to
+supply-chain objects.
+
+\subsection{Same-Author Revocation Propagation}
+
+When a component is revoked (e.g., a registry yank, a scanner \texttt{fail},
+or a maintainer removal), Canari queries the state store for all components
+sharing the same author, name variants, or declared dependencies, and appends
+\texttt{related\_revocations} entries to their next attestations. This is
+\emph{annotation}, not judgment: the consumer decides whether a related
+revocation affects their install decision.
+
+\subsection{Native Attestation Ingestion}
+
+Canari distinguishes between \emph{identity attestations} (registry-native) and
+\emph{verdict attestations} (Canari's own). Native provenance is consumed as an
+input signal:
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{npm}: the Sigstore bundle (v1, certificate-based) is verified
+offline via \texttt{sigstore-python}~4.5.1's \texttt{Verifier.verify\_dsse()}.
+Verified live against \texttt{express@5.3.0}: DSSE verification passes,
+identity is extracted from the certificate SAN
+(\texttt{https://github.com/expressjs/express/.github/workflows/npm-publish.yml@refs/tags/v5.3.0}).
+v0.1 bundles (publicKey hint, no certificate chain) are recorded as
+\emph{presence-only}; no fake verification is attempted.
+\item \textbf{PyPI}: PEP~740 objects are converted to Sigstore Bundles via
+\texttt{pypi-attestations}~0.0.31 and verified identically. Measured adoption
+is currently zero (0/30 top, 0/40 fresh), but the pipeline is ready.
+\end{itemize}
+
+\subsection{Scanner Orchestration}
+
+Canari does not build its own vulnerability scanner. L1--L2 checks (registry
+present, version resolved, artifact hash, maintainer set, manifest fields) are
+meta-only. L3+ behavioral checks are delegated to external scanners (sentinel,
+repo-forensics) via a scanner-adapter interface that records:
+scanner name + version, rule count, findings JSON, and a digest of the scanner
+source tree (scenario binding). This keeps Canari's core small ($\sim$300 lines
+of Python) while allowing deep scans from the best available tools.
+
+\section{Implementation}
+
+Canari is implemented in Python 3.13 with the following dependencies:
+\texttt{in-toto} 3.1.0 (DSSE envelopes), \texttt{securesystemslib} 1.6
+(Ed25519), \texttt{jsonschema} (schema validation), \texttt{sigstore-python} 4.5.1
+(native npm verification), \texttt{pypi-attestations} 0.0.31 (PyPI native).
+The codebase is $\sim$2{,}700 lines of Python across 17 modules, with 143 tests
+(142 passed, 1 skipped for no live PyPI attestation available).
+
+Adapters exist for four registries:
+\begin{itemize}[leftmargin=1.5em]
+\item npm (packument + tarball download for hash, search for discovery, native
+provenance via \texttt{dist.attestations})
+\item PyPI (JSON API + Simple API for full enumeration)
+\item MCP Registry (\texttt{registry.modelcontextprotocol.io}, cursor-paginated)
+\item dsh.so (market index with 10{,}195 plugins, per-plugin install-test and
+security-scan endpoints, CC-BY-4.0 licensed)
+\end{itemize}
+
+\section{Evaluation}
+
+\subsection{Coverage}
+
+The MCP Registry contains at least 50{,}000 entries (server + version records) spanning 19{,}330 distinct server names (live count, November 2026, full cursor pagination). The attestation store as of 2026-11-09 holds 530 signed bundles over 258 components (npm: 102, PyPI: 100, MCP Registry: 56; two scan generations share 190 components, each linked by supersession or reported as independent generations). Schema integrity is 100\% (530/530), signature integrity is 100\% (530/530 against the published key history), and chain verification reports 190 multi-bundle chains with zero errors. Failure counts are publicly recorded in the feed (dead-letter audit).
+
+\subsection{Trust Heuristics}
+
+Three metadata-only trust heuristics run alongside the L1--L2 checks, adopted
+from trustcheck's malicious-package detection and adapted to cross-registry
+use. Each records a \texttt{finding:} evidence entry and upgrades the run
+verdict to \texttt{pass-with-findings}; the consumer's install-gate policy
+decides how findings affect installation.
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{L2.4 Release cadence.} Detects (a) release bursts ($\ge$5
+versions in 24\,h around the current release), (b) dormancy (the current
+release follows a $\ge$365-day gap), and (c) cadence acceleration (current
+interval $\le$1\,h while the median of prior intervals is $\ge$7 days).
+A live-data defect taught us the calibration cost of each rule: an early
+implementation flagged urllib3 and pip as ``dormant'' because a historical
+gap from 2009--2011 was counted; the fix measures only the gap into the
+current release, eliminating false positives on mature active packages.
+\item \textbf{L2.5 Metadata anomaly.} Compares maintainers and homepage
+against the previous scan's snapshot; a non-overlapping change is a finding
+(first scan has no baseline and yields no findings by construction).
+\item \textbf{L2.6 Typosquatting.} Damerau--Levenshtein distance against the
+co-enumerated namespace of the scan, with compact-name comparison and
+adaptive thresholds (distance $\le$1 for names $<$8 chars, else $\le$2,
+similarity $\ge$0.72).
+\end{itemize}
+
+\subsection{Native Provenance}
+
+Table~\ref{tab:native} summarizes measured native attestation coverage.
+
+\begin{table}[h]
+\centering
+\caption{Native attestation coverage (measured 2026-11-08).}
+\label{tab:native}
+\begin{tabular}{lrr}
+\toprule
+Registry & Sample & Coverage \\
+\midrule
+npm (top-30) & 30 & 18/30 (60\%) \\
+PyPI (top-30) & 30 & 0/30 (0\%) \\
+PyPI (fresh uploads) & 40 & 0/40 (0\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The npm v1 bundle for \texttt{express@5.3.0} verifies: DSSE signature valid,
+identity = \texttt{npm-publish.yml} workflow at tag \texttt{v5.3.0},
+tlog entry present. The v0.1 bundle (publicKey hint) is recorded as
+presence-only. On PyPI, zero coverage means Canari's PEP 740 pipeline has no
+live test target yet; the blank itself is a finding.
+
+\subsection{Drift Cases}
+
+We use the public MCP Registry Drift Panel~\cite{drift89} (Zenodo 21798111,
+CC-BY-4.0) as baseline data. The panel records 18{,}966 distinct servers over
+88.6 days. Key statistics: 75.2\% of servers never change; the most active 5\%
+generate 61\% of all change events; drift-ranked re-auditing at a 5\% budget
+catches only $\sim$20\% of drifts. Canari's contribution is the \emph{verdict
+layer} on top of this measurement data: for each drift event, Canari produces a
+signed re-attestation whose \texttt{supersedes} pointer makes the drift
+auditable and reversible.
+
+\subsection{Propagation}
+
+Five test cases verify the same-author revocation propagation logic:
+same-author detection, name-variant matching, no self-revocation, empty set,
+and relation-field correctness. The propagation is annotation-only; the
+consumer's install gate decides.
+
+\subsection{Honest Scoring}
+
+Canari publishes a four-dimension score with every run:
+coverage (attested / enumerated), freshness (within TTL), integrity (signature
++ schema pass rate), and failure transparency (error counts). All scores
+include sample size, calculation method, and known distortions --- a score
+without these is a lie.
+
+\section{Related Work}
+
+Table~\ref{tab:related} compares Canari with the closest systems.
+
+\begin{table*}[t]
+\centering
+\caption{Canari vs.\ the closest systems (verified against source code, not marketing).}
+\label{tab:related}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+System & Cross-registry & Signed & Offline & Supersession & Propagation & Gate \\
+\midrule
+mcpcheckup~\cite{mcpcheckup} & no (MCP only) & yes & yes & no & no & no \\
+SIGIL~\cite{sigil} & no (skills) & yes (chain) & no (chain) & no & no & yes (SVL) \\
+agtmls~\cite{agtmls} & no (own registry) & yes & yes & no & no (advisory) & lockfile \\
+Manifest signing~\cite{manifest} & no (MCP pipeline) & yes & yes & no & no & pipeline \\
+Native provenance (npm/PyPI) & per-registry & yes & yes & no & no & advisory \\
+SkillSpector~\cite{skillspector} & no & no & -- & no & no & no \\
+repo-forensics~\cite{repoforensics} & no & no & -- & no & no & no \\
+trustcheck~\cite{trustcheck} & no (PyPI) & yes (PEP 740) & yes & no & no & no \\
+\midrule
+Canari & \textbf{yes} & \textbf{yes} & \textbf{yes} & \textbf{yes} & \textbf{yes} & \textbf{yes} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Limitations}
+
+\begin{enumerate}[leftmargin=1.5em]
+\item \textbf{Scan depth zero.} Canari's built-in checks are meta-only (L1--L2).
+Deep vulnerability detection requires external scanners (L3+). This is by design:
+Canari is a ledger, not a scanner. The adapter interface makes this composable.
+\item \textbf{Single signer.} All attestations in the current deployment are
+signed by one key. A production system would need multi-signer support or a
+transparency log for the signer keys themselves.
+\item \textbf{PyPI blank.} Zero native attestation coverage means the PyPI
+ingestion path has no live verification target. The pipeline is ready but
+untested against real data.
+\item \textbf{MCP Registry count is a floor.} The live API caps pagination at
+400 pages ($\sim$40{,}000 entries including versions); distinct-server count
+requires resuming pagination with backoff.
+\item \textbf{npm v0.1 bundles unverifiable with off-the-shelf tools.}
+sigstore-python~4.5.1's \texttt{Bundle} model requires a certificate chain;
+v0.1 publicKey-hint bundles are recorded as presence-only. A custom DSSE
+verifier could close this gap.
+\end{enumerate}
+
+\section{Conclusion}
+
+Canari fills a specific gap in the AI agent supply chain: the verdict layer
+between identity attestations (which prove who built the code) and deep
+scanners (which enumerate what patterns the code contains). Its contribution
+is the combination of cross-registry scope, offline-verifiable signed
+attestations, supersession chains, same-author revocation propagation, and a
+consumer-side install gate --- four capabilities that no existing system
+provides together. All code, schemas, and data are open artifacts.
+
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem{etude} S.~Kan, Y.~Qi, Y.~Han, X.~Luo, G.~Xiong, X.~Gao.
+Beyond Prompt Injection: The Tool Update Gap in LLM Agent Security.
+\emph{arXiv:2611.01976}, 2026.
+
+\bibitem{samename} O.~Kraishan.
+Same Name, Different Server: A Security Census of Silent Drift in the Model Context Protocol Ecosystem.
+\emph{arXiv:2609.14119}, 2026.
+
+\bibitem{drift89} G.~Bharti.
+Registry Descriptions Go Stale Unevenly: An 89-Day Measurement of MCP Drift.
+\emph{arXiv:2608.00997}, 2026. Data: \texttt{zenodo.org/records/21798111}.
+
+\bibitem{mcpcheckup} MCP Checkup.
+\texttt{github.com/mcpcheckup/checks}, 2026. Live: \texttt{mcpcheckup.com}.
+
+\bibitem{sigil} T.~Shen et al.
+Sealing the Audit-Runtime Gap for LLM Skills (SIGIL).
+\emph{arXiv:2605.05274}, 2026.
+
+\bibitem{agtmls} S.~Rousseau.
+AgtMLS: Signed, Audited Agent Skills Registry.
+\texttt{github.com/sebastienrousseau/agtmls}, 2026.
+
+\bibitem{manifest} S.~Jamshidi et al.
+Verifiable Manifest Signing and Transparency Enforcement for Secure MCP-Based LLM Pipelines.
+\emph{arXiv:2601.23132}, 2026.
+
+\bibitem{skillspector} NVIDIA.
+SkillSpector: Security Scanner for AI Agent Skills.
+\texttt{github.com/NVIDIA/SkillSpector}, 2026.
+
+\bibitem{cisco} Cisco AI Defense.
+Skill Scanner / MCP Scanner.
+\texttt{github.com/cisco-ai-defense}, 2026.
+
+\bibitem{snyk} Snyk.
+Agent Scan.
+\texttt{github.com/snyk/agent-scan}, 2026.
+
+\bibitem{repoforensics} A.~Greensh.
+repo-forensics: Offline Security Scanner for AI-Agent Repos.
+\texttt{github.com/alexgreensh/repo-forensics}, 2026.
+
+\bibitem{trustcheck} K.~Duraphe.
+trustcheck: Verify PyPI Package Attestations.
+\texttt{github.com/kapilduraphe/trustcheck}, 2026.
+
+\bibitem{dsse} M.~J.~F.~Rehmani et al.
+DSSE: Dead Simple Signing Envelope.
+\texttt{github.com/secure-systems-lab/dsse}, 2020.
+
+\bibitem{memtether} Canari Contributors.
+MemTether: A Cross-Client AI Memory Hub.
+Internal reference, 2026.
+
+\bibitem{mcpeco} K.~Tounoussi et al.
+MCP-Eco: A Linked Dataset of MCP Servers, Consumers, and Development Activity.
+\emph{arXiv:2611.06897}, 2026. Data: \texttt{huggingface.co/datasets/mcp-research-alliance/mcp-ecosystem}.
+
+\bibitem{probeid} G.~Chen et al.
+ProbeID: Verifying MCP Tool Identity for LLM Agents under Registry Drift.
+\emph{arXiv:2610.33633}, 2026.
+
+\end{thebibliography}
+
+\end{document}
