@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Baseline attestation builder tests (offline: no npm calls, injected meta)."""
+
+# GUARDS_AGAINST: false pass on download failure (zero sha256), false fail on empty description, TTL drift
 import os
 import sys
 

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Schema validation + install-gate predicate tests."""
+
+# GUARDS_AGAINST: schema violation not caught (missing field, bad enum, empty checks, invalid gate verdict)
 import os
 import sys
 

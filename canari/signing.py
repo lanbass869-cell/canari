@@ -39,18 +39,47 @@ def generate_keypair():
     return signer, signer.public_key
 
 
+def _nfc_normalize(obj):
+    """Recursively NFC-normalize every string in a JSON-serializable structure.
+    Prevents Unicode normalization differences from producing different hashes
+    for the same logical content (mcpcheckup nfc-jcs/v1 pattern).
+    Also detects NFC key collisions."""
+    import unicodedata
+    if isinstance(obj, str):
+        return unicodedata.normalize("NFC", obj)
+    if isinstance(obj, dict):
+        result = {}
+        seen_keys = {}
+        for k, v in obj.items():
+            normalized_key = unicodedata.normalize("NFC", k) if isinstance(k, str) else k
+            if normalized_key in seen_keys:
+                raise ValueError(
+                    "NFC_KEY_COLLISION: keys %r and %r both normalize to %r"
+                    % (seen_keys[normalized_key], k, normalized_key)
+                )
+            seen_keys[normalized_key] = k
+            result[k] = _nfc_normalize(v)
+        return result
+    if isinstance(obj, list):
+        return [_nfc_normalize(item) for item in obj]
+    return obj
+
+
 # Credential shape detection (mcpcheckup credential-shapes.ts pattern)
 _CREDENTIAL_RULES = [
     ("jwt", lambda s: bool(re.match(r"eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*", s))),
-    ("authorization header", lambda s: bool(re.match(r"(?i)\b(?:bearer|basic|token|dpop)\s+[A-Za-z0-9._~+/-]{8,}", s))),
+    ("authorization header", lambda s: bool(re.search(r"(?i)\b(?:bearer|basic|token|dpop)\s+[A-Za-z0-9._~+/-]{8,}", s))),
     ("private key block", lambda s: "-----BEGIN" in s and "PRIVATE KEY" in s),
     ("vendor key prefix", lambda s: bool(re.search(
-        r"(?:sk|rk|pk)_(?:live|test)_|gh[pousr]_|github_pat_|xox[abprs]-|glpat-|whsec_|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{20}", s))),
+        r"(?:sk|rk|pk)_(?:live|test)_|gh[pousr]_|github_pat_|xox[abprs]-|glpat-|whsec_|npm_|pypi-|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{20}", s))),
     ("long hex run", lambda s: bool(re.search(r"(?:^|[^0-9A-Za-z])[0-9a-fA-F]{32,}(?![0-9A-Za-z])", s))),
     ("high-entropy token", lambda s: any(
         len(p) >= 24 and any(c.isupper() for c in p) and any(c.islower() for c in p) and any(c.isdigit() for c in p)
         for p in re.split(r"[^A-Za-z0-9+/=_-]+", s)
     )),
+    ("credential variable access", lambda s: bool(re.search(
+        r"(?:password|secret|token|api_key|credential|private_key)\s*[:=]\s*['\"]?[A-Za-z0-9+/=_-]{8,}", s, re.I
+    ))),
 ]
 
 
@@ -102,6 +131,9 @@ def sign_attestation(att: dict, signer) -> dict:
             "CREDENTIAL_IN_PAYLOAD: %d credential-shaped string(s) detected in the attestation: %s"
             % (len(cred_hits), "; ".join(cred_hits[:5]))
         )
+
+    # NFC normalization (mcpcheckup nfc-jcs/v1 pattern)
+    att = _nfc_normalize(att)
     def _build(a):
         payload_bytes = json.dumps(a, ensure_ascii=False, sort_keys=True).encode("utf-8")
         env = Envelope(payload=payload_bytes, payload_type=DSSE_PAYLOAD_TYPE, signatures={})

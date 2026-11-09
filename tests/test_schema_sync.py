@@ -5,6 +5,8 @@ The bundled schemas/attestation-v0.1.json MUST stay byte-identical to the
 private handover repo copy. Semantic changes go through the WorkBuddy
 review line (HANDOVER section 5); if the source moves, update SOURCE_PATH.
 """
+
+# GUARDS_AGAINST: bundled schema drifting from the source of truth (MemTether dual_repo_guard pattern)
 import filecmp
 import os
 

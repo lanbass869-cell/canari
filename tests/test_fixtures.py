@@ -4,6 +4,8 @@
 These fixtures provide canned registry responses so tests don't hit the network.
 Each fixture matches the exact JSON structure of the real registry API.
 """
+
+# GUARDS_AGAINST: registry API structure change going unnoticed (npm nested server.name, MCP version field)
 import json
 import os
 import sys

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """T6: scanner adapter tests."""
+
+# GUARDS_AGAINST: None crash in findings_to_checks, digest not reflecting scanner content changes, path traversal in scanner paths
 import json
 import os
 import sys

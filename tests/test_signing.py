@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Signing roundtrip + tamper detection (offline, no network)."""
+
+# GUARDS_AGAINST: signature forgery (tampered payload, wrong key, missing keyid), NFC normalization correctness
 import base64
 import json
 import os

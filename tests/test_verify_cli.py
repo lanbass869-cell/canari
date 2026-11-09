@@ -5,6 +5,8 @@ Also covers the M0 acceptance criterion shape: a bundle produced by this
 project is verified by the CLI (self-test); the "verified by a non-self
 party" criterion is the operator step documented in README.
 """
+
+# GUARDS_AGAINST: silent verification bypass (tampered bundle, invalid schema, missing file), independent PAE cross-check
 import base64
 import json
 import os

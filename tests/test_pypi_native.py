@@ -5,6 +5,8 @@ Reality: 0/30 top packages have attestations (measured 2026-11-08).
 Tests verify the ingestion pipeline returns None for no-attestation packages
 (the honest result), and that the module imports cleanly.
 """
+
+# GUARDS_AGAINST: false attestations for packages with no native attestations (0/40 measured), pipeline crash on None
 import os
 import sys
 

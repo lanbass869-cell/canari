@@ -162,7 +162,7 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int
     # 5. payload integrity echo (what the signature actually covers)
     payload_sha = hashlib.sha256(
         json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
-    print("payload sha256: %s..." % payload_sha[:16])
+    print("payload: sha256:%s..." % payload_sha[:16])
     subj = payload.get("subject", {})
     print("subject: %s@%s (%s) sha256:%s..."
           % (subj.get("name"), subj.get("version"), subj.get("registry"),

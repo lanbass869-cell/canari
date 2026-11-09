@@ -5,6 +5,8 @@ Live-network tests: express@5.3.0 is pinned (a stable, high-profile package
 whose provenance has been verified in this round's research).
 Offline tests use the recorded bundle structure (no network).
 """
+
+# GUARDS_AGAINST: false signing claim (v0.1 publicKey-hint bundles treated as verified), credential leakage into attestation payload
 import json
 import os
 import sys
