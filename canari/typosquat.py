@@ -46,14 +46,38 @@ def check_typosquatting(project, trusted_names):
     """
     if not project or not trusted_names:
         return None
+    def _family_tails(a_orig, b_orig):
+        """Strip the shared hyphen-boundary prefix (family scope). Comparing within
+        a big family (mcp-server-*) on full names makes everything look alike, but
+        stripping a partial-word prefix would eat the typo itself (fecth/fetch).
+        Only complete hyphen-delimited leading segments are stripped."""
+        a, b = a_orig.casefold(), b_orig.casefold()
+        cut = 0
+        idx = 0
+        while idx < min(len(a), len(b)) and a[idx] == b[idx]:
+            if a[idx] == "-":
+                cut = idx + 1
+            idx += 1
+        if cut >= 4:
+            return a[cut:], b[cut:]
+        return a, b
+
     candidate = project.replace("-", "").casefold()
     matches = []
     for trusted in trusted_names:
         if trusted == project:
             continue
-        compact_trusted = trusted.replace("-", "").casefold()
-        distance = _damerau_levenshtein(candidate, compact_trusted)
-        maximum = max(len(candidate), len(compact_trusted), 1)
+        ta, tb = _family_tails(project, trusted)
+        if not ta or not tb:
+            continue  # one is a scope prefix of the other: not a typosquat
+        # wrapper pattern: one distinctive tail is a suffix of the other by 2+
+        # chars (aistudio vs 3daistudio). A one-char prefix extension is a typo
+        # (dateutil vs dateutils), so it stays in scope.
+        if (tb.endswith(ta) and len(tb) - len(ta) >= 2) or (ta.endswith(tb) and len(ta) - len(tb) >= 2):
+            continue
+        a, b = ta.replace("-", ""), tb.replace("-", "")
+        distance = _damerau_levenshtein(a, b)
+        maximum = max(len(a), len(b), 1)
         similarity = 1.0 - distance / maximum
         threshold = 1 if maximum < 8 else 2
         if distance <= threshold and similarity >= 0.72:

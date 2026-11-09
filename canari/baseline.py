@@ -467,7 +467,15 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         # supersession: if we have a previous attestation for this component,
         # compute its digest and set supersedes pointer
         if prev_state and prev_state.get("attestation_digest"):
-            att["supersedes"] = prev_state["attestation_digest"]
+            _prev_digest = prev_state["attestation_digest"]
+            # BUG-79: legacy state entries may carry a file path here (pre-BUG-29
+            # format). Only a 64-hex payload digest is a valid supersedes target.
+            if isinstance(_prev_digest, str) and len(_prev_digest) == 64:
+                try:
+                    int(_prev_digest, 16)
+                    att["supersedes"] = _prev_digest
+                except ValueError:
+                    pass
         signed = sign_attestation(att, signer)
         safe = name.replace("/", "_").replace("@", "").replace("\\", "_").replace("..", "_")
         # additional safety: remove any remaining path separators or parent refs

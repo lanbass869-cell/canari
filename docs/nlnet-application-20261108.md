@@ -44,8 +44,11 @@ DSSE/Ed25519 signed attestation objects that bind verdicts to artifact hashes, w
   invoked and their findings signed; Canari does not build its own scanner
 - **Failure transparency**: error counts are published, not hidden
 
-The system is ~1,200 lines of Python with 63 tests, all passing. Code, schemas,
-and data are published as open artifacts.
+The system is ~2,700 lines of Python with 136 tests (135 passing, 1 skipped
+pending live PyPI attestation coverage). It ships three metadata-only trust
+heuristics (release cadence, metadata anomaly, typosquatting) with a
+policy-configurable install gate. Code, schemas, and data are published as
+open artifacts.
 
 ## 3. Why NLnet?
 
@@ -76,8 +79,8 @@ NLnet funding would cover: dataset hosting (Zenodo), conference presentation
 | 6 | Dashboard with supersession chain view | DONE | - |
 | 7 | arXiv paper draft | DONE | - |
 | 8 | Open dataset release (Zenodo + GitHub) | TODO | Month 1 |
-| 9 | MCP Registry full pagination (40K+ entries) | TODO | Month 1 |
-| 10 | Install gate CLI (consumer-side) | TODO | Month 2 |
+| 9 | MCP Registry full pagination (40K+ entries) | PARTIAL | cursor pagination works; dedupe by server name added; full-history crawl Month 1 |
+| 10 | Install gate CLI (consumer-side) | DONE | `canari-verify --gate` with policy files |
 | 11 | Multi-signer support | TODO | Month 3 |
 | 12 | Transparency log for signer keys | TODO | Month 4 |
 | 13 | Integration with dsh-testkit lifecycle testing | TODO | Month 5 |

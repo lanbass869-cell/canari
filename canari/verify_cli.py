@@ -241,6 +241,7 @@ def verify_chain(directory: str, key_path: str = None) -> int:
 
     errors = []
     chains_checked = 0
+    generations = 0
 
     for name, bundle_files in sorted(components.items()):
         if len(bundle_files) < 2:
@@ -252,8 +253,14 @@ def verify_chain(directory: str, key_path: str = None) -> int:
         if len(heads) == 0:
             errors.append("%s: no chain head found (%d bundles, all have supersedes)" % (name, len(bundle_files)))
             continue
+        if len(heads) > 1:
+            # BUG-72: parallel generations (e.g. dataset scan + live scan that
+            # were never bridged by a supersedes pointer) are legitimate; each
+            # head starts its own chain. This is a note, not an error.
+            generations += 1
 
         # Walk each chain from head using pre-computed digests (O(1) lookups)
+        reachable_any = set()
         for head in heads:
             current = head
             visited = {head}
@@ -292,11 +299,13 @@ def verify_chain(directory: str, key_path: str = None) -> int:
                 current = next_bundle
                 depth += 1
 
-            # Check all bundles in this component are in the chain
-            unreachable = set(bundle_files) - visited
-            if unreachable:
-                errors.append("%s: %d bundle(s) not reachable from chain head %s: %s" % (
-                    name, len(unreachable), head, ", ".join(sorted(unreachable)[:3])))
+            reachable_any |= visited
+
+        # A bundle is only unreachable if NO head's chain reaches it
+        unreachable = set(bundle_files) - reachable_any
+        if unreachable:
+            errors.append("%s: %d bundle(s) unreachable from every chain head: %s" % (
+                name, len(unreachable), ", ".join(sorted(unreachable)[:3])))
 
     if errors:
         print("\nchain errors (%d):" % len(errors))
@@ -304,7 +313,9 @@ def verify_chain(directory: str, key_path: str = None) -> int:
             print("  - %s" % e)
         return 4
 
-    print("chains: %d checked, all valid" % chains_checked)
+    print("chains: %d checked, all valid%s" % (
+        chains_checked,
+        " (%d component(s) have multiple independent generations)" % generations if generations else ""))
     return 0
 
 
