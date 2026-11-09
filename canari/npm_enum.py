@@ -70,7 +70,7 @@ def enumerate_top(limit: int = 50, dedupe=True) -> list:
                     "date": pkg.get("date", ""),
                     "maintainers": [m.get("name", "") for m in pkg.get("maintainers", [])],
                     "publisher": (pkg.get("publisher") or {}).get("username", ""),
-                    "downloads_monthly": (obj.get("searchScore") and 0) or 0,
+                    "downloads_monthly": (obj.get("downloads") or {}).get("monthly", 0),
                     "score": obj.get("score", {}),
                     "downloads": obj.get("downloads", {}),
                     "links": pkg.get("links", {}),
@@ -202,7 +202,7 @@ def mcp_registry_enumerate(limit=500):
                 continue
             results.append({"name": sname, "version": server.get("version", ""),
                             "registry": "mcp-registry", "homepage": server.get("homepage", "")})
-        cursor = d.get("next_cursor") or d.get("nextCursor") or ""
+        cursor = (d.get("metadata") or {}).get("nextCursor") or d.get("next_cursor") or d.get("nextCursor") or ""
         if not cursor:
             break
     return results[:limit]
@@ -277,6 +277,6 @@ def propagate_revocation(revoked_name, revoked_author, all_components):
             related.append({'name': cname, 'relation': 'same-author'})
             continue
         ratio = SequenceMatcher(None, revoked_name.lower(), cname.lower()).ratio()
-        if ratio >= 0.85 and len(revoked_name) > 4:
+        if ratio >= 0.90 and len(revoked_name) > 4:
             related.append({'name': cname, 'relation': 'name-variant'})
     return related
