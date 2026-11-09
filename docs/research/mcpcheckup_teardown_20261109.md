@@ -273,3 +273,145 @@ Canari 应该从 mcpcheckup 学：
 3. Cascade assertion 模式
 4. 更多测试 fixture
 5. 双语支持
+
+
+---
+
+## 十、HTTP 探测层（wire.ts + protocol.ts 详细分析）
+
+### 10.1 wire.ts（375 行）— HTTP 发送层
+
+**核心符号：**
+- `ProbeAborted` — 预算耗尽时抛出
+- `createProbeContext` — 跟踪 DNS 答案变更和跨主机重定向
+- `REDIRECT_STATUSES` — {301, 302, 303, 307, 308}
+- `parseRetryAfterSeconds` — 从 Retry-After 头解析秒数
+- `rateLimitAbort` — 429/503 带有效 Retry-After 时触发
+- `durationAbort` — 超过 maxDurationMs 时触发
+- `readBodyWithBudget` — 带字节预算的 body 读取
+- `CREDENTIAL_HEADERS` — 跨主机时需要剥离的凭据头
+- `withoutCredentialHeaders` — 剥离函数
+- `sendRequest` — 核心发送函数
+
+**CREDENTIAL_HEADERS 跨主机剥离规则：** 当重定向跨主机时，自动剥离凭据头（Authorization, Cookie 等）。这是 SSRF 防护的一部分——防止凭据泄露到非预期主机。
+
+### 10.2 protocol.ts（689 行）— MCP 协议实现
+
+**performHandshake（L300-361）：**
+
+双模式握手——先尝试 modern（2026-07-28 spec 的 `server/discover`），失败后 fallback 到 legacy（2025-06-18 spec 的 `initialize`）：
+
+1. 发送 `server/discover` JSON-RPC 请求
+2. 如果 2xx 且返回 `supportedVersions` 数组 → modern 成功，返回第一个版本
+3. 如果 4xx 且 JSON-RPC 错误码在识别列表中 → modern server 存在但拒绝了 probe（不 fallback 到 legacy——"a recognized modern error identifies a real client/server mismatch"）
+4. 否则 → 调用 `performLegacyHandshake()` 尝试 legacy
+
+**performLegacyHandshake（L363-461）：**
+
+1. 发送 `initialize` JSON-RPC 请求，`protocolVersion: LEGACY_PROBE_VERSION`
+2. 检查 `mcp-session-id` 头——"A compliant legacy server may issue none at all (observed: mcp.deepwiki.com)"——只有 server 实际发送了才转发
+3. 发送 `notifications/initialized` 确认
+4. 如果全部成功 → handshakeOk = true
+
+**performToolsList（L485-646）：**
+
+- 支持 nextCursor 分页（Suite 0.15.0），最多 `budget.max_tools_list_pages` 页
+- 凭据门控检查在 body 解析之前——"classify the credential challenge from status + headers BEFORE the body is looked at, and let it veto ok. Previously the challenge was only attached in the !ok arm, so a response that was HTTP 401 with a structurally valid WWW-Authenticate challenge but whose body happened to carry a well-formed result.tools array came back ok=true with NO challenge"
+- 列表不完整 → fingerprint 和 baseline 比较都 SKIPPED（"no fingerprint of part of a list"）
+
+**performUnknownToolCall（L648-689）：**
+
+发送 `tools/call` 调用一个不存在的工具名（PROBE_TOOL_NAME），用于触发 error_taxonomy 检查——"a tool call to a nonexistent tool is the standard way to exercise the server's error handling"
+
+### 10.3 auth.ts（578 行）— 凭据门控判定
+
+**classifyCredentialChallenge（L372-460）：**
+
+严格的 RFC 7235 WWW-Authenticate 头解析器：
+1. 只有 status=401 且有 WWW-Authenticate 头才分类
+2. 解析 scheme token（Bearer, Basic, Digest 等）
+3. scheme 后必须是空格、制表符或逗号（token 边界检查）
+4. 修复了两个 bug：接受了 HTAB（RFC 7235 要求 1*SP）和拒绝了合法的多 challenge 列表（`Basic , Bearer realm="x"`）
+5. `MAX_SCHEME_LEN` 上限——超过就拒绝不截断
+6. 每个 challenge 的参数（realm, scope 等）被解析出来供后续使用
+
+**judgeAuthMetadata（L528-577）：**
+
+从凭据 challenge 中提取 metadata URL → 发送 GET → 解析 JSON → 检查 `scopes_supported` 是否与 challenge 的 scope 矛盾：
+- 矛盾 → OBSERVED_RISK（"the challenge asks for a scope the metadata says is not supported"）
+- 一致 → VERIFIED
+- 无法获取 → OBSERVED_RISK
+
+### 10.4 hygiene.ts（478 行）— 工具描述卫生检查
+
+`runHygieneCheck(tools)` 遍历每个工具的 description，检查多种模式：
+
+- Suite 0.19.0：`excessive_length` 单独不计入 OBSERVED_RISK——"a length-only tool keeps its flag but doesn't trigger the risk verdict"
+- 结果：`riskTools > 0` → OBSERVED_RISK，否则 VERIFIED
+- 中文摘要："扫描了 N 个工具，M 个未触发任何信号"
+
+---
+
+## 十一、探测预算（budget.ts，41 行）
+
+```typescript
+DEFAULT_PROBE_BUDGET = {
+    maxRedirects: 3,       // 最多跟随 3 次重定向
+    maxDurationMs: 10_000, // 整个 guardedFetch 调用最多 10 秒
+    maxBodyBytes: 2_097_152, // 每个 hop 最多读 2MB body
+    maxRequests: 8,        // 整个调用最多 8 个出站请求
+}
+```
+
+关键注释："These numbers are this suite's PUBLISHED contract, not a private deployment threshold: checks.json's own budget field states the same values, and the reachability check's reader copy quotes them."
+
+曾经有 claimed/unclaimed 两层预算（claimed=8, unclaimed=4），但 2026-09-09 裁决撤回了区别——"a legacy-protocol round costs 5 requests at minimum, so 4 could never finish one, and what it actually produced was UNVERIFIED rather than the intended courtesy."
+
+---
+
+## 十二、DNS 解析与重绑定防护（resolve.ts，151 行）
+
+**DNS-over-HTTPS (DoH) 解析：**
+- 使用固定的受信任 DoH 解析器（不是系统 DNS）
+- 同时查询 A 和 AAAA 记录（Promise.allSettled）
+- **一个坏地址拒绝整个集合**："a multi-homed name is only as trustworthy as its worst answer"
+
+**DNS 重绑定防护：**
+1. 解析 hostname → 得到 IP 地址列表
+2. 对每个 IP 调用 `classifyIp()` 检查是否在阻止范围内
+3. 任何一个被阻止的 IP → 整个域名被拒绝
+4. 探测过程中持续监控 DNS 答案是否变化（`dnsAnswerChangedDuringProbe`）
+
+**TXT 记录查询**：故意 NOT fail-closed——"for A/AAAA, no address means there is nothing to connect to, so rejecting is right. For TXT, no record is an ordinary, expected answer"
+
+---
+
+## 十三、Canari 需要向 mcpcheckup 学习的完整清单
+
+### P0（下次迭代必做）
+| 设计 | 具体实现 | Canari 的对应改进 |
+|---|---|---|
+| PAE 独立实现 | verify-attestation.mjs L143-165 独立重写 DSSE spec | verify_cli.py 独立实现 PAE，不依赖 in-toto |
+| 密钥生命周期 | valid_from/valid_until/revoked_at 三字段 | state.py 加 key management |
+| suite source binding | suite_commit + suite_digest (SHA-512 over git ls-tree) | baseline.py scenario_sha256 加 runner source digest |
+| Cascade assertions | probe.ts L275-281 级联 + 已完成的保持结果 | run_multi 失败时给后续检查加 UNVERIFIED + reason |
+| Feed bundle_file | items 里有 bundle_file 字段 | 已修复（round 8） |
+
+### P1（中期）
+| 设计 | 具体实现 | Canari 改进方向 |
+|---|---|---|
+| Allowlist 投影 | projections.ts 字段白名单 | artifact fingerprint 改为投影后 hash |
+| 密钥文档格式 | keys.json: key_id, algorithm, spki, spki_sha256, valid_from, valid_until, revoked_at | 独立于 attestation 的密钥管理文档 |
+| Fixture corpus | 16 个模拟 server，在实现之前编写 | 为 Canari 的 registry adapter 写 mock fixtures |
+| 双语 reason | REASON_MESSAGES: { key: { en: fn, zh: fn } } | Canari 的 verify_cli 输出加多语言 |
+| 预算公开契约 | budget 值在 checks.json 里公开声明 | Canari 的 rate limit / timeout 写入 feed |
+| Suite 版本迁移 | v0.1→v0.2→v0.3→v0.4 每版本完整 schema | Canari schema v0.1 的版本管理策略 |
+
+### 不需要学的
+| 设计 | 原因 |
+|---|---|
+| Protocol-contract checks | Canari 不做 MCP 协议合规 |
+| SSRF guard | Canari 只调 registry API，不 fetch 任意 URL |
+| LLM-as-judge | 架构守卫禁止 |
+| Cloudflare Workers deployment | Canari 是 CLI 工具 |
+| Next.js frontend | Canari 是 dashboard.html 单文件 |
