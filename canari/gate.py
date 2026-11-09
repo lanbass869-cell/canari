@@ -29,6 +29,13 @@ class GatePolicy:
     require_native_provenance: bool = False
     fail_on_error_check: bool = True
     allowed_registries: list = field(default_factory=list)
+    # G1: trust heuristics (L2.4 cadence / L2.5 metadata anomaly / L2.6 typosquat)
+    # recorded as checks with evidence_ref "finding: ...". block_on_findings
+    # upgrades the pass-with-findings REVIEW to BLOCK for a deny-by-default posture.
+    block_on_findings: bool = False
+    # Optional list of finding kinds to always treat as blocking, e.g.
+    # ["typosquatting", "metadata", "cadence"]; empty = no keyword blocking.
+    block_finding_kinds: list = field(default_factory=list)
 
 
 BUILTIN_POLICIES = {
@@ -46,7 +53,45 @@ BUILTIN_POLICIES = {
         name="lax", min_verdict="pass", require_fresh=False,
         require_key_valid=False, fail_on_error_check=False,
     ),
+    # G1: paranoid = any trust-heuristic finding blocks outright
+    "paranoid": GatePolicy(
+        name="paranoid", min_verdict="pass", require_fresh=True,
+        require_key_valid=True, fail_on_error_check=True,
+        block_on_findings=True,
+    ),
 }
+
+
+def load_policy_file(path: str) -> dict:
+    """G2: load a JSON policy-file definition.
+
+    Accepted keys are exactly the GatePolicy fields minus name (name comes
+    from the file's "name" key or defaults to "file"). Unknown keys raise
+    ValueError (config typos must fail loudly, not silently no-op).
+    Returns kwargs dict suitable for policy_overrides plus "name".
+    """
+    with open(path, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    if not isinstance(raw, dict):
+        raise ValueError("policy file must contain a JSON object")
+    import dataclasses
+    valid_fields = {fl.name for fl in dataclasses.fields(GatePolicy)}
+    unknown = set(raw) - valid_fields
+    if unknown:
+        raise ValueError("unknown policy keys: %s (valid: %s)" % (
+            sorted(unknown), sorted(valid_fields)))
+    out = dict(raw)
+    if not out.get("name"):
+        out["name"] = "file"
+    if out.get("allowed_registries") is not None and not isinstance(out["allowed_registries"], list):
+        raise ValueError("allowed_registries must be a list")
+    if out.get("block_finding_kinds") is not None and not isinstance(out["block_finding_kinds"], list):
+        raise ValueError("block_finding_kinds must be a list")
+    for bool_key in ("require_fresh", "require_key_valid", "require_native_provenance",
+                     "fail_on_error_check", "block_on_findings"):
+        if bool_key in out and not isinstance(out[bool_key], bool):
+            raise ValueError("%s must be a boolean" % bool_key)
+    return out
 
 
 @dataclass(slots=True)
@@ -73,7 +118,16 @@ def _check_freshness(payload):
 
 
 def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
-                  policy_name="default", policy_overrides=None):
+                  policy_name="default", policy_overrides=None, policy_file=None):
+    from dataclasses import replace
+    if policy_file:
+        file_def = load_policy_file(policy_file)
+        policy_name = file_def.get("name", "file")
+        file_overrides = {k: v for k, v in file_def.items() if k != "name"}
+        # custom file-defined name: clone default as its base (explicit in file,
+        # never silently aliased to a builtin)
+        BUILTIN_POLICIES.setdefault(policy_name, replace(BUILTIN_POLICIES["default"], name=policy_name))
+        policy_overrides = {**(policy_overrides or {}), **file_overrides}
     if policy_name not in BUILTIN_POLICIES:
         raise ValueError("unknown policy: %s (available: %s)" % (policy_name, list(BUILTIN_POLICIES)))
     from dataclasses import replace
@@ -83,8 +137,8 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
             if not hasattr(policy, k):
                 continue  # unknown field silently skipped
             # Type validation for list fields
-            if k == "allowed_registries" and not isinstance(v, list):
-                raise ValueError("policy_overrides.allowed_registries must be a list, got %s" % type(v).__name__)
+            if k in ("allowed_registries", "block_finding_kinds") and not isinstance(v, list):
+                raise ValueError("policy_overrides.%s must be a list, got %s" % (k, type(v).__name__))
             setattr(policy, k, v)
 
     reasons = []
@@ -175,6 +229,27 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
             1 for c in payload.get("checks", [])
             if c.get("verdict") != "pass" or (c.get("evidence_ref") or "").startswith("finding:")
         ))
+
+    # G1: trust-heuristic findings (evidence_ref "finding: ...")
+    findings = [c for c in payload.get("checks", [])
+                if (c.get("evidence_ref") or "").startswith("finding:")]
+    if findings:
+        kinds = " ".join((c.get("evidence_ref") or "") for c in findings)
+        if policy.block_on_findings:
+            if decision == "ALLOW":
+                decision = "BLOCK"
+            elif decision == "REVIEW":
+                decision = "BLOCK"
+            reasons.append("block_on_findings: %d trust finding(s)" % len(findings))
+        else:
+            for kind in policy.block_finding_kinds:
+                if kind in kinds:
+                    if decision == "ALLOW":
+                        decision = "BLOCK"
+                    elif decision == "REVIEW":
+                        decision = "BLOCK"
+                    reasons.append("blocking finding kind %r matched" % kind)
+                    break
 
     return GateDecision(decision=decision, reasons=reasons, policy=policy_name,
                         verdict=verdict, subject=subject_name, key_valid=key_valid,

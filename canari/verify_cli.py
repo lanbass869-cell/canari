@@ -10,6 +10,8 @@ Exit codes (stable, documented - MemTether cli_health discipline):
   1 = signature FAIL (tampered or wrong key)
   2 = schema FAIL (payload violates attestation-v0.1)
   3 = usage / file errors
+  5 = policy gate BLOCK
+  6 = policy gate REVIEW
 
 Failure/skip counts are printed explicitly (plan section 4: "failure/skip
 counters public - anti pass-rate-inflation", RUSE lesson).
@@ -89,7 +91,9 @@ def _fail(msg):
     sys.stderr.write("[verify] FAIL: %s\n" % msg)
 
 
-def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int:
+def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False,
+                  gate: bool = False, gate_policy: str = "default",
+                  gate_policy_file: str = None) -> int:
     # 1. load files
     try:
         with open(bundle_path, "r", encoding="utf-8") as f:
@@ -159,6 +163,21 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int
           % (len(checks), n_pass, n_fail, n_skip, n_unsupported, n_error))
     print("run verdict: %s | gate: %s"
           % (payload.get("verdict"), "ALLOW" if is_gate_passing(payload) else "BLOCK"))
+
+    # G3: full policy-gate evaluation (signature + freshness + key registry +
+    # trust-heuristic findings). Exit 5 = gate BLOCK, 6 = REVIEW.
+    if gate:
+        from canari.gate import evaluate_gate
+        dec = evaluate_gate(bundle_path, key_path=key_path,
+                            policy_name=gate_policy, policy_file=gate_policy_file)
+        print("-" * 60)
+        print("policy gate [%s]: %s" % (dec.policy, dec.decision))
+        for r in dec.reasons:
+            print("  - %s" % r)
+        if dec.decision == "BLOCK":
+            return 5
+        if dec.decision == "REVIEW":
+            return 6
 
     # 5. payload integrity echo (what the signature actually covers)
     payload_sha = hashlib.sha256(
@@ -298,12 +317,19 @@ def main(argv=None):
     ap.add_argument("--verbose", "-v", action="store_true", help="print PASS checks too")
     ap.add_argument("--chain", metavar="DIR", default=None,
                     help="verify supersession chains in a directory of bundles")
+    ap.add_argument("--gate", action="store_true",
+                    help="run the policy install-gate after verification")
+    ap.add_argument("--gate-policy", default="default",
+                    help="gate policy name (default/strict/release-gate/lax/paranoid)")
+    ap.add_argument("--gate-policy-file", default=None,
+                    help="JSON policy file overriding --gate-policy")
     a = ap.parse_args(argv)
     if a.chain:
         return verify_chain(a.chain)
     if not a.bundle or not a.key:
         ap.error("bundle and --key are required (unless --chain is used)")
-    return verify_bundle(a.bundle, a.key, a.verbose)
+    return verify_bundle(a.bundle, a.key, a.verbose, gate=a.gate,
+                         gate_policy=a.gate_policy, gate_policy_file=a.gate_policy_file)
 
 
 if __name__ == "__main__":
