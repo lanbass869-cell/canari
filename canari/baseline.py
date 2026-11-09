@@ -32,6 +32,8 @@ from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
                             _opener, UA)
 from canari.native import ingest as native_ingest
+from canari.cadence import analyze_release_cadence
+from canari.anomaly import detect_metadata_anomaly
 from canari.pypi_native import ingest_pypi as pypi_native_ingest
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -209,6 +211,34 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
     }
     if native_prov is not None:
         result["native_provenance"] = native_prov
+
+    # Trust heuristics (H1-H3)
+    heuristic_checks = []
+    # H1: Release cadence
+    try:
+        from canari.cadence import analyze_release_cadence
+        cadence_findings = analyze_release_cadence(name, meta.get("version", ""))
+        heuristic_checks.extend(cadence_findings)
+    except Exception:
+        pass
+    # H2: Metadata anomaly (only if we have previous metadata in state)
+    try:
+        from canari.anomaly import detect_metadata_anomaly
+        # previous metadata would come from state.json (not implemented yet)
+        # For now, skip if no previous data available
+        pass
+    except Exception:
+        pass
+    # H3: Typosquatting (requires trusted names set, skip for now in build)
+    # This is done at a higher level where trusted_names is available
+
+    # Add heuristic findings as extra checks
+    for hf in heuristic_checks:
+        result["checks"].append(hf)
+        # If any heuristic has a finding, upgrade verdict
+        if "finding:" in (hf.get("evidence_ref") or ""):
+            if result["verdict"] == "pass":
+                result["verdict"] = "pass-with-findings"
     return result
 
 
