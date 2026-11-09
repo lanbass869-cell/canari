@@ -13,7 +13,7 @@
 |---|---|
 | 17 competitors audited. Zero have: cross-registry scope + supersession chains + same-author revocation propagation + offline-verifiable install gate | Canari's four-differentiator moat is confirmed intact |
 | mcpcheckup is the closest system: DSSE + Ed25519 + offline verify + 15 protocol checks including baseline drift comparison | Complement, not competitor - they monitor remote MCP servers only, Canari unifies package ecosystems |
-| Scanner depth gap is real: repo-forensics has 1,138 `re.compile()` patterns + 451 JSON rulepack rules (794 total with inline patterns); Cisco skill-scanner has 453 re.compile + 34 YARA rules + 148 unique rule IDs | Canari has 0 vulnerability patterns by design; the adapter interface (T6) bridges this gap |
+| Scanner depth gap is real: repo-forensics has 580 unique `re.compile()` patterns (580 total count includes 66 duplicated files between skills/ and plugins/ mirror directories) + 451 JSON rulepack rules (794 total with inline patterns); Cisco skill-scanner has 453 re.compile + 27 YARA rules + 148 unique rule IDs | Canari has 0 vulnerability patterns by design; the adapter interface (T6) bridges this gap |
 | trustcheck (50 stars) already does PEP 740 + Sigstore verification for PyPI consumers, with 24 rule IDs and full lockfile scanning | Overlaps with Canari's T3 PyPI native ingestion; differentiation: trustcheck verifies identity, Canari produces verdicts |
 | agtmls is the only competitor with a signed skill registry + revocation advisory feed (verify exits code 6) | Single-registry scope; Canari's cross-registry aggregation is unique |
 | SIGIL paper (2605.05274) has no public code; sigil_guard (Elixir runtime) is a different product | No immediate code-level threat from the SIGIL paper |
@@ -112,7 +112,7 @@
 
 **What it does (from source code):**
 - 453 `re.compile()` patterns
-- 34 YARA rules across 16 `.yara` files (behavior_chain_detection: 9, embedded_binary: 4, rest: 1 each)
+- 27 YARA rules across 16 `.yara` files (behavior_chain_detection: 9, embedded_binary: 4, rest: 1 each)
 - 148 unique rule IDs detected in source
 - Pattern-based detection (YAML + YARA-X)
 - AST and dataflow analysis
@@ -154,7 +154,7 @@
 **Files:** 493 total, 287 code, 30 test | **LOC:** 165,170
 
 **What it does (from source code):**
-- **1,138 `re.compile()` patterns across 81 modules** - the deepest open-source scanner we found
+- **580 unique `re.compile()` patterns (580 total count includes 66 duplicated files between skills/ and plugins/ mirror directories) across 81 modules** - the deepest open-source scanner we found
 - 451 JSON rulepack rules across 7 packs: sast (150), skill_threats (126), runtime_dynamism (70), secrets (46), mcp_security (46), dead_anchors (8), shared (5)
 - 44 unique rule IDs detected in source
 - 29 scanners (full audit mode), 19 scanners (skill-scan focused mode)
@@ -320,8 +320,8 @@
 | Capability | mcpcheckup | SkillSpector | skill-scanner | repo-forensics | agtmls | trustcheck | sigil_guard | SkillWard | agentshield | Canari |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **Cross-registry (npm+PyPI+MCP+dsh)** | no | no | no | no | no | no | no | no | no | **YES** |
-| **Signed attestation (DSSE)** | yes | no | no | yes* | yes | yes* | yes | no | no | **YES** |
-| **Offline verification** | yes | no | no | yes* | yes | yes | yes | no | no | **YES** |
+| **Produces signed attestations** | yes | no | no | yes* | yes | no | yes | no | no | **YES** |
+| **Verifies attestations offline** | yes | no | no | yes* | yes | yes | yes | no | no | **YES** |
 | **Supersession chain** | no | no | no | no | no | no | no | no | no | **YES** |
 | **Same-author revocation propagation** | no | no | no | no | no | no | no | no | no | **YES** |
 | **Consumer-side install gate** | no | no | no | no | lockfile | no | yes | no | no | **YES** |
@@ -329,7 +329,7 @@
 | **Scanner orchestration** | no | no | no | no | no | no | no | no | no | **YES** |
 | **Deep vulnerability scanning** | no | yes | yes | yes | 33 skills | no | no | yes | yes | no (adapter) |
 | **YARA rules** | 0 | 20 | 34 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **re.compile patterns** | 0 | 483 | 453 | 1,138 | 89 | 18 | 0 | 100 | 0 | 0 |
+| **re.compile patterns** | 0 | 483 | 453 | 580 | 89 | 18 | 0 | 100 | 0 | 0 |
 | **JSON rulepack rules** | 0 | 0 | 0 | 451 | 0 | 0 | 0 | 0 | 0 | 0 |
 | **Unique rule IDs** | 15 | 28 | 148 | 44 | 4 | 24 | 0 | 52 | 39 | 0 |
 
@@ -345,7 +345,7 @@
 **Claim:** "First cross-registry, offline-verifiable verdict attestation ledger with supersession chains and revocation propagation for AI agent component supply chains."
 **Evidence:** Zero competitors have all four capabilities together. mcpcheckup has signing + offline verification but MCP-only. agtmls has signing + revocation but own-registry only. trustcheck has PEP 740 verification but no verdict production.
 
-**Do NOT claim:** "First signed attestation for npm" (npm provenance exists, 60% top-30 coverage). "First security scanner" (repo-forensics has 1,138 patterns). "First monitoring" (mcpcheckup exists and is live).
+**Do NOT claim:** "First signed attestation for npm" (npm provenance exists, 60% top-30 coverage). "First security scanner" (repo-forensics has 580 patterns). "First monitoring" (mcpcheckup exists and is live).
 
 ### 4.2 Cross-scanner inconsistency supports Canari
 
