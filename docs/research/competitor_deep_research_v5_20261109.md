@@ -289,3 +289,155 @@ README claims "71 vulnerability patterns" — this likely refers to the combined
 All repos cloned with `git clone --depth 1`. Analysis scripts in `E:/Temp/canari_deep/`.
 Key scripts: `audit_all.py` (cross-repo capability scan), `check_dup2.py`/`check_dup3.py` (content-hash dedup verification),
 `verify_yara.py`/`verify_yara2.py` (YARA rule counting), `read_verify.py` (mcpcheckup verifier source reading).
+
+
+---
+
+## 11. LINE-BY-LINE CODE READING EVIDENCE
+
+Every finding below is from actually reading the source file, not keyword counting.
+
+### 11.1 mcpcheckup verify-attestation.mjs (475 lines, read L61-L420)
+
+**PAE function (L143-165):** Deliberately reimplemented from the DSSE spec, NOT imported from attestation-schema. The header explains: "Both implement the same public spec, so they must compute identical bytes for identical input by construction; that fact is exactly what makes this a meaningful independent check instead of a formality." This is a security measure — an attacker who compromises the attestation-schema package cannot silently change the PAE computation in the verifier.
+
+**Key window rules (L282-297):**
+- `revoked_at` set → ALWAYS fails, whatever the time. Comment: "A revoked key means a compromise: whoever holds the key can sign any observed_at they like."
+- `observed_at < valid_from` → fails
+- `valid_until` set and `observed_at > valid_until` → fails
+- Both ends inclusive, compared as epoch milliseconds (not Date objects)
+
+**Key document validation (L225-269):** Every key validated: algorithm=Ed25519, SPKI 44 bytes with correct Ed25519 header, spki_sha256 matches actual SHA-256, key_id = sha256(SPKI)[:16], no duplicates. One bad entry rejects the entire document. No lenient mode.
+
+**Zero dependencies:** The verifier imports the canonicalizer's .ts source via a relative path, not a bare specifier. Comment: "A third party who has cloned this repository must be able to run `node packages/verifier/verify-attestation.mjs` directly, with no `pnpm install` and no node_modules of any kind."
+
+### 11.2 mcpcheckup projections.ts (66 lines)
+
+**Allowlist projection, not exclusion.** From the Chinese header comment (translated): "The projection ignores non-essential fields from the tools/list response (server version annotations, _meta, etc.). This prevents us from generating false drift when a server adds a new field. It is an allowlist of fields, not an 'exclude certain fields' approach."
+
+`projectToolset()` extracts and sorts tool names. `projectSchemas()` extracts `{name, inputSchema}` pairs, sorts by name then canonicalized schema string (not crypto, just deterministic ordering).
+
+### 11.3 agtmls signatures.py (76 lines)
+
+**Signing mechanism:** `ssh-keygen -Y verify` subprocess call. NOT a Python crypto library.
+
+From the module docstring: "Delegates to `ssh-keygen -Y verify`, which the spec names as the reference: the standard library has no Ed25519, and reimplementing SSHSIG to avoid a system tool would be the riskiest line in the registry."
+
+`verify()` function (L31-51):
+- Missing signature file → returns `"unsigned"` (not an error)
+- Missing ssh-keygen → raises `ToolMissing` (an error, never a verdict)
+- Success = exit code 0 → returns `"verified"`
+- Non-zero exit → returns `"bad_signature"`
+
+### 11.4 agtmls advisories.py (119 lines)
+
+**Revocation matching is by content digest, not by name.** `revoked()` function (L104-118):
+- Only consulted when `feed_status == "verified"` — unsigned feeds are ignored with a note
+- Matches installed skill digests against the advisory feed's digest list
+- Entries without a name are still reported: "dropping it would hide a revocation of something installed"
+
+**Exit code precedence** (`verify_report.py` L52-62): `bad_signature` (5) > integrity failure (3) > revoked (6) > unsigned (4) > OK (0). A skill with a bad signature is reported before revocation is checked.
+
+### 11.5 trustcheck attestations.py (474 lines) — verify() function (L177-243)
+
+**Step-by-step PEP 740 verification:**
+1. Convert PEP 740 attestation to Sigstore Bundle (`to_bundle()`)
+2. Call `_production_verifier(offline=offline).verify_dsse(bundle, publisher.as_policy())`
+3. Check payload type = `application/vnd.in-toto+json`
+4. Parse in-toto Statement
+5. Validate exactly 1 subject
+6. Parse subject name as distribution filename
+7. **Check subject name == distribution name** (catches mismatched attestations)
+8. **Check subject SHA-256 digest == distribution digest** (catches wrong-bundle errors)
+9. Check predicate type is PEP Publish v1 or SLSA Provenance v1
+10. For SLSA: call `analyze_slsa_provenance()` with publisher context
+
+**Publisher policies:** `_GitHubPublisherPolicy` builds a Sigstore AllOf policy: `OIDCIssuerV2("https://token.actions.githubusercontent.com")` + `OIDCSourceRepositoryURI("https://github.com/{repository}")`, plus optional OIDCSourceRepositoryDigest and OIDCSourceRepositoryRef claims.
+
+### 11.6 repo-forensics pre_scan.py (3,093 lines) — decide() function (L2922-2993)
+
+**Fail-closed command gate:**
+1. Detect install/update patterns (also catches pipe-to-shell)
+2. Pipe-to-shell → **instant DENY**
+3. Extract package names from command
+4. Load IOC set (fail-open: any failure loading IOCs must fail OPEN)
+5. Check package names against IOC set → DENY if matched
+6. Check version-pinned npm tokens (`name@version`) by base name and exact version
+7. Check PyPI pinned versions (`litellm==1.107.0`)
+8. No IOC match → check for redirected package index (registry risk) → ASK
+9. Otherwise → ALLOW
+
+**Kill switch architecture:** `unsafe-off` (everything off including tamper detection) > `install-manifest tamper` > `envelope drift` > `PRE_SCAN=0` > normal detection. The manifest integrity check runs BEFORE the allow branch.
+
+### 11.7 skill-scanner rule_registry.py (1,965 lines)
+
+**Strict pack validation with collision detection:**
+- `register_pack()`: validates the complete pack before publishing. A late collision must not leave earlier rules from a rejected pack in the active registry generation.
+- `load_bundled_pack()`: release-owned packs may declare Python implementations and tuning knobs. Local packs reject imported Python code.
+- `load_trusted_pack()`: fail-fast. Unknown schema fields, metadata drift, missing or duplicate implementations, malformed regex/YARA, and out-of-policy CEL all make the complete pack unusable.
+
+### 11.8 SkillSpector static pattern modules (15 modules, 61 unique rule IDs)
+
+| Module | Rule IDs | re.compile | Lines |
+|---|---|---|---|
+| static_patterns_tool_misuse.py | TM1-TM4 | 56 | 11,745 |
+| static_patterns_supply_chain.py | SC1-SC9, TR1-TR3 | 41 | 4,417 |
+| static_patterns_prompt_injection.py | P1-P4, P9 | 32 | 1,200 |
+| static_patterns_anti_refusal.py | AR1-AR3 | 39 | 643 |
+| static_patterns_privilege_escalation.py | PE1-PE5 | 27 | 1,436 |
+| static_patterns_memory_poisoning.py | MP1-MP3 | 25 | 968 |
+| static_patterns_system_prompt_leakage.py | P6-P8 | 14 | 1,724 |
+| static_patterns_rogue_agent.py | RA1-RA2 | 12 | 676 |
+| static_patterns_excessive_agency.py | EA1-EA5 | 11 | 536 |
+| static_patterns_data_exfiltration.py | E1-E5 | 4 | 566 |
+| static_patterns_ssrf.py | SSRF1-SSRF3 | 3 | 152 |
+| static_patterns_agent_snooping.py | AS1-AS3 | 1 | 318 |
+| static_patterns_output_handling.py | OH1-OH3 | 1 | 733 |
+| static_patterns_deserialization.py | DS1-DS4 | 1 | 153 |
+| static_patterns_harmful_content.py | P5 | 0 | 210 |
+
+**Total: 61 unique rule IDs, 267 re.compile in static_patterns modules alone.**
+
+SkillSpector also has:
+- Behavioral taint tracking: 2,468 lines, 91 methods. Phase A (assignment flows) + Phase B (all flows), 3 severity lanes. Taint sources are tracked through variable assignments, function calls, and container subscripts.
+- 12+ LLM provider integrations (anthropic, azure_openai, bedrock, gemini, ollama, openai, claude_cli, codex_cli, gemini_cli, antigravity_cli, opencode_cli, openai_compatible)
+- Dependency inspection: 2,274 lines across 4 modules
+- Unicode confusables: 1,527 lines
+- SARIF output: 198 lines
+
+### 11.9 ramparts rule_eval.rs (209 lines)
+
+**Rule quality evaluation against a fixed corpus:**
+- 77 benign tools captured verbatim from three production servers (GitHub, server-everything, DeepWiki)
+- Hand-built malicious corpus (tool poisoning, injection, secret leak, traversal)
+- **Zero false positives gate:** `benign_servers_produce_no_findings()` — every match on benign data is a false positive
+- **Zero false negatives gate:** `known_attacks_are_all_detected()` — every miss on malicious data is a false negative
+- Comment: "The thresholds below are deliberately strict: a scanner that cries wolf on more than a couple of percent of a real server's tools trains its users to ignore it, which is worse than not scanning."
+- Evasion-resistant rescan: Unicode/base64 evasion cases tested through `normalize::additional_scan_views()`
+
+**40 YARA rules** across 15 .yar files (command_injection: 1, cross_origin_escalation: 1, cryptominers: 4, hacktools: 5, malware: 6, mcp_config_risk: 1, path_traversal: 1, secrets_leakage: 4, skill_authority: 2, skill_credential_harvesting: 1, skill_prompt_injection: 5, skill_system_manipulation: 1, skill_tool_chaining_abuse: 1, sql_injection: 1, webshells: 6)
+
+### 11.10 SkillWard — Independent code (NOT a Cisco fork)
+
+SkillWard's `skill-scanner/skill_scanner/` package is an independent implementation, NOT a copy of Cisco's skill-scanner. Content-hash comparison confirms different code.
+
+Key modules: `core/analyzers/static.py` (2,152 lines, 53 re.compile, 38 functions), `core/analyzers/pipeline_analyzer.py` (724 lines, 20 re.compile), `core/command_safety.py` (368 lines, 17 re.compile).
+
+**Key finding from README:** "Five scanners on 238,180 Skills showed highly inconsistent results, only 0.12% were flagged by all five, with individual flag rates ranging from 3.79% to 41.93%."
+
+**0 test files.** No automated testing at all.
+
+---
+
+## 12. CORRECTED NUMBERS (Content-Hash Deduplicated)
+
+| Repo | re.compile (raw) | re.compile (unique) | Duplicate files | YARA rules | Rule IDs |
+|---|---|---|---|---|---|
+| SkillSpector | 483 | 483 | 1 (0 re.compile) | 20 | 61 static + 28 source |
+| skill-scanner | 453 | 453 | 0 | 27 | 148 |
+| repo-forensics | 1,138 | **580** | 66 (mirror dirs) | 0 | 44 |
+| agent-scan | 50 | 48 | 9 | 0 | 0 |
+| SkillWard | ~100 | ~100 | 2 (0 re.compile) | 0 | 52 |
+| mcp-scanner | 10 | 10 | 1 (0 re.compile) | 0 | 0 |
+| agtmls | 89 | 89 | 0 | 0 | 4 |
+| trustcheck | 18 | 18 | 0 | 0 | 24 |
