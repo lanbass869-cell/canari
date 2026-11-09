@@ -94,6 +94,8 @@ _OWN_HASH_FIELDS = {
     "canonicalization",
     # Public metadata fields - not credentials
     "homepage",
+    # Supersession chain and revocation references (contain our own digests)
+    "supersedes", "ref",
 }
 
 

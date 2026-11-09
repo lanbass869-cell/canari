@@ -76,7 +76,8 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
                   policy_name="default", policy_overrides=None):
     if policy_name not in BUILTIN_POLICIES:
         raise ValueError("unknown policy: %s (available: %s)" % (policy_name, list(BUILTIN_POLICIES)))
-    policy = BUILTIN_POLICIES[policy_name]
+    from dataclasses import replace
+    policy = replace(BUILTIN_POLICIES[policy_name])
     if policy_overrides:
         for k, v in policy_overrides.items():
             if hasattr(policy, k):
@@ -100,7 +101,11 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     subject = payload.get("subject", {})
     subject_name = "%s@%s (%s)" % (subject.get("name", "?"), subject.get("version", "?"), subject.get("registry", "?"))
 
-    if key_path and os.path.exists(key_path):
+    if key_path:
+        if not os.path.exists(key_path):
+            return GateDecision(decision="BLOCK",
+                                reasons=["key file not found: %s (signature NOT verified)" % key_path],
+                                policy=policy_name, verdict=verdict, subject=subject_name)
         with open(key_path, "r", encoding="utf-8") as f:
             pub = json.load(f)
         ok, _, err = verify_signed(envelope, pub)
