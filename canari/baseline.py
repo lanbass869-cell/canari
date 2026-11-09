@@ -223,8 +223,8 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     lock.__enter__()
     state = StateStore(os.path.join(out_dir, "state.json"))
 
+    key_path = os.path.join(out_dir, "private_key.pem")
     if signer is None:
-        key_path = os.path.join(out_dir, "private_key.pem")
         signer, pub_key, _ = load_or_generate_keypair(key_path)
     
     # Key lifecycle management
@@ -237,22 +237,6 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         key_valid, reason = is_key_valid(registry)
         if not key_valid:
             print("[key] WARNING: signing key is not valid: %s" % reason)
-            signer, pub_key = generate_keypair()
-            save_private_key(signer, key_path)
-            registry = create_key_registry_entry(pub_key, key_path)
-            save_key_registry(registry, registry_path)
-    
-    # Key lifecycle management (mcpcheckup pattern)
-    registry_path = os.path.join(out_dir, "key_registry.json")
-    registry = load_key_registry(registry_path)
-    if registry is None:
-        registry = create_key_registry_entry(pub_key, key_path)
-        save_key_registry(registry, registry_path)
-    else:
-        key_valid, reason = is_key_valid(registry)
-        if not key_valid:
-            print("[key] WARNING: signing key is not valid: %s" % reason)
-            print("[key] Generating a new keypair...")
             signer, pub_key = generate_keypair()
             save_private_key(signer, key_path)
             registry = create_key_registry_entry(pub_key, key_path)
@@ -399,8 +383,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     feed_dir = os.path.join(out_dir, "feed")
     os.makedirs(att_dir, exist_ok=True)
     os.makedirs(feed_dir, exist_ok=True)
+    key_path = os.path.join(out_dir, "private_key.pem")
     if signer is None:
-        key_path = os.path.join(out_dir, "private_key.pem")
         signer, pub_key, _ = load_or_generate_keypair(key_path)
     
     # Key lifecycle management
@@ -413,22 +397,6 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         key_valid, reason = is_key_valid(registry)
         if not key_valid:
             print("[key] WARNING: signing key is not valid: %s" % reason)
-            signer, pub_key = generate_keypair()
-            save_private_key(signer, key_path)
-            registry = create_key_registry_entry(pub_key, key_path)
-            save_key_registry(registry, registry_path)
-    
-    # Key lifecycle management (mcpcheckup pattern)
-    registry_path = os.path.join(out_dir, "key_registry.json")
-    registry = load_key_registry(registry_path)
-    if registry is None:
-        registry = create_key_registry_entry(pub_key, key_path)
-        save_key_registry(registry, registry_path)
-    else:
-        key_valid, reason = is_key_valid(registry)
-        if not key_valid:
-            print("[key] WARNING: signing key is not valid: %s" % reason)
-            print("[key] Generating a new keypair...")
             signer, pub_key = generate_keypair()
             save_private_key(signer, key_path)
             registry = create_key_registry_entry(pub_key, key_path)
