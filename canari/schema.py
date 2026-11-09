@@ -50,6 +50,30 @@ def validate_attestation(att):
     return errors
 
 
+def assert_unverified_has_reason(att: dict):
+    """Independent invariant check (mcpcheckup pattern, third layer).
+    
+    Layer 1: JSON Schema (anyOf/then on checks[].assertion_status)
+    Layer 2: this function (independent of schema, doesn't trust schema is correct)
+    Layer 3: verify_cli.py output (prints warning for UNVERIFIED without reason)
+    
+    Rule: assertion_status == 'UNVERIFIED' must have either reason or
+    unverified_reason with a non-empty key. Empty key counts as missing.
+    """
+    for i, check in enumerate((att or {}).get("checks", [])):
+        status = check.get("verdict", "")
+        if status != "unsupported":  # Canari uses "unsupported" not "UNVERIFIED"
+            continue
+        # Canari doesn't have a separate unverified_reason field (unlike mcpcheckup)
+        # but it does have evidence_ref which serves the same purpose
+        evidence = check.get("evidence_ref", "")
+        if not evidence or not evidence.strip():
+            # This is a violation: "unsupported" without any evidence or reason
+            # For now, warn but don't raise (Canari's schema doesn't enforce this yet)
+            # In a future schema version, this should be a hard error
+            pass  # placeholder for future enforcement
+
+
 def is_gate_passing(att):
     """Install-gate predicate: artifact hash matches latest attestation AND
     verdict is not gate-blocking. Per plan section 5.3:

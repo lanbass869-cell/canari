@@ -14,6 +14,7 @@ DSSE envelope in the bundle is the authoritative signature.
 """
 import base64
 import json
+import re
 
 from canari.schema import _PREDICATE_TYPE
 
@@ -38,13 +39,69 @@ def generate_keypair():
     return signer, signer.public_key
 
 
+# Credential shape detection (mcpcheckup credential-shapes.ts pattern)
+_CREDENTIAL_RULES = [
+    ("jwt", lambda s: bool(re.match(r"eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*", s))),
+    ("authorization header", lambda s: bool(re.match(r"(?i)\b(?:bearer|basic|token|dpop)\s+[A-Za-z0-9._~+/-]{8,}", s))),
+    ("private key block", lambda s: "-----BEGIN" in s and "PRIVATE KEY" in s),
+    ("vendor key prefix", lambda s: bool(re.search(
+        r"(?:sk|rk|pk)_(?:live|test)_|gh[pousr]_|github_pat_|xox[abprs]-|glpat-|whsec_|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{20}", s))),
+    ("long hex run", lambda s: bool(re.search(r"(?:^|[^0-9A-Za-z])[0-9a-fA-F]{32,}(?![0-9A-Za-z])", s))),
+    ("high-entropy token", lambda s: any(
+        len(p) >= 24 and any(c.isupper() for c in p) and any(c.islower() for c in p) and any(c.isdigit() for c in p)
+        for p in re.split(r"[^A-Za-z0-9+/=_-]+", s)
+    )),
+]
+
+
+# Fields whose values are our own computed hashes/digests - exempt from credential scanning
+# (mcpcheckup does the same: OWN_VALUE_PATHS in credential-shapes.ts)
+_OWN_HASH_FIELDS = {"artifact_sha256", "scenario_sha256", "suite_digest", "suite_commit",
+                    "launch_config_digest", "toolset_fingerprint", "schema_fingerprint", "run_id"}
+
+
+def credential_shapes(value, path="") -> list:
+    """Find credential-shaped strings anywhere in a JSON-serializable value.
+    Returns list of "<path>: <rule>" strings. Empty = clean.
+    Percent-decoded forms are also checked (mcpcheckup pattern).
+    Fields in _OWN_HASH_FIELDS are exempt (they're our own computed digests)."""
+    import urllib.parse
+    # Skip our own hash fields
+    leaf = path.split(".")[-1] if path else ""
+    if leaf in _OWN_HASH_FIELDS:
+        return []
+    results = []
+    if isinstance(value, str):
+        decoded = urllib.parse.unquote(value)
+        for name, matcher in _CREDENTIAL_RULES:
+            if matcher(value) or matcher(decoded):
+                results.append("%s: %s" % (path or "<root>", name))
+    elif isinstance(value, list):
+        for i, v in enumerate(value):
+            results.extend(credential_shapes(v, "%s.%d" % (path, i) if path else str(i)))
+    elif isinstance(value, dict):
+        for k, v in value.items():
+            results.extend(credential_shapes(v, "%s.%s" % (path, k) if path else k))
+    return results
+
+
 def sign_attestation(att: dict, signer) -> dict:
     """Sign the attestation; returns {"envelope": dict, "payload": dict}.
 
     The payload includes the inline signature block (schema-required), so we
     build payload -> sign -> inject sig -> re-sign. Verification always goes
     through the envelope; the inline block is informational/compliance.
+    
+    Credential shape detection (mcpcheckup pattern): scans the payload before
+    signing to prevent accidentally embedding credentials in a public artifact.
     """
+    # Credential scan before signing
+    cred_hits = credential_shapes(att)
+    if cred_hits:
+        raise ValueError(
+            "CREDENTIAL_IN_PAYLOAD: %d credential-shaped string(s) detected in the attestation: %s"
+            % (len(cred_hits), "; ".join(cred_hits[:5]))
+        )
     def _build(a):
         payload_bytes = json.dumps(a, ensure_ascii=False, sort_keys=True).encode("utf-8")
         env = Envelope(payload=payload_bytes, payload_type=DSSE_PAYLOAD_TYPE, signatures={})

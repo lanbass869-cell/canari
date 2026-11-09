@@ -415,3 +415,96 @@ DEFAULT_PROBE_BUDGET = {
 | LLM-as-judge | 架构守卫禁止 |
 | Cloudflare Workers deployment | Canari 是 CLI 工具 |
 | Next.js frontend | Canari 是 dashboard.html 单文件 |
+
+
+---
+
+## 十四、不变量三层独立强制（invariants.ts，44 行）
+
+mcpcheckup 对 "UNVERIFIED 必须带 reason" 这条规则做了**三层独立强制**，三层互不信任：
+
+1. **数据库层**：`CHECK constraint in supabase/migrations/0001_core.sql` — `assertion_status <> 'UNVERIFIED' OR coalesce(unverified_reason, reason) IS NOT NULL`
+2. **Schema 层**：`then`/`anyOf` clause on `$defs.assertion` in `attestation.schema.json`
+3. **代码层**：`invariants.ts` 的 `assertUnverifiedHasReason()` 函数
+
+注释原文：*"None of the three trusts the others — a bug in the schema or a migration that silently drops the CHECK constraint still leaves this one standing, and vice versa."*
+
+L35 的实现细节：不仅检查 `unverified_reason !== null`，还检查 `.key.length > 0`——空 key（`{ key: '' }`）也算没带 reason。这是独立层不应该信任 schema 层会检查 key 模式的体现。
+
+**Canari 应该学**：schema.py 的 `validate_attestation()` 只做了 schema 验证，没有独立的不变量检查。如果 schema 文件被意外修改（或 jsonschema 库 bug），没有第二道防线。
+
+---
+
+## 十五、凭据形状检测（credential-shapes.ts，70 行）
+
+**在签名之前，扫描 attestation payload 中是否嵌入了凭据形状的文本。**
+
+6 条规则：
+
+| 规则名 | 匹配模式 |
+|---|---|
+| jwt | `eyJ...` (JWT token 格式) |
+| authorization header value | `Bearer <8+ chars>`, `Basic <8+ chars>`, `Token <8+ chars>`, `DPoP <8+ chars>` |
+| private key block | `-----BEGIN ... PRIVATE KEY-----` |
+| vendor key prefix | `sk_live_`, `sk_test_`, `ghp_`, `ghu_`, `gho_`, `ghs_`, `ghr_`, `github_pat_`, `xoxa-`, `xoxb-`, `xoxp-`, `xoxr-`, `xoxs-`, `glpat-`, `whsec_`, `AKIA` (AWS), `AIza` (Google) |
+| long hex run | 32+ 位连续十六进制字符 |
+| high-entropy token | 24+ 字符且同时含大写+小写+数字 |
+
+**百分比解码迭代**：`%73k_test_` 被解码为 `sk_test_` 后仍然会被检测到。解码是迭代的（`%2573` → `%73` → `s`），直到字符串不再变化。
+
+**自身计算值豁免**：`suite_digest`, `suite_commit`, `launch_config_digest`, `toolset_fingerprint`, `schema_fingerprint`, `run_id`, `auth_observation.resource_metadata_body_digest` 这些路径的值被豁免——但豁免条件是值必须匹配 schema 中的 pattern（从 schema 文件读取，不是重写）。如果有人在这些路径放了其他内容，仍然会被扫描。
+
+**Canari 应该学**：在 `sign_attestation()` 之前调用 `credentialShapes()`，防止将凭据意外签入公开工件。
+
+---
+
+## 十六、digest.ts（13 行）+ 跨一致性测试
+
+**digest 函数：** SHA-256 of JCS+NFC canonical form, 格式为 `"sha256:<64 lowercase hex chars>"`。
+
+**跨一致性测试（cross-consistency.test.ts，59 行）验证了 4 个不变量：**
+
+1. **键插入顺序无关**：`buildInOrder(['zebra','apple','mango'])` 和 `buildInOrder(['apple','zebra','mango'])` 的 canonicalize 结果完全相同
+2. **嵌套对象的键顺序无关**：嵌套两层、三层的对象，键顺序打乱后 canonicalize 结果相同
+3. **canonicalBytes 字节级一致**：不仅字符串相同，编码后的字节数组也逐字节相同
+4. **JS 数字键排序陷阱**：JS 对象会把纯数字键按数值排序（`obj['10']` 排在 `obj['2']` 前面），但 RFC 8785 要求 UTF-16 code unit 排序（`"10" < "2"`）。测试 `canonicalize` 正确处理了这个 JS 引擎的默认行为差异
+
+---
+
+## 十七、正向 fixture 的设计质量（positive.ts，526 行）
+
+### fixture：modern-baseline-clean
+
+一个完全正确的 2026-07-28 modern 实现。guardsAgainst 字段说明了为什么需要这个测试：
+
+*"P0 正确性要求（PRD §5.2）保证探测引擎不因为只见过 initialize 而认为一个完全正确的现代实现会 discovery_handshake=FAILED。这也是本文件最重要的 negative control（一个"全部通过"的正面存在），专门用来阻止初学者把这些唯一正常实现弄得通盘全 FAILED 的探测引擎上线。"*
+
+### fixture：legacy-strict-accept-enforcement
+
+**从真实生产事故中诞生的 fixture。** guardsAgainst 记录了完整故事：
+
+*"Task Y 发现 mcp.deepwiki.com/mcp 在 L2b 首轮探测时被 disqualified。实际抓包证实该 legacy initialize/notifications/initialized/tools/list 全都要求 Accept 头同时列出 application/json 和 text/event-stream。缺失则 406。这意味着 packages/checks/src/protocol.ts 的 legacy 路径（performLegacyHandshake / performToolsList 的 legacy 分支 / performUnknownToolCall 的 legacy 分支）当时没有设置这个头。规范原文 modelcontextprotocol.io/specification/2025-06-18/basic/transports 的第 2 段（Backwards Compatibility 一节）明确说这个要求从第一个 InitializeRequest 就开始，只对后续请求…… 这意味着本文件中的 legacy-baseline-clean 的 mock server 从不校验 Accept 头，于是这个 bug 一直没被抓住。本 fixture 从 DeepWiki 的实际观察到的问题，作为教训，406 + 同一协议版本的行为专门抓住了'完全合规的 legacy 实现的每一个请求都必须带 Accept 头'这一点。"*
+
+**这是 fixture-first TDD 的最佳实践：每个 fixture 都从真实观察中来，guardsAgainst 字段记录了它防止的 bug 和来源。**
+
+---
+
+## 十八、Canari 应该实现的优先级（基于逐行阅读）
+
+### 立即实现（P0，每个 < 2 小时）
+
+| # | 设计 | 源码参考 | Canari 改进 |
+|---|---|---|---|
+| C1 | **凭据形状检测** | credential-shapes.ts L16-22, 6 rules + percent decoding | sign_attestation() 之前扫 payload 是否嵌入凭据 |
+| C2 | **UNVERIFIED 不变量** | invariants.ts L29-43, 三层独立强制 | schema.py 加 assertUnverifiedHasReason() |
+| C3 | **Canonical JSON 检查** | cross-consistency.test.ts 4 个不变量 | signing.py 确认 payload 是 canonical JSON |
+| C4 | **格式化 digest** | digest.ts, "sha256:<64 hex>" 格式 | verify_cli 输出统一格式 |
+
+### 中期实现（P1）
+
+| # | 设计 | 源码参考 | Canari 改进 |
+|---|---|---|---|
+| C5 | **guardsAgainst 字段** | positive.ts 每个 fixture 有 guardsAgainst 说明 | 测试文件加 guardsAgainst 注释 |
+| C6 | **DNS 重绑定防护** | resolve.ts resolveAndValidateHost, 全集拒绝 | 如果 Canari 将来做 MCP server 探测的话 |
+| C7 | **逐层独立强制** | invariants.ts 三层不互信 | schema.py + verify_cli + state.py 各自独立检查 |
+| C8 | **Projection 版本化** | TOOLSET_PROJECTION_VERSION = 'v1', 发布后不可改 | Canari 未来加 projection 时要有版本号 |
