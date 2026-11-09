@@ -482,7 +482,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             "total": len(all_results), "errors": total_errors,
             "by_registry": by_reg, "by_verdict": by_verdict,
             "items": [{"name": r["name"], "registry": r.get("registry", ""),
-                       "version": r.get("version", ""), "verdict": r.get("verdict", "error")}
+                       "version": r.get("version", ""), "verdict": r.get("verdict", "error"),
+                       "bundle_file": os.path.basename(r["bundle"]) if r.get("bundle") else None}
                       for r in all_results]}
     feed_path = os.path.join(feed_dir, "feed-multi-%s.json" % datetime.date.today().strftime("%Y%m%d"))
     with open(feed_path, "w", encoding="utf-8") as f:

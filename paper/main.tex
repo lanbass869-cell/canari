@@ -30,7 +30,7 @@ DSSE/Ed25519 attestation objects binding verdicts to artifact hashes, with
 bi-temporal timestamps, supersession chains, and same-author revocation propagation.
 Canari does not compete with identity attestations (it consumes them as input) or
 with deep scanners (it orchestrates them as adapters); it fills the \emph{verdict
-layer} between them. We demonstrate the system with 294 attestations spanning
+layer} between them. We demonstrate the system with 243 attestations spanning
 four registries, a live-verified npm provenance ingestion path
 (sigstore-python~4.5.1 against \texttt{express@5.3.0}), and a PyPI native
 attestation pipeline that is ready for adoption (measured coverage: 0/40 recent
@@ -177,7 +177,7 @@ security-scan endpoints, CC-BY-4.0 licensed)
 
 \subsection{Coverage}
 
-The MCP Registry contains at least 50{,}000 entries (server + version records) spanning 19{,}330 distinct server names (live count, November 2026, full cursor pagination). A multi-registry run produced 294 attestations (npm: 100, PyPI: 94, MCP Registry:
+The MCP Registry contains at least 50{,}000 entries (server + version records) spanning 19{,}330 distinct server names (live count, November 2026, full cursor pagination). A multi-registry run produced 243 attestations (npm: 100, PyPI: 94, MCP Registry:
 100) with 99.6\% schema integrity and zero hidden errors. Failure counts are
 publicly recorded in the feed (dead-letter audit).
 
