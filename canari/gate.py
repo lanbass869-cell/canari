@@ -80,8 +80,12 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     policy = replace(BUILTIN_POLICIES[policy_name])
     if policy_overrides:
         for k, v in policy_overrides.items():
-            if hasattr(policy, k):
-                setattr(policy, k, v)
+            if not hasattr(policy, k):
+                continue  # unknown field silently skipped
+            # Type validation for list fields
+            if k == "allowed_registries" and not isinstance(v, list):
+                raise ValueError("policy_overrides.allowed_registries must be a list, got %s" % type(v).__name__)
+            setattr(policy, k, v)
 
     reasons = []
     decision = "ALLOW"
@@ -106,8 +110,13 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
             return GateDecision(decision="BLOCK",
                                 reasons=["key file not found: %s (signature NOT verified)" % key_path],
                                 policy=policy_name, verdict=verdict, subject=subject_name)
-        with open(key_path, "r", encoding="utf-8") as f:
-            pub = json.load(f)
+        try:
+            with open(key_path, "r", encoding="utf-8") as f:
+                pub = json.load(f)
+        except Exception as e:
+            return GateDecision(decision="BLOCK",
+                                reasons=["key file is not valid JSON: %s" % e],
+                                policy=policy_name, verdict=verdict, subject=subject_name)
         ok, _, err = verify_signed(envelope, pub)
         if not ok:
             return GateDecision(decision="BLOCK",

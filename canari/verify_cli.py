@@ -196,6 +196,7 @@ def verify_chain(directory: str, key_path: str = None) -> int:
         return 0
 
     # Build digest -> filename map and supersedes -> filename map
+    # Pre-compute ALL digests once (O(N) instead of O(N²) re-reads)
     digests = {}  # payload digest -> filename
     supersedes_map = {}  # filename -> digest it supersedes
     components = defaultdict(list)  # name -> [filenames]
@@ -230,43 +231,41 @@ def verify_chain(directory: str, key_path: str = None) -> int:
         # Build chain: start from bundles with no supersedes (heads)
         heads = [f for f in bundle_files if not supersedes_map.get(f)]
         if len(heads) == 0:
-            # All bundles have supersedes -> possible circular or missing head
             errors.append("%s: no chain head found (%d bundles, all have supersedes)" % (name, len(bundle_files)))
             continue
 
-        # Walk each chain from head
+        # Walk each chain from head using pre-computed digests (O(1) lookups)
         for head in heads:
             current = head
             visited = {head}
             depth = 0
-            while depth < 100:  # max depth
-                # Find the next bundle that supersedes this one
+            while depth < 100:
+                current_digest = None
+                for d, f in digests.items():
+                    if f == current:
+                        current_digest = d
+                        break
+                if current_digest is None:
+                    break
+
+                # Find the next bundle that supersedes current's digest
                 next_bundle = None
                 for f in bundle_files:
-                    if supersedes_map.get(f) is not None:
-                        # Check if this bundle's supersedes points to current's digest
-                        fp = os.path.join(att_dir, f)
-                        try:
-                            bp = json.load(open(fp, encoding="utf-8"))
-                            pd = bp.get("payload", {})
-                            pd_digest = hashlib.sha256(
-                                json.dumps(pd, ensure_ascii=False, sort_keys=True).encode("utf-8")
-                            ).hexdigest()
-                            # Check: does this bundle supersede current?
-                            sup_digest = supersedes_map.get(f)
-                            current_digest = hashlib.sha256(
-                                json.dumps(
-                                    json.load(open(os.path.join(att_dir, current), encoding="utf-8")).get("payload", {}),
-                                    ensure_ascii=False, sort_keys=True
-                                ).encode("utf-8")
-                            ).hexdigest()
-                            if sup_digest == current_digest:
-                                next_bundle = f
-                                break
-                        except Exception:
-                            pass
+                    sup_digest = supersedes_map.get(f)
+                    if sup_digest is not None and sup_digest == current_digest:
+                        next_bundle = f
+                        break
+
+                # Check for missing supersedes target
                 if next_bundle is None:
-                    break  # end of chain
+                    # Check if current's supersedes points to a nonexistent digest
+                    current_sup = supersedes_map.get(current)
+                    if current_sup and current_sup not in digests:
+                        errors.append("%s: %s supersedes %s... but target digest not found in directory" % (
+                            name, current, current_sup[:16]))
+
+                if next_bundle is None:
+                    break
                 if next_bundle in visited:
                     errors.append("%s: circular reference detected at %s" % (name, next_bundle))
                     break
