@@ -518,3 +518,215 @@ probe 对 fixture，然后逐条对比实际 assertion 和期望 assertion。
 **结论：** mcpcheckup 在"深度"上赢（协议检查、安全工程、测试基础设施）。
 Canari 在"广度"上赢（跨 registry、supersession、传播、门禁、原生 attestation）。
 两者互补而非竞争。Canari 应该学它的深度，同时保持自己的广度优势。
+
+
+---
+
+## 二十、61 项探测测试（probe.test.ts，1,513 行）
+
+**这是主探测引擎的完整测试文件。61 个测试覆盖的边界条件：**
+
+### 预算耗尽的级联语义
+
+- `response-exceeds-budget`：tools/list 响应超过 2MB → 已完成的检查（reachability, discovery_handshake, protocol_revision, transport_type）**保持 COMPLETED/VERIFIED**。未跑到的检查 → SKIPPED/UNVERIFIED + `probe_budget_exhausted_body`。
+- 注释（guardsAgainst）："超预算必须是 execution_status=ERROR + assertion_status=UNVERIFIED，绝不能是 FAILED。超时/超量不等于'这个 server 坏了'——也可能是我们这边的探测节点或网络问题。"
+
+### 凭据门控的边界
+
+- `credential-gated-tools-list-with-tools-body`：tools/list 返回 401 + 合法 challenge，**但 body 里带着结构完好的 tools 数组**。tools_list 记 COMPLETED/UNVERIFIED（因为被门控了），**不计算 fingerprint**——" declaring tools_list unverified while still publishing a fingerprint derived from that same response would be incoherent"
+- 对照测试：同一个 handler，只把 401 换成 200（body 逐字节不变）→ fingerprint 被正常计算。**证明上面的行为是因为门控，不是因为数据问题**
+- `credential-challenge-htab-separator-not-exempted`：scheme 与 realm 之间是 HTAB（不是 1*SP）→ 不豁免，记 FAILED
+- `credential-challenge-qdtext-control-char-not-exempted`：realm 的 quoted-string 里夹了 %x01 控制字符 → 不豁免，记 FAILED
+
+### 探测工具名碰撞（T86）
+
+- 红证 a：第一页有逐字同名的工具 → 不发 tools/call
+- 红证 b：第一页无同名但带 nextCursor → 读第二页发现同名 → 不发 tools/call
+- 红证 c：tools/list 失败 → 也不知道有没有同名 → 不发 tools/call
+- 门控下的 T86b：握手和 tools/list 都被 401 挡了 → 不发 tools/call，error_taxonomy 和 auth_metadata 都 SKIPPED
+
+### 限流判定
+
+- 429 无 Retry-After → 不是限流（继续跑完整轮）
+- 429 有 Retry-After → 是限流，rateLimited 字段带 Retry-After 秒数
+- 503 无 Retry-After → 不是限流（继续跑完整轮）
+- 503 有 Retry-After → 是限流
+- 对照：同一个 503，只多一个 Retry-After 头 → 行为相反。**证明判据在头上，不在状态码上**
+
+### 延迟测量的边界
+
+- 正常运行 → latency_profile = SKIPPED/UNVERIFIED/latency_not_recorded（因为 sendRequest 没有计时间）
+- 凭据门控运行 → 同样 latency_not_recorded
+- 级联中止 → 永远不被 cascade 覆盖
+- stdio 目标 → latency_not_recorded（不是 stdio_out_of_scope）
+- **每个 corpus fixture 都恰好有一条 latency_profile 行**
+
+### 请求计数的有区分力验证
+
+- "这张表有区分力（否则它是一张恒真的表）：legacy 两条在 maxRequests=4 与 maxRequests=8 下的请求数必须不同，modern 两条必须相同"
+- 这意味着他们不仅测试了行为，还测试了**测试本身的区分力**——如果减少请求数不改变结果，说明测试是恒真的
+
+---
+
+## 二十一、38 个负面 fixture 的完整清单（protocol-negatives.ts，1,265 行）
+
+每个 fixture 是一个模拟 MCP server 的 HTTP handler，返回构造好的恶意/异常响应：
+
+| fixture | 模拟的攻击/异常 |
+|---|---|
+| staleProtocolVersion | 返回旧版本号 |
+| toolsListIllegalStructure | tools/list 返回非数组 |
+| legacyEverythingRequiresAuthStillFails | 所有请求都要 auth，但 credentials 也不通过 |
+| errorResponseNonconformantShape | JSON-RPC 错误格式不合规 |
+| noCredentialsUnverifiableAuth | 401 但无 WWW-Authenticate 头 |
+| responseExceedsBudget | 2MB 超大响应 |
+| redirectCrossHost | 302 跳转到不同主机 |
+| forbidden403NotCredentialGated | 403 但没有 challenge → 不是凭据门控 |
+| credentialChallengeEmptyHeader | WWW-Authenticate 头为空 |
+| credentialChallengeMalformedHeader | WWW-Authenticate 格式不合法 |
+| credentialChallengeHtabSeparator | scheme 和 realm 之间用 HTAB |
+| credentialChallengeQdtextControlChar | realm 里夹控制字符 |
+| credentialChallengeMalformedRemainder | challenge 参数格式不合法 |
+| recognizedModernErrorCodeUnchanged | 已识别的 modern 错误码 |
+| recognizedModernErrorCodeAt401NotExempted | 401 + 已识别错误码 → 不豁免 |
+| rateLimited429NoRetryAfter | 429 无 Retry-After |
+| rateLimited429WithRetryAfter | 429 有 Retry-After |
+| rateLimited503WithRetryAfter | 503 有 Retry-After |
+| serviceUnavailable503NoRetryAfter | 503 无 Retry-After |
+| errorTaxonomyResultIsErrorJson | 错误以 JSON result 返回（isError=true）|
+| errorTaxonomyResultIsErrorSse | 错误以 SSE event-stream 返回 |
+| errorTaxonomyResultOk | 不存在的工具返回成功结果 |
+| errorTaxonomyNotJsonrpc | 响应不是 JSON-RPC |
+| errorTaxonomyJsonrpcMalformed | JSON-RPC 格式畸形 |
+| errorTaxonomyEventStreamNoData | SSE 无数据 |
+| errorTaxonomyEmptyBody | 空响应体 |
+| handshakeAckHttpError | 初始化确认 HTTP 错误 |
+| protocolRevisionMissing | 无协议版本 |
+| protocolRevisionUnknown | 未知协议版本 |
+| fingerprintToolMissingName | 工具没有 name |
+| fingerprintCanonicalizeFailed | 工具 schema 无法 canonicalize |
+| probeToolNameCollision | 探测工具名与真实工具名冲突 |
+| probeToolNameCollisionSecondPage | 碰撞在第二页 |
+| probeToolNameUnverifiable | 列表不完整，无法判断 |
+| probeToolNameCollisionGatedHandshake | 碰撞 + 门控 |
+| probeToolNameUnverifiableGated | 不完整 + 门控 |
+| probeToolNameRegisteredToolsListGated | 已注册 + tools/list 门控 |
+| probeToolNameRegisteredHandshakeGated | 已注册 + 握手门控 |
+
+---
+
+## 二十二、51 项 Schema 测试（schema.test.ts，617 行）
+
+**每个 Schema 版本互相拒绝对方的样例：**
+
+- v0.1 样例（裸字符串 reason）被 v0.2 schema 拒绝
+- v0.2 样例（{key} 对象 reason）被 v0.1 schema 拒绝
+- v0.2 样例被 v0.3 拒绝（缺 suite_commit）
+- v0.3 样例被 v0.2 拒绝（suite_commit 是未声明字段）
+
+**关键边界条件：**
+
+| 测试 | 验证什么 |
+|---|---|
+| 月 13、日 40 | 日期格式正确但日历上不存在 → 拒绝 |
+| transport=remote 但 launch_config_digest 非 null | remote 和 stdio 的字段互斥 |
+| transport=stdio 但 probe_dns_answer_changed=false | stdio 不做 DNS，字段必须为 null |
+| target.name 大写字母 | slug 格式拒绝大写 |
+| UNVERIFIED 且 reason 只有空白字符 | 光靠 minLength 挡不住三空格 |
+| assertion.reason 是裸字符串 | v0.2 起拒绝（v0.1 允许）|
+| suite_commit 39 位截断 | 差一位都拒绝 |
+| suite_commit 64 位 SHA-256 | 错误的对象名格式 |
+| suite_commit 大写 | 必须全小写十六进制 |
+| observed_at 格式合法但写法不唯一 | 固定精度 + 固定 Z 后缀是唯一写法 |
+| assertions 空数组 | 至少一条 |
+| 顶层出现未声明字段 | additionalProperties:false 在每一层都验证 |
+
+---
+
+## 二十三、37 项验证器测试（verify-attestation.test.mjs，562 行）
+
+**安全攻击场景：**
+
+| 测试 | 攻击场景 |
+|---|---|
+| 翻转 payload 一个字节 | 签名不再覆盖新字节 |
+| 翻转签名一个字节 | 签名本身被篡改 |
+| 改 payloadType 但不重新签名 | **PAE 类型混淆防护验证**——证明类型包含在签名内 |
+| 合法 JSON 但非规范编码 | 第 6 步（canonical form check）单独起作用 |
+| 不在白名单的 payloadType | **在任何验签动作之前**就失败 |
+| keyid 与公钥不符 | keyid 是 key 的指纹，不匹配就拒绝 |
+| 两个签名，一个 keyid 对、一个不对 | **整体失败**——每个签名的 keyid 都要对 |
+| 已吊销的钥 | 一律失败，不论 observed_at |
+| valid_until 边界（毫秒精度） | observed_at == valid_until 通过；晚 1ms 失败 |
+| observed_at 无小数位 vs 有小数位 | 按毫秒的 RFC 3339 瞬间比较，不按字符串 |
+| payload 没有 observed_at | 失败（valid_from 一定有值） |
+| 两个签名，一个吊销、一个有效 | **整体失败**（不静默跳过） |
+| 两个签名，一个有效、一个 keyid 不在文档 | **整体失败**（未知 keyid 不能被有效签名掩盖） |
+
+**最重要的测试：**
+- "改成另一个被允许的 payloadType 但不重新签名 → exit 非 0（证明 PAE 的类型混淆防护真的在起作用，不是被白名单顶替）"
+- 这证明 PAE 的类型混淆防护不是碰巧生效的——即使 payloadType 在白名单内，如果不重新签名，仍然失败
+
+**双向 schema 兼容性测试：**
+- "verifier 的 ALLOWED_PAYLOAD_TYPES 与 attestation-schema 自己列出的 payloadType 逐项相同（含顺序）"
+- "schema 包的每个 payloadType，verifier 实际都接受（行为一致，而不只是文本一致）"
+- "--help 列出的 payloadType 与 attestation-schema 的列表逐项相同"
+
+---
+
+## 二十四、差分测试架构（19 个文件，584KB）
+
+**设计：同一个输入，跑过新旧两个版本的实现，断言结果差异恰好是预期的新增功能。**
+
+### frozen 目录
+
+16 个历史版本（suite-0.6.0 到 suite-0.19.1），每个包含该版本所有模块的完整源码。
+
+### differential-shard.ts（110 行）
+
+分片系统：
+- 大文件（probe-tool-name-differential 1,167 行 / failed-reasons-differential 1,345 行 / guard-error-classification 660 行）的输入空间分片并行
+- 环境变量：SHARD_INDEX, SHARD_COUNT, SHARD_MODE ('run'|'merge'), SHARD_OUT_FILE, SHARD_IN_FILES
+- 全集断言（如"每个 oracle 分支都被到达"）只在 merge 进程中运行——"a whole-set assertion is a property of the FULL input space. Splitting it across two shards would make it a coin flip"
+
+### failed-reasons-differential.test.ts（1,345 行）
+
+**三方对比，互不共享代码：**
+1. **当前实现** — runProbe end-to-end
+2. **FROZEN_PRE_T73b** — 从 `git show 70618ee:…` 提取的修改前代码，逐字节复制。注释说 "DO NOT 'update' this copy to match a later implementation — its only job is to be the pre-T73b behaviour"
+3. **ORACLE** — 完全独立的预测器，不 import 任何实现代码，自己实现 SSE 解析、JSON-RPC 验证、规范化检查
+
+**输入空间：** 13 个 HTTP 状态码 × 12 种 Content-Type × 63 种 body = 9,828 个输入
+
+**五个断言（对每个输入）：**
+a) 每个检查的 assertion_status 三方一致
+b) 直接调用的结果与 FROZEN 深度相等（除了新增字段）
+c) FAILED ⇒ reason 等于 ORACLE 的预测；UNVERIFIED ⇒ 不是 T73b key
+d) params 只含允许的字段名，status 只在 7 个 key 上出现，无空 params
+e) 每个渲染的 reason 在 en 和 zh 中都无禁止词、无 canary 泄漏、无 8 字符 body 窗口泄漏
+
+### Canary 安全检查
+
+```typescript
+const CANARY = 'CANARYq7Zx'
+```
+
+嵌入在测试 body 中的金丝雀字符串。检查渲染后的 reason 消息：
+- 不包含 canary 本身
+- 不包含输入 body 的任何 8 字符子串（防止 server 控制的文本泄漏到签名 attestation）
+- 如果 reason 是从固定 key 渲染的（不是从 server 响应构建的），不可能包含 body 的子串
+
+---
+
+## 二十五、mcpcheckup 的工程文化总结
+
+1. **三方对比测试**：实现 + frozen 旧版 + 独立 oracle，三方必须一致。不共享代码。
+2. **差分测试验证"没有改变不该改变的"**：不只是测试新功能，还测试旧行为没变。
+3. **边界用毫秒精度验证**：valid_until 边界精确到 1ms。
+4. **安全边界用 canary 检查**：渲染输出不能泄漏输入内容。
+5. **测试区分力自证**：测试会验证自己的区分力（"legacy 两条在 4 和 8 下的请求数必须不同"）。
+6. **fixture 从生产事故中来**：每个负面 fixture 的 guardsAgainst 字段记录了它防止的真实 bug 和来源。
+7. **零依赖哲学贯穿始终**：verifier 不需要 node_modules，甚至不需要 pnpm install。
+8. **中英双语文档**：每个字段、每个 reason、每条注释都有中英文。
+9. **16 个历史版本保留完整源码**：不是为了回滚——是为了差分测试。
+10. **每条注释都是一段设计论证**：不是"这段代码做了什么"，而是"为什么这样做而不是那样做"。
