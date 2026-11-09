@@ -85,8 +85,16 @@ _CREDENTIAL_RULES = [
 
 # Fields whose values are our own computed hashes/digests - exempt from credential scanning
 # (mcpcheckup does the same: OWN_VALUE_PATHS in credential-shapes.ts)
-_OWN_HASH_FIELDS = {"artifact_sha256", "scenario_sha256", "suite_digest", "suite_commit",
-                    "launch_config_digest", "toolset_fingerprint", "schema_fingerprint", "run_id"}
+_OWN_HASH_FIELDS = {
+    "artifact_sha256", "scenario_sha256", "suite_digest", "suite_commit",
+    "launch_config_digest", "toolset_fingerprint", "schema_fingerprint", "run_id",
+    # DSSE signature fields - these are our own cryptographic outputs, not credentials
+    "keyid", "sig",
+    # Canonicalization profile identifier
+    "canonicalization",
+    # Public metadata fields - not credentials
+    "homepage",
+}
 
 
 def credential_shapes(value, path="") -> list:
@@ -110,6 +118,12 @@ def credential_shapes(value, path="") -> list:
             results.extend(credential_shapes(v, "%s.%d" % (path, i) if path else str(i)))
     elif isinstance(value, dict):
         for k, v in value.items():
+            # Skip evidence_refs - registry references like "pypi-json:name", not credentials
+            if k == "evidence_refs":
+                continue
+            # Skip signature dict - our own crypto outputs (keyid, sig)
+            if k == "signature":
+                continue
             results.extend(credential_shapes(v, "%s.%s" % (path, k) if path else k))
     return results
 
