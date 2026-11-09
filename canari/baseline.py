@@ -42,6 +42,27 @@ def _now():
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _runner_source_digest() -> str:
+    """SHA-256 over the Canari package source tree (mcpcheckup suite_digest pattern).
+    Binds the attestation to the exact runner code that produced it. If the runner
+    code changes, all previous attestations become reproducible only with the old code."""
+    import hashlib
+    canari_dir = os.path.dirname(os.path.abspath(__file__))
+    h = hashlib.sha256()
+    for root, dirs, files in os.walk(canari_dir):
+        dirs[:] = sorted(x for x in dirs if x not in ("__pycache__", ".git"))
+        for fn in sorted(files):
+            if not fn.endswith(".py"):
+                continue
+            fp = os.path.join(root, fn)
+            h.update(fn.encode("utf-8"))
+            try:
+                h.update(open(fp, "rb").read())
+            except OSError:
+                pass
+    return h.hexdigest()
+
+
 def _expiry():
     return (datetime.datetime.now(datetime.timezone.utc)
             + datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -212,6 +233,7 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         "checks": ["L1.1_REGISTRY_PRESENT", "L1.2_VERSION_RESOLVED",
                    "L2.1_ARTIFACT_HASH", "L2.2_MAINTAINER_SET", "L2.3_MANIFEST_FIELDS"],
         "runner": "canari-m0/0.1",
+        "runner_source_digest": _runner_source_digest(),
     }, sort_keys=True).encode("utf-8")
     scenario_sha256 = hashlib.sha256(scenario_def).hexdigest()
 
@@ -353,7 +375,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     state = StateStore(os.path.join(out_dir, "state.json"))
 
     scenario_def = json.dumps({"level": "L1-L2-multi-registry",
-                               "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"]},
+                               "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"],
+                               "runner_source_digest": _runner_source_digest()},
                               sort_keys=True).encode("utf-8")
     scenario_sha256 = hashlib.sha256(scenario_def).hexdigest()
     all_results = []
@@ -415,7 +438,18 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                                 "verdict": verdict, "bundle": bpath})
         except Exception as e:
             total_errors += 1
-            all_results.append({"name": name, "registry": "npm", "status": "error"})
+            # mcpcheckup cascade pattern: even a failed package produces an attestation
+            # with all checks UNVERIFIED + reason, so the failure is auditable
+            checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "error",
+                       "tool": "canari-m1/0.1",
+                       "evidence_ref": "fetch failed: %s" % str(e)[:100]}]
+            att = _make_att(name, "", "npm", "", "mcp", checks, "error",
+                            ["canari-m1/0.1"], ["npm-packument:" + name])
+            try:
+                bpath = _save_att(att, "npm", name, prev_state=state.get_component(name))
+                all_results.append({"name": name, "registry": "npm", "status": "error", "bundle": bpath})
+            except Exception:
+                all_results.append({"name": name, "registry": "npm", "status": "error"})
 
     # PyPI
     print("[multi] PyPI (%d)..." % pypi_limit)

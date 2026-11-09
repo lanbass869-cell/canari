@@ -64,7 +64,7 @@ def test_clean_bundle_verifies(keypair, tmp_path, capsys):
     rc = verify_bundle(bundle, key_path)
     out = capsys.readouterr()
     assert rc == 0, out.err
-    assert "signature: PASS" in out.out
+    assert "signature (in-toto): PASS" in out.out
     assert "schema:    PASS" in out.out
     assert "UNSUP" in out.out  # the unsupported check is visible, not hidden
     assert "ALLOW" in out.out
@@ -81,7 +81,7 @@ def test_tampered_bundle_fails(keypair, tmp_path, capsys):
     p2.write_text(json.dumps(bundle), encoding="utf-8")
     rc = verify_bundle(str(p2), key_path)
     assert rc == 1
-    assert "signature: FAIL" in capsys.readouterr().out
+    assert "signature (in-toto): FAIL" in capsys.readouterr().out
 
 
 def test_schema_invalid_payload_fails(keypair, tmp_path, capsys):

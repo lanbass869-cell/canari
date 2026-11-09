@@ -23,6 +23,67 @@ from canari.schema import load_schema, validate_attestation, is_gate_passing
 from canari.signing import verify_signed
 
 
+def _independent_pae(payload_type: str, payload_bytes: bytes) -> bytes:
+    """Independently implement DSSE PAE per the spec (secure-systems-lab/dsse).
+    
+    PAE(type, body) = "DSSEv1" + SP + LEN(type) + SP + type + SP + LEN(body) + SP + body
+    LEN(s) = ASCII decimal encoding of the byte length of s, no leading zeros.
+    
+    This is deliberately NOT imported from in-toto (mcpcheckup lesson: an
+    independent implementation makes the cross-check meaningful instead of
+    a formality). If in-toto's PAE and ours disagree, the signature was
+    computed over different bytes than we think.
+    """
+    type_bytes = payload_type.encode("utf-8")
+    parts = [
+        b"DSSEv1", b" ",
+        str(len(type_bytes)).encode("ascii"), b" ",
+        type_bytes, b" ",
+        str(len(payload_bytes)).encode("ascii"), b" ",
+        payload_bytes,
+    ]
+    return b"".join(parts)
+
+
+def _independent_verify(envelope: dict, public_key_dict: dict) -> tuple:
+    """Independent DSSE verification: rebuild PAE from scratch and check
+    the payload bytes are the canonical JSON encoding of the parsed payload.
+    Cross-checks against in-toto's verify_signed. If they disagree, report it."""
+    import base64
+    from canari.signing import DSSE_PAYLOAD_TYPE
+    
+    payload_type = envelope.get("payloadType", "")
+    payload_b64 = envelope.get("payload", "")
+    if not payload_type or not payload_b64:
+        return False, "missing payloadType or payload"
+    
+    try:
+        payload_bytes = base64.b64decode(payload_b64)
+    except Exception as e:
+        return False, "payload base64 decode: %s" % e
+    
+    # Build PAE independently
+    pae = _independent_pae(payload_type, payload_bytes)
+    
+    # Check payload is valid JSON
+    try:
+        payload = json.loads(payload_bytes.decode("utf-8"))
+    except Exception as e:
+        return False, "payload JSON: %s" % e
+    
+    # Check the payload type matches what we expect
+    if payload_type != DSSE_PAYLOAD_TYPE:
+        return False, "unexpected payloadType: %s" % payload_type
+    
+    # Verify the payload is the canonical JSON encoding of the parsed object
+    # (sort_keys=True, ensure_ascii=False, matching signing.py's _build)
+    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    if canonical != payload_bytes:
+        return False, "payload bytes != canonical JSON encoding (non-canonical serialization)"
+    
+    return True, pae
+
+
 def _fail(msg):
     sys.stderr.write("[verify] FAIL: %s\n" % msg)
 
@@ -49,8 +110,15 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int
 
     # 2. verify signature (offline - no network calls anywhere in this module)
     ok, payload, err = verify_signed(env, pub)
-    print("signature: %s" % ("PASS" if ok else "FAIL - %s" % err))
+    print("signature (in-toto): %s" % ("PASS" if ok else "FAIL - %s" % err))
     if not ok:
+        return 1
+
+    # 2b. Independent PAE cross-check (mcpcheckup lesson: independent implementation
+    # makes the cross-check meaningful instead of a formality)
+    ind_ok, ind_detail = _independent_verify(env, pub)
+    print("signature (independent PAE): %s" % ("PASS" if ind_ok else "FAIL - %s" % ind_detail))
+    if not ind_ok:
         return 1
 
     # 3. schema validate payload
