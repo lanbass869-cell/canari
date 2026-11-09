@@ -26,7 +26,7 @@ import os
 import sys
 
 from canari.schema import _PREDICATE_TYPE
-from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair
+from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair, create_key_registry_entry, save_key_registry, load_key_registry, is_key_valid, save_private_key
 from canari.state import FileLock, StateStore
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
@@ -226,6 +226,37 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     if signer is None:
         key_path = os.path.join(out_dir, "private_key.pem")
         signer, pub_key, _ = load_or_generate_keypair(key_path)
+    
+    # Key lifecycle management
+    registry_path = os.path.join(out_dir, "key_registry.json")
+    registry = load_key_registry(registry_path)
+    if registry is None:
+        registry = create_key_registry_entry(pub_key, key_path)
+        save_key_registry(registry, registry_path)
+    else:
+        key_valid, reason = is_key_valid(registry)
+        if not key_valid:
+            print("[key] WARNING: signing key is not valid: %s" % reason)
+            signer, pub_key = generate_keypair()
+            save_private_key(signer, key_path)
+            registry = create_key_registry_entry(pub_key, key_path)
+            save_key_registry(registry, registry_path)
+    
+    # Key lifecycle management (mcpcheckup pattern)
+    registry_path = os.path.join(out_dir, "key_registry.json")
+    registry = load_key_registry(registry_path)
+    if registry is None:
+        registry = create_key_registry_entry(pub_key, key_path)
+        save_key_registry(registry, registry_path)
+    else:
+        key_valid, reason = is_key_valid(registry)
+        if not key_valid:
+            print("[key] WARNING: signing key is not valid: %s" % reason)
+            print("[key] Generating a new keypair...")
+            signer, pub_key = generate_keypair()
+            save_private_key(signer, key_path)
+            registry = create_key_registry_entry(pub_key, key_path)
+            save_key_registry(registry, registry_path)
 
     # scenario hash: the check-list definition itself (L1.1..L2.3 meta-only)
     scenario_def = json.dumps({
@@ -371,6 +402,37 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     if signer is None:
         key_path = os.path.join(out_dir, "private_key.pem")
         signer, pub_key, _ = load_or_generate_keypair(key_path)
+    
+    # Key lifecycle management
+    registry_path = os.path.join(out_dir, "key_registry.json")
+    registry = load_key_registry(registry_path)
+    if registry is None:
+        registry = create_key_registry_entry(pub_key, key_path)
+        save_key_registry(registry, registry_path)
+    else:
+        key_valid, reason = is_key_valid(registry)
+        if not key_valid:
+            print("[key] WARNING: signing key is not valid: %s" % reason)
+            signer, pub_key = generate_keypair()
+            save_private_key(signer, key_path)
+            registry = create_key_registry_entry(pub_key, key_path)
+            save_key_registry(registry, registry_path)
+    
+    # Key lifecycle management (mcpcheckup pattern)
+    registry_path = os.path.join(out_dir, "key_registry.json")
+    registry = load_key_registry(registry_path)
+    if registry is None:
+        registry = create_key_registry_entry(pub_key, key_path)
+        save_key_registry(registry, registry_path)
+    else:
+        key_valid, reason = is_key_valid(registry)
+        if not key_valid:
+            print("[key] WARNING: signing key is not valid: %s" % reason)
+            print("[key] Generating a new keypair...")
+            signer, pub_key = generate_keypair()
+            save_private_key(signer, key_path)
+            registry = create_key_registry_entry(pub_key, key_path)
+            save_key_registry(registry, registry_path)
 
     state = StateStore(os.path.join(out_dir, "state.json"))
 

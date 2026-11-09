@@ -1,0 +1,15 @@
+{
+ "name": "test-dsh-plugin",
+ "author": "testauthor",
+ "version": "0.1.0",
+ "repository": {
+  "url": "https://github.com/test/test-dsh-plugin"
+ },
+ "metadata": {
+  "category": "tools",
+  "labels": [
+   "install-verified",
+   "risk-low"
+  ]
+ }
+}

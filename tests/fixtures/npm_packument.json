@@ -1,0 +1,27 @@
+{
+ "name": "test-mcp-server",
+ "dist-tags": {
+  "latest": "1.0.0"
+ },
+ "versions": {
+  "1.0.0": {
+   "name": "test-mcp-server",
+   "version": "1.0.0",
+   "description": "A test MCP server",
+   "maintainers": [
+    {
+     "name": "testuser"
+    }
+   ],
+   "dist": {
+    "integrity": "sha512-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+    "tarball": "https://registry.npmjs.org/test-mcp-server/-/test-mcp-server-1.0.0.tgz"
+   }
+  }
+ },
+ "maintainers": [
+  {
+   "name": "testuser"
+  }
+ ]
+}

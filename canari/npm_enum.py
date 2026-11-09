@@ -196,11 +196,12 @@ def mcp_registry_enumerate(limit=500):
         if not servers:
             break
         for s in servers:
-            sname = s.get("name", "")
+            server = s.get("server", s)  # real API nests under "server" key; fallback for flat
+            sname = server.get("name", "")
             if not sname:  # skip entries with no name (schema requires minLength=1)
                 continue
-            results.append({"name": sname, "version": s.get("version", ""),
-                            "registry": "mcp-registry", "homepage": s.get("homepage", "")})
+            results.append({"name": sname, "version": server.get("version", ""),
+                            "registry": "mcp-registry", "homepage": server.get("homepage", "")})
         cursor = d.get("next_cursor") or d.get("nextCursor") or ""
         if not cursor:
             break

@@ -1,0 +1,19 @@
+{
+ "info": {
+  "name": "test-mcp-package",
+  "version": "0.1.0",
+  "summary": "A test PyPI MCP package",
+  "author": "testauthor",
+  "home_page": "https://github.com/test/test-mcp-package"
+ },
+ "urls": [
+  {
+   "filename": "test_mcp_package-0.1.0-py3-none-any.whl",
+   "digests": {
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+   },
+   "url": "https://files.pythonhosted.org/packages/test/test_mcp_package-0.1.0-py3-none-any.whl",
+   "attestations": null
+  }
+ ]
+}
