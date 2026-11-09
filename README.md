@@ -11,6 +11,8 @@ Named after the canary in the coal mine: the first to detect that something went
 3. Attestations are **offline-verifiable** by anyone with the public key
 4. History is **never deleted** - version changes create supersession chains
 5. Public **machine-readable feed** for any AI agent or host to consume
+6. **Trust heuristics**: release cadence (L2.4), metadata anomaly (L2.5), typosquatting (L2.6)
+7. **Consumer install gate** with policies: `canari-verify bundle.json --key pub.json --gate --gate-policy paranoid`
 
 ## Quick start
 
@@ -23,6 +25,19 @@ canari-baseline --limit 50
 
 # verify an attestation offline
 canari-verify out/attestations/npm_some-package.bundle.json --key out/public_key.json
+
+# verify + policy gate (exit 0 ALLOW / 5 BLOCK / 6 REVIEW)
+canari-verify out/attestations/npm_some-package.bundle.json --key out/public_key.json \\
+    --gate --gate-policy strict
+
+# custom policy file
+canari-verify bundle.json --key out/public_key.json --gate --gate-policy-file my-policy.json
+```
+
+### Policy file example
+
+```json
+{"name": "my-policy", "block_on_findings": true, "require_native_provenance": false}
 ```
 
 ## Multi-registry coverage

@@ -13,7 +13,7 @@ Every score must be reported with: sample size, calculation method, known distor
 import json, os, time
 
 
-def score(out_dir: str, public_key: dict = None) -> dict:
+def score(out_dir: str, public_key: dict = None, public_keys: list = None) -> dict:
     """Score the current state of the attestation store.
     Returns a dict with all four dimensions + distortions."""
     from canari.schema import validate_attestation
@@ -51,13 +51,23 @@ def score(out_dir: str, public_key: dict = None) -> dict:
         payload = bundle.get("payload", {})
         env = bundle.get("envelope", {})
 
-        # integrity (if we have the public key)
+        # integrity (if we have any public key from the signing-key history)
+        keys = list(public_keys or [])
         if public_key:
-            ok, _, err = verify_signed(env, public_key)
-            if ok:
+            keys.insert(0, public_key)
+        if keys:
+            ok_any = False
+            last_err = None
+            for k in keys:
+                ok, _, err = verify_signed(env, k)
+                if ok:
+                    ok_any = True
+                    break
+                last_err = err
+            if ok_any:
                 n_sig_pass += 1
             else:
-                errors.append({"file": fname, "error": "sig: %s" % (err or "")[:60]})
+                errors.append({"file": fname, "error": "sig: %s" % (last_err or "")[:60]})
 
         # schema
         schema_errors = validate_attestation(payload)
@@ -74,7 +84,7 @@ def score(out_dir: str, public_key: dict = None) -> dict:
         else:
             n_stale_no_expiry += 1
 
-    n_verified = n_sig_pass if public_key else total
+    n_verified = n_sig_pass if (public_key or public_keys) else total
 
     return {
         "total_attestations": total,

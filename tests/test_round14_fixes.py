@@ -119,3 +119,35 @@ class TestSupersedesDigestGuard:
         assert bundles, "expected one bundle"
         payload = json.loads(bundles[0].read_text(encoding="utf-8"))["payload"]
         assert "supersedes" not in payload
+
+
+class TestVerifyNoMutation:
+    """BUG-81: verify_signed must not mutate the caller's envelope, so retrying
+    with a different (correct) key from a key history still works."""
+
+    def test_retry_with_right_key_after_wrong_key(self, tmp_path):
+        import copy
+        import json as _json
+        from canari.signing import generate_keypair, sign_attestation, verify_signed
+        signer, pub = generate_keypair()
+        other, _ = generate_keypair()
+        att = {"_type": "https://agentcheck.dev/attestation/v0.1",
+               "subject": {"name": "t", "version": "1", "registry": "npm",
+                           "artifact_sha256": "a" * 64, "maintainers": []},
+               "host": {"class": "mcp", "host_version": "t"},
+               "scenario_sha256": "b" * 64,
+               "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"}],
+               "verdict": "pass", "checker": {"kind": "automation", "id": "t"},
+               "evidence_refs": [],
+               "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],
+                                          "truncated_fields": []},
+               "expires_at": "2026-12-01T00:00:00Z",
+               "generated_at": "2026-11-09T00:00:00Z",
+               "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                             "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
+        s = sign_attestation(att, signer)
+        env = s["envelope"]
+        snapshot = _json.dumps(env, sort_keys=True)
+        assert verify_signed(env, other.public_key.to_dict())[0] is False
+        assert _json.dumps(env, sort_keys=True) == snapshot, "envelope was mutated"
+        assert verify_signed(env, pub.to_dict())[0] is True

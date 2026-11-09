@@ -70,8 +70,8 @@ for i, name in enumerate(names, 1):
         urls = d.get("urls", [])
         ver = info.get("version", "")
         sha = urls[0]["digests"]["sha256"] if urls else ""
-        maintainers = [info.get("author", "") or info.get("author_email", "")]
-        homepage = info.get("home_page", "")
+        maintainers = [x for x in [info.get("author", "") or info.get("author_email", "")] if x]
+        homepage = info.get("home_page") or ""
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                   {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
         try:

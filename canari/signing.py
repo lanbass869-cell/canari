@@ -172,7 +172,9 @@ def verify_signed(envelope_dict: dict, public_key_dict: dict):
     failures - failures are data (the CLI prints them), not crashes.
     """
     try:
-        env = Envelope.from_dict(envelope_dict)
+        import copy as _copy
+        # BUG-81: from_dict consumes/mutates its input; never touch the caller's dict
+        env = Envelope.from_dict(_copy.deepcopy(envelope_dict))
         if len(env.signatures) != 1:
             return False, None, "expected exactly 1 signature, got %d" % len(env.signatures)
         keyid, sig_obj = next(iter(env.signatures.items()))
