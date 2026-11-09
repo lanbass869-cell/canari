@@ -28,6 +28,7 @@ import sys
 from canari.schema import _PREDICATE_TYPE
 from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair, create_key_registry_entry, save_key_registry, load_key_registry, is_key_valid, save_private_key
 from canari.state import FileLock, StateStore
+from canari.dead_letter import DeadLetterLog
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
                             _opener, UA)
@@ -317,8 +318,19 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         import time as _t
         _t.sleep(1)  # politeness: npm CDN throttles rapid sequential tarball fetches
         att = build_attestation(name, meta, pkg, scenario_sha256)
+        _prev = state.get_component("npm:" + name) or state.get_component(name)
+        if _prev and _prev.get("attestation_digest"):
+            _pd = _prev["attestation_digest"]
+            if isinstance(_pd, str) and len(_pd) == 64 and all(c in "0123456789abcdef" for c in _pd):
+                att["supersedes"] = _pd
         signed = sign_attestation(att, signer)
-        bundle_path = os.path.join(att_dir, "%02d_%s.bundle.json" % (i + 1, safe))
+        # BUG-65: timestamp + payload-digest suffix so re-runs never overwrite
+        # previous bundles (supersession chains need the old files to persist)
+        _ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
+        _dg = hashlib.sha256(
+            json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()[:8]
+        bundle_path = os.path.join(att_dir, "%02d_%s_%s_%s.bundle.json" % (i + 1, safe, _ts, _dg))
         with open(bundle_path, "w", encoding="utf-8") as f:
             json.dump({"envelope": signed["envelope"], "payload": signed["payload"]},
                       f, ensure_ascii=False, indent=1)
@@ -372,7 +384,7 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
             payload_digest = hashlib.sha256(
                 json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
             ).hexdigest()
-            state.set_component(r["name"], r.get("version", ""),
+            state.set_component("npm:" + r["name"], r.get("version", ""),
                                 bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest)
     state.save()
     lock.__exit__()
@@ -439,6 +451,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         plain-name fallback keeps continuity with pre-qualification state files."""
         return (state.get_component("%s:%s" % (registry, name))
                 or state.get_component(name))
+
+    dead = DeadLetterLog(os.path.join(out_dir, "dead_letters.json"))
 
     scenario_def = json.dumps({"level": "L1-L2-multi-registry",
                                "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"],
@@ -517,6 +531,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                                 "verdict": verdict, "bundle": bpath})
         except Exception as e:
             total_errors += 1
+            dead.record("npm_fetch", name, str(e), "npm")
             # mcpcheckup cascade pattern: even a failed package produces an attestation
             # with all checks UNVERIFIED + reason, so the failure is auditable
             checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "error",
@@ -541,6 +556,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         name = pkg["name"]
         if "error" in pkg:
             total_errors += 1
+            dead.record("pypi_fetch", name, pkg.get("error", ""), "pypi")
             continue
         sha = pkg.get("artifact_sha256", "")
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
@@ -606,9 +622,38 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         dsh_pkgs = []
     for pkg in dsh_pkgs:
         name = pkg.get("name", "")
+        checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}]
+        verdict = "pass-with-findings"
+        # dsh.so publishes per-plugin install tests (L1-L5) and static-scan counts;
+        # we consume those conclusions as referenced evidence (never re-scan).
+        ic, sc = pkg.get("install_verdict"), pkg.get("security_critical")
+        ie = "dsh.so installTest: level=%s verdict=%s state=%s" % (
+            pkg.get("install_level", "?"), ic or "missing", pkg.get("install_state", "?"))
+        if ic == "passed":
+            checks.append({"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "pass",
+                           "tool": "dsh-so-ref/0.1", "evidence_ref": ie})
+        elif ic:
+            checks.append({"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "fail",
+                           "tool": "dsh-so-ref/0.1", "evidence_ref": ie})
+            verdict = "fail"
+        else:
+            checks.append({"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "unsupported",
+                           "tool": "dsh-so-ref/0.1",
+                           "evidence_ref": ie + " (no install test record)"})
+        if sc is not None:
+            se = "dsh.so static scan: files=%s scanner=%s critical=%s" % (
+                pkg.get("security_files_scanned", 0), pkg.get("security_scanner", "?"), sc)
+            checks.append({"id": "L2.7_PLUGIN_SECURITY_REF",
+                           "verdict": "pass" if sc == 0 else "fail",
+                           "tool": "dsh-so-ref/0.1", "evidence_ref": se})
+            if sc and sc > 0:
+                verdict = "fail"
+        else:
+            checks.append({"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported",
+                           "tool": "dsh-so-ref/0.1",
+                           "evidence_ref": "dsh.so has no security record for this plugin"})
         att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
-                        [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}],
-                        "pass-with-findings", ["dsh-so-referenced"], ["dsh-so:" + name])
+                        checks, verdict, ["dsh-so-referenced"], ["dsh-so:" + name])
         bpath = _save_att(att, "dsh", name, prev_state=_prev("dsh-registry", name))
         all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
                             "verdict": "pass-with-findings", "bundle": bpath})
@@ -619,8 +664,10 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         by_reg[r.get("registry", "?")] = by_reg.get(r.get("registry", "?"), 0) + 1
         v = r.get("verdict", "error")
         by_verdict[v] = by_verdict.get(v, 0) + 1
+    dead.save()
     feed = {"feed_version": 2, "generated_at": _now(), "scenario_sha256": scenario_sha256,
             "total": len(all_results), "errors": total_errors,
+            "dead_letters": dead.summary(),
             "by_registry": by_reg, "by_verdict": by_verdict,
             "items": [{"name": r["name"], "registry": r.get("registry", ""),
                        "version": r.get("version", ""), "verdict": r.get("verdict", "error"),
