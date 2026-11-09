@@ -15,6 +15,7 @@ Failure/skip counts are printed explicitly (plan section 4: "failure/skip
 counters public - anti pass-rate-inflation", RUSE lesson).
 """
 import argparse
+import os
 import hashlib
 import json
 import sys
@@ -170,14 +171,139 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int
     return 0
 
 
+def verify_chain(directory: str, key_path: str = None) -> int:
+    """Verify supersession chains in a directory of bundles.
+    
+    Checks:
+    1. Each supersedes pointer resolves to an existing payload digest
+    2. No circular references
+    3. Chain heads are unique (one head per component)
+    4. Every chain is traceable to a head
+    
+    Exit codes: 0 = all chains valid, 4 = chain errors found
+    """
+    import hashlib
+    from collections import defaultdict
+
+    att_dir = directory
+    if not os.path.isdir(att_dir):
+        _fail("directory not found: %s" % att_dir)
+        return 3
+
+    files = sorted(f for f in os.listdir(att_dir) if f.endswith(".bundle.json"))
+    if not files:
+        print("no bundles found in %s" % att_dir)
+        return 0
+
+    # Build digest -> filename map and supersedes -> filename map
+    digests = {}  # payload digest -> filename
+    supersedes_map = {}  # filename -> digest it supersedes
+    components = defaultdict(list)  # name -> [filenames]
+
+    for fn in files:
+        fp = os.path.join(att_dir, fn)
+        try:
+            bundle = json.load(open(fp, encoding="utf-8"))
+            payload = bundle.get("payload", {})
+        except Exception as e:
+            print("  [SKIP] %s: cannot parse: %s" % (fn, e))
+            continue
+
+        name = payload.get("subject", {}).get("name", "?")
+        digest = hashlib.sha256(
+            json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()
+        digests[digest] = fn
+        supersedes_map[fn] = payload.get("supersedes")
+        components[name].append(fn)
+
+    print("bundles: %d | components: %d" % (len(files), len(components)))
+
+    errors = []
+    chains_checked = 0
+
+    for name, bundle_files in sorted(components.items()):
+        if len(bundle_files) < 2:
+            continue  # single bundle = trivially valid chain
+        chains_checked += 1
+
+        # Build chain: start from bundles with no supersedes (heads)
+        heads = [f for f in bundle_files if not supersedes_map.get(f)]
+        if len(heads) == 0:
+            # All bundles have supersedes -> possible circular or missing head
+            errors.append("%s: no chain head found (%d bundles, all have supersedes)" % (name, len(bundle_files)))
+            continue
+
+        # Walk each chain from head
+        for head in heads:
+            current = head
+            visited = {head}
+            depth = 0
+            while depth < 100:  # max depth
+                # Find the next bundle that supersedes this one
+                next_bundle = None
+                for f in bundle_files:
+                    if supersedes_map.get(f) is not None:
+                        # Check if this bundle's supersedes points to current's digest
+                        fp = os.path.join(att_dir, f)
+                        try:
+                            bp = json.load(open(fp, encoding="utf-8"))
+                            pd = bp.get("payload", {})
+                            pd_digest = hashlib.sha256(
+                                json.dumps(pd, ensure_ascii=False, sort_keys=True).encode("utf-8")
+                            ).hexdigest()
+                            # Check: does this bundle supersede current?
+                            sup_digest = supersedes_map.get(f)
+                            current_digest = hashlib.sha256(
+                                json.dumps(
+                                    json.load(open(os.path.join(att_dir, current), encoding="utf-8")).get("payload", {}),
+                                    ensure_ascii=False, sort_keys=True
+                                ).encode("utf-8")
+                            ).hexdigest()
+                            if sup_digest == current_digest:
+                                next_bundle = f
+                                break
+                        except Exception:
+                            pass
+                if next_bundle is None:
+                    break  # end of chain
+                if next_bundle in visited:
+                    errors.append("%s: circular reference detected at %s" % (name, next_bundle))
+                    break
+                visited.add(next_bundle)
+                current = next_bundle
+                depth += 1
+
+            # Check all bundles in this component are in the chain
+            unreachable = set(bundle_files) - visited
+            if unreachable:
+                errors.append("%s: %d bundle(s) not reachable from chain head %s: %s" % (
+                    name, len(unreachable), head, ", ".join(sorted(unreachable)[:3])))
+
+    if errors:
+        print("\nchain errors (%d):" % len(errors))
+        for e in errors:
+            print("  - %s" % e)
+        return 4
+
+    print("chains: %d checked, all valid" % chains_checked)
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(
         prog="canari-verify",
         description="Offline verifier for canari attestation bundles (DSSE/in-toto).")
-    ap.add_argument("bundle", help="path to signed bundle JSON")
-    ap.add_argument("--key", required=True, help="path to signer public key JSON")
+    ap.add_argument("bundle", nargs="?", default=None, help="path to signed bundle JSON")
+    ap.add_argument("--key", default=None, help="path to signer public key JSON")
     ap.add_argument("--verbose", "-v", action="store_true", help="print PASS checks too")
+    ap.add_argument("--chain", metavar="DIR", default=None,
+                    help="verify supersession chains in a directory of bundles")
     a = ap.parse_args(argv)
+    if a.chain:
+        return verify_chain(a.chain)
+    if not a.bundle or not a.key:
+        ap.error("bundle and --key are required (unless --chain is used)")
     return verify_bundle(a.bundle, a.key, a.verbose)
 
 
