@@ -13,10 +13,18 @@ import urllib.request
 from canari.npm_enum import _opener, UA
 
 
-def fetch_pypi_attestations(package, timeout=30):
+def fetch_pypi_attestations(package, version=None, timeout=30):
     """Fetch PyPI JSON API and extract file attestations if present.
+    BUG-74 fix: when a version is given, query /pypi/{pkg}/{version}/json so
+    attestations are never attributed to the wrong version (the bare
+    /pypi/{pkg}/json endpoint always returns the LATEST release).
     Returns list of file dicts with attestations, or None if no attestations."""
-    url = "https://pypi.org/pypi/%s/json" % package
+    import urllib.parse
+    if version:
+        url = "https://pypi.org/pypi/%s/%s/json" % (
+            urllib.parse.quote(package, safe=""), urllib.parse.quote(version, safe=""))
+    else:
+        url = "https://pypi.org/pypi/%s/json" % urllib.parse.quote(package, safe="")
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     try:
         with _opener().open(req, timeout=timeout) as r:
@@ -59,7 +67,7 @@ def verify_pypi_bundle(bundle, distribution_bytes=None):
 def ingest_pypi(package, version=None):
     """Full PyPI native attestation ingestion. Returns native_provenance dict or None.
     Same shape as canari.native.ingest() output for cross-registry consistency."""
-    files = fetch_pypi_attestations(package)
+    files = fetch_pypi_attestations(package, version=version)
     if not files:
         return None
     out = {"present": True,
@@ -84,3 +92,4 @@ def ingest_pypi(package, version=None):
             out["v1_verified"] = False
             out["v1_error"] = str(e)[:200]
     return out
+

@@ -4,3 +4,5 @@ out/
 *.egg-info/
 .pytest_cache/
 external/
+
+.coverage

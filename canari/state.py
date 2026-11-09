@@ -62,8 +62,12 @@ class StateStore:
         os.replace(tmp, self.path)
     def get_component(self, name):
         return self._data.get('components', {}).get(name)
-    def set_component(self, name, version, sha256, digest):
-        self._data.setdefault('components', {})[name] = {'version': version, 'sha256': sha256, 'attestation_digest': digest}
+    def set_component(self, name, version, sha256, digest, meta=None):
+        entry = {'version': version, 'sha256': sha256, 'attestation_digest': digest}
+        if meta:
+            entry['meta'] = meta  # maintainers/homepage snapshot for H2 anomaly (BUG-75)
+        self._data.setdefault('components', {})[name] = entry
+        return entry
     def diff(self, current):
         prev = self._data.get('components', {})
         new, changed, unchanged, removed = [], [], [], []

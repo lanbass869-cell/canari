@@ -49,7 +49,7 @@ def _independent_pae(payload_type: str, payload_bytes: bytes) -> bytes:
 def _independent_verify(envelope: dict, public_key_dict: dict) -> tuple:
     """Independent DSSE verification: rebuild PAE from scratch and check
     the payload bytes are the canonical JSON encoding of the parsed payload.
-    Cross-checks against in-toto's verify_signed. If they disagree, report it."""
+    NOTE: this is a CANONICALIZATION + PAE-wellformedness check only, NOT a signature check. The actual Ed25519 signature verification is verify_signed() at the call site (mcpcheckup pattern: independent PAE implementation makes the cross-check meaningful)."""
     import base64
     from canari.signing import DSSE_PAYLOAD_TYPE
     
@@ -116,9 +116,9 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False) -> int
         return 1
 
     # 2b. Independent PAE cross-check (mcpcheckup lesson: independent implementation
-    # makes the cross-check meaningful instead of a formality)
+    # makes the cross-check meaningful instead of a formality) - canonicalization only, NOT a signature check)
     ind_ok, ind_detail = _independent_verify(env, pub)
-    print("signature (independent PAE): %s" % ("PASS" if ind_ok else "FAIL - %s" % ind_detail))
+    print("canonical payload (independent PAE): %s" % ("PASS" if ind_ok else "FAIL - %s" % ind_detail))
     if not ind_ok:
         return 1
 
@@ -308,3 +308,5 @@ def main(argv=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+
+

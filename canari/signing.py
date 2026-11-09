@@ -213,12 +213,24 @@ def load_private_key(path: str):
 
 def load_or_generate_keypair(key_path: str):
     """Load persisted private key or generate a new one. Returns (signer, pub_key, is_new).
-    This is the correct way to maintain a stable signing identity across runs."""
+    This is the correct way to maintain a stable signing identity across runs.
+    BUG-73 fix: a CORRUPTED existing PEM is backed up (never overwritten) and a
+    loud warning is printed before regenerating - silent key loss orphans every
+    previously signed bundle and breaks the audit trail."""
     import os
+    import shutil
     if os.path.exists(key_path):
         signer = load_private_key(key_path)
         if signer is not None:
             return signer, signer.public_key, False
+        # key file exists but cannot be parsed -> do NOT silently destroy it
+        backup = key_path + ".corrupt-" + str(int(__import__("time").time()))
+        try:
+            shutil.copy2(key_path, backup)
+            print("[key] WARNING: existing key file is corrupt; backed up to %s" % backup)
+        except OSError as e:
+            print("[key] WARNING: existing key file is corrupt AND backup failed: %s" % e)
+        print("[key] WARNING: generating a NEW keypair - all bundles signed with the old key will no longer verify against the new public key")
     signer, pub_key = generate_keypair()
     save_private_key(signer, key_path)
     return signer, pub_key, True
@@ -316,3 +328,4 @@ def is_key_valid(registry_entry: dict, at_time: str = None) -> tuple[bool, str]:
         return False, "time %s is after key valid_until %s" % (check_time, valid_until)
     
     return True, ""
+

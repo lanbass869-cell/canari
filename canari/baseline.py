@@ -526,9 +526,37 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         sha = pkg.get("artifact_sha256", "")
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                   {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
-        pn = pypi_native_ingest(name)
+        pn = pypi_native_ingest(name, pkg.get("version", "") or None)
+        # H1: release cadence (BUG-77/69/71 fixed in cadence.py)
+        try:
+            checks.extend(analyze_release_cadence(name, pkg.get("version", "")))
+        except Exception:
+            pass
+        # H2: metadata anomaly vs previous scan snapshot (BUG-75 fix: state now
+        # stores maintainers/homepage; first run = no previous = no findings)
+        try:
+            prev_comp = state.get_component(name)
+            prev_meta = (prev_comp or {}).get("meta")
+            if prev_meta:
+                cur_meta = {"maintainers": pkg.get("maintainers", []),
+                            "homepage": (pkg.get("links") or {}).get("homepage", "")}
+                checks.extend(detect_metadata_anomaly(cur_meta, prev_meta))
+        except Exception:
+            pass
+        # H3: typosquatting (BUG-76 fix: was dead code; the co-enumerated PyPI
+        # namespace of this scan is the trusted set)
+        try:
+            from canari.typosquat import check_typosquatting
+            tq = check_typosquatting(name, {q["name"] for q in pypi_pkgs if "error" not in q})
+            if tq:
+                checks.append(tq)
+        except Exception:
+            pass
+        verdict = "pass" if sha else "fail"
+        if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
+            verdict = "pass-with-findings"
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
-                        "pass" if sha else "fail", ["canari-m1/0.1"], ["pypi-json:" + name],
+                        verdict, ["canari-m1/0.1"], ["pypi-json:" + name],
                         native_prov=pn)
         bpath = _save_att(att, "pypi", name)
         all_results.append({"name": name, "registry": "pypi", "version": pkg.get("version", ""),
@@ -586,6 +614,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     with open(key_path, "w", encoding="utf-8") as f:
         f.write(export_public_key(pub_key))
     # update state for supersession chain on next run
+    meta_snapshots = {pkg["name"]: {"maintainers": pkg.get("maintainers", []),
+                                     "homepage": (pkg.get("links") or {}).get("homepage", "")}
+                      for pkg in pypi_pkgs if "error" not in pkg}
     for r in all_results:
         if r.get("bundle"):
             try:
@@ -594,7 +625,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                     json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
                 ).hexdigest()
                 state.set_component(r["name"], r.get("version", ""),
-                                    bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest)
+                                    bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest,
+                                    meta=meta_snapshots.get(r["name"]))
             except Exception:
                 pass
     state.save()
