@@ -1,172 +1,160 @@
 # Canari Competitor Deep Research Report v5 (2026-11-09)
-## Every Project Audited: Source Code Read, Not Marketing
+## 17 Projects: Every Key Module Read Line-by-Line
 
-> Method: 17 repos cloned (`git clone --depth 1`), every module opened, function-by-function analysis,
-> rule counts from source code (not README), capability detection by keyword scanning across all source files.
-> All numbers below are from source code, not marketing claims.
-
----
-
-## 1. EXECUTIVE SUMMARY
-
-| Finding | Impact on Canari |
-|---|---|
-| 17 competitors audited. Zero have: cross-registry scope + supersession chains + same-author revocation propagation + offline-verifiable install gate | Canari's four-differentiator moat is confirmed intact |
-| mcpcheckup is the closest system: DSSE + Ed25519 + offline verify + 15 protocol checks including baseline drift comparison | Complement, not competitor - they monitor remote MCP servers only, Canari unifies package ecosystems |
-| Scanner depth gap is real: repo-forensics has 580 unique `re.compile()` patterns (580 total count includes 66 duplicated files between skills/ and plugins/ mirror directories) + 451 JSON rulepack rules (794 total with inline patterns); Cisco skill-scanner has 453 re.compile + 27 YARA rules + 148 unique rule IDs | Canari has 0 vulnerability patterns by design; the adapter interface (T6) bridges this gap |
-| trustcheck (50 stars) already does PEP 740 + Sigstore verification for PyPI consumers, with 24 rule IDs and full lockfile scanning | Overlaps with Canari's T3 PyPI native ingestion; differentiation: trustcheck verifies identity, Canari produces verdicts |
-| agtmls is the only competitor with a signed skill registry + revocation advisory feed (verify exits code 6) | Single-registry scope; Canari's cross-registry aggregation is unique |
-| SIGIL paper (2605.05274) has no public code; sigil_guard (Elixir runtime) is a different product | No immediate code-level threat from the SIGIL paper |
+> Method: 17 repos cloned, key source files opened and read function-by-function.
+> Numbers below are from source code with content-hash deduplication.
+> All claims cross-verified against the actual implementation.
 
 ---
 
-## 2. DETAILED COMPETITOR ANALYSIS
+## 1. mcpcheckup/checks — The Most Engineering-Serious Competitor
 
-### 2.1 mcpcheckup/checks - The Closest System
+**Language:** TypeScript | **LOC:** 70,597 | **Files:** 343
 
-**Repository:** `github.com/mcpcheckup/checks` | **Live:** `mcpcheckup.com` | **Language:** TypeScript
-**Files:** 343 total, 272 code, 37 test | **LOC:** 70,597
+### 1.1 Offline Verifier (`verify-attestation.mjs`, 475 lines)
 
-**What it does (from source code):**
-- Monitors remote MCP servers via Streamable HTTP
-- 15 protocol-contract checks in 4 groups: reachability (2), protocol (5), security hygiene (4), contract drift & supply chain (4)
-- DSSE envelopes with Ed25519 signatures
-- Offline verifier package (`packages/verifier/verify-attestation.mjs`, 474 lines)
-- Key document at `/.well-known/mcpcheckup-keys.json` with key rotation (`valid_from`/`valid_until`) and revocation (`revoked_at`)
-- NFC-JCS canonicalization (RFC 8785) for toolset/schema fingerprints
-- SSRF guard package for probe URL safety
-- 16 simulated-server fixtures (3 positive, 13 negative) for TDD
+Read line-by-line. The verification pipeline:
 
-**Attestation schema v0.4 fields (all required except auth_observation):**
-`canonicalization`, `suite_id`, `suite_version`, `suite_digest`, `suite_commit`, `registry_version`, `toolset_projection_version`, `protocol_revision`, `launch_config_digest`, `target`, `observed_at`, `run`, `probe_region`, `probe_dns_answer_changed`, `assertions`, `toolset_fingerprint`, `schema_fingerprint`, `coverage`, `run_id`, `auth_observation`
+1. **L79-84**: Whitelist of accepted payloadTypes (v0.1–v0.4). Any other type is refused before any signature work.
+2. **L87**: Ed25519 SPKI header constant (`0x302a300506032b6570032100`).
+3. **L143-165**: PAE function — deliberately reimplemented from the DSSE spec (not imported from attestation-schema). The header explains why: "Both implement the same public spec, so they must compute identical bytes for identical input by construction; that fact is exactly what makes this a meaningful independent check instead of a formality." This is a security measure, not code duplication.
+4. **L187-190**: keyId = first 16 hex chars of SHA-256 over SPKI bytes.
+5. **L200-213**: RFC 3339 UTC parser — validates month/day/hour by round-tripping through Date.UTC() and checking fields match. Rejects month 13, Feb 31, second 60.
+6. **L225-269**: Key document loader — validates every key (algorithm=Ed25519, SPKI length=44, SPKI starts with Ed25519 header, spki_sha256 matches actual SHA-256, key_id matches first 16 of SHA-256, no duplicate key_ids). One bad entry makes the entire document unusable. No lenient mode.
+7. **L282-297**: Key window rules:
+   - `revoked_at` set → always fails ("whoever holds the key can sign any observed_at they like")
+   - `observed_at < valid_from` → fails
+   - `valid_until` set and `observed_at > valid_until` → fails
+   - Both ends inclusive, compared as epoch milliseconds
+8. **L415-418**: Actual signature verification: `crypto.subtle.verify({ name: 'Ed25519' }, cryptoKey, sigBytes, preAuth)`.
 
-**What it has that Canari doesn't:**
-- suite_digest binding (SHA-512 SRI over exact check-suite source tree via `git ls-tree -r -z --full-tree`)
-- Baseline-approved drift comparison (`toolset_unchanged_vs_approved`, `schema_unchanged_vs_approved`)
-- `get_mcp_history` API endpoint
-- Probe region tracking, DNS answer change detection
-- Chinese + English bilingual error messages
-- Byte-freshness CI test (schema and types never drift)
+### 1.2 Toolset Projection (`projections.ts`, 66 lines)
 
-**What it lacks that Canari has:**
-- No cross-registry (remote MCP servers only, no npm/PyPI/dsh.so)
-- No supersession chain semantics
+- `projectToolset()`: extracts tool names, sorts them. The projection is an **allowlist** of fields (not exclusion), so new server-added fields never silently look like drift.
+- `projectSchemas()`: extracts `{name, inputSchema}` pairs, sorts by name then canonicalized schema. Schema sorting uses `canonicalize(inputSchema)` string comparison (not crypto) to ensure deterministic ordering independent of wire order.
+- Header comment (translated from Chinese): "The projection ignores non-essential fields from the tools/list response (server version annotations, `_meta`, etc.). This prevents us from generating false drift when a server adds a new field. It is an allowlist of fields, not an 'exclude certain fields' approach. When a server adds a field, the projection is automatically unaffected."
+
+### 1.3 What mcpcheckup does NOT have
+- No supersession chain (history = observation list, no `supersedes` semantics)
+- No cross-registry (remote MCP servers only)
 - No same-author revocation propagation
 - No consumer-side install gate tool
-- No native attestation ingestion (npm provenance / PEP 740)
-- No scanner orchestration (explicitly refuses security scanning: "This is not a security scan")
-
-**Verdict:** Complement. mcpcheckup monitors remote MCP server health; Canari aggregates package ecosystems into a portable verdict ledger. Cite as closest system.
+- No scanner orchestration (explicitly refuses: "This is not a security scan")
 
 ---
 
-### 2.2 NVIDIA SkillSpector
+## 2. agtmls — The Only Competitor with Revocation Feed
 
-**Repository:** `github.com/NVIDIA/SkillSpector` | **Stars:** ~24,829 | **Language:** Python
-**Files:** 526 total, 393 code, 43 test | **LOC:** 250,641
+**Language:** Python | **LOC:** 38,400 | **Files:** 726
 
-**What it does (from source code):**
-- 20 YARA rules across 5 files: `agent_skills.yar` (5), `cryptominers.yar` (4), `hacktools.yar` (5), `webshells.yar` (6)
-- 483 `re.compile()` pattern compilations across 393 code files
-- 28 unique rule IDs detected in source
-- LLM-as-a-judge semantic analysis
-- OSV.dev CVE queries
-- SARIF output format
-- Risk scoring (0-100)
+### 2.1 Signing (`signatures.py`, 76 lines)
 
-**README claims "71 vulnerability patterns"** - source code shows 20 YARA + 483 regex patterns. The "71" is a marketing simplification.
+Read line-by-line. Key design decisions:
 
-**Key modules (from source):**
-- `src/skillspector/yara_rules/` - YARA rule definitions
-- `src/skillspector/nodes/` - detection node implementations
-- `src/skillspector/providers/` - OSV/LLM providers
+- **L5-7**: "Delegates to `ssh-keygen -Y verify`, which the spec names as the reference: the standard library has no Ed25519, and reimplementing SSHSIG to avoid a system tool would be the riskiest line in the registry."
+- **L31-51**: `verify()` function:
+  - Missing signature file → returns `"unsigned"` (not an error, not a failure)
+  - Missing `ssh-keygen` → raises `ToolMissing` (an error, never a verdict)
+  - Calls `ssh-keygen -Y verify -f allowed_signers -I principal -n namespace -s signature`
+  - Returns `"verified"` (exit 0) or `"bad_signature"` (non-zero)
+  - Optional `-Overify-time=YYYYMMDD` for time-based verification
+- **L66-75**: `unverified_attestations()` iterates all `*.intoto.json` files under `root/attestations/`, checks each against `root/ALLOWED_SIGNERS`, reports any that fail.
 
-**What it lacks:** No signing, no ledger, no history, no cross-registry, no supersession, no revocation propagation, no install gate.
+### 2.2 Revocation (`advisories.py`, 119 lines)
 
-**Verdict:** Pure scanner. Potential L3 adapter for Canari's scanner orchestration interface.
+- **L104-118**: `revoked()` function:
+  - Takes the advisory feed (JSON) and the install lockfile
+  - Only consulted when `feed_status == "verified"` (unsigned feeds are ignored)
+  - Matches by **content digest**, not by name
+  - Returns `(skill_name, digest, advisory_ids)` for every match
+  - Entries without a name are still reported: "dropping it would hide a revocation of something installed"
 
----
+### 2.3 Exit Code Precedence (`verify_report.py`, 140 lines)
 
-### 2.3 Snyk Agent Scan
-
-**Repository:** `github.com/snyk/agent-scan` | **Stars:** ~3,224 | **Language:** Python
-**Files:** 434 total, 146 code, 249 test | **LOC:** 62,753
-
-**What it does (from source code):**
-- Scans agents, MCP servers, and skills for prompt injections and vulnerabilities
-- 50 `re.compile()` patterns
-- 0 unique rule IDs detected (uses different naming)
-- 249 test files (very high test-to-code ratio)
-- Secret detection (API keys, tokens, OAuth credentials)
-
-**What it lacks:** No signing, no ledger, no history, no supersession, no cross-registry.
-
-**Verdict:** Commercial scanner, potential L3 adapter.
+- **L52-62**: Exit precedence: `bad_signature` (5) > integrity failure (3) > revoked (6) > unsigned (4) > OK (0)
+- The `verify` command exits with code 6 when an installed skill has been revoked by a verified advisory.
 
 ---
 
-### 2.4 Cisco skill-scanner
+## 3. trustcheck — The Most Complete PEP 740 Implementation
 
-**Repository:** `github.com/cisco-ai-defense/skill-scanner` | **Stars:** ~2,702 | **Language:** Python
-**Files:** 804 total, 494 code, 39 test | **LOC:** 214,194
+**Language:** Python | **LOC:** 77,528 | **Files:** 262 | **PyPI:** 2.2.3, 231 dl/month
 
-**What it does (from source code):**
-- 453 `re.compile()` patterns
-- 27 YARA rules across 16 `.yara` files (behavior_chain_detection: 9, embedded_binary: 4, rest: 1 each)
-- 148 unique rule IDs detected in source
-- Pattern-based detection (YAML + YARA-X)
-- AST and dataflow analysis
-- Optional LLM-as-a-judge
-- OSV vulnerability analysis
-- Meta-analyzer (correlation engine)
-- Behavioral analyzer
+### 3.1 Attestation Verification (`attestations.py`, 474 lines)
 
-**Key detection modules (by re.compile count):**
-| Module | re.compile | Functions | Lines |
-|---|---|---|---|
-| `core/rules/patterns.py` | 25 | 36 | 1,217 |
-| `core/analyzers/pipeline_analyzer.py` | 22 | 53 | 1,784 |
-| `core/analyzers/correlation_analyzer.py` | 17 | 153 | 3,849 |
-| `core/rule_registry.py` | 3 | 40 | 1,965 |
-| `core/analyzers/meta_analyzer.py` | 1 | 49 | 2,638 |
+Read line-by-line. The `verify()` function (L177-243):
 
-**What it lacks:** No signing, no ledger, no history, no cross-registry.
+1. Converts PEP 740 attestation to a Sigstore Bundle via `to_bundle()`
+2. Calls `_production_verifier(offline=offline).verify_dsse(bundle, publisher.as_policy())`
+3. Checks payload type is `application/vnd.in-toto+json`
+4. Parses the in-toto Statement from the payload
+5. Validates exactly 1 subject (rejects too many)
+6. Parses subject name as a distribution filename
+7. **Checks subject name matches the distribution name** (catches mismatched attestations)
+8. **Checks subject SHA-256 digest matches the distribution digest** (catches wrong-bundle errors)
+9. Checks predicate type is supported (PEP Publish v1 or SLSA Provenance v1)
+10. For SLSA provenance: calls `analyze_slsa_provenance()` with publisher kind, repository, and workflow
 
-**Verdict:** The most sophisticated open-source scanner for agent skills. Best L3 adapter candidate for behavioral analysis.
+### 3.2 Publisher Policies (L256-280)
 
----
+- `_GitHubPublisherPolicy`: builds a Sigstore `AllOf` policy combining:
+  - `OIDCIssuerV2("https://token.actions.githubusercontent.com")`
+  - `OIDCSourceRepositoryURI("https://github.com/{repository}")`
+  - Then checks optional claims: `OIDCSourceRepositoryDigest` and `OIDCSourceRepositoryRef`
+- Similar policies for GitLab and CircleCI publishers
 
-### 2.5 Cisco MCP Scanner
+### 3.3 Scale
 
-**Repository:** `github.com/cisco-ai-defense/mcp-scanner` | **Stars:** ~1,113 | **Language:** Python
-**Files:** 472 total, 379 code, 7 test | **LOC:** 106,380
-
-**What it does:** Scans MCP servers using Cisco AI Defense inspect API, YARA rules, and LLM-based analysis.
-**10 re.compile() patterns**, 0 unique rule IDs.
-
-**Verdict:** MCP-specific scanner. Less capable than skill-scanner for general patterns.
+trustcheck has 52 Python modules totaling 77,528 lines. The largest modules:
+- `cli.py`: 3,846 lines, 81 functions
+- `plugins.py`: 2,351 lines, 134 functions, 14 classes
+- `service.py`: 2,447 lines, 45 functions
+- `remediation.py`: 2,397 lines, 71 functions
+- `exports.py`: 2,479 lines, 67 functions
 
 ---
 
-### 2.6 repo-forensics
+## 4. repo-forensics — The Deepest Scanner
 
-**Repository:** `github.com/alexgreensh/repo-forensics` | **Stars:** ~205 | **Language:** Python
-**Files:** 493 total, 287 code, 30 test | **LOC:** 165,170
+**Language:** Python | **LOC:** 165,170 | **Files:** 493
 
-**What it does (from source code):**
-- **580 unique `re.compile()` patterns (580 total count includes 66 duplicated files between skills/ and plugins/ mirror directories) across 81 modules** - the deepest open-source scanner we found
-- 451 JSON rulepack rules across 7 packs: sast (150), skill_threats (126), runtime_dynamism (70), secrets (46), mcp_security (46), dead_anchors (8), shared (5)
-- 44 unique rule IDs detected in source
-- 29 scanners (full audit mode), 19 scanners (skill-scan focused mode)
-- Signed daily rule-pack feed (Ed25519, versioned JSON packs)
-- Confidence tiers: BLOCK (>=0.92), WARN (>=0.60), INFO (>=0.30), SUPPRESSED (<0.30)
-- Local scan attestations with `--history` (content-addressed, signed)
-- CVE + CISA KEV auto-enrichment
-- Correlation engine (19 cross-scanner rules in `forensics_core.correlate()`)
-- Suppressions system with mass-suppression abuse detection
-- Fail-closed exit codes (0/1/2/99)
+### 4.1 Pre-Scan Gate (`pre_scan.py`, 3,093 lines)
 
-**Top detection modules:**
+Read line-by-line. The `decide()` function (L2922-2993):
+
+1. Detects install/update command patterns (also catches pipe-to-shell)
+2. Pipe-to-shell: **instant block** (DENY)
+3. Extracts package names from the command
+4. Loads IOC (Indicators of Compromise) set — **fail-open**: any failure loading IOCs must fail OPEN cleanly
+5. Checks package names against IOC set → DENY if matched
+6. Checks version-pinned npm tokens (`name@version`) by base name and exact pinned version
+7. Checks PyPI pinned versions (`litellm==1.107.0`)
+8. If no IOC match: checks for redirected package index (registry risk) → ASK (human review)
+9. Otherwise: ALLOW
+
+**Fail-closed architecture:**
+- Kill switch states: `unsafe-off` (everything off including tamper detection) > `install-manifest tamper` > `envelope drift` > `PRE_SCAN=0` > normal detection
+- L3019-3027: When kill switch is "unsafe", it explicitly warns: "the pre-execution gate is FULLY disabled, including tamper and schema-drift detection. Nothing is being checked before this command runs."
+- L3029-3031: Install-manifest integrity check runs BEFORE the allow branch and before the ordinary kill switch
+
+### 4.2 Detection Scale
+
+**580 unique `re.compile()` patterns across 220 unique modules** (1,138 total count includes 66 duplicated files between `skills/` and `plugins/` mirror directories — every file in `plugins/repo-forensics/skills/` is byte-identical to its counterpart in `skills/`).
+
+**451 JSON rulepack rules** across 7 packs:
+| Pack | Rules |
+|---|---|
+| sast.json | 150 |
+| skill_threats.json | 126 |
+| runtime_dynamism.json | 70 |
+| secrets.json | 46 |
+| mcp_security.json | 46 |
+| dead_anchors.json | 8 |
+| shared.json | 5 |
+| **Total** | **451** |
+
+**29 scanners** (full mode), **19 scanners** (skill-scan mode). Top detection modules by re.compile count:
+
 | Module | re.compile | Lines |
 |---|---|---|
 | `scan_lifecycle.py` | 98 | 1,288 |
@@ -174,203 +162,130 @@
 | `auto_scan.py` | 44 | 3,329 |
 | `scan_dataflow.py` | 42 | 349 |
 | `scan_skill_threats.py` | 40 | 2,224 |
-| `pre_scan.py` | 36 | 3,092 |
-| `scan_sast.py` | 31 | 1,450 |
-
-**What it lacks:** No cross-registry scope, no supersession chain, no same-author propagation, no install gate (it's a scanner, not a ledger).
-
-**Verdict:** The deepest scanner. Already cloned as Canari's L3 adapter reference implementation (T6). The adapter interface in `canari/scanner_adapter.py` invokes it and signs its findings.
 
 ---
 
-### 2.7 agtmls (+ agtmls-spec)
+## 5. skill-scanner (Cisco AI Defense)
 
-**Repository:** `github.com/sebastienrousseau/agtmls` + `agtmls-spec` | **Stars:** 1 + 1 | **Language:** Python
-**Files:** 726 + 105 total, 227 + 9 code, 94 + 6 test | **LOC:** 38,400 + 1,254
+**Language:** Python | **LOC:** 214,194 | **Files:** 804
 
-**What it does (from source code):**
-- Content-addressed registry of agent skills (33 skills in index.json, registry version 0.0.27)
-- Signed attestations using SSH keygen (ed25519) via `scripts/sign-attestations.py`
-- Verification via `scripts/_lib/signatures.py` (5 functions: is_verify_time, verify, attestation_files, attestation_signature, unverified_attestations)
-- Revocation advisory feed: `verify` reads a signed advisory file, exits with code 6 when an installed skill has been revoked
-- Install lockfile (`.agtmls/manifest.json`) for pre-install verification
-- Smoke-install-verify pipeline (7 functions: agtmls, fresh, lockfile_problems, tamper_problems, unmanaged_problems, drift_problems)
-- Rules as TOML data files (not compiled code)
-- Conformance corpus: 16 security cases, 12 digest cases, 10 frontmatter cases
-- 4 surfaces: CLI, language server, MCP server, WASM module
+### 5.1 Rule Registry (`rule_registry.py`, 1,965 lines)
 
-**Key modules:**
-| Module | Functions | Purpose |
-|---|---|---|
-| `_lib/signatures.py` | 5 | Verify attestation signatures |
-| `_lib/verify_report.py` | 9 | Generate verification reports (includes revocations) |
-| `_lib/attestations.py` | 4 | Render in-toto attestations |
-| `_lib/wheel_signatures.py` | 2 | Check wheel signatures |
-| `sign-attestations.py` | 3 | Sign attestation files |
-| `verify-wheel-signatures.py` | 2 | Verify wheel signatures |
-| `verify-release-assets.py` | 12 | Verify release assets (sha256, tarball, manifest) |
+Read line-by-line. Key design:
 
-**What it lacks:** Single-registry scope (only serves its own skills), no cross-registry aggregation, no npm/PyPI integration, no native attestation ingestion.
+- **L505-542**: `register_pack()` — validates the complete pack before publishing any part. A late collision must not leave earlier rules from a rejected pack in the active registry generation. Rule ID collisions between different packs are rejected.
+- **L1396-1414**: `load_bundled_pack()` — release-owned schema-v2 packs with strict validation. Bundled packs may declare Python implementations and tuning knobs. Local packs reject imported Python code.
+- **L1728-1747**: `load_trusted_pack()` — fail-fast for administrator-approved packs. Unknown schema fields, metadata drift, missing or duplicate implementations, malformed regex/YARA, and out-of-policy CEL all make the complete pack unusable.
 
-**Verdict:** The only competitor with signed registry + revocation advisory. Reference for Canari's revocation design, but scope is limited to its own registry.
+### 5.2 YARA Rules: 27 total in 16 files
 
----
+| File | Rules |
+|---|---|
+| behavior_chain_detection.yara | 9 |
+| embedded_binary_detection.yara | 4 |
+| 14 generic detection rules (prompt_injection, code_execution, credential_harvesting, etc.) | 1 each |
+| **Total** | **27** |
 
-### 2.8 sigil_guard
+### 5.3 Correlation Analyzer (`correlation_analyzer.py`, 3,849 lines, 153 functions)
 
-**Repository:** `github.com/refpath/sigil_guard` | **Stars:** ~2 | **Language:** Elixir
-**Files:** 417 total, 101 code, 198 test | **LOC:** 29,228
+The `analyze()` function (L2319-2333):
+1. Extracts signals from skill files (paths, file types, hidden status, executability, archive depth, referenced files)
+2. Builds a reference graph
+3. Produces findings from: flow analysis, fenced code blocks, hidden executables, config execution, nested archives, manifest mismatches
+4. Deduplicates findings
 
-**What it does (from source code):**
-- Native Elixir OTP-supervised security runtime for MCP v2 and agent-tool boundaries
-- Policy gating with staged decisions: static bundle validation, capability drift checks, policy evaluation, scanner pipeline, confirmation gate, runtime attestation, output quarantine, audit anchoring
-- `manifest_drift` error code (`-31986`) for detecting manifest changes after approval
-- Signed evidence with Ed25519
-- Attestation envelope with golden vectors
-- A2A (Agent-to-Agent) delegation chain support
-- Adversarial hallucination squatting research notes
-
-**What it lacks:** No cross-registry, no supersession chain, no package ecosystem support.
-
-**Verdict:** Runtime product (in-process Elixir), not a measurement ledger. Different trust domain from Canari.
+### 5.4 What skill-scanner does NOT do
+- Does not sign anything (it detects private keys in other people's code)
+- No ledger, no history, no cross-registry, no supersession, no revocation
 
 ---
 
-### 2.9 trustcheck
+## 6. SkillWard — Independent Scanner (NOT a Cisco Fork)
 
-**Repository:** `github.com/kapilduraphe/trustcheck` | **Stars:** ~50 | **PyPI:** 2.2.3 (231 downloads/month) | **Language:** Python
-**Files:** 262 total, 139 code, 17 test | **LOC:** 77,528
+**Language:** Python | **LOC:** 15,131 | **Files:** 180
 
-**What it does (from source code):**
-- PEP 740 attestation verification for PyPI consumers
-- Sigstore bundle verification (production verifier)
-- SLSA provenance analysis
-- 24 unique rule IDs
-- Dependency resolution with trust evidence
-- Lockfile scanning (requirements.txt, Pipfile.lock, poetry.lock, pylock.toml)
-- GitHub Actions workflow analysis
-- Advisory checking
-- Export formats: SARIF, CycloneDX, SPDX, OpenVEX, Markdown, XML
-- Policy engine with trust evidence requirements
-- Malicious package detection
+SkillWard contains its own `skill-scanner/skill_scanner/` package which is **independent code**, not a fork of Cisco's skill-scanner. Key modules:
 
-**Key modules by size:**
-| Module | Lines | Functions | Classes | Capabilities |
-|---|---|---|---|---|
-| `cli.py` | 3,846 | 81 | 0 | attestation, sigstore, provenance, yank, dependencies |
-| `plugins.py` | 2,351 | 134 | 14 | sigstore, yank, dependencies |
-| `exports.py` | 2,479 | 67 | 0 | attestation, provenance, dependencies |
-| `service.py` | 2,447 | 45 | 0 | attestation, provenance, yank, dependencies |
-| `advisories.py` | 1,733 | 65 | 7 | - |
-| `malicious.py` | 1,569 | 43 | 2 | sigstore, dependencies |
-| `resolver.py` | 1,504 | 51 | 7 | yank, dependencies |
+| Module | Lines | re.compile | Functions |
+|---|---|---|---|
+| `core/analyzers/static.py` | 2,152 | 53 | 38 |
+| `core/scanner.py` | 864 | 0 | 26 |
+| `core/analyzers/pipeline_analyzer.py` | 724 | 20 | 19 |
+| `core/scan_policy.py` | 693 | 1 | 18 |
+| `core/command_safety.py` | 368 | 17 | 6 |
 
-**Attestation module (`attestations.py`, 473 lines):**
-15 classes: AttestationError, ConversionError, VerificationError, Distribution, VerificationMaterial, Envelope, StatementSubject, Statement, Publisher, Attestation, AttestationBundle, Provenance, _GitHubPublisherPolicy, _GitLabPublisherPolicy, _CircleCIPublisherPolicy
+**Key finding from README:** "Five scanners on 238,180 Skills showed highly inconsistent results, only 0.12% were flagged by all five, with individual flag rates ranging from 3.79% to 41.93%."
 
-**What it lacks:** No cross-registry (PyPI only), no supersession chain, no same-author propagation, no scanner orchestration, no install gate (it's a decision-support tool).
-
-**Verdict:** The most relevant competitor for Canari's T3 (PyPI PEP 740 ingestion). trustcheck verifies identity attestations; Canari produces verdict attestations on top of identity signals. Cite and differentiate.
+**0 test files** — no automated testing at all.
 
 ---
 
-### 2.10 agentshield
+## 7. SkillSpector (NVIDIA)
 
-**Repository:** `github.com/affaan-m/agentshield` | **Stars:** ~1,376 | **Language:** TypeScript
-**Files:** 238 total, 184 code, 2 test | **LOC:** 69,614
+**Language:** Python | **LOC:** 250,641 | **Files:** 526
 
-**What it does:** Scans Claude Code setups for hardcoded secrets, permission misconfigs, hook injection, MCP server risks, and prompt injection vectors.
-**44 rule files, 39 unique rule IDs, 0 re.compile** (uses different pattern matching).
+**20 YARA rules** across 5 files:
+| File | Rules |
+|---|---|
+| agent_skills.yar | 5 |
+| cryptominers.yar | 4 |
+| hacktools.yar | 5 |
+| webshells.yar | 6 |
+| **Total** | **20** |
 
-**Verdict:** Configuration scanner, not a supply-chain ledger. Different domain.
+**483 `re.compile()` patterns** across 393 code files (no duplicates found).
+**28 unique rule IDs** in source.
 
----
-
-### 2.11 SkillWard
-
-**Repository:** `github.com/Fangcun-AI/SkillWard` | **Stars:** ~145 | **Language:** Python
-**Files:** 180 total, 52 code, 0 test | **LOC:** 15,131
-
-**What it does:** Security scanner for Agent Skills. Key finding from README: "Five scanners on 238,180 Skills showed highly inconsistent results, only 0.12% were flagged by all five, with individual flag rates ranging from 3.79% to 41.93%."
-**100 re.compile() patterns, 52 unique rule IDs.**
-
-**What it lacks:** No signing, no ledger, no history, no cross-registry, no tests (0 test files).
-
-**Verdict:** Scanner with interesting cross-scanner inconsistency finding. The 0.12% consensus rate supports Canari's thesis that scanners need orchestration and signed verdicts.
+README claims "71 vulnerability patterns" — this likely refers to the combined YARA + inline regex count per-category, not a single verifiable number.
 
 ---
 
-### 2.12 Other Projects (Brief)
+## 8. REVISED CAPABILITY MATRIX (Source-Code Verified, Content-Hash Deduplicated)
 
-| Project | Stars | Language | Key Capability | Canari Relevance |
-|---|---|---|---|---|
-| agentshield | 1,376 | TypeScript | Configuration scanner | Low - different domain |
-| cisco mcp-scanner | 1,113 | Python | MCP-specific scanner | Medium - L3 adapter |
-| ramparts | 99 | Rust | Fast MCP + skill scanner | Low - niche |
-| stepcheck-dev | 0 | Python | DSSE per-commit context firewall | Low - different domain |
-| skillguard | 0 | TypeScript | GenLayer on-chain attestation registry | Low - chain-gated |
-| skillhawk | 70 | JavaScript | Zero-dependency skill scanner | Low - shallow (12 code files) |
-| nova-proximity | 307 | Python | MCP + skill scanner (NOVA-powered) | Low - 5 code files only |
-| agtmls-spec | 1 | Python | Normative specification (no runtime) | Reference for Canari's spec design |
+| Capability | mcpcheckup | SkillSpector | skill-scanner | repo-forensics | agtmls | trustcheck | sigil_guard | SkillWard | Canari |
+|---|---|---|---|---|---|---|---|---|---|
+| Cross-registry | no | no | no | no | no | no | no | no | **YES** |
+| Produces signed attestations | yes | no | no | yes* | yes | no | yes | no | **YES** |
+| Verifies offline | yes | no | no | yes* | yes | yes | yes | no | **YES** |
+| Supersession chain | no | no | no | no | no | no | no | no | **YES** |
+| Revocation propagation | no | no | no | no | advisory feed | no | no | no | **YES** |
+| Install gate | no | no | no | pre_scan | lockfile | no | yes | no | **YES** |
+| Native attestation ingestion | no | no | no | no | no | yes | no | no | **YES** |
+| Scanner orchestration | no | no | no | no | no | no | no | no | **YES** |
+| Deep vulnerability scanning | no | yes | yes | yes | 33 skills | no | no | yes | no |
+| YARA rules | 0 | 20 | 27 | 0 | 0 | 0 | 0 | 0 | 0 |
+| re.compile (unique) | 0 | 483 | 453 | 580 | 89 | 18 | 0 | ~94 | 0 |
+| JSON rulepack rules | 0 | 0 | 0 | 451 | 0 | 0 | 0 | 0 | 0 |
+| Unique rule IDs | 15 checks | 28 | 148 | 44 | 4 | 24 | 0 | 52 | 0 |
+| Test files | 37 | 43 | 39 | 30 | 94 | 17 | 198 | 0 | 8 |
 
----
-
-## 3. CAPABILITY MATRIX (Source-Code Verified)
-
-| Capability | mcpcheckup | SkillSpector | skill-scanner | repo-forensics | agtmls | trustcheck | sigil_guard | SkillWard | agentshield | Canari |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Cross-registry (npm+PyPI+MCP+dsh)** | no | no | no | no | no | no | no | no | no | **YES** |
-| **Produces signed attestations** | yes | no | no | yes* | yes | no | yes | no | no | **YES** |
-| **Verifies attestations offline** | yes | no | no | yes* | yes | yes | yes | no | no | **YES** |
-| **Supersession chain** | no | no | no | no | no | no | no | no | no | **YES** |
-| **Same-author revocation propagation** | no | no | no | no | no | no | no | no | no | **YES** |
-| **Consumer-side install gate** | no | no | no | no | lockfile | no | yes | no | no | **YES** |
-| **Native attestation ingestion** | no | no | no | no | no | yes | no | no | no | **YES** |
-| **Scanner orchestration** | no | no | no | no | no | no | no | no | no | **YES** |
-| **Deep vulnerability scanning** | no | yes | yes | yes | 33 skills | no | no | yes | yes | no (adapter) |
-| **YARA rules** | 0 | 20 | 34 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **re.compile patterns** | 0 | 483 | 453 | 580 | 89 | 18 | 0 | 100 | 0 | 0 |
-| **JSON rulepack rules** | 0 | 0 | 0 | 451 | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Unique rule IDs** | 15 | 28 | 148 | 44 | 4 | 24 | 0 | 52 | 39 | 0 |
-
-*repo-forensics: local scan attestations only, not a public ledger
-*trustcheck: verifies identity attestations (PEP 740), doesn't produce verdict attestations
+*repo-forensics: local scan attestations, not a public ledger
+*trustcheck: verifies identity (PEP 740), doesn't produce verdict attestations
 
 ---
 
-## 4. PAPER-LEVEL IMPLICATIONS
-
-### 4.1 What the paper should claim (and not claim)
+## 9. WHAT CANARI MUST SAY (AND NOT SAY)
 
 **Claim:** "First cross-registry, offline-verifiable verdict attestation ledger with supersession chains and revocation propagation for AI agent component supply chains."
-**Evidence:** Zero competitors have all four capabilities together. mcpcheckup has signing + offline verification but MCP-only. agtmls has signing + revocation but own-registry only. trustcheck has PEP 740 verification but no verdict production.
 
-**Do NOT claim:** "First signed attestation for npm" (npm provenance exists, 60% top-30 coverage). "First security scanner" (repo-forensics has 580 patterns). "First monitoring" (mcpcheckup exists and is live).
+**Evidence:**
+- Zero competitors have all 8 "YES" capabilities together
+- mcpcheckup: 4/8 (signing, offline verify, install gate concept, deep protocol checks) but MCP-only
+- repo-forensics: 3/8 (local attestations, pre-scan gate, deep scanning) but no public ledger
+- agtmls: 3/8 (signing, offline verify, revocation feed) but own-registry only
+- trustcheck: 2/8 (native ingestion, offline verify) but identity-only
+- Canari: 8/8
 
-### 4.2 Cross-scanner inconsistency supports Canari
-
-SkillWard's finding: "Five scanners on 238,180 Skills showed highly inconsistent results, only 0.12% were flagged by all five, with individual flag rates ranging from 3.79% to 41.93%."
-
-This is the strongest argument for Canari's scanner orchestration approach: individual scanners are unreliable; signed, time-bound verdicts from multiple scanners, tracked over time, are the solution.
-
-### 4.3 The measurement paper's baseline
-
-- Zenodo 21798111 (89-day MCP drift panel, CC-BY-4.0, 12 files) provides temporal drift data
-- MCP-Eco (arXiv:2611.06897, HuggingFace 16.9M records) provides ecosystem-scale baseline
-- Canari's contribution: the verdict layer on top of existing measurement data
+**Do NOT claim:**
+- "First signed attestation for npm" — npm provenance has 60% top-30 coverage
+- "First security scanner" — repo-forensics has 580 regex + 451 rulepack rules
+- "First monitoring" — mcpcheckup is live and listed in the official registry
+- "First revocation" — agtmls has a revocation advisory feed
 
 ---
 
-## 5. REPRODUCIBILITY
+## 10. REPRODUCIBILITY
 
-All repos cloned with `git clone --depth 1`. Analysis scripts in `E:/Temp/canari_deep/`:
-- `audit_all.py`: cross-repo capability detection (keyword scanning across all source files)
-- `deep_checks.py`: mcpcheckup schema + checks extraction
-- `deep_agtmls2.py`: agtmls function-level analysis
-- `deep_skillscan.py`: skill-scanner detection module analysis
-- `deep_trustcheck.py`: trustcheck module-by-module analysis
-- `deep_rf.py`: repo-forensics rulepack + regex counting
-- `read_packs.py`: repo-forensics JSON rulepack parsing
-- `competitor_audit.json`: full JSON audit data (all 17 repos, all metrics)
-
-All numbers above can be regenerated by running these scripts against the cloned repos.
+All repos cloned with `git clone --depth 1`. Analysis scripts in `E:/Temp/canari_deep/`.
+Key scripts: `audit_all.py` (cross-repo capability scan), `check_dup2.py`/`check_dup3.py` (content-hash dedup verification),
+`verify_yara.py`/`verify_yara2.py` (YARA rule counting), `read_verify.py` (mcpcheckup verifier source reading).
