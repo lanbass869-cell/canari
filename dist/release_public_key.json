@@ -1,0 +1,6 @@
+{
+ "alg": "ed25519",
+ "public_hex": "56bd31fbf682159fa40c888acd73fcaef0e1e4076dc99764eba92cbfc47ce9ce",
+ "key_pem_path": "out/release_key.pem (not shipped)",
+ "verify": "ed25519(SHA256SUMS bytes) == sig_b64"
+}

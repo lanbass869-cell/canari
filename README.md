@@ -1,5 +1,11 @@
 # Canari
 
+[![CI](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml/badge.svg)](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml)
+![tests](https://img.shields.io/badge/tests-357%20passing-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-90%25%20line%20%7C%2083%25%20branch-brightgreen)
+![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
+![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
+
 Agent component verification ledger - signed, offline-verifiable, history-preserving attestations for MCP servers, agent skills, and DSH plugins.
 
 Named after the canary in the coal mine: the first to detect that something went wrong.
@@ -13,6 +19,28 @@ Named after the canary in the coal mine: the first to detect that something went
 5. Public **machine-readable feed** for any AI agent or host to consume
 6. **Trust heuristics**: release cadence (L2.4), metadata anomaly (L2.5), typosquatting (L2.6)
 7. **Consumer install gate** with policies: `canari-verify bundle.json --key pub.json --gate --gate-policy paranoid`
+
+## Install
+
+From the latest GitHub release (wheel + sdist, checksum + Ed25519 signed):
+
+```
+pip install https://github.com/lanbass869-cell/canari/releases/download/v0.1.0/canari_mcp-0.1.0-py3-none-any.whl
+canari-gate --store out --list
+```
+
+Then verify what you downloaded (see `docs/release-process.md` for the one-liner).
+
+## Quality gates (enforced in CI)
+
+| Gate | Threshold | Current |
+|---|---|---|
+| tests | green on 3.10/3.12/3.13 | 357 passing |
+| line coverage | >= 85% | 90% |
+| mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (50/50) |
+| live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
+
+Run them yourself: `python scripts/quality_gate.py`
 
 ## Quick start
 

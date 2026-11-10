@@ -1,0 +1,333 @@
+# -*- coding: utf-8 -*-
+"""signing.py - DSSE sign/verify via in-toto Envelope + securesystemslib 1.6.
+
+Library choice per docs/research/lineF (reviewed conclusion, do NOT re-litigate):
+  - in-toto 3.1.0 Envelope (DSSE payloadType application/vnd.in-toto+json)
+  - securesystemslib 1.x CryptoSigner/SSlibKey (ed25519). NOTE: 1.x removed the
+    old module-level API; verification lives on SSlibKey.verify_signature and
+    SSlibKey.from_dict takes (keyid, key_dict).
+  - PyPI package "dsse" is an UNRELATED project (Drone Swarm Search) - never install
+
+Signature is over the DSSE PAE of the payload bytes. The inline
+attestation["signature"] block mirrors keyid/sig for schema compliance; the
+DSSE envelope in the bundle is the authoritative signature.
+"""
+import base64
+import json
+import re
+
+from canari.schema import _PREDICATE_TYPE
+
+try:
+    from in_toto.models.metadata import Envelope
+    from securesystemslib.signer import CryptoSigner, SSlibKey
+except ImportError as e:
+    raise RuntimeError(
+        "in-toto>=3.1 + securesystemslib are hard dependencies: "
+        "pip install in-toto") from e
+
+DSSE_PAYLOAD_TYPE = "application/vnd.in-toto+json"
+
+
+def generate_keypair():
+    """Generate an ed25519 keypair (securesystemslib 1.x CryptoSigner).
+
+    Returns (signer: CryptoSigner, public_key: SSlibKey).
+    Persist signer.private_bytes to a keystore; publish public_key.to_dict().
+    """
+    signer = CryptoSigner.generate_ed25519()
+    return signer, signer.public_key
+
+
+def _nfc_normalize(obj):
+    """Recursively NFC-normalize every string in a JSON-serializable structure.
+    Prevents Unicode normalization differences from producing different hashes
+    for the same logical content (mcpcheckup nfc-jcs/v1 pattern).
+    Also detects NFC key collisions."""
+    import unicodedata
+    if isinstance(obj, str):
+        return unicodedata.normalize("NFC", obj)
+    if isinstance(obj, dict):
+        result = {}
+        seen_keys = {}
+        for k, v in obj.items():
+            normalized_key = unicodedata.normalize("NFC", k) if isinstance(k, str) else k
+            if normalized_key in seen_keys:
+                raise ValueError(
+                    "NFC_KEY_COLLISION: keys %r and %r both normalize to %r"
+                    % (seen_keys[normalized_key], k, normalized_key)
+                )
+            seen_keys[normalized_key] = k
+            result[k] = _nfc_normalize(v)
+        return result
+    if isinstance(obj, list):
+        return [_nfc_normalize(item) for item in obj]
+    return obj
+
+
+# Credential shape detection (mcpcheckup credential-shapes.ts pattern)
+_CREDENTIAL_RULES = [
+    ("jwt", lambda s: bool(re.match(r"eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*", s))),
+    ("authorization header", lambda s: bool(re.search(r"(?i)\b(?:bearer|basic|token|dpop)\s+[A-Za-z0-9._~+/-]{8,}", s))),
+    ("private key block", lambda s: "-----BEGIN" in s and "PRIVATE KEY" in s),
+    ("vendor key prefix", lambda s: bool(re.search(
+        r"(?:sk|rk|pk)_(?:live|test)_|gh[pousr]_|github_pat_|xox[abprs]-|glpat-|whsec_|npm_|pypi-|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{20}", s))),
+    ("long hex run", lambda s: bool(re.search(r"(?:^|[^0-9A-Za-z])[0-9a-fA-F]{32,}(?![0-9A-Za-z])", s))),
+    ("high-entropy token", lambda s: any(
+        len(p) >= 24 and any(c.isupper() for c in p) and any(c.islower() for c in p) and any(c.isdigit() for c in p)
+        for p in re.split(r"[^A-Za-z0-9+/=_-]+", s)
+    )),
+    ("credential variable access", lambda s: bool(re.search(
+        r"(?:password|secret|token|api_key|credential|private_key)\s*[:=]\s*['\"]?[A-Za-z0-9+/=_-]{8,}", s, re.I
+    ))),
+]
+
+
+# Fields whose values are our own computed hashes/digests - exempt from credential scanning
+# (mcpcheckup does the same: OWN_VALUE_PATHS in credential-shapes.ts)
+_OWN_HASH_FIELDS = {
+    "artifact_sha256", "scenario_sha256", "suite_digest", "suite_commit",
+    "launch_config_digest", "toolset_fingerprint", "schema_fingerprint", "run_id",
+    # DSSE signature fields - these are our own cryptographic outputs, not credentials
+    "keyid", "sig",
+    # Canonicalization profile identifier
+    "canonicalization",
+    # Public metadata fields - not credentials
+    "homepage",
+    # Supersession chain and revocation references (contain our own digests)
+    "supersedes", "ref",
+}
+
+
+def credential_shapes(value, path="") -> list:
+    """Find credential-shaped strings anywhere in a JSON-serializable value.
+    Returns list of "<path>: <rule>" strings. Empty = clean.
+    Percent-decoded forms are also checked (mcpcheckup pattern).
+    Fields in _OWN_HASH_FIELDS are exempt (they're our own computed digests)."""
+    import urllib.parse
+    # Skip our own hash fields
+    leaf = path.split(".")[-1] if path else ""
+    if leaf in _OWN_HASH_FIELDS:
+        return []
+    results = []
+    if isinstance(value, str):
+        decoded = urllib.parse.unquote(value)
+        for name, matcher in _CREDENTIAL_RULES:
+            if matcher(value) or matcher(decoded):
+                results.append("%s: %s" % (path or "<root>", name))
+    elif isinstance(value, list):
+        for i, v in enumerate(value):
+            results.extend(credential_shapes(v, "%s.%d" % (path, i) if path else str(i)))
+    elif isinstance(value, dict):
+        for k, v in value.items():
+            # Skip evidence_refs - registry references like "pypi-json:name", not credentials
+            if k == "evidence_refs":
+                continue
+            # Skip signature dict - our own crypto outputs (keyid, sig)
+            if k == "signature":
+                continue
+            results.extend(credential_shapes(v, "%s.%s" % (path, k) if path else k))
+    return results
+
+
+def sign_attestation(att: dict, signer) -> dict:
+    """Sign the attestation; returns {"envelope": dict, "payload": dict}.
+
+    The payload includes the inline signature block (schema-required), so we
+    build payload -> sign -> inject sig -> re-sign. Verification always goes
+    through the envelope; the inline block is informational/compliance.
+    
+    Credential shape detection (mcpcheckup pattern): scans the payload before
+    signing to prevent accidentally embedding credentials in a public artifact.
+    """
+    # Credential scan before signing
+    cred_hits = credential_shapes(att)
+    if cred_hits:
+        raise ValueError(
+            "CREDENTIAL_IN_PAYLOAD: %d credential-shaped string(s) detected in the attestation: %s"
+            % (len(cred_hits), "; ".join(cred_hits[:5]))
+        )
+
+    # NFC normalization (mcpcheckup nfc-jcs/v1 pattern)
+    att = _nfc_normalize(att)
+    def _build(a):
+        payload_bytes = json.dumps(a, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        env = Envelope(payload=payload_bytes, payload_type=DSSE_PAYLOAD_TYPE, signatures={})
+        sig = signer.sign(env.pae())
+        env.signatures = {sig.keyid: sig}
+        a2 = dict(a)
+        a2["signature"] = {"envelope": "DSSE", "keyid": sig.keyid,
+                           "sig": sig.signature, "payload_type": _PREDICATE_TYPE}
+        return a2, env
+
+    att1, _ = _build(att)      # pass 1: get keyid/sig for the inline block
+    att2, env = _build(att1)   # pass 2: final payload incl. inline block
+    return {"envelope": env.to_dict(), "payload": att2}
+
+
+def verify_signed(envelope_dict: dict, public_key_dict: dict):
+    """Verify a DSSE envelope against an SSlibKey dict.
+
+    Returns (ok, payload_or_None, error_or_None). Never raises for verify
+    failures - failures are data (the CLI prints them), not crashes.
+    """
+    try:
+        import copy as _copy
+        # BUG-81: from_dict consumes/mutates its input; never touch the caller's dict
+        env = Envelope.from_dict(_copy.deepcopy(envelope_dict))
+        if len(env.signatures) != 1:
+            return False, None, "expected exactly 1 signature, got %d" % len(env.signatures)
+        keyid, sig_obj = next(iter(env.signatures.items()))
+        # securesystemslib from_dict POPS all fields from key_dict (mutates!) -
+        # pass a copy so the caller's key dict survives repeated verify calls.
+        key = SSlibKey.from_dict(keyid, dict(public_key_dict))
+        key.verify_signature(sig_obj, env.pae())
+        payload = json.loads(env.payload.decode("utf-8"))
+        return True, payload, None
+    except Exception as e:
+        return False, None, "%s: %s" % (type(e).__name__, str(e)[:200])
+
+
+def export_public_key(public_key) -> str:
+    """Public key as canonical JSON string (what we publish in keyring)."""
+    return json.dumps(public_key.to_dict(), ensure_ascii=False, sort_keys=True)
+
+
+def save_private_key(signer, path: str):
+    """Persist signer private key (PEM) to a file for cross-run key reuse.
+    Without this, every run generates a new keypair and all previous bundles
+    fail signature verification (documented in baseline.py run())."""
+    with open(path, "wb") as f:
+        f.write(signer.private_bytes)
+
+
+def load_private_key(path: str):
+    """Load a persisted private key (PEM). Returns CryptoSigner or None.
+    Uses cryptography library to parse PEM -> CryptoSigner constructor."""
+    try:
+        from cryptography.hazmat.primitives.serialization import load_pem_private_key
+        pem = open(path, "rb").read()
+        priv_key = load_pem_private_key(pem, password=None)
+        return CryptoSigner(priv_key)
+    except Exception:
+        return None
+
+
+def load_or_generate_keypair(key_path: str):
+    """Load persisted private key or generate a new one. Returns (signer, pub_key, is_new).
+    This is the correct way to maintain a stable signing identity across runs.
+    BUG-73 fix: a CORRUPTED existing PEM is backed up (never overwritten) and a
+    loud warning is printed before regenerating - silent key loss orphans every
+    previously signed bundle and breaks the audit trail."""
+    import os
+    import shutil
+    if os.path.exists(key_path):
+        signer = load_private_key(key_path)
+        if signer is not None:
+            return signer, signer.public_key, False
+        # key file exists but cannot be parsed -> do NOT silently destroy it
+        backup = key_path + ".corrupt-" + str(int(__import__("time").time()))
+        try:
+            shutil.copy2(key_path, backup)
+            print("[key] WARNING: existing key file is corrupt; backed up to %s" % backup)
+        except OSError as e:
+            print("[key] WARNING: existing key file is corrupt AND backup failed: %s" % e)
+        print("[key] WARNING: generating a NEW keypair - all bundles signed with the old key will no longer verify against the new public key")
+    signer, pub_key = generate_keypair()
+    save_private_key(signer, key_path)
+    return signer, pub_key, True
+
+
+def create_key_registry_entry(public_key, key_path: str) -> dict:
+    """Create a key registry entry with lifecycle fields (mcpcheckup pattern).
+    
+    Fields:
+      key_id: sha256(SPKI)[:16] - same derivation as mcpcheckup
+      keytype, scheme, keyval: from SSlibKey.to_dict()
+      valid_from: now (ISO 8601 UTC)
+      valid_until: null (no expiry by default)
+      revoked_at: null (not revoked)
+      private_key_path: path to the persisted PEM file
+    """
+    import hashlib
+    from datetime import datetime, timezone
+    
+    key_dict = public_key.to_dict()
+    keyval = key_dict.get("keyval", {})
+    public_bytes = keyval.get("public", "")
+    
+    # Derive key_id from the public key bytes (same as mcpcheckup)
+    try:
+        raw = base64.b64decode(public_bytes)
+    except Exception:
+        raw = public_bytes.encode("utf-8") if isinstance(public_bytes, str) else public_bytes
+    key_id = hashlib.sha256(raw).hexdigest()[:16]
+    
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    
+    return {
+        "key_id": key_id,
+        "keytype": key_dict.get("keytype", "ed25519"),
+        "scheme": key_dict.get("scheme", "Ed25519"),
+        "keyval": keyval,
+        "valid_from": now,
+        "valid_until": None,
+        "revoked_at": None,
+        "private_key_path": key_path,
+    }
+
+
+def save_key_registry(registry: dict, path: str):
+    """Save key registry to a JSON file."""
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(registry, f, indent=1, ensure_ascii=False)
+
+
+def load_key_registry(path: str) -> dict | None:
+    """Load key registry from a JSON file. Returns None if missing/corrupt."""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def revoke_key(registry: dict, reason: str = "") -> dict:
+    """Mark a key as revoked. A revoked key's signatures are never accepted."""
+    from datetime import datetime, timezone
+    registry["revoked_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if reason:
+        registry["revocation_reason"] = reason
+    return registry
+
+
+def is_key_valid(registry_entry: dict, at_time: str = None) -> tuple[bool, str]:
+    """Check if a key is valid at the given time (or now).
+    Returns (valid, reason_if_invalid).
+    
+    Rules (mcpcheckup pattern):
+      - revoked_at set: always invalid, whatever the time
+      - at_time < valid_from: invalid
+      - valid_until set and at_time > valid_until: invalid
+      - Both ends inclusive
+    """
+    from datetime import datetime, timezone
+    
+    if registry_entry.get("revoked_at"):
+        return False, "key was revoked at %s" % registry_entry["revoked_at"]
+    
+    valid_from = registry_entry.get("valid_from", "")
+    if not valid_from:
+        return False, "key has no valid_from"
+    
+    check_time = at_time or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    
+    if check_time < valid_from:
+        return False, "time %s is before key valid_from %s" % (check_time, valid_from)
+    
+    valid_until = registry_entry.get("valid_until")
+    if valid_until and check_time > valid_until:
+        return False, "time %s is after key valid_until %s" % (check_time, valid_until)
+    
+    return True, ""
+

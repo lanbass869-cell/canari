@@ -1,0 +1,922 @@
+# -*- coding: utf-8 -*-
+"""baseline.py - M0 task 3: Top-50 baseline scan -> 50 signed attestations + feed.
+
+One run produces:
+  attestations/<n>_<safe-name>.bundle.json   (signed DSSE bundle)
+  feed/feed-<date>.json                      (public machine-readable feed)
+  baseline_report.json                       (run summary incl. failure counts)
+
+L-level per plan section 5.2: this baseline is META-ONLY (L1/L2).
+META-ONLY = no code execution. Tarball DOWNLOAD for hash computation is
+byte-level fetch (not execution) and is required for schema-valid
+artifact_sha256 binding. L3+ behavioral checks stay out of M0.
+  L1.1_REGISTRY_PRESENT      - packument fetchable
+  L1.2_VERSION_RESOLVED      - dist-tags.latest exists
+  L2.1_ARTIFACT_HASH         - dist.integrity present (sha512 -> record; sha256 field
+                               stays empty unless we download the tarball, which M0
+                               does NOT do - honesty: unsupported, not pass)
+  L2.2_MAINTAINER_SET        - maintainers non-empty
+  L2.3_MANIFEST_FIELDS       - description/homepage present
+Checks that REQUIRE running the package are NOT in this baseline (M1).
+"""
+import datetime
+import hashlib
+import json
+import os
+import sys
+import urllib.request
+
+from canari.schema import _PREDICATE_TYPE
+from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair, create_key_registry_entry, save_key_registry, load_key_registry, is_key_valid, save_private_key
+from canari.state import FileLock, StateStore
+from canari.dead_letter import DeadLetterLog
+from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
+                            pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
+                            _opener, UA)
+from canari.native import ingest as native_ingest
+from canari.cadence import analyze_release_cadence
+from canari.anomaly import detect_metadata_anomaly
+from canari.pypi_native import ingest_pypi as pypi_native_ingest
+
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT_DIR = os.path.join(HERE, "out")
+
+
+def _with_timeout(fn, timeout_s, default=None):
+    """Run fn() with a hard wall-clock budget. On timeout return default.
+    The worker thread is a daemon: it cannot be killed, but it no longer blocks
+    the scan (process exit reaps it)."""
+    import threading
+    box = {}
+    def _run():
+        try:
+            box["value"] = fn()
+        except Exception as e:
+            box["error"] = e
+    t = threading.Thread(target=_run, daemon=True)
+    t.start()
+    t.join(timeout_s)
+    if t.is_alive():
+        print("[timeout] call exceeded %ss - degraded to default" % timeout_s)
+        return default
+    if "error" in box:
+        return default
+    return box.get("value", default)
+
+
+def _now():
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _runner_source_digest() -> str:
+    """SHA-256 over the Canari package source tree (mcpcheckup suite_digest pattern).
+    Binds the attestation to the exact runner code that produced it. If the runner
+    code changes, all previous attestations become reproducible only with the old code."""
+    import hashlib
+    canari_dir = os.path.dirname(os.path.abspath(__file__))
+    h = hashlib.sha256()
+    for root, dirs, files in os.walk(canari_dir):
+        dirs[:] = sorted(x for x in dirs if x not in ("__pycache__", ".git"))
+        for fn in sorted(files):
+            if not fn.endswith(".py"):
+                continue
+            fp = os.path.join(root, fn)
+            h.update(fn.encode("utf-8"))
+            try:
+                h.update(open(fp, "rb").read())
+            except OSError:
+                pass
+    return h.hexdigest()
+
+
+def _expiry():
+    return (datetime.datetime.now(datetime.timezone.utc)
+            + datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _sha512_integrity_to_hex(integrity: str):
+    """npm integrity format: 'sha512-<base64>'. Return hex digest or None."""
+    if not integrity or not integrity.startswith("sha512-"):
+        return None
+    import base64
+    try:
+        raw = base64.b64decode(integrity.split("-", 1)[1], validate=True)
+        h = raw.hex()
+        return h if len(h) == 128 else None
+    except Exception:
+        return None
+
+
+
+
+def _download_sha256(tarball_url: str, timeout: int = 60):
+    """Download tarball bytes and compute sha256. NO code execution - this is
+    byte-level fetch (same trust class as sentinel audit-install's fetch step).
+    Returns hex digest or None. Failure is data, not crash."""
+    if not tarball_url:
+        return None
+    try:
+        import urllib.request
+        req = urllib.request.Request(tarball_url, headers={"User-Agent": UA_CONST})
+        # proxy-aware: direct CDN connections stall on this network (see BUG-87)
+        with _opener().open(req, timeout=timeout) as r:
+            h = hashlib.sha256()
+            while True:
+                chunk = r.read(65536)
+                if not chunk:
+                    break
+                h.update(chunk)
+        return h.hexdigest()
+    except Exception:
+        return None
+
+
+UA_CONST = "canari-m0/0.1 (research; repo issues)"
+
+
+def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256: str) -> dict:
+    """Build one meta-only attestation for one component."""
+    checks = []
+    # L1.1 packument fetchable = we got here
+    checks.append({"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass",
+                   "tool": "canari-meta/0.1", "duration_ms": meta.get("fetch_ms", 0)})
+    # L1.2 version resolved
+    if meta.get("version"):
+        checks.append({"id": "L1.2_VERSION_RESOLVED", "verdict": "pass",
+                       "tool": "canari-meta/0.1"})
+    else:
+        checks.append({"id": "L1.2_VERSION_RESOLVED", "verdict": "fail",
+                       "tool": "canari-meta/0.1"})
+    # L2.1 artifact hash: download the tarball (byte fetch, NO execution) and
+    # compute sha256. Schema REQUIRES a valid 64-hex artifact_sha256, and an
+    # attestation that does not bind to exact bytes is worthless anyway.
+    # Cross-check: our sha256 vs npm's published sha512 - if npm's integrity
+    # exists we also record it as corroborating evidence.
+    sha512_hex = _sha512_integrity_to_hex(meta.get("dist_integrity", ""))
+    sha256_hex = None
+    for _dl in range(2):  # CDN throttle: one retry after brief pause
+        sha256_hex = _download_sha256(meta.get("tarball", ""), timeout=120)
+        if sha256_hex:
+            break
+        import time as _t
+        _t.sleep(2)
+    if sha256_hex:
+        ev = "sha256 computed from tarball download"
+        if sha512_hex:
+            ev += "; npm packument sha512:" + sha512_hex[:16] + "..."
+        checks.append({"id": "L2.1_ARTIFACT_HASH", "verdict": "pass",
+                       "tool": "canari-meta/0.1", "evidence_ref": ev})
+    elif sha512_hex:
+        # download failed but npm publishes integrity - we cannot confirm
+        # sha256 ourselves; schema forbids empty/invalid, so this check fails
+        checks.append({"id": "L2.1_ARTIFACT_HASH", "verdict": "fail",
+                       "tool": "canari-meta/0.1",
+                       "evidence_ref": "tarball download failed; npm sha512:" + sha512_hex[:16]})
+    else:
+        checks.append({"id": "L2.1_ARTIFACT_HASH", "verdict": "fail",
+                       "tool": "canari-meta/0.1",
+                       "evidence_ref": "no dist.integrity in packument and download failed"})
+    # L2.2 maintainers
+    if meta.get("maintainers"):
+        checks.append({"id": "L2.2_MAINTAINER_SET", "verdict": "pass",
+                       "tool": "canari-meta/0.1"})
+    else:
+        checks.append({"id": "L2.2_MAINTAINER_SET", "verdict": "fail",
+                       "tool": "canari-meta/0.1"})
+    has_desc = bool(search_meta.get("description"))
+    # L2.3 manifest fields - check-level enum has no 'pass-with-findings';
+    # a missing description is a finding recorded via evidence_ref, check
+    # stays pass, and the RUN verdict becomes pass-with-findings.
+    if has_desc:
+        checks.append({"id": "L2.3_MANIFEST_FIELDS", "verdict": "pass",
+                       "tool": "canari-meta/0.1"})
+    else:
+        checks.append({"id": "L2.3_MANIFEST_FIELDS", "verdict": "pass",
+                       "tool": "canari-meta/0.1",
+                       "evidence_ref": "finding: description empty"})
+
+    n_fail = sum(1 for c in checks if c["verdict"] == "fail")
+    n_unsup = sum(1 for c in checks if c["verdict"] == "unsupported")
+    if n_fail:
+        verdict = "fail"
+    elif n_unsup == len(checks):
+        verdict = "unsupported"
+    else:
+        has_findings = any(
+            c["verdict"] != "pass" or (c.get("evidence_ref") or "").startswith("finding:")
+            for c in checks)
+        verdict = "pass-with-findings" if has_findings else "pass"
+
+    native_prov = None
+    try:
+        native_prov = _with_timeout(lambda: native_ingest(name, meta.get("version", "")), 90, None)
+    except Exception:
+        native_prov = None
+
+    result = {
+        "_type": _PREDICATE_TYPE,
+        "subject": {
+            "name": name,
+            "version": meta.get("version", ""),
+            "registry": "npm",
+            "artifact_sha256": sha256_hex or "0" * 64,  # schema requires valid hex; all-zero = download failed (check FAIL records it)
+            "homepage": (search_meta.get("links") or {}).get("homepage", ""),
+            "maintainers": meta.get("maintainers", []),
+        },
+        "host": {"class": "mcp", "host_version": "registry-meta-v1"},
+        "scenario_sha256": scenario_sha256,
+        "checks": checks,
+        "verdict": verdict,
+        "checker": {"kind": "automation", "id": "canari-m0", "tools": ["canari-meta/0.1"]},
+        "evidence_refs": ["npm-packument:" + name],
+        "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
+        "expires_at": _expiry(),
+        "generated_at": _now(),
+        "signature": {"envelope": "DSSE", "keyid": "", "sig": "", "payload_type": _PREDICATE_TYPE},
+    }
+    if native_prov is not None:
+        result["native_provenance"] = native_prov
+
+    # Trust heuristics (H1-H3)
+    heuristic_checks = []
+    # H1: Release cadence
+    try:
+        from canari.cadence import analyze_release_cadence
+        cadence_findings = analyze_release_cadence(name, meta.get("version", ""))
+        heuristic_checks.extend(cadence_findings)
+    except Exception:
+        pass
+    # H2: Metadata anomaly (only if we have previous metadata in state)
+    try:
+        from canari.anomaly import detect_metadata_anomaly
+        # previous metadata would come from state.json (not implemented yet)
+        # For now, skip if no previous data available
+        pass
+    except Exception:
+        pass
+    # H3: Typosquatting (requires trusted names set, skip for now in build)
+    # This is done at a higher level where trusted_names is available
+
+    # Add heuristic findings as extra checks
+    for hf in heuristic_checks:
+        result["checks"].append(hf)
+        # If any heuristic has a finding, upgrade verdict
+        if "finding:" in (hf.get("evidence_ref") or ""):
+            if result["verdict"] == "pass":
+                result["verdict"] = "pass-with-findings"
+    return result
+
+
+def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict:
+    """Full M0 baseline run. Returns summary dict."""
+    out_dir = out_dir or OUT_DIR
+    att_dir = os.path.join(out_dir, "attestations")
+    feed_dir = os.path.join(out_dir, "feed")
+    os.makedirs(att_dir, exist_ok=True)
+    os.makedirs(feed_dir, exist_ok=True)
+    lock = FileLock(os.path.join(out_dir, "run"))
+    lock.__enter__()
+    state = StateStore(os.path.join(out_dir, "state.json"))
+
+    key_path = os.path.join(out_dir, "private_key.pem")
+    if signer is None:
+        signer, pub_key, _ = load_or_generate_keypair(key_path)
+    
+    # Key lifecycle management
+    registry_path = os.path.join(out_dir, "key_registry.json")
+    registry = load_key_registry(registry_path)
+    if registry is None:
+        registry = create_key_registry_entry(pub_key, key_path)
+        save_key_registry(registry, registry_path)
+    else:
+        key_valid, reason = is_key_valid(registry)
+        if not key_valid:
+            print("[key] WARNING: signing key is not valid: %s" % reason)
+            signer, pub_key = generate_keypair()
+            save_private_key(signer, key_path)
+            registry = create_key_registry_entry(pub_key, key_path)
+            save_key_registry(registry, registry_path)
+
+    # scenario hash: the check-list definition itself (L1.1..L2.3 meta-only)
+    scenario_def = json.dumps({
+        "level": "L1-L2-meta-only",
+        "checks": ["L1.1_REGISTRY_PRESENT", "L1.2_VERSION_RESOLVED",
+                   "L2.1_ARTIFACT_HASH", "L2.2_MAINTAINER_SET", "L2.3_MANIFEST_FIELDS"],
+        "runner": "canari-m0/0.1",
+        "runner_source_digest": _runner_source_digest(),
+    }, sort_keys=True).encode("utf-8")
+    scenario_sha256 = hashlib.sha256(scenario_def).hexdigest()
+
+    print("[baseline] enumerating npm MCP packages (limit=%d)..." % limit)
+    top = enumerate_top(limit=limit)
+    print("[baseline] got %d candidates" % len(top))
+
+    results = []
+    n_err = n_skip = 0
+    for i, pkg in enumerate(top):
+        name = pkg["name"]
+        safe = name.replace("/", "_").replace("@", "").replace("\\", "_").replace("..", "_")
+        # additional safety: remove any remaining path separators or parent refs
+        safe = "".join(c for c in safe if c.isalnum() or c in "._-")
+        pack = None
+        fetch_exc = None
+        for attempt in range(3):
+            try:
+                pack = fetch_packument(name)
+                break
+            except Exception as e2:
+                fetch_exc = e2
+        if pack is None:
+            n_err += 1
+            print("  [%02d] %-44s FETCH-ERROR %s" % (i + 1, name, str(fetch_exc)[:60]))
+            results.append({"name": name, "status": "fetch_error",
+                            "error": str(fetch_exc)[:200]})
+            continue
+        try:
+            lv = latest_version_info(pack)
+            meta = {"version": lv["version"], "dist_integrity": lv["dist_integrity"],
+                    "tarball": lv["tarball"],
+                    "maintainers": [m.get("name", "") for m in (lv["maintainers"] or [])]
+                    if isinstance(lv["maintainers"], list) else [],
+                    "fetch_ms": 0}
+        except Exception as e:
+            # failure is DATA (dead-letter audit), never silent
+            n_err += 1
+            print("  [%02d] %-44s FETCH-ERROR %s" % (i + 1, name, str(e)[:60]))
+            results.append({"name": name, "status": "fetch_error", "error": str(e)[:200]})
+            continue
+        import time as _t
+        _t.sleep(1)  # politeness: npm CDN throttles rapid sequential tarball fetches
+        att = build_attestation(name, meta, pkg, scenario_sha256)
+        _prev = state.get_component("npm:" + name) or state.get_component(name)
+        if _prev and _prev.get("attestation_digest"):
+            _pd = _prev["attestation_digest"]
+            if isinstance(_pd, str) and len(_pd) == 64 and all(c in "0123456789abcdef" for c in _pd):
+                att["supersedes"] = _pd
+        signed = sign_attestation(att, signer)
+        # BUG-65: timestamp + payload-digest suffix so re-runs never overwrite
+        # previous bundles (supersession chains need the old files to persist)
+        _ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
+        _dg = hashlib.sha256(
+            json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()[:8]
+        bundle_path = os.path.join(att_dir, "%02d_%s_%s_%s.bundle.json" % (i + 1, safe, _ts, _dg))
+        with open(bundle_path, "w", encoding="utf-8") as f:
+            json.dump({"envelope": signed["envelope"], "payload": signed["payload"]},
+                      f, ensure_ascii=False, indent=1)
+        results.append({"name": name, "version": meta.get("version", ""),
+                        "verdict": att["verdict"], "bundle": bundle_path})
+        print("  [%02d] %-44s %-18s %s" % (i + 1, name, meta.get("version", "?"), att["verdict"]))
+
+    # public feed
+    feed = {
+        "feed_version": 1,
+        "generated_at": _now(),
+        "scenario_sha256": scenario_sha256,
+        "count": len([r for r in results if r.get("status") != "fetch_error"]),
+        "fetch_errors": n_err,
+        "verdicts": {v: sum(1 for r in results if r.get("verdict") == v)
+                     for v in ("pass", "pass-with-findings", "fail", "unsupported")},
+        "items": [{"name": r["name"], "version": r.get("version", ""),
+                   "verdict": r.get("verdict"), "status": r.get("status", "ok"),
+                   "bundle_file": os.path.basename(r["bundle"]) if r.get("bundle") else None}
+                  for r in results],
+    }
+    feed_path = os.path.join(feed_dir, "run-feed-%s.json" % datetime.datetime.now(
+        datetime.timezone.utc).strftime("%Y%m%dT%H%M%S"))
+    with open(feed_path, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=1)
+
+    # public key export - ALWAYS overwrite: the keypair regenerates per run,
+    # a stale key file would make every bundle verify as FAIL (found in the
+    # real M0 run: run-2 bundles vs run-1 key -> UnverifiedSignatureError).
+    # Operator persistence = copy this file elsewhere, not rely on skip-if-exists.
+    key_path = os.path.join(out_dir, "public_key.json")
+    with open(key_path, "w", encoding="utf-8") as f:
+        f.write(export_public_key(pub_key))
+
+    # diff vs previous run + persist state
+    current_snapshot = {}
+    for r in results:
+        if r.get("bundle") and r.get("status") != "fetch_error":
+            bp = json.load(open(r["bundle"], encoding="utf-8"))
+            sha = bp["payload"]["subject"].get("artifact_sha256", "")
+            current_snapshot[r["name"]] = {"version": r.get("version", ""), "sha256": sha}
+
+    diff = state.diff(current_snapshot)
+    print("[diff] new=%d changed=%d unchanged=%d removed=%d" % (
+        len(diff["new"]), len(diff["changed"]), len(diff["unchanged"]), len(diff["removed"])))
+
+    for r in results:
+        if r.get("bundle"):
+            bp = json.load(open(r["bundle"], encoding="utf-8"))
+            # compute payload digest for supersession chain (not file path)
+            payload_digest = hashlib.sha256(
+                json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+            ).hexdigest()
+            state.set_component("npm:" + r["name"], r.get("version", ""),
+                                bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest)
+    state.save()
+    lock.__exit__()
+
+    summary = {"total": len(results), "diff": diff, "run_number": state.run_count,
+               "fetch_errors": n_err, "skipped": n_skip,
+               "feed": feed_path, "key": key_path, "results": results}
+    report_path = os.path.join(out_dir, "baseline_report.json")
+    with open(report_path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, ensure_ascii=False, indent=1)
+    print("[baseline] done: %d attested, %d fetch-errors | feed=%s" % (
+        len(results) - n_err, n_err, feed_path))
+    return summary
+
+
+def main(argv=None):
+    import argparse
+    ap = argparse.ArgumentParser(prog="canari-baseline",
+                                 description="M0 Top-50 npm MCP baseline scan")
+    ap.add_argument("--limit", type=int, default=50)
+    ap.add_argument("--out", default=None, help="output dir (default: <repo>/out)")
+    a = ap.parse_args(argv)
+    run(limit=a.limit, out_dir=a.out)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+
+
+
+def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
+              signer=None, pub_key=None, out_dir=None):
+    """Multi-registry scan: npm + PyPI + MCP Registry + dsh.so -> unified attestations + feed."""
+    out_dir = out_dir or OUT_DIR
+    att_dir = os.path.join(out_dir, "attestations")
+    feed_dir = os.path.join(out_dir, "feed")
+    os.makedirs(att_dir, exist_ok=True)
+    os.makedirs(feed_dir, exist_ok=True)
+    key_path = os.path.join(out_dir, "private_key.pem")
+    if signer is None:
+        signer, pub_key, _ = load_or_generate_keypair(key_path)
+    
+    # Key lifecycle management
+    registry_path = os.path.join(out_dir, "key_registry.json")
+    registry = load_key_registry(registry_path)
+    if registry is None:
+        registry = create_key_registry_entry(pub_key, key_path)
+        save_key_registry(registry, registry_path)
+    else:
+        key_valid, reason = is_key_valid(registry)
+        if not key_valid:
+            print("[key] WARNING: signing key is not valid: %s" % reason)
+            signer, pub_key = generate_keypair()
+            save_private_key(signer, key_path)
+            registry = create_key_registry_entry(pub_key, key_path)
+            save_key_registry(registry, registry_path)
+
+    state = StateStore(os.path.join(out_dir, "state.json"))
+
+    def _prev(registry, name):
+        """Previous state entry for (registry, name). Registry-qualified key first,
+        plain-name fallback keeps continuity with pre-qualification state files."""
+        return (state.get_component("%s:%s" % (registry, name))
+                or state.get_component(name))
+
+    dead = DeadLetterLog(os.path.join(out_dir, "dead_letters.json"))
+
+    scenario_def = json.dumps({"level": "L1-L2-multi-registry",
+                               "registries": ["npm", "pypi", "mcp-registry", "dsh-registry"],
+                               "runner_source_digest": _runner_source_digest()},
+                              sort_keys=True).encode("utf-8")
+    scenario_sha256 = hashlib.sha256(scenario_def).hexdigest()
+    all_results = []
+    total_errors = 0
+
+    def _make_att(name, version, registry, sha, host_class, checks, verdict, tools, ev_refs, native_prov=None):
+        att = {"_type": _PREDICATE_TYPE,
+                "subject": {"name": name, "version": version, "registry": registry,
+                            "artifact_sha256": sha or "0" * 64, "maintainers": []},
+                "host": {"class": host_class, "host_version": "registry-meta-v1"},
+                "scenario_sha256": scenario_sha256, "checks": checks, "verdict": verdict,
+                "checker": {"kind": "automation", "id": "canari-m1", "tools": tools},
+                "evidence_refs": ev_refs,
+                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
+                "expires_at": _expiry(), "generated_at": _now(),
+                "signature": {"envelope": "DSSE", "keyid": "", "sig": "", "payload_type": _PREDICATE_TYPE}}
+        if native_prov is not None:
+            att["native_provenance"] = native_prov
+        return att
+
+    def _save_att(att, prefix, name, prev_state=None):
+        # supersession: if we have a previous attestation for this component,
+        # compute its digest and set supersedes pointer
+        if prev_state and prev_state.get("attestation_digest"):
+            _prev_digest = prev_state["attestation_digest"]
+            # BUG-79: legacy state entries may carry a file path here (pre-BUG-29
+            # format). Only a 64-hex payload digest is a valid supersedes target.
+            if isinstance(_prev_digest, str) and len(_prev_digest) == 64:
+                try:
+                    int(_prev_digest, 16)
+                    att["supersedes"] = _prev_digest
+                except ValueError:
+                    pass
+        signed = sign_attestation(att, signer)
+        safe = name.replace("/", "_").replace("@", "").replace("\\", "_").replace("..", "_")
+        # additional safety: remove any remaining path separators or parent refs
+        safe = "".join(c for c in safe if c.isalnum() or c in "._-")
+        # content-addressed filename: include timestamp to prevent overwriting previous runs
+        # (supersession chain requires old bundles to persist on disk)
+        ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
+        # BUG-78: digest suffix makes same-second writes of distinct payloads
+        # collision-free (second-granularity alone can overwrite)
+        digest8 = hashlib.sha256(
+            json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+        ).hexdigest()[:8]
+        bpath = os.path.join(att_dir, "%s_%s_%s_%s.bundle.json" % (prefix, safe, ts, digest8))
+        tmp = bpath + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump({"envelope": signed["envelope"], "payload": signed["payload"]}, f, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, bpath)  # atomic: no partial bundle can survive a crash
+        return bpath
+
+    # npm
+    print("[multi] npm (%d)..." % npm_limit)
+    try:
+        npm_pkgs = enumerate_top(limit=npm_limit)
+    except Exception as _e:
+        print("[multi] npm enumerate failed:", str(_e)[:80])
+        npm_pkgs = []
+    for pkg in npm_pkgs:
+        name = pkg["name"]
+        try:
+            pack = fetch_packument(name)
+            lv = latest_version_info(pack)
+            sha = _download_sha256(lv["tarball"], timeout=120)
+            checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
+                      {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
+            verdict = "pass" if sha else "fail"
+            np = _with_timeout(lambda: native_ingest(name, lv["version"]), 90, None)
+            att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
+                            ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
+            bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
+            all_results.append({"name": name, "registry": "npm", "version": lv["version"],
+                                "verdict": verdict, "bundle": bpath})
+        except Exception as e:
+            total_errors += 1
+            dead.record("npm_fetch", name, str(e), "npm")
+            # mcpcheckup cascade pattern: even a failed package produces an attestation
+            # with all checks UNVERIFIED + reason, so the failure is auditable
+            checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "error",
+                       "tool": "canari-m1/0.1",
+                       "evidence_ref": "fetch failed: %s" % str(e)[:100]}]
+            att = _make_att(name, "", "npm", "", "mcp", checks, "error",
+                            ["canari-m1/0.1"], ["npm-packument:" + name])
+            try:
+                bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
+                all_results.append({"name": name, "registry": "npm", "status": "error", "bundle": bpath})
+            except Exception:
+                all_results.append({"name": name, "registry": "npm", "status": "error"})
+
+    # PyPI
+    print("[multi] PyPI (%d)..." % pypi_limit)
+    try:
+        pypi_pkgs = pypi_enumerate(limit=pypi_limit, cache_path=os.path.join(out_dir, "cache", "pypi-simple.html"))
+    except Exception as _e:
+        print("[multi] PyPI enumerate failed:", str(_e)[:80])
+        pypi_pkgs = []
+    for pkg in pypi_pkgs:
+        name = pkg["name"]
+        if "error" in pkg:
+            total_errors += 1
+            dead.record("pypi_fetch", name, pkg.get("error", ""), "pypi")
+            continue
+        sha = pkg.get("artifact_sha256", "")
+        checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
+                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
+        pn = _with_timeout(lambda: pypi_native_ingest(name, pkg.get("version", "") or None), 90, None)
+        # H1: release cadence (BUG-77/69/71 fixed in cadence.py)
+        try:
+            checks.extend(analyze_release_cadence(name, pkg.get("version", "")))
+        except Exception:
+            pass
+        # H2: metadata anomaly vs previous scan snapshot (BUG-75 fix: state now
+        # stores maintainers/homepage; first run = no previous = no findings)
+        try:
+            prev_comp = _prev("pypi", name)
+            prev_meta = (prev_comp or {}).get("meta")
+            if prev_meta:
+                cur_meta = {"maintainers": pkg.get("maintainers", []),
+                            "homepage": (pkg.get("links") or {}).get("homepage", "")}
+                checks.extend(detect_metadata_anomaly(cur_meta, prev_meta))
+        except Exception:
+            pass
+        # H3: typosquatting (BUG-76 fix: was dead code; the co-enumerated PyPI
+        # namespace of this scan is the trusted set)
+        try:
+            from canari.typosquat import check_typosquatting
+            tq = check_typosquatting(name, {q["name"] for q in pypi_pkgs if "error" not in q})
+            if tq:
+                checks.append(tq)
+        except Exception:
+            pass
+        verdict = "pass" if sha else "fail"
+        if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
+            verdict = "pass-with-findings"
+        att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
+                        verdict, ["canari-m1/0.1"], ["pypi-json:" + name],
+                        native_prov=pn)
+        bpath = _save_att(att, "pypi", name, prev_state=_prev("pypi", name))
+        all_results.append({"name": name, "registry": "pypi", "version": pkg.get("version", ""),
+                            "verdict": att["verdict"], "bundle": bpath})
+
+    # MCP Registry
+    print("[multi] MCP Registry (%d)..." % registry_limit)
+    try:
+        mcp_pkgs = mcp_registry_enumerate(limit=registry_limit)
+    except Exception as _e:
+        print("[multi] MCP Registry enumerate failed:", str(_e)[:80])
+        mcp_pkgs = []
+    for pkg in mcp_pkgs:
+        name = pkg["name"]
+        att = _make_att(name, pkg.get("version", ""), "mcp-registry", "", "mcp",
+                        [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}],
+                        "pass-with-findings", ["canari-m1/0.1"], ["mcp-registry:" + name])
+        bpath = _save_att(att, "mcpreg", name, prev_state=_prev("mcp-registry", name))
+        all_results.append({"name": name, "registry": "mcp-registry", "version": pkg.get("version", ""),
+                            "verdict": "pass-with-findings", "bundle": bpath})
+
+    # dsh.so (reference, not re-scan)
+    print("[multi] dsh.so (%d)..." % dsh_limit)
+    try:
+        dsh_pkgs = dsh_enumerate(limit=dsh_limit)
+    except Exception as _e:
+        print("[multi] dsh.so enumerate failed:", str(_e)[:80])
+        dsh_pkgs = []
+    for pkg in dsh_pkgs:
+        name = pkg.get("name", "")
+        checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}]
+        verdict = "pass-with-findings"
+        # dsh.so publishes per-plugin install tests (L1-L5) and static-scan counts;
+        # we consume those conclusions as referenced evidence (never re-scan).
+        ic, sc = pkg.get("install_verdict"), pkg.get("security_critical")
+        ie = "dsh.so installTest: level=%s verdict=%s state=%s" % (
+            pkg.get("install_level", "?"), ic or "missing", pkg.get("install_state", "?"))
+        if ic == "passed":
+            checks.append({"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "pass",
+                           "tool": "dsh-so-ref/0.1", "evidence_ref": ie})
+        elif ic:
+            checks.append({"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "fail",
+                           "tool": "dsh-so-ref/0.1", "evidence_ref": ie})
+            verdict = "fail"
+        else:
+            checks.append({"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "unsupported",
+                           "tool": "dsh-so-ref/0.1",
+                           "evidence_ref": ie + " (no install test record)"})
+        if sc is not None:
+            se = "dsh.so static scan: files=%s scanner=%s critical=%s" % (
+                pkg.get("security_files_scanned", 0), pkg.get("security_scanner", "?"), sc)
+            checks.append({"id": "L2.7_PLUGIN_SECURITY_REF",
+                           "verdict": "pass" if sc == 0 else "fail",
+                           "tool": "dsh-so-ref/0.1", "evidence_ref": se})
+            if sc and sc > 0:
+                verdict = "fail"
+        else:
+            checks.append({"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported",
+                           "tool": "dsh-so-ref/0.1",
+                           "evidence_ref": "dsh.so has no security record for this plugin"})
+        att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
+                        checks, verdict, ["dsh-so-referenced"], ["dsh-so:" + name])
+        bpath = _save_att(att, "dsh", name, prev_state=_prev("dsh-registry", name))
+        all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
+                            "verdict": "pass-with-findings", "bundle": bpath})
+
+    # unified feed
+    by_reg, by_verdict = {}, {}
+    for r in all_results:
+        by_reg[r.get("registry", "?")] = by_reg.get(r.get("registry", "?"), 0) + 1
+        v = r.get("verdict", "error")
+        by_verdict[v] = by_verdict.get(v, 0) + 1
+    dead.save()
+    feed = {"feed_version": 2, "generated_at": _now(), "scenario_sha256": scenario_sha256,
+            "total": len(all_results), "errors": total_errors,
+            "dead_letters": dead.summary(),
+            "by_registry": by_reg, "by_verdict": by_verdict,
+            "items": [{"name": r["name"], "registry": r.get("registry", ""),
+                       "version": r.get("version", ""), "verdict": r.get("verdict", "error"),
+                       "bundle_file": os.path.basename(r["bundle"]) if r.get("bundle") else None}
+                      for r in all_results]}
+    # run-level feed: timestamped, never collides with the canonical
+    # component-level feed (canari.feed writes feed-multi-YYYYMMDD.json)
+    feed_path = os.path.join(feed_dir, "run-feed-%s.json" % datetime.datetime.now(
+        datetime.timezone.utc).strftime("%Y%m%dT%H%M%S"))
+    with open(feed_path, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=1)
+    key_path = os.path.join(out_dir, "public_key.json")
+    with open(key_path, "w", encoding="utf-8") as f:
+        f.write(export_public_key(pub_key))
+    # update state for supersession chain on next run
+    meta_snapshots = {pkg["name"]: {"maintainers": pkg.get("maintainers", []),
+                                     "homepage": (pkg.get("links") or {}).get("homepage", "")}
+                      for pkg in pypi_pkgs if "error" not in pkg}
+    for r in all_results:
+        if r.get("bundle"):
+            try:
+                bp = json.load(open(r["bundle"], encoding="utf-8"))
+                payload_digest = hashlib.sha256(
+                    json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
+                ).hexdigest()
+                state.set_component("%s:%s" % (r.get("registry", "?"), r["name"]),
+                                    r.get("version", ""),
+                                    bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest,
+                                    meta=meta_snapshots.get(r["name"]))
+            except Exception:
+                pass
+    state.save()
+
+    print("[multi] done: %d total, %d errors | by_registry: %s" % (len(all_results), total_errors, by_reg))
+    return {"total": len(all_results), "errors": total_errors, "feed": feed_path,
+            "by_registry": by_reg, "results": all_results}
+
+def metadata_scan(registry="npm", limit=5000, out_dir=None):
+    """Lightweight metadata-only scan: NO tarball download, NO hash computation.
+    Records name/version/author/maintainer changes into the ledger.
+    This covers the full ecosystem at near-zero cost.
+    
+    Returns list of metadata records (not full attestations - those are
+    only for deep_scan targets). Metadata records go into state.json
+    for diff tracking, and into the feed.
+    """
+    out_dir = out_dir or OUT_DIR
+    results = []
+
+    if registry == "npm":
+        import urllib.parse
+        for q in ["keywords:mcp-server", "keywords:model-context-protocol", "keywords:mcp"]:
+            offset = 0
+            while len(results) < limit:
+                url = "https://registry.npmjs.org/-/v1/search?text=%s&size=250&from=%d" % (
+                    urllib.parse.quote(q), offset)
+                req = urllib.request.Request(url, headers={"User-Agent": UA})
+                try:
+                    with _opener().open(req, timeout=30) as r:
+                        d = json.loads(r.read().decode("utf-8"))
+                except Exception as e:
+                    break
+                objects = d.get("objects", [])
+                if not objects:
+                    break
+                for obj in objects:
+                    pkg = obj.get("package", {})
+                    name = pkg.get("name", "")
+                    if not name:
+                        continue
+                    results.append({
+                        "name": name,
+                        "version": pkg.get("version", ""),
+                        "registry": "npm",
+                        "date": pkg.get("date", ""),
+                        "maintainers": [m.get("name", "") for m in pkg.get("maintainers", [])],
+                        "downloads_monthly": (obj.get("downloads") or {}).get("monthly", 0),
+                        "links": pkg.get("links", {}),
+                    })
+                offset += len(objects)
+                if offset >= d.get("total", 0):
+                    break
+                import time
+                time.sleep(0.3)
+
+    elif registry == "pypi":
+        # PyPI Simple API list, filtered to MCP-related names. Failure must never
+        # kill the weekly scan: bounded read, retry, then static-list fallback.
+        import re as _re
+        from canari.npm_enum import fetch_simple_index
+        html = fetch_simple_index(cache_path=os.path.join(out_dir, "cache", "pypi-simple.html"))
+        mcp_names = []
+        if html is not None:
+            names = _re.findall(r'>(.*?)</a>', html)
+            mcp_names = [n for n in names if "mcp" in n.lower()]
+        else:
+            try:
+                from canari.npm_enum import TOP_PYPI_JSON
+                req = urllib.request.Request(TOP_PYPI_JSON, headers={"User-Agent": UA})
+                with _opener().open(req, timeout=60) as r:
+                    data = json.loads(r.read().decode("utf-8"))
+                rows = data.get("rows", []) if isinstance(data, dict) else []
+                mcp_names = [row.get("project", "") for row in rows
+                             if isinstance(row, dict) and "mcp" in (row.get("project") or "").lower()]
+            except Exception as e2:
+                print("[meta] pypi metadata fallback failed too:", str(e2)[:80])
+        for name in mcp_names[:limit]:
+            results.append({
+                "name": name,
+                "version": "",
+                "registry": "pypi",
+                "date": "",
+                "maintainers": [],
+                "links": {},
+            })
+
+    elif registry == "dsh":
+        # DSH: pull market index (10K+), no per-plugin calls needed for metadata
+        results = dsh_enumerate(limit=limit, with_security=False)
+
+    return results[:limit]
+
+
+def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
+                            pypi_meta=5000, dsh_meta=10000,
+                            signer=None, pub_key=None, out_dir=None):
+    """Two-tier scan: deep attestation for top packages, metadata for all.
+    
+    Tier 1 (deep): download tarball + sha256 + signed attestation
+    Tier 2 (metadata): name/version/author/maintainer recorded, no download
+    
+    This is the M1/M2 production pipeline entry point.
+    """
+    out_dir = out_dir or OUT_DIR
+    lock = FileLock(os.path.join(out_dir, "run"))
+    lock.__enter__()
+    state = StateStore(os.path.join(out_dir, "state.json"))
+
+    # Tier 1: deep scan (existing run_multi logic, reduced limits)
+    deep_result = run_multi(npm_limit=npm_deep, pypi_limit=pypi_deep,
+                            registry_limit=100, dsh_limit=0,
+                            signer=signer, pub_key=pub_key, out_dir=out_dir)
+
+    # Tier 2: metadata scan (fast, no downloads for npm/pypi)
+    print("[meta] npm metadata scan (up to %d)..." % npm_meta)
+    npm_meta_results = metadata_scan("npm", limit=npm_meta, out_dir=out_dir)
+    print("[meta] npm metadata: %d packages" % len(npm_meta_results))
+
+    print("[meta] PyPI metadata scan (up to %d)..." % pypi_meta)
+    pypi_meta_results = metadata_scan("pypi", limit=pypi_meta, out_dir=out_dir)
+    print("[meta] PyPI metadata: %d packages" % len(pypi_meta_results))
+
+    print("[meta] dsh.so metadata scan (up to %d)..." % dsh_meta)
+    dsh_meta_results = metadata_scan("dsh", limit=dsh_meta, out_dir=out_dir)
+    print("[meta] dsh.so metadata: %d packages" % len(dsh_meta_results))
+
+    # Combine all metadata into unified ledger
+    all_meta = npm_meta_results + pypi_meta_results + dsh_meta_results
+
+    # Diff metadata vs previous state - ONLY against previous metadata-tier
+    # entries (BUG-82: comparing against the whole state reported every deep /
+    # registry component as "removed")
+    meta_snapshot = {r["name"]: {"version": r.get("version", ""), "sha256": ""}
+                     for r in all_meta}
+    prev_meta_only = {k: v for k, v in state._data.get("components", {}).items()
+                      if (v.get("meta") or {}).get("tier") == "meta"}
+    meta_diff = state.diff(meta_snapshot, prev=prev_meta_only)
+    print("[meta diff] new=%d changed=%d unchanged=%d removed=%d" % (
+        len(meta_diff["new"]), len(meta_diff["changed"]),
+        len(meta_diff["unchanged"]), len(meta_diff["removed"])))
+
+    # Save metadata into state (separate from deep-scan state)
+    # Don't overwrite sha256 that was set by deep_scan for the same component
+    for r in all_meta:
+        existing = state.get_component(r["name"])
+        if existing and existing.get("sha256"):
+            # keep the deep-scan sha256, only update version
+            existing["version"] = r.get("version", "")
+        else:
+            state.set_component(r["name"], r.get("version", ""), "", "",
+                                meta={"tier": "meta"})
+    state.save()
+    lock.__exit__()
+
+    # Build combined feed
+    feed_dir = os.path.join(out_dir, "feed")
+    os.makedirs(feed_dir, exist_ok=True)
+    feed = {
+        "feed_version": 3,
+        "generated_at": _now(),
+        "two_tier": True,
+        "deep_scan": {
+            "total": deep_result.get("total", 0),
+            "errors": deep_result.get("errors", 0),
+            "by_registry": deep_result.get("by_registry", {}),
+        },
+        "metadata_scan": {
+            "npm": len(npm_meta_results),
+            "pypi": len(pypi_meta_results),
+            "dsh": len(dsh_meta_results),
+            "total": len(all_meta),
+        },
+        "diff": meta_diff,
+        "items": deep_result.get("results", []),
+    }
+    feed_path = os.path.join(feed_dir, "feed-%s.json" % datetime.date.today().strftime("%Y%m%d"))
+    with open(feed_path, "w", encoding="utf-8") as f:
+        json.dump(feed, f, ensure_ascii=False, indent=1)
+
+    print("[two-tier] done: deep=%d, metadata=%d total=%d" % (
+        deep_result.get("total", 0), len(all_meta),
+        deep_result.get("total", 0) + len(all_meta)))
+    return feed
+
+
+def propagate_revocation(revoked_name, revoked_author, all_components):
+    from canari.npm_enum import propagate_revocation as _prop
+    return _prop(revoked_name, revoked_author, all_components)

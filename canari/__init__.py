@@ -8,5 +8,5 @@ Zero-heavy-dependency philosophy (inherited from MemTether):
   hard deps: jsonschema, in-toto (signing), nothing else.
 """
 
-__version__ = "0.0.1"
+__version__ = "0.1.0"
 
