@@ -259,47 +259,40 @@ def verify_chain(directory: str, key_path: str = None) -> int:
             # head starts its own chain. This is a note, not an error.
             generations += 1
 
-        # Walk each chain from head using pre-computed digests (O(1) lookups)
+        # Walk the supersession DAG from every head (BUG-88): a parent may have
+        # several children (e.g. a crashed run plus its retry), and every branch
+        # is a legitimate continuation - follow ALL children, not the first one.
+        children = {}
+        for f in bundle_files:
+            sup = supersedes_map.get(f)
+            if sup:
+                children.setdefault(sup, []).append(f)
+
         reachable_any = set()
         for head in heads:
-            current = head
-            visited = {head}
-            depth = 0
-            while depth < 100:
+            stack = [head]
+            while stack:
+                current = stack.pop()
+                if current in reachable_any:
+                    continue
+                reachable_any.add(current)
                 current_digest = None
                 for d, f in digests.items():
                     if f == current:
                         current_digest = d
                         break
                 if current_digest is None:
-                    break
-
-                # Find the next bundle that supersedes current's digest
-                next_bundle = None
-                for f in bundle_files:
-                    sup_digest = supersedes_map.get(f)
-                    if sup_digest is not None and sup_digest == current_digest:
-                        next_bundle = f
-                        break
-
-                # Check for missing supersedes target
-                if next_bundle is None:
-                    # Check if current's supersedes points to a nonexistent digest
-                    current_sup = supersedes_map.get(current)
-                    if current_sup and current_sup not in digests:
-                        errors.append("%s: %s supersedes %s... but target digest not found in directory" % (
-                            name, current, current_sup[:16]))
-
-                if next_bundle is None:
-                    break
-                if next_bundle in visited:
-                    errors.append("%s: circular reference detected at %s" % (name, next_bundle))
-                    break
-                visited.add(next_bundle)
-                current = next_bundle
-                depth += 1
-
-            reachable_any |= visited
+                    continue
+                # missing supersedes target
+                for child in children.get(current_digest, []):
+                    if child in reachable_any:
+                        continue
+                    stack.append(child)
+                # if a bundle's supersedes points nowhere, record it once
+                cur_sup = supersedes_map.get(current)
+                if cur_sup and cur_sup not in digests:
+                    errors.append("%s: %s supersedes %s... but target digest not found in directory" % (
+                        name, current, cur_sup[:16]))
 
         # A bundle is only unreachable if NO head's chain reaches it
         unreachable = set(bundle_files) - reachable_any
