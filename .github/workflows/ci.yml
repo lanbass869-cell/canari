@@ -11,8 +11,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: pip install -e ".[dev]"
+      - run: pip install -e ".[dev]" pytest-cov hypothesis
       - run: python -m pytest tests/ -q --tb=short
+      # quality gate 1: line coverage must stay >= 85%
+      - run: |
+          python -m pytest tests -q -p no:cacheprovider \
+            --cov=canari --cov-branch --cov-fail-under=85
+
+  mutation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]" pytest-cov hypothesis
+      # quality gate 2: mutation kill rate must stay >= 90%
+      # (equivalent mutants are excluded; see scripts/mutations_batch2.py)
+      - run: python scripts/mutation_sweep.py --min-kill 90
+
   lint:
     runs-on: ubuntu-24.04
     steps:

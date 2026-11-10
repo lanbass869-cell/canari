@@ -224,6 +224,7 @@ class TestGuardExtras:
         rc = main(["--store", "out", "--", "definitely-not-a-binary", "install", "x"])
         assert rc in (3, 5)
 
+    @pytest.mark.skipif(sys.platform != "win32", reason="uses cmd.exe to run a harmless command")
     def test_review_then_execute(self, tmp_path):
         from canari.guard import main
         from canari.signing import generate_keypair, sign_attestation

@@ -137,27 +137,38 @@ def run_mutant(label, relfile, old, new, targets):
         shutil.rmtree(d, ignore_errors=True)
 
 
-def main():
+def main(argv=None):
+    import argparse
+    ap = argparse.ArgumentParser(prog="mutation-sweep")
+    ap.add_argument("--min-kill", type=float, default=0.0,
+                    help="fail (exit 1) when the kill rate is below this percent")
+    a = ap.parse_args(argv)
     try:
         all_muts = MUTATIONS + _load_batch2()
     except Exception as _e:
         print('batch2 load failed:', _e)
         all_muts = MUTATIONS
-    killed = survived = skipped = 0
+    killed = survived = skipped = equiv = 0
     print("%-32s %-9s %s" % ("mutant", "verdict", "note"))
     for m in all_muts:
         label, verdict, note = run_mutant(*m)
         print("%-32s %-9s %s" % (label, verdict, note))
+        if "(EQUIV)" in label:
+            equiv += 1
         if verdict == "KILLED":
             killed += 1
         elif verdict == "SURVIVED":
             survived += 1
         else:
             skipped += 1
-    total = killed + survived
-    print("\n%d mutants, killed=%d survived=%d skipped=%d | kill rate %.0f%%" % (
-        len(all_muts), killed, survived, skipped, 100.0 * killed / total if total else 0))
-    return 1 if survived else 0
+    total = killed + survived - equiv  # equivalent mutants cannot be killed
+    rate = 100.0 * killed / total if total else 0.0
+    print("\n%d mutants, killed=%d survived=%d equivalent=%d skipped=%d | kill rate %.0f%%" % (
+        len(all_muts), killed, survived, equiv, skipped, rate))
+    if a.min_kill and rate < a.min_kill:
+        print("kill rate %.0f%% is below the required %.0f%%" % (rate, a.min_kill))
+        return 1
+    return 1 if (survived - equiv) > 0 else 0
 
 
 if __name__ == "__main__":

@@ -42,3 +42,11 @@ include = ["canari*"]
 
 [tool.setuptools.package-data]
 canari = ["attestation-v0.1.json"]
+
+[tool.coverage.run]
+source = ["canari"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = ["pragma: no cover", "if __name__ == \"__main__\":"]
