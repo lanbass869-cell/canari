@@ -42,6 +42,28 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
 
 
+def _with_timeout(fn, timeout_s, default=None):
+    """Run fn() with a hard wall-clock budget. On timeout return default.
+    The worker thread is a daemon: it cannot be killed, but it no longer blocks
+    the scan (process exit reaps it)."""
+    import threading
+    box = {}
+    def _run():
+        try:
+            box["value"] = fn()
+        except Exception as e:
+            box["error"] = e
+    t = threading.Thread(target=_run, daemon=True)
+    t.start()
+    t.join(timeout_s)
+    if t.is_alive():
+        print("[timeout] call exceeded %ss - degraded to default" % timeout_s)
+        return default
+    if "error" in box:
+        return default
+    return box.get("value", default)
+
+
 def _now():
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -96,7 +118,8 @@ def _download_sha256(tarball_url: str, timeout: int = 60):
     try:
         import urllib.request
         req = urllib.request.Request(tarball_url, headers={"User-Agent": UA_CONST})
-        with urllib.request.build_opener(urllib.request.ProxyHandler({})).open(req, timeout=timeout) as r:
+        # proxy-aware: direct CDN connections stall on this network (see BUG-87)
+        with _opener().open(req, timeout=timeout) as r:
             h = hashlib.sha256()
             while True:
                 chunk = r.read(65536)
@@ -186,7 +209,7 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
 
     native_prov = None
     try:
-        native_prov = native_ingest(name, meta.get("version", ""))
+        native_prov = _with_timeout(lambda: native_ingest(name, meta.get("version", "")), 90, None)
     except Exception:
         native_prov = None
 
@@ -524,7 +547,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                       {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
             verdict = "pass" if sha else "fail"
-            np = native_ingest(name, lv["version"])
+            np = _with_timeout(lambda: native_ingest(name, lv["version"]), 90, None)
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
                             ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
             bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
@@ -562,7 +585,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         sha = pkg.get("artifact_sha256", "")
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                   {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
-        pn = pypi_native_ingest(name, pkg.get("version", "") or None)
+        pn = _with_timeout(lambda: pypi_native_ingest(name, pkg.get("version", "") or None), 90, None)
         # H1: release cadence (BUG-77/69/71 fixed in cadence.py)
         try:
             checks.extend(analyze_release_cadence(name, pkg.get("version", "")))

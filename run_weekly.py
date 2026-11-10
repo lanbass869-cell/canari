@@ -6,6 +6,14 @@ os.chdir(HERE)
 
 LOG_PATH = os.path.join(HERE, "out", "weekly_scan.log")
 
+# Scheduled tasks do not inherit the interactive shell's proxy variables; without
+# these, direct connections to PyPI/npm CDNs hang in SYN_SENT. Defaults match the
+# machine's system proxy (Clash); override with CANARI_PROXY if it moves.
+_PROXY = os.environ.get("CANARI_PROXY", "http://127.0.0.1:12000")
+os.environ.setdefault("HTTP_PROXY", _PROXY)
+os.environ.setdefault("HTTPS_PROXY", _PROXY)
+os.environ.setdefault("NO_PROXY", "127.0.0.1,localhost")
+
 def _log(msg):
     ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     line = "[%s] %s" % (ts, msg)
