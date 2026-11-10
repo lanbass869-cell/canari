@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-10T11:33:59Z",
+ "generated_at": "2026-11-10T12:08:31Z",
  "license": "CC-BY-4.0",
  "attestations": 2093,
  "feeds": 5,
  "sha256": {
   "attestation-v0.1.json": "f2da392725c69c7ff4ec7ae0040b3c629bd5b0c30f45eaa68433ac14dc7af871",
-  "key_registry.json": "a3c47c141b9e29ae0c69d2492dedcae1008d3690eab002e25bd124afef804604",
+  "key_registry.json": "13f6f85880acc8851a01a05cb6701ebb5857e5638362f770b140b23d89b12201",
   "LICENSE": "2d960a608e73a1000acce35f8b7dae4c963a06a9303f17ea5108ffb47931f55d",
   "public_key.json": "ad59f1dac447f04ba14f9ecec7b3f2fee880fa2f7301361196dc95aec7d0f4b6",
   "public_key_20261108.json": "7b760e55cb879514d2c251c1de026d09232e290aadc4211ebcb5f3a32ac13d8f",

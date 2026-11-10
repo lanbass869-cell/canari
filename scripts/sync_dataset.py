@@ -33,10 +33,17 @@ def sync():
     drift_src = os.path.join(OUT, "drift")
     if os.path.isdir(drift_src):
         _copy_tree(drift_src, os.path.join(DS, "drift"))
-    for name in ("public_key.json", "public_key_20261108.json", "key_registry.json"):
+    for name in ("public_key.json", "public_key_20261108.json"):
         src = os.path.join(OUT, name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(DS, name))
+    # key_registry is published, but without the operator's local private-key path
+    reg_src = os.path.join(OUT, "key_registry.json")
+    if os.path.exists(reg_src):
+        reg = json.load(open(reg_src, encoding="utf-8"))
+        reg.pop("private_key_path", None)
+        with open(os.path.join(DS, "key_registry.json"), "w", encoding="utf-8") as f:
+            json.dump(reg, f, ensure_ascii=False, indent=1)
     shutil.copy2(os.path.join(REPO, "canari", "attestation-v0.1.json"),
                  os.path.join(DS, "attestation-v0.1.json"))
 

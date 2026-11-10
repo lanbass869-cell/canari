@@ -14,7 +14,7 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(REPO, "dist")
 GH = "https://api.github.com"
-PROXY = os.environ.get("CANARI_PROXY", "http://127.0.0.1:12000")
+PROXY = os.environ.get("CANARI_PROXY")  # unset by default: no proxy assumptions
 REPO_DESCRIPTION = ("Verdict ledger for AI agent components: signed, offline-verifiable "
                     "attestations with supersession history and an install gate. "
                     "Scans npm/PyPI/MCP Registry/dsh.")

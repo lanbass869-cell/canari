@@ -7,6 +7,5 @@
  },
  "valid_from": "2026-11-09T12:28:42Z",
  "valid_until": null,
- "revoked_at": null,
- "private_key_path": "E:\\Temp\\tbdig\\canari\\out\\private_key.pem"
+ "revoked_at": null
 }
