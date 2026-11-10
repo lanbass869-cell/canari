@@ -71,7 +71,10 @@ class TestSignatureFuzz:
         signed = sign_attestation(att, signer)
         ok, payload, err = verify_signed(signed["envelope"], pub.to_dict())
         assert ok, err
-        assert payload["subject"]["name"] == (name or "x")
+        # signing NFC-normalises strings by design (D1): U+F900 -> U+8C48 etc.
+        import unicodedata
+        assert payload["subject"]["name"] == unicodedata.normalize("NFC", name or "x")
+        assert payload["subject"]["homepage"] == unicodedata.normalize("NFC", homepage)
 
     @settings(max_examples=40, deadline=None)
     @given(st.binary(min_size=1, max_size=200))
