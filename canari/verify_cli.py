@@ -245,7 +245,22 @@ def verify_chain(directory: str, key_path: str = None) -> int:
 
     for name, bundle_files in sorted(components.items()):
         if len(bundle_files) < 2:
-            continue  # single bundle = trivially valid chain
+            # single bundle: the chain itself is trivial, but a supersedes
+            # pointer must still resolve (BUG-94: dangling/self pointers hid here)
+            f0 = bundle_files[0]
+            sup0 = supersedes_map.get(f0)
+            if sup0:
+                own = None
+                for d, f in digests.items():
+                    if f == f0:
+                        own = d
+                        break
+                if sup0 == own:
+                    errors.append("%s: self-referential supersedes pointer in %s" % (name, f0))
+                elif sup0 not in digests:
+                    errors.append("%s: %s supersedes %s... but target digest not found in directory" % (
+                        name, f0, sup0[:16]))
+            continue
         chains_checked += 1
 
         # Build chain: start from bundles with no supersedes (heads)

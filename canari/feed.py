@@ -30,6 +30,9 @@ def build_feed(out_dir):
 
     items, by_reg, by_verdict, findings = [], {}, {}, {}
     for (reg, name), (gen, fp, p) in sorted(latest.items()):
+        # 2026-11-10 BUG: this loop reused the leftover s from the scan above,
+        # so every component reported the LAST bundle version/sha256.
+        s = p.get("subject", {})
         by_reg[reg] = by_reg.get(reg, 0) + 1
         v = p.get("verdict", "error")
         by_verdict[v] = by_verdict.get(v, 0) + 1
