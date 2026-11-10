@@ -22,14 +22,18 @@ Named after the canary in the coal mine: the first to detect that something went
 
 ## Install
 
-From the latest GitHub release (wheel + sdist, checksum + Ed25519 signed):
+```
+pip install canari-mcp
+```
+
+Also on [PyPI](https://pypi.org/project/canari-mcp/) and as a
+[GitHub release](https://github.com/lanbass869-cell/canari/releases/tag/v0.1.0)
+(wheel + sdist + `SHA256SUMS` + Ed25519 signature). Both channels ship byte-identical
+artifacts; see `docs/release-process.md` to verify the signed release.
 
 ```
-pip install https://github.com/lanbass869-cell/canari/releases/download/v0.1.0/canari_mcp-0.1.0-py3-none-any.whl
 canari-gate --store out --list
 ```
-
-Then verify what you downloaded (see `docs/release-process.md` for the one-liner).
 
 ## Quality gates (enforced in CI)
 
