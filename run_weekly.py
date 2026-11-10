@@ -18,8 +18,11 @@ try:
     from canari.baseline import deep_scan_with_metadata
     _log("starting weekly scan...")
     result = deep_scan_with_metadata(
-        npm_deep=200, pypi_deep=100, registry_limit=100,
-        npm_meta=5000, pypi_meta=5000, dsh_meta=10000)
+        npm_deep=int(os.environ.get("CANARI_NPM_DEEP", "200")),
+        pypi_deep=int(os.environ.get("CANARI_PYPI_DEEP", "100")),
+        npm_meta=int(os.environ.get("CANARI_NPM_META", "5000")),
+        pypi_meta=int(os.environ.get("CANARI_PYPI_META", "5000")),
+        dsh_meta=int(os.environ.get("CANARI_DSH_META", "10000")))
     _log("deep: %d | metadata: npm=%d pypi=%d dsh=%d" % (
         result["deep_scan"]["total"],
         result["metadata_scan"]["npm"],
