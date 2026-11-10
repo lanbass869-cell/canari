@@ -29,6 +29,10 @@ dev = ["pytest>=7"]
 [project.scripts]
 canari-verify = "canari.verify_cli:main"
 canari-baseline = "canari.baseline:main"
+canari-gate = "canari.gate_cli:main"
+canari-drift = "canari.drift_cli:main"
+canari-mcp = "canari.mcp_server:main"
+canari-guard = "canari.guard:main"
 
 [project.urls]
 Homepage = "https://github.com/lanbass869-cell/canari"

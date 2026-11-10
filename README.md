@@ -83,6 +83,22 @@ A host (or agent) can then ask: "is npm:express allowed to install?" and get
 `ALLOW / BLOCK / REVIEW` with reasons, backed by a signed, offline-verifiable
 attestation.
 
+### 4. Gate the actual install command
+
+`canari-guard` wraps an install command, checks every component against the
+ledger, and refuses to execute when the verdict blocks:
+
+```
+canari-guard -- dsh plugin --profile wbpj add dsh-purge
+canari-guard -- npm install some-mcp-server
+canari-guard -- pip install mcp-server-fetch==0.2.1
+
+# exit 0 allowed+executed | 5 blocked by ledger | 6 review not confirmed
+# --dry-run prints what would run; --allow-review accepts pass-with-findings
+```
+
+The host is never patched - the guard sits in front of the install command.
+
 For DeepSeek Harness (dsh), add this to the profile's `cordis.patch.yml`
 (verified end-to-end on dsh: the model called `mcp__canari__store_summary` and
 received the live component count):
