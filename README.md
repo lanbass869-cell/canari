@@ -35,6 +35,14 @@ artifacts; see `docs/release-process.md` to verify the signed release.
 canari-gate --store out --list
 ```
 
+## Open dataset
+
+`dataset/` is the published snapshot of the ledger under **CC-BY-4.0**: 2093 signed
+attestations over 860 components, the canonical feed, drift reports, the schema, both
+public keys and a `MANIFEST.json` with a sha256 per file. Verify a bundle offline with
+`canari-verify`; verify the whole snapshot with the manifest (see `dataset/README.md`).
+Refresh it after a scan with `python scripts/sync_dataset.py`.
+
 ## Quality gates (enforced in CI)
 
 | Gate | Threshold | Current |

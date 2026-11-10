@@ -1,0 +1,99 @@
+{
+ "components": 861,
+ "compared": 408,
+ "verdict_flips": [
+  {
+   "registry": "pypi",
+   "name": "mcp-server-canteen",
+   "old_version": "0.2.8",
+   "new_version": "0.2.8",
+   "old_generated_at": "2026-11-09T14:16:31Z",
+   "new_generated_at": "2026-11-10T05:45:05Z",
+   "old_verdict": "pass",
+   "new_verdict": "pass-with-findings",
+   "same_version": true
+  }
+ ],
+ "silent_changes": [],
+ "findings_added": [
+  {
+   "registry": "pypi",
+   "name": "mcp-server-canteen",
+   "old_version": "0.2.8",
+   "new_version": "0.2.8",
+   "old_generated_at": "2026-11-09T14:16:31Z",
+   "new_generated_at": "2026-11-10T05:45:05Z",
+   "checks": [
+    "L2.4_RELEASE_CADENCE"
+   ]
+  }
+ ],
+ "findings_removed": [],
+ "version_bumps": [
+  {
+   "registry": "npm",
+   "name": "@mcp-b/global",
+   "old_version": "6.1.0",
+   "new_version": "6.2.0",
+   "old_generated_at": "2026-11-10T04:11:32Z",
+   "new_generated_at": "2026-11-10T04:47:49Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/react-webmcp",
+   "old_version": "6.1.0",
+   "new_version": "6.2.0",
+   "old_generated_at": "2026-11-10T04:21:26Z",
+   "new_generated_at": "2026-11-10T05:06:42Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/transports",
+   "old_version": "6.1.0",
+   "new_version": "6.2.0",
+   "old_generated_at": "2026-11-10T04:11:27Z",
+   "new_generated_at": "2026-11-10T04:47:41Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/webmcp-ts-sdk",
+   "old_version": "6.1.0",
+   "new_version": "6.2.0",
+   "old_generated_at": "2026-11-10T04:11:36Z",
+   "new_generated_at": "2026-11-10T04:47:56Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@sendinel/mcp-server",
+   "old_version": "1.0.206",
+   "new_version": "1.0.207",
+   "old_generated_at": "2026-11-10T04:25:56Z",
+   "new_generated_at": "2026-11-10T05:16:48Z"
+  },
+  {
+   "registry": "npm",
+   "name": "brightspace-mcp-server",
+   "old_version": "5.1.44",
+   "new_version": "5.2.0",
+   "old_generated_at": "2026-11-10T04:28:51Z",
+   "new_generated_at": "2026-11-10T05:20:50Z"
+  },
+  {
+   "registry": "npm",
+   "name": "usewebmcp",
+   "old_version": "6.1.0",
+   "new_version": "6.2.0",
+   "old_generated_at": "2026-11-10T04:26:53Z",
+   "new_generated_at": "2026-11-10T05:18:03Z"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-appwrite",
+   "old_version": "2.4.3",
+   "new_version": "2.4.4",
+   "old_generated_at": "2026-11-09T13:58:10Z",
+   "new_generated_at": "2026-11-10T05:40:04Z"
+  }
+ ],
+ "check_changes": []
+}

@@ -1,0 +1,177 @@
+{
+ "components": 758,
+ "compared": 240,
+ "verdict_flips": [
+  {
+   "registry": "npm",
+   "name": "@earendil-works/pi-mcp",
+   "old_version": "1.5.0",
+   "new_version": "1.5.0",
+   "old_generated_at": "2026-11-08T05:10:22Z",
+   "new_generated_at": "2026-11-09T12:31:15Z",
+   "old_verdict": "pass",
+   "new_verdict": "fail",
+   "same_version": true
+  },
+  {
+   "registry": "npm",
+   "name": "@json-render/mcp",
+   "old_version": "0.22.0",
+   "new_version": "",
+   "old_generated_at": "2026-11-08T06:16:10Z",
+   "new_generated_at": "2026-11-09T13:04:10Z",
+   "old_verdict": "pass",
+   "new_verdict": "error",
+   "same_version": false
+  },
+  {
+   "registry": "npm",
+   "name": "@langchain/mcp-adapters",
+   "old_version": "2.0.2",
+   "new_version": "2.0.2",
+   "old_generated_at": "2026-11-08T05:16:24Z",
+   "new_generated_at": "2026-11-09T12:33:22Z",
+   "old_verdict": "fail",
+   "new_verdict": "pass",
+   "same_version": true
+  },
+  {
+   "registry": "npm",
+   "name": "yahoo-finance2",
+   "old_version": "4.0.5",
+   "new_version": "4.0.6",
+   "old_generated_at": "2026-11-08T05:18:54Z",
+   "new_generated_at": "2026-11-09T12:33:50Z",
+   "old_verdict": "fail",
+   "new_verdict": "pass",
+   "same_version": false
+  }
+ ],
+ "silent_changes": [],
+ "findings_added": [],
+ "findings_removed": [],
+ "version_bumps": [
+  {
+   "registry": "npm",
+   "name": "@agimon-ai/po-logsink",
+   "old_version": "0.0.1-alpha.106",
+   "new_version": "0.0.1-alpha.113",
+   "old_generated_at": "2026-11-08T06:16:00Z",
+   "new_generated_at": "2026-11-09T13:00:57Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@cargo-ai/cli",
+   "old_version": "1.0.143",
+   "new_version": "1.0.146",
+   "old_generated_at": "2026-11-08T06:12:15Z",
+   "new_generated_at": "2026-11-09T12:46:46Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@claude-flow/cli",
+   "old_version": "3.72.2",
+   "new_version": "3.74.1",
+   "old_generated_at": "2026-11-08T05:20:28Z",
+   "new_generated_at": "2026-11-09T12:35:16Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@cyanheads/mcp-ts-core",
+   "old_version": "0.13.21",
+   "new_version": "0.13.22",
+   "old_generated_at": "2026-11-08T06:08:32Z",
+   "new_generated_at": "2026-11-09T12:49:15Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@hasna/skills",
+   "old_version": "0.10.94",
+   "new_version": "0.10.95",
+   "old_generated_at": "2026-11-08T06:06:43Z",
+   "new_generated_at": "2026-11-09T12:48:24Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@json-render/mcp",
+   "old_version": "0.22.0",
+   "new_version": "",
+   "old_generated_at": "2026-11-08T06:16:10Z",
+   "new_generated_at": "2026-11-09T13:04:10Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@juspay/neurolink",
+   "old_version": "13.10.4",
+   "new_version": "13.10.5",
+   "old_generated_at": "2026-11-08T06:14:38Z",
+   "new_generated_at": "2026-11-09T13:00:33Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@letoribo/mcp-graphql-enhanced",
+   "old_version": "4.16.0",
+   "new_version": "4.17.1",
+   "old_generated_at": "2026-11-08T06:03:33Z",
+   "new_generated_at": "2026-11-09T12:41:29Z"
+  },
+  {
+   "registry": "npm",
+   "name": "@meshy-ai/meshy-mcp-server",
+   "old_version": "0.6.9",
+   "new_version": "0.6.10",
+   "old_generated_at": "2026-11-08T06:08:10Z",
+   "new_generated_at": "2026-11-09T12:48:40Z"
+  },
+  {
+   "registry": "npm",
+   "name": "claude-flow",
+   "old_version": "3.72.2",
+   "new_version": "3.74.1",
+   "old_generated_at": "2026-11-08T06:15:03Z",
+   "new_generated_at": "2026-11-09T13:01:45Z"
+  },
+  {
+   "registry": "npm",
+   "name": "kordoc",
+   "old_version": "4.24.53",
+   "new_version": "4.24.57",
+   "old_generated_at": "2026-11-08T06:01:30Z",
+   "new_generated_at": "2026-11-09T12:40:31Z"
+  },
+  {
+   "registry": "npm",
+   "name": "n8n-mcp",
+   "old_version": "2.101.4",
+   "new_version": "2.102.0",
+   "old_generated_at": "2026-11-08T05:59:27Z",
+   "new_generated_at": "2026-11-09T12:38:03Z"
+  },
+  {
+   "registry": "npm",
+   "name": "pi-mcp-extension",
+   "old_version": "1.14.4",
+   "new_version": "1.14.5",
+   "old_generated_at": "2026-11-08T05:16:42Z",
+   "new_generated_at": "2026-11-09T12:33:35Z"
+  },
+  {
+   "registry": "npm",
+   "name": "ruflo",
+   "old_version": "3.72.2",
+   "new_version": "3.74.1",
+   "old_generated_at": "2026-11-08T05:42:23Z",
+   "new_generated_at": "2026-11-09T12:37:41Z"
+  },
+  {
+   "registry": "npm",
+   "name": "yahoo-finance2",
+   "old_version": "4.0.5",
+   "new_version": "4.0.6",
+   "old_generated_at": "2026-11-08T05:18:54Z",
+   "new_generated_at": "2026-11-09T12:33:50Z"
+  }
+ ],
+ "check_changes": [],
+ "generated_at": "2026-11-09T16:08:20Z"
+}
