@@ -68,8 +68,8 @@ class StateStore:
             entry['meta'] = meta  # maintainers/homepage snapshot for H2 anomaly (BUG-75)
         self._data.setdefault('components', {})[name] = entry
         return entry
-    def diff(self, current):
-        prev = self._data.get('components', {})
+    def diff(self, current, prev=None):
+        prev = prev if prev is not None else self._data.get('components', {})
         new, changed, unchanged, removed = [], [], [], []
         for name, info in current.items():
             p = prev.get(name)

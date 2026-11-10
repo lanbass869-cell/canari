@@ -24,6 +24,7 @@ import hashlib
 import json
 import os
 import sys
+import urllib.request
 
 from canari.schema import _PREDICATE_TYPE
 from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair, create_key_registry_entry, save_key_registry, load_key_registry, is_key_valid, save_private_key
@@ -548,7 +549,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     # PyPI
     print("[multi] PyPI (%d)..." % pypi_limit)
     try:
-        pypi_pkgs = pypi_enumerate(limit=pypi_limit)
+        pypi_pkgs = pypi_enumerate(limit=pypi_limit, cache_path=os.path.join(out_dir, "cache", "pypi-simple.html"))
     except Exception as _e:
         print("[multi] PyPI enumerate failed:", str(_e)[:80])
         pypi_pkgs = []
@@ -751,14 +752,26 @@ def metadata_scan(registry="npm", limit=5000, out_dir=None):
                 time.sleep(0.3)
 
     elif registry == "pypi":
-        # PyPI Simple API: get full list, filter for MCP-related names
+        # PyPI Simple API list, filtered to MCP-related names. Failure must never
+        # kill the weekly scan: bounded read, retry, then static-list fallback.
         import re as _re
-        url = "https://pypi.org/simple/"
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
-        with _opener().open(req, timeout=120) as r:
-            html = r.read().decode("utf-8", errors="replace")
-        names = _re.findall(r'>(.*?)</a>', html)
-        mcp_names = [n for n in names if "mcp" in n.lower()]
+        from canari.npm_enum import fetch_simple_index
+        html = fetch_simple_index(cache_path=os.path.join(out_dir, "cache", "pypi-simple.html"))
+        mcp_names = []
+        if html is not None:
+            names = _re.findall(r'>(.*?)</a>', html)
+            mcp_names = [n for n in names if "mcp" in n.lower()]
+        else:
+            try:
+                from canari.npm_enum import TOP_PYPI_JSON
+                req = urllib.request.Request(TOP_PYPI_JSON, headers={"User-Agent": UA})
+                with _opener().open(req, timeout=60) as r:
+                    data = json.loads(r.read().decode("utf-8"))
+                rows = data.get("rows", []) if isinstance(data, dict) else []
+                mcp_names = [row.get("project", "") for row in rows
+                             if isinstance(row, dict) and "mcp" in (row.get("project") or "").lower()]
+            except Exception as e2:
+                print("[meta] pypi metadata fallback failed too:", str(e2)[:80])
         for name in mcp_names[:limit]:
             results.append({
                 "name": name,
@@ -773,7 +786,7 @@ def metadata_scan(registry="npm", limit=5000, out_dir=None):
         # DSH: pull market index (10K+), no per-plugin calls needed for metadata
         results = dsh_enumerate(limit=limit, with_security=False)
 
-    return results
+    return results[:limit]
 
 
 def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
@@ -812,10 +825,14 @@ def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
     # Combine all metadata into unified ledger
     all_meta = npm_meta_results + pypi_meta_results + dsh_meta_results
 
-    # Diff metadata vs previous state
+    # Diff metadata vs previous state - ONLY against previous metadata-tier
+    # entries (BUG-82: comparing against the whole state reported every deep /
+    # registry component as "removed")
     meta_snapshot = {r["name"]: {"version": r.get("version", ""), "sha256": ""}
                      for r in all_meta}
-    meta_diff = state.diff(meta_snapshot)
+    prev_meta_only = {k: v for k, v in state._data.get("components", {}).items()
+                      if (v.get("meta") or {}).get("tier") == "meta"}
+    meta_diff = state.diff(meta_snapshot, prev=prev_meta_only)
     print("[meta diff] new=%d changed=%d unchanged=%d removed=%d" % (
         len(meta_diff["new"]), len(meta_diff["changed"]),
         len(meta_diff["unchanged"]), len(meta_diff["removed"])))
@@ -828,7 +845,8 @@ def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
             # keep the deep-scan sha256, only update version
             existing["version"] = r.get("version", "")
         else:
-            state.set_component(r["name"], r.get("version", ""), "", "")
+            state.set_component(r["name"], r.get("version", ""), "", "",
+                                meta={"tier": "meta"})
     state.save()
     lock.__exit__()
 

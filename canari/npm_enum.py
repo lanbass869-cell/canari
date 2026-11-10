@@ -132,23 +132,60 @@ PYPI_SIMPLE = "https://pypi.org/simple"
 TOP_PYPI_JSON = "https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.json"
 PYPI_JSON = "https://pypi.org/pypi"
 
-def pypi_enumerate(prefix="mcp-server-", limit=500):
+def fetch_simple_index(cache_path=None, ttl_hours=24, max_bytes=80 * 1024 * 1024, timeout=120, total_budget_s=600):
+    """Download (or reuse) the PyPI simple index HTML. Returns str or None.
+
+    A disk cache bounds the weekly scan to one download per TTL: the file is
+    tens of MB and two independent call sites need it in the same run.
+    """
+    import os as _os
+    import time as _time
+    if cache_path:
+        try:
+            if _os.path.exists(cache_path) and (_time.time() - _os.path.getmtime(cache_path) < ttl_hours * 3600):
+                with open(cache_path, "r", encoding="utf-8", errors="replace") as f:
+                    print("[pypi] simple index from cache:", cache_path)
+                    return f.read()
+        except OSError:
+            pass
+    html = None
+    import time as _t
+    deadline = _t.time() + total_budget_s
+    for attempt in range(2):
+        try:
+            req = urllib.request.Request(PYPI_SIMPLE + "/", headers={"User-Agent": UA})
+            with _opener().open(req, timeout=timeout) as r:
+                chunks, size = [], 0
+                while True:
+                    if _t.time() > deadline:
+                        raise TimeoutError("simple index read exceeded %ds budget" % total_budget_s)
+                    chunk = r.read(1 << 20)
+                    if not chunk:
+                        break
+                    chunks.append(chunk)
+                    size += len(chunk)
+                    if size >= max_bytes:
+                        break
+                html = b"".join(chunks).decode("utf-8", errors="replace")
+            break
+        except Exception as e:
+            if attempt == 1:
+                print("[pypi] simple index download failed:", str(e)[:80])
+    if html is not None and cache_path:
+        try:
+            _os.makedirs(_os.path.dirname(cache_path) or ".", exist_ok=True)
+            with open(cache_path, "w", encoding="utf-8") as f:
+                f.write(html)
+        except OSError:
+            pass
+    return html
+
+
+def pypi_enumerate(prefix="mcp-server-", limit=500, cache_path=None):
     if limit <= 0:
         return []
     import re as _re
-    url = PYPI_SIMPLE + "/"
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    html = None
-    for _attempt in range(2):
-        try:
-            with _opener().open(req, timeout=120) as r:
-                # bounded read: the index is tens of MB; never buffer unbounded
-                html = r.read(80 * 1024 * 1024).decode("utf-8", errors="replace")
-            break
-        except (TimeoutError, OSError) as _e:
-            if _attempt == 1:
-                print("[pypi] simple index download failed, trying top-packages fallback:",
-                      str(_e)[:80])
+    html = fetch_simple_index(cache_path=cache_path)
     if html is None:
         # fallback: static top-pypi-packages dataset (top 8K by downloads).
         # Failure is still data, never a crash.

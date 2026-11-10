@@ -166,8 +166,17 @@ def main(argv=None):
     print("[guard] executing: %s" % " ".join(cmd))
     try:
         return subprocess.call(cmd)
-    except FileNotFoundError as e:
-        print("[guard] command not found: %s" % e)
+    except FileNotFoundError:
+        import shutil
+        prog = cmd[0]
+        for cand in (prog, prog + ".cmd", prog + ".bat", prog + ".exe"):
+            hit = shutil.which(cand)
+            if hit:
+                try:
+                    return subprocess.call([hit] + cmd[1:])
+                except OSError:
+                    break
+        print("[guard] command not found: %s" % prog)
         return 3
 
 

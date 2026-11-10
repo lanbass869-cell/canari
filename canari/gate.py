@@ -228,10 +228,11 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
 
     if verdict == "pass-with-findings" and decision == "ALLOW" and policy.name == "default":
         decision = "REVIEW"
-        reasons.append("pass-with-findings: %d finding(s)" % sum(
-            1 for c in payload.get("checks", [])
-            if c.get("verdict") != "pass" or (c.get("evidence_ref") or "").startswith("finding:")
-        ))
+        checks = payload.get("checks", [])
+        n_find = sum(1 for c in checks if (c.get("evidence_ref") or "").startswith("finding:"))
+        n_nonpass = sum(1 for c in checks if c.get("verdict") != "pass")
+        reasons.append("verdict is pass-with-findings (%d finding(s), %d non-pass check(s))"
+                       % (n_find, n_nonpass))
 
     # G1: trust-heuristic findings (evidence_ref "finding: ...")
     findings = [c for c in payload.get("checks", [])
