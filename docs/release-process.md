@@ -16,17 +16,41 @@ What it does:
 
 The release key is separate from the attestation signing key. Keep `out/` private.
 
-## 2. Publish to PyPI (needs a token, manual)
+## 2. Publish to PyPI (scripted since 2026-11-10)
 
 ```
-pip install twine
-python -m twine check dist/*
-TWINE_USERNAME=__token__ TWINE_PASSWORD=<pypi-token> python -m twine upload dist/*
+python scripts/release.py --pypi            # add --metadata to also refresh repo description/topics
 ```
 
-The name `canari-mcp` is registered on PyPI by this project's first upload; verify
-`https://pypi.org/project/canari-mcp/` afterwards. This repo currently holds no PyPI
-token, so the upload waits for the owner.
+Token source, first match wins:
+1. `CANARI_PYPI_TOKEN` env var
+2. `CANARI_PYPI_TOKEN_FILE` (default `E:\RUANJIAN\memory_hub\tokens_pypi_20260928.txt`,
+   reads the first line starting with `pypi-`)
+
+**Two production lessons baked into the script:**
+
+- twine's rich renderer raises `UnicodeEncodeError` on a GBK Windows console *after*
+  the first file has already uploaded, so the release ends up half-published. The
+  script forces `PYTHONIOENCODING=utf-8`, `PYTHONUTF8=1`, `NO_COLOR=1` and
+  `--disable-progress-bar`.
+- Always upload with `--skip-existing` so a half-finished run can be resumed.
+
+## 2b. Repo metadata (description / homepage / topics)
+
+```
+python scripts/release.py --metadata
+```
+
+**GitHub topics need `PUT /repos/{owner}/{repo}/topics`.** `PATCH /repos/{owner}/{repo}`
+returns 200 but silently leaves the topics list empty - that cost a debugging round.
+
+## 2c. One command for a normal release
+
+```
+python scripts/release.py --tag v0.1.1 --notes docs/release-notes-v0.1.1.md --pypi --metadata
+```
+builds, signs, creates the GitHub release with 5 assets, uploads to PyPI and refreshes
+repo visibility.
 
 ## 3. Quality gate before any release
 
