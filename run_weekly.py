@@ -36,6 +36,13 @@ try:
         result["metadata_scan"]["npm"],
         result["metadata_scan"]["pypi"],
         result["metadata_scan"]["dsh"]))
+    # canonical component-level feed (what consumers read)
+    try:
+        from canari.feed import write_feed
+        fp_feed = write_feed(os.path.join(HERE, "out"))
+        _log("feed rebuilt: %s" % fp_feed)
+    except Exception as e:
+        _log("feed rebuild failed: %s" % e)
     # drift report: verdict flips / same-version silent changes / findings deltas
     try:
         from canari.drift import compute_drift
