@@ -1,0 +1,3936 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-10T12:56:51Z",
+ "scenario_sha256": "a50483c686adc1f189f8f1fd911c2ababaae72179169bfb21fbf72da16e02ed5",
+ "total": 559,
+ "errors": 0,
+ "dead_letters": {
+  "total": 2,
+  "by_operation": {
+   "npm_fetch": 1,
+   "pypi_fetch": 1
+  }
+ },
+ "by_registry": {
+  "mcp-registry": 59,
+  "dsh-registry": 500
+ },
+ "by_verdict": {
+  "pass-with-findings": 559
+ },
+ "items": [
+  {
+   "name": "ac.inference.sh/mcp",
+   "registry": "mcp-registry",
+   "version": "2.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ac.inference.sh_mcp_20261110T123347_165d4055.bundle.json"
+  },
+  {
+   "name": "ac.mizan/registry",
+   "registry": "mcp-registry",
+   "version": "1.2.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ac.mizan_registry_20261110T123347_17880914.bundle.json"
+  },
+  {
+   "name": "ac.snag/snag",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ac.snag_snag_20261110T123347_96ff5a65.bundle.json"
+  },
+  {
+   "name": "ac.tandem/docs-mcp",
+   "registry": "mcp-registry",
+   "version": "0.3.2",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ac.tandem_docs-mcp_20261110T123347_f550d7bb.bundle.json"
+  },
+  {
+   "name": "academy.apexai/apex-ai-academy",
+   "registry": "mcp-registry",
+   "version": "1.0.2",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_academy.apexai_apex-ai-academy_20261110T123347_d9d4e5cf.bundle.json"
+  },
+  {
+   "name": "academy.ase/periodic-system",
+   "registry": "mcp-registry",
+   "version": "2026.4.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_academy.ase_periodic-system_20261110T123347_941ddcab.bundle.json"
+  },
+  {
+   "name": "academy.serviceengineer/se-ai",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_academy.serviceengineer_se-ai_20261110T123347_72cf949c.bundle.json"
+  },
+  {
+   "name": "ad.apogee/apogee",
+   "registry": "mcp-registry",
+   "version": "1.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ad.apogee_apogee_20261110T123347_6b50e801.bundle.json"
+  },
+  {
+   "name": "ad.getle/leads",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ad.getle_leads_20261110T123347_b048d94c.bundle.json"
+  },
+  {
+   "name": "ad.inside/inside-ads",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ad.inside_inside-ads_20261110T123347_52410a38.bundle.json"
+  },
+  {
+   "name": "ad.pantheon/mcp",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ad.pantheon_mcp_20261110T123348_3f87d9ad.bundle.json"
+  },
+  {
+   "name": "ad.tide/mcp",
+   "registry": "mcp-registry",
+   "version": "2.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ad.tide_mcp_20261110T123348_65415f8b.bundle.json"
+  },
+  {
+   "name": "ae.alexeysound/alexey-sound",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.alexeysound_alexey-sound_20261110T123348_b45f5ad1.bundle.json"
+  },
+  {
+   "name": "ae.beachclubs/mcp",
+   "registry": "mcp-registry",
+   "version": "0.3.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.beachclubs_mcp_20261110T123348_11b4f3ce.bundle.json"
+  },
+  {
+   "name": "ae.brainy/grocery-prices",
+   "registry": "mcp-registry",
+   "version": "2.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.brainy_grocery-prices_20261110T123348_5b8f1444.bundle.json"
+  },
+  {
+   "name": "ae.datadubai/dubai-real-estate",
+   "registry": "mcp-registry",
+   "version": "1.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.datadubai_dubai-real-estate_20261110T123348_fca2cd73.bundle.json"
+  },
+  {
+   "name": "ae.easyvoice/tts",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.easyvoice_tts_20261110T123348_928b6c95.bundle.json"
+  },
+  {
+   "name": "ae.employerofrecord/moha",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.employerofrecord_moha_20261110T123348_70b0f813.bundle.json"
+  },
+  {
+   "name": "ae.employerofrecord/moha-account",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.employerofrecord_moha-account_20261110T123348_dd2f43cf.bundle.json"
+  },
+  {
+   "name": "ae.genosys/genosys",
+   "registry": "mcp-registry",
+   "version": "1.2.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.genosys_genosys_20261110T123348_861a2c49.bundle.json"
+  },
+  {
+   "name": "ae.grovisor/grotax",
+   "registry": "mcp-registry",
+   "version": "1.3.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.grovisor_grotax_20261110T123348_889ab752.bundle.json"
+  },
+  {
+   "name": "ae.mrk/dubai-property",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.mrk_dubai-property_20261110T123348_b2fcbcc9.bundle.json"
+  },
+  {
+   "name": "ae.plantguide/dubai-gardening",
+   "registry": "mcp-registry",
+   "version": "1.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.plantguide_dubai-gardening_20261110T123348_416b99a8.bundle.json"
+  },
+  {
+   "name": "ae.projectory/mcp",
+   "registry": "mcp-registry",
+   "version": "0.7.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.projectory_mcp_20261110T123348_15ba1112.bundle.json"
+  },
+  {
+   "name": "ae.propick/propick",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.propick_propick_20261110T123348_dc179958.bundle.json"
+  },
+  {
+   "name": "ae.waggle/fenlight",
+   "registry": "mcp-registry",
+   "version": "0.3.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.waggle_fenlight_20261110T123348_f1f24f37.bundle.json"
+  },
+  {
+   "name": "ae.waggle/vera",
+   "registry": "mcp-registry",
+   "version": "0.2.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ae.waggle_vera_20261110T123348_8a8d2df0.bundle.json"
+  },
+  {
+   "name": "aero.events/events",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_aero.events_events_20261110T123348_be65f9bf.bundle.json"
+  },
+  {
+   "name": "africa.lomi/mcp",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_africa.lomi_mcp_20261110T123348_5027855a.bundle.json"
+  },
+  {
+   "name": "africa.ugc/ugc",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_africa.ugc_ugc_20261110T123348_3c9e5735.bundle.json"
+  },
+  {
+   "name": "ag.hood/name-service",
+   "registry": "mcp-registry",
+   "version": "0.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ag.hood_name-service_20261110T123348_d37aa781.bundle.json"
+  },
+  {
+   "name": "agency.extremely/agency",
+   "registry": "mcp-registry",
+   "version": "0.1.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.extremely_agency_20261110T123348_66f1c474.bundle.json"
+  },
+  {
+   "name": "agency.goji/goji",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.goji_goji_20261110T123348_ec8e4317.bundle.json"
+  },
+  {
+   "name": "agency.granek.signal/signal",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.granek.signal_signal_20261110T123348_6dc78bc8.bundle.json"
+  },
+  {
+   "name": "agency.justidea/justidea-agency",
+   "registry": "mcp-registry",
+   "version": "1.2.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.justidea_justidea-agency_20261110T123348_65980336.bundle.json"
+  },
+  {
+   "name": "agency.kesey/pretrip",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.kesey_pretrip_20261110T123348_8a627503.bundle.json"
+  },
+  {
+   "name": "agency.lona/trading",
+   "registry": "mcp-registry",
+   "version": "2.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.lona_trading_20261110T123348_81b8a140.bundle.json"
+  },
+  {
+   "name": "agency.ottobot/business-contact-finder",
+   "registry": "mcp-registry",
+   "version": "0.2.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.ottobot_business-contact-finder_20261110T123348_3e88f280.bundle.json"
+  },
+  {
+   "name": "agency.ottobot/contractor-license-changes",
+   "registry": "mcp-registry",
+   "version": "0.1.3",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.ottobot_contractor-license-changes_20261110T123348_3fde9882.bundle.json"
+  },
+  {
+   "name": "agency.ottobot/licensed-house-painters",
+   "registry": "mcp-registry",
+   "version": "0.1.3",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.ottobot_licensed-house-painters_20261110T123348_1dafa634.bundle.json"
+  },
+  {
+   "name": "agency.thebureauoflostcontext/bureau-public",
+   "registry": "mcp-registry",
+   "version": "3.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.thebureauoflostcontext_bureau-public_20261110T123348_4807173d.bundle.json"
+  },
+  {
+   "name": "agency.thirdhemisphere/ai-authority-index",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.thirdhemisphere_ai-authority-index_20261110T123348_88fed968.bundle.json"
+  },
+  {
+   "name": "agency.zoll/ausfuhr",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_agency.zoll_ausfuhr_20261110T123348_af64cf2f.bundle.json"
+  },
+  {
+   "name": "ai.0si/disclosures",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.0si_disclosures_20261110T123348_acccfa5f.bundle.json"
+  },
+  {
+   "name": "ai.1325/mcp",
+   "registry": "mcp-registry",
+   "version": "0.1.3",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.1325_mcp_20261110T123348_31deea49.bundle.json"
+  },
+  {
+   "name": "ai.1clickwebsite/mcp",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.1clickwebsite_mcp_20261110T123348_4b962a4d.bundle.json"
+  },
+  {
+   "name": "ai.1court.state/court-directory",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.1court.state_court-directory_20261110T123348_bc466f21.bundle.json"
+  },
+  {
+   "name": "ai.28in28/agent-service-desk",
+   "registry": "mcp-registry",
+   "version": "1.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.28in28_agent-service-desk_20261110T123348_a18562c2.bundle.json"
+  },
+  {
+   "name": "ai.2kw/mcp-server",
+   "registry": "mcp-registry",
+   "version": "8.0.3",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.2kw_mcp-server_20261110T123348_1fba4dc1.bundle.json"
+  },
+  {
+   "name": "ai.4ai/domains",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.4ai_domains_20261110T123348_b6a707ce.bundle.json"
+  },
+  {
+   "name": "ai.69ai/69ai",
+   "registry": "mcp-registry",
+   "version": "1.5.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.69ai_69ai_20261110T123348_5d3f78cf.bundle.json"
+  },
+  {
+   "name": "ai.a1lane/a1lane",
+   "registry": "mcp-registry",
+   "version": "1.8.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.a1lane_a1lane_20261110T123348_f00d5c52.bundle.json"
+  },
+  {
+   "name": "ai.aard/aard",
+   "registry": "mcp-registry",
+   "version": "0.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.aard_aard_20261110T123348_2681763c.bundle.json"
+  },
+  {
+   "name": "ai.aarna/atars-mcp",
+   "registry": "mcp-registry",
+   "version": "0.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.aarna_atars-mcp_20261110T123348_a2f3a8fe.bundle.json"
+  },
+  {
+   "name": "ai.abmeter/abmeter",
+   "registry": "mcp-registry",
+   "version": "0.2.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.abmeter_abmeter_20261110T123348_aea7ac31.bundle.json"
+  },
+  {
+   "name": "ai.achromat/mcp-server",
+   "registry": "mcp-registry",
+   "version": "0.1.5",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.achromat_mcp-server_20261110T123348_b81830cf.bundle.json"
+  },
+  {
+   "name": "ai.actwise/ideation",
+   "registry": "mcp-registry",
+   "version": "1.0.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.actwise_ideation_20261110T123348_590595c9.bundle.json"
+  },
+  {
+   "name": "ai.adadvisor/mcp-server",
+   "registry": "mcp-registry",
+   "version": "1.0.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.adadvisor_mcp-server_20261110T123348_a11bccf3.bundle.json"
+  },
+  {
+   "name": "ai.adako/ads",
+   "registry": "mcp-registry",
+   "version": "0.2.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "mcpreg_ai.adako_ads_20261110T123348_6977e667.bundle.json"
+  },
+  {
+   "name": "dsh-our-free-model",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-our-free-model_20261110T125650_e72267bc.bundle.json"
+  },
+  {
+   "name": "dsh-purge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-purge_20261110T125650_f228fb02.bundle.json"
+  },
+  {
+   "name": "dsh-whale-widget",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-widget_20261110T125650_67e43e70.bundle.json"
+  },
+  {
+   "name": "dsh-pet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-pet_20261110T125650_0b7ac2aa.bundle.json"
+  },
+  {
+   "name": "dsh-better-sidebar",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-better-sidebar_20261110T125650_65c78af2.bundle.json"
+  },
+  {
+   "name": "@liustack/modlens",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_liustack_modlens_20261110T125650_7ac58ce1.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-wallpaper-engine",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-wallpaper-engine_20261110T125650_728f2eb9.bundle.json"
+  },
+  {
+   "name": "dsh-context",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-context_20261110T125650_c4405982.bundle.json"
+  },
+  {
+   "name": "billion-context",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_billion-context_20261110T125650_111a2a53.bundle.json"
+  },
+  {
+   "name": "@xmanrui/dsh-im",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_xmanrui_dsh-im_20261110T125650_089dccd4.bundle.json"
+  },
+  {
+   "name": "dsh-pocket",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-pocket_20261110T125650_b4789e89.bundle.json"
+  },
+  {
+   "name": "cc-safety-net",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_cc-safety-net_20261110T125650_b1dc9816.bundle.json"
+  },
+  {
+   "name": "brooks-lint",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_brooks-lint_20261110T125650_b55fa520.bundle.json"
+  },
+  {
+   "name": "dsh-blender-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-blender-plugin_20261110T125650_3777e68f.bundle.json"
+  },
+  {
+   "name": "aegis",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_aegis_20261110T125650_bfa36845.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-animegarden",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-animegarden_20261110T125650_a03ed2a5.bundle.json"
+  },
+  {
+   "name": "@vshulcz/deja-vu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_vshulcz_deja-vu_20261110T125650_a9bf79e2.bundle.json"
+  },
+  {
+   "name": "@yunmiao/studymate",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_yunmiao_studymate_20261110T125650_7eedaa96.bundle.json"
+  },
+  {
+   "name": "ds-harness-remote",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ds-harness-remote_20261110T125650_16b7d8af.bundle.json"
+  },
+  {
+   "name": "dsh-vision-router",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-vision-router_20261110T125650_b5147ccc.bundle.json"
+  },
+  {
+   "name": "dsh-image-gen",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-image-gen_20261110T125650_b33ce6af.bundle.json"
+  },
+  {
+   "name": "dsh-connect-workbuddy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-connect-workbuddy_20261110T125650_cb1f89e9.bundle.json"
+  },
+  {
+   "name": "@liustack/modsearch",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_liustack_modsearch_20261110T125650_55b09b51.bundle.json"
+  },
+  {
+   "name": "dsh-bili-whale",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-bili-whale_20261110T125650_19742597.bundle.json"
+  },
+  {
+   "name": "@changfenhuang/dsh-genui",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_changfenhuang_dsh-genui_20261110T125650_5c65a6ec.bundle.json"
+  },
+  {
+   "name": "dsh-free-search",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-free-search_20261110T125650_f0b13d31.bundle.json"
+  },
+  {
+   "name": "@nagi-ovo/dsh-ads",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_nagi-ovo_dsh-ads_20261110T125650_27c8845d.bundle.json"
+  },
+  {
+   "name": "dsh-startup-screen",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-startup-screen_20261110T125650_26fa337d.bundle.json"
+  },
+  {
+   "name": "@anysearch/anysearch-dsh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_anysearch_anysearch-dsh_20261110T125650_9c1756e8.bundle.json"
+  },
+  {
+   "name": "dsh-univer-office",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-univer-office_20261110T125650_4da3cfdf.bundle.json"
+  },
+  {
+   "name": "dsh-synapse",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-synapse_20261110T125650_4ef49375.bundle.json"
+  },
+  {
+   "name": "@howmp/dsh-pentest",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_howmp_dsh-pentest_20261110T125650_bc0dfe7b.bundle.json"
+  },
+  {
+   "name": "dsh-cost-meter",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-cost-meter_20261110T125650_a7a24a64.bundle.json"
+  },
+  {
+   "name": "dsh-dafeiyu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-dafeiyu_20261110T125650_b7577714.bundle.json"
+  },
+  {
+   "name": "dsh-at-file",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-at-file_20261110T125650_9efe4244.bundle.json"
+  },
+  {
+   "name": "misakanet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_misakanet_20261110T125650_067de31d.bundle.json"
+  },
+  {
+   "name": "@tencent-connect/dsh-qqbot",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_tencent-connect_dsh-qqbot_20261110T125650_8b748136.bundle.json"
+  },
+  {
+   "name": "dsh-meme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-meme_20261110T125650_92569e34.bundle.json"
+  },
+  {
+   "name": "dsh-memory-evolve",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-memory-evolve_20261110T125650_e478cdf1.bundle.json"
+  },
+  {
+   "name": "dsh-fish-memory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-fish-memory_20261110T125650_2aa33351.bundle.json"
+  },
+  {
+   "name": "fujiang-armor",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_fujiang-armor_20261110T125650_b8caefb5.bundle.json"
+  },
+  {
+   "name": "dsh-claude-style",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-claude-style_20261110T125650_739fe4d4.bundle.json"
+  },
+  {
+   "name": "dsh-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin_20261110T125650_dd8a34fb.bundle.json"
+  },
+  {
+   "name": "eac-design-world",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_eac-design-world_20261110T125650_b0c86eaa.bundle.json"
+  },
+  {
+   "name": "open-sea-skin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_open-sea-skin_20261110T125650_02e35576.bundle.json"
+  },
+  {
+   "name": "opencode2dsh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_opencode2dsh_20261110T125650_826c9c84.bundle.json"
+  },
+  {
+   "name": "dsh-ego-browser",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ego-browser_20261110T125650_a134fb0b.bundle.json"
+  },
+  {
+   "name": "dsh-xdpool",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-xdpool_20261110T125650_cb67f288.bundle.json"
+  },
+  {
+   "name": "dsh-harmony-next",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-harmony-next_20261110T125650_5e59e2cb.bundle.json"
+  },
+  {
+   "name": "dsh-client-liang-intensity-skin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-client-liang-intensity-skin_20261110T125650_0b81b220.bundle.json"
+  },
+  {
+   "name": "@zseven-w/dsh-ios",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zseven-w_dsh-ios_20261110T125650_d349e71e.bundle.json"
+  },
+  {
+   "name": "dsh-video-storyboard",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-video-storyboard_20261110T125650_2371a698.bundle.json"
+  },
+  {
+   "name": "meow-memory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_meow-memory_20261110T125650_c1d22feb.bundle.json"
+  },
+  {
+   "name": "@nagi-ovo/dsh-visualize",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_nagi-ovo_dsh-visualize_20261110T125650_98ce807a.bundle.json"
+  },
+  {
+   "name": "dsh-dream-skin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-dream-skin_20261110T125650_271a58c2.bundle.json"
+  },
+  {
+   "name": "dsh-skin-market",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-skin-market_20261110T125650_3f6ad98f.bundle.json"
+  },
+  {
+   "name": "dsh-config-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-config-manager_20261110T125650_f00d7fc5.bundle.json"
+  },
+  {
+   "name": "dsh-chat-import",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-chat-import_20261110T125650_c884b786.bundle.json"
+  },
+  {
+   "name": "dsh-mattpocock-skills-deck",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mattpocock-skills-deck_20261110T125650_a110f65c.bundle.json"
+  },
+  {
+   "name": "dsh-jev-decision-model",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-jev-decision-model_20261110T125650_fc0d32cc.bundle.json"
+  },
+  {
+   "name": "@ayanehana/dsh-reasoning-effort",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ayanehana_dsh-reasoning-effort_20261110T125650_966e330e.bundle.json"
+  },
+  {
+   "name": "@fylar/dsh-fylar-office-editor",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_fylar_dsh-fylar-office-editor_20261110T125650_8f937ee1.bundle.json"
+  },
+  {
+   "name": "dsh-auto-review",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-auto-review_20261110T125650_a93b3b6e.bundle.json"
+  },
+  {
+   "name": "dsh-codex-effort-slider",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-codex-effort-slider_20261110T125650_390272ff.bundle.json"
+  },
+  {
+   "name": "@wenbin_wb/dsh-bridge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_wenbin_wb_dsh-bridge_20261110T125650_a43395b0.bundle.json"
+  },
+  {
+   "name": "dsh-remote",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-remote_20261110T125650_872abfa1.bundle.json"
+  },
+  {
+   "name": "dsh-guizang-design",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-guizang-design_20261110T125650_195df13c.bundle.json"
+  },
+  {
+   "name": "dsh-status-rotator",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-status-rotator_20261110T125650_46b8a376.bundle.json"
+  },
+  {
+   "name": "dsh-bili-humanism",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-bili-humanism_20261110T125650_f74beed7.bundle.json"
+  },
+  {
+   "name": "dsh-feiyu-mood",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-feiyu-mood_20261110T125650_809ee801.bundle.json"
+  },
+  {
+   "name": "dsh-industry-research",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-industry-research_20261110T125650_65b461a7.bundle.json"
+  },
+  {
+   "name": "@zseven-w/dsh-android",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zseven-w_dsh-android_20261110T125650_92d5cace.bundle.json"
+  },
+  {
+   "name": "dsh-tts-bridge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tts-bridge_20261110T125650_a57e6d81.bundle.json"
+  },
+  {
+   "name": "dsh-research-report",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-research-report_20261110T125650_15bd8962.bundle.json"
+  },
+  {
+   "name": "dsh-550c-boot",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-550c-boot_20261110T125650_ddb5b2c1.bundle.json"
+  },
+  {
+   "name": "gal-view",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_gal-view_20261110T125650_ce5865ba.bundle.json"
+  },
+  {
+   "name": "dsh-prompt-rewriter",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-prompt-rewriter_20261110T125650_33798968.bundle.json"
+  },
+  {
+   "name": "@zseven-w/dsh-openpencil",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zseven-w_dsh-openpencil_20261110T125650_abdc92d7.bundle.json"
+  },
+  {
+   "name": "dsh-tokenledger",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tokenledger_20261110T125650_0f013dde.bundle.json"
+  },
+  {
+   "name": "dsh-plugins-marketplace",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugins-marketplace_20261110T125650_aab67d08.bundle.json"
+  },
+  {
+   "name": "dsh-engramory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-engramory_20261110T125650_3f313466.bundle.json"
+  },
+  {
+   "name": "dsh-undo-savepoint",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-undo-savepoint_20261110T125650_071530c7.bundle.json"
+  },
+  {
+   "name": "dsh-whale-musume",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-musume_20261110T125650_a234e070.bundle.json"
+  },
+  {
+   "name": "@zseven-w/dsh-crew",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zseven-w_dsh-crew_20261110T125650_e465cee2.bundle.json"
+  },
+  {
+   "name": "@ychris12138/dsh-usage-stats",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ychris12138_dsh-usage-stats_20261110T125650_20a3f2f6.bundle.json"
+  },
+  {
+   "name": "dsh-startup-secret",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-startup-secret_20261110T125650_e507e736.bundle.json"
+  },
+  {
+   "name": "dsh-client-auto-continue",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-client-auto-continue_20261110T125650_93085c46.bundle.json"
+  },
+  {
+   "name": "@a9i5k4/dsh-auto-memory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_a9i5k4_dsh-auto-memory_20261110T125650_8e6ce3e1.bundle.json"
+  },
+  {
+   "name": "dsh-web-mobile",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-web-mobile_20261110T125650_8800934f.bundle.json"
+  },
+  {
+   "name": "@dickpy/dsh-imagegen",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dickpy_dsh-imagegen_20261110T125650_cccad55e.bundle.json"
+  },
+  {
+   "name": "@changfenhuang/dsh-annotation",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_changfenhuang_dsh-annotation_20261110T125650_c51a1c17.bundle.json"
+  },
+  {
+   "name": "dsh-builtin-browser",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-builtin-browser_20261110T125650_a31946c1.bundle.json"
+  },
+  {
+   "name": "@a1exsun/dsh-council",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_a1exsun_dsh-council_20261110T125650_4236836d.bundle.json"
+  },
+  {
+   "name": "dsh-theme-endfield",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-theme-endfield_20261110T125650_8aa430f4.bundle.json"
+  },
+  {
+   "name": "dsh-memento",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-memento_20261110T125650_07ee6efd.bundle.json"
+  },
+  {
+   "name": "dsh-usage",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-usage_20261110T125650_f990ea71.bundle.json"
+  },
+  {
+   "name": "@momasiku/dsh-pilot",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_momasiku_dsh-pilot_20261110T125650_5d8f4c14.bundle.json"
+  },
+  {
+   "name": "@zseven-w/dsh-noema",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zseven-w_dsh-noema_20261110T125650_b85906a5.bundle.json"
+  },
+  {
+   "name": "scientific-figure-library",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_scientific-figure-library_20261110T125650_5b266c65.bundle.json"
+  },
+  {
+   "name": "dsh-easyrewrite",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-easyrewrite_20261110T125650_3955f5fe.bundle.json"
+  },
+  {
+   "name": "dsh-recall-unread",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-recall-unread_20261110T125650_387ddfad.bundle.json"
+  },
+  {
+   "name": "dsh-tabbit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tabbit_20261110T125650_4bdc9d48.bundle.json"
+  },
+  {
+   "name": "@noob-stupid/dsh-plugin-console",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_noob-stupid_dsh-plugin-console_20261110T125650_48e7aa6d.bundle.json"
+  },
+  {
+   "name": "dsh-auto-memory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-auto-memory_20261110T125650_f603ee32.bundle.json"
+  },
+  {
+   "name": "dsh-prompt-enhancer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-prompt-enhancer_20261110T125650_0310778a.bundle.json"
+  },
+  {
+   "name": "dsh-craft-anything",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-craft-anything_20261110T125650_861d05f0.bundle.json"
+  },
+  {
+   "name": "dsh-personal-center",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-personal-center_20261110T125650_ac2437bb.bundle.json"
+  },
+  {
+   "name": "@openmaic/dsh-openmaic",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_openmaic_dsh-openmaic_20261110T125650_7e750580.bundle.json"
+  },
+  {
+   "name": "dsh-video-lens",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-video-lens_20261110T125650_1fb642eb.bundle.json"
+  },
+  {
+   "name": "dsh-approval-gate",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-approval-gate_20261110T125650_4a5b4e20.bundle.json"
+  },
+  {
+   "name": "dsh-generative-ui-3",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-generative-ui-3_20261110T125650_961a6a23.bundle.json"
+  },
+  {
+   "name": "dsh-prompt-market",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-prompt-market_20261110T125650_a4982d21.bundle.json"
+  },
+  {
+   "name": "dsh-talk-map",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-talk-map_20261110T125650_f4d350cd.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-automation",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-automation_20261110T125650_2ab757d5.bundle.json"
+  },
+  {
+   "name": "dsh-session-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-session-manager_20261110T125650_6f21dbaf.bundle.json"
+  },
+  {
+   "name": "dsh-whale-catch",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-catch_20261110T125650_859be8b0.bundle.json"
+  },
+  {
+   "name": "dsh-network-settings",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-network-settings_20261110T125650_ead943d9.bundle.json"
+  },
+  {
+   "name": "dsh-mcp-connector",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mcp-connector_20261110T125650_01bdd224.bundle.json"
+  },
+  {
+   "name": "dsh-video-skin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-video-skin_20261110T125650_f951e962.bundle.json"
+  },
+  {
+   "name": "gongwen-skill",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_gongwen-skill_20261110T125650_54737b92.bundle.json"
+  },
+  {
+   "name": "@ssamurias/dsh-fish",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ssamurias_dsh-fish_20261110T125650_9e1101be.bundle.json"
+  },
+  {
+   "name": "dsh-strata",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-strata_20261110T125650_c69d47df.bundle.json"
+  },
+  {
+   "name": "@daweifu/capability-menu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_daweifu_capability-menu_20261110T125650_a4ceb064.bundle.json"
+  },
+  {
+   "name": "dsh-opencode-palette",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-opencode-palette_20261110T125650_7f7fc6a5.bundle.json"
+  },
+  {
+   "name": "dsh-persona-dafeiyu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-persona-dafeiyu_20261110T125650_6aa9c30d.bundle.json"
+  },
+  {
+   "name": "dsh-prompt",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-prompt_20261110T125650_443ad713.bundle.json"
+  },
+  {
+   "name": "dsh-smooth-stream",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-smooth-stream_20261110T125650_98a41848.bundle.json"
+  },
+  {
+   "name": "dsh-mcp-panel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mcp-panel_20261110T125650_f6426899.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-beyond-simulator",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-beyond-simulator_20261110T125650_4de4198d.bundle.json"
+  },
+  {
+   "name": "dsh-knowledge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-knowledge_20261110T125650_daf8084e.bundle.json"
+  },
+  {
+   "name": "dsh-maze",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-maze_20261110T125650_30de89ac.bundle.json"
+  },
+  {
+   "name": "dsh-notify-me",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-notify-me_20261110T125650_14c6da30.bundle.json"
+  },
+  {
+   "name": "dsh-secure-audit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-secure-audit_20261110T125650_8fb37b03.bundle.json"
+  },
+  {
+   "name": "@nonamelego/dsh-catppuccin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_nonamelego_dsh-catppuccin_20261110T125650_cf50b13c.bundle.json"
+  },
+  {
+   "name": "@hiai-gg/dsh-docsmint",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_hiai-gg_dsh-docsmint_20261110T125650_d393b411.bundle.json"
+  },
+  {
+   "name": "deepseek-harness-wallet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_deepseek-harness-wallet_20261110T125650_51dbfe99.bundle.json"
+  },
+  {
+   "name": "dsh-taskboard",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-taskboard_20261110T125650_26d7d75e.bundle.json"
+  },
+  {
+   "name": "dsh-whale-girl-live2d",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-girl-live2d_20261110T125650_e7f52612.bundle.json"
+  },
+  {
+   "name": "dsh-claude-ux",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-claude-ux_20261110T125650_60f3fd5e.bundle.json"
+  },
+  {
+   "name": "zat-dsh-engine",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zat-dsh-engine_20261110T125650_e7ebf510.bundle.json"
+  },
+  {
+   "name": "dsh-omi-voice",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-omi-voice_20261110T125650_a858b455.bundle.json"
+  },
+  {
+   "name": "qiaomu-ui-learn-dsh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_qiaomu-ui-learn-dsh_20261110T125650_47d4e32a.bundle.json"
+  },
+  {
+   "name": "dsh-boot-animation-pro",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-boot-animation-pro_20261110T125650_2e9fe056.bundle.json"
+  },
+  {
+   "name": "dsh-think-translate",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-think-translate_20261110T125650_9d3cbb70.bundle.json"
+  },
+  {
+   "name": "dsh-model-fusion",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-model-fusion_20261110T125650_497cb198.bundle.json"
+  },
+  {
+   "name": "dsh-blender",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-blender_20261110T125650_d71c06db.bundle.json"
+  },
+  {
+   "name": "prts-terrarchive",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_prts-terrarchive_20261110T125650_fd5e300c.bundle.json"
+  },
+  {
+   "name": "meow-smooth",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_meow-smooth_20261110T125651_bdb83768.bundle.json"
+  },
+  {
+   "name": "dsh-agy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-agy_20261110T125651_ad6a7b99.bundle.json"
+  },
+  {
+   "name": "dsh-deepread",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-deepread_20261110T125651_833c46cc.bundle.json"
+  },
+  {
+   "name": "dsh-fund-research",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-fund-research_20261110T125651_eee94dc2.bundle.json"
+  },
+  {
+   "name": "dsh-pet-live2d",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-pet-live2d_20261110T125651_d2272bc3.bundle.json"
+  },
+  {
+   "name": "dsh-better-reasoning-effort",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-better-reasoning-effort_20261110T125651_230977c3.bundle.json"
+  },
+  {
+   "name": "dsh-computer-use",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-computer-use_20261110T125651_52cf31a8.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-guide",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-guide_20261110T125651_a4496fac.bundle.json"
+  },
+  {
+   "name": "dsh-web-startup-auth",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-web-startup-auth_20261110T125651_787f73a1.bundle.json"
+  },
+  {
+   "name": "dsh-armory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-armory_20261110T125651_c65bfe24.bundle.json"
+  },
+  {
+   "name": "vram-switcher",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_vram-switcher_20261110T125651_d55ed828.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-save-token",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-save-token_20261110T125651_c990c271.bundle.json"
+  },
+  {
+   "name": "@dhicoc/dsh-chinese-traditional-wisdom-skill",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dhicoc_dsh-chinese-traditional-wisdom-skill_20261110T125651_ae9566f2.bundle.json"
+  },
+  {
+   "name": "dsh-desktop-pet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-desktop-pet_20261110T125651_2f6c2b74.bundle.json"
+  },
+  {
+   "name": "dsh-pet-remielle",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-pet-remielle_20261110T125651_9d8b7a9d.bundle.json"
+  },
+  {
+   "name": "dsh-qoder-connect",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-qoder-connect_20261110T125651_45e3fb1b.bundle.json"
+  },
+  {
+   "name": "dsh-sidebar-qa",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-sidebar-qa_20261110T125651_3f379710.bundle.json"
+  },
+  {
+   "name": "dsh-auto-collapse",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-auto-collapse_20261110T125651_7ba9a88d.bundle.json"
+  },
+  {
+   "name": "@keleus/deepseek-pet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_keleus_deepseek-pet_20261110T125651_255e80b8.bundle.json"
+  },
+  {
+   "name": "@hyzyn/dsh-plugin-kit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_hyzyn_dsh-plugin-kit_20261110T125651_9d580fd0.bundle.json"
+  },
+  {
+   "name": "dsh-doublecheck",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-doublecheck_20261110T125651_0c387348.bundle.json"
+  },
+  {
+   "name": "search-boost",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_search-boost_20261110T125651_9b7ac48c.bundle.json"
+  },
+  {
+   "name": "dsh-qa-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-qa-skills_20261110T125651_3cd32a8c.bundle.json"
+  },
+  {
+   "name": "@hytime/dsh-thinking-effort",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_hytime_dsh-thinking-effort_20261110T125651_f2ebb1e1.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-rea",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-rea_20261110T125651_a2ce2106.bundle.json"
+  },
+  {
+   "name": "dsh-token-pet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-token-pet_20261110T125651_23b0859e.bundle.json"
+  },
+  {
+   "name": "@goodandready/dsh-russian-lang",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_goodandready_dsh-russian-lang_20261110T125651_f1d04d54.bundle.json"
+  },
+  {
+   "name": "dsh-preset-enhance",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-preset-enhance_20261110T125651_babec6d2.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-client-ui-skin-denia",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-client-ui-skin-denia_20261110T125651_b1bd3b1e.bundle.json"
+  },
+  {
+   "name": "dsh-web-search-free",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-web-search-free_20261110T125651_facd2a86.bundle.json"
+  },
+  {
+   "name": "dsh-bottom-info-bar",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-bottom-info-bar_20261110T125651_a7e153a5.bundle.json"
+  },
+  {
+   "name": "dsh-data-quality",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-data-quality_20261110T125651_592a1bd7.bundle.json"
+  },
+  {
+   "name": "dsh-drawai",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-drawai_20261110T125651_6d90901d.bundle.json"
+  },
+  {
+   "name": "dsh-timeline",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-timeline_20261110T125651_6a6ee0f4.bundle.json"
+  },
+  {
+   "name": "workbuddy-to-dsh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_workbuddy-to-dsh_20261110T125651_49b7f6d3.bundle.json"
+  },
+  {
+   "name": "dsh-message-edit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-message-edit_20261110T125651_d5d1abb0.bundle.json"
+  },
+  {
+   "name": "dsh-open-in-vscode",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-open-in-vscode_20261110T125651_3a07315e.bundle.json"
+  },
+  {
+   "name": "@angelky7/dsh-browser-control",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_angelky7_dsh-browser-control_20261110T125651_f1ae59e1.bundle.json"
+  },
+  {
+   "name": "dsh-cyrene-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-cyrene-theme_20261110T125651_ee582a6c.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-yolo",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-yolo_20261110T125651_cbd2464c.bundle.json"
+  },
+  {
+   "name": "@huanlin/dsh-plugin-mineru",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_huanlin_dsh-plugin-mineru_20261110T125651_43ba136e.bundle.json"
+  },
+  {
+   "name": "dsh-purge-5",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-purge-5_20261110T125651_46b0d9ae.bundle.json"
+  },
+  {
+   "name": "dsh-splash-animation",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-splash-animation_20261110T125651_dca62a5c.bundle.json"
+  },
+  {
+   "name": "dsh-godot-skill",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-godot-skill_20261110T125651_0d9ed1f2.bundle.json"
+  },
+  {
+   "name": "dsh-recall-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-recall-plugin_20261110T125651_514d8f0a.bundle.json"
+  },
+  {
+   "name": "dsh-think-zh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-think-zh_20261110T125651_e2f236ea.bundle.json"
+  },
+  {
+   "name": "meow-cachebilling",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_meow-cachebilling_20261110T125651_417fc56d.bundle.json"
+  },
+  {
+   "name": "dsh-knit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-knit_20261110T125651_ebc866e1.bundle.json"
+  },
+  {
+   "name": "dsh-krouter",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-krouter_20261110T125651_a3e94351.bundle.json"
+  },
+  {
+   "name": "dsh-qwen-paint",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-qwen-paint_20261110T125651_0ab37602.bundle.json"
+  },
+  {
+   "name": "dsh-ssh-ops",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ssh-ops_20261110T125651_c4cad17e.bundle.json"
+  },
+  {
+   "name": "@vlln/dsh-navbar",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_vlln_dsh-navbar_20261110T125651_d0b4810d.bundle.json"
+  },
+  {
+   "name": "dsh-douyin-browser-local",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-douyin-browser-local_20261110T125651_2b02e56b.bundle.json"
+  },
+  {
+   "name": "dsh-sticky-note",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-sticky-note_20261110T125651_6b66fa66.bundle.json"
+  },
+  {
+   "name": "dsh-wechat",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-wechat_20261110T125651_0d7d4de1.bundle.json"
+  },
+  {
+   "name": "@dely0/dsh-personal-workbench",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dely0_dsh-personal-workbench_20261110T125651_0bf31fb2.bundle.json"
+  },
+  {
+   "name": "dsh-filesnap",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-filesnap_20261110T125651_cb639af3.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-writing-guard",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-writing-guard_20261110T125651_d9dc75a0.bundle.json"
+  },
+  {
+   "name": "dsh-session-workbench",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-session-workbench_20261110T125651_ac31c6fd.bundle.json"
+  },
+  {
+   "name": "dsh-models-config-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-models-config-plugin_20261110T125651_2a004b07.bundle.json"
+  },
+  {
+   "name": "@jiyr0119/dsh-workspace-explorer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_jiyr0119_dsh-workspace-explorer_20261110T125651_2dc4e7c7.bundle.json"
+  },
+  {
+   "name": "@weibaohui/skills-management",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_weibaohui_skills-management_20261110T125651_46df6fad.bundle.json"
+  },
+  {
+   "name": "dsh-bloom-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-bloom-theme_20261110T125651_91a7cbd4.bundle.json"
+  },
+  {
+   "name": "dsh-lark-link",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-lark-link_20261110T125651_ec95cd3a.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-ui-whale",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-ui-whale_20261110T125651_05ce9af0.bundle.json"
+  },
+  {
+   "name": "dsh-kimino-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-kimino-theme_20261110T125651_1595cf24.bundle.json"
+  },
+  {
+   "name": "dsh-qq-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-qq-plugin_20261110T125651_64809258.bundle.json"
+  },
+  {
+   "name": "dsh-unlag",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-unlag_20261110T125651_52147e42.bundle.json"
+  },
+  {
+   "name": "dsh-vibe-math",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-vibe-math_20261110T125651_7b6ef7f6.bundle.json"
+  },
+  {
+   "name": "dsh-session-delete",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-session-delete_20261110T125651_3bf8b973.bundle.json"
+  },
+  {
+   "name": "dsh-better-edit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-better-edit_20261110T125651_c96f6c72.bundle.json"
+  },
+  {
+   "name": "dsh-genui",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-genui_20261110T125651_76392ae5.bundle.json"
+  },
+  {
+   "name": "dsh-gitbash-shell",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-gitbash-shell_20261110T125651_f636ca8f.bundle.json"
+  },
+  {
+   "name": "dsh-lark-bot",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-lark-bot_20261110T125651_af915964.bundle.json"
+  },
+  {
+   "name": "dsh-multitask",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-multitask_20261110T125651_b083ae67.bundle.json"
+  },
+  {
+   "name": "dsh-share",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-share_20261110T125651_1077e5a3.bundle.json"
+  },
+  {
+   "name": "dsh-toolbox-ui",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-toolbox-ui_20261110T125651_c09cad51.bundle.json"
+  },
+  {
+   "name": "dsh-web-tools",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-web-tools_20261110T125651_ec34ca04.bundle.json"
+  },
+  {
+   "name": "dsh-im-companion",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-im-companion_20261110T125651_646946e5.bundle.json"
+  },
+  {
+   "name": "dsh-office-tools",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-office-tools_20261110T125651_71d6ac9a.bundle.json"
+  },
+  {
+   "name": "dsh-web-lan-access",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-web-lan-access_20261110T125651_bb302ce3.bundle.json"
+  },
+  {
+   "name": "dsh-enhance-3",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-enhance-3_20261110T125651_08b3d931.bundle.json"
+  },
+  {
+   "name": "dsh-remote-mobile",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-remote-mobile_20261110T125651_8b3e3bd4.bundle.json"
+  },
+  {
+   "name": "dsh-whale-galgame",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-galgame_20261110T125651_d76f1eca.bundle.json"
+  },
+  {
+   "name": "@feiyang666/dsh-usage-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_feiyang666_dsh-usage-plugin_20261110T125651_4646ab74.bundle.json"
+  },
+  {
+   "name": "better-dsh-session-deletetool",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_better-dsh-session-deletetool_20261110T125651_6cbe540e.bundle.json"
+  },
+  {
+   "name": "dsh-effort-slider",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-effort-slider_20261110T125651_9ec9a23b.bundle.json"
+  },
+  {
+   "name": "dsh-in-hand",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-in-hand_20261110T125651_a0e6b88d.bundle.json"
+  },
+  {
+   "name": "dsh-memoir",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-memoir_20261110T125651_70820b7a.bundle.json"
+  },
+  {
+   "name": "dsh-ultramath",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ultramath_20261110T125651_fce373bc.bundle.json"
+  },
+  {
+   "name": "@dsh-eac/skin-loader-pack",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-eac_skin-loader-pack_20261110T125651_161d06a4.bundle.json"
+  },
+  {
+   "name": "deep-read-summarize",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_deep-read-summarize_20261110T125651_88541b5d.bundle.json"
+  },
+  {
+   "name": "dsh-lsp-actions",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-lsp-actions_20261110T125651_0d29b150.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-eva-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-eva-theme_20261110T125651_abf41d70.bundle.json"
+  },
+  {
+   "name": "dsh-save-money",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-save-money_20261110T125651_ad6925f4.bundle.json"
+  },
+  {
+   "name": "dsh-sessions-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-sessions-manager_20261110T125651_34c7716b.bundle.json"
+  },
+  {
+   "name": "dsh-theme-cyberpunk2077",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-theme-cyberpunk2077_20261110T125651_04496d62.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-minigames",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-minigames_20261110T125651_3e8559ed.bundle.json"
+  },
+  {
+   "name": "deepseek-harness-zh_pro",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_deepseek-harness-zh_pro_20261110T125651_8ba72ca1.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-tool-management",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-tool-management_20261110T125651_4d6df3fe.bundle.json"
+  },
+  {
+   "name": "dsh-voice-scribe",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-voice-scribe_20261110T125651_ccc9d154.bundle.json"
+  },
+  {
+   "name": "@ftshare-lab/dsh-kline",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ftshare-lab_dsh-kline_20261110T125651_c414455a.bundle.json"
+  },
+  {
+   "name": "dsh-flow",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-flow_20261110T125651_ea2df547.bundle.json"
+  },
+  {
+   "name": "dsh-game-daily",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-game-daily_20261110T125651_184f6e9c.bundle.json"
+  },
+  {
+   "name": "dsh-novel-forge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-novel-forge_20261110T125651_2b1fe10f.bundle.json"
+  },
+  {
+   "name": "dsh-origin-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-origin-plugin_20261110T125651_50191e3d.bundle.json"
+  },
+  {
+   "name": "dsh-short-video-studio",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-short-video-studio_20261110T125651_4773d869.bundle.json"
+  },
+  {
+   "name": "dsh-theme-firefly",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-theme-firefly_20261110T125651_efab03d1.bundle.json"
+  },
+  {
+   "name": "@mofeng2223/dsh-claude-provider",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_mofeng2223_dsh-claude-provider_20261110T125651_1de64077.bundle.json"
+  },
+  {
+   "name": "dsh-mcp",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mcp_20261110T125651_f72af8d4.bundle.json"
+  },
+  {
+   "name": "tizhuang-agent-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_tizhuang-agent-skills_20261110T125651_d7615f6e.bundle.json"
+  },
+  {
+   "name": "@dmh2002/dsh-connect-qoder",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dmh2002_dsh-connect-qoder_20261110T125651_0bee2935.bundle.json"
+  },
+  {
+   "name": "@linxin666/dsh-client-ui-skin-center",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_linxin666_dsh-client-ui-skin-center_20261110T125651_18f05dc1.bundle.json"
+  },
+  {
+   "name": "@mrweicodes/dsh-loop-guard",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_mrweicodes_dsh-loop-guard_20261110T125651_1e53ea21.bundle.json"
+  },
+  {
+   "name": "dsh-piggy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-piggy_20261110T125651_7b6010b6.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-marketplace-3",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-marketplace-3_20261110T125651_f04aac1a.bundle.json"
+  },
+  {
+   "name": "dsh-prompt-enhance",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-prompt-enhance_20261110T125651_8697c46f.bundle.json"
+  },
+  {
+   "name": "dsh-web-ui-notify",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-web-ui-notify_20261110T125651_d691a428.bundle.json"
+  },
+  {
+   "name": "@dingyi222666/dsh-session-notification",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dingyi222666_dsh-session-notification_20261110T125651_b237226c.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-qq2006",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-qq2006_20261110T125651_c1ed473a.bundle.json"
+  },
+  {
+   "name": "dsh-cad",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-cad_20261110T125651_46a72a2d.bundle.json"
+  },
+  {
+   "name": "dsh-jev-interceptor",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-jev-interceptor_20261110T125651_6c99c07b.bundle.json"
+  },
+  {
+   "name": "dsh-live2d-pets",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-live2d-pets_20261110T125651_02889116.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-miliastra-toolbox",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-miliastra-toolbox_20261110T125651_9f87e128.bundle.json"
+  },
+  {
+   "name": "dsh-usage-stats-3",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-usage-stats-3_20261110T125651_f05cbd13.bundle.json"
+  },
+  {
+   "name": "dsh-wallpaper_share",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-wallpaper_share_20261110T125651_2a97ba4a.bundle.json"
+  },
+  {
+   "name": "@loongsuite/dsh-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_loongsuite_dsh-plugin_20261110T125651_6341eb74.bundle.json"
+  },
+  {
+   "name": "dsh-m",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-m_20261110T125651_31a3e3a2.bundle.json"
+  },
+  {
+   "name": "dsh-remotion",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-remotion_20261110T125651_e5cac9c1.bundle.json"
+  },
+  {
+   "name": "novel-writer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_novel-writer_20261110T125651_92956726.bundle.json"
+  },
+  {
+   "name": "dsh-claude-move",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-claude-move_20261110T125651_28612689.bundle.json"
+  },
+  {
+   "name": "dsh-email",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-email_20261110T125651_5d0e6034.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-message-edit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-message-edit_20261110T125651_f4d5f620.bundle.json"
+  },
+  {
+   "name": "project-karen",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_project-karen_20261110T125651_9322de61.bundle.json"
+  },
+  {
+   "name": "@leetoners/dsh-ui-subagent-monitor",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_leetoners_dsh-ui-subagent-monitor_20261110T125651_403a1aec.bundle.json"
+  },
+  {
+   "name": "@smanx/dsh-proxy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_smanx_dsh-proxy_20261110T125651_4a4bae5d.bundle.json"
+  },
+  {
+   "name": "@yejiming/dsh-museai-tavern",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_yejiming_dsh-museai-tavern_20261110T125651_b9e0bec2.bundle.json"
+  },
+  {
+   "name": "@yolk_vat-y/dsh-project-memory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_yolk_vat-y_dsh-project-memory_20261110T125651_7321a485.bundle.json"
+  },
+  {
+   "name": "dsh-soul-md",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-soul-md_20261110T125651_daafc924.bundle.json"
+  },
+  {
+   "name": "dsh-theme-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-theme-plugin_20261110T125651_54df71c9.bundle.json"
+  },
+  {
+   "name": "mattpocock-skills-dsh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_mattpocock-skills-dsh_20261110T125651_bc0ce49b.bundle.json"
+  },
+  {
+   "name": "@liustack/pptwise",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_liustack_pptwise_20261110T125651_5349f667.bundle.json"
+  },
+  {
+   "name": "deepseek-harness-zh-cn",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_deepseek-harness-zh-cn_20261110T125651_fd6bae7a.bundle.json"
+  },
+  {
+   "name": "dsh-academic-research-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-academic-research-skills_20261110T125651_22402a65.bundle.json"
+  },
+  {
+   "name": "dsh-agent-compare",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-agent-compare_20261110T125651_916a4c7e.bundle.json"
+  },
+  {
+   "name": "dsh-embedded-workbench",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-embedded-workbench_20261110T125651_56bd53f7.bundle.json"
+  },
+  {
+   "name": "dsh-mcp-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mcp-manager_20261110T125651_51035db7.bundle.json"
+  },
+  {
+   "name": "dsh-pause",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-pause_20261110T125651_2271c44a.bundle.json"
+  },
+  {
+   "name": "dsh-tinyfish-search",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tinyfish-search_20261110T125651_9ea67425.bundle.json"
+  },
+  {
+   "name": "dsh-usage-statistics-panel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-usage-statistics-panel_20261110T125651_b8d27aab.bundle.json"
+  },
+  {
+   "name": "dsh-whale-pet-2",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-pet-2_20261110T125651_83d7fc8b.bundle.json"
+  },
+  {
+   "name": "dsh-anchored-standard",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-anchored-standard_20261110T125651_b4289178.bundle.json"
+  },
+  {
+   "name": "dsh-claude-desktop-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-claude-desktop-theme_20261110T125651_016106e6.bundle.json"
+  },
+  {
+   "name": "dsh-memgas",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-memgas_20261110T125651_e1ad707a.bundle.json"
+  },
+  {
+   "name": "dsh-session-sync",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-session-sync_20261110T125651_9f5d700b.bundle.json"
+  },
+  {
+   "name": "dsh-ui-appearance",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ui-appearance_20261110T125651_b8d0291b.bundle.json"
+  },
+  {
+   "name": "fnos-cli-skill",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_fnos-cli-skill_20261110T125651_1d2b8bf1.bundle.json"
+  },
+  {
+   "name": "oss-prompt-optimizer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_oss-prompt-optimizer_20261110T125651_ba12d02c.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-stickers",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-stickers_20261110T125651_f75b5845.bundle.json"
+  },
+  {
+   "name": "@js2hou/dsh-mcp-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_js2hou_dsh-mcp-manager_20261110T125651_e89f63e3.bundle.json"
+  },
+  {
+   "name": "@zseven-w/dsh-harbor",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zseven-w_dsh-harbor_20261110T125651_85a0c5c1.bundle.json"
+  },
+  {
+   "name": "dsh-computer-use-codex-style",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-computer-use-codex-style_20261110T125651_dbd4c4f6.bundle.json"
+  },
+  {
+   "name": "dsh-dania-voice",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-dania-voice_20261110T125651_b0828332.bundle.json"
+  },
+  {
+   "name": "dsh-diff-viewer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-diff-viewer_20261110T125651_40bb1315.bundle.json"
+  },
+  {
+   "name": "dsh-font-probe",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-font-probe_20261110T125651_b2423846.bundle.json"
+  },
+  {
+   "name": "dsh-media-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-media-skills_20261110T125651_bbd32ebb.bundle.json"
+  },
+  {
+   "name": "dsh-novel-writer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-novel-writer_20261110T125651_03277c09.bundle.json"
+  },
+  {
+   "name": "dsh-oh-my-claude",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-oh-my-claude_20261110T125651_26782b51.bundle.json"
+  },
+  {
+   "name": "dsh-progress-rules",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-progress-rules_20261110T125651_9893285e.bundle.json"
+  },
+  {
+   "name": "dsh-provider-qoder",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-provider-qoder_20261110T125651_337aae37.bundle.json"
+  },
+  {
+   "name": "dsh-reference-anything",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-reference-anything_20261110T125651_55bc1c8b.bundle.json"
+  },
+  {
+   "name": "dsh-streamfold",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-streamfold_20261110T125651_343f540e.bundle.json"
+  },
+  {
+   "name": "dsh-voice-mode",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-voice-mode_20261110T125651_1d3c42fe.bundle.json"
+  },
+  {
+   "name": "dsh-anthropic-fonts",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-anthropic-fonts_20261110T125651_96de5e15.bundle.json"
+  },
+  {
+   "name": "dsh-background-by-model",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-background-by-model_20261110T125651_739f414b.bundle.json"
+  },
+  {
+   "name": "dsh-click",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-click_20261110T125651_9090afd9.bundle.json"
+  },
+  {
+   "name": "dsh-design-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-design-skills_20261110T125651_554631f6.bundle.json"
+  },
+  {
+   "name": "dsh-hyperframes",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-hyperframes_20261110T125651_5cfbb8fb.bundle.json"
+  },
+  {
+   "name": "dsh-moe-clean",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-moe-clean_20261110T125651_e89b510a.bundle.json"
+  },
+  {
+   "name": "dsh-read-url",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-read-url_20261110T125651_ce0bfcc0.bundle.json"
+  },
+  {
+   "name": "qiaomu-home-dsh",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_qiaomu-home-dsh_20261110T125651_d522bf1c.bundle.json"
+  },
+  {
+   "name": "sage-mem",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_sage-mem_20261110T125651_b0e4128f.bundle.json"
+  },
+  {
+   "name": "zhihu-search",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zhihu-search_20261110T125651_cc13e417.bundle.json"
+  },
+  {
+   "name": "@ace-zone/dsh-market",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ace-zone_dsh-market_20261110T125651_ad28f035.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-client-ui-skin-hakurei-shrine",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-client-ui-skin-hakurei-shrine_20261110T125651_9dd410fc.bundle.json"
+  },
+  {
+   "name": "@questmeet/opportunity-skill",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_questmeet_opportunity-skill_20261110T125651_2c4cd49f.bundle.json"
+  },
+  {
+   "name": "dsh-defend",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-defend_20261110T125651_71452e78.bundle.json"
+  },
+  {
+   "name": "dsh-library",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-library_20261110T125651_925f2da5.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-lookatstudy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-lookatstudy_20261110T125651_99b79c13.bundle.json"
+  },
+  {
+   "name": "dsh-ui-ux-pro-max",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ui-ux-pro-max_20261110T125651_3a535d64.bundle.json"
+  },
+  {
+   "name": "dsh-workbuddy-panel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-workbuddy-panel_20261110T125651_cfb7893a.bundle.json"
+  },
+  {
+   "name": "oh-my-knowledge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_oh-my-knowledge_20261110T125651_6bfdb69b.bundle.json"
+  },
+  {
+   "name": "project-blueprint",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_project-blueprint_20261110T125651_c7bfe457.bundle.json"
+  },
+  {
+   "name": "@zoria-lind/dsh-token-optimizer",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_zoria-lind_dsh-token-optimizer_20261110T125651_53aaad7f.bundle.json"
+  },
+  {
+   "name": "deepseek-harness-hello-kitty-suite",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_deepseek-harness-hello-kitty-suite_20261110T125651_563dceff.bundle.json"
+  },
+  {
+   "name": "dsh-posterflow-ai",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-posterflow-ai_20261110T125651_699bb033.bundle.json"
+  },
+  {
+   "name": "dsh-recommend",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-recommend_20261110T125651_11dbe358.bundle.json"
+  },
+  {
+   "name": "dsh-rotakit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-rotakit_20261110T125651_b45769f9.bundle.json"
+  },
+  {
+   "name": "dsh-setting-restart",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-setting-restart_20261110T125651_9df0dce5.bundle.json"
+  },
+  {
+   "name": "dsh-skill-pack-security",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-skill-pack-security_20261110T125651_1684bb57.bundle.json"
+  },
+  {
+   "name": "dsh-super-code",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-super-code_20261110T125651_9e167002.bundle.json"
+  },
+  {
+   "name": "dsh-ux-plus",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ux-plus_20261110T125651_9a82aec8.bundle.json"
+  },
+  {
+   "name": "dsh-zotero-local",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-zotero-local_20261110T125651_202ff0a5.bundle.json"
+  },
+  {
+   "name": "@gausszhou/dsh-opencode-session-id",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_gausszhou_dsh-opencode-session-id_20261110T125651_4362d6da.bundle.json"
+  },
+  {
+   "name": "@goodandready/dsh-subscriptions",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_goodandready_dsh-subscriptions_20261110T125651_86d92e53.bundle.json"
+  },
+  {
+   "name": "@jiangzhenguo/dsh-codegraph",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_jiangzhenguo_dsh-codegraph_20261110T125651_0937c8f1.bundle.json"
+  },
+  {
+   "name": "@lemoncat7/dsh-knowledge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_lemoncat7_dsh-knowledge_20261110T125651_4af4efd0.bundle.json"
+  },
+  {
+   "name": "dsh-cyrene",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-cyrene_20261110T125651_6ec02aa2.bundle.json"
+  },
+  {
+   "name": "dsh-drag-and-drop",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-drag-and-drop_20261110T125651_85b188d6.bundle.json"
+  },
+  {
+   "name": "dsh-harmony-2",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-harmony-2_20261110T125651_e6c20d14.bundle.json"
+  },
+  {
+   "name": "dsh-llm-verifier",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-llm-verifier_20261110T125651_913995cd.bundle.json"
+  },
+  {
+   "name": "dsh-mcp-manager-plus",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mcp-manager-plus_20261110T125651_b2722ff2.bundle.json"
+  },
+  {
+   "name": "dsh-memos-bridge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-memos-bridge_20261110T125651_511c34fe.bundle.json"
+  },
+  {
+   "name": "dsh-official-homepage-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-official-homepage-theme_20261110T125651_24203154.bundle.json"
+  },
+  {
+   "name": "dsh-ontology",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ontology_20261110T125651_afb5e236.bundle.json"
+  },
+  {
+   "name": "dsh-ppt",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ppt_20261110T125651_89618672.bundle.json"
+  },
+  {
+   "name": "dsh-update-checker",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-update-checker_20261110T125651_833379d7.bundle.json"
+  },
+  {
+   "name": "@baihejiangnan/dsh-session-context-menu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_baihejiangnan_dsh-session-context-menu_20261110T125651_75c77751.bundle.json"
+  },
+  {
+   "name": "@dingyi222666/dsh-focus-chat",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dingyi222666_dsh-focus-chat_20261110T125651_aa2ea7ce.bundle.json"
+  },
+  {
+   "name": "@dpskk2/dsh-chatsync",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dpskk2_dsh-chatsync_20261110T125651_d954cba5.bundle.json"
+  },
+  {
+   "name": "@dsh-plugin/disk-sentinel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin_disk-sentinel_20261110T125651_0821cdc0.bundle.json"
+  },
+  {
+   "name": "@txc2768651338/dsh-effort-slider",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_txc2768651338_dsh-effort-slider_20261110T125651_b55c9572.bundle.json"
+  },
+  {
+   "name": "cyber-particle",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_cyber-particle_20261110T125651_b11c218d.bundle.json"
+  },
+  {
+   "name": "dsh-archify",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-archify_20261110T125651_54a29703.bundle.json"
+  },
+  {
+   "name": "dsh-artifact-2",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-artifact-2_20261110T125651_bb4d6bfc.bundle.json"
+  },
+  {
+   "name": "dsh-bg-new",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-bg-new_20261110T125651_cbdf6398.bundle.json"
+  },
+  {
+   "name": "dsh-delete-session",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-delete-session_20261110T125651_3e880116.bundle.json"
+  },
+  {
+   "name": "dsh-hdc-bridge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-hdc-bridge_20261110T125651_a84a5d3d.bundle.json"
+  },
+  {
+   "name": "dsh-import-agents",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-import-agents_20261110T125651_4811eb78.bundle.json"
+  },
+  {
+   "name": "dsh-ponytail-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-ponytail-skills_20261110T125651_cdfede38.bundle.json"
+  },
+  {
+   "name": "dsh-theme-mineradio",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-theme-mineradio_20261110T125651_7d461cfb.bundle.json"
+  },
+  {
+   "name": "dsh-zh-thinking-3",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-zh-thinking-3_20261110T125651_eb77df22.bundle.json"
+  },
+  {
+   "name": "empty-fort-strategy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_empty-fort-strategy_20261110T125651_9691a660.bundle.json"
+  },
+  {
+   "name": "ruic-dsh-purge",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ruic-dsh-purge_20261110T125651_7acb4ef3.bundle.json"
+  },
+  {
+   "name": "@alpacachen/dsh-kanban",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_alpacachen_dsh-kanban_20261110T125651_204d9e46.bundle.json"
+  },
+  {
+   "name": "@huliux/dsh-asr-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_huliux_dsh-asr-plugin_20261110T125651_1a5a7edf.bundle.json"
+  },
+  {
+   "name": "@mrweicodes/dsh-permgate",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_mrweicodes_dsh-permgate_20261110T125651_4efb48e7.bundle.json"
+  },
+  {
+   "name": "dsh-api-dashboard",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-api-dashboard_20261110T125651_fc7f14f2.bundle.json"
+  },
+  {
+   "name": "dsh-background-agents",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-background-agents_20261110T125651_dd113a61.bundle.json"
+  },
+  {
+   "name": "dsh-composer-history",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-composer-history_20261110T125651_0b2c3987.bundle.json"
+  },
+  {
+   "name": "dsh-find-plugins",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-find-plugins_20261110T125651_27e61de3.bundle.json"
+  },
+  {
+   "name": "dsh-improved-inline-edit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-improved-inline-edit_20261110T125651_12333cf2.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-risk-rule-design",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-risk-rule-design_20261110T125651_9aca5641.bundle.json"
+  },
+  {
+   "name": "dsh-prime-memory",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-prime-memory_20261110T125651_0c18fe27.bundle.json"
+  },
+  {
+   "name": "dsh-search-boost",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-search-boost_20261110T125651_8ee1220b.bundle.json"
+  },
+  {
+   "name": "dsh-see-now",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-see-now_20261110T125651_23a92f29.bundle.json"
+  },
+  {
+   "name": "dsh-speak",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-speak_20261110T125651_6bc41986.bundle.json"
+  },
+  {
+   "name": "agent-body",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_agent-body_20261110T125651_b7b98ab4.bundle.json"
+  },
+  {
+   "name": "dsh-cache-billing",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-cache-billing_20261110T125651_abf98d07.bundle.json"
+  },
+  {
+   "name": "dsh-galgame-generator",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-galgame-generator_20261110T125651_e8ad227f.bundle.json"
+  },
+  {
+   "name": "dsh-gui-customization",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-gui-customization_20261110T125651_003ae290.bundle.json"
+  },
+  {
+   "name": "dsh-hub",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-hub_20261110T125651_b3c2477f.bundle.json"
+  },
+  {
+   "name": "dsh-memory-board",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-memory-board_20261110T125651_1df5eb02.bundle.json"
+  },
+  {
+   "name": "dsh-mobile-hanui",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mobile-hanui_20261110T125651_90cdf131.bundle.json"
+  },
+  {
+   "name": "dsh-net-proxy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-net-proxy_20261110T125651_90be55dd.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-structured-prompt",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-structured-prompt_20261110T125651_b4ad8a5e.bundle.json"
+  },
+  {
+   "name": "dsh-power-menu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-power-menu_20261110T125651_39a50c4d.bundle.json"
+  },
+  {
+   "name": "dsh-provider-model-configurator",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-provider-model-configurator_20261110T125651_1b9730d6.bundle.json"
+  },
+  {
+   "name": "dsh-talk",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-talk_20261110T125651_0bea0fca.bundle.json"
+  },
+  {
+   "name": "dsh-think-bounce-pet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-think-bounce-pet_20261110T125651_459a2d88.bundle.json"
+  },
+  {
+   "name": "dsh-tool-antigravity",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tool-antigravity_20261110T125651_976fa5aa.bundle.json"
+  },
+  {
+   "name": "dsh-bigfish",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-bigfish_20261110T125651_15251749.bundle.json"
+  },
+  {
+   "name": "dsh-composer-assist",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-composer-assist_20261110T125651_0552edd5.bundle.json"
+  },
+  {
+   "name": "dsh-fs-encoding",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-fs-encoding_20261110T125651_102708af.bundle.json"
+  },
+  {
+   "name": "dsh-history-tree",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-history-tree_20261110T125651_0dde04ae.bundle.json"
+  },
+  {
+   "name": "dsh-kimi-ppt",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-kimi-ppt_20261110T125651_2abeca31.bundle.json"
+  },
+  {
+   "name": "dsh-lovelyaudit",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-lovelyaudit_20261110T125651_e88db3fa.bundle.json"
+  },
+  {
+   "name": "dsh-mermaid",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mermaid_20261110T125651_45e95a76.bundle.json"
+  },
+  {
+   "name": "dsh-niulai-pet",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-niulai-pet_20261110T125651_d84255f0.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-memory-6",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-memory-6_20261110T125651_e667a327.bundle.json"
+  },
+  {
+   "name": "dsh-vision-proxy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-vision-proxy_20261110T125651_d57e7680.bundle.json"
+  },
+  {
+   "name": "@agent-stash/init",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_agent-stash_init_20261110T125651_46101f61.bundle.json"
+  },
+  {
+   "name": "@phynez_1103/dsh-session-cost",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_phynez_1103_dsh-session-cost_20261110T125651_a237fdb0.bundle.json"
+  },
+  {
+   "name": "@sunjuntao/dsh-prompt-library",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_sunjuntao_dsh-prompt-library_20261110T125651_04686ba8.bundle.json"
+  },
+  {
+   "name": "canvas-workbench",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_canvas-workbench_20261110T125651_76277a2c.bundle.json"
+  },
+  {
+   "name": "dsh-agent-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-agent-skills_20261110T125651_755331c9.bundle.json"
+  },
+  {
+   "name": "dsh-opencode-session-header",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-opencode-session-header_20261110T125651_846c91bc.bundle.json"
+  },
+  {
+   "name": "dsh-plan-graph",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plan-graph_20261110T125651_2f1be691.bundle.json"
+  },
+  {
+   "name": "dsh-playwright-browser",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-playwright-browser_20261110T125651_e5ecf96d.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-capabilities",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-capabilities_20261110T125651_fdb66ed0.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-manager_20261110T125651_c202c2f3.bundle.json"
+  },
+  {
+   "name": "dsh-tavern-comfy",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tavern-comfy_20261110T125651_23ae31d2.bundle.json"
+  },
+  {
+   "name": "dsh-tool-autoexpand",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-tool-autoexpand_20261110T125651_09be38b7.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-side-panel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-side-panel_20261110T125651_38891923.bundle.json"
+  },
+  {
+   "name": "@lyhalal/dsh-notification-center",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_lyhalal_dsh-notification-center_20261110T125651_80fc33f1.bundle.json"
+  },
+  {
+   "name": "@lyhue1991/dsh-soup",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_lyhue1991_dsh-soup_20261110T125651_5969d37c.bundle.json"
+  },
+  {
+   "name": "@pakiknowledge/dsh-client-ui-skin-claude",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_pakiknowledge_dsh-client-ui-skin-claude_20261110T125651_0e7662e1.bundle.json"
+  },
+  {
+   "name": "@smalltailqwq/dsh-client-ui-skin-deepcel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_smalltailqwq_dsh-client-ui-skin-deepcel_20261110T125651_1edc6fed.bundle.json"
+  },
+  {
+   "name": "@weibaohui/dsh-sync",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_weibaohui_dsh-sync_20261110T125651_fa8f310b.bundle.json"
+  },
+  {
+   "name": "dsh-all-usage",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-all-usage_20261110T125651_b220d534.bundle.json"
+  },
+  {
+   "name": "dsh-auto-approval-llm",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-auto-approval-llm_20261110T125651_9d47cd2d.bundle.json"
+  },
+  {
+   "name": "dsh-chat-tree",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-chat-tree_20261110T125651_0cb435d9.bundle.json"
+  },
+  {
+   "name": "dsh-custom-mode",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-custom-mode_20261110T125651_30f1b74d.bundle.json"
+  },
+  {
+   "name": "dsh-delete-chat",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-delete-chat_20261110T125651_3f7fc508.bundle.json"
+  },
+  {
+   "name": "dsh-diff-approval",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-diff-approval_20261110T125651_1130ea67.bundle.json"
+  },
+  {
+   "name": "dsh-github-flow",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-github-flow_20261110T125651_db8a1650.bundle.json"
+  },
+  {
+   "name": "dsh-jailbreak",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-jailbreak_20261110T125651_31268487.bundle.json"
+  },
+  {
+   "name": "dsh-knowledge-canvas",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-knowledge-canvas_20261110T125651_e5597ff8.bundle.json"
+  },
+  {
+   "name": "dsh-liquid-glass",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-liquid-glass_20261110T125651_4e3b8fca.bundle.json"
+  },
+  {
+   "name": "dsh-live2d-companion",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-live2d-companion_20261110T125651_79de0a2a.bundle.json"
+  },
+  {
+   "name": "dsh-mask",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-mask_20261110T125651_648b16c6.bundle.json"
+  },
+  {
+   "name": "dsh-node-flow",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-node-flow_20261110T125651_40cfa43e.bundle.json"
+  },
+  {
+   "name": "dsh-router-core",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-router-core_20261110T125651_f0b67f4a.bundle.json"
+  },
+  {
+   "name": "dsh-sgme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-sgme_20261110T125651_df529169.bundle.json"
+  },
+  {
+   "name": "dsh-skills",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-skills_20261110T125651_856f8b9f.bundle.json"
+  },
+  {
+   "name": "dsh-task-dag",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-task-dag_20261110T125651_6790f6cb.bundle.json"
+  },
+  {
+   "name": "dsh-token-metrics",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-token-metrics_20261110T125651_d2c2afa8.bundle.json"
+  },
+  {
+   "name": "dsh-translate",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-translate_20261110T125651_cc1ce648.bundle.json"
+  },
+  {
+   "name": "dsh-workbuddy-expert",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-workbuddy-expert_20261110T125651_b6d2c088.bundle.json"
+  },
+  {
+   "name": "multiple-chat-panels",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_multiple-chat-panels_20261110T125651_984d72bf.bundle.json"
+  },
+  {
+   "name": "@ai-galaxy/dsh-sound",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ai-galaxy_dsh-sound_20261110T125651_d061731a.bundle.json"
+  },
+  {
+   "name": "@aiwayds/dsh-dcp",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_aiwayds_dsh-dcp_20261110T125651_5128a04e.bundle.json"
+  },
+  {
+   "name": "@huanlin/dsh-plugin-ya-workspace-sidebar",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_huanlin_dsh-plugin-ya-workspace-sidebar_20261110T125651_91193ab5.bundle.json"
+  },
+  {
+   "name": "@mingozhou/dsh-replay",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_mingozhou_dsh-replay_20261110T125651_9b978e63.bundle.json"
+  },
+  {
+   "name": "@sakura12/oh-my-deepseekharness",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_sakura12_oh-my-deepseekharness_20261110T125651_ab601d98.bundle.json"
+  },
+  {
+   "name": "dafy-whale-theme",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dafy-whale-theme_20261110T125651_7a8b329c.bundle.json"
+  },
+  {
+   "name": "deepseek-manners",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_deepseek-manners_20261110T125651_e496e48d.bundle.json"
+  },
+  {
+   "name": "dsh-client-ui-skins",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-client-ui-skins_20261110T125651_fa8ab894.bundle.json"
+  },
+  {
+   "name": "dsh-cursor-subscription",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-cursor-subscription_20261110T125651_8e6ec813.bundle.json"
+  },
+  {
+   "name": "dsh-global-rules",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-global-rules_20261110T125651_7813c66e.bundle.json"
+  },
+  {
+   "name": "dsh-jev-tools",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-jev-tools_20261110T125651_00b7308d.bundle.json"
+  },
+  {
+   "name": "dsh-lan-tool",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-lan-tool_20261110T125651_237b37dc.bundle.json"
+  },
+  {
+   "name": "dsh-observe",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-observe_20261110T125651_bcdb9365.bundle.json"
+  },
+  {
+   "name": "dsh-opencode-session",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-opencode-session_20261110T125651_1a9e154c.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-whale-fenggu",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-whale-fenggu_20261110T125651_67be1274.bundle.json"
+  },
+  {
+   "name": "dsh-qol",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-qol_20261110T125651_a6bff6b3.bundle.json"
+  },
+  {
+   "name": "dsh-session-recycle-bin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-session-recycle-bin_20261110T125651_cff25875.bundle.json"
+  },
+  {
+   "name": "dsh-skill-mcp-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-skill-mcp-manager_20261110T125651_35162d04.bundle.json"
+  },
+  {
+   "name": "dsh-watch-together",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-watch-together_20261110T125651_557ddfe6.bundle.json"
+  },
+  {
+   "name": "pet-whale",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_pet-whale_20261110T125651_f61a6c82.bundle.json"
+  },
+  {
+   "name": "wallpaper-plugin",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_wallpaper-plugin_20261110T125651_2e516416.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-plannotator",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-external_dsh-plannotator_20261110T125651_d8d16121.bundle.json"
+  },
+  {
+   "name": "@fang2hou/dsh-locale-ja",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_fang2hou_dsh-locale-ja_20261110T125651_da439648.bundle.json"
+  },
+  {
+   "name": "@goodandready/dsh-cron",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_goodandready_dsh-cron_20261110T125651_c2296a7c.bundle.json"
+  },
+  {
+   "name": "@goodandready/dsh-image-gen",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_goodandready_dsh-image-gen_20261110T125651_e3f88655.bundle.json"
+  },
+  {
+   "name": "@moguiyu/dsh-tavily",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_moguiyu_dsh-tavily_20261110T125651_691095a1.bundle.json"
+  },
+  {
+   "name": "@ryubyte/dsh-a2a",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_ryubyte_dsh-a2a_20261110T125651_70739ce0.bundle.json"
+  },
+  {
+   "name": "@wsz987/dsh-channels",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_wsz987_dsh-channels_20261110T125651_213e4b6f.bundle.json"
+  },
+  {
+   "name": "@y9931666/dsh-plugin-roundtable",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_y9931666_dsh-plugin-roundtable_20261110T125651_306a7663.bundle.json"
+  },
+  {
+   "name": "@yh4922/dsh-workspace",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_yh4922_dsh-workspace_20261110T125651_3fde4262.bundle.json"
+  },
+  {
+   "name": "better-model-provider",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_better-model-provider_20261110T125651_fe815a9a.bundle.json"
+  },
+  {
+   "name": "dsh-agent-persona",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-agent-persona_20261110T125651_b0dcf73c.bundle.json"
+  },
+  {
+   "name": "dsh-auto-retry",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-auto-retry_20261110T125651_7e7c2836.bundle.json"
+  },
+  {
+   "name": "dsh-chat-keeper",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-chat-keeper_20261110T125651_76fcf1b9.bundle.json"
+  },
+  {
+   "name": "dsh-client-ui-mobile-adapt",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-client-ui-mobile-adapt_20261110T125651_e91b26e7.bundle.json"
+  },
+  {
+   "name": "dsh-gemini-eyes-bundle",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-gemini-eyes-bundle_20261110T125651_60e77595.bundle.json"
+  },
+  {
+   "name": "dsh-lan-access",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-lan-access_20261110T125651_48cf3ed7.bundle.json"
+  },
+  {
+   "name": "dsh-obsidian-mem",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-obsidian-mem_20261110T125651_f7dc795b.bundle.json"
+  },
+  {
+   "name": "dsh-one-gateway",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-one-gateway_20261110T125651_0fca1751.bundle.json"
+  },
+  {
+   "name": "dsh-overall-mcp",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-overall-mcp_20261110T125651_cca9439b.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-codegraph",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-codegraph_20261110T125651_7c634e4f.bundle.json"
+  },
+  {
+   "name": "dsh-plugin-zen-useragent",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-plugin-zen-useragent_20261110T125651_80b62885.bundle.json"
+  },
+  {
+   "name": "dsh-router-flash",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-router-flash_20261110T125651_6a995dfa.bundle.json"
+  }
+ ]
+}

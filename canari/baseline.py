@@ -640,9 +640,15 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         mcp_pkgs = []
     for pkg in mcp_pkgs:
         name = pkg["name"]
+        # BUG-98: registry presence alone proves the name exists, nothing more.
+        # The verdict is "unsupported" so the gate requires review instead of
+        # implying we checked the artifact.
         att = _make_att(name, pkg.get("version", ""), "mcp-registry", "", "mcp",
-                        [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}],
-                        "pass-with-findings", ["canari-m1/0.1"], ["mcp-registry:" + name])
+                        [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
+                         {"id": "L2.0_ARTIFACT_UNVERIFIED", "verdict": "unsupported",
+                          "tool": "canari-m1/0.1",
+                          "evidence_ref": "registry listing only; artifact bytes not fetched"}],
+                        "unsupported", ["canari-m1/0.1"], ["mcp-registry:" + name])
         bpath = _save_att(att, "mcpreg", name, prev_state=_prev("mcp-registry", name))
         all_results.append({"name": name, "registry": "mcp-registry", "version": pkg.get("version", ""),
                             "verdict": "pass-with-findings", "bundle": bpath})
@@ -686,6 +692,20 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             checks.append({"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported",
                            "tool": "dsh-so-ref/0.1",
                            "evidence_ref": "dsh.so has no security record for this plugin"})
+        # BUG-98: if every substantive check is "unsupported" we have NOT verified
+        # anything about this plugin's bytes - reporting pass-with-findings would be
+        # verdict inflation. Say "unsupported" instead.
+        # dsh.so publishes verdicts about the plugin, not the bytes we can hash;
+        # state that explicitly instead of leaving a zero hash unexplained.
+        checks.append({"id": "L2.0_ARTIFACT_UNVERIFIED", "verdict": "unsupported",
+                       "tool": "dsh-so-ref/0.1",
+                       "evidence_ref": "reference-verdict only: artifact bytes were not "
+                                       "fetched or hashed by Canari"})
+        substantive = [c for c in checks if c["id"] != "L1.1_REGISTRY_PRESENT"]
+        evidence_checks = [c for c in substantive if c["id"] != "L2.0_ARTIFACT_UNVERIFIED"]
+        if verdict != "fail" and evidence_checks and all(
+                c["verdict"] == "unsupported" for c in evidence_checks):
+            verdict = "unsupported"
         att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
                         checks, verdict, ["dsh-so-referenced"], ["dsh-so:" + name])
         bpath = _save_att(att, "dsh", name, prev_state=_prev("dsh-registry", name))

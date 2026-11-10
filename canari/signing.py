@@ -96,6 +96,12 @@ _OWN_HASH_FIELDS = {
     "homepage",
     # Supersession chain and revocation references (contain our own digests)
     "supersedes", "ref",
+    # Provenance identity references: a Sigstore identity ends with the git commit
+    # SHA (".../release.yml@af0ad67c..."), which is a *reference*, not a secret.
+    # Without this exemption the long-hex-run rule rejects every npm package whose
+    # provenance comes from a SHA-pinned workflow - the attestation is downgraded
+    # to "error" and the component is lost from the ledger (BUG-97).
+    "v1_identity",
 }
 
 

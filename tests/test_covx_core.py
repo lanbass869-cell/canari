@@ -123,7 +123,8 @@ class TestRunMultiAll:
             p = json.loads(f.read_text(encoding="utf-8"))["payload"]
             verdicts[p["subject"]["name"]] = p["verdict"]
         assert verdicts["dsh-bad"] == "fail" and verdicts["dsh-crit"] == "fail"
-        assert verdicts["dsh-bare"] == "pass-with-findings"
+        # BUG-98: no install/security data -> "unsupported", never a pass
+        assert verdicts["dsh-bare"] == "unsupported"
         assert list(tmp_path.joinpath("feed").glob("run-feed-*.json"))
 
     def test_npm_error_attestation(self, env, tmp_path):

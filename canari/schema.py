@@ -74,6 +74,19 @@ def assert_unverified_has_reason(att: dict):
             pass  # placeholder for future enforcement
 
 
+def verdict_semantics():
+    """Documented meaning of each run verdict (consumers depend on this)."""
+    return {
+        "pass": "every substantive check produced evidence and none failed",
+        "pass-with-findings": "checks ran; at least one recorded a finding or non-pass "
+                              "detail that the operator should read",
+        "fail": "at least one substantive check failed",
+        "unsupported": "the checks could not be performed (missing data/artifact); "
+                       "this is NOT a pass - absence of evidence is not evidence of safety",
+        "error": "the pipeline could not complete; the attestation records the failure",
+    }
+
+
 def is_gate_passing(att):
     """Install-gate predicate: artifact hash matches latest attestation AND
     verdict is not gate-blocking. Per plan section 5.3:
