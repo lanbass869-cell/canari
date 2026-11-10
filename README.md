@@ -40,6 +40,49 @@ canari-verify bundle.json --key out/public_key.json --gate --gate-policy-file my
 {"name": "my-policy", "block_on_findings": true, "require_native_provenance": false}
 ```
 
+## Consumer side (the part a host actually uses)
+
+### 1. Look up a component and gate it
+
+```
+# resolve the newest signed attestation for a component and run the gate
+canari-gate --store out --registry npm --name express
+canari-gate --store out --registry dsh-registry --name aegis --policy paranoid --json
+
+# exit codes: 0 ALLOW, 5 BLOCK, 6 REVIEW, 3 not found
+canari-gate --store out --list
+```
+
+### 2. Drift report (what changed since last week)
+
+```
+canari-drift --store out --write out/drift
+# verdict flips / same-version silent changes / findings added / findings removed
+```
+
+`run_weekly.py` writes this report automatically after every scan.
+
+### 3. Use it from any MCP host (dsh, Codex, Claude, ...)
+
+`canari-mcp` speaks MCP over stdio (zero dependencies) and exposes three tools:
+`gate_check`, `verify_bundle`, `store_summary`.
+
+```json
+{
+  "mcpServers": {
+    "canari": {
+      "command": "canari-mcp",
+      "args": ["--store", "E:/Temp/tbdig/canari/out",
+               "--key", "E:/Temp/tbdig/canari/out/public_key.json"]
+    }
+  }
+}
+```
+
+A host (or agent) can then ask: "is npm:express allowed to install?" and get
+`ALLOW / BLOCK / REVIEW` with reasons, backed by a signed, offline-verifiable
+attestation.
+
 ## Multi-registry coverage
 
 | Registry | Source | What we check | What we inherit |

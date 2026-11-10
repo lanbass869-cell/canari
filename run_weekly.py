@@ -25,6 +25,21 @@ try:
         result["metadata_scan"]["npm"],
         result["metadata_scan"]["pypi"],
         result["metadata_scan"]["dsh"]))
+    # drift report: verdict flips / same-version silent changes / findings deltas
+    try:
+        from canari.drift import compute_drift
+        import json as _json
+        rep = compute_drift(os.path.join(HERE, "out"))
+        drift_dir = os.path.join(HERE, "out", "drift")
+        os.makedirs(drift_dir, exist_ok=True)
+        fp = os.path.join(drift_dir, "drift-%s.json" % datetime.date.today().strftime("%Y%m%d"))
+        with open(fp, "w", encoding="utf-8") as f:
+            _json.dump(rep, f, ensure_ascii=False, indent=1)
+        _log("drift: compared=%d flips=%d silent=%d findings+%d findings-%d -> %s" % (
+            rep["compared"], len(rep["verdict_flips"]), len(rep["silent_changes"]),
+            len(rep["findings_added"]), len(rep["findings_removed"]), fp))
+    except Exception as e:
+        _log("drift report failed: %s" % e)
     _log("weekly scan completed OK")
 except Exception as e:
     _log("FATAL: %s" % e)

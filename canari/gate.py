@@ -33,6 +33,8 @@ class GatePolicy:
     # recorded as checks with evidence_ref "finding: ...". block_on_findings
     # upgrades the pass-with-findings REVIEW to BLOCK for a deny-by-default posture.
     block_on_findings: bool = False
+    # strict posture: a pass-with-findings verdict is not installable
+    allow_findings: bool = True
     # Optional list of finding kinds to always treat as blocking, e.g.
     # ["typosquatting", "metadata", "cadence"]; empty = no keyword blocking.
     block_finding_kinds: list = field(default_factory=list)
@@ -42,12 +44,12 @@ BUILTIN_POLICIES = {
     "default": GatePolicy(name="default"),
     "strict": GatePolicy(
         name="strict", min_verdict="pass", require_fresh=True,
-        require_key_valid=True, fail_on_error_check=True,
+        require_key_valid=True, fail_on_error_check=True, allow_findings=False,
     ),
     "release-gate": GatePolicy(
         name="release-gate", min_verdict="pass", require_fresh=True,
         require_key_valid=True, require_native_provenance=True,
-        fail_on_error_check=True,
+        fail_on_error_check=True, allow_findings=False,
     ),
     "lax": GatePolicy(
         name="lax", min_verdict="pass", require_fresh=False,
@@ -57,7 +59,7 @@ BUILTIN_POLICIES = {
     "paranoid": GatePolicy(
         name="paranoid", min_verdict="pass", require_fresh=True,
         require_key_valid=True, fail_on_error_check=True,
-        block_on_findings=True,
+        block_on_findings=True, allow_findings=False,
     ),
 }
 
@@ -88,7 +90,7 @@ def load_policy_file(path: str) -> dict:
     if out.get("block_finding_kinds") is not None and not isinstance(out["block_finding_kinds"], list):
         raise ValueError("block_finding_kinds must be a list")
     for bool_key in ("require_fresh", "require_key_valid", "require_native_provenance",
-                     "fail_on_error_check", "block_on_findings"):
+                     "fail_on_error_check", "block_on_findings", "allow_findings"):
         if bool_key in out and not isinstance(out[bool_key], bool):
             raise ValueError("%s must be a boolean" % bool_key)
     return out
@@ -181,8 +183,9 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
         decision = "BLOCK"
         reasons.append("verdict is %s (gate blocks)" % verdict)
 
-    # Min verdict check: only "strict" blocks pass-with-findings
-    if policy.min_verdict == "pass" and verdict == "pass-with-findings" and policy.name == "strict":
+    # Strict postures (strict / paranoid / release-gate) do not accept
+    # pass-with-findings; the field is explicit so policy files can override it.
+    if not policy.allow_findings and verdict == "pass-with-findings":
         decision = "BLOCK"
         reasons.append("policy %s requires verdict=pass, got pass-with-findings" % policy.name)
 
