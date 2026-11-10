@@ -319,13 +319,19 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         # additional safety: remove any remaining path separators or parent refs
         safe = "".join(c for c in safe if c.isalnum() or c in "._-")
         pack = None
+        fetch_exc = None
         for attempt in range(3):
             try:
                 pack = fetch_packument(name)
                 break
             except Exception as e2:
-                if attempt == 2:
-                    raise
+                fetch_exc = e2
+        if pack is None:
+            n_err += 1
+            print("  [%02d] %-44s FETCH-ERROR %s" % (i + 1, name, str(fetch_exc)[:60]))
+            results.append({"name": name, "status": "fetch_error",
+                            "error": str(fetch_exc)[:200]})
+            continue
         try:
             lv = latest_version_info(pack)
             meta = {"version": lv["version"], "dist_integrity": lv["dist_integrity"],
