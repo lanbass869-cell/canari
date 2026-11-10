@@ -152,8 +152,14 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     except Exception as e:
         return GateDecision(decision="BLOCK", reasons=["cannot read bundle: %s" % e], policy=policy_name)
 
+    if not isinstance(bundle, dict):
+        return GateDecision(decision="BLOCK",
+                            reasons=["bundle is valid JSON but not an object: %s" % type(bundle).__name__],
+                            policy=policy_name)
     envelope = bundle.get("envelope")
     payload = bundle.get("payload", {})
+    if not isinstance(payload, dict):
+        payload = {}
     if not envelope:
         return GateDecision(decision="BLOCK", reasons=["bundle has no envelope"], policy=policy_name)
 

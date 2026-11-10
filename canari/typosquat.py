@@ -46,6 +46,15 @@ def check_typosquatting(project, trusted_names):
     """
     if not project or not trusted_names:
         return None
+    import unicodedata
+
+    def _fold(s):
+        # NFKC folds fullwidth/compatibility forms to ASCII (ｍｃｐ -> mcp)
+        return unicodedata.normalize("NFKC", s)
+
+    project = _fold(project)
+    trusted_names = {_fold(t) for t in trusted_names}
+
     def _family_tails(a_orig, b_orig):
         """Strip the shared hyphen-boundary prefix (family scope). Comparing within
         a big family (mcp-server-*) on full names makes everything look alike, but

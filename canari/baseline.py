@@ -376,8 +376,8 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
                    "bundle_file": os.path.basename(r["bundle"]) if r.get("bundle") else None}
                   for r in results],
     }
-    feed_path = os.path.join(feed_dir, "feed-%s.json"
-                             % datetime.date.today().strftime("%Y%m%d"))
+    feed_path = os.path.join(feed_dir, "run-feed-%s.json" % datetime.datetime.now(
+        datetime.timezone.utc).strftime("%Y%m%dT%H%M%S"))
     with open(feed_path, "w", encoding="utf-8") as f:
         json.dump(feed, f, ensure_ascii=False, indent=1)
 
@@ -527,8 +527,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
         ).hexdigest()[:8]
         bpath = os.path.join(att_dir, "%s_%s_%s_%s.bundle.json" % (prefix, safe, ts, digest8))
-        with open(bpath, "w", encoding="utf-8") as f:
+        tmp = bpath + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
             json.dump({"envelope": signed["envelope"], "payload": signed["payload"]}, f, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, bpath)  # atomic: no partial bundle can survive a crash
         return bpath
 
     # npm
@@ -697,7 +701,10 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                        "version": r.get("version", ""), "verdict": r.get("verdict", "error"),
                        "bundle_file": os.path.basename(r["bundle"]) if r.get("bundle") else None}
                       for r in all_results]}
-    feed_path = os.path.join(feed_dir, "feed-multi-%s.json" % datetime.date.today().strftime("%Y%m%d"))
+    # run-level feed: timestamped, never collides with the canonical
+    # component-level feed (canari.feed writes feed-multi-YYYYMMDD.json)
+    feed_path = os.path.join(feed_dir, "run-feed-%s.json" % datetime.datetime.now(
+        datetime.timezone.utc).strftime("%Y%m%dT%H%M%S"))
     with open(feed_path, "w", encoding="utf-8") as f:
         json.dump(feed, f, ensure_ascii=False, indent=1)
     key_path = os.path.join(out_dir, "public_key.json")
