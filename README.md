@@ -83,6 +83,24 @@ A host (or agent) can then ask: "is npm:express allowed to install?" and get
 `ALLOW / BLOCK / REVIEW` with reasons, backed by a signed, offline-verifiable
 attestation.
 
+For DeepSeek Harness (dsh), add this to the profile's `cordis.patch.yml`
+(verified end-to-end on dsh: the model called `mcp__canari__store_summary` and
+received the live component count):
+
+```yaml
+    - id: mcp-canari
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: canari
+        transport: stdio
+        command: 'E:\Temp\tbdig\_venv_pr_a\Scripts\python.exe'
+        args: ['-m', 'canari.mcp_server', '--store', 'E:\Temp\tbdig\canari\out',
+               '--key', 'E:\Temp\tbdig\canari\out\public_key.json']
+        cwd: 'E:\Temp\tbdig\canari'
+        failOnStartupError: true
+```
+
+
 ## Multi-registry coverage
 
 | Registry | Source | What we check | What we inherit |
