@@ -100,6 +100,15 @@ MUTATIONS = [
 ]
 
 
+def _load_batch2():
+    import importlib.util as _u
+    spec = _u.spec_from_file_location(
+        "mutations_batch2", os.path.join(HERE, "scripts", "mutations_batch2.py"))
+    mod = _u.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return getattr(mod, "MUTATIONS_2", [])
+
+
 def run_mutant(label, relfile, old, new, targets):
     d = tempfile.mkdtemp(prefix="mut_")
     try:
@@ -129,9 +138,14 @@ def run_mutant(label, relfile, old, new, targets):
 
 
 def main():
+    try:
+        all_muts = MUTATIONS + _load_batch2()
+    except Exception as _e:
+        print('batch2 load failed:', _e)
+        all_muts = MUTATIONS
     killed = survived = skipped = 0
     print("%-32s %-9s %s" % ("mutant", "verdict", "note"))
-    for m in MUTATIONS:
+    for m in all_muts:
         label, verdict, note = run_mutant(*m)
         print("%-32s %-9s %s" % (label, verdict, note))
         if verdict == "KILLED":
@@ -142,7 +156,7 @@ def main():
             skipped += 1
     total = killed + survived
     print("\n%d mutants, killed=%d survived=%d skipped=%d | kill rate %.0f%%" % (
-        len(MUTATIONS), killed, survived, skipped, 100.0 * killed / total if total else 0))
+        len(all_muts), killed, survived, skipped, 100.0 * killed / total if total else 0))
     return 1 if survived else 0
 
 
