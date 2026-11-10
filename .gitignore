@@ -6,3 +6,5 @@ out/
 external/
 
 .coverage
+build/
+dist/
