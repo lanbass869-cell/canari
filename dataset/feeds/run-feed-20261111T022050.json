@@ -1,0 +1,29 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-11T02:20:50Z",
+ "scenario_sha256": "5aad42d4c0660f64ce144c68fb464edccf4284544adffff14cd8228f71bc7e4e",
+ "total": 1,
+ "errors": 0,
+ "dead_letters": {
+  "total": 2,
+  "by_operation": {
+   "npm_fetch": 1,
+   "pypi_fetch": 1
+  }
+ },
+ "by_registry": {
+  "mcp-registry": 1
+ },
+ "by_verdict": {
+  "unsupported": 1
+ },
+ "items": [
+  {
+   "name": "ai.adeu/adeu",
+   "registry": "mcp-registry",
+   "version": "1.7.1",
+   "verdict": "unsupported",
+   "bundle_file": "mcpreg_ai.adeu_adeu_20261111T022050_1a3e5a7f.bundle.json"
+  }
+ ]
+}

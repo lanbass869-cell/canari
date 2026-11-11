@@ -9,9 +9,12 @@ import hashlib
 import json
 import os
 import shutil
+import sys
 from datetime import datetime, timezone
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if REPO not in sys.path:
+    sys.path.insert(0, REPO)
 OUT = os.path.join(REPO, "out")
 DS = os.path.join(REPO, "dataset")
 
@@ -26,7 +29,23 @@ def _copy_tree(src, dst, pattern="*.json"):
     return n
 
 
+def _rebuild_canonical_feed():
+    """Rebuild feed/feed-multi-YYYYMMDD.json from the store before publishing.
+
+    2026-11-11 (BUG-100 fallout): the published canonical feed was last built at
+    08:15Z over 2093 bundles while the store had already been rescanned to 3212
+    at 14:27Z. Every component whose verdict had improved *or degraded* between
+    those two moments was published with a stale verdict - 232 components that
+    the store marked "unsupported" did not appear in the public feed at all.
+    A feed is a projection of the signed bundles, so it must be regenerated from
+    them at publish time, never copied from whatever happened to be on disk.
+    """
+    from canari.feed import write_feed
+    return write_feed(OUT)
+
+
 def sync():
+    fp_feed = _rebuild_canonical_feed()
     n_att = _copy_tree(os.path.join(OUT, "attestations"), os.path.join(DS, "attestations"),
                        "*.bundle.json")
     n_feed = _copy_tree(os.path.join(OUT, "feed"), os.path.join(DS, "feeds"))
@@ -59,7 +78,8 @@ def sync():
             manifest["sha256"][rel] = hashlib.sha256(open(fp, "rb").read()).hexdigest()
     with open(os.path.join(DS, "MANIFEST.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=1)
-    return {"attestations": n_att, "feeds": n_feed, "files": len(manifest["sha256"])}
+    return {"attestations": n_att, "feeds": n_feed, "files": len(manifest["sha256"]),
+            "canonical_feed": os.path.basename(fp_feed)}
 
 
 if __name__ == "__main__":

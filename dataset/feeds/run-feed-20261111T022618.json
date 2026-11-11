@@ -1,0 +1,50 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-11T02:26:18Z",
+ "scenario_sha256": "d417e73d083b0aaf550c329a4cccd32d18af12e914d685af8aabcc1cff4e5e12",
+ "total": 4,
+ "errors": 0,
+ "dead_letters": {
+  "total": 2,
+  "by_operation": {
+   "npm_fetch": 1,
+   "pypi_fetch": 1
+  }
+ },
+ "by_registry": {
+  "dsh-registry": 4
+ },
+ "by_verdict": {
+  "unsupported": 4
+ },
+ "items": [
+  {
+   "name": "dsh-ai4scholar",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_dsh-ai4scholar_20261111T022618_efae7b04.bundle.json"
+  },
+  {
+   "name": "dsh-connect-trae",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_dsh-connect-trae_20261111T022618_dbee5b8f.bundle.json"
+  },
+  {
+   "name": "dsh-llm-codex",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_dsh-llm-codex_20261111T022618_c68c8ac1.bundle.json"
+  },
+  {
+   "name": "dsh-ops",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_dsh-ops_20261111T022618_77733b3f.bundle.json"
+  }
+ ]
+}

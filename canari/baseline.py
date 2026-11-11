@@ -650,8 +650,11 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                           "evidence_ref": "registry listing only; artifact bytes not fetched"}],
                         "unsupported", ["canari-m1/0.1"], ["mcp-registry:" + name])
         bpath = _save_att(att, "mcpreg", name, prev_state=_prev("mcp-registry", name))
+        # BUG-100: the run feed must echo the attestation verdict. Hardcoding
+        # "pass-with-findings" here made the published run-feed claim a pass for
+        # 247 items whose signed bundles said "unsupported".
         all_results.append({"name": name, "registry": "mcp-registry", "version": pkg.get("version", ""),
-                            "verdict": "pass-with-findings", "bundle": bpath})
+                            "verdict": att["verdict"], "bundle": bpath})
 
     # dsh.so (reference, not re-scan)
     print("[multi] dsh.so (%d)..." % dsh_limit)
@@ -662,6 +665,31 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         dsh_pkgs = []
     for pkg in dsh_pkgs:
         name = pkg.get("name", "")
+        if pkg.get("absent"):
+            # BUG-101: a component that is already in our ledger but is no longer
+            # listed in the dsh.so market index (an install-verified, low-risk
+            # whitelist) can no longer be re-verified. Leaving the previous
+            # "pass-with-findings" bundle standing would be verdict inflation, so
+            # record the disappearance explicitly and supersede the old verdict.
+            checks = [
+                {"id": "L1.1_REGISTRY_PRESENT", "verdict": "unsupported",
+                 "tool": "dsh-so-ref/0.1",
+                 "evidence_ref": "no longer listed in the dsh.so market index as of %s "
+                                 "(last attested %s); presence cannot be confirmed"
+                                 % (_now(), pkg.get("last_seen") or "unknown")},
+                {"id": "L2.0_ARTIFACT_UNVERIFIED", "verdict": "unsupported",
+                 "tool": "dsh-so-ref/0.1",
+                 "evidence_ref": "reference-verdict only: artifact bytes were not "
+                                 "fetched or hashed by Canari"},
+            ]
+            att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
+                            checks, "unsupported", ["dsh-so-referenced"],
+                            ["dsh-so:" + name])
+            bpath = _save_att(att, "dsh", name, prev_state=_prev("dsh-registry", name))
+            all_results.append({"name": name, "registry": "dsh-registry",
+                                "version": pkg.get("version", ""),
+                                "verdict": att["verdict"], "bundle": bpath})
+            continue
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}]
         verdict = "pass-with-findings"
         # dsh.so publishes per-plugin install tests (L1-L5) and static-scan counts;
@@ -709,8 +737,10 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         att = _make_att(name, pkg.get("version", ""), "dsh-registry", "", "dsh-plugin",
                         checks, verdict, ["dsh-so-referenced"], ["dsh-so:" + name])
         bpath = _save_att(att, "dsh", name, prev_state=_prev("dsh-registry", name))
+        # BUG-100: same defect as the MCP branch - the run feed must carry the
+        # verdict that the signed bundle actually recorded.
         all_results.append({"name": name, "registry": "dsh-registry", "version": pkg.get("version", ""),
-                            "verdict": "pass-with-findings", "bundle": bpath})
+                            "verdict": att["verdict"], "bundle": bpath})
 
     # unified feed
     by_reg, by_verdict = {}, {}

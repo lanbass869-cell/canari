@@ -1,0 +1,142 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-10T16:41:47Z",
+ "scenario_sha256": "5aad42d4c0660f64ce144c68fb464edccf4284544adffff14cd8228f71bc7e4e",
+ "total": 17,
+ "errors": 0,
+ "dead_letters": {
+  "total": 2,
+  "by_operation": {
+   "npm_fetch": 1,
+   "pypi_fetch": 1
+  }
+ },
+ "by_registry": {
+  "dsh-registry": 17
+ },
+ "by_verdict": {
+  "pass-with-findings": 9,
+  "unsupported": 8
+ },
+ "items": [
+  {
+   "name": "dsh-score",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-score_20261110T164147_54fbd17c.bundle.json"
+  },
+  {
+   "name": "dsh-skill-manager",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-skill-manager_20261110T164147_2b9ca027.bundle.json"
+  },
+  {
+   "name": "dsh-test-drive",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-test-drive_20261110T164147_47190f45.bundle.json"
+  },
+  {
+   "name": "dsh-timer-agent",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-timer-agent_20261110T164147_a4c6f3d8.bundle.json"
+  },
+  {
+   "name": "dsh-union-workspace",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_dsh-union-workspace_20261110T164147_ce2db8c1.bundle.json"
+  },
+  {
+   "name": "dsh-usage-panel",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-usage-panel_20261110T164147_52171dca.bundle.json"
+  },
+  {
+   "name": "dsh-wallpaper-engine",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-wallpaper-engine_20261110T164147_f164f52d.bundle.json"
+  },
+  {
+   "name": "dsh-whale-meter",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-whale-meter_20261110T164147_6e1e751d.bundle.json"
+  },
+  {
+   "name": "dsh-workspace-mover",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-workspace-mover_20261110T164147_ccf44792.bundle.json"
+  },
+  {
+   "name": "dsh-x-opencode-session",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "pass-with-findings",
+   "bundle_file": "dsh_dsh-x-opencode-session_20261110T164147_51df26f0.bundle.json"
+  },
+  {
+   "name": "reasoning-slider",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_reasoning-slider_20261110T164147_13e856b2.bundle.json"
+  },
+  {
+   "name": "@cocofhu/skillhub",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_cocofhu_skillhub_20261110T164147_70de2037.bundle.json"
+  },
+  {
+   "name": "@dsh-external/dsh-plugin-local-ai-tts",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_dsh-external_dsh-plugin-local-ai-tts_20261110T164147_a3c158de.bundle.json"
+  },
+  {
+   "name": "@goodandready/dsh-voice",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_goodandready_dsh-voice_20261110T164147_6fe5e6fd.bundle.json"
+  },
+  {
+   "name": "@lujianjun19/dsh-llm-github-copilot",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_lujianjun19_dsh-llm-github-copilot_20261110T164147_9255dfb9.bundle.json"
+  },
+  {
+   "name": "@machine-126/dsh-alert-sound",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_machine-126_dsh-alert-sound_20261110T164147_875c830b.bundle.json"
+  },
+  {
+   "name": "@max-null/dsh-chinese-thinking",
+   "registry": "dsh-registry",
+   "version": "",
+   "verdict": "unsupported",
+   "bundle_file": "dsh_max-null_dsh-chinese-thinking_20261110T164147_13b128a8.bundle.json"
+  }
+ ]
+}
