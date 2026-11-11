@@ -448,7 +448,7 @@ if __name__ == "__main__":
 
 
 def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
-              signer=None, pub_key=None, out_dir=None):
+              signer=None, pub_key=None, out_dir=None, dsh_names=None):
     """Multi-registry scan: npm + PyPI + MCP Registry + dsh.so -> unified attestations + feed."""
     out_dir = out_dir or OUT_DIR
     att_dir = os.path.join(out_dir, "attestations")
@@ -659,7 +659,12 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     # dsh.so (reference, not re-scan)
     print("[multi] dsh.so (%d)..." % dsh_limit)
     try:
-        dsh_pkgs = dsh_enumerate(limit=dsh_limit)
+        # only pass names when a target set was requested: keeps the historic
+        # dsh_enumerate(limit, with_security) call shape for existing callers
+        if dsh_names is None:
+            dsh_pkgs = dsh_enumerate(limit=dsh_limit)
+        else:
+            dsh_pkgs = dsh_enumerate(limit=dsh_limit, names=dsh_names)
     except Exception as _e:
         print("[multi] dsh.so enumerate failed:", str(_e)[:80])
         dsh_pkgs = []
@@ -876,7 +881,7 @@ def metadata_scan(registry="npm", limit=5000, out_dir=None):
 
 
 def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
-                            pypi_meta=5000, dsh_meta=10000,
+                            pypi_meta=5000, dsh_meta=10000, dsh_refresh=None,
                             signer=None, pub_key=None, out_dir=None):
     """Two-tier scan: deep attestation for top packages, metadata for all.
     
@@ -890,9 +895,21 @@ def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
     lock.__enter__()
     state = StateStore(os.path.join(out_dir, "state.json"))
 
+    # dsh refresh: re-verify the components already in the ledger. Without this
+    # the weekly job only wrote dsh *metadata* and the 500+ dsh attestations
+    # were never re-checked, so their verdicts silently aged indefinitely.
+    # dsh_refresh caps how many are re-checked per run (None = all tracked).
+    dsh_names = sorted(k.split(":", 1)[1]
+                       for k in (state._data.get("components") or {})
+                       if k.startswith("dsh-registry:"))
+    if dsh_refresh is not None:
+        dsh_names = dsh_names[:int(dsh_refresh)]
+    print("[dsh] refreshing %d tracked component(s)" % len(dsh_names))
+
     # Tier 1: deep scan (existing run_multi logic, reduced limits)
     deep_result = run_multi(npm_limit=npm_deep, pypi_limit=pypi_deep,
                             registry_limit=100, dsh_limit=0,
+                            dsh_names=dsh_names,
                             signer=signer, pub_key=pub_key, out_dir=out_dir)
 
     # Tier 2: metadata scan (fast, no downloads for npm/pypi)

@@ -304,15 +304,26 @@ DSH_INSTALL_FMT = "https://dsh.so/data/install/@{author}/{name}.json"
 DSH_SECURITY_FMT = "https://dsh.so/artifact/@{author}/{name}.json"
 
 
-def dsh_enumerate(limit=500, with_security=True):
-    if limit <= 0:
-        return []
+def dsh_enumerate(limit=500, with_security=True, names=None):
     """Enumerate DSH plugins from dsh.so market index (10K+).
-    References existing L1-L5 conclusions, does not re-scan."""
+    References existing L1-L5 conclusions, does not re-scan.
+
+    limit : take the first ``limit`` entries of the index (rank order).
+    names : when given, ignore ``limit`` and return only these exact names.
+            This is what the weekly refresh uses - it re-checks the components
+            already in our ledger instead of a shifting prefix of the index.
+    """
+    if not names and limit <= 0:
+        return []
     req = urllib.request.Request(DSH_MARKET_INDEX, headers={"User-Agent": UA})
     with _opener().open(req, timeout=60) as r:
         d = json.loads(r.read().decode("utf-8"))
-    plugins = d.get("plugins", [])[:limit]
+    plugins = d.get("plugins", [])
+    if names:
+        wanted = set(names)
+        plugins = [p for p in plugins if p.get("name") in wanted]
+    else:
+        plugins = plugins[:limit]
     results = []
     for p in plugins:
         name = p.get("name", "")

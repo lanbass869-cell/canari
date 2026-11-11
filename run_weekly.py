@@ -31,7 +31,10 @@ try:
         pypi_deep=int(os.environ.get("CANARI_PYPI_DEEP", "100")),
         npm_meta=int(os.environ.get("CANARI_NPM_META", "5000")),
         pypi_meta=int(os.environ.get("CANARI_PYPI_META", "5000")),
-        dsh_meta=int(os.environ.get("CANARI_DSH_META", "10000")))
+        dsh_meta=int(os.environ.get("CANARI_DSH_META", "10000")),
+        # re-verify this many tracked dsh components each run (0 = skip, unset = all)
+        dsh_refresh=(int(os.environ["CANARI_DSH_REFRESH"])
+                     if os.environ.get("CANARI_DSH_REFRESH") else None))
     _log("deep: %d | metadata: npm=%d pypi=%d dsh=%d" % (
         result["deep_scan"]["total"],
         result["metadata_scan"]["npm"],
