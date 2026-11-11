@@ -171,6 +171,64 @@ def sign_attestation(att: dict, signer) -> dict:
     return {"envelope": env.to_dict(), "payload": att2}
 
 
+def read_signed_payload(bundle: dict):
+    """Return the payload dict that the DSSE signature actually covers.
+
+    A bundle file stores two copies of the attestation:
+
+      envelope.payload  - base64 of the canonical JSON; this is what was signed
+      payload           - a convenience copy for readers, NOT covered by the sig
+
+    Anything that makes a decision must read the signed copy. Returns
+    (payload, error).
+    """
+    import base64
+    if not isinstance(bundle, dict):
+        return None, "bundle is not a JSON object"
+    env = bundle.get("envelope")
+    if not isinstance(env, dict) or not env.get("payload"):
+        # Legacy / fixture bundle with no envelope: there is no signature to
+        # forge, so the top-level copy is all we have. Callers that require a
+        # signature check `envelope` separately.
+        top = bundle.get("payload")
+        if isinstance(top, dict):
+            return top, None
+        return None, "bundle has no DSSE envelope payload"
+    try:
+        raw = base64.b64decode(env["payload"])
+        return json.loads(raw.decode("utf-8")), None
+    except Exception as e:                                   # noqa: BLE001
+        return None, "cannot decode signed payload: %s" % e
+
+
+def check_payload_integrity(bundle: dict):
+    """Verify the unsigned top-level copy agrees with the signed one.
+
+    The two copies are written with different inline ``signature`` blocks
+    (pass 1 vs pass 2 of sign_attestation), so every other field must match
+    exactly. Divergence means somebody edited the copy that is not protected
+    by the signature - the bypass that let a tampered bundle report a pass
+    while the signature still verified.
+
+    Returns (ok, reason, signed_payload).
+    """
+    signed, err = read_signed_payload(bundle)
+    if err:
+        return False, err, None
+    top = bundle.get("payload")
+    if not isinstance(top, dict):
+        return False, "bundle has no top-level payload", signed
+    a = {k: v for k, v in top.items() if k != "signature"}
+    b = {k: v for k, v in signed.items() if k != "signature"}
+    if a != b:
+        changed = sorted(k for k in set(a) | set(b) if a.get(k) != b.get(k))
+        return False, (
+            "top-level payload does not match the signed payload "
+            "(differing fields: %s)" % ", ".join(changed[:8])
+        ), signed
+    return True, None, signed
+
+
 def verify_signed(envelope_dict: dict, public_key_dict: dict):
     """Verify a DSSE envelope against an SSlibKey dict.
 

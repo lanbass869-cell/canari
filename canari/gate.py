@@ -157,11 +157,26 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
                             reasons=["bundle is valid JSON but not an object: %s" % type(bundle).__name__],
                             policy=policy_name)
     envelope = bundle.get("envelope")
-    payload = bundle.get("payload", {})
-    if not isinstance(payload, dict):
-        payload = {}
     if not envelope:
         return GateDecision(decision="BLOCK", reasons=["bundle has no envelope"], policy=policy_name)
+
+    # ★2026-11-11 BUG-102 (signature bypass): the file carries TWO payloads -
+    # the DSSE-signed one inside `envelope.payload` and an unsigned top-level
+    # copy. The gate used to judge the unsigned copy while only verifying the
+    # signed one, so editing the top-level verdict to "pass" produced ALLOW
+    # with signature_ok=true. Decisions must come from the signed payload, and
+    # any divergence must fail closed.
+    from canari.signing import read_signed_payload, check_payload_integrity
+    ok_integrity, integrity_reason, payload = check_payload_integrity(bundle)
+    if payload is None:
+        return GateDecision(decision="BLOCK",
+                            reasons=["signed payload unreadable: %s" % integrity_reason],
+                            policy=policy_name)
+    if not ok_integrity:
+        return GateDecision(decision="BLOCK",
+                            reasons=["payload integrity check FAILED: %s" % integrity_reason],
+                            policy=policy_name,
+                            verdict=payload.get("verdict", "error"))
 
     verdict = payload.get("verdict", "error")
     subject = payload.get("subject", {})

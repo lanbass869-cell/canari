@@ -135,6 +135,18 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False,
         return 2
     print("schema:    PASS (attestation-v0.1)")
 
+    # 3b. ★2026-11-11 BUG-102: the file also carries an UNSIGNED top-level copy
+    # of the payload. It is what naive consumers read, so verify must call out
+    # any divergence - otherwise a tampered mirror passes every check above.
+    from canari.signing import check_payload_integrity
+    ok_int, why, _sp = check_payload_integrity(bundle)
+    if not ok_int:
+        print("payload mirror: FAIL - %s" % why)
+        print("   (the signed envelope is intact, but the unsigned top-level "
+              "'payload' copy differs; treat this file as tampered)")
+        return 1
+    print("payload mirror: PASS (unsigned copy matches the signed payload)")
+
     # 4. per-check breakdown (the actual value:逐项 pass/fail)
     checks = payload.get("checks", [])
     n_pass = n_fail = n_skip = n_unsupported = n_error = 0

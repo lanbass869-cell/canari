@@ -48,7 +48,11 @@ def score(out_dir: str, public_key: dict = None, public_keys: list = None) -> di
             errors.append({"file": fname, "error": str(e)[:80]})
             continue
 
-        payload = bundle.get("payload", {})
+        # BUG-102: score the SIGNED payload, not the unsigned mirror.
+        from canari.signing import read_signed_payload
+        payload, _err = read_signed_payload(bundle)
+        if payload is None:
+            payload = {}
         env = bundle.get("envelope", {})
 
         # integrity (if we have any public key from the signing-key history)

@@ -22,7 +22,15 @@ def iter_bundles(store_dir):
         fp = os.path.join(att_dir, fn)
         try:
             with open(fp, "r", encoding="utf-8") as f:
-                yield fp, json.load(f).get("payload", {})
+                bundle = json.load(f)
+            # BUG-102: enumerate/list UIs report the SIGNED payload. Reading the
+            # unsigned mirror let a tampered copy advertise a "pass" the
+            # signature never covered.
+            from canari.signing import read_signed_payload
+            payload, _err = read_signed_payload(bundle)
+            if payload is None:
+                continue
+            yield fp, payload
         except Exception:
             continue
 

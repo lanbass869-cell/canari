@@ -39,7 +39,12 @@ def _load_bundles(store_dir):
         fp = os.path.join(att_dir, fn)
         try:
             with open(fp, "r", encoding="utf-8") as f:
-                p = json.load(f).get("payload", {})
+                _b = json.load(f)
+            # BUG-102: read only the SIGNED payload, never the unsigned mirror.
+            from canari.signing import read_signed_payload
+            p, _err = read_signed_payload(_b)
+            if p is None:
+                continue
             s = p.get("subject", {})
             out.append({"path": fp, "payload": p,
                         "registry": s.get("registry", "?"),
@@ -75,7 +80,11 @@ def compute_drift(store_dir, since=None, max_items=200):
         if since and new["generated_at"] < since:
             continue
         report["compared"] += 1
-        np_, op = new["payload"], old["payload"]
+        from canari.signing import read_signed_payload
+        np_, _e1 = read_signed_payload(new)
+        op, _e2 = read_signed_payload(old)
+        if np_ is None or op is None:
+            continue
         nv, ov = np_.get("verdict", "?"), op.get("verdict", "?")
         nh = np_.get("subject", {}).get("artifact_sha256", "")
         oh = op.get("subject", {}).get("artifact_sha256", "")

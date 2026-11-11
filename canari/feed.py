@@ -18,7 +18,12 @@ def build_feed(out_dir):
             continue
         fp = os.path.join(att_dir, fn)
         try:
-            p = json.load(open(fp, encoding="utf-8"))["payload"]
+            # BUG-102: the public feed must publish what was signed.
+            from canari.signing import read_signed_payload
+            _p, _err = read_signed_payload(json.load(open(fp, encoding="utf-8")))
+            if _p is None:
+                continue
+            p = _p
         except Exception:
             continue
         s = p.get("subject", {})
