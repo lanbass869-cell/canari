@@ -1,1 +1,70 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiZHNoLXNvLXJlZmVyZW5jZWQiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGluc3RhbGxUZXN0OiBsZXZlbD0/IHZlcmRpY3Q9bWlzc2luZyBzdGF0ZT0/IChubyBpbnN0YWxsIHRlc3QgcmVjb3JkKSIsICJpZCI6ICJMMi44X1BMVUdJTl9JTlNUQUxMX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGhhcyBubyBzZWN1cml0eSByZWNvcmQgZm9yIHRoaXMgcGx1Z2luIiwgImlkIjogIkwyLjdfUExVR0lOX1NFQ1VSSVRZX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbImRzaC1zbzpkc2gtcGx1Z2luLXlvbG8iXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNlQxNjowNzo1OVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDlUMTY6MDc6NTlaIiwgImhvc3QiOiB7ImNsYXNzIjogImRzaC1wbHVnaW4iLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJkMzIwY2RjMmE5YWFjYmFhMmE3OGJiYTFhMjRhN2ZiNzAwNGIzZTgyNjhmZmNhNjE5OWIyYjcyYjY5ZGMzNmFkIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjU5YTBjZTAzZmM1MTBlMDE2YWFhZjY2NDk5ZDg4MTFjYjI5OWI2NzdhN2YzY2I0NTkxZjU2ODNjMGMwMjU1YmE0NTQ3YzdkZWE3MDIyNzc0YWZlMTk5ZmVmYTAwODRlZWZlMzZlZjY3ZjkwNTNlMDM2YmYxZGM0NTgzMDgwYTBlIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJkc2gtcGx1Z2luLXlvbG8iLCAicmVnaXN0cnkiOiAiZHNoLXJlZ2lzdHJ5IiwgInZlcnNpb24iOiAiIn0sICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "efT1Y3rHsuPLN48wr99bo8QC4s7eRBSkJ9FgcPuh0ZS5PQNnod/Rg12NJwMFU1nTvED4DjarSdBhYoqzX/u3Bg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "dsh-plugin-yolo", "version": "", "registry": "dsh-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "dsh-plugin", "host_version": "registry-meta-v1"}, "scenario_sha256": "d320cdc2a9aacbaa2a78bba1a24a7fb7004b3e8268ffca6199b2b72b69dc36ad", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}, {"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"}, {"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so has no security record for this plugin"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["dsh-so-referenced"]}, "evidence_refs": ["dsh-so:dsh-plugin-yolo"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-16T16:07:59Z", "generated_at": "2026-11-09T16:07:59Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "79f4f5637ac7b2e3cb378f30afdf5ba3c402e2cede4414a427d16070fba1d194b93d0367a1dfd1835d8d2703055359d3bc40f80e36ab49d061628ab35ffbb706", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImRzaC1zby1yZWZlcmVuY2VkIl19LCAiY2hlY2tzIjogW3siaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiZHNoLXNvLXJlZi8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBpbnN0YWxsVGVzdDogbGV2ZWw9PyB2ZXJkaWN0PW1pc3Npbmcgc3RhdGU9PyAobm8gaW5zdGFsbCB0ZXN0IHJlY29yZCkiLCAiaWQiOiAiTDIuOF9QTFVHSU5fSU5TVEFMTF9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBoYXMgbm8gc2VjdXJpdHkgcmVjb3JkIGZvciB0aGlzIHBsdWdpbiIsICJpZCI6ICJMMi43X1BMVUdJTl9TRUNVUklUWV9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJkc2gtc286ZHNoLXBsdWdpbi15b2xvIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTZUMTY6MDc6NTlaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA5VDE2OjA3OjU5WiIsICJob3N0IjogeyJjbGFzcyI6ICJkc2gtcGx1Z2luIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiZDMyMGNkYzJhOWFhY2JhYTJhNzhiYmExYTI0YTdmYjcwMDRiM2U4MjY4ZmZjYTYxOTliMmI3MmI2OWRjMzZhZCIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI4ZjYzNGE0ZmRjOTc2NzM1NGE1YzRkZjg5Yjk0YTEwOWQyM2EyZmNiM2YxODIwMTE2NjZiMmJhYTAyZTUwOWEyY2Y2MTE4MmUwODMyODk0ZjQxN2I3MDYyNzI0N2YzZDJhMTRlNTdjY2M0ZTY2YTU5NzBlOGZkYjZiOThmNmIwMSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiZHNoLXBsdWdpbi15b2xvIiwgInJlZ2lzdHJ5IjogImRzaC1yZWdpc3RyeSIsICJ2ZXJzaW9uIjogIiJ9LCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7ImNhbmFyaS1jb21wb25lbnQtaWQiOiAiNzA0ZDRjMzNjMDRhYzZmNjBhOWZmMGM1ZGVhYzc3ZTdiMzc4M2JjMGFjODczYWMwMWNhNDNkZjk4YWUzMjg5YiJ9LCAibmFtZSI6ICJkc2gtcmVnaXN0cnk6ZHNoLXBsdWdpbi15b2xvIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "Vi3ClOONVZ9Cu/sTA1EpWyYSoaoSIiI/TM2O+fRMsutGpQcqMyxSAoJevQptKyN6YmjTMhLH9dwCSgKCjNwHBw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "dsh-plugin-yolo",
+   "version": "",
+   "registry": "dsh-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "dsh-plugin",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "d320cdc2a9aacbaa2a78bba1a24a7fb7004b3e8268ffca6199b2b72b69dc36ad",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "dsh-so-ref/0.1"
+   },
+   {
+    "id": "L2.8_PLUGIN_INSTALL_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"
+   },
+   {
+    "id": "L2.7_PLUGIN_SECURITY_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so has no security record for this plugin"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "dsh-so-referenced"
+   ]
+  },
+  "evidence_refs": [
+   "dsh-so:dsh-plugin-yolo"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-16T16:07:59Z",
+  "generated_at": "2026-11-09T16:07:59Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "562dc294e38d559f42bbfb130351295b2612a1aa1222223f4ccd8ef9f44cb2eb46a5072a332c5202825ebd0a6d2b237a6268d33212c7f5dc024a02828cdc0707",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

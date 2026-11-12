@@ -1,1 +1,71 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiZHNoLXNvLXJlZmVyZW5jZWQiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGluc3RhbGxUZXN0OiBsZXZlbD0/IHZlcmRpY3Q9bWlzc2luZyBzdGF0ZT0/IChubyBpbnN0YWxsIHRlc3QgcmVjb3JkKSIsICJpZCI6ICJMMi44X1BMVUdJTl9JTlNUQUxMX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGhhcyBubyBzZWN1cml0eSByZWNvcmQgZm9yIHRoaXMgcGx1Z2luIiwgImlkIjogIkwyLjdfUExVR0lOX1NFQ1VSSVRZX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbImRzaC1zbzpAZHNoLWV4dGVybmFsL2RzaC1taW5pZ2FtZXMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QxMjo1Njo1MVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMTI6NTY6NTFaIiwgImhvc3QiOiB7ImNsYXNzIjogImRzaC1wbHVnaW4iLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJhNTA0ODNjNjg2YWRjMWYxODlmOGYxZmQ5MTFjMmFiYWJhYWU3MjE3OTE2OWJmYjIxZmJmNzJkYTE2ZTAyZWQ1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjdmYzM3NzIwZDA5OTAxZDNhNjhhMTliN2QyNWU2ZTdlMGZmNzMxYjMxNGE0YTk4YWVhNzI1YjM2OWY1YmVlMWJhNjc4MTI0NGYwOWY2YzliYjYwMjNiYjRlNTM1ZjUwZThjNjIwNWZkODhiYTQ4ZjBkZjhjOGI4ZWI1MzMxODBiIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAZHNoLWV4dGVybmFsL2RzaC1taW5pZ2FtZXMiLCAicmVnaXN0cnkiOiAiZHNoLXJlZ2lzdHJ5IiwgInZlcnNpb24iOiAiIn0sICJzdXBlcnNlZGVzIjogImE0NjFlNTQ3NGU3NWFiMjA3ZjFmNzA2NzBkYTg2ZDZmMmQ1ZThiZmFhOTA0OGY1ZDhiYzQ1YjM0OTUwZGNlOGQiLCAidmVyZGljdCI6ICJ1bnN1cHBvcnRlZCJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "/OO/KvxckaSPMoaLI9SKlOSiBy6RFSXtG7a0d0XMt/H7YfWnk63h5Tdkzrq0coTmc6v4jPim4d47aHsg4CPjBg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@dsh-external/dsh-minigames", "version": "", "registry": "dsh-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "dsh-plugin", "host_version": "registry-meta-v1"}, "scenario_sha256": "a50483c686adc1f189f8f1fd911c2ababaae72179169bfb21fbf72da16e02ed5", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}, {"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"}, {"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so has no security record for this plugin"}], "verdict": "unsupported", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["dsh-so-referenced"]}, "evidence_refs": ["dsh-so:@dsh-external/dsh-minigames"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T12:56:51Z", "generated_at": "2026-11-10T12:56:51Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "fce3bf2afc5c91a48f32868b23d48a94e4a2072e911525ed1bb6b47745ccb7f1fb61f5a793ade1e53764cebab47284e673abf88cf8a6e1de3b687b20e023e306", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "a461e5474e75ab207f1f70670da86d6f2d5e8bfaa9048f5d8bc45b34950dce8d"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImRzaC1zby1yZWZlcmVuY2VkIl19LCAiY2hlY2tzIjogW3siaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiZHNoLXNvLXJlZi8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBpbnN0YWxsVGVzdDogbGV2ZWw9PyB2ZXJkaWN0PW1pc3Npbmcgc3RhdGU9PyAobm8gaW5zdGFsbCB0ZXN0IHJlY29yZCkiLCAiaWQiOiAiTDIuOF9QTFVHSU5fSU5TVEFMTF9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBoYXMgbm8gc2VjdXJpdHkgcmVjb3JkIGZvciB0aGlzIHBsdWdpbiIsICJpZCI6ICJMMi43X1BMVUdJTl9TRUNVUklUWV9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJkc2gtc286QGRzaC1leHRlcm5hbC9kc2gtbWluaWdhbWVzIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMTI6NTY6NTFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDEyOjU2OjUxWiIsICJob3N0IjogeyJjbGFzcyI6ICJkc2gtcGx1Z2luIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYTUwNDgzYzY4NmFkYzFmMTg5ZjhmMWZkOTExYzJhYmFiYWFlNzIxNzkxNjliZmIyMWZiZjcyZGExNmUwMmVkNSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI0NDQ1YWU4NDk1NTI2MGU1MzdkOWVlNTE2NDZjOWVmZjliNzhhNWY1OWE5YmVmM2IzYWZmNzU4YjY5OWI1MDA2ZmJkNDI2MDVhMjYxYzM4OGI5YjM0OTgxNzQxMGY2MWJjN2ZiMGQ1MGYwYjJiZTFiNmVhYWZjMmJhNzg4NzcwNCJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGRzaC1leHRlcm5hbC9kc2gtbWluaWdhbWVzIiwgInJlZ2lzdHJ5IjogImRzaC1yZWdpc3RyeSIsICJ2ZXJzaW9uIjogIiJ9LCAic3VwZXJzZWRlcyI6ICI4MDFjNDM2M2YyZTg2NzI4YzkwYzM2YmZiMzNiZjAyZDIxYjA5ODcxMDhlYjE4YTdmOWI1MzJlZWY3MDA1NGViIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7ImNhbmFyaS1jb21wb25lbnQtaWQiOiAiMTliMDVlNjE4NThhYTFhZjg0MDU0ZmU4Yzk0MjI2MjI5NzI0Yjk3OGVlODNmN2ZjY2NjN2NiNTA4YmIxYzg2YiJ9LCAibmFtZSI6ICJkc2gtcmVnaXN0cnk6QGRzaC1leHRlcm5hbC9kc2gtbWluaWdhbWVzIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "w74KbEyXyVWcLQNeuHm/Z9i2fnAtayu3grmNgYZ89UuW6fUbewC/kTLKfu4wK0YWj7ipeOXCz/D6fNvaoP7UBw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@dsh-external/dsh-minigames",
+   "version": "",
+   "registry": "dsh-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "dsh-plugin",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "a50483c686adc1f189f8f1fd911c2ababaae72179169bfb21fbf72da16e02ed5",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "dsh-so-ref/0.1"
+   },
+   {
+    "id": "L2.8_PLUGIN_INSTALL_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"
+   },
+   {
+    "id": "L2.7_PLUGIN_SECURITY_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so has no security record for this plugin"
+   }
+  ],
+  "verdict": "unsupported",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "dsh-so-referenced"
+   ]
+  },
+  "evidence_refs": [
+   "dsh-so:@dsh-external/dsh-minigames"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T12:56:51Z",
+  "generated_at": "2026-11-10T12:56:51Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "c3be0a6c4c97c9559c2d035eb879bf67d8b67e702d6b2bb782b98d81867cf54b96e9f51b7b00bf9132ca7eee302b46168fb8a978e5c2cff0fa7cdbdaa0fed407",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "801c4363f2e86728c90c36bfb33bf02d21b0987108eb18a7f9b532eef70054eb"
+ }
+}

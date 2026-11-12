@@ -1,1 +1,70 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiZHNoLXNvLXJlZmVyZW5jZWQiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGluc3RhbGxUZXN0OiBsZXZlbD0/IHZlcmRpY3Q9bWlzc2luZyBzdGF0ZT0/IChubyBpbnN0YWxsIHRlc3QgcmVjb3JkKSIsICJpZCI6ICJMMi44X1BMVUdJTl9JTlNUQUxMX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGhhcyBubyBzZWN1cml0eSByZWNvcmQgZm9yIHRoaXMgcGx1Z2luIiwgImlkIjogIkwyLjdfUExVR0lOX1NFQ1VSSVRZX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbImRzaC1zbzpkc2gtcGx1Z2luLWFuaW1lZ2FyZGVuIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMTI6NTY6NTBaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDEyOjU2OjUwWiIsICJob3N0IjogeyJjbGFzcyI6ICJkc2gtcGx1Z2luIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYTUwNDgzYzY4NmFkYzFmMTg5ZjhmMWZkOTExYzJhYmFiYWFlNzIxNzkxNjliZmIyMWZiZjcyZGExNmUwMmVkNSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJmZjhlYTA3NTZmZTNiMGU3YzMxZmM2MmM5ZTE5Zjk5Mjk5NGZkY2U0MzlmMmE1NWY1ZTA3MjExOWZjZDZkNTI5ZTM0ODI0YTg2ZDFiYWM0YWZiNzg4YjhjN2Y2MmQzNzQ1MjFiNTQ3MjEyMTgxMTdjOWQ1ZTQyMDkxNmQzYTcwMSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiZHNoLXBsdWdpbi1hbmltZWdhcmRlbiIsICJyZWdpc3RyeSI6ICJkc2gtcmVnaXN0cnkiLCAidmVyc2lvbiI6ICIifSwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "6pHDcJPGjzKLhdK0YQW+b/8z/5uQxLTfLDe4zWEJqKiyS3rwOARnMFPYgxXQeYtXVTNjs6+JcABC4gzn3GjfAA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "dsh-plugin-animegarden", "version": "", "registry": "dsh-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "dsh-plugin", "host_version": "registry-meta-v1"}, "scenario_sha256": "a50483c686adc1f189f8f1fd911c2ababaae72179169bfb21fbf72da16e02ed5", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}, {"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"}, {"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so has no security record for this plugin"}], "verdict": "unsupported", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["dsh-so-referenced"]}, "evidence_refs": ["dsh-so:dsh-plugin-animegarden"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T12:56:50Z", "generated_at": "2026-11-10T12:56:50Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "ea91c37093c68f328b85d2b46105be6fff33ff9b90c4b4df2c37b8cd6109a8a8b24b7af03804673053d88315d0798b57553363b3af89700042e20ce7dc68df00", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImRzaC1zby1yZWZlcmVuY2VkIl19LCAiY2hlY2tzIjogW3siaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiZHNoLXNvLXJlZi8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBpbnN0YWxsVGVzdDogbGV2ZWw9PyB2ZXJkaWN0PW1pc3Npbmcgc3RhdGU9PyAobm8gaW5zdGFsbCB0ZXN0IHJlY29yZCkiLCAiaWQiOiAiTDIuOF9QTFVHSU5fSU5TVEFMTF9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBoYXMgbm8gc2VjdXJpdHkgcmVjb3JkIGZvciB0aGlzIHBsdWdpbiIsICJpZCI6ICJMMi43X1BMVUdJTl9TRUNVUklUWV9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJkc2gtc286ZHNoLXBsdWdpbi1hbmltZWdhcmRlbiJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDEyOjU2OjUwWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQxMjo1Njo1MFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAiZHNoLXBsdWdpbiIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImE1MDQ4M2M2ODZhZGMxZjE4OWY4ZjFmZDkxMWMyYWJhYmFhZTcyMTc5MTY5YmZiMjFmYmY3MmRhMTZlMDJlZDUiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiOWIzZWZhN2ZhYTljOTg1NmFjNGI5MGRhNTNhZDhlODNkZDA1N2IwN2I1NGMwMjdlMWQyMjQ4ZmNmNjEwZjZhYTkxZjU2ODc5YTA2YzAzOGIzOWEzYjk3NDQ3NDg1OTczMjI3NDMyYWIzZDQwYTU5MzM1NTIwZDAzZDMzZWMxMDMifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogImRzaC1wbHVnaW4tYW5pbWVnYXJkZW4iLCAicmVnaXN0cnkiOiAiZHNoLXJlZ2lzdHJ5IiwgInZlcnNpb24iOiAiIn0sICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJjYW5hcmktY29tcG9uZW50LWlkIjogIjMzMzljOWJlNjc5NjFhMjIxYTViNjBjZGRjYjhhNTBjNjFiN2VhZTViNDYxZDllODU3MDMzZmVjNWQzYzVjMzcifSwgIm5hbWUiOiAiZHNoLXJlZ2lzdHJ5OmRzaC1wbHVnaW4tYW5pbWVnYXJkZW4ifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "MTDIqk14RbhG0h1B22xXWKrUfFmWbnwCECXXut98vWfUjwha35UCShZi6FyCVHVBTQSBut1lnFmyaH9Hc5k3Bw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "dsh-plugin-animegarden",
+   "version": "",
+   "registry": "dsh-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "dsh-plugin",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "a50483c686adc1f189f8f1fd911c2ababaae72179169bfb21fbf72da16e02ed5",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "dsh-so-ref/0.1"
+   },
+   {
+    "id": "L2.8_PLUGIN_INSTALL_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"
+   },
+   {
+    "id": "L2.7_PLUGIN_SECURITY_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so has no security record for this plugin"
+   }
+  ],
+  "verdict": "unsupported",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "dsh-so-referenced"
+   ]
+  },
+  "evidence_refs": [
+   "dsh-so:dsh-plugin-animegarden"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T12:56:50Z",
+  "generated_at": "2026-11-10T12:56:50Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "3130c8aa4d7845b846d21d41db6c5758aad47c59966e7c021025d7badf7cbd67d48f085adf95024a1662e85c825475414d0481badd659c59b2687f4773993707",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

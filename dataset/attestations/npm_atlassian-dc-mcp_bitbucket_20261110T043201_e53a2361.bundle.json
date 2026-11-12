@@ -1,1 +1,75 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGF0bGFzc2lhbi1kYy1tY3AvYml0YnVja2V0Il0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDQ6MzI6MDFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA0OjMyOjAxWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgIm5hdGl2ZV9wcm92ZW5hbmNlIjogeyJwcmVkaWNhdGVfdHlwZXMiOiBbInYwLjEiLCAidjEiXSwgInByZXNlbnQiOiB0cnVlLCAidjBfcHJlc2VuY2Vfb25seSI6IDEsICJ2MV9lcnJvciI6IG51bGwsICJ2MV9pZGVudGl0eSI6ICJodHRwczovL2dpdGh1Yi5jb20vYjFmZi9hdGxhc3NpYW4tZGMtbWNwLy5naXRodWIvd29ya2Zsb3dzL25wbS1wdWJsaXNoLnltbEByZWZzL2hlYWRzL21hc3RlciIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI1YmYwZTkyNDNlMmZlOTRhZTUzZWVjZWRkZWJiMTU5ZTY2YjRkMGU0NTNiYTYzM2E3MmRjMDJhZjJiYzdkOTcyIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjkwMTNjZjhlYmNkMWZjMTZjYzYyNjg2YTBkZDNiYjQyMDY5NjVhNmFiYjA0NTI2NmMwOWFiMzlmZjU5ZTQ2YWM3MzFmMDQzMzJjYWIzMTg2MjE5NTE1YzMxYzIzYTM1Y2NiMzc5ODIyNzJhYzFlOTA2OTMwNWU5YzAwNzgxNzA2In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiNDQ1NDZjNDEwZTliMWExYzgxNDFmNzE0Nzc2ZDJkZmRkY2NmYzY0YzUwNmVkNDM0MjNmYTlmYjQ4YTk2OTQ0NyIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAYXRsYXNzaWFuLWRjLW1jcC9iaXRidWNrZXQiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMC40My4yIn0sICJ2ZXJkaWN0IjogInBhc3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "9Sga4WhnbygQz+dgySYpxmhSybrQqSITC1oLGq4PQ6Kg9Q+1SQqLke2LSYHyu1g9zZRQ6AGFtepJL/3iMtrWCw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@atlassian-dc-mcp/bitbucket", "version": "0.43.2", "registry": "npm", "artifact_sha256": "44546c410e9b1a1c8141f714776d2dfddccfc64c506ed43423fa9fb48a969447", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@atlassian-dc-mcp/bitbucket"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T04:32:01Z", "generated_at": "2026-11-10T04:32:01Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "f5281ae168676f2810cfe760c92629c66852c9bad0a922130b5a0b1aae0f43a2a0f50fb5490a8b91ed8b4981f2bb583dcd9450e80185b5ea492ffde232dad60b", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/b1ff/atlassian-dc-mcp/.github/workflows/npm-publish.yml@refs/heads/master", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBhdGxhc3NpYW4tZGMtbWNwL2JpdGJ1Y2tldCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA0OjMyOjAxWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNDozMjowMVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL2IxZmYvYXRsYXNzaWFuLWRjLW1jcC8uZ2l0aHViL3dvcmtmbG93cy9ucG0tcHVibGlzaC55bWxAcmVmcy9oZWFkcy9tYXN0ZXIiLCAidjFfdmVyaWZpZWQiOiB0cnVlLCAidmVyaWZpZXIiOiAic2lnc3RvcmUtcHl0aG9uLzQuNS4xIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNWJmMGU5MjQzZTJmZTk0YWU1M2VlY2VkZGViYjE1OWU2NmI0ZDBlNDUzYmE2MzNhNzJkYzAyYWYyYmM3ZDk3MiIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICIyNTA3YjJkMGYyMTQ1MDk0Y2E5OGU0Y2ZmZDdlOTExYTRiYzM4ZWI3N2M2Nzc1NzExY2ViZmZhNjZiOWQxZmQ4NTdiOTNmNDgxOTBlYTFkNTdiNWQ3NDY1MDQxY2RhNWUzZTBkNTVkOWUxOThiNDc2MjgwZmQ0N2I0MDBiYWIwMiJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjQ0NTQ2YzQxMGU5YjFhMWM4MTQxZjcxNDc3NmQyZGZkZGNjZmM2NGM1MDZlZDQzNDIzZmE5ZmI0OGE5Njk0NDciLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGF0bGFzc2lhbi1kYy1tY3AvYml0YnVja2V0IiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjAuNDMuMiJ9LCAidmVyZGljdCI6ICJwYXNzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJzaGEyNTYiOiAiNDQ1NDZjNDEwZTliMWExYzgxNDFmNzE0Nzc2ZDJkZmRkY2NmYzY0YzUwNmVkNDM0MjNmYTlmYjQ4YTk2OTQ0NyJ9LCAibmFtZSI6ICJucG06QGF0bGFzc2lhbi1kYy1tY3AvYml0YnVja2V0QDAuNDMuMiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "3YTWV/31OM9a7nRC+Y+B8Pxhiz3SCyLgTkY3TxebBpBuZfY77MTdqw+Upw5VvQdV+mOusZ1Ol/RnFuxm+T9pAQ=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@atlassian-dc-mcp/bitbucket",
+   "version": "0.43.2",
+   "registry": "npm",
+   "artifact_sha256": "44546c410e9b1a1c8141f714776d2dfddccfc64c506ed43423fa9fb48a969447",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@atlassian-dc-mcp/bitbucket"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:32:01Z",
+  "generated_at": "2026-11-10T04:32:01Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "dd84d657fdf538cf5aee7442f98f81f0fc618b3dd20b22e04e46374f179b06906e65f63becc4ddab0f94a70e55bd0755fa63aeb19d4e97f46716ec66f93f6901",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/b1ff/atlassian-dc-mcp/.github/workflows/npm-publish.yml@refs/heads/master",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  }
+ }
+}

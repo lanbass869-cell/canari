@@ -1,1 +1,59 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJmZXRjaCBmYWlsZWQ6IENSRURFTlRJQUxfSU5fUEFZTE9BRDogMSBjcmVkZW50aWFsLXNoYXBlZCBzdHJpbmcocykgZGV0ZWN0ZWQgaW4gdGhlIGF0dGVzdGF0aW9uOiBuYXRpdmVfcHJvdmVuYW5jZS4iLCAiaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogImVycm9yIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBzeWxwaHgvYW55bWQiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNDozMjo0MVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDQ6MzI6NDFaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjViZjBlOTI0M2UyZmU5NGFlNTNlZWNlZGRlYmIxNTllNjZiNGQwZTQ1M2JhNjMzYTcyZGMwMmFmMmJjN2Q5NzIiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiNmRiNTc3ZmNlODIyNmQxZTA5ZTU2NjI3MTRmOTQ3OTc0ZDhjYzNjOGQ2YWU3YWFkY2NkNWU4M2RmYTk5OWY4ZDE5ZTExZjVkNzQyZDA1OGNhNWZlOGQxNzhlNGQ1NDRjY2U2MWRlZGU2OWNmZDQ4YzE0OGQ3YTE2ZmRlMWVjMGEifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBzeWxwaHgvYW55bWQiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiIn0sICJ2ZXJkaWN0IjogImVycm9yIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "jg2O4AGD1fAQxNMVh8pEqSPz1XTatAjr4QkNfa7itYBGbY1Di567Uj430cEKZudNph8+sPtybEQwauC61muJCg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@sylphx/anymd", "version": "", "registry": "npm", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "error", "tool": "canari-m1/0.1", "evidence_ref": "fetch failed: CREDENTIAL_IN_PAYLOAD: 1 credential-shaped string(s) detected in the attestation: native_provenance."}], "verdict": "error", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@sylphx/anymd"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T04:32:41Z", "generated_at": "2026-11-10T04:32:41Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "8e0d8ee00183d5f010c4d31587ca44a923f3d574dab408ebe1090d7daee2b580466d8d438b9ebb523e37d1c10a66e74da61f3eb0fb726c44306ae0bad66b890a", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJldmlkZW5jZV9yZWYiOiAiZmV0Y2ggZmFpbGVkOiBDUkVERU5USUFMX0lOX1BBWUxPQUQ6IDEgY3JlZGVudGlhbC1zaGFwZWQgc3RyaW5nKHMpIGRldGVjdGVkIGluIHRoZSBhdHRlc3RhdGlvbjogbmF0aXZlX3Byb3ZlbmFuY2UuIiwgImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJlcnJvciJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsibnBtLXBhY2t1bWVudDpAc3lscGh4L2FueW1kIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDQ6MzI6NDFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA0OjMyOjQxWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI1YmYwZTkyNDNlMmZlOTRhZTUzZWVjZWRkZWJiMTU5ZTY2YjRkMGU0NTNiYTYzM2E3MmRjMDJhZjJiYzdkOTcyIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImRkNDNkNzRkNjZmMTdjZjUzNzkwMDU5MDU4YjQ4OTM3Y2RkZmUxOWY0OTdmZjY0ODYzY2Q2NTJlYTljZGYyNjNiMDI5MWVmYTc4YmUyNzZkYjcyNTU2YTNkOGNmMGZhN2UwYTRhMGU3MmE0MGVkYWEyMTEyOTgxNjhhNzA2OTA1In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAc3lscGh4L2FueW1kIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIiJ9LCAidmVyZGljdCI6ICJlcnJvciJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsiY2FuYXJpLWNvbXBvbmVudC1pZCI6ICJlNWNmNTVkNTU2YzVmYTMzMGQzMzA1MTk1MGZmYTNiZjc4MTdhMmVhYjBmOGM2Y2FkOTU1ZmMyZjdkOGFlYzJkIn0sICJuYW1lIjogIm5wbTpAc3lscGh4L2FueW1kIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "HHgIZyRxwOvOEiNhqq5GmSQtePQC8+Rr4RGZKHEOiXM0mPg/4XxMOQAKtDNtom31045qa2Xd0BFtTle+Pk46Bw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@sylphx/anymd",
+   "version": "",
+   "registry": "npm",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "error",
+    "tool": "canari-m1/0.1",
+    "evidence_ref": "fetch failed: CREDENTIAL_IN_PAYLOAD: 1 credential-shaped string(s) detected in the attestation: native_provenance."
+   }
+  ],
+  "verdict": "error",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@sylphx/anymd"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:32:41Z",
+  "generated_at": "2026-11-10T04:32:41Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "1c7808672471c0ebce122361aaae4699242d78f402f3e46be1119928710e89733498f83fe17c4c39000ab4336da26df5d38e6a6b65ddd0116d4e57be3e4e3a07",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

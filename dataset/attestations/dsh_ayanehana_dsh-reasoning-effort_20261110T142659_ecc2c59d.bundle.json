@@ -1,1 +1,77 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiZHNoLXNvLXJlZmVyZW5jZWQiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGluc3RhbGxUZXN0OiBsZXZlbD0/IHZlcmRpY3Q9bWlzc2luZyBzdGF0ZT0/IChubyBpbnN0YWxsIHRlc3QgcmVjb3JkKSIsICJpZCI6ICJMMi44X1BMVUdJTl9JTlNUQUxMX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifSwgeyJldmlkZW5jZV9yZWYiOiAiZHNoLnNvIGhhcyBubyBzZWN1cml0eSByZWNvcmQgZm9yIHRoaXMgcGx1Z2luIiwgImlkIjogIkwyLjdfUExVR0lOX1NFQ1VSSVRZX1JFRiIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifSwgeyJldmlkZW5jZV9yZWYiOiAicmVmZXJlbmNlLXZlcmRpY3Qgb25seTogYXJ0aWZhY3QgYnl0ZXMgd2VyZSBub3QgZmV0Y2hlZCBvciBoYXNoZWQgYnkgQ2FuYXJpIiwgImlkIjogIkwyLjBfQVJUSUZBQ1RfVU5WRVJJRklFRCIsICJ0b29sIjogImRzaC1zby1yZWYvMC4xIiwgInZlcmRpY3QiOiAidW5zdXBwb3J0ZWQifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbImRzaC1zbzpAYXlhbmVoYW5hL2RzaC1yZWFzb25pbmctZWZmb3J0Il0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMTQ6MjY6NTlaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDE0OjI2OjU5WiIsICJob3N0IjogeyJjbGFzcyI6ICJkc2gtcGx1Z2luIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNzdjMjlkNmJkNThmNjVlZjFiYTM2ZGZkMWFhM2VjNGY5ZWI1NWY5Yzc5NWNmNDE2YmFmMGMyMmJjNTkyMWUyZCIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJhMTU0ZTEzYTEzZjVlYWNlZDMwOGFlZDMyMmQwZTIwODc4OGI1MjIzYjg3ODhiZjkzNzA1MWE2MTE2OTA3MTc4YWJiNjRhNjZhODEwOTQ3MTEwZDgzZjRhN2M4ZmJiYjk1Yzk2MTAzMDBhY2Q3ZDk0MTIyNjc2ODQ4NjI2ODgwNiJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGF5YW5laGFuYS9kc2gtcmVhc29uaW5nLWVmZm9ydCIsICJyZWdpc3RyeSI6ICJkc2gtcmVnaXN0cnkiLCAidmVyc2lvbiI6ICIifSwgInN1cGVyc2VkZXMiOiAiOTY2ZTMzMGU0MzU0ZTMzYzY4NThmMjAzNTU4MWQ0MmZmMmE1YzYzZmQyMDA4ZGU1NmUyYWU1OGIwOGM5ZDZhYyIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "giOIRHLg2pDvrGH3yNkQowea9dhcQ3o9MKiIXq8XePTpAV9OqPp2kzAyz8MfoG4jC4rQK0qZiHN6wRbh5K3YCw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@ayanehana/dsh-reasoning-effort", "version": "", "registry": "dsh-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "dsh-plugin", "host_version": "registry-meta-v1"}, "scenario_sha256": "77c29d6bd58f65ef1ba36dfd1aa3ec4f9eb55f9c795cf416baf0c22bc5921e2d", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "dsh-so-ref/0.1"}, {"id": "L2.8_PLUGIN_INSTALL_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"}, {"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "dsh.so has no security record for this plugin"}, {"id": "L2.0_ARTIFACT_UNVERIFIED", "verdict": "unsupported", "tool": "dsh-so-ref/0.1", "evidence_ref": "reference-verdict only: artifact bytes were not fetched or hashed by Canari"}], "verdict": "unsupported", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["dsh-so-referenced"]}, "evidence_refs": ["dsh-so:@ayanehana/dsh-reasoning-effort"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T14:26:59Z", "generated_at": "2026-11-10T14:26:59Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "8223884472e0da90efac61f7c8d910a3079af5d85c437a3d30a8885eaf1778f4e9015f4ea8fa76933032cfc31fa06e230b8ad02b4a9988737ac116e1e4add80b", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "966e330e4354e33c6858f2035581d42ff2a5c63fd2008de56e2ae58b08c9d6ac"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImRzaC1zby1yZWZlcmVuY2VkIl19LCAiY2hlY2tzIjogW3siaWQiOiAiTDEuMV9SRUdJU1RSWV9QUkVTRU5UIiwgInRvb2wiOiAiZHNoLXNvLXJlZi8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBpbnN0YWxsVGVzdDogbGV2ZWw9PyB2ZXJkaWN0PW1pc3Npbmcgc3RhdGU9PyAobm8gaW5zdGFsbCB0ZXN0IHJlY29yZCkiLCAiaWQiOiAiTDIuOF9QTFVHSU5fSU5TVEFMTF9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0sIHsiZXZpZGVuY2VfcmVmIjogImRzaC5zbyBoYXMgbm8gc2VjdXJpdHkgcmVjb3JkIGZvciB0aGlzIHBsdWdpbiIsICJpZCI6ICJMMi43X1BMVUdJTl9TRUNVUklUWV9SRUYiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn0sIHsiZXZpZGVuY2VfcmVmIjogInJlZmVyZW5jZS12ZXJkaWN0IG9ubHk6IGFydGlmYWN0IGJ5dGVzIHdlcmUgbm90IGZldGNoZWQgb3IgaGFzaGVkIGJ5IENhbmFyaSIsICJpZCI6ICJMMi4wX0FSVElGQUNUX1VOVkVSSUZJRUQiLCAidG9vbCI6ICJkc2gtc28tcmVmLzAuMSIsICJ2ZXJkaWN0IjogInVuc3VwcG9ydGVkIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJkc2gtc286QGF5YW5laGFuYS9kc2gtcmVhc29uaW5nLWVmZm9ydCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDE0OjI2OjU5WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQxNDoyNjo1OVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAiZHNoLXBsdWdpbiIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjc3YzI5ZDZiZDU4ZjY1ZWYxYmEzNmRmZDFhYTNlYzRmOWViNTVmOWM3OTVjZjQxNmJhZjBjMjJiYzU5MjFlMmQiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMDEwMjYxMDBkMzZkZjFmNGRkMTdjNWU3ZjhhNDg4NjNkYzI1N2ViYzFlZDJiYWE0ZjU5N2RjNzkwZmRhMGRiYjIxOTA4MjBjNTlmNzc3ZThkNzQ3ZjQwM2Y4ZDcxNWZiYTliYmVjOWUwZGY2YjE2ZGY2YTkyZjM3NmFjODVmMDAifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBheWFuZWhhbmEvZHNoLXJlYXNvbmluZy1lZmZvcnQiLCAicmVnaXN0cnkiOiAiZHNoLXJlZ2lzdHJ5IiwgInZlcnNpb24iOiAiIn0sICJzdXBlcnNlZGVzIjogImQ5YzUyYmZjOTFmYmE4Mjg4M2Y3YTQzMjczYjY3NWYxMGMyZjYyMTFhNTE1MmYwMzA2ZDY5ZjAzNjM0NWM4NjQiLCAidmVyZGljdCI6ICJ1bnN1cHBvcnRlZCJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsiY2FuYXJpLWNvbXBvbmVudC1pZCI6ICJhNDZjNjY0OWEyZDM3ZmU0N2FlYTYxMTMwMTNiNmQyNmFkOGZhNjFjMWNkYzRiYzNhMzIzNjE3YWI0N2FkYWFmIn0sICJuYW1lIjogImRzaC1yZWdpc3RyeTpAYXlhbmVoYW5hL2RzaC1yZWFzb25pbmctZWZmb3J0In1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "7VgPPdzDAfgHfdFkLBKl7RWc0ljLqehX8tG+TgwekRLV5eSXjbHC7MvAkZAhRAawWMeNmDqbLxHdZhx/C3LhCg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@ayanehana/dsh-reasoning-effort",
+   "version": "",
+   "registry": "dsh-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "dsh-plugin",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "77c29d6bd58f65ef1ba36dfd1aa3ec4f9eb55f9c795cf416baf0c22bc5921e2d",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "dsh-so-ref/0.1"
+   },
+   {
+    "id": "L2.8_PLUGIN_INSTALL_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so installTest: level=? verdict=missing state=? (no install test record)"
+   },
+   {
+    "id": "L2.7_PLUGIN_SECURITY_REF",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "dsh.so has no security record for this plugin"
+   },
+   {
+    "id": "L2.0_ARTIFACT_UNVERIFIED",
+    "verdict": "unsupported",
+    "tool": "dsh-so-ref/0.1",
+    "evidence_ref": "reference-verdict only: artifact bytes were not fetched or hashed by Canari"
+   }
+  ],
+  "verdict": "unsupported",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "dsh-so-referenced"
+   ]
+  },
+  "evidence_refs": [
+   "dsh-so:@ayanehana/dsh-reasoning-effort"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T14:26:59Z",
+  "generated_at": "2026-11-10T14:26:59Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "ed580f3ddcc301f8077dd1642c12a5ed159cd258cba9e857f2d1be4e0c1e9112d5e5e4978db1c2eccbc09190214406b058c78d983a9b2f11dd661c7f0b72e10a",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "d9c52bfc91fba82883f7a43273b675f10c2f6211a5152f0306d69f036345c864"
+ }
+}

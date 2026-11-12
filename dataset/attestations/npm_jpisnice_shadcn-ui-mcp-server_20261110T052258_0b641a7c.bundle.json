@@ -1,1 +1,75 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGpwaXNuaWNlL3NoYWRjbi11aS1tY3Atc2VydmVyIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDU6MjI6NThaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA1OjIyOjU4WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgIm5hdGl2ZV9wcm92ZW5hbmNlIjogeyJwcmVkaWNhdGVfdHlwZXMiOiBbInYwLjEiLCAidjEiXSwgInByZXNlbnQiOiB0cnVlLCAidjBfcHJlc2VuY2Vfb25seSI6IDEsICJ2MV9lcnJvciI6IG51bGwsICJ2MV9pZGVudGl0eSI6ICJodHRwczovL2dpdGh1Yi5jb20vSnBpc25pY2Uvc2hhZGNuLXVpLW1jcC1zZXJ2ZXIvLmdpdGh1Yi93b3JrZmxvd3MvcHVibGlzaC55bWxAcmVmcy90YWdzL3YzLjAuMCIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0ZWE1ZWQ5NWQ4NmM1OWNmNjdmNWE5NTU0OTcxZWI4YjRjMmNjODkwMWFmMTFhYjNhNDlhN2JjOTMzNGE5YTk1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjQ3YjVkNjc4MjU1M2JkNDcwNzViYjdiMzU0OWI4YjVkNGViNjE4Y2RiZGMwNmVjM2UwOTFmYTI2MzVhYzY5YzRmZTM3NTI1Mzg0ZDEzMTc4MWIxMzFjM2VjYmYwMzJiZWQzMDEwOGU0MjE1NDY5MTMzNzk1YjEyMzU0ZmUwNzA2In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiY2ZmZDU2MDJhZmY4ZDQ5YTI2ZGJmNzExYWRkOWM0NmU3Zjg5YzJjZDgyMTU0MWFmY2FlMTEzYzczZGFkYmY4NiIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAanBpc25pY2Uvc2hhZGNuLXVpLW1jcC1zZXJ2ZXIiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMy4wLjAifSwgInZlcmRpY3QiOiAicGFzcyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "P62I+oCewfg3Lzm4uBybRarP7OPXRXXXz5VXtWyyJ33zC61sZWFZafiVMUkhXh3u0tx9pxf5i8DMhiuUwjwaBw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@jpisnice/shadcn-ui-mcp-server", "version": "3.0.0", "registry": "npm", "artifact_sha256": "cffd5602aff8d49a26dbf711add9c46e7f89c2cd821541afcae113c73dadbf86", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@jpisnice/shadcn-ui-mcp-server"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T05:22:58Z", "generated_at": "2026-11-10T05:22:58Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "3fad88fa809ec1f8372f39b8b81c9b45aacfece3d74575d7cf9557b56cb2277df30bad6c65615969f8953149215e1deed2dc7da717f98bc0cc862b94c23c1a07", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/Jpisnice/shadcn-ui-mcp-server/.github/workflows/publish.yml@refs/tags/v3.0.0", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBqcGlzbmljZS9zaGFkY24tdWktbWNwLXNlcnZlciJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA1OjIyOjU4WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNToyMjo1OFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL0pwaXNuaWNlL3NoYWRjbi11aS1tY3Atc2VydmVyLy5naXRodWIvd29ya2Zsb3dzL3B1Ymxpc2gueW1sQHJlZnMvdGFncy92My4wLjAiLCAidjFfdmVyaWZpZWQiOiB0cnVlLCAidmVyaWZpZXIiOiAic2lnc3RvcmUtcHl0aG9uLzQuNS4xIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNGVhNWVkOTVkODZjNTljZjY3ZjVhOTU1NDk3MWViOGI0YzJjYzg5MDFhZjExYWIzYTQ5YTdiYzkzMzRhOWE5NSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJlNDA2YWE0YWRkMDQ2NmMzZTU1ZWY3NjUwMjYwMDZkZTFiMTBlZGVhYTJlMWVmMmIwMzM2N2VkMjc1M2RmYjlhMmY0ZjZiMjE1YzEyNDI2NjJlMGMyNjQyOGZhYjQ5NGZkMjQxNmM0YTY3MDc3NzQ5MWUyZDViYjk3OGIwMjgwNSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogImNmZmQ1NjAyYWZmOGQ0OWEyNmRiZjcxMWFkZDljNDZlN2Y4OWMyY2Q4MjE1NDFhZmNhZTExM2M3M2RhZGJmODYiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGpwaXNuaWNlL3NoYWRjbi11aS1tY3Atc2VydmVyIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjMuMC4wIn0sICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICJjZmZkNTYwMmFmZjhkNDlhMjZkYmY3MTFhZGQ5YzQ2ZTdmODljMmNkODIxNTQxYWZjYWUxMTNjNzNkYWRiZjg2In0sICJuYW1lIjogIm5wbTpAanBpc25pY2Uvc2hhZGNuLXVpLW1jcC1zZXJ2ZXJAMy4wLjAifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "5qmyz+h0iK0iP2CBgLND9tIudKq0U2j+9s5mrO8IG2V0fNENkJMSCpLIyOaordPew/TlJn3mEDfr8OIDVqALCA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@jpisnice/shadcn-ui-mcp-server",
+   "version": "3.0.0",
+   "registry": "npm",
+   "artifact_sha256": "cffd5602aff8d49a26dbf711add9c46e7f89c2cd821541afcae113c73dadbf86",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@jpisnice/shadcn-ui-mcp-server"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:22:58Z",
+  "generated_at": "2026-11-10T05:22:58Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "e6a9b2cfe87488ad223f608180b343f6d22e74aab45368fef6ce66acef081b65747cd10d9093120a92c8c8e6a8add3dec3f4e5267de61037ebf0e20356a00b08",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/Jpisnice/shadcn-ui-mcp-server/.github/workflows/publish.yml@refs/tags/v3.0.0",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  }
+ }
+}

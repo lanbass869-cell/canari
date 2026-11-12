@@ -1,1 +1,75 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QHRhaWdhLXVpL21jcCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA1OjIxOjIyWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNToyMToyMloiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL3RhaWdhLWZhbWlseS90YWlnYS11aS1tY3AvLmdpdGh1Yi93b3JrZmxvd3MvcmVsZWFzZS55bWxAcmVmcy9oZWFkcy9tYWluIiwgInYxX3ZlcmlmaWVkIjogdHJ1ZSwgInZlcmlmaWVyIjogInNpZ3N0b3JlLXB5dGhvbi80LjUuMSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjRlYTVlZDk1ZDg2YzU5Y2Y2N2Y1YTk1NTQ5NzFlYjhiNGMyY2M4OTAxYWYxMWFiM2E0OWE3YmM5MzM0YTlhOTUiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiZWFhOGUzM2RiMDk4MmJlNTJjOWEzOGMwZTFmMTkzZGI3YTUyMWRkNzA5NWI4OGQ0OGVjNmUxY2Q4ZDcxODEwOWU4NTA2ZTQ0M2E2OTViZWUyZjRlYTU2ODU5MWE3YWMwOWRiZGE5NDJmNWNlYTBkYjIzMjViMzkyYmQ5ODUxMDkifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJhYmJkODEyMzhmZjBjZTA1OWM4MTE2ZjFhYTVjMDMzOWUyOTZmMGI2OWJlZjdkZTQxZTM3MWE1ZDU2ODFiYWY2IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkB0YWlnYS11aS9tY3AiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMC40LjEifSwgInZlcmRpY3QiOiAicGFzcyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "UEV84Hv9VQBJc62oI7gqIzYMrZrIlvYLsgan1Dym07mySILgWgNu6kiK7izSIgnsOdZdsqBn6+V/+63TxieiCg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@taiga-ui/mcp", "version": "0.4.1", "registry": "npm", "artifact_sha256": "abbd81238ff0ce059c8116f1aa5c0339e296f0b69bef7de41e371a5d5681baf6", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@taiga-ui/mcp"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T05:21:22Z", "generated_at": "2026-11-10T05:21:22Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "50457ce07bfd55004973ada823b82a23360cad9ac896f60bb206a7d43ca6d3b9b24882e05a036eea488aee2cd22209ec39d65db2a067ebe57ffbadd3c627a20a", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/taiga-family/taiga-ui-mcp/.github/workflows/release.yml@refs/heads/main", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkB0YWlnYS11aS9tY3AiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNToyMToyMloiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDU6MjE6MjJaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAibmF0aXZlX3Byb3ZlbmFuY2UiOiB7InByZWRpY2F0ZV90eXBlcyI6IFsidjAuMSIsICJ2MSJdLCAicHJlc2VudCI6IHRydWUsICJ2MF9wcmVzZW5jZV9vbmx5IjogMSwgInYxX2Vycm9yIjogbnVsbCwgInYxX2lkZW50aXR5IjogImh0dHBzOi8vZ2l0aHViLmNvbS90YWlnYS1mYW1pbHkvdGFpZ2EtdWktbWNwLy5naXRodWIvd29ya2Zsb3dzL3JlbGVhc2UueW1sQHJlZnMvaGVhZHMvbWFpbiIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0ZWE1ZWQ5NWQ4NmM1OWNmNjdmNWE5NTU0OTcxZWI4YjRjMmNjODkwMWFmMTFhYjNhNDlhN2JjOTMzNGE5YTk1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjMyMDQ1ZTMxNTJiOTUzZDg4MjZkZjQ3NTc3MDkyYjEzYzZkMzA2NTUzNTNmNTZmNDhmMmM0YzI3MzYxZTFiN2YwYjAxM2ZlM2I0N2MzMDIzYzNlYzI4NDVhMWZmYmZkYzI3NWEyNjAzYWE5OTQ5MTg4NzIwZjQ2YzJhYzYyNjBiIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiYWJiZDgxMjM4ZmYwY2UwNTljODExNmYxYWE1YzAzMzllMjk2ZjBiNjliZWY3ZGU0MWUzNzFhNWQ1NjgxYmFmNiIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAdGFpZ2EtdWkvbWNwIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjAuNC4xIn0sICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICJhYmJkODEyMzhmZjBjZTA1OWM4MTE2ZjFhYTVjMDMzOWUyOTZmMGI2OWJlZjdkZTQxZTM3MWE1ZDU2ODFiYWY2In0sICJuYW1lIjogIm5wbTpAdGFpZ2EtdWkvbWNwQDAuNC4xIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "0NyI/w6oOewIFHEztCvVXCFMF20fbmxuXX/VPBb9WqRbfFu6Brdh2RZHNXMBbuf6wJ5VLYEOmGL5CWi5aIkJCQ=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@taiga-ui/mcp",
+   "version": "0.4.1",
+   "registry": "npm",
+   "artifact_sha256": "abbd81238ff0ce059c8116f1aa5c0339e296f0b69bef7de41e371a5d5681baf6",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@taiga-ui/mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:21:22Z",
+  "generated_at": "2026-11-10T05:21:22Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "d0dc88ff0ea839ec08147133b42bd55c214c176d1f6e6c6e5d7fd53c16fd5aa45b7c5bba06b761d916473573016ee7fac09e552d810e9862f90968b968890909",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/taiga-family/taiga-ui-mcp/.github/workflows/release.yml@refs/heads/main",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  }
+ }
+}

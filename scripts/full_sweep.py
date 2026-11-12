@@ -36,6 +36,8 @@ def main():
     from canari.schema import validate_attestation
     from canari.signing import verify_signed
 
+    feed_files = sorted(glob.glob(os.path.join(OUT, "feed", "feed-multi-*.json")))
+    fp_feed_doc = feed_files[-1] if feed_files else None
     cur = json.load(open(os.path.join(OUT, "public_key.json"), encoding="utf-8"))
     old = json.load(open(os.path.join(OUT, "public_key_20261108.json"), encoding="utf-8"))
     keys = [cur, old]
@@ -80,11 +82,34 @@ def main():
         return subprocess.run([PY, "-m"] + args, capture_output=True, text=True,
                               cwd=HERE, encoding="utf-8", errors="replace")
 
-    r = run(["canari.gate_cli", "--store", "out", "--registry", "dsh-registry", "--name", "aegis"])
-    check("cli.gate.review_or_allow", r.returncode in (0, 6), "rc=%d" % r.returncode)
-    r = run(["canari.gate_cli", "--store", "out", "--registry", "dsh-registry",
-             "--name", "deepseek-harness-wallet"])
-    check("cli.gate.block", r.returncode == 5, "rc=%d" % r.returncode)
+    # Pick the samples from the published feed instead of hard-coding component
+    # names. The old hard-coded `aegis` assertion expected ALLOW/REVIEW, but the
+    # store's actual verdict for that component is `unsupported` (gate BLOCK) -
+    # so the check failed on correct behaviour and hid real regressions.
+    feed_doc = json.load(open(fp_feed_doc, encoding="utf-8"))
+    by_v = {}
+    for it in feed_doc.get("items", []):
+        by_v.setdefault(it.get("verdict"), []).append(it)
+    ok_samples = (by_v.get("pass") or by_v.get("pass-with-findings") or [])
+    if ok_samples:
+        smp = ok_samples[0]
+        r = run(["canari.gate_cli", "--store", "out", "--registry", smp["registry"],
+                 "--name", smp["name"]])
+        check("cli.gate.review_or_allow", r.returncode in (0, 6),
+              "%s:%s rc=%d (verdict=%s)" % (smp["registry"], smp["name"],
+                                            r.returncode, smp["verdict"]))
+    else:
+        check("cli.gate.review_or_allow", False, "no pass/pass-with-findings sample in feed")
+    bad_samples = by_v.get("fail") or by_v.get("unsupported") or []
+    if bad_samples:
+        smp = bad_samples[0]
+        r = run(["canari.gate_cli", "--store", "out", "--registry", smp["registry"],
+                 "--name", smp["name"]])
+        check("cli.gate.block", r.returncode == 5,
+              "%s:%s rc=%d (verdict=%s)" % (smp["registry"], smp["name"],
+                                            r.returncode, smp["verdict"]))
+    else:
+        check("cli.gate.block", False, "no fail/unsupported sample in feed")
     r = run(["canari.gate_cli", "--store", "out", "--registry", "npm", "--name", "no-such-xyz"])
     check("cli.gate.notfound", r.returncode == 3, "rc=%d" % r.returncode)
     r = run(["canari.gate_cli", "--store", "out", "--list"])

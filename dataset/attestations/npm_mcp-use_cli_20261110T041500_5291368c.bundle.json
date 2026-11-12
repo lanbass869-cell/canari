@@ -1,1 +1,76 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QG1jcC11c2UvY2xpIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDQ6MTU6MDBaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA0OjE1OjAwWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgIm5hdGl2ZV9wcm92ZW5hbmNlIjogeyJwcmVkaWNhdGVfdHlwZXMiOiBbInYwLjEiLCAidjEiXSwgInByZXNlbnQiOiB0cnVlLCAidjBfcHJlc2VuY2Vfb25seSI6IDEsICJ2MV9lcnJvciI6IG51bGwsICJ2MV9pZGVudGl0eSI6ICJodHRwczovL2dpdGh1Yi5jb20vbWNwLXVzZS9tY3AtdXNlLy5naXRodWIvd29ya2Zsb3dzL3R5cGVzY3JpcHQtcmVsZWFzZS55bWxAcmVmcy9oZWFkcy9tYWluIiwgInYxX3ZlcmlmaWVkIjogdHJ1ZSwgInZlcmlmaWVyIjogInNpZ3N0b3JlLXB5dGhvbi80LjUuMSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjViZjBlOTI0M2UyZmU5NGFlNTNlZWNlZGRlYmIxNTllNjZiNGQwZTQ1M2JhNjMzYTcyZGMwMmFmMmJjN2Q5NzIiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiNzI0MDE4ZDQ0OTc2ZDAxNzYwMjZiNTFhMDA0YzNkZGU1Y2ViMjAxYWMwYzAzZGU1OGJmZjk0ZGY0NzcyN2JiMzEwMmM0ODZiOGM2MzBmODc2MWU2ODI5ZTY4M2U2YzNlZjUzMGYzMzFiMWU3MWIxN2FlZDYyZTQ0YjExNjMwMDEifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICI2NjE4YWFjMjNmNzhkYzdjNTBhNjk2MzQzMWQ4MTFhMjg3NTAzNzZlYWFmMjQyMTQxMDFmZTZkYTE2ZTk1M2JmIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBtY3AtdXNlL2NsaSIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICI1LjAuMCJ9LCAic3VwZXJzZWRlcyI6ICJkMzVjZTdlODBiYjFiNjI1ZjE5MDJhY2I5NGRlNGU4YzQ2NjNiYzNlMDY5M2ViODIxZDQzMmE5NzAyYzZmMmIxIiwgInZlcmRpY3QiOiAicGFzcyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "xwlWhx3aWX5p4kKi3KQKO0+a9zpe2YO/ZtQmhFCSd6e0vokJqCQKUCBpfU1U1cxCitGbaQtLJgTMO7m/9LtYAQ=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@mcp-use/cli", "version": "5.0.0", "registry": "npm", "artifact_sha256": "6618aac23f78dc7c50a6963431d811a28750376eaaf24214101fe6da16e953bf", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@mcp-use/cli"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T04:15:00Z", "generated_at": "2026-11-10T04:15:00Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "c70956871dda597e69e242a2dca40a3b4f9af73a5ed983bf66d42684509277a7b4be8909a8240a5020697d4d54d5cc428ad19b690b4b2604cc3bb9bff4bb5801", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/mcp-use/mcp-use/.github/workflows/typescript-release.yml@refs/heads/main", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}, "supersedes": "d35ce7e80bb1b625f1902acb94de4e8c4663bc3e0693eb821d432a9702c6f2b1"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBtY3AtdXNlL2NsaSJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA0OjE1OjAwWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNDoxNTowMFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL21jcC11c2UvbWNwLXVzZS8uZ2l0aHViL3dvcmtmbG93cy90eXBlc2NyaXB0LXJlbGVhc2UueW1sQHJlZnMvaGVhZHMvbWFpbiIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI1YmYwZTkyNDNlMmZlOTRhZTUzZWVjZWRkZWJiMTU5ZTY2YjRkMGU0NTNiYTYzM2E3MmRjMDJhZjJiYzdkOTcyIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjIyZmIxMjNlYzJhOTkzNTI2OGFiYzFmMDZiZTVlZmNjNTFhZWM2NDM3MWZjYjI4YTNhY2ViMzU5OGU5YzNmYjcxZWQ1Mjg3YWE2ODlmNjc3NGIxZjhjZTE3NGY2MDA0MzU2YjZkODkzNDVmOWMwODQ1Y2FkN2ExZWZkYzRhZDAwIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiNjYxOGFhYzIzZjc4ZGM3YzUwYTY5NjM0MzFkODExYTI4NzUwMzc2ZWFhZjI0MjE0MTAxZmU2ZGExNmU5NTNiZiIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAbWNwLXVzZS9jbGkiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiNS4wLjAifSwgInN1cGVyc2VkZXMiOiAiOTEwM2I2MDgzMWM2YjBiZWJjYzE4OTg5MjlmYWRhYzQ5OWRlMmRlYzM5M2M0ZGNhM2VhOTcyNzNhNmJkZGE5MSIsICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICI2NjE4YWFjMjNmNzhkYzdjNTBhNjk2MzQzMWQ4MTFhMjg3NTAzNzZlYWFmMjQyMTQxMDFmZTZkYTE2ZTk1M2JmIn0sICJuYW1lIjogIm5wbTpAbWNwLXVzZS9jbGlANS4wLjAifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "IyEfcqBz3BP5c/OvcbvX2RvK9o7Vvup9JmgegVDPgfo0AMK5xlTcQYQZYyOPppgjgY2TZidnbfJTkDSddezfDw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@mcp-use/cli",
+   "version": "5.0.0",
+   "registry": "npm",
+   "artifact_sha256": "6618aac23f78dc7c50a6963431d811a28750376eaaf24214101fe6da16e953bf",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@mcp-use/cli"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:15:00Z",
+  "generated_at": "2026-11-10T04:15:00Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "23211f72a073dc13f973f3af71bbd7d91bcaf68ed5beea7d26681e8150cf81fa3400c2b9c654dc41841963238fa69823818d936627676df25390349d75ecdf0f",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/mcp-use/mcp-use/.github/workflows/typescript-release.yml@refs/heads/main",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  },
+  "supersedes": "9103b60831c6b0bebcc1898929fadac499de2dec393c4dca3ea97273a6bdda91"
+ }
+}

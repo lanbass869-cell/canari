@@ -1,1 +1,63 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGF6dXJlL21jcCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE1VDA1OjE5OjQ5WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOFQwNToxOTo0OVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiZTQxMDg3YTQ2Y2U1NGY5NzYxN2ZiMDMxZDM1M2E1MjNlMmE0MmViNzczZDFlMzgxNWJiOTZjOTJkMzY3NGMyNyIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiMjNmYmJkN2YxMTgwNGI5NWY5ODAyMjg4OTU3YjM1YjkyYmM2YTViN2QwZTZkZGQwODNmMjI2MTliYjE4ZjIzMSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJlOTIyODMxNTliZWRkYmQxZTg3OTZiNTlhMjkwZWE4NGZmNzYzYzIzY2RiMDBmODRhMWRkYTRlODQyZGE1NmE1MmZkNWY4MDVhYjNjZTRjMGFkNWUwNWIwNGJlMThkYzExZDk1NjQ4YTk1ZTE4MzQzMDViZjcwOTBjN2VhYTUwYSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjNjZWMzZDZiMDMwMjQyNjdmZDBmYzlkZTI0OThhMDcxZWVhMzRkYjdmYzE2MjM5Y2Y5MWMyZjgzYjM4YTk0ODEiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGF6dXJlL21jcCIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICI0LjAuMC1iZXRhLjYifSwgInZlcmRpY3QiOiAicGFzcyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "gGiRynSrD7K8JJtUHmnI76toHGOTK8SfgA0wFe7fOMhGOxOOoRST8yxZdYwgIeK1P29VJvRYtkYdTolakzDFAw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@azure/mcp", "version": "4.0.0-beta.6", "registry": "npm", "artifact_sha256": "3cec3d6b03024267fd0fc9de2498a071eea34db7fc16239cf91c2f83b38a9481", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@azure/mcp"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-15T05:19:49Z", "generated_at": "2026-11-08T05:19:49Z", "signature": {"envelope": "DSSE", "keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "806891ca74ab0fb2bc249b541e69c8efab681c63932bc49f800d3015eedf38c8463b138ea11493f32c59758c2021e2b53f6f5526f458b6461d4e895a9330c503", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBhenVyZS9tY3AiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNVQwNToxOTo0OVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDhUMDU6MTk6NDlaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImU0MTA4N2E0NmNlNTRmOTc2MTdmYjAzMWQzNTNhNTIzZTJhNDJlYjc3M2QxZTM4MTViYjk2YzkyZDM2NzRjMjciLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiZTk3NWJiMDA4MWEyM2Q1NjkwNDFiZTE3NTk2NzVlODBhMDljN2Y0MDQ0OTVlZDViZDkwNDlmMDE2YjYzNDFmZGJiYzhjNTc3ZjcxMzRjMWMwMzhkY2RiYjZmOGZiNDkyZTg3YWVlMmJjYTYwZmNjZDc2MjI3NzIyNTJlZDFlMDMifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIzY2VjM2Q2YjAzMDI0MjY3ZmQwZmM5ZGUyNDk4YTA3MWVlYTM0ZGI3ZmMxNjIzOWNmOTFjMmY4M2IzOGE5NDgxIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBhenVyZS9tY3AiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiNC4wLjAtYmV0YS42In0sICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICIzY2VjM2Q2YjAzMDI0MjY3ZmQwZmM5ZGUyNDk4YTA3MWVlYTM0ZGI3ZmMxNjIzOWNmOTFjMmY4M2IzOGE5NDgxIn0sICJuYW1lIjogIm5wbTpAYXp1cmUvbWNwQDQuMC4wLWJldGEuNiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "6krMc+ZJ5S//+pYakPRtYpEjDW1nY4L1KIdaEo56inHW+TPmycbxEuck8dJWpCWVhiUKs+m6Wv+DdqAik1exAg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@azure/mcp",
+   "version": "4.0.0-beta.6",
+   "registry": "npm",
+   "artifact_sha256": "3cec3d6b03024267fd0fc9de2498a071eea34db7fc16239cf91c2f83b38a9481",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@azure/mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T05:19:49Z",
+  "generated_at": "2026-11-08T05:19:49Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "ea4acc73e649e52ffffa961a90f46d6291230d6d676382f528875a128e7a8a71d6f933e6c9c6f112e724f1d256a4259586250ab3e9ba5aff8376a0229357b102",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

@@ -1,1 +1,59 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJtY3AtcmVnaXN0cnk6YWUuZGF0YWR1YmFpL2R1YmFpLXJlYWwtZXN0YXRlIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDI6NTE6NThaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDAyOjUxOjU4WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0M2I5NGEzMzA4MjlhZDcyZjAyMTEyY2U3NGMzM2YxNTQ0YjRiYzNhYzA0NThiODJkMzQ0NzExY2YzMThmM2JjIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjBhMDg1N2EzY2FkZmU4ODU5NmY2MjdmY2M0N2E0YWZjZGU3Y2RiMjcwN2Q4MjkwN2E3MDI2YjgxODU5NDNiNzJkNjQyYzI0ZTMwMGIxZTdjMzc0ZjQ0NTdlMmU4NzE1OGExM2NmYTYwYTQzYWUwYmNkNjBmYjYyOTQxOTdmMDAyIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJhZS5kYXRhZHViYWkvZHViYWktcmVhbC1lc3RhdGUiLCAicmVnaXN0cnkiOiAibWNwLXJlZ2lzdHJ5IiwgInZlcnNpb24iOiAiMS4xLjAifSwgInN1cGVyc2VkZXMiOiAiYmQ3ZjdkMDFhODVjYWRjNDM3ZDBlNjg3MjU1MzhjMjMxZTNkZDYxMGY1NTZmZWU0NDU1NjRlM2Q4N2U3OTYwYSIsICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "HVLA+K3sdc3jXcw97G3lw4HFRQ50MWeau/Ec2OVrdZFSs+OoEIvxrfhFFuIuUbFl7+NYDZufJAxOQJytpgIKCw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "ae.datadubai/dubai-real-estate", "version": "1.1.0", "registry": "mcp-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "43b94a330829ad72f02112ce74c33f1544b4bc3ac0458b82d344711cf318f3bc", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["mcp-registry:ae.datadubai/dubai-real-estate"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T02:51:58Z", "generated_at": "2026-11-10T02:51:58Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "1d52c0f8adec75cde35dcc3dec6de5c381c5450e7431679abbf11cd8e56b759152b3e3a8108bf1adf84516e22e51b165efe3580d9b9f240c4e409cada6020a0b", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "bd7f7d01a85cadc437d0e68725538c231e3dd610f556fee445564e3d87e7960a"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsibWNwLXJlZ2lzdHJ5OmFlLmRhdGFkdWJhaS9kdWJhaS1yZWFsLWVzdGF0ZSJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDAyOjUxOjU4WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwMjo1MTo1OFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNDNiOTRhMzMwODI5YWQ3MmYwMjExMmNlNzRjMzNmMTU0NGI0YmMzYWMwNDU4YjgyZDM0NDcxMWNmMzE4ZjNiYyIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJmYTgwY2FkZDZlMjNkZTMwZGQxZTNhYWY5NDFhYjMxNjUzNTZmOWNjY2M2YjQ1M2NkMDhiOTNhYzhiMGVhNWFkMDE5ZWMzMTM0N2I3MzI3ZTIzMTQ1MDQyMWMxYWE3YzFhNjdjOWFkNWJjMDlhZWE2MzMzZmNhZGU3YmFmYjAwNyJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiYWUuZGF0YWR1YmFpL2R1YmFpLXJlYWwtZXN0YXRlIiwgInJlZ2lzdHJ5IjogIm1jcC1yZWdpc3RyeSIsICJ2ZXJzaW9uIjogIjEuMS4wIn0sICJzdXBlcnNlZGVzIjogImUzZDRhOGYwOGQ2ODQxOGQ4OWMwNGQ3Yjg5YzM3YjVmM2Q4ODU5NjQ1MTRiMjI0MzFkMzFhYWI0YmUxN2RjZjQiLCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7ImNhbmFyaS1jb21wb25lbnQtaWQiOiAiNWRkYzNhMmNmYmQ1YThhNmJlMWNhZmMzN2EzYzRmMzM5NTc0ZTAxMTZjOWJkZThiMzVlZTExZWFlYWJlZmVjZCJ9LCAibmFtZSI6ICJtY3AtcmVnaXN0cnk6YWUuZGF0YWR1YmFpL2R1YmFpLXJlYWwtZXN0YXRlQDEuMS4wIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "8Qm/2gwzRXFGWgO0MkqmDxuS0WNDwh8O+M32cbpgaqvJz4FLle1AmjuXRZDgixXdKMhe7moitkHy3pGEjlc4Bg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "ae.datadubai/dubai-real-estate",
+   "version": "1.1.0",
+   "registry": "mcp-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "43b94a330829ad72f02112ce74c33f1544b4bc3ac0458b82d344711cf318f3bc",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "mcp-registry:ae.datadubai/dubai-real-estate"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T02:51:58Z",
+  "generated_at": "2026-11-10T02:51:58Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "f109bfda0c334571465a03b4324aa60f1b92d16343c21f0ef8cdf671ba606aabc9cf814b95ed409a3b974590e08b15dd28c85eee6a22b641f2de91848e573806",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "e3d4a8f08d68418d89c04d7b89c37b5f3d885964514b22431d31aab4be17dcf4"
+ }
+}

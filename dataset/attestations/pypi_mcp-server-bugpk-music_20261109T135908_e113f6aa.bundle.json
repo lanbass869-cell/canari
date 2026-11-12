@@ -1,1 +1,66 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbInB5cGktanNvbjptY3Atc2VydmVyLWJ1Z3BrLW11c2ljIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTZUMTM6NTk6MDhaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA5VDEzOjU5OjA4WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICIwZTVlZDc4YWJmMzdiYjQ1NGE0YzkzYTg1NGEyNjQzYTNkOWMyOTQzMjJkYzBhZWIzNDVmYmZjZmVlZmQ2MDI2IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImExNGVjNDdmYjlkZGVkNGM4YjFmNDU0MDYyNGM1YzY1ZGI3ODJlYjMwYTc5MGI1NmNjOWZmMTZiNTllODMxZTk0M2YxODE1MjU2ZDI2MzY4MjNjMTlkYzRjZmNjNjJjNzg0MDBjODFlYjlkNjFkMzg4M2NhNGRiMmQ5ZjJmYjBjIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiOWRmNTdkNGVmNzc1MDE1YzFiNjJhNmI0NmYzYTViNmMwMWE2MThhNWFmOGY1ZTM2ODM2YzgxNDUxNTZjNTIyMCIsICJob21lcGFnZSI6ICIiLCAibWFpbnRhaW5lcnMiOiBbIk9jZWFuIExpIl0sICJuYW1lIjogIm1jcC1zZXJ2ZXItYnVncGstbXVzaWMiLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjAuMS4xIn0sICJ2ZXJkaWN0IjogInBhc3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "sN4DbmnKaT6t1IHUrxwJMMyyPdyI3u+uUxRVW7Q+G9moklLo2WEd/Hja8C7NB5DjUfI/msXVj/oLVvBgvc2+Bw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "mcp-server-bugpk-music", "version": "0.1.1", "registry": "pypi", "artifact_sha256": "9df57d4ef775015c1b62a6b46f3a5b6c01a618a5af8f5e36836c8145156c5220", "maintainers": ["Ocean Li"], "homepage": ""}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "0e5ed78abf37bb454a4c93a854a2643a3d9c294322dc0aeb345fbfcfeefd6026", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["pypi-json:mcp-server-bugpk-music"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-16T13:59:08Z", "generated_at": "2026-11-09T13:59:08Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "b0de036e69ca693eadd481d4af1c0930ccb23ddc88deefae5314555bb43e1bd9a89252e8d9611dfc78daf02ecd0790e351f23f9ac5d58ffa0b56f060bdcdbe07", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJweXBpLWpzb246bWNwLXNlcnZlci1idWdway1tdXNpYyJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE2VDEzOjU5OjA4WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOVQxMzo1OTowOFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiMGU1ZWQ3OGFiZjM3YmI0NTRhNGM5M2E4NTRhMjY0M2EzZDljMjk0MzIyZGMwYWViMzQ1ZmJmY2ZlZWZkNjAyNiIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI0M2ZiYTJiOTE3ZDFlMGE4ZjMxY2UwZjIzMzU2ZGVhMDI4MWNhOWQxNjgxOTc3YzI5NTQ1ZWQxNjVjY2Y5Nzg4OWMyOTBlNGQ2MDAzMDlmMzUzZDczYzRiMzg5YjM0OWI1MjE1MGE5N2NhY2Y3ODFkOTkyZDIxMGM2MTJlZWUwMCJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjlkZjU3ZDRlZjc3NTAxNWMxYjYyYTZiNDZmM2E1YjZjMDFhNjE4YTVhZjhmNWUzNjgzNmM4MTQ1MTU2YzUyMjAiLCAiaG9tZXBhZ2UiOiAiIiwgIm1haW50YWluZXJzIjogWyJPY2VhbiBMaSJdLCAibmFtZSI6ICJtY3Atc2VydmVyLWJ1Z3BrLW11c2ljIiwgInJlZ2lzdHJ5IjogInB5cGkiLCAidmVyc2lvbiI6ICIwLjEuMSJ9LCAidmVyZGljdCI6ICJwYXNzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJzaGEyNTYiOiAiOWRmNTdkNGVmNzc1MDE1YzFiNjJhNmI0NmYzYTViNmMwMWE2MThhNWFmOGY1ZTM2ODM2YzgxNDUxNTZjNTIyMCJ9LCAibmFtZSI6ICJweXBpOm1jcC1zZXJ2ZXItYnVncGstbXVzaWNAMC4xLjEifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "O/O4Ti/Jv4Og3YiUDCnZa2HL/bl2qp28R36Mr6HRXiHerhT8gKzSU7antJs/tsQYFT0RUfJ31J+XxkR+UHBLBg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-bugpk-music",
+   "version": "0.1.1",
+   "registry": "pypi",
+   "artifact_sha256": "9df57d4ef775015c1b62a6b46f3a5b6c01a618a5af8f5e36836c8145156c5220",
+   "maintainers": [
+    "Ocean Li"
+   ],
+   "homepage": ""
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "0e5ed78abf37bb454a4c93a854a2643a3d9c294322dc0aeb345fbfcfeefd6026",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "pypi-json:mcp-server-bugpk-music"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-16T13:59:08Z",
+  "generated_at": "2026-11-09T13:59:08Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "3bf3b84e2fc9bf83a0dd88940c29d96b61cbfdb976aa9dbc477e8cafa1d15e21deae14fc80acd253b6a7b49b3fb6c418153d1151f277d49f97c6447e50704b06",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

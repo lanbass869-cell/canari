@@ -1,1 +1,76 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QHNub3dsdW1hL21jcCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDAzOjQxOjQzWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwMzo0MTo0M1oiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL1Nub3dMdW1hL1Nub3dMdW1hLy5naXRodWIvd29ya2Zsb3dzL21jcC1ucG0tcHVibGlzaC55bWxAcmVmcy9oZWFkcy9tYWluIiwgInYxX3ZlcmlmaWVkIjogdHJ1ZSwgInZlcmlmaWVyIjogInNpZ3N0b3JlLXB5dGhvbi80LjUuMSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImE3N2Y2ODkzNzJmNjgxZDJmMDkwNjU4NzAxZmQ1NDQ0Y2Y0NWU2MWVkNWQ4MjU0NGNhNTY1MDE5ZjI3MzQ2NzciLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMDVlZDFkYTliMGI3YmZhZWQyN2M3YjZlMzVhNjYyMGFlNjU2MjFjZWRiODY4ZTMwYThkMDI3OWI3NjdhMmYyYjgxNmIzNjM1ODI3MTc4ZmMzMWJkMmFiYmEyYjkxODk2MDY0ODk4NzkxODVjZmVlN2Q2MmVkM2FhNWYzN2U3MGQifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwY2JhOWRiYzViNmNlZjI3NDliMjZkNzBkM2EwNWM5OWRiYWY4OGNjMWU4MzhiYmM4YzIzZmMzZjllOWVjNmU1IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBzbm93bHVtYS9tY3AiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMi40LjIifSwgInN1cGVyc2VkZXMiOiAiMzk2NzY5YmI4ODk3NmIxZDQ2ZThjMzMzYmZkYTExMjI5MDdlZDg1YWJjZDA4Yjg1ZWMxMzIwOTFkYmM4ZjhhMyIsICJ2ZXJkaWN0IjogInBhc3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "McmJcvTOihFCbUYL058fiQlT2Ul4TdTcYLeMSA9l22eYysGSWd5zU5WN6BEEMlWXb960RzGe2eo9jTcJ7QTkCA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@snowluma/mcp", "version": "2.4.2", "registry": "npm", "artifact_sha256": "0cba9dbc5b6cef2749b26d70d3a05c99dbaf88cc1e838bbc8c23fc3f9e9ec6e5", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "a77f689372f681d2f090658701fd5444cf45e61ed5d82544ca565019f2734677", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@snowluma/mcp"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T03:41:43Z", "generated_at": "2026-11-10T03:41:43Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "31c98972f4ce8a11426d460bd39f1f890953d949784dd4dc60b78c480f65db6798cac19259de7353958de811043255976fdeb447319ed9ea3d8d3709ed04e408", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/SnowLuma/SnowLuma/.github/workflows/mcp-npm-publish.yml@refs/heads/main", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}, "supersedes": "396769bb88976b1d46e8c333bfda1122907ed85abcd08b85ec132091dbc8f8a3"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBzbm93bHVtYS9tY3AiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwMzo0MTo0M1oiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDM6NDE6NDNaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAibmF0aXZlX3Byb3ZlbmFuY2UiOiB7InByZWRpY2F0ZV90eXBlcyI6IFsidjAuMSIsICJ2MSJdLCAicHJlc2VudCI6IHRydWUsICJ2MF9wcmVzZW5jZV9vbmx5IjogMSwgInYxX2Vycm9yIjogbnVsbCwgInYxX2lkZW50aXR5IjogImh0dHBzOi8vZ2l0aHViLmNvbS9Tbm93THVtYS9Tbm93THVtYS8uZ2l0aHViL3dvcmtmbG93cy9tY3AtbnBtLXB1Ymxpc2gueW1sQHJlZnMvaGVhZHMvbWFpbiIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJhNzdmNjg5MzcyZjY4MWQyZjA5MDY1ODcwMWZkNTQ0NGNmNDVlNjFlZDVkODI1NDRjYTU2NTAxOWYyNzM0Njc3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjY2ZjRmOTJmNzYyZmRhMWE4ODEzMzcxMjkyMDg3YWYwN2ZmYjYwM2JiNTZlZDZhODU0ZWZhY2EyZjU1NDJlYTc2YzQ1NTY1M2I1NGQ0ZDYyYWJlNjk4Mjk4MmM3MTM3NzJkNzk4ZjdjYzM1ZmY4MDk4YzhkZmY5NzY3MzE4OTBiIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMGNiYTlkYmM1YjZjZWYyNzQ5YjI2ZDcwZDNhMDVjOTlkYmFmODhjYzFlODM4YmJjOGMyM2ZjM2Y5ZTllYzZlNSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAc25vd2x1bWEvbWNwIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjIuNC4yIn0sICJzdXBlcnNlZGVzIjogImRmZTM3Yzg2NjFkMWZlZDJmNTQ1YmU5MzM3MGJjMTQ2MzQ4MTNjOTA1NTc0MzNmYzM3NmIzY2FiODBmYWUzOGQiLCAidmVyZGljdCI6ICJwYXNzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJzaGEyNTYiOiAiMGNiYTlkYmM1YjZjZWYyNzQ5YjI2ZDcwZDNhMDVjOTlkYmFmODhjYzFlODM4YmJjOGMyM2ZjM2Y5ZTllYzZlNSJ9LCAibmFtZSI6ICJucG06QHNub3dsdW1hL21jcEAyLjQuMiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "C2pBsbkGn+eMawn2SEhK6LTiuaZTPTuv+XDt3nLbaFPghL/KhPqqL/aAWL80laU2ZAsjgHzUVtncJxbHzG4xAw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@snowluma/mcp",
+   "version": "2.4.2",
+   "registry": "npm",
+   "artifact_sha256": "0cba9dbc5b6cef2749b26d70d3a05c99dbaf88cc1e838bbc8c23fc3f9e9ec6e5",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "a77f689372f681d2f090658701fd5444cf45e61ed5d82544ca565019f2734677",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@snowluma/mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T03:41:43Z",
+  "generated_at": "2026-11-10T03:41:43Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "0b6a41b1b9069fe78c6b09f648484ae8b4e2b9a6533d3baff970edde72db6853e084bfca84faaa2ff68058bf3495a536640b23807cd456d9dc2716c7cc6e3103",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/SnowLuma/SnowLuma/.github/workflows/mcp-npm-publish.yml@refs/heads/main",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  },
+  "supersedes": "dfe37c8661d1fed2f545be93370bc14634813c90557433fc376b3cab80fae38d"
+ }
+}

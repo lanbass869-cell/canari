@@ -1,1 +1,58 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJtY3AtcmVnaXN0cnk6YWdlbmN5Lm90dG9ib3QvYnVzaW5lc3MtY29udGFjdC1maW5kZXIiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNlQxNDoyNTo0MVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDlUMTQ6MjU6NDFaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImI2MDM4ZjE2OTAyYzRjNGYwMjFhZDA2MzVmOWIzMWJmNTRiNGQ1Mzk3MmFmMjE4MGQ3NzIyNGNhNzZkZGUxMTQiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMDMwY2E5ZjA0MDgyNTNlNTA3MDJiYTlkMTVlOTgzNjIyOTE4ZjVmZDU1NjczNDYwZDEyNjdhNzU3YzQ2ZmY3MjQ1OWNjOTA1NmNlY2E3NDk1NjhhY2UyYjdlZTM0ZTkzYWZhYTBmYjdiMmUxNTBiNWEyMTU0YmMwZjM4NGY1MGYifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogImFnZW5jeS5vdHRvYm90L2J1c2luZXNzLWNvbnRhY3QtZmluZGVyIiwgInJlZ2lzdHJ5IjogIm1jcC1yZWdpc3RyeSIsICJ2ZXJzaW9uIjogIjAuMi4wIn0sICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "aADOzOsp6jHDGPbSQktcHe8DQQmyI39lRfjUb/Pz6s8N+dSvxdwGElml6BbQwQunctZ/bqJ+qYNVioOQhtYWBA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "agency.ottobot/business-contact-finder", "version": "0.2.0", "registry": "mcp-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "b6038f16902c4c4f021ad0635f9b31bf54b4d53972af2180d77224ca76dde114", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["mcp-registry:agency.ottobot/business-contact-finder"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-16T14:25:41Z", "generated_at": "2026-11-09T14:25:41Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "6800cecceb29ea31c318f6d2424b5c1def034109b2237f6545f8d46ff3f3eacf0df9d4afc5dc061259a5e816d0c10ba772d67f6ea27ea983558a839086d61604", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsibWNwLXJlZ2lzdHJ5OmFnZW5jeS5vdHRvYm90L2J1c2luZXNzLWNvbnRhY3QtZmluZGVyIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTZUMTQ6MjU6NDFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA5VDE0OjI1OjQxWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJiNjAzOGYxNjkwMmM0YzRmMDIxYWQwNjM1ZjliMzFiZjU0YjRkNTM5NzJhZjIxODBkNzcyMjRjYTc2ZGRlMTE0IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImZlMjMxMWYxZjIxNmViNzA0NDk4ZmNjYzBiNTRkOGY5MWEwYzFkM2U0ZDdlN2U1YTFjMTNiOWE1MWVkOWI5Y2RjZjY2YzI1MGI0N2Y1YWI2YTg0NjkxMWE0Nzc1N2U2YWY4MzIzNzAyZmMwNDBhMTdhYWI5YmY5NGNmYzYwOTA2In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJhZ2VuY3kub3R0b2JvdC9idXNpbmVzcy1jb250YWN0LWZpbmRlciIsICJyZWdpc3RyeSI6ICJtY3AtcmVnaXN0cnkiLCAidmVyc2lvbiI6ICIwLjIuMCJ9LCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7ImNhbmFyaS1jb21wb25lbnQtaWQiOiAiYjBlMWY3NWQ2ZTlhMzAyZTdmOGZmNWM1MGNiNDE4NzQ4OTM4MzcxZmY5ZTgwYzFiMTAyY2JhZDVlYTVjZDM4NyJ9LCAibmFtZSI6ICJtY3AtcmVnaXN0cnk6YWdlbmN5Lm90dG9ib3QvYnVzaW5lc3MtY29udGFjdC1maW5kZXJAMC4yLjAifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "XWNmA87N6VubSJ6URkZ5OdFEvczRVye843BqGiU5ndBf4wv6LaV231Dyksa/DwkhFfpW7cnhDXeMDabz8P4zDA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "agency.ottobot/business-contact-finder",
+   "version": "0.2.0",
+   "registry": "mcp-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "b6038f16902c4c4f021ad0635f9b31bf54b4d53972af2180d77224ca76dde114",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "mcp-registry:agency.ottobot/business-contact-finder"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-16T14:25:41Z",
+  "generated_at": "2026-11-09T14:25:41Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "5d636603cecde95b9b489e9446467939d144bdccd15727bce3706a1a25399dd05fe30bfa2da576df50f292c6bf0f092115fa56edc9e10d778c0da6f3f0fe330c",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

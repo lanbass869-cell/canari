@@ -1,1 +1,63 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGFnaW1vbi1haS9wby1sb2dzaW5rIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTVUMDY6MTY6MDBaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA4VDA2OjE2OjAwWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJlNDEwODdhNDZjZTU0Zjk3NjE3ZmIwMzFkMzUzYTUyM2UyYTQyZWI3NzNkMWUzODE1YmI5NmM5MmQzNjc0YzI3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICIyM2ZiYmQ3ZjExODA0Yjk1Zjk4MDIyODg5NTdiMzViOTJiYzZhNWI3ZDBlNmRkZDA4M2YyMjYxOWJiMThmMjMxIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImNkZDdlODNiNzM0MjVlZmUzMmRlMWM0NGQ5NTYyZTY3MzMwOWVkNzJiOTQyNTA3YmI4YzE5OTYyOGU0YjBiMWQ4MGE3OGE0MDI0YmJiYjg1MzJhNzRiMTY3NTY2OWMwNjY2ZGNiZGQ4M2NhZjA0NzZkZjJkZDU5YzczYTQ5YjAyIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiYjFhOGMzNGEwMzU2NjBhMDNmOTdlM2I3ZmQ1M2EyYjQ0MjRkOGQ1ODBmNzFmZDcwNWZhY2YyMDEwMjA2YjYxMSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAYWdpbW9uLWFpL3BvLWxvZ3NpbmsiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMC4wLjEtYWxwaGEuMTA2In0sICJ2ZXJkaWN0IjogInBhc3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "SsuqWqiRU/5d3SX8SIRFAYIbe/ko/JsCk1VGsLaAKcnOM8CdHsVN0fxQgStykMdODfT6RoezHpsxGfkvFx69BA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@agimon-ai/po-logsink", "version": "0.0.1-alpha.106", "registry": "npm", "artifact_sha256": "b1a8c34a035660a03f97e3b7fd53a2b4424d8d580f71fd705facf2010206b611", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@agimon-ai/po-logsink"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-15T06:16:00Z", "generated_at": "2026-11-08T06:16:00Z", "signature": {"envelope": "DSSE", "keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "4acbaa5aa89153fe5ddd25fc48844501821b7bf928fc9b02935546b0b68029c9ce33c09d1ec54dd1fc50812b7290c74e0df4fa4687b31e9b3119f92f171ebd04", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBhZ2ltb24tYWkvcG8tbG9nc2luayJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE1VDA2OjE2OjAwWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOFQwNjoxNjowMFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiZTQxMDg3YTQ2Y2U1NGY5NzYxN2ZiMDMxZDM1M2E1MjNlMmE0MmViNzczZDFlMzgxNWJiOTZjOTJkMzY3NGMyNyIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICIwM2ExYzZkNWIwNWE4ZWUyZmE4MzYzNGUzODIwNThhZDVjYjY5Y2JmM2QzMWRiOThkZGZkMWQ0NmRlNTg2MGVkOWFiOTAwZjRiZmEwYTkxZTcxZjAxNmViMjljYWFlZGJmM2Y2NGY3ZGIyODQ4ZWU1MTlhZmIwYjI5YTUwZDkwMyJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogImIxYThjMzRhMDM1NjYwYTAzZjk3ZTNiN2ZkNTNhMmI0NDI0ZDhkNTgwZjcxZmQ3MDVmYWNmMjAxMDIwNmI2MTEiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGFnaW1vbi1haS9wby1sb2dzaW5rIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjAuMC4xLWFscGhhLjEwNiJ9LCAidmVyZGljdCI6ICJwYXNzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJzaGEyNTYiOiAiYjFhOGMzNGEwMzU2NjBhMDNmOTdlM2I3ZmQ1M2EyYjQ0MjRkOGQ1ODBmNzFmZDcwNWZhY2YyMDEwMjA2YjYxMSJ9LCAibmFtZSI6ICJucG06QGFnaW1vbi1haS9wby1sb2dzaW5rQDAuMC4xLWFscGhhLjEwNiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "+qZIocs6xMwW7i7ow/BHKAoL0E47XlAd4x6Bj9bL6bekJeJpC5/qGSKaCgYoMkdJhwFtOwCEnPon1wRgmsP8Cw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@agimon-ai/po-logsink",
+   "version": "0.0.1-alpha.106",
+   "registry": "npm",
+   "artifact_sha256": "b1a8c34a035660a03f97e3b7fd53a2b4424d8d580f71fd705facf2010206b611",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@agimon-ai/po-logsink"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T06:16:00Z",
+  "generated_at": "2026-11-08T06:16:00Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "faa648a1cb3ac4cc16ee2ee8c3f047280a0bd04e3b5e501de31e818fd6cbe9b7a425e2690b9fea19229a0a062832474987016d3b00849cfa27d704609ac3fc0b",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

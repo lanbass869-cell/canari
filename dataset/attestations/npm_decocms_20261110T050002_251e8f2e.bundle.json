@@ -1,1 +1,76 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6ZGVjb2NtcyJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA1OjAwOjAyWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNTowMDowMloiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL2RlY29jbXMvc3R1ZGlvLy5naXRodWIvd29ya2Zsb3dzL3JlbGVhc2Utc3R1ZGlvLnlhbWxAcmVmcy9oZWFkcy9tYWluIiwgInYxX3ZlcmlmaWVkIjogdHJ1ZSwgInZlcmlmaWVyIjogInNpZ3N0b3JlLXB5dGhvbi80LjUuMSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjRlYTVlZDk1ZDg2YzU5Y2Y2N2Y1YTk1NTQ5NzFlYjhiNGMyY2M4OTAxYWYxMWFiM2E0OWE3YmM5MzM0YTlhOTUiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiZjlmOWFiNDdlZmRmYTQyMTUzMGZmYzYxOTZkNWUyN2Q1NmUxMjRhNzdkNDMyZDZjMjJkMzBhN2I0NjkyMGIzZGQ1NzBmN2YxYjI2N2I5YTljYmNiNjA0NDM0MjM2MDJkMTk2ZmNjMjM5ZjA3OTEwYTg5YTkzY2QyNTliYmU3MDUifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJhNmY0ZmUwMDc0MmE4NGQ1OTc4NTIxOWY4MTJkN2M0YTYyYmQ0MjI2YjQxOTk5NWY5MDNkOGIxNGRlMTYxZTg0IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogImRlY29jbXMiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiNC41NjAuMyJ9LCAic3VwZXJzZWRlcyI6ICJlOGM4NTI3OWRlNmVhOWRkMjY4NGU3MmNhNzAzNDlhNGVmOTYxYzc5ODI4NjQwZjJlZDI1MzcyNDViYTRlN2Q5IiwgInZlcmRpY3QiOiAicGFzcyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "8ydVEbIHcK62neYGOzpgAsrJ/cNWSA76tuN/wsfxj8nJ51wm3wd3dmVjO5vyee10Tnvqkxpp4GgQI68MGld1Cw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "decocms", "version": "4.560.3", "registry": "npm", "artifact_sha256": "a6f4fe00742a84d59785219f812d7c4a62bd4226b419995f903d8b14de161e84", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:decocms"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T05:00:02Z", "generated_at": "2026-11-10T05:00:02Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "f3275511b20770aeb69de6063b3a6002cac9fdc356480efab6e37fc2c7f18fc9c9e75c26df07777665633b9bf279ed744e7bea931a69e0681023af0c1a57750b", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/decocms/studio/.github/workflows/release-studio.yaml@refs/heads/main", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}, "supersedes": "e8c85279de6ea9dd2684e72ca70349a4ef961c79828640f2ed2537245ba4e7d9"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OmRlY29jbXMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNTowMDowMloiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDU6MDA6MDJaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAibmF0aXZlX3Byb3ZlbmFuY2UiOiB7InByZWRpY2F0ZV90eXBlcyI6IFsidjAuMSIsICJ2MSJdLCAicHJlc2VudCI6IHRydWUsICJ2MF9wcmVzZW5jZV9vbmx5IjogMSwgInYxX2Vycm9yIjogbnVsbCwgInYxX2lkZW50aXR5IjogImh0dHBzOi8vZ2l0aHViLmNvbS9kZWNvY21zL3N0dWRpby8uZ2l0aHViL3dvcmtmbG93cy9yZWxlYXNlLXN0dWRpby55YW1sQHJlZnMvaGVhZHMvbWFpbiIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0ZWE1ZWQ5NWQ4NmM1OWNmNjdmNWE5NTU0OTcxZWI4YjRjMmNjODkwMWFmMTFhYjNhNDlhN2JjOTMzNGE5YTk1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjRiM2VmMDI5NDVhMDA3OWY3MGFhOTdhNmE0ZTY4YTQyNTY3YzY4NTI0NmIzYTYzYmNkOTU1YWM4NmUyMjMwMGM3MzBmODNkNjM0MzdkNDFiNmUzZDI2YzRmZDA5NjVmYjZjZTgzYTIxYzgxOGUzNDYzNTZjZWRiMTlmYTdkNjAzIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiYTZmNGZlMDA3NDJhODRkNTk3ODUyMTlmODEyZDdjNGE2MmJkNDIyNmI0MTk5OTVmOTAzZDhiMTRkZTE2MWU4NCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJkZWNvY21zIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjQuNTYwLjMifSwgInN1cGVyc2VkZXMiOiAiOGJhOGQzNDBjMjE0ZjJlMjg4ODk1NTAzMzcwYjhmNGU3MTU3MGJjNjI1ZDlmYmQxMDU4NjI5ODRmZTEyNWYxNCIsICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICJhNmY0ZmUwMDc0MmE4NGQ1OTc4NTIxOWY4MTJkN2M0YTYyYmQ0MjI2YjQxOTk5NWY5MDNkOGIxNGRlMTYxZTg0In0sICJuYW1lIjogIm5wbTpkZWNvY21zQDQuNTYwLjMifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "ZTCSsjLOJKCJwkbgfC+3j2aO+rhzwvxYYwC/QFacbgsO7SIY/xHJ7HMJPP8WRFBH/wBiD0qkWETuU5wjTm7vAQ=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "decocms",
+   "version": "4.560.3",
+   "registry": "npm",
+   "artifact_sha256": "a6f4fe00742a84d59785219f812d7c4a62bd4226b419995f903d8b14de161e84",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:decocms"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:00:02Z",
+  "generated_at": "2026-11-10T05:00:02Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "653092b232ce24a089c246e07c2fb78f668efab873c2fc586300bf40569c6e0b0eed2218ff11c9ec73093cff16445047ff00620f4aa45844ee539c234e6eef01",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/decocms/studio/.github/workflows/release-studio.yaml@refs/heads/main",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  },
+  "supersedes": "8ba8d340c214f2e288895503370b8f4e71570bc625d9fbd105862984fe125f14"
+ }
+}

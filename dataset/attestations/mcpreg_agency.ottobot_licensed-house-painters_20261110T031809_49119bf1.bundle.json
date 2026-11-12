@@ -1,1 +1,59 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJtY3AtcmVnaXN0cnk6YWdlbmN5Lm90dG9ib3QvbGljZW5zZWQtaG91c2UtcGFpbnRlcnMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwMzoxODowOVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDM6MTg6MDlaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImIyYTE2NWUyMTY1NDRjNDRkMDM3MWQ4N2NjNTU0NzFiOGE2ZDRjNWEwODA0MWU1NmU4OWU1OTNiZDUzZjBjNDQiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiNzE3NzExZjQyYzFjM2YwMDE3NjFlNjdjZTZlNzZiNjVmMTFhODc1YTA1MTI4MzI2YzM2MDYzMGQzZTNiMDQyM2U4N2RlNzFiYTlhYzYzNGRhY2Y3ZDk5NzA5NDQxNzBhODc4NzlkOGUwODhjYWYyMGYzMTgxZmViZTM3Y2JlMDUifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogImFnZW5jeS5vdHRvYm90L2xpY2Vuc2VkLWhvdXNlLXBhaW50ZXJzIiwgInJlZ2lzdHJ5IjogIm1jcC1yZWdpc3RyeSIsICJ2ZXJzaW9uIjogIjAuMS4zIn0sICJzdXBlcnNlZGVzIjogImY1OTM3MjYwY2IwMmYwZTgxZTY3ZTlkZGY2YzI4MzU4NDU5YzVmNzVhNWFjMTUxY2RhNmU0MTMxMDc5MWRlMjIiLCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "CXrj2BDstvDaE28cNwnI81CiOSMtvwcWdQ+m3IkrBHxWigVLKAU1j7PIJbwS+T/IaZkZlItdR2t7piJTGXMNCg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "agency.ottobot/licensed-house-painters", "version": "0.1.3", "registry": "mcp-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "b2a165e216544c44d0371d87cc55471b8a6d4c5a08041e56e89e593bd53f0c44", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["mcp-registry:agency.ottobot/licensed-house-painters"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T03:18:09Z", "generated_at": "2026-11-10T03:18:09Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "097ae3d810ecb6f0da136f1c3709c8f350a239232dbf0716750fa6dc892b047c568a054b2805358fb3c825bc12f93fc8699919948b5d476b7ba6225319730d0a", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "f5937260cb02f0e81e67e9ddf6c28358459c5f75a5ac151cda6e41310791de22"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsibWNwLXJlZ2lzdHJ5OmFnZW5jeS5vdHRvYm90L2xpY2Vuc2VkLWhvdXNlLXBhaW50ZXJzIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDM6MTg6MDlaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDAzOjE4OjA5WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJiMmExNjVlMjE2NTQ0YzQ0ZDAzNzFkODdjYzU1NDcxYjhhNmQ0YzVhMDgwNDFlNTZlODllNTkzYmQ1M2YwYzQ0IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImMzNWExMTIzYWYzYmQ5YzE5MTEzMjAyODQ3MzY1OTI5ZmJiMmUwY2Y5MGJhMGUxNGRjYWY3MDkyODRkMTBhMjBjNzgxZGIzYzg1NjA0YWViYzcwOGJkNDc0MTI5ZDViY2E4NTY0NTE3Yzg4M2YwYzkyMWMyOTY4NGYxYWQ0MTBiIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJhZ2VuY3kub3R0b2JvdC9saWNlbnNlZC1ob3VzZS1wYWludGVycyIsICJyZWdpc3RyeSI6ICJtY3AtcmVnaXN0cnkiLCAidmVyc2lvbiI6ICIwLjEuMyJ9LCAic3VwZXJzZWRlcyI6ICI3ZjBmYWI3YWRhYjhlY2QzZTlkMmQ3NDE4OTg0Y2YzOTE0YjBhMDNlMWRkOWYxYzRlMjYzYWQyYTAwNTY5YjAzIiwgInZlcmRpY3QiOiAicGFzcy13aXRoLWZpbmRpbmdzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJjYW5hcmktY29tcG9uZW50LWlkIjogIjQ3ZjE0ODc3ODcyYzcyYjdkZWZlNjA0MDNjOGJiNjQ5NmZiMDRiZGYwNjRhZmYwOTBkOGU1NmNlZmZkOGQzYjkifSwgIm5hbWUiOiAibWNwLXJlZ2lzdHJ5OmFnZW5jeS5vdHRvYm90L2xpY2Vuc2VkLWhvdXNlLXBhaW50ZXJzQDAuMS4zIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "PAaZHRYvRtjPESxEhcv6IXyK2y8jSlHXfEsRN6+6p8mJoIvypBGVaLmAwWciQqjCuJFg75LwikrjM0to+6TTCA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "agency.ottobot/licensed-house-painters",
+   "version": "0.1.3",
+   "registry": "mcp-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "b2a165e216544c44d0371d87cc55471b8a6d4c5a08041e56e89e593bd53f0c44",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "mcp-registry:agency.ottobot/licensed-house-painters"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T03:18:09Z",
+  "generated_at": "2026-11-10T03:18:09Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "3c06991d162f46d8cf112c4485cbfa217c8adb2f234a51d77c4b1137afbaa7c989a08bf2a4119568b980c1672242a8c2b89160ef92f08a4ae3334b68fba4d308",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "7f0fab7adab8ecd3e9d2d7418984cf3914b0a03e1dd9f1c4e263ad2a00569b03"
+ }
+}

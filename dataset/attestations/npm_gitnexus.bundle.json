@@ -1,1 +1,63 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6Z2l0bmV4dXMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNVQwNjowMzozMVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDhUMDY6MDM6MzFaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImU0MTA4N2E0NmNlNTRmOTc2MTdmYjAzMWQzNTNhNTIzZTJhNDJlYjc3M2QxZTM4MTViYjk2YzkyZDM2NzRjMjciLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogIjIzZmJiZDdmMTE4MDRiOTVmOTgwMjI4ODk1N2IzNWI5MmJjNmE1YjdkMGU2ZGRkMDgzZjIyNjE5YmIxOGYyMzEiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMGZjOTY5YmQ5ZDkzYzhmNGZmZmZjOWZiYzlkOWUzM2NiNDkxMGIyMjhhNmUyNzNjNTNiNmY2N2ExYTBhZDcxMWQwOTQ4ZjlhNjdiM2YzYjY0OWQzMmI5OWE1N2I1YzU5M2I5YTkwMjkxMWU1OTAxNjdlZjhmNzEwYzE3OGFjMGIifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICI5NjM5MWE2ZDY2ZDQ0OGJmMDk3ODA4NDk1MWU5Y2VlMzdlNTQzYjc1ZTQ0NWNmOWFkMmNkMTM1OGQ3ZDE0MWUxIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogImdpdG5leHVzIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjEuNi4xMiJ9LCAidmVyZGljdCI6ICJwYXNzIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "dJpusaw0CoaWF3XsMLKD7C2Xk5lntt1eUDlI5axSreqYOqTDHpBHJr5iFLlLyJMe1A8xdQnPXA4axjpRg8R3Cw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "gitnexus", "version": "1.6.12", "registry": "npm", "artifact_sha256": "96391a6d66d448bf0978084951e9cee37e543b75e445cf9ad2cd1358d7d141e1", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:gitnexus"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-15T06:03:31Z", "generated_at": "2026-11-08T06:03:31Z", "signature": {"envelope": "DSSE", "keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "749a6eb1ac340a86961775ec30b283ec2d97939967b6dd5e503948e5ac52adea983aa4c31e904726be6214b94bc8931ed40f317509cf5c0e1ac63a5183c4770b", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OmdpdG5leHVzIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTVUMDY6MDM6MzFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA4VDA2OjAzOjMxWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJlNDEwODdhNDZjZTU0Zjk3NjE3ZmIwMzFkMzUzYTUyM2UyYTQyZWI3NzNkMWUzODE1YmI5NmM5MmQzNjc0YzI3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImY1MjE4MmY2N2UyZTUwNmMyNjJiOWE2NzIzNTc4NDI4NmQ1MDE4ZWU1NjIyYTQxOGJlMGVmMThiNWY4ZDUxMTg4YzM1MmU3Mjc0MDk2NDUyYmFlOWYzYzAzZWFhMTA0YTI5MWQxN2ZlMWM2Zjk3MWVlZmE1ZjBkZDAwMTliMzAzIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiOTYzOTFhNmQ2NmQ0NDhiZjA5NzgwODQ5NTFlOWNlZTM3ZTU0M2I3NWU0NDVjZjlhZDJjZDEzNThkN2QxNDFlMSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJnaXRuZXh1cyIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIxLjYuMTIifSwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogIjk2MzkxYTZkNjZkNDQ4YmYwOTc4MDg0OTUxZTljZWUzN2U1NDNiNzVlNDQ1Y2Y5YWQyY2QxMzU4ZDdkMTQxZTEifSwgIm5hbWUiOiAibnBtOmdpdG5leHVzQDEuNi4xMiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "Tt4dpDrkSb6ligaEpE2uCRASA7XsKxf3NBBxbrgQpcBhNuyjac4B1ZJUyhr0c6htcanTJ7+8Z9vzPzMm3bkbAA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "gitnexus",
+   "version": "1.6.12",
+   "registry": "npm",
+   "artifact_sha256": "96391a6d66d448bf0978084951e9cee37e543b75e445cf9ad2cd1358d7d141e1",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:gitnexus"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T06:03:31Z",
+  "generated_at": "2026-11-08T06:03:31Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "4ede1da43ae449bea58a0684a44dae09101203b5ec2b17f73410716eb810a5c06136eca369ce01d59254ca1af473a86d71a9d327bfbc67dbf33f3326ddb91b00",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

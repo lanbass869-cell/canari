@@ -13,7 +13,7 @@ Named after the canary in the coal mine: the first to detect that something went
 ## What it does
 
 1. **Weekly scan** of agent component ecosystems (npm, PyPI, MCP Registry, dsh.so)
-2. Each component gets a **signed attestation** (DSSE/in-toto, ed25519) binding: artifact hash + host version + scan scenario
+2. Each component gets a **signed attestation**: DSSE/Ed25519 envelope whose payload is an **in-toto Statement v1** (`subject[]` with `digest.sha256`, `predicateType`, `predicate`) binding: artifact hash + host version + scan scenario. Readable by GUAC / cosign / slsa-verifier without Canari-specific code.
 3. Attestations are **offline-verifiable** by anyone with the public key
 4. History is **never deleted** - version changes create supersession chains
 5. Public **machine-readable feed** for any AI agent or host to consume

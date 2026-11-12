@@ -1,1 +1,64 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGdvbmdyemhlL3NlcnZlci1nbWFpbC1hdXRvYXV0aC1tY3AiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNTowMzowMFoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDU6MDM6MDBaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjRlYTVlZDk1ZDg2YzU5Y2Y2N2Y1YTk1NTQ5NzFlYjhiNGMyY2M4OTAxYWYxMWFiM2E0OWE3YmM5MzM0YTlhOTUiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMzgyOTYwNWIzZDE3ODlkMjA0MTBlZGI1NzAzYTg4YzllZjBhNWU5OGExMmFlYzJlNDJiMGEwZmI2MjBiNDQ2MTJmYTc4OTk1YzU2NGZiMTI5ZWY5YWJjNzhiMzlhNGUyNTIxMmM2M2I5MTEwOTY0YjBjNGE3MWU5M2FiNTZhMDEifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJlZjMzYWMwZWE3ZjBjZTM4MjU0ODYzYTNlMzQwNjc5OTUwMTZmMWUwYmQxNjgxYzMxY2Q1YzZjODAxNDQwMzVhIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBnb25ncnpoZS9zZXJ2ZXItZ21haWwtYXV0b2F1dGgtbWNwIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjEuMS4xMSJ9LCAic3VwZXJzZWRlcyI6ICI2NGY0OGE2ZTc2NjlmNjJmNGNkZWY5NTU3NTljYmU5NjE4M2MxODdiNjVlZTQwODY4YzA5Nzg2OWMyNWIzMGU4IiwgInZlcmRpY3QiOiAicGFzcyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "9ZeqHM28Fy0kumzYkO1FoEQD4eQ7TOp7F60TmPipUUqCk9XAwW9NxlQCcKxQ0sgKVjtj2tuF6rWOJX8EdPxzBA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@gongrzhe/server-gmail-autoauth-mcp", "version": "1.1.11", "registry": "npm", "artifact_sha256": "ef33ac0ea7f0ce38254863a3e34067995016f1e0bd1681c31cd5c6c80144035a", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@gongrzhe/server-gmail-autoauth-mcp"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T05:03:00Z", "generated_at": "2026-11-10T05:03:00Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "f597aa1ccdbc172d24ba6cd890ed45a04403e1e43b4cea7b17ad1398f8a9514a8293d5c0c16f4dc6540270ac50d2c80a563b63dadb85eab58e257f0474fc7304", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "64f48a6e7669f62f4cdef955759cbe96183c187b65ee40868c097869c25b30e8"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBnb25ncnpoZS9zZXJ2ZXItZ21haWwtYXV0b2F1dGgtbWNwIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDU6MDM6MDBaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA1OjAzOjAwWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0ZWE1ZWQ5NWQ4NmM1OWNmNjdmNWE5NTU0OTcxZWI4YjRjMmNjODkwMWFmMTFhYjNhNDlhN2JjOTMzNGE5YTk1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjg3YmE5NzBlNzU4M2Q0MGE1N2MwMzAwZmUxYmVkZTAxYmYwMjk3N2I0MGQwODQzN2UxZjU2ODQ5MjBlZGIyYWRhOGZhMzNiNzQ1NzcxMmViMWI0YmJjZTBhOTljNGFlOWRkYTUyZjNmZDVmNzZhZDFmN2MyNThkNjNmYjkxYzBiIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiZWYzM2FjMGVhN2YwY2UzODI1NDg2M2EzZTM0MDY3OTk1MDE2ZjFlMGJkMTY4MWMzMWNkNWM2YzgwMTQ0MDM1YSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAZ29uZ3J6aGUvc2VydmVyLWdtYWlsLWF1dG9hdXRoLW1jcCIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIxLjEuMTEifSwgInN1cGVyc2VkZXMiOiAiMmRjNzdlNzZmY2E0YjMxODVhZDlkNDBkMGFlNmZjYjc0ZjBjN2MxNThmMWU3MjU4YmI5Y2Y4M2IyZjUyMDUxYSIsICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICJlZjMzYWMwZWE3ZjBjZTM4MjU0ODYzYTNlMzQwNjc5OTUwMTZmMWUwYmQxNjgxYzMxY2Q1YzZjODAxNDQwMzVhIn0sICJuYW1lIjogIm5wbTpAZ29uZ3J6aGUvc2VydmVyLWdtYWlsLWF1dG9hdXRoLW1jcEAxLjEuMTEifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "oKt7s+KDinEI3CPHN/NsYdpZs1jNKkT8OnBOWIDQtDApRVv5b5LLwLPIW5uSX8HYQ4etOg5PcV74ZkcmIk1uDw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@gongrzhe/server-gmail-autoauth-mcp",
+   "version": "1.1.11",
+   "registry": "npm",
+   "artifact_sha256": "ef33ac0ea7f0ce38254863a3e34067995016f1e0bd1681c31cd5c6c80144035a",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@gongrzhe/server-gmail-autoauth-mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:03:00Z",
+  "generated_at": "2026-11-10T05:03:00Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "a0ab7bb3e2838a7108dc23c737f36c61da59b358cd2a44fc3a704e5880d0b43029455bf96f92cbc0b3c85b9b925fc1d84387ad3a0e4f715ef8664726224d6e0f",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "2dc77e76fca4b3185ad9d40d0ae6fcb74f0c7c158f1e7258bb9cf83b2f52051a"
+ }
+}

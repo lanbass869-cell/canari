@@ -1,1 +1,76 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QG5leHQtYWktZHJhd2lvL21jcC1zZXJ2ZXIiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwMzo0NTo0NFoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDM6NDU6NDRaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAibmF0aXZlX3Byb3ZlbmFuY2UiOiB7InByZWRpY2F0ZV90eXBlcyI6IFsidjAuMSIsICJ2MSJdLCAicHJlc2VudCI6IHRydWUsICJ2MF9wcmVzZW5jZV9vbmx5IjogMSwgInYxX2Vycm9yIjogbnVsbCwgInYxX2lkZW50aXR5IjogImh0dHBzOi8vZ2l0aHViLmNvbS9EYXl1YW5KaWFuZy9uZXh0LWFpLWRyYXctaW8vLmdpdGh1Yi93b3JrZmxvd3MvcHVibGlzaC1tY3AueW1sQHJlZnMvaGVhZHMvbWFpbiIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJhNzdmNjg5MzcyZjY4MWQyZjA5MDY1ODcwMWZkNTQ0NGNmNDVlNjFlZDVkODI1NDRjYTU2NTAxOWYyNzM0Njc3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImJkNzE2MGJiMGUzODYyNTg5M2IzYTUwOTIwY2YwYmEyOWEwNDA5MWMyNDQ4YmFmYzkyOWZkOWFlYmZjOGJmMDRmYzMxZWVjYjVjMDRhOTllYTY2MzkzZjFkZTFjZGZkNGUxNTVhNmVjMGY4OWNjZjBlY2M1NGZlMzI0YzEwMDBmIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiOTEzMjI1MmZlYWVhZTE4ZTNiODAwZGJmNzY2MDUyYWI5MmNmYjRkNzcxYmVmYTlhNGVlMGI0ZTc1Mzk2OWI3NiIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAbmV4dC1haS1kcmF3aW8vbWNwLXNlcnZlciIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIwLjQuMTMifSwgInN1cGVyc2VkZXMiOiAiNGQyMDIwNjAyYjljNjNhOGQ1YWU5NmY5ODZkMmY1ZGMxMmE0MDAyN2VjZDJkZDIyMjBiZTg0ZGZiZDZhZWI3MSIsICJ2ZXJkaWN0IjogInBhc3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "DOxEDYREta5VZkAzdHRdoPcfe14e+xobU7Zg0pu4lkoov+eKB/F/avg/m7XWKWlz6em9eQC5mMPNudzxkdrXCg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@next-ai-drawio/mcp-server", "version": "0.4.13", "registry": "npm", "artifact_sha256": "9132252feaeae18e3b800dbf766052ab92cfb4d771befa9a4ee0b4e753969b76", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "a77f689372f681d2f090658701fd5444cf45e61ed5d82544ca565019f2734677", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@next-ai-drawio/mcp-server"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T03:45:44Z", "generated_at": "2026-11-10T03:45:44Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "0cec440d8444b5ae5566403374745da0f71f7b5e1efb1a1b53b660d29bb8964a28bfe78a07f17f6af83f9bb5d6296973e9e9bd7900b998c3cdb9dcf191dad70a", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/DayuanJiang/next-ai-draw-io/.github/workflows/publish-mcp.yml@refs/heads/main", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}, "supersedes": "4d2020602b9c63a8d5ae96f986d2f5dc12a40027ecd2dd2220be84dfbd6aeb71"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBuZXh0LWFpLWRyYXdpby9tY3Atc2VydmVyIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDM6NDU6NDRaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDAzOjQ1OjQ0WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgIm5hdGl2ZV9wcm92ZW5hbmNlIjogeyJwcmVkaWNhdGVfdHlwZXMiOiBbInYwLjEiLCAidjEiXSwgInByZXNlbnQiOiB0cnVlLCAidjBfcHJlc2VuY2Vfb25seSI6IDEsICJ2MV9lcnJvciI6IG51bGwsICJ2MV9pZGVudGl0eSI6ICJodHRwczovL2dpdGh1Yi5jb20vRGF5dWFuSmlhbmcvbmV4dC1haS1kcmF3LWlvLy5naXRodWIvd29ya2Zsb3dzL3B1Ymxpc2gtbWNwLnltbEByZWZzL2hlYWRzL21haW4iLCAidjFfdmVyaWZpZWQiOiB0cnVlLCAidmVyaWZpZXIiOiAic2lnc3RvcmUtcHl0aG9uLzQuNS4xIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYTc3ZjY4OTM3MmY2ODFkMmYwOTA2NTg3MDFmZDU0NDRjZjQ1ZTYxZWQ1ZDgyNTQ0Y2E1NjUwMTlmMjczNDY3NyIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI4ZDZmZTUwM2Y4NGI3NzkwYWEyYjBiODRkZTBhZjI5MjE4YzRjOTJiZjZlNzIxODQxOTM2YTQ5NDJkOTI5ODkyMWM1OTViNTQ0Yzg3MDMxMWYzZmY3ZGRlN2Q1NjUxZjAzZWVhNjk3ZWI2NWJhZDcyYzRiNzM2MzZhYWQ0MTUwNiJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjkxMzIyNTJmZWFlYWUxOGUzYjgwMGRiZjc2NjA1MmFiOTJjZmI0ZDc3MWJlZmE5YTRlZTBiNGU3NTM5NjliNzYiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQG5leHQtYWktZHJhd2lvL21jcC1zZXJ2ZXIiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMC40LjEzIn0sICJzdXBlcnNlZGVzIjogIjIyMzIzNTFmZGVjNDhjOTQ3NWE5MjhiMGE2NGFjNTVlZjg3NmFjMmZkYzM2ODc4ODM2MGQ3NDIyNGM0OGQwNGQiLCAidmVyZGljdCI6ICJwYXNzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJzaGEyNTYiOiAiOTEzMjI1MmZlYWVhZTE4ZTNiODAwZGJmNzY2MDUyYWI5MmNmYjRkNzcxYmVmYTlhNGVlMGI0ZTc1Mzk2OWI3NiJ9LCAibmFtZSI6ICJucG06QG5leHQtYWktZHJhd2lvL21jcC1zZXJ2ZXJAMC40LjEzIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "uZnugNXVPmI0C543iENwfpEVE5O5hgyEFaFHIiYiu3wJ67CIxEiLZIv3AZvYVUhESVF9eoLhZ1MMqWVb1w9QCQ=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@next-ai-drawio/mcp-server",
+   "version": "0.4.13",
+   "registry": "npm",
+   "artifact_sha256": "9132252feaeae18e3b800dbf766052ab92cfb4d771befa9a4ee0b4e753969b76",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "a77f689372f681d2f090658701fd5444cf45e61ed5d82544ca565019f2734677",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@next-ai-drawio/mcp-server"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T03:45:44Z",
+  "generated_at": "2026-11-10T03:45:44Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "b999ee80d5d53e62340b9e378843707e91151393b9860c8415a147222622bb7c09ebb088c4488b648bf7019bd855484449517d7a82e167530ca9655bd70f5009",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/DayuanJiang/next-ai-draw-io/.github/workflows/publish-mcp.yml@refs/heads/main",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  },
+  "supersedes": "2232351fdec48c9475a928b0a64ac55ef876ac2fdc368788360d74224c48d04d"
+ }
+}

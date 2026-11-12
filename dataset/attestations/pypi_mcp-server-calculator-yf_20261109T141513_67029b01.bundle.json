@@ -1,1 +1,69 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogdHlwb3NxdWF0dGluZ19uYW1lX3NpbWlsYXJpdHkgLSBjYW5kaWRhdGU9bWNwLXNlcnZlci1jYWxjdWxhdG9yLXlmIHRydXN0ZWQ9bWNwLXNlcnZlci1jYWxjdWxhdG9yIGRpc3RhbmNlPTIgc2ltaWxhcml0eT0wLjgzMyBzY29yZT0zMiBzZXZlcml0eT1tZWRpdW0iLCAiaWQiOiAiTDIuNl9UWVBPU1FVQVRUSU5HIiwgInRvb2wiOiAiY2FuYXJpLXR5cG9zcXVhdC8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJweXBpLWpzb246bWNwLXNlcnZlci1jYWxjdWxhdG9yLXlmIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTZUMTQ6MTU6MTNaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA5VDE0OjE1OjEzWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJiNjAzOGYxNjkwMmM0YzRmMDIxYWQwNjM1ZjliMzFiZjU0YjRkNTM5NzJhZjIxODBkNzcyMjRjYTc2ZGRlMTE0IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjhkZjQzMDA5NDM4NmEzNmY0M2NjY2YxMDIyMWJkNGU1OGE3NDI5ZmY0NjJkNGE4ODZiMWEzMmMzMGFhN2MzNzZkMTE2NDBiNzIwNGUwM2RjOTVlZmI1ZjgzOTQ2N2QyM2U3NTY3ZmJhYjNjMDVkMTcyNTkzN2M5ZDQ1MTkxNjBmIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiM2ExNDk3NGE2NDQ0Y2MzMzNmNTBiOTQ2MmU3NzJkNjBjNmZhNGIwYmY1NDE1YzVhZWI5NDU0MmRjZTkzMWRlMyIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJtY3Atc2VydmVyLWNhbGN1bGF0b3IteWYiLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjAuMS4xIn0sICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "OJ1TRS+DuYASAsskMN7VcXpSw48JhUkyApHZzb1tJUeTTxK+LMtQDJx4eTQ0rwCX1qm2m2Pii67QhdihRQPjDw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "mcp-server-calculator-yf", "version": "0.1.1", "registry": "pypi", "artifact_sha256": "3a14974a6444cc333f50b9462e772d60c6fa4b0bf5415c5aeb94542dce931de3", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "b6038f16902c4c4f021ad0635f9b31bf54b4d53972af2180d77224ca76dde114", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.6_TYPOSQUATTING", "verdict": "pass", "tool": "canari-typosquat/0.1", "evidence_ref": "finding: typosquatting_name_similarity - candidate=mcp-server-calculator-yf trusted=mcp-server-calculator distance=2 similarity=0.833 score=32 severity=medium"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["pypi-json:mcp-server-calculator-yf"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-16T14:15:13Z", "generated_at": "2026-11-09T14:15:13Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "389d53452f83b9801202cb2430ded5717a52c38f098549320291d9cdbd6d2547934f12be2ccb500c9c78793434af0097d6a9b69b63e28baed085d8a14503e30f", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHR5cG9zcXVhdHRpbmdfbmFtZV9zaW1pbGFyaXR5IC0gY2FuZGlkYXRlPW1jcC1zZXJ2ZXItY2FsY3VsYXRvci15ZiB0cnVzdGVkPW1jcC1zZXJ2ZXItY2FsY3VsYXRvciBkaXN0YW5jZT0yIHNpbWlsYXJpdHk9MC44MzMgc2NvcmU9MzIgc2V2ZXJpdHk9bWVkaXVtIiwgImlkIjogIkwyLjZfVFlQT1NRVUFUVElORyIsICJ0b29sIjogImNhbmFyaS10eXBvc3F1YXQvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsicHlwaS1qc29uOm1jcC1zZXJ2ZXItY2FsY3VsYXRvci15ZiJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE2VDE0OjE1OjEzWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOVQxNDoxNToxM1oiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYjYwMzhmMTY5MDJjNGM0ZjAyMWFkMDYzNWY5YjMxYmY1NGI0ZDUzOTcyYWYyMTgwZDc3MjI0Y2E3NmRkZTExNCIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI3NzE2MDRhNWE2ZDkzZDBmNTQxYzhlNDgwZDU2NjMzZTAwYTI0NTk2YzEyYjY5MWNmNTNiZjlhZjMxNTM4YWQyYzE1YzYzNzUwMWU2MjU0MmFjNGQzZDkzNWUyMmFlMjFhYTIxOTM3YmNlNzVmNTlhZDZiMmFmMDdmNzAxYjQwNSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjNhMTQ5NzRhNjQ0NGNjMzMzZjUwYjk0NjJlNzcyZDYwYzZmYTRiMGJmNTQxNWM1YWViOTQ1NDJkY2U5MzFkZTMiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAibWNwLXNlcnZlci1jYWxjdWxhdG9yLXlmIiwgInJlZ2lzdHJ5IjogInB5cGkiLCAidmVyc2lvbiI6ICIwLjEuMSJ9LCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICIzYTE0OTc0YTY0NDRjYzMzM2Y1MGI5NDYyZTc3MmQ2MGM2ZmE0YjBiZjU0MTVjNWFlYjk0NTQyZGNlOTMxZGUzIn0sICJuYW1lIjogInB5cGk6bWNwLXNlcnZlci1jYWxjdWxhdG9yLXlmQDAuMS4xIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "vicHHLwv9dJXb+AikGQC5sw1ri7DE9eE8qnTWk3+Y7xeYff9+d89nm+205/1caa5pYft2IZgFaxzAgGbsPG7CA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-calculator-yf",
+   "version": "0.1.1",
+   "registry": "pypi",
+   "artifact_sha256": "3a14974a6444cc333f50b9462e772d60c6fa4b0bf5415c5aeb94542dce931de3",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "b6038f16902c4c4f021ad0635f9b31bf54b4d53972af2180d77224ca76dde114",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.6_TYPOSQUATTING",
+    "verdict": "pass",
+    "tool": "canari-typosquat/0.1",
+    "evidence_ref": "finding: typosquatting_name_similarity - candidate=mcp-server-calculator-yf trusted=mcp-server-calculator distance=2 similarity=0.833 score=32 severity=medium"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "pypi-json:mcp-server-calculator-yf"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-16T14:15:13Z",
+  "generated_at": "2026-11-09T14:15:13Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "be27071cbc2ff5d2576fe022906402e6cc35ae2ec313d784f2a9d35a4dfe63bc5e61f7fdf9df3d9e6fb6d39ff571a6b9a587edd8866015ac7302019bb0f1bb08",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

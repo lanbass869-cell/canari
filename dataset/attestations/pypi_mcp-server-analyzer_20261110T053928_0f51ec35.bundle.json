@@ -1,1 +1,70 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcmVsZWFzZV9jYWRlbmNlX2FjY2VsZXJhdGlvbiAtIDAuNTkgaG91cnMiLCAiaWQiOiAiTDIuNF9SRUxFQVNFX0NBREVOQ0UiLCAidG9vbCI6ICJjYW5hcmktY2FkZW5jZS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJweXBpLWpzb246bWNwLXNlcnZlci1hbmFseXplciJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA1OjM5OjI4WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNTozOToyOFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNGVhNWVkOTVkODZjNTljZjY3ZjVhOTU1NDk3MWViOGI0YzJjYzg5MDFhZjExYWIzYTQ5YTdiYzkzMzRhOWE5NSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJiYmE2ZTIyNDhlY2ExYTkwOGMxYzFkOTNhMmE1OTVkNjdjMGFhYjliZmMwYmIxZGRlMTRiNmNjZTY2MWQ4MDJhZmVhNGE2MTNlZGUzYjA2ZWRjYTgyMWQ1OGY3MTIwYjQxZjIwYjg2MjNjZTRhYWQxY2NkM2FmNWFiNmZkMzMwMCJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjA3MDY5MmE4MjlmOWU4YWFlMDg4YjMwNmFhNmUxMmUwMDMwYzhiOTY3ZGM5N2NjMTNiMzUwNWEyMTNiODdmNDEiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAibWNwLXNlcnZlci1hbmFseXplciIsICJyZWdpc3RyeSI6ICJweXBpIiwgInZlcnNpb24iOiAiMC40LjEifSwgInN1cGVyc2VkZXMiOiAiMTViZjg2Njc4MDA2ZDg3ZmY5ZGQyZWNmMTlhOWQ3NWY4ZjkxNzk1MTM1MjA2ZTYwOTc2ZjE2YTVlNTlkODhkZiIsICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "CQR+jPLc0a9i2WfoH1B5gcjFV8q8i0zp9IXVA++4YMybBPZ5Ctp5NV037U+mSCcBazN2DVnpU6KfI25Q7GYXAA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "mcp-server-analyzer", "version": "0.4.1", "registry": "pypi", "artifact_sha256": "070692a829f9e8aae088b306aa6e12e0030c8b967dc97cc13b3505a213b87f41", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.4_RELEASE_CADENCE", "verdict": "pass", "tool": "canari-cadence/0.1", "evidence_ref": "finding: release_cadence_acceleration - 0.59 hours"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["pypi-json:mcp-server-analyzer"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T05:39:28Z", "generated_at": "2026-11-10T05:39:28Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "09047e8cf2dcd1af62d967e81f507981c8c557cabc8b4ce9f485d503efb860cc9b04f6790ada79355d37ed4fa64827016b33760d59e953a29f236e50ec661700", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "15bf86678006d87ff9dd2ecf19a9d75f8f91795135206e60976f16a5e59d88df"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJlbGVhc2VfY2FkZW5jZV9hY2NlbGVyYXRpb24gLSAwLjU5IGhvdXJzIiwgImlkIjogIkwyLjRfUkVMRUFTRV9DQURFTkNFIiwgInRvb2wiOiAiY2FuYXJpLWNhZGVuY2UvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsicHlwaS1qc29uOm1jcC1zZXJ2ZXItYW5hbHl6ZXIiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNTozOToyOFoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDU6Mzk6MjhaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjRlYTVlZDk1ZDg2YzU5Y2Y2N2Y1YTk1NTQ5NzFlYjhiNGMyY2M4OTAxYWYxMWFiM2E0OWE3YmM5MzM0YTlhOTUiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiM2Y4MzA0NTE2YjU5OTQ4MTcyNWYxNGYwZGEzMWJiNzU3ZjcwZTMwNGE0ZmIyMzRhZGNmNmFlNTNlZjY0ZmFhNTU0NmVlZTc1OTM1ZmJjODI1ZGIzYzEwMDljYTFjYTk5MzkwMDdlNDAwMjYyOWZjZjQ0NGVmZDU2YzQzMDY1MDQifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwNzA2OTJhODI5ZjllOGFhZTA4OGIzMDZhYTZlMTJlMDAzMGM4Yjk2N2RjOTdjYzEzYjM1MDVhMjEzYjg3ZjQxIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIm1jcC1zZXJ2ZXItYW5hbHl6ZXIiLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjAuNC4xIn0sICJzdXBlcnNlZGVzIjogIjU4ZDIzMDcyMzA5MzNjZjlmYjFmODNkNTIzMzMwNzE5MGRmOTk3ZGExMzUzMWI4MDAzZWVjMzZiNTQxNjRjYmMiLCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICIwNzA2OTJhODI5ZjllOGFhZTA4OGIzMDZhYTZlMTJlMDAzMGM4Yjk2N2RjOTdjYzEzYjM1MDVhMjEzYjg3ZjQxIn0sICJuYW1lIjogInB5cGk6bWNwLXNlcnZlci1hbmFseXplckAwLjQuMSJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "Hz4mfRDqaHUNnpYhh1VxJRr39D7FQaCAZy90uxqIoyXjdCmVP9MUJFhxQ9+so4XdlOhJTMrZa7vHbyVJYTPiAA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-analyzer",
+   "version": "0.4.1",
+   "registry": "pypi",
+   "artifact_sha256": "070692a829f9e8aae088b306aa6e12e0030c8b967dc97cc13b3505a213b87f41",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.4_RELEASE_CADENCE",
+    "verdict": "pass",
+    "tool": "canari-cadence/0.1",
+    "evidence_ref": "finding: release_cadence_acceleration - 0.59 hours"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "pypi-json:mcp-server-analyzer"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:39:28Z",
+  "generated_at": "2026-11-10T05:39:28Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "1f3e267d10ea68750d9e9621875571251af7f43ec541a080672f74bb1a88a325e37429953fd31424587143dfaca385dd94e8494ccad96bbbc76f25496133e200",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "58d2307230933cf9fb1f83d5233307190df997da13531b8003eec36b54164cbc"
+ }
+}

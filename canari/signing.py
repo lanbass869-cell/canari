@@ -136,13 +136,88 @@ def credential_shapes(value, path="") -> list:
     return results
 
 
+STATEMENT_TYPE = "https://in-toto.io/Statement/v1"
+
+
+def payload_digest(predicate: dict) -> str:
+    """Canonical digest of an attestation body, EXCLUDING the inline signature.
+
+    Why exclude: the inline signature block is a by-product of signing (it is
+    re-derived on every re-sign) and the DSSE envelope is the authoritative
+    signature. Including it made the supersession chain self-destruct on any
+    re-sign - every historical pointer became dangling. The digest must be a
+    function of the *content*, not of the signature over it.
+    """
+    body = {k: v for k, v in (predicate or {}).items() if k != "signature"}
+    return hashlib_sha256(json.dumps(body, ensure_ascii=False, sort_keys=True))
+
+
+def hashlib_sha256(text: str) -> str:
+    import hashlib
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def subject_ref(predicate: dict) -> dict:
+    """Build the in-toto `subject` entry for a predicate.
+
+    A real artifact hash is used as `sha256`. When the artifact bytes were
+    never obtained (registry metadata only), we must NOT fabricate a sha256 -
+    an all-zero digest would look like a real one to any consumer. In that case
+    the subject carries an explicit `canari-component-id` digest (sha256 over
+    the canonical component reference) and the predicate records
+    `subject_digest_basis = "component-identity"`.
+    """
+    s = (predicate or {}).get("subject", {}) or {}
+    registry = s.get("registry", "")
+    name = s.get("name", "")
+    version = s.get("version", "") or ""
+    ref = "%s:%s@%s" % (registry, name, version) if version else "%s:%s" % (registry, name)
+    art = (s.get("artifact_sha256") or "").lower()
+    if len(art) == 64 and art != "0" * 64 and all(c in "0123456789abcdef" for c in art):
+        return {"name": ref, "digest": {"sha256": art}}
+    return {"name": ref, "digest": {"canari-component-id": hashlib_sha256(ref)}}
+
+
+def build_statement(predicate: dict) -> dict:
+    """Wrap an attestation body in an in-toto Statement v1 (SLSA/GUAC/cosign compatible)."""
+    # NOTE: the predicate is embedded VERBATIM. Adding derived fields here
+    # would make the signed predicate diverge from the unsigned top-level
+    # mirror, which check_payload_integrity() treats as tampering. The digest
+    # basis is recoverable from the subject's digest algorithm name.
+    return {
+        "_type": STATEMENT_TYPE,
+        "subject": [subject_ref(predicate)],
+        "predicateType": _PREDICATE_TYPE,
+        "predicate": dict(predicate),
+    }
+
+
+def unwrap_statement(payload: dict) -> dict:
+    """Return the attestation body from a signed payload.
+
+    Accepts both the in-toto Statement v1 wrapper (current format) and the bare
+    attestation body written by releases before the migration, so historical
+    bundles keep verifying against the same key.
+    """
+    if not isinstance(payload, dict):
+        return {}
+    if payload.get("_type") == STATEMENT_TYPE and isinstance(payload.get("predicate"), dict):
+        return payload["predicate"]
+    return payload
+
+
 def sign_attestation(att: dict, signer) -> dict:
-    """Sign the attestation; returns {"envelope": dict, "payload": dict}.
+    """Sign the attestation; returns {"envelope": dict, "payload": statement,
+    "predicate": attestation}.
+
+    The DSSE payload is an in-toto Statement v1 whose `predicate` is the
+    Canari attestation. The statement carries the standard fields every
+    in-toto consumer (GUAC, cosign, slsa-verifier) needs to build graph edges.
 
     The payload includes the inline signature block (schema-required), so we
-    build payload -> sign -> inject sig -> re-sign. Verification always goes
+    build predicate -> sign -> inject sig -> re-sign. Verification always goes
     through the envelope; the inline block is informational/compliance.
-    
+
     Credential shape detection (mcpcheckup pattern): scans the payload before
     signing to prevent accidentally embedding credentials in a public artifact.
     """
@@ -156,8 +231,10 @@ def sign_attestation(att: dict, signer) -> dict:
 
     # NFC normalization (mcpcheckup nfc-jcs/v1 pattern)
     att = _nfc_normalize(att)
+
     def _build(a):
-        payload_bytes = json.dumps(a, ensure_ascii=False, sort_keys=True).encode("utf-8")
+        stmt = build_statement(a)
+        payload_bytes = json.dumps(stmt, ensure_ascii=False, sort_keys=True).encode("utf-8")
         env = Envelope(payload=payload_bytes, payload_type=DSSE_PAYLOAD_TYPE, signatures={})
         sig = signer.sign(env.pae())
         env.signatures = {sig.keyid: sig}
@@ -168,15 +245,31 @@ def sign_attestation(att: dict, signer) -> dict:
 
     att1, _ = _build(att)      # pass 1: get keyid/sig for the inline block
     att2, env = _build(att1)   # pass 2: final payload incl. inline block
-    return {"envelope": env.to_dict(), "payload": att2}
+    # `payload` is the bare attestation body: it is the unsigned convenience
+    # mirror written next to the bundle (same role as before the migration) and
+    # the thing callers hash for supersession. The in-toto Statement wrapper
+    # lives ONLY inside envelope.payload, which is what external consumers
+    # (GUAC / cosign / slsa-verifier) read.
+    return {"envelope": env.to_dict(), "payload": att2,
+            "statement": build_statement(att2), "predicate": att2}
 
 
-def read_signed_payload(bundle: dict):
-    """Return the payload dict that the DSSE signature actually covers.
+def legacy_payload_digest(predicate: dict) -> str:
+    """Digest as computed by releases before the in-toto migration.
 
-    A bundle file stores two copies of the attestation:
+    That version hashed the CANONICAL FULL attestation including the inline
+    `signature` block. It is kept only so chains written by those releases keep
+    resolving; new bundles use payload_digest() (signature-independent).
+    """
+    return hashlib_sha256(json.dumps(predicate or {}, ensure_ascii=False, sort_keys=True))
 
-      envelope.payload  - base64 of the canonical JSON; this is what was signed
+
+def read_signed_statement(bundle: dict):
+    """Return the DSSE-signed payload EXACTLY as signed (statement or legacy body).
+
+    A bundle file stores two copies of the signed content:
+
+      envelope.payload  - base64 of the canonical JSON; this is what is signed
       payload           - a convenience copy for readers, NOT covered by the sig
 
     Anything that makes a decision must read the signed copy. Returns
@@ -206,23 +299,44 @@ def read_signed_payload(bundle: dict):
     return payload, None
 
 
+def read_signed_payload(bundle: dict):
+    """Return the signed ATTESTATION body (in-toto `predicate`), never the wrapper.
+
+    Consumers reason about verdict/subject/checks, so this unwraps the in-toto
+    Statement v1 envelope. Bundles written before the migration carried the bare
+    attestation; unwrap_statement() returns those unchanged.
+    """
+    payload, err = read_signed_statement(bundle)
+    if err:
+        return None, err
+    return unwrap_statement(payload), None
+
+
 def check_payload_integrity(bundle: dict):
     """Verify the unsigned top-level copy agrees with the signed one.
 
+    Returns (ok, reason, signed_predicate).
+
+    The top-level ``payload`` mirrors what was signed (an in-toto Statement v1).
     The two copies are written with different inline ``signature`` blocks
     (pass 1 vs pass 2 of sign_attestation), so every other field must match
-    exactly. Divergence means somebody edited the copy that is not protected
-    by the signature - the bypass that let a tampered bundle report a pass
-    while the signature still verified.
-
-    Returns (ok, reason, signed_payload).
+    exactly. Divergence means somebody edited the copy that is not protected by
+    the signature - the bypass that let a tampered bundle report a pass while
+    the signature still verified.
     """
-    signed, err = read_signed_payload(bundle)
+    signed_stmt, err = read_signed_statement(bundle)
     if err:
         return False, err, None
-    top = bundle.get("payload")
-    if not isinstance(top, dict):
+    signed = unwrap_statement(signed_stmt)
+    top_stmt = bundle.get("payload")
+    if not isinstance(top_stmt, dict):
         return False, "bundle has no top-level payload", signed
+    top = unwrap_statement(top_stmt)
+
+    # The mirror is always the bare attestation body, while the signed payload
+    # is an in-toto Statement wrapping it (or a bare body on legacy bundles).
+    # unwrap_statement() normalises both, so only the body is compared.
+
     # Compare canonical BYTES, not Python values: {"v": true} == {"v": 1} and
     # {"v": 1} == {"v": 1.0} are equal as Python dicts, so a value-level
     # comparison can miss a text-level edit of the unsigned copy.
@@ -241,8 +355,11 @@ def check_payload_integrity(bundle: dict):
     return True, None, signed
 
 
-def verify_signed(envelope_dict: dict, public_key_dict: dict):
-    """Verify a DSSE envelope against an SSlibKey dict.
+def verify_signed_raw(envelope_dict: dict, public_key_dict: dict):
+    """Verify a DSSE envelope; return the payload EXACTLY as signed.
+
+    For current bundles the payload is an in-toto Statement v1; for bundles
+    written before the migration it is the bare attestation body.
 
     Returns (ok, payload_or_None, error_or_None). Never raises for verify
     failures - failures are data (the CLI prints them), not crashes.
@@ -262,6 +379,20 @@ def verify_signed(envelope_dict: dict, public_key_dict: dict):
         return True, payload, None
     except Exception as e:
         return False, None, "%s: %s" % (type(e).__name__, str(e)[:200])
+
+
+def verify_signed(envelope_dict: dict, public_key_dict: dict):
+    """Verify a DSSE envelope and return the ATTESTATION (predicate).
+
+    The in-toto Statement v1 wrapper is an integration detail; every consumer
+    in this codebase wants verdict/subject/checks, so this unwraps by default.
+    Use verify_signed_raw() when the statement itself is the subject of the
+    check (e.g. asserting in-toto compliance).
+    """
+    ok, payload, err = verify_signed_raw(envelope_dict, public_key_dict)
+    if not ok:
+        return False, None, err
+    return True, unwrap_statement(payload), None
 
 
 def export_public_key(public_key) -> str:

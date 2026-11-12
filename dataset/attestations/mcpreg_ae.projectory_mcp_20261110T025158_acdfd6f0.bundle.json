@@ -1,1 +1,59 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJtY3AtcmVnaXN0cnk6YWUucHJvamVjdG9yeS9tY3AiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwMjo1MTo1OFoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDI6NTE6NThaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjQzYjk0YTMzMDgyOWFkNzJmMDIxMTJjZTc0YzMzZjE1NDRiNGJjM2FjMDQ1OGI4MmQzNDQ3MTFjZjMxOGYzYmMiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiY2NiMWVhZmJmZjU0YzM0ZGY1YzEzNjE5ZmZlY2QwYjM5MGY2YzNkNGI5ZGVkNjRiMjE4Y2JkMzdjMmFmYmMyMGU1NTYyMmE2MzE1OWFiZDYzMzhjZWVkOGUxZjI1OWM4MmIzNDBhZmY2MWU2OWY0MjY4ZmViNjFiNmE5MDNkMDEifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogImFlLnByb2plY3RvcnkvbWNwIiwgInJlZ2lzdHJ5IjogIm1jcC1yZWdpc3RyeSIsICJ2ZXJzaW9uIjogIjAuNy4wIn0sICJzdXBlcnNlZGVzIjogIjBkZDY1ZmM5NzViMWRkNTAwOGZmMWJmMDY2MTBiNDM1YTc1Y2Q0MDUxYjlmMWI3YTE2ZDJiMmQ3Nzk0NWJiM2IiLCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "xA7MT179uzti1F4G2aVzgH3/CABcSx/aymT6Wy8DFqL5G5X3JVahybtQttycA+STgy027t07Rnfz+EKMyBgnCw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "ae.projectory/mcp", "version": "0.7.0", "registry": "mcp-registry", "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "43b94a330829ad72f02112ce74c33f1544b4bc3ac0458b82d344711cf318f3bc", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass-with-findings", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["mcp-registry:ae.projectory/mcp"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T02:51:58Z", "generated_at": "2026-11-10T02:51:58Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "c40ecc4f5efdbb3b62d45e06d9a573807dff08005c4b1fdaca64fa5b2f0316a2f91b95f72556a1c9bb50b6dc9c03e493832d36eedd3b4677f3f8428cc818270b", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "0dd65fc975b1dd5008ff1bf06610b435a75cd4051b9f1b7a16d2b2d77945bb3b"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsibWNwLXJlZ2lzdHJ5OmFlLnByb2plY3RvcnkvbWNwIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDI6NTE6NThaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDAyOjUxOjU4WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0M2I5NGEzMzA4MjlhZDcyZjAyMTEyY2U3NGMzM2YxNTQ0YjRiYzNhYzA0NThiODJkMzQ0NzExY2YzMThmM2JjIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImYzNWFkZDBmY2EwOWUwNGMxZDMwOTZlMDRjZjJmNzIyZTY4OTRlNjFmZmExZmJmZDc3ODU3OTA5NThhYjc1N2FkMjMxNDI0NjRmMGQyYWZmOWVhZWY1MWE0MDE4OTAzN2ZlZDRkM2U1ZmVjYWI2YTIwMTJkNDBkYmEzZDFkNzBlIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJhZS5wcm9qZWN0b3J5L21jcCIsICJyZWdpc3RyeSI6ICJtY3AtcmVnaXN0cnkiLCAidmVyc2lvbiI6ICIwLjcuMCJ9LCAic3VwZXJzZWRlcyI6ICI2ZTJmN2RkYzdmZGIwY2EyZTJiMTdhYjk3ZDFhOGE4MWRiN2Y4NzhiZjE5MGU0NTRmNjhmNGFlMDI0MzE5YTI5IiwgInZlcmRpY3QiOiAicGFzcy13aXRoLWZpbmRpbmdzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJjYW5hcmktY29tcG9uZW50LWlkIjogImVjZjIzMDdhNzM4ZTAxNDljNjE1NzZiZGU0YTE4ZDgwMjVlNzQ0NDhiZmE2NDk0ZDY4MGU0NmRhZmMxYmJkMTYifSwgIm5hbWUiOiAibWNwLXJlZ2lzdHJ5OmFlLnByb2plY3RvcnkvbWNwQDAuNy4wIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "GGjhu+4cj6UymRvMCvDXo/VBswFBHKVdIAaJPr+k8/yP0YZwW0KNWHlT0EXLvdCYwx03CZIaDfo5YDJXtPD/Bw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "ae.projectory/mcp",
+   "version": "0.7.0",
+   "registry": "mcp-registry",
+   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "43b94a330829ad72f02112ce74c33f1544b4bc3ac0458b82d344711cf318f3bc",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "mcp-registry:ae.projectory/mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T02:51:58Z",
+  "generated_at": "2026-11-10T02:51:58Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "1868e1bbee1c8fa532991bcc0af0d7a3f541b301411ca55d2006893ebfa4f3fc8fd186705b428d587953d045cbbdd098c31d3709921a0dfa39603257b4f0ff07",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "6e2f7ddc7fdb0ca2e2b17ab97d1a8a81db7f878bf190e454f68f4ae024319a29"
+ }
+}

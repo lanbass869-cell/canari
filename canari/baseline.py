@@ -27,7 +27,11 @@ import sys
 import urllib.request
 
 from canari.schema import _PREDICATE_TYPE
-from canari.signing import generate_keypair, sign_attestation, export_public_key, load_or_generate_keypair, create_key_registry_entry, save_key_registry, load_key_registry, is_key_valid, save_private_key
+from canari.signing import (generate_keypair, sign_attestation, export_public_key,
+                            load_or_generate_keypair, create_key_registry_entry,
+                            save_key_registry, load_key_registry, is_key_valid,
+                            save_private_key, read_signed_payload, payload_digest,
+                            unwrap_statement)
 from canari.state import FileLock, StateStore
 from canari.dead_letter import DeadLetterLog
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
@@ -40,6 +44,16 @@ from canari.pypi_native import ingest_pypi as pypi_native_ingest
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
+
+
+def _read_pred(bundle):
+    """(attestation predicate, error) from a bundle - signed copy only."""
+    return read_signed_payload(bundle)
+
+
+def payload_digest_of(predicate):
+    """Supersession digest of an attestation body (signature-independent)."""
+    return payload_digest(predicate or {})
 
 
 def _with_timeout(fn, timeout_s, default=None):
@@ -357,9 +371,8 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         # BUG-65: timestamp + payload-digest suffix so re-runs never overwrite
         # previous bundles (supersession chains need the old files to persist)
         _ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
-        _dg = hashlib.sha256(
-            json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
-        ).hexdigest()[:8]
+        from canari.signing import payload_digest as _payload_digest
+        _dg = _payload_digest(signed["predicate"])[:8]
         bundle_path = os.path.join(att_dir, "%02d_%s_%s_%s.bundle.json" % (i + 1, safe, _ts, _dg))
         with open(bundle_path, "w", encoding="utf-8") as f:
             json.dump({"envelope": signed["envelope"], "payload": signed["payload"]},
@@ -400,7 +413,8 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     for r in results:
         if r.get("bundle") and r.get("status") != "fetch_error":
             bp = json.load(open(r["bundle"], encoding="utf-8"))
-            sha = bp["payload"]["subject"].get("artifact_sha256", "")
+            _pred, _e = _read_pred(bp)
+            sha = (_pred or {}).get("subject", {}).get("artifact_sha256", "")
             current_snapshot[r["name"]] = {"version": r.get("version", ""), "sha256": sha}
 
     diff = state.diff(current_snapshot)
@@ -411,11 +425,10 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
         if r.get("bundle"):
             bp = json.load(open(r["bundle"], encoding="utf-8"))
             # compute payload digest for supersession chain (not file path)
-            payload_digest = hashlib.sha256(
-                json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
-            ).hexdigest()
+            _pred, _e = _read_pred(bp)
+            payload_digest = payload_digest_of(_pred)
             state.set_component("npm:" + r["name"], r.get("version", ""),
-                                bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest)
+                                (_pred or {}).get("subject", {}).get("artifact_sha256", ""), payload_digest)
     state.save()
     lock.__exit__()
 
@@ -529,9 +542,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
         # BUG-78: digest suffix makes same-second writes of distinct payloads
         # collision-free (second-granularity alone can overwrite)
-        digest8 = hashlib.sha256(
-            json.dumps(signed["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
-        ).hexdigest()[:8]
+        from canari.signing import payload_digest as _payload_digest
+        digest8 = _payload_digest(signed["predicate"])[:8]
         bpath = os.path.join(att_dir, "%s_%s_%s_%s.bundle.json" % (prefix, safe, ts, digest8))
         tmp = bpath + ".tmp"
         with open(tmp, "w", encoding="utf-8") as f:
@@ -779,12 +791,11 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         if r.get("bundle"):
             try:
                 bp = json.load(open(r["bundle"], encoding="utf-8"))
-                payload_digest = hashlib.sha256(
-                    json.dumps(bp["payload"], ensure_ascii=False, sort_keys=True).encode("utf-8")
-                ).hexdigest()
+                _pred, _e = _read_pred(bp)
+                payload_digest = payload_digest_of(_pred)
                 state.set_component("%s:%s" % (r.get("registry", "?"), r["name"]),
                                     r.get("version", ""),
-                                    bp["payload"]["subject"].get("artifact_sha256", ""), payload_digest,
+                                    (_pred or {}).get("subject", {}).get("artifact_sha256", ""), payload_digest,
                                     meta=meta_snapshots.get(r["name"]))
             except Exception:
                 pass

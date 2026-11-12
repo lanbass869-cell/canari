@@ -23,7 +23,8 @@ import json
 import sys
 
 from canari.schema import load_schema, validate_attestation, is_gate_passing
-from canari.signing import verify_signed
+from canari.signing import (verify_signed_raw, unwrap_statement, read_signed_payload,
+                            payload_digest)
 
 
 def _independent_pae(payload_type: str, payload_bytes: bytes) -> bytes:
@@ -87,6 +88,50 @@ def _independent_verify(envelope: dict, public_key_dict: dict) -> tuple:
     return True, pae
 
 
+STATEMENT_TYPE = "https://in-toto.io/Statement/v1"
+_IN_TOTO_DIGEST_ALGS = {"sha256", "sha384", "sha512", "gitCommit",
+                        "canari-component-id"}
+
+
+def _check_statement_shape(payload: dict):
+    """Validate the in-toto Statement v1 envelope (spec-level, not our schema).
+
+    This is the check that makes the bundle consumable by GUAC / cosign /
+    slsa-verifier. A bundle that fails it still has a valid signature but is
+    NOT an in-toto attestation, so we refuse to report it as one.
+    """
+    if not isinstance(payload, dict):
+        return False, "payload is not an object"
+    if payload.get("_type") == "https://agentcheck.dev/attestation/v0.1" and isinstance(payload.get("subject"), dict):
+        # Pre-migration bundle: a bare attestation body, no Statement wrapper.
+        # Signature is still valid; it is simply not an in-toto attestation.
+        return "legacy", "pre-migration format (bare attestation, no in-toto Statement)"
+    if payload.get("_type") != STATEMENT_TYPE:
+        return False, "_type is %r, expected %r" % (payload.get("_type"), STATEMENT_TYPE)
+    subject = payload.get("subject")
+    if not isinstance(subject, list) or not subject:
+        return False, "subject must be a non-empty array"
+    for i, ent in enumerate(subject):
+        if not isinstance(ent, dict):
+            return False, "subject[%d] is not an object" % i
+        name = ent.get("name")
+        digest = ent.get("digest")
+        if not isinstance(name, str) or not name:
+            return False, "subject[%d].name must be a non-empty string" % i
+        if not isinstance(digest, dict) or not digest:
+            return False, "subject[%d].digest must be a non-empty object" % i
+        for alg, val in digest.items():
+            if alg not in _IN_TOTO_DIGEST_ALGS:
+                return False, "subject[%d].digest has unsupported algorithm %r" % (i, alg)
+            if not isinstance(val, str) or not val:
+                return False, "subject[%d].digest[%r] must be a non-empty string" % (i, alg)
+    if not isinstance(payload.get("predicateType"), str) or not payload.get("predicateType"):
+        return False, "predicateType must be a non-empty string"
+    if not isinstance(payload.get("predicate"), dict):
+        return False, "predicate must be an object"
+    return True, None
+
+
 def _fail(msg):
     sys.stderr.write("[verify] FAIL: %s\n" % msg)
 
@@ -114,10 +159,21 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False,
         return 3
 
     # 2. verify signature (offline - no network calls anywhere in this module)
-    ok, payload, err = verify_signed(env, pub)
+    ok, signed_payload, err = verify_signed_raw(env, pub)
     print("signature (in-toto): %s" % ("PASS" if ok else "FAIL - %s" % err))
     if not ok:
         return 1
+    # The DSSE payload is an in-toto Statement v1: the attestation is its
+    # `predicate`. Pre-migration bundles carried the bare attestation.
+    payload = unwrap_statement(signed_payload)
+    stmt_ok, stmt_why = _check_statement_shape(signed_payload)
+    if stmt_ok is True:
+        print("in-toto Statement v1: PASS")
+    elif stmt_ok == "legacy":
+        print("in-toto Statement v1: N/A - %s" % stmt_why)
+    else:
+        print("in-toto Statement v1: FAIL - %s" % stmt_why)
+        return 2
 
     # 2b. Independent PAE cross-check (mcpcheckup lesson: independent implementation
     # makes the cross-check meaningful instead of a formality) - canonicalization only, NOT a signature check)
@@ -191,10 +247,10 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False,
         if dec.decision == "REVIEW":
             return 6
 
-    # 5. payload integrity echo (what the signature actually covers)
-    payload_sha = hashlib.sha256(
-        json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
-    print("payload: sha256:%s..." % payload_sha[:16])
+    # 5. payload identity echo - the SAME digest the supersession chain uses
+    # (signature-independent), so what an operator copies here is what a
+    # `supersedes` pointer would contain.
+    print("payload digest: sha256:%s..." % payload_digest(payload)[:16])
     subj = payload.get("subject", {})
     print("subject: %s@%s (%s) sha256:%s..."
           % (subj.get("name"), subj.get("version"), subj.get("registry"),
@@ -250,8 +306,8 @@ def verify_chain(directory: str, key_path: str = None) -> int:
             ok_int, why_int, _signed = check_payload_integrity(bundle)
             if not ok_int:
                 raise ValueError("payload integrity: %s" % why_int)
-            payload = bundle.get("payload")
-            if not isinstance(payload, dict):
+            payload = unwrap_statement(bundle.get("payload"))
+            if not isinstance(payload, dict) or not payload:
                 raise ValueError("bundle has no top-level payload")
         except Exception as e:
             # a file we cannot interpret is an integrity problem, not a no-op
@@ -260,10 +316,17 @@ def verify_chain(directory: str, key_path: str = None) -> int:
             continue
 
         name = payload.get("subject", {}).get("name", "?")
-        digest = hashlib.sha256(
-            json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
-        ).hexdigest()
+        # Register BOTH digest definitions:
+        #   payload_digest        - signature-independent (current releases)
+        #   legacy_payload_digest - included the inline signature block (old)
+        # Pointer resolution must accept either, otherwise migrating the
+        # format silently orphans every chain written before the migration.
+        from canari.signing import legacy_payload_digest
+        digest = payload_digest(payload)
         digests[digest] = fn
+        legacy = legacy_payload_digest(payload)
+        if legacy != digest:
+            digests.setdefault(legacy, fn)
         supersedes_map[fn] = payload.get("supersedes")
         components[name].append(fn)
 

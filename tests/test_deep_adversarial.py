@@ -37,7 +37,9 @@ class TestSignatureGames:
         env = json.loads(json.dumps(signed["envelope"]))
         # rewriting keyid inside the payload must invalidate the signature
         payload = json.loads(base64.b64decode(env["payload"]))
-        payload["signature"]["keyid"] = "00" * 32
+        # DSSE payload is an in-toto Statement v1; the attestation (and its
+        # inline signature block) lives in `predicate`.
+        payload["predicate"]["signature"]["keyid"] = "00" * 32
         env["payload"] = base64.b64encode(json.dumps(
             payload, ensure_ascii=False, sort_keys=True).encode()).decode()
         assert verify_signed(env, pub.to_dict())[0] is False
@@ -149,7 +151,7 @@ class TestOversized:
         from canari.signing import sign_attestation, verify_signed
         signed, pub = _signed()
         big = "x" * (10 * 1024 * 1024)
-        signed["payload"]["evidence_refs"] = [big]
+        signed["payload"]["evidence_refs"] = [big]  # bare attestation body
         from canari.signing import sign_attestation as sa
         # re-sign the large payload with a fresh signer
         from canari.signing import generate_keypair

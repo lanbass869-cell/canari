@@ -1,1 +1,76 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QHdvbmRlcndoeS1lci9kZXNrdG9wLWNvbW1hbmRlciJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA0OjA5OjU0WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNDowOTo1NFoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJuYXRpdmVfcHJvdmVuYW5jZSI6IHsicHJlZGljYXRlX3R5cGVzIjogWyJ2MC4xIiwgInYxIl0sICJwcmVzZW50IjogdHJ1ZSwgInYwX3ByZXNlbmNlX29ubHkiOiAxLCAidjFfZXJyb3IiOiBudWxsLCAidjFfaWRlbnRpdHkiOiAiaHR0cHM6Ly9naXRodWIuY29tL3dvbmRlcndoeS1lci9EZXNrdG9wQ29tbWFuZGVyTUNQLy5naXRodWIvd29ya2Zsb3dzL3JlbGVhc2UueW1sQHJlZnMvaGVhZHMvbWFpbiIsICJ2MV92ZXJpZmllZCI6IHRydWUsICJ2ZXJpZmllciI6ICJzaWdzdG9yZS1weXRob24vNC41LjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI1YmYwZTkyNDNlMmZlOTRhZTUzZWVjZWRkZWJiMTU5ZTY2YjRkMGU0NTNiYTYzM2E3MmRjMDJhZjJiYzdkOTcyIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjFjOWY0YWRhMWU0YmFkYzFmNTBhYzY5YmY3NzMwZWIxOThmYTBjMmNiYWI3YjQ4ZDVlNTVhMGY5MzEyOTg4NDViMGM3NTI0ZDFlMDFiMmI2NzU5YTEzYzQ1YjE1MTc5NjIyY2I2YzI0OWQzNzJkZmFmNWNkMTcwYjJjYjJlYTA1In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiOTY2MWVjYjgxOWMzYjQ3YjhkZmQ4ZTJiNThhNjc1NGFkMWJiMDBjMjI1NTE4NTE3ZDhmZjBlM2UwNDkyZjA2ZCIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAd29uZGVyd2h5LWVyL2Rlc2t0b3AtY29tbWFuZGVyIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjAuMy4xIn0sICJzdXBlcnNlZGVzIjogImQ0MDY5ZmRlZTJiMzRmZTg2MWMyYjgyNjkyM2NiMTQ0Yzk2ODYzMGI3MmYzMzdjMWFiMWJkOTYxYmIxZmNhYzQiLCAidmVyZGljdCI6ICJwYXNzIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "D5k8n9VocP5AUnV4JRQyYKlBgyhWud8vXnLO/BA9vhcvlAcea/dWBjRVx1WITWEcL7MnrrDxiIxIsu+AjHqrDQ=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@wonderwhy-er/desktop-commander", "version": "0.3.1", "registry": "npm", "artifact_sha256": "9661ecb819c3b47b8dfd8e2b58a6754ad1bb00c225518517d8ff0e3e0492f06d", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@wonderwhy-er/desktop-commander"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T04:09:54Z", "generated_at": "2026-11-10T04:09:54Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "0f993c9fd56870fe4052757825143260a941832856b9df2f5e72cefc103dbe172f94071e6bf756063455c755884d611c2fb327aeb0f1888c48b2ef808c7aab0d", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "native_provenance": {"present": true, "predicate_types": ["v0.1", "v1"], "v1_verified": true, "v1_identity": "https://github.com/wonderwhy-er/DesktopCommanderMCP/.github/workflows/release.yml@refs/heads/main", "v1_error": null, "v0_presence_only": 1, "verifier": "sigstore-python/4.5.1"}, "supersedes": "d4069fdee2b34fe861c2b826923cb144c968630b72f337c1ab1bd961bb1fcac4"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkB3b25kZXJ3aHktZXIvZGVza3RvcC1jb21tYW5kZXIiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNDowOTo1NFoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDQ6MDk6NTRaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAibmF0aXZlX3Byb3ZlbmFuY2UiOiB7InByZWRpY2F0ZV90eXBlcyI6IFsidjAuMSIsICJ2MSJdLCAicHJlc2VudCI6IHRydWUsICJ2MF9wcmVzZW5jZV9vbmx5IjogMSwgInYxX2Vycm9yIjogbnVsbCwgInYxX2lkZW50aXR5IjogImh0dHBzOi8vZ2l0aHViLmNvbS93b25kZXJ3aHktZXIvRGVza3RvcENvbW1hbmRlck1DUC8uZ2l0aHViL3dvcmtmbG93cy9yZWxlYXNlLnltbEByZWZzL2hlYWRzL21haW4iLCAidjFfdmVyaWZpZWQiOiB0cnVlLCAidmVyaWZpZXIiOiAic2lnc3RvcmUtcHl0aG9uLzQuNS4xIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNWJmMGU5MjQzZTJmZTk0YWU1M2VlY2VkZGViYjE1OWU2NmI0ZDBlNDUzYmE2MzNhNzJkYzAyYWYyYmM3ZDk3MiIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI3YTRmOWI4ZDQwZWQ4ZjQ2Nzk4OTBkMTgxZjkwNjI2NTJkZWM1MDZjMjRlYmE0MTVmMjk1ZjM4MjBhOWI4YWI2MDQxNDViZTM5YTA5MmJiYmFiNTRiMDAyMzNjMGU0MzliY2U3MjJmNmI0NjE0NjBhNTkyYTBmYjgxYWZiZmEwYiJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjk2NjFlY2I4MTljM2I0N2I4ZGZkOGUyYjU4YTY3NTRhZDFiYjAwYzIyNTUxODUxN2Q4ZmYwZTNlMDQ5MmYwNmQiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQHdvbmRlcndoeS1lci9kZXNrdG9wLWNvbW1hbmRlciIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIwLjMuMSJ9LCAic3VwZXJzZWRlcyI6ICIwYmM2OTg0MzA4MTI2NDBmYzE3NTMzMDgxZmM5MDJhZTkzZGQwNTc0ZWYyNjQ0MWQxYTFhOGQxZWY2ZWMzNWNlIiwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogIjk2NjFlY2I4MTljM2I0N2I4ZGZkOGUyYjU4YTY3NTRhZDFiYjAwYzIyNTUxODUxN2Q4ZmYwZTNlMDQ5MmYwNmQifSwgIm5hbWUiOiAibnBtOkB3b25kZXJ3aHktZXIvZGVza3RvcC1jb21tYW5kZXJAMC4zLjEifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "mB2hsVZdRXTfGIVc6eX5ktXCaNEC4VLsts703ne7pPuIvyGGu7R5xbvZyymbOxIL53bW37tAnTQdP7Y3PnglCQ=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@wonderwhy-er/desktop-commander",
+   "version": "0.3.1",
+   "registry": "npm",
+   "artifact_sha256": "9661ecb819c3b47b8dfd8e2b58a6754ad1bb00c225518517d8ff0e3e0492f06d",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@wonderwhy-er/desktop-commander"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:09:54Z",
+  "generated_at": "2026-11-10T04:09:54Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "981da1b1565d4574df18855ce9e5f992d5c268d102e152ecb6cef4de77bba4fb88bf2186bbb479c5bbd9cb299b3b120be776d6dfbb409d341d3fb6373e782509",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/wonderwhy-er/DesktopCommanderMCP/.github/workflows/release.yml@refs/heads/main",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  },
+  "supersedes": "0bc698430812640fc17533081fc902ae93dd0574ef26441d1a1a8d1ef6ec35ce"
+ }
+}

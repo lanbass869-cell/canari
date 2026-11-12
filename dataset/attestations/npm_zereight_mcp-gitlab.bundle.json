@@ -1,1 +1,63 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QHplcmVpZ2h0L21jcC1naXRsYWIiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNVQwNToxOTowN1oiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDhUMDU6MTk6MDdaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImU0MTA4N2E0NmNlNTRmOTc2MTdmYjAzMWQzNTNhNTIzZTJhNDJlYjc3M2QxZTM4MTViYjk2YzkyZDM2NzRjMjciLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogIjIzZmJiZDdmMTE4MDRiOTVmOTgwMjI4ODk1N2IzNWI5MmJjNmE1YjdkMGU2ZGRkMDgzZjIyNjE5YmIxOGYyMzEiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiYzgyMmI2Yzk0MTkxMmMxYzk4YWY3ZGUxMzkzYWVmNWNmZDlkN2FiN2FkNTg1MzQxYmRmN2Q2YWExYjY4NDYyOGUzYzc4ZTBiYjRlNDhjOGQ1MTY2MTY1N2U1YzYyYjNlNDJhM2Q3Nzk3ZDJmYWY1ODliYWE4OTYwOWM5YzlkMDYifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJhMDAwNWNkZDM2NmJmOTQzOGQ2ZDhhMDk0MmY3NjBlOGYyYjUyNzA3NjZmMDZiODQzYWI0ODQwMDE1MTEzMTk3IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkB6ZXJlaWdodC9tY3AtZ2l0bGFiIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjIuMy4yMiJ9LCAidmVyZGljdCI6ICJwYXNzIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "2atPSh1og2jDZ+mG5ygq2KrndNtRELTwVjXrsxJs3MeKmcelSI2L1w5TNhPF00Vw4M0nlXNr2fQsu4dvk4T4Bw=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@zereight/mcp-gitlab", "version": "2.3.22", "registry": "npm", "artifact_sha256": "a0005cdd366bf9438d6d8a0942f760e8f2b5270766f06b843ab4840015113197", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@zereight/mcp-gitlab"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-15T05:19:07Z", "generated_at": "2026-11-08T05:19:07Z", "signature": {"envelope": "DSSE", "keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "d9ab4f4a1d688368c367e986e7282ad8aae774db5110b4f05635ebb3126cdcc78a99c7a5488d8bd70e533613c5d34570e0cd2795736bd9f42cbb876f9384f807", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkB6ZXJlaWdodC9tY3AtZ2l0bGFiIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTVUMDU6MTk6MDdaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA4VDA1OjE5OjA3WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJlNDEwODdhNDZjZTU0Zjk3NjE3ZmIwMzFkMzUzYTUyM2UyYTQyZWI3NzNkMWUzODE1YmI5NmM5MmQzNjc0YzI3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjQyMTNjZmJkNTUzMTBjNDViM2UxOTEzMWJiYmVlNWI5NmE1ZmJiNWIwMGM3ZjU3NzFmNDc1YWYyNDJkNTI3YzU4NjYxNDJhZmVmNzMyNDBlZjhlNGUxNDQ3OTQ0MjcwZGI2NmE4YzQ1Y2VhOGQwMTI5Y2U4OWRiN2E3MThiMTA1In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiYTAwMDVjZGQzNjZiZjk0MzhkNmQ4YTA5NDJmNzYwZThmMmI1MjcwNzY2ZjA2Yjg0M2FiNDg0MDAxNTExMzE5NyIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAemVyZWlnaHQvbWNwLWdpdGxhYiIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIyLjMuMjIifSwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogImEwMDA1Y2RkMzY2YmY5NDM4ZDZkOGEwOTQyZjc2MGU4ZjJiNTI3MDc2NmYwNmI4NDNhYjQ4NDAwMTUxMTMxOTcifSwgIm5hbWUiOiAibnBtOkB6ZXJlaWdodC9tY3AtZ2l0bGFiQDIuMy4yMiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "UZVppoz/HjyB7Hb262OGj+gfNSZsLO5T6zpsTKbauGA0LNCM10DFHtyw5TrvQBIiHZ/6cLuyFvjW+vruJDIcDg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@zereight/mcp-gitlab",
+   "version": "2.3.22",
+   "registry": "npm",
+   "artifact_sha256": "a0005cdd366bf9438d6d8a0942f760e8f2b5270766f06b843ab4840015113197",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@zereight/mcp-gitlab"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T05:19:07Z",
+  "generated_at": "2026-11-08T05:19:07Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "519569a68cff1e3c81ec76f6eb63868fe81f35266c2cee53eb3a6c4ca6dab860342cd08cd740c51edcb0e53aef4012221d9ffa70bbb216f8d6fafaee24321c0e",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

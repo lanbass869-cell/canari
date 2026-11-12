@@ -162,27 +162,24 @@ class TestChainBranches:
         import hashlib
         ad = tmp_path / "attestations"
         ad.mkdir()
-        # The producer defines a supersedes digest as sha256 of the canonical
-        # TOP-LEVEL payload (which embeds the inline signature block), so read
-        # that copy back from the written bundle.
+        # The producer defines a supersedes digest with payload_digest(), which
+        # canonically hashes the attestation EXCLUDING the inline signature
+        # block (so re-signing cannot orphan the chain).
         import json as _json
+        from canari.signing import payload_digest
         base = {"subject": {"name": "p", "version": "1", "registry": "npm",
                             "artifact_sha256": "a" * 64}, "verdict": "pass",
                 "checks": [{"id": "X", "verdict": "pass", "tool": "t"}],
                 "generated_at": "2026-11-10T00:00:00Z"}
         _signed_bundle_file(ad / "0.bundle.json", base)
-        hd = hashlib.sha256(
-            _json.dumps(_json.loads(
-                (ad / "0.bundle.json").read_text(encoding="utf-8"))["payload"],
-                ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        hd = payload_digest(_json.loads(
+            (ad / "0.bundle.json").read_text(encoding="utf-8"))["payload"])
         parent = tmp_path / "attestations"
         _signed_bundle_file(ad / "1.bundle.json",
                             dict(base, generated_at="2026-11-11T00:00:00Z",
                                  supersedes=hd))
-        d1 = hashlib.sha256(
-            _json.dumps(_json.loads(
-                (ad / "1.bundle.json").read_text(encoding="utf-8"))["payload"],
-                ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        d1 = payload_digest(_json.loads(
+            (ad / "1.bundle.json").read_text(encoding="utf-8"))["payload"])
         _signed_bundle_file(ad / "2.bundle.json",
                             dict(base, generated_at="2026-11-12T00:00:00Z",
                                  supersedes=hd))

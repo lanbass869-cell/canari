@@ -1,1 +1,64 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6bWNwLWhlbGxvLXdvcmxkIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDM6NDM6MDFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDAzOjQzOjAxWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJhNzdmNjg5MzcyZjY4MWQyZjA5MDY1ODcwMWZkNTQ0NGNmNDVlNjFlZDVkODI1NDRjYTU2NTAxOWYyNzM0Njc3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjBkYmIxZmNjZjNhY2Y5NTE3ZjMyZGJiYTllMzBkMTgyZjY5NjQ0ZjcwOTI1ODc1MWU0Yzk1NjFiM2JjOTdjMzU3YzAwZmQ0YmNhNDJhZDFlMWQ2MmFhYmUwOTFlN2I0ZmU1NzRjYTJkNzIxNzYyY2RkY2ZkMjEzMTRlYTBlOTA2In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiNWIzZjZlMmU5NGRiMjNjMDI3ZGQxZDBjNDA4N2QwNzZjOTdhYTlhMzY5MDE2MWY1ZjAxZTQyNjMxNDRjZjYyZiIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJtY3AtaGVsbG8td29ybGQiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMS4xLjIifSwgInN1cGVyc2VkZXMiOiAiNWU3YmJlZWZjNDVlNDZiZDgxNWEwOWRhOWQ5MTNlNWFlZDc5NjYzOTZiNDZhMWFkNjM1NWYzMDE2MjgwMmZkOSIsICJ2ZXJkaWN0IjogInBhc3MifQ==", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "hny4nOJVWtvxHyLs97RzJVMUp0qZevkB2BTxmc0QHWHyDUH1Erxg6PWO9Er1GcCNwTce95zQlIdTGXmUFBZjDg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "mcp-hello-world", "version": "1.1.2", "registry": "npm", "artifact_sha256": "5b3f6e2e94db23c027dd1d0c4087d076c97aa9a3690161f5f01e4263144cf62f", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "a77f689372f681d2f090658701fd5444cf45e61ed5d82544ca565019f2734677", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:mcp-hello-world"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T03:43:01Z", "generated_at": "2026-11-10T03:43:01Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "867cb89ce2555adbf11f22ecf7b473255314a74a997af901d814f199cd101d61f20d41f512bc60e8f58ef44af519c08dc1371ef79cd09487531979941416630e", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "5e7bbeefc45e46bd815a09da9d913e5aed7966396b46a1ad6355f30162802fd9"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50Om1jcC1oZWxsby13b3JsZCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDAzOjQzOjAxWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwMzo0MzowMVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYTc3ZjY4OTM3MmY2ODFkMmYwOTA2NTg3MDFmZDU0NDRjZjQ1ZTYxZWQ1ZDgyNTQ0Y2E1NjUwMTlmMjczNDY3NyIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJjOWU4NDIzMjIyZTUwYzMxZjZlMGY5ZmZlOGE0ZDI5OGM2M2M4NGQxZTI5ZTMyOWVmYjJhMDdkMjg4OGVkMWE2NDQwYzE3YjVkOTk4NzQ5NzczNDJhYWM2NzQ1YWY0NGM1OGJmNDgxNGUxMDk0OGQzMmY0ZWE1NTdiMzEzOGUwMSJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjViM2Y2ZTJlOTRkYjIzYzAyN2RkMWQwYzQwODdkMDc2Yzk3YWE5YTM2OTAxNjFmNWYwMWU0MjYzMTQ0Y2Y2MmYiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAibWNwLWhlbGxvLXdvcmxkIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjEuMS4yIn0sICJzdXBlcnNlZGVzIjogIjcwOTdkNGFmMWYyZjZkMjg5MTk2OGRjYWI0NDQzYTRhYTllYTgxYmQwMmM2OGExNDUxZTcxNzMyYTZhNGNiYTUiLCAidmVyZGljdCI6ICJwYXNzIn0sICJwcmVkaWNhdGVUeXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzdWJqZWN0IjogW3siZGlnZXN0IjogeyJzaGEyNTYiOiAiNWIzZjZlMmU5NGRiMjNjMDI3ZGQxZDBjNDA4N2QwNzZjOTdhYTlhMzY5MDE2MWY1ZjAxZTQyNjMxNDRjZjYyZiJ9LCAibmFtZSI6ICJucG06bWNwLWhlbGxvLXdvcmxkQDEuMS4yIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "+xqpeqBM/xpYPDbzv4luDm34QQnTL+pNQwXOYzZvbOHeN+yv9uL1hlbhSm6EZcnoqPwxJZ4mwC6+of21DrENDA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-hello-world",
+   "version": "1.1.2",
+   "registry": "npm",
+   "artifact_sha256": "5b3f6e2e94db23c027dd1d0c4087d076c97aa9a3690161f5f01e4263144cf62f",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "a77f689372f681d2f090658701fd5444cf45e61ed5d82544ca565019f2734677",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:mcp-hello-world"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T03:43:01Z",
+  "generated_at": "2026-11-10T03:43:01Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "fb1aa97aa04cff1a583c36f3bf896e0e6df84109d32fea4d4305ce63366f6ce1de37ecaff6e2f58656e14a6e8465c9e8a8fc31259e26c02ebea1fdb50eb10d0c",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "7097d4af1f2f6d2891968dcab4443a4aa9ea81bd02c68a1451e71732a6a4cba5"
+ }
+}

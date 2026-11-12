@@ -1,1 +1,64 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QG1pY3Jvc29mdC9qc3RzLXVwZ3JhZGUtYXNzaXN0YW50Il0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDQ6MTc6MTFaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA0OjE3OjExWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI1YmYwZTkyNDNlMmZlOTRhZTUzZWVjZWRkZWJiMTU5ZTY2YjRkMGU0NTNiYTYzM2E3MmRjMDJhZjJiYzdkOTcyIiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImFlMDRiMDlhN2VlZTM3OTk4MzdiZjg4YWUyOWVjYTg0NmZmNGNmMzU1MTIwYjcxM2JiZGU4YTEwZDJiZjBhMTQ3YjAwODU1NTI1YjJlM2QyYTYxNzRlMWUxMjE3ZWUyYWQ3NjhhNWI5MGI0ZTUyNGVhMjAwNzUyNjk3YTE3NTBkIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiN2NhODRhYTc5YjkxOTZmM2ZhNThjODU5NjkzMTMyOTc0MjQxNDRlNzAxMTkzNzliOTdiMmVkZGUzMTQxYjc1ZSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAbWljcm9zb2Z0L2pzdHMtdXBncmFkZS1hc3Npc3RhbnQiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMC4xLjE4In0sICJzdXBlcnNlZGVzIjogIjA4YTU5ZDExNDFmMmI3NWFhNzdmMDY2NWZmN2YxNDFmODIwNDQ3OTIwOGNhYjI3MWI2YjVhNTY4NTUzMWZjYzIiLCAidmVyZGljdCI6ICJwYXNzIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "rRpdsu8Bz44s9QaILcqrKqOf3a97ju+XaKjrq5QeMuCjEDYTqpVaZ7ZqNPf6ZviDfCCZux1jlXnOwqU5ZjvZBg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@microsoft/jsts-upgrade-assistant", "version": "0.1.18", "registry": "npm", "artifact_sha256": "7ca84aa79b9196f3fa58c85969313297424144e70119379b97b2edde3141b75e", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@microsoft/jsts-upgrade-assistant"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-17T04:17:11Z", "generated_at": "2026-11-10T04:17:11Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "ad1a5db2ef01cf8e2cf506882dcaab2aa39fddaf7b8eef9768a8ebab941e32e0a3103613aa955a67b66a34f7fa66f8837c2099bb1d639579cec2a539663bd906", "payload_type": "https://agentcheck.dev/attestation/v0.1"}, "supersedes": "08a59d1141f2b75aa77f0665ff7f141f8204479208cab271b6b5a5685531fcc2"}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBtaWNyb3NvZnQvanN0cy11cGdyYWRlLWFzc2lzdGFudCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA0OjE3OjExWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNDoxNzoxMVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNWJmMGU5MjQzZTJmZTk0YWU1M2VlY2VkZGViYjE1OWU2NmI0ZDBlNDUzYmE2MzNhNzJkYzAyYWYyYmM3ZDk3MiIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI0NGRiYjIxMmEyZTJlMDdmN2FiZGE0M2FhODBkODAzZjc2YTJmY2EyYmVhZDc0NDI2M2NkMDZiY2FlOTJiN2Y1MTU2YzA3OTlhOTQ0ZDhlZThhMWQyYzY3YjQ1MGExYTg5NGU3ZDVmOTgzOGQxZTIzMDU2MzdhMzdiNWIyYTQwMyJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjdjYTg0YWE3OWI5MTk2ZjNmYTU4Yzg1OTY5MzEzMjk3NDI0MTQ0ZTcwMTE5Mzc5Yjk3YjJlZGRlMzE0MWI3NWUiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQG1pY3Jvc29mdC9qc3RzLXVwZ3JhZGUtYXNzaXN0YW50IiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjAuMS4xOCJ9LCAic3VwZXJzZWRlcyI6ICJiMmNkOWNhYmMyNmI4YzFkOGRlZjliMWNiOWJkYmI4ZDJmOWY2ZjJjZjMzZTM0ODU4MGY1NTAzMjdlYTBjMDliIiwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogIjdjYTg0YWE3OWI5MTk2ZjNmYTU4Yzg1OTY5MzEzMjk3NDI0MTQ0ZTcwMTE5Mzc5Yjk3YjJlZGRlMzE0MWI3NWUifSwgIm5hbWUiOiAibnBtOkBtaWNyb3NvZnQvanN0cy11cGdyYWRlLWFzc2lzdGFudEAwLjEuMTgifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "gcMT94nJmBEp55ZaDWgslmijNdUtHBgKH+Xu8XQV8GphcnmuzIhAlOYjZqv6PWFqiuGIXMBqEa9os7fS7FNOBg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@microsoft/jsts-upgrade-assistant",
+   "version": "0.1.18",
+   "registry": "npm",
+   "artifact_sha256": "7ca84aa79b9196f3fa58c85969313297424144e70119379b97b2edde3141b75e",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "5bf0e9243e2fe94ae53eeceddebb159e66b4d0e453ba633a72dc02af2bc7d972",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@microsoft/jsts-upgrade-assistant"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:17:11Z",
+  "generated_at": "2026-11-10T04:17:11Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "81c313f789c9981129e7965a0d682c9668a335d52d1c180a1fe5eef17415f06a617279aecc884094e62366abfa3d616a8ae1885cc06a11af68b3b7d2ec534e06",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "b2cd9cabc26b8c1d8def9b1cb9bdbb8d2f9f6f2cf33e348580f550327ea0c09b"
+ }
+}

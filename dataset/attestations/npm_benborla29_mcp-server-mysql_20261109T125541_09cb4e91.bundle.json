@@ -1,1 +1,63 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGJlbmJvcmxhMjkvbWNwLXNlcnZlci1teXNxbCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE2VDEyOjU1OjQxWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0wOVQxMjo1NTo0MVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYjYwMzhmMTY5MDJjNGM0ZjAyMWFkMDYzNWY5YjMxYmY1NGI0ZDUzOTcyYWYyMTgwZDc3MjI0Y2E3NmRkZTExNCIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICIwOTIxMmU1MmE1YmZlNzhkY2YxZDhhZjljYjRmMWY2MjI0ZjNhYjcxMDJiZmQ4NGNhZjBmMjk4NzY4ODZjZmVmOGRhOWVjYjgwODAzYmM4YTdjNjZmZmUwOWVhYWMxMmZlZmNlYzIxNjc3MjYwMDM0NDlkZGZiYjkyNDc1YzYwMCJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogImZkNjA3ZDc4MWM5YjA4MWFjNDU0NzhjMWZjY2FkOTVmY2E1YzU0ZGUyYmUzMjAzNDdmMmYwZTFhYWIzY2I5MzgiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQGJlbmJvcmxhMjkvbWNwLXNlcnZlci1teXNxbCIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIyLjAuOSJ9LCAidmVyZGljdCI6ICJwYXNzIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "Quejm5KUQZiZbTWQ8Hy4lDdKA2s7JrNXOEpnDXkhM6MvLICVVZ3hi98Ukg4thtkn5sTDNtHtQ4Odt7exp80sDA=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@benborla29/mcp-server-mysql", "version": "2.0.9", "registry": "npm", "artifact_sha256": "fd607d781c9b081ac45478c1fccad95fca5c54de2be320347f2f0e1aab3cb938", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "b6038f16902c4c4f021ad0635f9b31bf54b4d53972af2180d77224ca76dde114", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@benborla29/mcp-server-mysql"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-16T12:55:41Z", "generated_at": "2026-11-09T12:55:41Z", "signature": {"envelope": "DSSE", "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe", "sig": "42e7a39b92944198996d3590f07cb894374a036b3b26b357384a670d792133a32f2c8095559de18bdf14920e2d86d927e6c4c336d1ed43839db7b7b1a7cd2c0c", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBiZW5ib3JsYTI5L21jcC1zZXJ2ZXItbXlzcWwiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNlQxMjo1NTo0MVoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDlUMTI6NTU6NDFaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImI2MDM4ZjE2OTAyYzRjNGYwMjFhZDA2MzVmOWIzMWJmNTRiNGQ1Mzk3MmFmMjE4MGQ3NzIyNGNhNzZkZGUxMTQiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiNmZhYjI2OGI5OTM5MzQwYjZiMjljNzFmNDYyMDkwMDQ1OGMzYjczZjIwODE5YThiYzVhMmI1MTcxZDdmMzg1NzQ5N2QxNjNiYTg0OWUwM2U3MzQ0ZjVhOWEzOTY4NzlmMTkxZjg0MjY4NGE2ZTkwYTNmNzQ2NGExOTQ2N2E1MGYifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJmZDYwN2Q3ODFjOWIwODFhYzQ1NDc4YzFmY2NhZDk1ZmNhNWM1NGRlMmJlMzIwMzQ3ZjJmMGUxYWFiM2NiOTM4IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBiZW5ib3JsYTI5L21jcC1zZXJ2ZXItbXlzcWwiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMi4wLjkifSwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogImZkNjA3ZDc4MWM5YjA4MWFjNDU0NzhjMWZjY2FkOTVmY2E1YzU0ZGUyYmUzMjAzNDdmMmYwZTFhYWIzY2I5MzgifSwgIm5hbWUiOiAibnBtOkBiZW5ib3JsYTI5L21jcC1zZXJ2ZXItbXlzcWxAMi4wLjkifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "WvM71tkJYWVz+0n5TkD7FYpLFX6CFftrD6zxLXdOV37kMZPZrbkVlJutepJzF/NG1eqM1zstWiosl/bwpDffAA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@benborla29/mcp-server-mysql",
+   "version": "2.0.9",
+   "registry": "npm",
+   "artifact_sha256": "fd607d781c9b081ac45478c1fccad95fca5c54de2be320347f2f0e1aab3cb938",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "b6038f16902c4c4f021ad0635f9b31bf54b4d53972af2180d77224ca76dde114",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@benborla29/mcp-server-mysql"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-16T12:55:41Z",
+  "generated_at": "2026-11-09T12:55:41Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "5af33bd6d909616573fb49f94e40fb158a4b157e8215fb6b0facf12d774e577ee43193d9adb915949bad7a927317f346d5ea8cd73b2d5a2a2c97f6f0a437df00",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

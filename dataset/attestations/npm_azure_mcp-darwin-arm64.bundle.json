@@ -1,1 +1,63 @@
-{"envelope": {"payload": "eyJfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAiY2hlY2tlciI6IHsiaWQiOiAiY2FuYXJpLW0xIiwgImtpbmQiOiAiYXV0b21hdGlvbiIsICJ0b29scyI6IFsiY2FuYXJpLW0xLzAuMSJdfSwgImNoZWNrcyI6IFt7ImlkIjogIkwxLjFfUkVHSVNUUllfUFJFU0VOVCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiaWQiOiAiTDIuMV9BUlRJRkFDVF9IQVNIIiwgInRvb2wiOiAiY2FuYXJpLW0xLzAuMSIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbIm5wbS1wYWNrdW1lbnQ6QGF6dXJlL21jcC1kYXJ3aW4tYXJtNjQiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xNVQwNjowNjoyM1oiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMDhUMDY6MDY6MjNaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogImU0MTA4N2E0NmNlNTRmOTc2MTdmYjAzMWQzNTNhNTIzZTJhNDJlYjc3M2QxZTM4MTViYjk2YzkyZDM2NzRjMjciLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogIjIzZmJiZDdmMTE4MDRiOTVmOTgwMjI4ODk1N2IzNWI5MmJjNmE1YjdkMGU2ZGRkMDgzZjIyNjE5YmIxOGYyMzEiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMGY5NzQ5OGExZjhhNThjNjNmZjllMjJlNjY5MWE3ZGE3Zjk3YmM5ZjkyN2M5MzBlNDI1ZDAzNzI0MDQwZWMxM2MxNTRhN2NmNWFhZDBkYmNjMzBlMmU4NWY5ZGZkMDkzYzIyNjI4NTc0MzBhYjBiYTNhZWFkNWU4N2RlMjZhMDEifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICI4M2ZjNDY1YTNhNGNjMWY2ZmE1MDY1OGY0MzIyZDU0ZTM0ZGZjZDZhNjhiYzBiM2MzNzgxNzMxZmNiM2NkYzExIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBhenVyZS9tY3AtZGFyd2luLWFybTY0IiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjQuMC4wLWJldGEuNiJ9LCAidmVyZGljdCI6ICJwYXNzIn0=", "payloadType": "application/vnd.in-toto+json", "signatures": [{"keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "klPSfRlV8NUdLCPcfzA3R8L8dvyRJYO0m30Erx0qGsr53o3b8Ilur+B6P7bIBQvSg2tuk8ZlEHaUEpPqNGGTCg=="}]}, "payload": {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": {"name": "@azure/mcp-darwin-arm64", "version": "4.0.0-beta.6", "registry": "npm", "artifact_sha256": "83fc465a3a4cc1f6fa50658f4322d54e34dfcd6a68bc0b3c3781731fcb3cdc11", "maintainers": []}, "host": {"class": "mcp", "host_version": "registry-meta-v1"}, "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"}, {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-m1/0.1"}], "verdict": "pass", "checker": {"kind": "automation", "id": "canari-m1", "tools": ["canari-m1/0.1"]}, "evidence_refs": ["npm-packument:@azure/mcp-darwin-arm64"], "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []}, "expires_at": "2026-11-15T06:06:23Z", "generated_at": "2026-11-08T06:06:23Z", "signature": {"envelope": "DSSE", "keyid": "23fbbd7f11804b95f9802288957b35b92bc6a5b7d0e6ddd083f22619bb18f231", "sig": "9253d27d1955f0d51d2c23dc7f303747c2fc76fc912583b49b7d04af1d2a1acaf9de8ddbf0896eafe07a3fb6c8050bd2836b6e93c6651076941293ea3461930a", "payload_type": "https://agentcheck.dev/attestation/v0.1"}}}
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBhenVyZS9tY3AtZGFyd2luLWFybTY0Il0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTVUMDY6MDY6MjNaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTA4VDA2OjA2OjIzWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICJlNDEwODdhNDZjZTU0Zjk3NjE3ZmIwMzFkMzUzYTUyM2UyYTQyZWI3NzNkMWUzODE1YmI5NmM5MmQzNjc0YzI3IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogImMyYTY3MWFhZWExMTA0MmM1ZDNjMGNiZDAzMDJmMzVmM2EyMGM3YmE0NDNjODlmM2JmYzI4NzA0YjFiMWVmMGFlYzBkZjBmNjFhMWQ1Mjk0MmFiMGI1MDMzYjlmYmVjMzIxZDA0NTc2NGQ1NDE3ZGJiODUwNzFlOTUyMjBjZDBiIn0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiODNmYzQ2NWEzYTRjYzFmNmZhNTA2NThmNDMyMmQ1NGUzNGRmY2Q2YTY4YmMwYjNjMzc4MTczMWZjYjNjZGMxMSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAYXp1cmUvbWNwLWRhcndpbi1hcm02NCIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICI0LjAuMC1iZXRhLjYifSwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogIjgzZmM0NjVhM2E0Y2MxZjZmYTUwNjU4ZjQzMjJkNTRlMzRkZmNkNmE2OGJjMGIzYzM3ODE3MzFmY2IzY2RjMTEifSwgIm5hbWUiOiAibnBtOkBhenVyZS9tY3AtZGFyd2luLWFybTY0QDQuMC4wLWJldGEuNiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "f5zEOT6kYiLaraJUI9nXP7fUcD51BSzd0lfuF2M1hL0UbY4brgIAURwJ2jwfTQtXAmXbNWspD+si27H5un9BAg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@azure/mcp-darwin-arm64",
+   "version": "4.0.0-beta.6",
+   "registry": "npm",
+   "artifact_sha256": "83fc465a3a4cc1f6fa50658f4322d54e34dfcd6a68bc0b3c3781731fcb3cdc11",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "e41087a46ce54f97617fb031d353a523e2a42eb773d1e3815bb96c92d3674c27",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@azure/mcp-darwin-arm64"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-15T06:06:23Z",
+  "generated_at": "2026-11-08T06:06:23Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "7f9cc4393ea46222daada25423d9d73fb7d4703e75052cddd257ee17633584bd146d8e1bae0200511c09da3c1f4d0b570265db356b290feb22dbb1f9ba7f4102",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

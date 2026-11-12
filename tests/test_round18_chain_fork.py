@@ -31,8 +31,11 @@ def _mk(tmp_path, fname, version, supersedes=None):
     ad.mkdir(exist_ok=True)
     (ad / fname).write_text(json.dumps({"envelope": s["envelope"], "payload": s["payload"]}),
                             encoding="utf-8")
-    return hashlib.sha256(json.dumps(s["payload"], ensure_ascii=False,
-                                     sort_keys=True).encode()).hexdigest()
+    # supersession digest is signature-independent (same function the producer
+    # and verify_chain use); hashing the inline signature block would break
+    # every chain on re-sign.
+    from canari.signing import payload_digest
+    return payload_digest(s["payload"])
 
 
 class TestForkedSupersession:
