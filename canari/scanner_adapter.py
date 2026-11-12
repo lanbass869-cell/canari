@@ -121,7 +121,8 @@ def findings_to_checks(data):
                  "tool": "repo-forensics/adapter",
                  "evidence_ref": data["error"]}], "error"
 
-    summary = data.get("summary", {})
+    raw_summary = data.get("summary")
+    summary = raw_summary if isinstance(raw_summary, dict) else {}
     total = summary.get("total", 0)
     critical = summary.get("critical", 0)
     high = summary.get("high", 0)
@@ -131,12 +132,24 @@ def findings_to_checks(data):
 
     tool_id = "repo-forensics-v2/%s/%d-scanners" % (digest, scanner_count)
 
-    if critical > 0 or high > 0:
+    # ★2026-11-11 (F5): "no evidence" must never become "pass". A missing or
+    # malformed summary, a scanner that ran nothing, or a non-zero exit code
+    # all mean we did not actually vet the artifact.
+    if not isinstance(raw_summary, dict):
+        verdict_lvl = "unsupported"
+        evidence = ("scanner returned no usable 'summary' (type=%s, exit=%s); "
+                    "nothing was actually assessed" % (type(raw_summary).__name__, exit_code))
+    elif critical > 0 or high > 0:
         verdict_lvl = "fail"
         evidence = "critical=%d high=%d total=%d exit=%d" % (critical, high, total, exit_code)
     elif total > 0:
         verdict_lvl = "pass-with-findings"
         evidence = "medium=%d low=%d total=%d" % (summary.get("medium", 0), summary.get("low", 0), total)
+    elif scanner_count <= 0 or exit_code != 0:
+        verdict_lvl = "unsupported"
+        evidence = ("zero scanners ran or the scan exited non-zero "
+                    "(scanners=%d, exit=%s); no findings is not a clean result"
+                    % (scanner_count, exit_code))
     else:
         verdict_lvl = "pass"
         evidence = "0 findings across %d scanners, digest=%s" % (scanner_count, digest)

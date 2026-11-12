@@ -115,15 +115,40 @@ class TestVerifyCliFinal:
         import hashlib
         ad = tmp_path / "attestations"
         ad.mkdir()
-        base = {"subject": {"name": "a", "version": "1", "registry": "npm",
-                            "artifact_sha256": "a" * 64}, "verdict": "pass",
-                "checks": [{"id": "X", "verdict": "pass", "tool": "t"}],
-                "generated_at": "2026-11-10T00:00:00Z"}
-        other = dict(base, subject={"name": "b", "version": "1", "registry": "npm",
-                                    "artifact_sha256": "b" * 64})
-        d_other = hashlib.sha256(json.dumps(other, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-        a = dict(base, supersedes=d_other)
-        # b has no supersedes -> head; a single-bundle component points at b's digest
-        (ad / "a1.bundle.json").write_text(json.dumps({"payload": a}), encoding="utf-8")
-        (ad / "b1.bundle.json").write_text(json.dumps({"payload": other}), encoding="utf-8")
+        from canari.signing import generate_keypair, sign_attestation
+
+        def _mk(name, sha):
+            signer, _pub = generate_keypair()
+            att = {"_type": "https://agentcheck.dev/attestation/v0.1",
+                   "subject": {"name": name, "version": "1", "registry": "npm",
+                               "artifact_sha256": sha * 64, "maintainers": []},
+                   "host": {"class": "mcp", "host_version": "t"},
+                   "scenario_sha256": "a" * 64,
+                   "checks": [{"id": "X", "verdict": "pass", "tool": "t"}],
+                   "verdict": "pass", "checker": {"kind": "automation", "id": "t"},
+                   "evidence_refs": [],
+                   "evidence_completeness": {"dropped_logs": 0,
+                                             "missing_observers": [],
+                                             "truncated_fields": []},
+                   "expires_at": "2027-01-01T00:00:00Z",
+                   "generated_at": "2026-11-10T00:00:00Z",
+                   "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                                 "payload_type": ""}}
+            return att, signer
+
+        # b first, so we can compute its (top-level payload) digest
+        b_att, b_signer = _mk("b", "b")
+        sb = sign_attestation(b_att, b_signer)
+        d_other = hashlib.sha256(json.dumps(sb["payload"], ensure_ascii=False,
+                                            sort_keys=True).encode()).hexdigest()
+        (ad / "b1.bundle.json").write_text(
+            json.dumps({"envelope": sb["envelope"], "payload": sb["payload"]}),
+            encoding="utf-8")
+
+        a_att, a_signer = _mk("a", "a")
+        a_att["supersedes"] = d_other
+        sa = sign_attestation(a_att, a_signer)
+        (ad / "a1.bundle.json").write_text(
+            json.dumps({"envelope": sa["envelope"], "payload": sa["payload"]}),
+            encoding="utf-8")
         assert verify_chain(str(ad)) == 0

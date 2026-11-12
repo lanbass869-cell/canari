@@ -57,12 +57,36 @@ class TestCadenceBurstKill:
         assert any("release_burst" in x["evidence_ref"] for x in f), f
 
 
+def _signed_bundle_file(path, payload):
+    import json as _json
+    from canari.signing import generate_keypair, sign_attestation
+    base = {"_type": "https://agentcheck.dev/attestation/v0.1",
+            "subject": payload.get("subject", {}),
+            "host": {"class": "mcp", "host_version": "t"},
+            "scenario_sha256": "a" * 64,
+            "checks": payload.get("checks", []),
+            "checker": {"kind": "automation", "id": "t"},
+            "evidence_refs": [],
+            "evidence_completeness": {"dropped_logs": 0,
+                                      "missing_observers": [],
+                                      "truncated_fields": []},
+            "expires_at": "2027-01-01T00:00:00Z",
+            "supersedes": payload.get("supersedes"),
+            "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                          "payload_type": ""}}
+    base.update(payload)
+    signer, _pub = generate_keypair()
+    s = sign_attestation(base, signer)
+    path.write_text(_json.dumps({"envelope": s["envelope"],
+                                 "payload": s["payload"]}), encoding="utf-8")
+
 class TestFeedKill:
     def _w(self, tmp_path, p):
         ad = tmp_path / "attestations"
         ad.mkdir(exist_ok=True)
-        (ad / ("%s_%s.bundle.json" % (p["subject"]["name"], p["generated_at"].replace(":", "")))).write_text(
-            json.dumps({"payload": p}), encoding="utf-8")
+        _signed_bundle_file(
+            ad / ("%s_%s.bundle.json" % (p["subject"]["name"],
+                                         p["generated_at"].replace(":", ""))), p)
 
     def test_two_generations_picks_newest(self, tmp_path):
         from canari.feed import build_feed

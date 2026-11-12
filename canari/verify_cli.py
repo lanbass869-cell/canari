@@ -232,13 +232,31 @@ def verify_chain(directory: str, key_path: str = None) -> int:
     supersedes_map = {}  # filename -> digest it supersedes
     components = defaultdict(list)  # name -> [filenames]
 
+    skipped = []
     for fn in files:
         fp = os.path.join(att_dir, fn)
         try:
             bundle = json.load(open(fp, encoding="utf-8"))
-            payload = bundle.get("payload", {})
+            # ★2026-11-11 (F3): the producer defines the supersedes digest as
+            # sha256(canonical TOP-LEVEL payload) - that copy embeds the inline
+            # signature block, so reading the envelope copy instead yields a
+            # different digest and would break every real chain. Keep the
+            # producer's definition, but require the top-level copy to be the
+            # one the signature covers (ignoring that inline block); otherwise
+            # a tampered mirror could still hide a dangling pointer.
+            from canari.signing import read_signed_payload, check_payload_integrity
+            if not isinstance(bundle, dict) or not isinstance(bundle.get("envelope"), dict):
+                raise ValueError("no DSSE envelope (unsigned file cannot join a chain)")
+            ok_int, why_int, _signed = check_payload_integrity(bundle)
+            if not ok_int:
+                raise ValueError("payload integrity: %s" % why_int)
+            payload = bundle.get("payload")
+            if not isinstance(payload, dict):
+                raise ValueError("bundle has no top-level payload")
         except Exception as e:
-            print("  [SKIP] %s: cannot parse: %s" % (fn, e))
+            # a file we cannot interpret is an integrity problem, not a no-op
+            print("  [ERROR] %s: cannot use: %s" % (fn, e))
+            skipped.append((fn, str(e)))
             continue
 
         name = payload.get("subject", {}).get("name", "?")
@@ -326,6 +344,12 @@ def verify_chain(directory: str, key_path: str = None) -> int:
         if unreachable:
             errors.append("%s: %d bundle(s) unreachable from every chain head: %s" % (
                 name, len(unreachable), ", ".join(sorted(unreachable)[:3])))
+
+    # F3: a file we could not interpret invalidates the audit - it must not be
+    # silently dropped while the run still reports "all valid".
+    if skipped:
+        for _fn, _why in skipped:
+            errors.append("%s: excluded from chain (%s)" % (_fn, _why))
 
     if errors:
         print("\nchain errors (%d):" % len(errors))

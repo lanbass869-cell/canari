@@ -97,12 +97,14 @@ def parse_install(argv):
 
 
 def _lookup(store, registry, name, version, key):
-    """dsh plugin names live in the dsh registry but install through npm;
-    try the declared registry first, then the npm namespace."""
-    res = check_component(store, registry, name, version=version, key_path=key)
-    if not res["found"] and registry == "dsh-registry":
-        res = check_component(store, "npm", name, version=version, key_path=key)
-    return res
+    """Resolve the component in its DECLARED registry only.
+
+    ★2026-11-11 (F4): this used to fall back to the npm namespace for dsh
+    plugins. A dsh plugin and an npm package that happen to share a name are
+    different artifacts, so an npm "pass" was silently authorising a dsh
+    install. A missing dsh attestation is BLOCK, not "try npm".
+    """
+    return check_component(store, registry, name, version=version, key_path=key)
 
 
 def main(argv=None):

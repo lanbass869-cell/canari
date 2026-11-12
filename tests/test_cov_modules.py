@@ -46,10 +46,36 @@ def test_dead_letter_survives_corrupt_file(tmp_path):
     assert DeadLetterLog(str(p)).summary()["total"] == 0
 
 
+def _signed_bundle_file(path, payload):
+    """Write a REAL canari bundle (DSSE envelope + mirror)."""
+    import json as _json
+    from canari.signing import generate_keypair, sign_attestation
+    base = {"_type": "https://agentcheck.dev/attestation/v0.1",
+            "subject": payload.get("subject", {}),
+            "host": {"class": "mcp", "host_version": "t"},
+            "scenario_sha256": "a" * 64,
+            "checks": payload.get("checks", []),
+            "checker": {"kind": "automation", "id": "t"},
+            "evidence_refs": [],
+            "evidence_completeness": {"dropped_logs": 0,
+                                      "missing_observers": [],
+                                      "truncated_fields": []},
+            "expires_at": "2027-01-01T00:00:00Z",
+            "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                          "payload_type": ""}}
+    base.update(payload)
+    signer, _pub = generate_keypair()
+    s = sign_attestation(base, signer)
+    path.write_text(_json.dumps({"envelope": s["envelope"],
+                                 "payload": s["payload"]}), encoding="utf-8")
+
 def _bundle(path, registry, name, version, verdict="pass", gen="2026-11-10T00:00:00Z"):
-    payload = {"subject": {"registry": registry, "name": name, "version": version},
-               "verdict": verdict, "generated_at": gen}
-    path.write_text(json.dumps({"payload": payload}), encoding="utf-8")
+    payload = {"subject": {"registry": registry, "name": name, "version": version,
+                           "artifact_sha256": "a" * 64},
+               "verdict": verdict, "generated_at": gen, "checks": []}
+    # BUG-104/F2: the feed only publishes bundles that carry a signed payload,
+    # so fixtures must look like what sign_attestation writes.
+    _signed_bundle_file(path, payload)
 
 
 def test_build_feed_picks_latest_per_component(tmp_path):

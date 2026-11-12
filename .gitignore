@@ -8,3 +8,8 @@ external/
 .coverage
 build/
 dist/
+
+# local backups created during incident work
+*.bak
+*.bak-*
+*.orig

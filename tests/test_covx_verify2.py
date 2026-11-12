@@ -38,6 +38,28 @@ def _mk(tmp_path, name="p", checks=None, verdict="pass", fname="a.bundle.json",
     return str(fp), str(kp)
 
 
+def _signed_bundle_file(path, payload):
+    import json as _json
+    from canari.signing import generate_keypair, sign_attestation
+    base = {"_type": "https://agentcheck.dev/attestation/v0.1",
+            "subject": payload.get("subject", {}),
+            "host": {"class": "mcp", "host_version": "t"},
+            "scenario_sha256": "a" * 64,
+            "checks": payload.get("checks", []),
+            "checker": {"kind": "automation", "id": "t"},
+            "evidence_refs": [],
+            "evidence_completeness": {"dropped_logs": 0,
+                                      "missing_observers": [],
+                                      "truncated_fields": []},
+            "expires_at": "2027-01-01T00:00:00Z",
+            "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                          "payload_type": ""}}
+    base.update(payload)
+    signer, _pub = generate_keypair()
+    s = sign_attestation(base, signer)
+    path.write_text(_json.dumps({"envelope": s["envelope"],
+                                 "payload": s["payload"]}), encoding="utf-8")
+
 class TestVerifyBundleBranches:
     def test_bad_key_json(self, tmp_path, capsys):
         from canari.verify_cli import verify_bundle
@@ -92,12 +114,15 @@ class TestVerifyBundleBranches:
 
 
 class TestChainBranches:
-    def test_unparsable_bundle_skipped(self, tmp_path):
+    def test_unparsable_bundle_is_an_error(self, tmp_path):
+        # F3 (BUG-104): a file we cannot interpret used to be skipped and the
+        # audit still printed "all valid", so corruption could hide silently.
+        # It must now fail the chain audit.
         from canari.verify_cli import verify_chain
         ad = tmp_path / "attestations"
         ad.mkdir()
         (ad / "bad.bundle.json").write_text("{broken", encoding="utf-8")
-        assert verify_chain(str(ad)) == 0
+        assert verify_chain(str(ad)) == 4
 
     def test_single_no_supersedes_ok(self, tmp_path):
         from canari.verify_cli import verify_chain
@@ -115,7 +140,7 @@ class TestChainBranches:
              "generated_at": "2026-11-10T00:00:00Z"}
         d = hashlib.sha256(json.dumps(p, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         p["supersedes"] = d
-        (ad / "s.bundle.json").write_text(json.dumps({"payload": p}), encoding="utf-8")
+        _signed_bundle_file(ad / "s.bundle.json", p)
         assert verify_chain(str(ad)) == 4
 
     def test_no_head_cycle(self, tmp_path):
@@ -128,8 +153,8 @@ class TestChainBranches:
                 "generated_at": "2026-11-10T00:00:00Z"}
         a = dict(base, supersedes="0" * 64)
         b = dict(base, supersedes="1" * 64)
-        (ad / "a.bundle.json").write_text(json.dumps({"payload": a}), encoding="utf-8")
-        (ad / "b.bundle.json").write_text(json.dumps({"payload": b}), encoding="utf-8")
+        _signed_bundle_file(ad / "a.bundle.json", a)
+        _signed_bundle_file(ad / "b.bundle.json", b)
         assert verify_chain(str(ad)) == 4
 
     def test_diamond_dag(self, tmp_path):
@@ -137,18 +162,34 @@ class TestChainBranches:
         import hashlib
         ad = tmp_path / "attestations"
         ad.mkdir()
-        def dig(p):
-            return hashlib.sha256(json.dumps(p, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
-        head = {"subject": {"name": "p", "version": "1", "registry": "npm",
+        # The producer defines a supersedes digest as sha256 of the canonical
+        # TOP-LEVEL payload (which embeds the inline signature block), so read
+        # that copy back from the written bundle.
+        import json as _json
+        base = {"subject": {"name": "p", "version": "1", "registry": "npm",
                             "artifact_sha256": "a" * 64}, "verdict": "pass",
                 "checks": [{"id": "X", "verdict": "pass", "tool": "t"}],
                 "generated_at": "2026-11-10T00:00:00Z"}
-        c1 = dict(head, generated_at="2026-11-11T00:00:00Z", supersedes=dig(head))
-        c2 = dict(head, generated_at="2026-11-12T00:00:00Z", supersedes=dig(head))
-        leaf = dict(head, generated_at="2026-11-13T00:00:00Z", supersedes=dig(c1))
-        for i, p in enumerate((head, c1, c2, leaf)):
-            (ad / ("%d.bundle.json" % i)).write_text(json.dumps({"payload": p}), encoding="utf-8")
-        # c2 branch is independent; leaf supersedes c1 only -> all reachable from head
+        _signed_bundle_file(ad / "0.bundle.json", base)
+        hd = hashlib.sha256(
+            _json.dumps(_json.loads(
+                (ad / "0.bundle.json").read_text(encoding="utf-8"))["payload"],
+                ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        parent = tmp_path / "attestations"
+        _signed_bundle_file(ad / "1.bundle.json",
+                            dict(base, generated_at="2026-11-11T00:00:00Z",
+                                 supersedes=hd))
+        d1 = hashlib.sha256(
+            _json.dumps(_json.loads(
+                (ad / "1.bundle.json").read_text(encoding="utf-8"))["payload"],
+                ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        _signed_bundle_file(ad / "2.bundle.json",
+                            dict(base, generated_at="2026-11-12T00:00:00Z",
+                                 supersedes=hd))
+        _signed_bundle_file(ad / "3.bundle.json",
+                            dict(base, generated_at="2026-11-13T00:00:00Z",
+                                 supersedes=d1))
+        # both children hang off head; leaf extends the c1 branch -> all reachable
         assert verify_chain(str(ad)) == 0
 
 

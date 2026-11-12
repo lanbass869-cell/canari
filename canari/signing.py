@@ -186,19 +186,24 @@ def read_signed_payload(bundle: dict):
     if not isinstance(bundle, dict):
         return None, "bundle is not a JSON object"
     env = bundle.get("envelope")
-    if not isinstance(env, dict) or not env.get("payload"):
-        # Legacy / fixture bundle with no envelope: there is no signature to
-        # forge, so the top-level copy is all we have. Callers that require a
-        # signature check `envelope` separately.
-        top = bundle.get("payload")
-        if isinstance(top, dict):
-            return top, None
-        return None, "bundle has no DSSE envelope payload"
+    # ★2026-11-11 (F1): NO FALLBACK. If the envelope is absent, is not an
+    # object, or carries no decodable payload, this file has no signed content
+    # and must be treated as unusable. An earlier version silently fell back to
+    # the UNSIGNED top-level copy, which let an attacker delete
+    # envelope.payload and then edit that copy freely - restoring the exact
+    # bypass this function exists to prevent.
+    if not isinstance(env, dict):
+        return None, "bundle has no DSSE envelope (cannot be trusted)"
+    if not env.get("payload"):
+        return None, "DSSE envelope has no payload (cannot be trusted)"
     try:
         raw = base64.b64decode(env["payload"])
-        return json.loads(raw.decode("utf-8")), None
+        payload = json.loads(raw.decode("utf-8"))
     except Exception as e:                                   # noqa: BLE001
         return None, "cannot decode signed payload: %s" % e
+    if not isinstance(payload, dict):
+        return None, "signed payload is not a JSON object (%s)" % type(payload).__name__
+    return payload, None
 
 
 def check_payload_integrity(bundle: dict):
@@ -218,13 +223,20 @@ def check_payload_integrity(bundle: dict):
     top = bundle.get("payload")
     if not isinstance(top, dict):
         return False, "bundle has no top-level payload", signed
-    a = {k: v for k, v in top.items() if k != "signature"}
-    b = {k: v for k, v in signed.items() if k != "signature"}
-    if a != b:
+    # Compare canonical BYTES, not Python values: {"v": true} == {"v": 1} and
+    # {"v": 1} == {"v": 1.0} are equal as Python dicts, so a value-level
+    # comparison can miss a text-level edit of the unsigned copy.
+    def _canon(d):
+        return json.dumps({k: v for k, v in d.items() if k != "signature"},
+                          ensure_ascii=False, sort_keys=True).encode("utf-8")
+    a_raw, b_raw = _canon(top), _canon(signed)
+    if a_raw != b_raw:
+        a = {k: v for k, v in top.items() if k != "signature"}
+        b = {k: v for k, v in signed.items() if k != "signature"}
         changed = sorted(k for k in set(a) | set(b) if a.get(k) != b.get(k))
         return False, (
             "top-level payload does not match the signed payload "
-            "(differing fields: %s)" % ", ".join(changed[:8])
+            "(differing fields: %s)" % ", ".join(changed[:8] or ["<byte-level>"])
         ), signed
     return True, None, signed
 

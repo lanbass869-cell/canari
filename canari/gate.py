@@ -23,7 +23,6 @@ from canari.signing import verify_signed
 class GatePolicy:
     """Controls when a component is allowed to install."""
     name: str = "default"
-    min_verdict: str = "pass"
     require_fresh: bool = True
     require_key_valid: bool = True
     require_native_provenance: bool = False
@@ -35,6 +34,14 @@ class GatePolicy:
     block_on_findings: bool = False
     # strict posture: a pass-with-findings verdict is not installable
     allow_findings: bool = True
+    # F7: should pass-with-findings escalate ALLOW -> REVIEW? default/strict/
+    # custom policies say yes (a human should read the findings); the explicitly
+    # lax posture says no. Keyed on this field, never on the policy *name*.
+    review_findings: bool = True
+    # F7: should pass-with-findings escalate ALLOW -> REVIEW? default/strict/
+    # custom policies say yes (a human should read the findings); the explicitly
+    # lax posture says no. Keyed on this field, never on the policy *name*.
+    review_findings: bool = True
     # Optional list of finding kinds to always treat as blocking, e.g.
     # ["typosquatting", "metadata", "cadence"]; empty = no keyword blocking.
     block_finding_kinds: list = field(default_factory=list)
@@ -43,21 +50,22 @@ class GatePolicy:
 BUILTIN_POLICIES = {
     "default": GatePolicy(name="default"),
     "strict": GatePolicy(
-        name="strict", min_verdict="pass", require_fresh=True,
+        name="strict", require_fresh=True,
         require_key_valid=True, fail_on_error_check=True, allow_findings=False,
     ),
     "release-gate": GatePolicy(
-        name="release-gate", min_verdict="pass", require_fresh=True,
+        name="release-gate", require_fresh=True,
         require_key_valid=True, require_native_provenance=True,
         fail_on_error_check=True, allow_findings=False,
     ),
     "lax": GatePolicy(
-        name="lax", min_verdict="pass", require_fresh=False,
+        name="lax", require_fresh=False,
         require_key_valid=False, fail_on_error_check=False,
+        review_findings=False,
     ),
     # G1: paranoid = any trust-heuristic finding blocks outright
     "paranoid": GatePolicy(
-        name="paranoid", min_verdict="pass", require_fresh=True,
+        name="paranoid", require_fresh=True,
         require_key_valid=True, fail_on_error_check=True,
         block_on_findings=True, allow_findings=False,
     ),
@@ -112,7 +120,9 @@ def _check_freshness(payload):
     from datetime import datetime, timezone
     expires = payload.get("expires_at", "")
     if not expires:
-        return True, None
+        # F10: an attestation with no expiry cannot be shown to be current.
+        # Treating "missing" as "fresh" turned a data problem into a pass.
+        return False, "no expires_at recorded (freshness cannot be established)"
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     if now > expires:
         return False, "attestation expired at %s (now %s)" % (expires, now)
@@ -138,9 +148,23 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
         for k, v in policy_overrides.items():
             if not hasattr(policy, k):
                 continue  # unknown field silently skipped
-            # Type validation for list fields
-            if k in ("allowed_registries", "block_finding_kinds") and not isinstance(v, list):
-                raise ValueError("policy_overrides.%s must be a list, got %s" % (k, type(v).__name__))
+            # F8: validate EVERY field against its declared type. Previously
+            # only list fields were checked, so allow_findings="false" (a truthy
+            # string) silently switched a strict policy off.
+            import dataclasses as _dc
+            _f = {f.name: f for f in _dc.fields(GatePolicy)}.get(k)
+            if _f is None:
+                continue
+            _type = _f.type
+            if _type in (bool, "bool") and not isinstance(v, bool):
+                raise ValueError("policy_overrides.%s must be a bool, got %s"
+                                 % (k, type(v).__name__))
+            if _type in (list, "list") and not isinstance(v, list):
+                raise ValueError("policy_overrides.%s must be a list, got %s"
+                                 % (k, type(v).__name__))
+            if _type in (str, "str") and not isinstance(v, str):
+                raise ValueError("policy_overrides.%s must be a string, got %s"
+                                 % (k, type(v).__name__))
             setattr(policy, k, v)
 
     reasons = []
@@ -210,6 +234,8 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
         decision = "BLOCK"
         reasons.append("policy %s requires verdict=pass, got pass-with-findings" % policy.name)
 
+    # F11: `fresh` must exist for every policy, not only require_fresh ones.
+    fresh = True
     if policy.require_fresh:
         fresh, reason = _check_freshness(payload)
         if not fresh:
@@ -247,7 +273,9 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
             decision = "BLOCK"
             reasons.append("registry %r not in allowed list" % reg)
 
-    if verdict == "pass-with-findings" and decision == "ALLOW" and policy.name == "default":
+    # F7: previously keyed on policy.name == "default", so a custom policy file
+    # (name "corp" etc.) silently ALLOWed findings. Key it on the semantic knob.
+    if verdict == "pass-with-findings" and decision == "ALLOW" and policy.review_findings:
         decision = "REVIEW"
         checks = payload.get("checks", [])
         n_find = sum(1 for c in checks if (c.get("evidence_ref") or "").startswith("finding:"))
@@ -278,4 +306,4 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
 
     return GateDecision(decision=decision, reasons=reasons, policy=policy_name,
                         verdict=verdict, subject=subject_name, key_valid=key_valid,
-                        native_provenance_present=native_present)
+                        native_provenance_present=native_present, fresh=fresh)

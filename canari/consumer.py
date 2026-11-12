@@ -23,10 +23,12 @@ def iter_bundles(store_dir):
         try:
             with open(fp, "r", encoding="utf-8") as f:
                 bundle = json.load(f)
-            # BUG-102: enumerate/list UIs report the SIGNED payload. Reading the
-            # unsigned mirror let a tampered copy advertise a "pass" the
-            # signature never covered.
+            # BUG-102/F2: enumerate/list UIs report the SIGNED payload. A file
+            # with no DSSE envelope has nothing signed, so it is not part of
+            # the ledger - skip it rather than advertising its unsigned mirror.
             from canari.signing import read_signed_payload
+            if not isinstance(bundle, dict) or not isinstance(bundle.get("envelope"), dict):
+                continue
             payload, _err = read_signed_payload(bundle)
             if payload is None:
                 continue

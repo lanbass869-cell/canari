@@ -100,9 +100,14 @@ class TestGatePoliciesMore:
         d = evaluate_gate(bp, key_path=kp, key_registry_path=str(tmp_path / "none.json"))
         assert d.decision == "ALLOW"
 
-    def test_no_expiry_is_fresh(self, tmp_path):
+    def test_no_expiry_is_not_fresh(self, tmp_path):
+        # F10 (BUG-104): a missing expires_at used to count as "fresh", so a
+        # bundle with no expiry stayed ALLOWable forever under strict policies.
+        # Absence of a freshness record is not evidence of freshness.
         from canari.gate import _check_freshness
-        assert _check_freshness({})[0] is True
+        fresh, reason = _check_freshness({})
+        assert fresh is False
+        assert "expires_at" in reason
 
     def test_policy_file_bad_types(self, tmp_path):
         from canari.gate import load_policy_file
@@ -276,3 +281,4 @@ class TestConsumerLeftovers:
              "generated_at": "2026-11-10T00:00:00Z"}
         (ad / "a.bundle.json").write_text(json.dumps({"payload": p}), encoding="utf-8")
         assert latest_attestation(str(tmp_path), "npm", "p", version="9") is None
+

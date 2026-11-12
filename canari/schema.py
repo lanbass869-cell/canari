@@ -60,18 +60,25 @@ def assert_unverified_has_reason(att: dict):
     Rule: assertion_status == 'UNVERIFIED' must have either reason or
     unverified_reason with a non-empty key. Empty key counts as missing.
     """
-    for i, check in enumerate((att or {}).get("checks", [])):
-        status = check.get("verdict", "")
-        if status != "unsupported":  # Canari uses "unsupported" not "UNVERIFIED"
+    return unverified_without_reason(att)
+
+
+def unverified_without_reason(att: dict) -> list:
+    """IDs of 'unsupported' checks that carry no explanation.
+
+    F6: the documented invariant is "an unsupported check must say WHY it could
+    not run". This used to be a `pass` placeholder that nobody called, so the
+    rule was advertised in three docstrings and enforced nowhere. It now
+    returns the offending check ids so callers can surface/reject them.
+    """
+    bad = []
+    for check in (att or {}).get("checks", []):
+        if check.get("verdict") != "unsupported":  # Canari uses "unsupported"
             continue
-        # Canari doesn't have a separate unverified_reason field (unlike mcpcheckup)
-        # but it does have evidence_ref which serves the same purpose
-        evidence = check.get("evidence_ref", "")
-        if not evidence or not evidence.strip():
-            # This is a violation: "unsupported" without any evidence or reason
-            # For now, warn but don't raise (Canari's schema doesn't enforce this yet)
-            # In a future schema version, this should be a hard error
-            pass  # placeholder for future enforcement
+        evidence = check.get("evidence_ref") or ""
+        if not evidence.strip():
+            bad.append(check.get("id", "<no-id>"))
+    return bad
 
 
 def verdict_semantics():

@@ -18,9 +18,13 @@ def build_feed(out_dir):
             continue
         fp = os.path.join(att_dir, fn)
         try:
-            # BUG-102: the public feed must publish what was signed.
+            # BUG-102/F2: the public feed must publish what was signed, and a
+            # file with no DSSE envelope has nothing signed to publish.
             from canari.signing import read_signed_payload
-            _p, _err = read_signed_payload(json.load(open(fp, encoding="utf-8")))
+            _b = json.load(open(fp, encoding="utf-8"))
+            if not isinstance(_b, dict) or not isinstance(_b.get("envelope"), dict):
+                continue
+            _p, _err = read_signed_payload(_b)
             if _p is None:
                 continue
             p = _p

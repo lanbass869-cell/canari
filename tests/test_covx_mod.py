@@ -157,9 +157,14 @@ class TestScanner:
         assert findings_to_checks({"summary": {"critical": 1, "total": 1}})[1] == "fail"
         assert findings_to_checks({"summary": {"total": 2, "medium": 2},
                                    "scanner_count": 29, "_canari_source_digest": "a" * 64})[1] == "pass-with-findings"
+        # BUG-104/F5: an empty summary / no data used to be reported as "pass".
+        # Absence of evidence is not evidence of safety - it is "unsupported".
         assert findings_to_checks({"summary": {}, "scanner_count": 3,
-                                   "_canari_source_digest": "b" * 64})[1] == "pass"
-        assert findings_to_checks(None)[1] == "pass"
+                                   "_canari_source_digest": "b" * 64})[1] == "unsupported"
+        assert findings_to_checks(None)[1] == "unsupported"
+        # a real scan that ran and found nothing is still a pass
+        assert findings_to_checks({"summary": {"total": 0}, "scanner_count": 3,
+                                   "exit_code": 0})[1] == "pass"
 
     def test_rule_count(self, tmp_path):
         from canari.scanner_adapter import get_rule_count
@@ -217,6 +222,25 @@ class TestTyposquat:
         assert check_typosquatting(fw, {"mcp-server-fetch"})
 
 
+def _signed_bundle_file(path, payload):
+    """Write a REAL canari bundle (DSSE envelope + mirror) for a payload."""
+    import json as _json
+    from canari.signing import generate_keypair, sign_attestation
+    base = {"subject": payload.get("subject", {}),
+            "_type": "https://agentcheck.dev/attestation/v0.1",
+            "host": {"class": "mcp", "host_version": "t"},
+            "scenario_sha256": "a" * 64,
+            "checker": {"kind": "automation", "id": "t"},
+            "evidence_refs": [],
+            "expires_at": "2027-01-01T00:00:00Z",
+            "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                          "payload_type": ""}}
+    base.update(payload)
+    signer, _pub = generate_keypair()
+    s = sign_attestation(base, signer)
+    path.write_text(_json.dumps({"envelope": s["envelope"],
+                                 "payload": s["payload"]}), encoding="utf-8")
+
 class TestDrift:
     def _w(self, tmp_path, name, ver, gen, checks, verdict="pass"):
         ad = tmp_path / "attestations"
@@ -228,8 +252,7 @@ class TestDrift:
              "signature": {"envelope": "DSSE", "keyid": "", "sig": ""},
              "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],
                                        "truncated_fields": []}}
-        (ad / ("%s_%s.bundle.json" % (name, gen.replace(":", "")))).write_text(
-            json.dumps({"payload": p}), encoding="utf-8")
+        _signed_bundle_file(ad / ("%s_%s.bundle.json" % (name, gen.replace(":", ""))), p)
 
     def test_version_bump_and_since(self, tmp_path):
         from canari.drift import compute_drift
@@ -262,3 +285,4 @@ class TestConsumer:
              "generated_at": "2026-11-10T00:00:00Z"}
         (ad / "a.bundle.json").write_text(json.dumps({"payload": p}), encoding="utf-8")
         assert latest_attestation(str(tmp_path), "npm", "p", version="9") is None
+
