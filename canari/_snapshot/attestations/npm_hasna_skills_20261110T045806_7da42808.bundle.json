@@ -1,0 +1,76 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBoYXNuYS9za2lsbHMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0xN1QwNDo1ODowNloiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTBUMDQ6NTg6MDZaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAicmVnaXN0cnktbWV0YS12MSJ9LCAibmF0aXZlX3Byb3ZlbmFuY2UiOiB7InByZWRpY2F0ZV90eXBlcyI6IFsidjAuMSIsICJ2MSJdLCAicHJlc2VudCI6IHRydWUsICJ2MF9wcmVzZW5jZV9vbmx5IjogMSwgInYxX2Vycm9yIjogbnVsbCwgInYxX2lkZW50aXR5IjogImh0dHBzOi8vZ2l0aHViLmNvbS9oYXNuYS9za2lsbHMvLmdpdGh1Yi93b3JrZmxvd3MvcmVsZWFzZS1za2lsbHMueW1sQHJlZnMvdGFncy9ucG0vc2tpbGxzL3YwLjEwLjk3IiwgInYxX3ZlcmlmaWVkIjogdHJ1ZSwgInZlcmlmaWVyIjogInNpZ3N0b3JlLXB5dGhvbi80LjUuMSJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjRlYTVlZDk1ZDg2YzU5Y2Y2N2Y1YTk1NTQ5NzFlYjhiNGMyY2M4OTAxYWYxMWFiM2E0OWE3YmM5MzM0YTlhOTUiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiMzM5ODY1YjI2OGFlMTI0Y2U1MmVkNmVkNDFlZGMwNWY3YjY3N2I4OWI2MDQ5ZWRmM2RiN2Y1MGQ2YjZiNjE0Y2VjYzI1MWQ2MjVlZmFjYjJjNGU5ZDJkYmY5OWUwNzM2NDVmMGY2Nzc1NDVlNTdlOGE0NDAyNzViM2RmYjJiMGIifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJjN2Q4YWVhOWQ3YTU0Njc0NTg5OWIyMzYzNGRlMzA0MThiZGFiNTczMzY4N2ZjNTIzNjc2MWRiZDIyOWRiNjc4IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIkBoYXNuYS9za2lsbHMiLCAicmVnaXN0cnkiOiAibnBtIiwgInZlcnNpb24iOiAiMC4xMC45NyJ9LCAic3VwZXJzZWRlcyI6ICJjN2Q1NTI3NTljOTY0NzFhNTEzNTM5MTM1NWI0NjYzNTg0ZTE4ZWI2NTYxOThmOGZjNjE3MzQ0MmYwODVlOTdmIiwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogImM3ZDhhZWE5ZDdhNTQ2NzQ1ODk5YjIzNjM0ZGUzMDQxOGJkYWI1NzMzNjg3ZmM1MjM2NzYxZGJkMjI5ZGI2NzgifSwgIm5hbWUiOiAibnBtOkBoYXNuYS9za2lsbHNAMC4xMC45NyJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "TWuhOhhxX26Akd+QTW+I/muHNgg1aHojsQuFsSN0HUjCeuSiVn8N87VjUraibN+0hqkHTMRZ3Wg9OVTZwnHfCw=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@hasna/skills",
+   "version": "0.10.97",
+   "registry": "npm",
+   "artifact_sha256": "c7d8aea9d7a546745899b23634de30418bdab5733687fc5236761dbd229db678",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@hasna/skills"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:58:06Z",
+  "generated_at": "2026-11-10T04:58:06Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "4d6ba13a18715f6e8091df904d6f88fe6b87360835687a23b10b85b123741d48c27ae4a2567f0df3b56352b6a26cdfb486a9074cc459dd683d3954d9c271df0b",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "native_provenance": {
+   "present": true,
+   "predicate_types": [
+    "v0.1",
+    "v1"
+   ],
+   "v1_verified": true,
+   "v1_identity": "https://github.com/hasna/skills/.github/workflows/release-skills.yml@refs/tags/npm/skills/v0.10.97",
+   "v1_error": null,
+   "v0_presence_only": 1,
+   "verifier": "sigstore-python/4.5.1"
+  },
+  "supersedes": "c7d552759c96471a5135391355b4663584e18eb656198f8fc6173442f085e97f"
+ }
+}

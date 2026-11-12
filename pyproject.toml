@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "canari-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Canari - agent component verification ledger: signed, offline-verifiable attestations for MCP servers and agent skills"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -41,7 +41,11 @@ Homepage = "https://github.com/lanbass869-cell/canari"
 include = ["canari*"]
 
 [tool.setuptools.package-data]
-canari = ["attestation-v0.1.json"]
+canari = [
+    "attestation-v0.1.json",
+    "_snapshot/*.json",
+    "_snapshot/attestations/*.bundle.json",
+]
 
 [tool.coverage.run]
 source = ["canari"]

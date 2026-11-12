@@ -1,0 +1,63 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkB0b2tlbml6aW4vbWNwLW5weC1mZXRjaCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTE3VDA1OjEzOjAzWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xMFQwNToxMzowM1oiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJyZWdpc3RyeS1tZXRhLXYxIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNGVhNWVkOTVkODZjNTljZjY3ZjVhOTU1NDk3MWViOGI0YzJjYzg5MDFhZjExYWIzYTQ5YTdiYzkzMzRhOWE5NSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICJiZTFiYmQxYjI4ODVkYjRmMWUyMjc2ZTUzNGYyYjA0MTlhYTE1MzdlMzZlZDYyYjFkYmRkMThmNDBlNWI0N2NmOGUzMDFjMjM0YmM1NjBmYjA4MTdlOTkzMTI1ZGYwMzk2NGM3OWRmODFmZDM5NDdlYWFlYmY1YzllMDgwZGIwMCJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjAwMjY2NTE0OTFhOWE3M2VmODZhNTA3Nzc4NmI2NzY2MGIwNjFmMmM5ZGVhMmE4ZDUyNzhiY2FlYzliNjQ1ZGEiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAiQHRva2VuaXppbi9tY3AtbnB4LWZldGNoIiwgInJlZ2lzdHJ5IjogIm5wbSIsICJ2ZXJzaW9uIjogIjEuMC4wIn0sICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICIwMDI2NjUxNDkxYTlhNzNlZjg2YTUwNzc3ODZiNjc2NjBiMDYxZjJjOWRlYTJhOGQ1Mjc4YmNhZWM5YjY0NWRhIn0sICJuYW1lIjogIm5wbTpAdG9rZW5pemluL21jcC1ucHgtZmV0Y2hAMS4wLjAifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "IJP7xFZQ3V8IuV/TKi+G3pWyskMeMZs5MwABc12i0KqdeaAyAKnjsvnaFE/sNuXtC4AYgG7r+AZx+8OyZudgAA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@tokenizin/mcp-npx-fetch",
+   "version": "1.0.0",
+   "registry": "npm",
+   "artifact_sha256": "0026651491a9a73ef86a5077786b67660b061f2c9dea2a8d5278bcaec9b645da",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@tokenizin/mcp-npx-fetch"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:13:03Z",
+  "generated_at": "2026-11-10T05:13:03Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "2093fbc45650dd5f08b95fd32a2f86de95b2b2431e319b39330001735da2d0aa9d79a03200a9e3b2f9da144fec36e5ed0b8018806eebf80671fbc3b266e76000",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

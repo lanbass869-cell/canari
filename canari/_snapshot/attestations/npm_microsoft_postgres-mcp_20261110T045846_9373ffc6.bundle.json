@@ -1,0 +1,64 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OkBtaWNyb3NvZnQvcG9zdGdyZXMtbWNwIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDQ6NTg6NDZaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA0OjU4OjQ2WiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0ZWE1ZWQ5NWQ4NmM1OWNmNjdmNWE5NTU0OTcxZWI4YjRjMmNjODkwMWFmMTFhYjNhNDlhN2JjOTMzNGE5YTk1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjUwZGMzODMxNWE4YzQ5YWFjMzMxOWI2YTZmODUxZDQ0ZmVjZDk5ZjY5OGE1ZDQ5OWI0MDg3MmVjYTVhN2U5NTY5OGUwMzY4NTgzNTQwYjg1NmMxOTAwMDY0ZGRhNWYwNDE5NTY0MWZiZWE2ZTgzMWE3OWNhOWY1NTYzMjVhMTA4In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiYzE5NmE2MWRiOTJlYjAzODRlNmE4MzMzZmM5ZTQyZDE3YjcyMDcyNzYzZTU0OWZjYzcyMDQxMGE1ODAzZmI2YSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJAbWljcm9zb2Z0L3Bvc3RncmVzLW1jcCIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIwLjMuMCJ9LCAic3VwZXJzZWRlcyI6ICI2MmY2OTM4MDk0ZThlMTFlMjgzNzAyODhmZGY0YjhhYmEwZTY4NTIxMzVkNWEwYmZhNGQ3NzFkMzlmNWMwM2Y5IiwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogImMxOTZhNjFkYjkyZWIwMzg0ZTZhODMzM2ZjOWU0MmQxN2I3MjA3Mjc2M2U1NDlmY2M3MjA0MTBhNTgwM2ZiNmEifSwgIm5hbWUiOiAibnBtOkBtaWNyb3NvZnQvcG9zdGdyZXMtbWNwQDAuMy4wIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "bgTS/ZBv4v8hhl1TogAsbKoD3VbVjhgWCA9B5OsVs+8hOIT3XuHtA/K5cx3Oej7zOWU5UL3ExlE4ps+ptMgxBg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "@microsoft/postgres-mcp",
+   "version": "0.3.0",
+   "registry": "npm",
+   "artifact_sha256": "c196a61db92eb0384e6a8333fc9e42d17b72072763e549fcc720410a5803fb6a",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:@microsoft/postgres-mcp"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T04:58:46Z",
+  "generated_at": "2026-11-10T04:58:46Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "6e04d2fd906fe2ff21865d53a2002c6caa03dd56d58e1816080f41e4eb15b3ef213884f75ee1ed03f2b9731dce7a3ef339653950bdc4c65138a6cfa9b4c83106",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "62f6938094e8e11e28370288fdf4b8aba0e6852135d5a0bfa4d771d39f5c03f9"
+ }
+}

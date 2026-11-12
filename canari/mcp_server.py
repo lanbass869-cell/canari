@@ -8,16 +8,24 @@ Tools:
   store_summary  - coverage/verdict counts + latest drift headline
 
 Usage: canari-mcp [--store DIR] [--key PATH]
+
+With no --store the server reads the snapshot bundled in the wheel (the newest
+signed attestation per component, built by scripts/build_snapshot.py). Without
+that, a fresh `pip install canari-mcp` would answer "no attestation" for every
+component, because the full ledger lives in the repo, not in the wheel.
 """
 import argparse
 import json
+import os
 import sys
 
 from canari.consumer import check_component, list_components
 from canari.drift import compute_drift
 
 PROTOCOL_VERSION = "2025-06-18"
-SERVER_INFO = {"name": "canari", "version": "0.1.0"}
+from canari import __version__ as _VERSION
+
+SERVER_INFO = {"name": "canari", "version": _VERSION}
 
 TOOLS = [
     {"name": "gate_check",
@@ -150,13 +158,43 @@ def serve(stdin=None, stdout=None, store="out", key=None):
             stdout.flush()
 
 
+def default_store():
+    """Store to query when the user passes none.
+
+    1. $CANARI_STORE (explicit operator override)
+    2. ./out            (running from a checkout of the repo - full history)
+    3. bundled snapshot (installed wheel - newest attestation per component)
+    """
+    env = os.environ.get("CANARI_STORE")
+    if env:
+        return env
+    if os.path.isdir(os.path.join("out", "attestations")):
+        return "out"
+    snap = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_snapshot")
+    if os.path.isdir(os.path.join(snap, "attestations")):
+        return snap
+    return "out"
+
+
+def default_key(store):
+    """Public key that belongs to the store being queried, if one is present."""
+    for name in ("public_key.json",):
+        p = os.path.join(store, name)
+        if os.path.isfile(p):
+            return p
+    return None
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="canari-mcp",
                                  description="Expose the canari ledger to MCP hosts over stdio.")
-    ap.add_argument("--store", default="out")
+    ap.add_argument("--store", default=None,
+                    help="ledger directory (default: ./out, else the bundled snapshot)")
     ap.add_argument("--key", default=None, help="default public key JSON for verification")
     a = ap.parse_args(argv)
-    serve(store=a.store, key=a.key)
+    store = a.store or default_store()
+    key = a.key if a.key is not None else default_key(store)
+    serve(store=store, key=key)
     return 0
 
 

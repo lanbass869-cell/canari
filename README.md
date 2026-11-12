@@ -1,7 +1,9 @@
 # Canari
 
+<!-- mcp-name: io.github.lanbass869-cell/canari -->
+
 [![CI](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml/badge.svg)](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml)
-![tests](https://img.shields.io/badge/tests-357%20passing-brightgreen)
+![tests](https://img.shields.io/badge/tests-434%20passing-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-90%25%20line%20%7C%2083%25%20branch-brightgreen)
 ![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
 ![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
@@ -37,8 +39,8 @@ canari-gate --store out --list
 
 ## Open dataset
 
-`dataset/` is the published snapshot of the ledger under **CC-BY-4.0**: 2093 signed
-attestations over 860 components, the canonical feed, drift reports, the schema, both
+`dataset/` is the published snapshot of the ledger under **CC-BY-4.0**: **3251 signed
+attestations over 883 components**, the canonical feed, drift reports, the schema, both
 public keys and a `MANIFEST.json` with a sha256 per file. Verify a bundle offline with
 `canari-verify`; verify the whole snapshot with the manifest (see `dataset/README.md`).
 Refresh it after a scan with `python scripts/sync_dataset.py`.
@@ -47,7 +49,7 @@ Refresh it after a scan with `python scripts/sync_dataset.py`.
 
 | Gate | Threshold | Current |
 |---|---|---|
-| tests | green on 3.10/3.12/3.13 | 357 passing |
+| tests | green on 3.10/3.12/3.13 | 434 passing |
 | line coverage | >= 85% | 90% |
 | mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (50/50) |
 | live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
@@ -111,13 +113,17 @@ canari-drift --store out --write out/drift
 {
   "mcpServers": {
     "canari": {
-      "command": "canari-mcp",
-      "args": ["--store", "E:/Temp/tbdig/canari/out",
-               "--key", "E:/Temp/tbdig/canari/out/public_key.json"]
+      "command": "canari-mcp"
     }
   }
 }
 ```
+
+No arguments needed: the wheel ships a snapshot of the newest signed attestation
+per component (883 components, rebuilt by `scripts/build_snapshot.py` from
+`dataset/`), so `gate_check` answers out of the box. Point `--store` (or
+`$CANARI_STORE`) at a full ledger checkout when you want the complete
+supersession history instead of the snapshot.
 
 A host (or agent) can then ask: "is npm:express allowed to install?" and get
 `ALLOW / BLOCK / REVIEW` with reasons, backed by a signed, offline-verifiable

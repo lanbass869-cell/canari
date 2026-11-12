@@ -1,0 +1,64 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImNhbmFyaS1tMSIsICJraW5kIjogImF1dG9tYXRpb24iLCAidG9vbHMiOiBbImNhbmFyaS1tMS8wLjEiXX0sICJjaGVja3MiOiBbeyJpZCI6ICJMMS4xX1JFR0lTVFJZX1BSRVNFTlQiLCAidG9vbCI6ICJjYW5hcmktbTEvMC4xIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImlkIjogIkwyLjFfQVJUSUZBQ1RfSEFTSCIsICJ0b29sIjogImNhbmFyaS1tMS8wLjEiLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJucG0tcGFja3VtZW50OmNsYXVkZS1mbG93Il0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMTdUMDU6MDU6MDJaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTEwVDA1OjA1OjAyWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInJlZ2lzdHJ5LW1ldGEtdjEifSwgInNjZW5hcmlvX3NoYTI1NiI6ICI0ZWE1ZWQ5NWQ4NmM1OWNmNjdmNWE5NTU0OTcxZWI4YjRjMmNjODkwMWFmMTFhYjNhNDlhN2JjOTMzNGE5YTk1IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjNiOTQ0NWI2Njk3ZTdiNzQwMDhkNDY3ZWM1Yjc3MmQ3YWYyNzZjZmMwNWJiOWQzNTM1ODc5YjYzZWJhZjJmYWNiMTliYTRkOGExYzMzYjA3ZTZjYmIyNWI4OTJkMzdiYzE4Y2Q3MGE2YjYyNGZhMzQxYzNkNTAyODA0M2MzMDA5In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiMzEyMTNhYTY3MDVmNTIzZTFlMGQ4MDdlZmZkYTc3ZGY3MWQ1ZGJlMWU5ZDlkYjVjNWNkNTRhOGI5YWFmNmNhYSIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJjbGF1ZGUtZmxvdyIsICJyZWdpc3RyeSI6ICJucG0iLCAidmVyc2lvbiI6ICIzLjc1LjAifSwgInN1cGVyc2VkZXMiOiAiZGRiZDA4ZWQ0M2EzZGQxMmE3YTJhMjM1NjFmMTU1YWYzZDE5MGVmYTc4ZDA3MTU3ZGE2Njk3MDcxMjA3NmUwYSIsICJ2ZXJkaWN0IjogInBhc3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICIzMTIxM2FhNjcwNWY1MjNlMWUwZDgwN2VmZmRhNzdkZjcxZDVkYmUxZTlkOWRiNWM1Y2Q1NGE4YjlhYWY2Y2FhIn0sICJuYW1lIjogIm5wbTpjbGF1ZGUtZmxvd0AzLjc1LjAifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "xfQHKa5WbRphpycFqJ9deS0yotc/388vWKjsukOA6N48fC2evMP1gPDsgN7vqc2lQVJ/pInHJlgWsyPeyoTLCA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "claude-flow",
+   "version": "3.75.0",
+   "registry": "npm",
+   "artifact_sha256": "31213aa6705f523e1e0d807effda77df71d5dbe1e9d9db5c5cd54a8b9aaf6caa",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "registry-meta-v1"
+  },
+  "scenario_sha256": "4ea5ed95d86c59cf67f5a9554971eb8b4c2cc8901af11ab3a49a7bc9334a9a95",
+  "checks": [
+   {
+    "id": "L1.1_REGISTRY_PRESENT",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   },
+   {
+    "id": "L2.1_ARTIFACT_HASH",
+    "verdict": "pass",
+    "tool": "canari-m1/0.1"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "canari-m1",
+   "tools": [
+    "canari-m1/0.1"
+   ]
+  },
+  "evidence_refs": [
+   "npm-packument:claude-flow"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-17T05:05:02Z",
+  "generated_at": "2026-11-10T05:05:02Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "c5f40729ae566d1a61a72705a89f5d792d32a2d73fdfcf2f58a8ecba4380e8de3c7c2d9ebcc3f580f0ec80deefa9cda541527fa489c7265816b323deca84cb08",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  },
+  "supersedes": "ddbd08ed43a3dd12a7a2a23561f155af3d190efa78d07157da66970712076e0a"
+ }
+}
