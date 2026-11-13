@@ -44,16 +44,25 @@ def _parse_upload_time(item):
     return None
 
 
-def analyze_release_cadence(project, current_version):
+def analyze_release_cadence(project, current_version, pypi_json=None):
+    """Release-cadence heuristics.
+
+    `pypi_json` lets the caller pass an already-fetched PyPI JSON document.
+    Without it every heuristics module fetches the same URL again, which cost
+    12-120s per package on a slow link (measured 2026-11-12: 620 packages would
+    have taken 5+ hours for data we already had in hand).
+    """
     if not project or not current_version:
         return []
-    url = PYPI_JSON_URL.format(project=project)
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    try:
-        with _opener().open(req, timeout=20) as r:
-            data = json.loads(r.read().decode("utf-8"))
-    except Exception:
-        return []
+    data = pypi_json
+    if data is None:
+        url = PYPI_JSON_URL.format(project=project)
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with _opener().open(req, timeout=20) as r:
+                data = json.loads(r.read().decode("utf-8"))
+        except Exception:
+            return []
     releases = data.get("releases", {})
     if not isinstance(releases, dict):
         return []

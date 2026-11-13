@@ -17,11 +17,19 @@ import urllib.request
 UA = "canari-m0/0.1 (research enumeration; contact: repo issues)"
 SEARCH_URL = "https://registry.npmjs.org/-/v1/search"
 
-# npm MCP discovery queries (lineE section 1.1)
+# npm MCP discovery queries.
+#
+# NOTE (2026-11-12, measured): npm's search backend does NOT implement the
+# "scope:" qualifier - `scope:modelcontextprotocol` returns total=0, so this
+# query had been silently contributing nothing while the official head packages
+# (@modelcontextprotocol/server-filesystem, .../server-everything, .../server)
+# were missing from the ledger entirely. Searching the bare scope string works
+# (total=4493) and surfaces them. Queries are cumulative: a package found by any
+# query is kept.
 QUERIES = [
     "keywords:mcp-server",
     "keywords:model-context-protocol",
-    "scope:modelcontextprotocol",
+    "@modelcontextprotocol",
 ]
 
 
@@ -181,7 +189,41 @@ def fetch_simple_index(cache_path=None, ttl_hours=24, max_bytes=80 * 1024 * 1024
     return html
 
 
-def pypi_enumerate(prefix="mcp-server-", limit=500, cache_path=None):
+def _stratified_pick(sorted_names, limit, what=""):
+    """Pick `limit` items spread across the WHOLE sorted list, deterministically.
+
+    Why not sorted_names[:limit]: PyPI's simple index is alphabetical, so a
+    plain prefix truncation systematically keeps 'a...' packages and silently
+    drops the rest. Measured 2026-11-12: 620 packages match "mcp-server-", the
+    old code kept the first 100 (stopping at mcp-server-dagster) and
+    mcp-server-fetch - position 177 - had never been scanned. That is a coverage
+    bug hidden behind a "sample" story, so:
+      - selection is evenly spaced across the full alphabet (deterministic,
+        reproducible, no random seed needed)
+      - the number dropped is always printed, never silent
+    """
+    n = len(sorted_names)
+    if limit <= 0:
+        return []
+    if n <= limit:
+        # Full coverage: every matching package is scanned. The limit is a
+        # safety cap, not a target - the old behaviour treated it as a target
+        # and silently cut the alphabetical tail.
+        return list(sorted_names)
+    step = n / float(limit)
+    picked = [sorted_names[int(i * step)] for i in range(limit)]
+    # de-dup while preserving order (int() can collide on tiny n/limit ratios)
+    seen, out = set(), []
+    for x in picked:
+        if x not in seen:
+            seen.add(x)
+            out.append(x)
+    print("[%s] %d candidates, keeping %d spread across the alphabet, dropping %d"
+          % (what or "pick", n, len(out), n - len(out)))
+    return out
+
+
+def pypi_enumerate(prefix="mcp-server-", limit=5000, cache_path=None):
     if limit <= 0:
         return []
     import re as _re
@@ -195,9 +237,15 @@ def pypi_enumerate(prefix="mcp-server-", limit=500, cache_path=None):
                 data = json.loads(r.read().decode("utf-8"))
             rows = data.get("rows", data) if isinstance(data, dict) else data
             names = [row.get("project", "") for row in rows if isinstance(row, dict)]
-            matched = [n for n in names if n and n.lower().startswith(prefix.lower())][:limit]
-            if not matched:
-                matched = [n for n in names if n][:limit]
+            cand = [n for n in names if n and n.lower().startswith(prefix.lower())]
+            if not cand:
+                cand = [n for n in names if n]
+            # top-pypi-packages is already ordered by downloads desc, so the
+            # head of this list is the most-used subset - truncation is honest.
+            if len(cand) > limit:
+                print("[pypi] fallback dataset: keeping top %d of %d by download rank"
+                      % (limit, len(cand)))
+            matched = cand[:limit]
             results = []
             for name in matched:
                 try:
@@ -224,7 +272,8 @@ def pypi_enumerate(prefix="mcp-server-", limit=500, cache_path=None):
             print("[pypi] fallback dataset failed too:", str(_e2)[:80])
             return []
     names = _re.findall(r'>(.*?)</a>', html)
-    matched = [n for n in names if n.lower().startswith(prefix.lower())][:limit]
+    all_matched = sorted({n for n in names if n.lower().startswith(prefix.lower())})
+    matched = _stratified_pick(all_matched, limit, what="pypi:" + prefix)
     results = []
     for name in matched:
         try:

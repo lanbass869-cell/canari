@@ -28,7 +28,10 @@ try:
     _log("starting weekly scan...")
     result = deep_scan_with_metadata(
         npm_deep=int(os.environ.get("CANARI_NPM_DEEP", "200")),
-        pypi_deep=int(os.environ.get("CANARI_PYPI_DEEP", "100")),
+    # PyPI exposes no download ranking, so a small cap turns into alphabetical
+    # truncation (measured 2026-11-12: mcp-server-fetch, position 177 of 620,
+    # had never been scanned). The default now covers every "mcp-server-*".
+    pypi_deep=int(os.environ.get("CANARI_PYPI_DEEP", "700")),
         npm_meta=int(os.environ.get("CANARI_NPM_META", "5000")),
         pypi_meta=int(os.environ.get("CANARI_PYPI_META", "5000")),
         dsh_meta=int(os.environ.get("CANARI_DSH_META", "10000")),

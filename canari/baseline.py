@@ -24,6 +24,7 @@ import hashlib
 import json
 import os
 import sys
+import urllib.parse
 import urllib.request
 
 from canari.schema import _PREDICATE_TYPE
@@ -253,13 +254,17 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
 
     # Trust heuristics (H1-H3)
     heuristic_checks = []
-    # H1: Release cadence
+    # H1: Release cadence - always leaves a row (see the PyPI loop for why).
     try:
         from canari.cadence import analyze_release_cadence
-        cadence_findings = analyze_release_cadence(name, meta.get("version", ""))
-        heuristic_checks.extend(cadence_findings)
-    except Exception:
-        pass
+        _cd = analyze_release_cadence(name, meta.get("version", ""))
+        heuristic_checks.extend(_cd or [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                                         "tool": "canari-cadence/0.1",
+                                         "evidence_ref": "no cadence anomaly detected"}])
+    except Exception as _ce:
+        heuristic_checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "error",
+                                 "tool": "canari-cadence/0.1",
+                                 "evidence_ref": "cadence check failed: %s" % str(_ce)[:80]})
     # H2: Metadata anomaly (only if we have previous metadata in state)
     try:
         from canari.anomaly import detect_metadata_anomaly
@@ -607,12 +612,43 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         sha = pkg.get("artifact_sha256", "")
         checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                   {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
-        pn = _with_timeout(lambda: pypi_native_ingest(name, pkg.get("version", "") or None), 90, None)
-        # H1: release cadence (BUG-77/69/71 fixed in cadence.py)
+        # ONE PyPI JSON fetch per package, shared by every heuristics module.
+        # Previously pypi_native and cadence each re-fetched the same URL; on a
+        # slow link that tripled the wall clock (measured 12-120s per GET).
+        _pyjson = None
         try:
-            checks.extend(analyze_release_cadence(name, pkg.get("version", "")))
+            _purl = "https://pypi.org/pypi/%s/json" % urllib.parse.quote(name, safe="")
+            with _opener().open(urllib.request.Request(_purl, headers={"User-Agent": UA}),
+                                timeout=45) as _r:
+                _pyjson = json.loads(_r.read().decode("utf-8"))
         except Exception:
-            pass
+            _pyjson = None
+        pn = _with_timeout(
+            lambda: pypi_native_ingest(name, pkg.get("version", "") or None, pypi_json=_pyjson),
+            90, None)
+        # H1: release cadence (BUG-77/69/71 fixed in cadence.py)
+        #
+        # AUDITABILITY (2026-11-13): these modules return [] when the package is
+        # CLEAN, so a clean package carried no evidence that the check had run at
+        # all. Measured: 16 of 389 PyPI attestations had an L2.4 row, which made
+        # "ran and found nothing" indistinguishable from "never ran". Every
+        # module now records exactly one row: the finding, or a pass, or
+        # unsupported (when it could not evaluate).
+        if _pyjson is None:
+            checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "unsupported",
+                           "tool": "canari-cadence/0.1",
+                           "evidence_ref": "pypi JSON unavailable; cadence not evaluated"})
+        else:
+            try:
+                _cd = analyze_release_cadence(name, pkg.get("version", ""), pypi_json=_pyjson)
+                checks.extend(_cd or [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                                       "tool": "canari-cadence/0.1",
+                                       "evidence_ref": "no cadence anomaly in %d releases"
+                                                       % len(_pyjson.get("releases") or {})}])
+            except Exception as _ce:
+                checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "error",
+                               "tool": "canari-cadence/0.1",
+                               "evidence_ref": "cadence check failed: %s" % str(_ce)[:80]})
         # H2: metadata anomaly vs previous scan snapshot (BUG-75 fix: state now
         # stores maintainers/homepage; first run = no previous = no findings)
         try:
@@ -621,18 +657,30 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             if prev_meta:
                 cur_meta = {"maintainers": pkg.get("maintainers", []),
                             "homepage": (pkg.get("links") or {}).get("homepage", "")}
-                checks.extend(detect_metadata_anomaly(cur_meta, prev_meta))
-        except Exception:
-            pass
+                _an = detect_metadata_anomaly(cur_meta, prev_meta)
+                checks.extend(_an or [{"id": "L2.5_METADATA_ANOMALY", "verdict": "pass",
+                                       "tool": "canari-anomaly/0.1",
+                                       "evidence_ref": "no maintainer/homepage change vs previous scan"}])
+            else:
+                checks.append({"id": "L2.5_METADATA_ANOMALY", "verdict": "skip",
+                               "tool": "canari-anomaly/0.1",
+                               "evidence_ref": "first scan of this component; no baseline to compare"})
+        except Exception as _ae:
+            checks.append({"id": "L2.5_METADATA_ANOMALY", "verdict": "error",
+                           "tool": "canari-anomaly/0.1",
+                           "evidence_ref": "anomaly check failed: %s" % str(_ae)[:80]})
         # H3: typosquatting (BUG-76 fix: was dead code; the co-enumerated PyPI
         # namespace of this scan is the trusted set)
         try:
             from canari.typosquat import check_typosquatting
             tq = check_typosquatting(name, {q["name"] for q in pypi_pkgs if "error" not in q})
-            if tq:
-                checks.append(tq)
-        except Exception:
-            pass
+            checks.append(tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
+                                 "tool": "canari-typosquat/0.1",
+                                 "evidence_ref": "no close match to another component in this scan"})
+        except Exception as _te:
+            checks.append({"id": "L2.6_TYPOSQUATTING", "verdict": "error",
+                           "tool": "canari-typosquat/0.1",
+                           "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]})
         verdict = "pass" if sha else "fail"
         if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
             verdict = "pass-with-findings"

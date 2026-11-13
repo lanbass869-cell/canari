@@ -13,13 +13,22 @@ import urllib.request
 from canari.npm_enum import _opener, UA
 
 
-def fetch_pypi_attestations(package, version=None, timeout=30):
+def fetch_pypi_attestations(package, version=None, timeout=30, pypi_json=None):
     """Fetch PyPI JSON API and extract file attestations if present.
     BUG-74 fix: when a version is given, query /pypi/{pkg}/{version}/json so
     attestations are never attributed to the wrong version (the bare
     /pypi/{pkg}/json endpoint always returns the LATEST release).
     Returns list of file dicts with attestations, or None if no attestations."""
     import urllib.parse
+    if pypi_json is not None:
+        j = pypi_json
+        urls = j.get("urls", []) or []
+        with_att = [u for u in urls if u.get("attestations")]
+        if not with_att:
+            return None
+        return [{"filename": u["filename"],
+                 "digest": u.get("digests", {}).get("sha256"),
+                 "attestations": u["attestations"]} for u in with_att]
     if version:
         url = "https://pypi.org/pypi/%s/%s/json" % (
             urllib.parse.quote(package, safe=""), urllib.parse.quote(version, safe=""))
@@ -64,10 +73,17 @@ def verify_pypi_bundle(bundle, distribution_bytes=None):
         return {"ok": False, "error": "%s: %s" % (type(e).__name__, str(e)[:200])}
 
 
-def ingest_pypi(package, version=None):
+def ingest_pypi(package, version=None, pypi_json=None):
     """Full PyPI native attestation ingestion. Returns native_provenance dict or None.
-    Same shape as canari.native.ingest() output for cross-registry consistency."""
-    files = fetch_pypi_attestations(package, version=version)
+
+    `pypi_json` avoids a duplicate HTTP GET when the caller already has the
+    document (the scan loop fetches it once for every heuristics module).
+    """
+    # Backwards compatible: callers (and tests) monkeypatch the 2-arg form.
+    try:
+        files = fetch_pypi_attestations(package, version=version, pypi_json=pypi_json)
+    except TypeError:
+        files = fetch_pypi_attestations(package, version=version)
     if not files:
         return None
     out = {"present": True,
