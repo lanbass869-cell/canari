@@ -44,6 +44,85 @@ def _parse_upload_time(item):
     return None
 
 
+def _cadence_from_uploads(uploads, current_version):
+    """Shared cadence logic: `uploads` is a sorted [(timestamp, version)] list."""
+    current_idx = next((i for i, (_, ver) in enumerate(uploads) if ver == current_version), None)
+    if current_idx is None:
+        return []
+    current_ts = uploads[current_idx][0]
+    findings = []
+
+    # 1. release_burst: >=5 versions in the 24h window ending at the current release
+    recent = [ver for ts, ver in uploads if 0 <= (current_ts - ts).total_seconds() <= 86400]
+    if len(recent) >= 5:
+        findings.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                         "tool": "canari-cadence/0.1",
+                         "evidence_ref": "finding: release_burst - %d versions in 24h" % len(recent)})
+
+    # 2. release_after_dormancy: gap INTO the current release >= 365 days
+    if current_idx > 0:
+        gap_days = (current_ts - uploads[current_idx - 1][0]).total_seconds() / 86400
+        if gap_days >= 365:
+            findings.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                             "tool": "canari-cadence/0.1",
+                             "evidence_ref": "finding: release_after_dormancy - %.1f days" % gap_days})
+
+    # 3. release_cadence_acceleration
+    if current_idx > 0 and len(uploads) >= 3:
+        latest_interval = (current_ts - uploads[current_idx - 1][0]).total_seconds()
+        prior_intervals = [(uploads[i + 1][0] - uploads[i][0]).total_seconds()
+                           for i in range(current_idx - 1)
+                           if (uploads[i + 1][0] - uploads[i][0]).total_seconds() > 0]
+        if len(prior_intervals) >= 3:
+            baseline_median = statistics.median(prior_intervals)
+            if latest_interval <= 3600 and baseline_median >= 7 * 86400:
+                findings.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                                 "tool": "canari-cadence/0.1",
+                                 "evidence_ref": "finding: release_cadence_acceleration - %.2f hours"
+                                                 % (latest_interval / 3600)})
+    return findings
+
+
+def _parse_iso_z(raw):
+    """Parse an ISO-8601 timestamp with a Z suffix (npm and PyPI both emit this)."""
+    if not isinstance(raw, str) or not raw:
+        return None
+    s = raw if raw.endswith("Z") else raw + "Z"
+    s = s.replace("+00:00Z", "Z")
+    base = s[:-1]
+    for fmt in ("%Y-%m-%dT%H:%M:%S.%f", "%Y-%m-%dT%H:%M:%S"):
+        try:
+            from datetime import datetime as _dt
+            return _dt.strptime(base, fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            continue
+    return None
+
+
+def analyze_npm_cadence(packument, current_version):
+    """Same three heuristics for npm, using the packument's own `time` map.
+
+    npm is the largest cohort in the ledger (202 packages) and previously got NO
+    cadence signal at all: the PyPI-only entry point meant the check simply did
+    not exist for npm. The packument already carries every version timestamp, so
+    this costs zero extra requests.
+    """
+    if not isinstance(packument, dict) or not current_version:
+        return []
+    times = packument.get("time") or {}
+    if not isinstance(times, dict):
+        return []
+    uploads = []
+    for ver, raw in times.items():
+        if ver in ("created", "modified"):
+            continue
+        ts = _parse_iso_z(raw)
+        if ts is not None:
+            uploads.append((ts, str(ver)))
+    uploads.sort()
+    return _cadence_from_uploads(uploads, current_version)
+
+
 def analyze_release_cadence(project, current_version, pypi_json=None):
     """Release-cadence heuristics.
 
@@ -75,36 +154,4 @@ def analyze_release_cadence(project, current_version, pypi_json=None):
         if timestamps:
             uploads.append((min(timestamps), str(version)))
     uploads.sort()
-    current_idx = next((i for i, (_, ver) in enumerate(uploads) if ver == current_version), None)
-    if current_idx is None:
-        return []
-    current_ts = uploads[current_idx][0]
-    findings = []
-
-    # 1. release_burst: >=5 versions in the 24h window ending at the current release
-    recent = [ver for ts, ver in uploads if 0 <= (current_ts - ts).total_seconds() <= 86400]
-    if len(recent) >= 5:
-        findings.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "pass", "tool": "canari-cadence/0.1",
-                         "evidence_ref": "finding: release_burst - %d versions in 24h" % len(recent)})
-
-    # 2. release_after_dormancy: gap INTO the current release >= 365 days
-    #    (BUG-69 fix: was any historical gap; now only the current one counts)
-    if current_idx > 0:
-        gap_days = (current_ts - uploads[current_idx - 1][0]).total_seconds() / 86400
-        if gap_days >= 365:
-            findings.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "pass", "tool": "canari-cadence/0.1",
-                             "evidence_ref": "finding: release_after_dormancy - %.1f days" % gap_days})
-
-    # 3. release_cadence_acceleration: current interval <= 1h while the median
-    #    of PRIOR intervals (excluding the current one, BUG-71 fix) >= 7 days
-    if current_idx > 0 and len(uploads) >= 3:
-        latest_interval = (current_ts - uploads[current_idx - 1][0]).total_seconds()
-        prior_intervals = [(uploads[i + 1][0] - uploads[i][0]).total_seconds()
-                           for i in range(current_idx - 1)
-                           if (uploads[i + 1][0] - uploads[i][0]).total_seconds() > 0]
-        if len(prior_intervals) >= 3:
-            baseline_median = statistics.median(prior_intervals)
-            if latest_interval <= 3600 and baseline_median >= 7 * 86400:
-                findings.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "pass", "tool": "canari-cadence/0.1",
-                                 "evidence_ref": "finding: release_cadence_acceleration - %.2f hours" % (latest_interval / 3600)})
-    return findings
+    return _cadence_from_uploads(uploads, current_version)

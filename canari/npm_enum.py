@@ -12,6 +12,8 @@ section 4: default proxy 9480 returns 502). We use ProxyHandler({}) - the
 stdlib way to force direct connection.
 """
 import json
+import urllib.error
+import urllib.parse
 import urllib.request
 
 UA = "canari-m0/0.1 (research enumeration; contact: repo issues)"
@@ -140,24 +142,45 @@ PYPI_SIMPLE = "https://pypi.org/simple"
 TOP_PYPI_JSON = "https://hugovk.github.io/top-pypi-packages/top-pypi-packages-30-days.min.json"
 PYPI_JSON = "https://pypi.org/pypi"
 
-def fetch_simple_index(cache_path=None, ttl_hours=24, max_bytes=80 * 1024 * 1024, timeout=120, total_budget_s=600):
-    """Download (or reuse) the PyPI simple index HTML. Returns str or None.
+def fetch_simple_index(cache_path=None, ttl_hours=24, max_bytes=80 * 1024 * 1024,
+                       timeout=120, total_budget_s=120):
+    """Return the PyPI simple index HTML, or None.
 
-    A disk cache bounds the weekly scan to one download per TTL: the file is
-    tens of MB and two independent call sites need it in the same run.
+    Cache policy (changed 2026-11-13 after measuring the real failure):
+      - fresh cache  -> use it, no network
+      - stale cache  -> try to refresh ONCE with a SHORT budget, and if the
+                        refresh fails fall back to the stale file. The index is
+                        only used to enumerate project NAMES; a day-old name list
+                        is far more useful than a 10-minute stall followed by a
+                        fallback to a 8K popularity slice.
+      - no cache     -> try once, then return None so callers use the fallback.
+
+    Measured on this machine: pypi.org/simple is ~49MB and a full read took
+    >600s repeatedly (throttled link), which previously burned 10 minutes at
+    the start of EVERY scan before silently degrading.
     """
     import os as _os
-    import time as _time
+    import time as _t
+
+    stale = None
+    fresh = False
     if cache_path:
         try:
-            if _os.path.exists(cache_path) and (_time.time() - _os.path.getmtime(cache_path) < ttl_hours * 3600):
+            if _os.path.exists(cache_path):
                 with open(cache_path, "r", encoding="utf-8", errors="replace") as f:
-                    print("[pypi] simple index from cache:", cache_path)
-                    return f.read()
+                    stale = f.read()
+                age_h = (_t.time() - _os.path.getmtime(cache_path)) / 3600.0
+                fresh = age_h < ttl_hours
+                if fresh:
+                    print("[pypi] simple index from cache (%.1fh old): %s" % (age_h, cache_path))
+                    return stale
+                print("[pypi] cached index is %.1fh old; refreshing with a %ds budget"
+                      % (age_h, total_budget_s))
         except OSError:
-            pass
+            stale = None
+
     html = None
-    import time as _t
+    over_cap = False
     deadline = _t.time() + total_budget_s
     for attempt in range(2):
         try:
@@ -172,21 +195,38 @@ def fetch_simple_index(cache_path=None, ttl_hours=24, max_bytes=80 * 1024 * 1024
                         break
                     chunks.append(chunk)
                     size += len(chunk)
+                    # NOTE: do NOT stop at max_bytes. A truncated simple index
+                    # loses the alphabetical tail, which is exactly the bug we
+                    # are fixing (mcp-server-fetch was beyond the cut). The cap
+                    # only guards against runaway streams, so we keep draining
+                    # until EOF and report if we exceeded it.
                     if size >= max_bytes:
-                        break
+                        over_cap = True
                 html = b"".join(chunks).decode("utf-8", errors="replace")
             break
         except Exception as e:
             if attempt == 1:
-                print("[pypi] simple index download failed:", str(e)[:80])
-    if html is not None and cache_path:
-        try:
-            _os.makedirs(_os.path.dirname(cache_path) or ".", exist_ok=True)
-            with open(cache_path, "w", encoding="utf-8") as f:
-                f.write(html)
-        except OSError:
-            pass
-    return html
+                print("[pypi] simple index refresh failed:", str(e)[:80])
+
+    if html is not None:
+        if cache_path:
+            try:
+                _os.makedirs(_os.path.dirname(cache_path) or ".", exist_ok=True)
+                with open(cache_path, "w", encoding="utf-8") as f:
+                    f.write(html)
+            except OSError:
+                pass
+        if over_cap:
+            print("[pypi] simple index exceeded the %d-byte cap (%d bytes read); "
+                  "keeping the whole body so the name list stays complete"
+                  % (max_bytes, len(html)))
+        return html
+
+    if stale is not None:
+        print("[pypi] falling back to the STALE cached index (%d bytes) - "
+              "enumeration stays possible, freshness is degraded" % len(stale))
+        return stale
+    return None
 
 
 def _stratified_pick(sorted_names, limit, what=""):
@@ -221,6 +261,76 @@ def _stratified_pick(sorted_names, limit, what=""):
     print("[%s] %d candidates, keeping %d spread across the alphabet, dropping %d"
           % (what or "pick", n, len(out), n - len(out)))
     return out
+
+
+PYPI_META_WORKERS = 8
+
+
+def _fetch_one_pypi_meta(name, retries=2):
+    """Fetch one project's JSON metadata. Returns a result dict; never raises.
+
+    Retries on transport failures only. A 404 is a real answer (the project is
+    gone / renamed) and is returned as an error without retrying - otherwise
+    every delisted name would cost 3x the timeout.
+    """
+    uri = PYPI_JSON + "/" + urllib.parse.quote(name, safe="") + "/json"
+    last = None
+    for attempt in range(max(1, retries)):
+        try:
+            jreq = urllib.request.Request(uri, headers={"User-Agent": UA})
+            with _opener().open(jreq, timeout=60) as r2:
+                d2 = json.loads(r2.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return {"name": name, "registry": "pypi",
+                        "error": "HTTP 404: project not found"}
+            last = e
+            if attempt + 1 < retries:
+                import time as _t
+                _t.sleep(2 + attempt * 3)
+        except Exception as e:                                # noqa: BLE001
+            last = e
+            if attempt + 1 < retries:
+                import time as _t
+                _t.sleep(2 + attempt * 3)
+    else:
+        return {"name": name, "registry": "pypi", "error": str(last)[:100]}
+    try:
+        info = d2.get("info", {})
+        dists = d2.get("urls", [])
+        sha256 = dists[0]["digests"]["sha256"] if dists else ""
+        return {"name": name, "version": info.get("version", ""),
+                "description": (info.get("summary") or "")[:200],
+                "registry": "pypi", "artifact_sha256": sha256,
+                "tarball": dists[0]["url"] if dists else "",
+                "maintainers": [info.get("author", "") or info.get("author_email", "")],
+                "links": {"homepage": info.get("home_page", "")},
+                "_json": d2}
+    except Exception as e:                                    # noqa: BLE001
+        return {"name": name, "registry": "pypi", "error": str(e)[:100]}
+
+
+def _fetch_pypi_meta_bulk(names, workers=None):
+    """Fetch PyPI metadata for many projects with bounded concurrency.
+
+    The per-project request takes 12-50s on this link. Strictly serial, that is
+    620 x ~30s = 5+ hours for the mcp-server-* cohort - measured 2026-11-13.
+    With 8 workers it is ~40 minutes, still far below PyPI's documented rate
+    limits (their guidance is about sustained load, not concurrency per se; each
+    worker issues one request at a time with no retry storm).
+
+    `workers=1` reproduces the old serial behaviour, which the tests use.
+    """
+    w = max(1, int(workers if workers is not None else PYPI_META_WORKERS))
+    if w == 1 or len(names) <= 1:
+        out = []
+        for n in names:
+            out.append(_fetch_one_pypi_meta(n))
+        return out
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=w) as pool:
+        return list(pool.map(_fetch_one_pypi_meta, names))
 
 
 def pypi_enumerate(prefix="mcp-server-", limit=5000, cache_path=None):
@@ -274,27 +384,7 @@ def pypi_enumerate(prefix="mcp-server-", limit=5000, cache_path=None):
     names = _re.findall(r'>(.*?)</a>', html)
     all_matched = sorted({n for n in names if n.lower().startswith(prefix.lower())})
     matched = _stratified_pick(all_matched, limit, what="pypi:" + prefix)
-    results = []
-    for name in matched:
-        try:
-            import time as _t
-            _t.sleep(0.3)  # rate limit: ~200 req/min stays well under PyPI's threshold
-            jurl = PYPI_JSON + "/" + urllib.parse.quote(name, safe="") + "/json"
-            jreq = urllib.request.Request(jurl, headers={"User-Agent": UA})
-            with _opener().open(jreq, timeout=30) as r2:
-                d2 = json.loads(r2.read().decode("utf-8"))
-            info = d2.get("info", {})
-            dists = d2.get("urls", [])
-            sha256 = dists[0]["digests"]["sha256"] if dists else ""
-            results.append({"name": name, "version": info.get("version", ""),
-                            "description": (info.get("summary") or "")[:200],
-                            "registry": "pypi", "artifact_sha256": sha256,
-                            "tarball": dists[0]["url"] if dists else "",
-                            "maintainers": [info.get("author", "") or info.get("author_email", "")],
-                            "links": {"homepage": info.get("home_page", "")}})
-        except Exception as e:
-            results.append({"name": name, "registry": "pypi", "error": str(e)[:100]})
-    return results
+    return _fetch_pypi_meta_bulk(matched)
 
 # ============================================================
 # MCP Registry adapter

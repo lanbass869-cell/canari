@@ -574,6 +574,52 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-m1/0.1"},
                       {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass" if sha else "fail", "tool": "canari-m1/0.1"}]
             verdict = "pass" if sha else "fail"
+            # npm was getting NO trust heuristics at all - cadence/anomaly/
+            # typosquatting were only wired into the PyPI loop, so every npm
+            # attestation carried 2 rows regardless of what was checked. Each
+            # module now leaves exactly one row (finding / pass / skip / error).
+            from canari.cadence import analyze_npm_cadence
+            try:
+                _cd = analyze_npm_cadence(pack, lv["version"])
+                checks.extend(_cd or [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                                       "tool": "canari-cadence/0.1",
+                                       "evidence_ref": "no cadence anomaly in %d published versions"
+                                                       % (len((pack.get("time") or {})) - 2)}])
+            except Exception as _ce:
+                checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "error",
+                               "tool": "canari-cadence/0.1",
+                               "evidence_ref": "cadence check failed: %s" % str(_ce)[:80]})
+            try:
+                _prev_npm = _prev("npm", name)
+                _prev_meta = (_prev_npm or {}).get("meta")
+                if _prev_meta:
+                    _cur_meta = {"maintainers": [m.get("name", "") for m in (lv["maintainers"] or [])
+                                                 if isinstance(m, dict)],
+                                 "homepage": (lv.get("homepage") or "")}
+                    _an = detect_metadata_anomaly(_cur_meta, _prev_meta)
+                    checks.extend(_an or [{"id": "L2.5_METADATA_ANOMALY", "verdict": "pass",
+                                           "tool": "canari-anomaly/0.1",
+                                           "evidence_ref": "no maintainer/homepage change vs previous scan"}])
+                else:
+                    checks.append({"id": "L2.5_METADATA_ANOMALY", "verdict": "skip",
+                                   "tool": "canari-anomaly/0.1",
+                                   "evidence_ref": "first scan of this component; no baseline to compare"})
+            except Exception as _ae:
+                checks.append({"id": "L2.5_METADATA_ANOMALY", "verdict": "error",
+                               "tool": "canari-anomaly/0.1",
+                               "evidence_ref": "anomaly check failed: %s" % str(_ae)[:80]})
+            try:
+                from canari.typosquat import check_typosquatting
+                _tq = check_typosquatting(name, {p["name"] for p in npm_pkgs})
+                checks.append(_tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
+                                      "tool": "canari-typosquat/0.1",
+                                      "evidence_ref": "no close match to another component in this scan"})
+            except Exception as _te:
+                checks.append({"id": "L2.6_TYPOSQUATTING", "verdict": "error",
+                               "tool": "canari-typosquat/0.1",
+                               "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]})
+            if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
+                verdict = "pass-with-findings" if sha else "fail"
             np = _with_timeout(lambda: native_ingest(name, lv["version"]), 90, None)
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
                             ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
