@@ -1,0 +1,36 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-13T05:01:33Z",
+ "scenario_sha256": "862e68ffab966a543a56b3257f00133a9836ba796b925a2693e8a17ffbc7bcbc",
+ "total": 2,
+ "errors": 0,
+ "dead_letters": {
+  "total": 5,
+  "by_operation": {
+   "npm_fetch": 2,
+   "pypi_fetch": 3
+  }
+ },
+ "by_registry": {
+  "pypi": 2
+ },
+ "by_verdict": {
+  "pass": 2
+ },
+ "items": [
+  {
+   "name": "mcp-server-fetch",
+   "registry": "pypi",
+   "version": "2026.11.11",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-fetch_20261113T050124_b77c0a6d.bundle.json"
+  },
+  {
+   "name": "mcp-server-time",
+   "registry": "pypi",
+   "version": "2026.11.11",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-time_20261113T050133_19c7b40d.bundle.json"
+  }
+ ]
+}

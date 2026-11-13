@@ -1,22 +1,22 @@
 {
  "feed_version": 3,
- "generated_at": "2026-11-13T04:43:34Z",
+ "generated_at": "2026-11-13T05:54:59Z",
  "store": {
-  "bundle_files": 3324,
-  "components": 902
+  "bundle_files": 3330,
+  "components": 903
  },
  "by_registry": {
   "dsh-registry": 521,
   "mcp-registry": 60,
   "npm": 220,
-  "pypi": 101
+  "pypi": 102
  },
  "by_verdict": {
   "unsupported": 245,
   "fail": 19,
   "pass-with-findings": 330,
-  "pass": 305,
-  "error": 3
+  "pass": 307,
+  "error": 2
  },
  "findings_by_check": {
   "L2.4_RELEASE_CADENCE": 6,
@@ -6582,13 +6582,13 @@
   {
    "name": "@anthropic-ai/claude-agent-sdk",
    "registry": "npm",
-   "version": "",
-   "verdict": "error",
-   "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-   "generated_at": "2026-11-12T14:38:27Z",
-   "supersedes": null,
+   "version": "0.3.323",
+   "verdict": "pass",
+   "artifact_sha256": "eac6f0fa22eaafc8c8e9355231aa953481899c2e7c647926b965457c26528e2f",
+   "generated_at": "2026-11-13T05:53:41Z",
+   "supersedes": "7d12aa001627e8fe1b1751ea3ce6751dfbbf211e116ddd7dae8323d908b7a409",
    "findings": [],
-   "bundle_file": "npm_anthropic-ai_claude-agent-sdk_20261112T143827_2b46d3a6.bundle.json"
+   "bundle_file": "npm_anthropic-ai_claude-agent-sdk_20261113T055341_e76bf240.bundle.json"
   },
   {
    "name": "@atlassian-dc-mcp/bitbucket",
@@ -7454,10 +7454,10 @@
    "version": "2.4.0",
    "verdict": "pass",
    "artifact_sha256": "e0c1eb59e43eeb6c9912e8f4dbd0c473976cdd4dda21f9473958d2bd15e3a98c",
-   "generated_at": "2026-11-12T14:36:27Z",
-   "supersedes": null,
+   "generated_at": "2026-11-13T05:53:10Z",
+   "supersedes": "6d3888f59239a92deeecc1b7ae1512e9d613bb63d027527f1c08a2b74ed88b17",
    "findings": [],
-   "bundle_file": "npm_modelcontextprotocol_core_20261112T143627_bee10f50.bundle.json"
+   "bundle_file": "npm_modelcontextprotocol_core_20261113T055310_147fa66a.bundle.json"
   },
   {
    "name": "@modelcontextprotocol/express",
@@ -7520,10 +7520,10 @@
    "version": "1.32.2",
    "verdict": "pass",
    "artifact_sha256": "b8d52553a4b7937c0fd9be60c4013af3f46c9a41c5ddde39b7dd0672e4fe19ef",
-   "generated_at": "2026-11-12T14:36:13Z",
-   "supersedes": null,
+   "generated_at": "2026-11-13T05:53:00Z",
+   "supersedes": "3fc31c79bad2ba9cfe423775a7ba6593938fdb698c866aaf8f93a93b0d3e6c17",
    "findings": [],
-   "bundle_file": "npm_modelcontextprotocol_sdk_20261112T143613_9237e90d.bundle.json"
+   "bundle_file": "npm_modelcontextprotocol_sdk_20261113T055300_0012ef5f.bundle.json"
   },
   {
    "name": "@modelcontextprotocol/server",
@@ -7531,10 +7531,10 @@
    "version": "2.4.0",
    "verdict": "pass",
    "artifact_sha256": "5fe197468cda6f6b1244408b7a418d263e4b2c936add391a0094dcb10e5e49f7",
-   "generated_at": "2026-11-12T14:36:48Z",
-   "supersedes": null,
+   "generated_at": "2026-11-13T05:53:22Z",
+   "supersedes": "05dc449bf1223b7f0eb1e8a192ccb203aca632468fdaf1acfd57037ce3913b8d",
    "findings": [],
-   "bundle_file": "npm_modelcontextprotocol_server_20261112T143648_509430e9.bundle.json"
+   "bundle_file": "npm_modelcontextprotocol_server_20261113T055322_9830c48d.bundle.json"
   },
   {
    "name": "@modelcontextprotocol/server-everything",
@@ -9954,15 +9954,26 @@
    "bundle_file": "pypi_mcp-server-dagster_20261110T055147_454507e0.bundle.json"
   },
   {
+   "name": "mcp-server-fetch",
+   "registry": "pypi",
+   "version": "2026.11.11",
+   "verdict": "pass",
+   "artifact_sha256": "8e22e58942b1bb9b04d94034f50b4c89b8533081d3c2a58d6b4998614bacf23f",
+   "generated_at": "2026-11-13T05:01:24Z",
+   "supersedes": null,
+   "findings": [],
+   "bundle_file": "pypi_mcp-server-fetch_20261113T050124_b77c0a6d.bundle.json"
+  },
+  {
    "name": "mcp-server-time",
    "registry": "pypi",
    "version": "2026.11.11",
    "verdict": "pass",
    "artifact_sha256": "6b1605970a1e326b8a661f505b6a12e60e9292e233d08cad25c1b347f55f65a3",
-   "generated_at": "2026-11-12T15:42:00Z",
-   "supersedes": null,
+   "generated_at": "2026-11-13T05:01:33Z",
+   "supersedes": "a698a13deb1b119c43e57fdda29ea8fe2b2b7ce2bc3a20ca999d96796b4fc167",
    "findings": [],
-   "bundle_file": "pypi_mcp-server-time_20261112T154200_a698a13d.bundle.json"
+   "bundle_file": "pypi_mcp-server-time_20261113T050133_19c7b40d.bundle.json"
   }
  ]
 }

@@ -1,0 +1,50 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-13T05:53:41Z",
+ "scenario_sha256": "8d7636d62257aa608306b0b8cd09c668e39ca9870d064b5c885af53c0752ca67",
+ "total": 4,
+ "errors": 0,
+ "dead_letters": {
+  "total": 5,
+  "by_operation": {
+   "npm_fetch": 2,
+   "pypi_fetch": 3
+  }
+ },
+ "by_registry": {
+  "npm": 4
+ },
+ "by_verdict": {
+  "pass": 4
+ },
+ "items": [
+  {
+   "name": "@modelcontextprotocol/sdk",
+   "registry": "npm",
+   "version": "1.32.2",
+   "verdict": "pass",
+   "bundle_file": "npm_modelcontextprotocol_sdk_20261113T055300_0012ef5f.bundle.json"
+  },
+  {
+   "name": "@modelcontextprotocol/core",
+   "registry": "npm",
+   "version": "2.4.0",
+   "verdict": "pass",
+   "bundle_file": "npm_modelcontextprotocol_core_20261113T055310_147fa66a.bundle.json"
+  },
+  {
+   "name": "@modelcontextprotocol/server",
+   "registry": "npm",
+   "version": "2.4.0",
+   "verdict": "pass",
+   "bundle_file": "npm_modelcontextprotocol_server_20261113T055322_9830c48d.bundle.json"
+  },
+  {
+   "name": "@anthropic-ai/claude-agent-sdk",
+   "registry": "npm",
+   "version": "0.3.323",
+   "verdict": "pass",
+   "bundle_file": "npm_anthropic-ai_claude-agent-sdk_20261113T055341_e76bf240.bundle.json"
+  }
+ ]
+}
