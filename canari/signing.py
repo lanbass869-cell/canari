@@ -70,8 +70,21 @@ _CREDENTIAL_RULES = [
     ("jwt", lambda s: bool(re.match(r"eyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*", s))),
     ("authorization header", lambda s: bool(re.search(r"(?i)\b(?:bearer|basic|token|dpop)\s+[A-Za-z0-9._~+/-]{8,}", s))),
     ("private key block", lambda s: "-----BEGIN" in s and "PRIVATE KEY" in s),
+    # Each alternative carries a MINIMUM LENGTH for the secret body. Without
+    # one, ordinary identifiers match: "mcp-server-time-allenash-pypi-test"
+    # contains "pypi-" and was rejected as a credential, which aborted an
+    # entire 700-package scan (2026-11-13). Real tokens are long.
     ("vendor key prefix", lambda s: bool(re.search(
-        r"(?:sk|rk|pk)_(?:live|test)_|gh[pousr]_|github_pat_|xox[abprs]-|glpat-|whsec_|npm_|pypi-|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{20}", s))),
+        r"(?:sk|rk|pk)_(?:live|test)_[A-Za-z0-9]{16,}"
+        r"|gh[pousr]_[A-Za-z0-9]{30,}"
+        r"|github_pat_[A-Za-z0-9_]{40,}"
+        r"|xox[abprs]-[A-Za-z0-9-]{10,}"
+        r"|glpat-[A-Za-z0-9_-]{20,}"
+        r"|whsec_[A-Za-z0-9+/=]{16,}"
+        r"|npm_[A-Za-z0-9]{30,}"
+        r"|pypi-[A-Za-z0-9_-]{40,}"
+        r"|AKIA[0-9A-Z]{16}"
+        r"|AIza[0-9A-Za-z_-]{20,}", s))),
     ("long hex run", lambda s: bool(re.search(r"(?:^|[^0-9A-Za-z])[0-9a-fA-F]{32,}(?![0-9A-Za-z])", s))),
     ("high-entropy token", lambda s: any(
         len(p) >= 24 and any(c.isupper() for c in p) and any(c.islower() for c in p) and any(c.isdigit() for c in p)

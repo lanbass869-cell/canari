@@ -661,14 +661,18 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         # ONE PyPI JSON fetch per package, shared by every heuristics module.
         # Previously pypi_native and cadence each re-fetched the same URL; on a
         # slow link that tripled the wall clock (measured 12-120s per GET).
-        _pyjson = None
-        try:
-            _purl = "https://pypi.org/pypi/%s/json" % urllib.parse.quote(name, safe="")
-            with _opener().open(urllib.request.Request(_purl, headers={"User-Agent": UA}),
-                                timeout=45) as _r:
-                _pyjson = json.loads(_r.read().decode("utf-8"))
-        except Exception:
-            _pyjson = None
+        # Reuse the JSON the enumerator ALREADY fetched (it is attached as
+        # "_json"). Until now this loop fired a fourth identical GET per package,
+        # which on this link is +30s of pure waste for data we already have.
+        _pyjson = pkg.get("_json")
+        if _pyjson is None:
+            try:
+                _purl = "https://pypi.org/pypi/%s/json" % urllib.parse.quote(name, safe="")
+                with _opener().open(urllib.request.Request(_purl, headers={"User-Agent": UA}),
+                                    timeout=45) as _r:
+                    _pyjson = json.loads(_r.read().decode("utf-8"))
+            except Exception:
+                _pyjson = None
         pn = _with_timeout(
             lambda: pypi_native_ingest(name, pkg.get("version", "") or None, pypi_json=_pyjson),
             90, None)
@@ -733,9 +737,22 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
                         verdict, ["canari-m1/0.1"], ["pypi-json:" + name],
                         native_prov=pn)
-        bpath = _save_att(att, "pypi", name, prev_state=_prev("pypi", name))
-        all_results.append({"name": name, "registry": "pypi", "version": pkg.get("version", ""),
-                            "verdict": att["verdict"], "bundle": bpath})
+        # A single bad package must never abort the whole registry sweep. This
+        # used to raise straight out of run_multi: one package whose NAME tripped
+        # the credential heuristics ("...-pypi-test") killed a 700-package run
+        # after 300 packages of work (2026-11-13). Failures are recorded as an
+        # error attestation when possible, and as a dead letter otherwise.
+        try:
+            bpath = _save_att(att, "pypi", name, prev_state=_prev("pypi", name))
+            all_results.append({"name": name, "registry": "pypi",
+                                "version": pkg.get("version", ""),
+                                "verdict": att["verdict"], "bundle": bpath})
+        except Exception as _save_err:
+            total_errors += 1
+            dead.record("pypi_attest", name, str(_save_err), "pypi")
+            print("  [pypi] %-40s ATTEST-ERROR %s" % (name, str(_save_err)[:70]))
+            all_results.append({"name": name, "registry": "pypi",
+                                "status": "error", "error": str(_save_err)[:200]})
 
     # MCP Registry
     print("[multi] MCP Registry (%d)..." % registry_limit)
