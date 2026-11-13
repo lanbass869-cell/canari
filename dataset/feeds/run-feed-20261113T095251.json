@@ -1,0 +1,569 @@
+{
+ "feed_version": 2,
+ "generated_at": "2026-11-13T09:52:51Z",
+ "scenario_sha256": "98981a28cb119e354e5cf5d4b7b03efc1ae0d4ffea4c382a7caaa8291c1b4d9b",
+ "total": 78,
+ "errors": 0,
+ "dead_letters": {
+  "total": 5,
+  "by_operation": {
+   "npm_fetch": 2,
+   "pypi_fetch": 3
+  }
+ },
+ "by_registry": {
+  "pypi": 78
+ },
+ "by_verdict": {
+  "pass": 67,
+  "pass-with-findings": 11
+ },
+ "items": [
+  {
+   "name": "mcp-server-time-allenash-pypi-test",
+   "registry": "pypi",
+   "version": "0.6.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-time-allenash-pypi-test_20261113T095247_975284d1.bundle.json"
+  },
+  {
+   "name": "mcp-server-timewyb",
+   "registry": "pypi",
+   "version": "0.8.6",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-timewyb_20261113T095248_f1b868cf.bundle.json"
+  },
+  {
+   "name": "mcp-server-tke",
+   "registry": "pypi",
+   "version": "0.0.5",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tke_20261113T095248_a57a5424.bundle.json"
+  },
+  {
+   "name": "mcp-server-tochka-bank",
+   "registry": "pypi",
+   "version": "0.6.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tochka-bank_20261113T095248_0a1891e4.bundle.json"
+  },
+  {
+   "name": "mcp-server-toggl",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-toggl_20261113T095248_2c321b5e.bundle.json"
+  },
+  {
+   "name": "mcp-server-toolhouse",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-toolhouse_20261113T095248_2336d6e8.bundle.json"
+  },
+  {
+   "name": "mcp-server-toolkit",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-toolkit_20261113T095248_3cab85e6.bundle.json"
+  },
+  {
+   "name": "mcp-server-tools",
+   "registry": "pypi",
+   "version": "0.0.3",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tools_20261113T095248_5e0a1aa5.bundle.json"
+  },
+  {
+   "name": "mcp-server-trading212",
+   "registry": "pypi",
+   "version": "0.2.1",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-trading212_20261113T095248_b55b4259.bundle.json"
+  },
+  {
+   "name": "mcp-server-tree-sitter",
+   "registry": "pypi",
+   "version": "0.7.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tree-sitter_20261113T095248_8b74ac71.bundle.json"
+  },
+  {
+   "name": "mcp-server-tree-sitter-extra",
+   "registry": "pypi",
+   "version": "0.0.1",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tree-sitter-extra_20261113T095248_1e847980.bundle.json"
+  },
+  {
+   "name": "mcp-server-trello",
+   "registry": "pypi",
+   "version": "0.5.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-trello_20261113T095248_2870dc19.bundle.json"
+  },
+  {
+   "name": "mcp-server-trending",
+   "registry": "pypi",
+   "version": "0.1.5",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-trending_20261113T095248_89827c98.bundle.json"
+  },
+  {
+   "name": "mcp-server-tutorial",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tutorial_20261113T095248_06b7f280.bundle.json"
+  },
+  {
+   "name": "mcp-server-tuya",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-tuya_20261113T095248_d9e64b99.bundle.json"
+  },
+  {
+   "name": "mcp-server-twelve-data",
+   "registry": "pypi",
+   "version": "0.2.5",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-twelve-data_20261113T095248_e0a02a09.bundle.json"
+  },
+  {
+   "name": "mcp-server-twse",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-twse_20261113T095248_096b8501.bundle.json"
+  },
+  {
+   "name": "mcp-server-unifi",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-unifi_20261113T095248_ffc565b2.bundle.json"
+  },
+  {
+   "name": "mcp-server-unipile",
+   "registry": "pypi",
+   "version": "0.1.5",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-unipile_20261113T095248_5a5d690a.bundle.json"
+  },
+  {
+   "name": "mcp-server-upstage",
+   "registry": "pypi",
+   "version": "0.3.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-upstage_20261113T095248_a1f92eb3.bundle.json"
+  },
+  {
+   "name": "mcp-server-uv",
+   "registry": "pypi",
+   "version": "0.0.9",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-uv_20261113T095248_10f821ec.bundle.json"
+  },
+  {
+   "name": "mcp-server-vdb",
+   "registry": "pypi",
+   "version": "7.0.5",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-vdb_20261113T095248_264d31a3.bundle.json"
+  },
+  {
+   "name": "mcp-server-vector-memory",
+   "registry": "pypi",
+   "version": "0.4.4",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-vector-memory_20261113T095248_583b4f61.bundle.json"
+  },
+  {
+   "name": "mcp-server-vecx",
+   "registry": "pypi",
+   "version": "0.1.4",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-vecx_20261113T095249_c1edda13.bundle.json"
+  },
+  {
+   "name": "mcp-server-vefaas-function",
+   "registry": "pypi",
+   "version": "0.0.7",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-vefaas-function_20261113T095249_7327e99b.bundle.json"
+  },
+  {
+   "name": "mcp-server-videogenerator",
+   "registry": "pypi",
+   "version": "0.0.4",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-videogenerator_20261113T095249_1ef99fa1.bundle.json"
+  },
+  {
+   "name": "mcp-server-vikingdb",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-vikingdb_20261113T095249_8e63c9a5.bundle.json"
+  },
+  {
+   "name": "mcp-server-vikingdb-fastmcp",
+   "registry": "pypi",
+   "version": "0.1.3",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-vikingdb-fastmcp_20261113T095249_96e3d519.bundle.json"
+  },
+  {
+   "name": "mcp-server-voicevox",
+   "registry": "pypi",
+   "version": "0.2.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-voicevox_20261113T095249_e2d6fccf.bundle.json"
+  },
+  {
+   "name": "mcp-server-vyos",
+   "registry": "pypi",
+   "version": "0.6.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-vyos_20261113T095249_54a1e701.bundle.json"
+  },
+  {
+   "name": "mcp-server-w",
+   "registry": "pypi",
+   "version": "0.6.3",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-w_20261113T095249_6cb786a8.bundle.json"
+  },
+  {
+   "name": "mcp-server-waii",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-waii_20261113T095249_a4fca35c.bundle.json"
+  },
+  {
+   "name": "mcp-server-waitlistkit",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-waitlistkit_20261113T095249_4bce9565.bundle.json"
+  },
+  {
+   "name": "mcp-server-wavespeed",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wavespeed_20261113T095249_06bad725.bundle.json"
+  },
+  {
+   "name": "mcp-server-wayback",
+   "registry": "pypi",
+   "version": "0.2.7",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wayback_20261113T095249_0b86e619.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather",
+   "registry": "pypi",
+   "version": "0.1.4",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-weather_20261113T095249_f9ed8d49.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-1",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-weather-1_20261113T095249_d88659a9.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-cf",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-weather-cf_20261113T095249_aa2bd8ca.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-cjshen",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather-cjshen_20261113T095249_cba89a33.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-cuhksz",
+   "registry": "pypi",
+   "version": "0.2.6",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather-cuhksz_20261113T095249_36eaad67.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-dashi",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather-dashi_20261113T095249_674eff90.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-lei",
+   "registry": "pypi",
+   "version": "0.1.5",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-weather-lei_20261113T095249_6cf75a66.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-luht",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather-luht_20261113T095249_915ad7f0.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-xiawenzhuo",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather-xiawenzhuo_20261113T095250_c08eae71.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather-yumi",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather-yumi_20261113T095250_eac0f94c.bundle.json"
+  },
+  {
+   "name": "mcp-server-weather666",
+   "registry": "pypi",
+   "version": "0.1.8",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weather666_20261113T095250_0751a4cc.bundle.json"
+  },
+  {
+   "name": "mcp-server-webcrawl",
+   "registry": "pypi",
+   "version": "0.16.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-webcrawl_20261113T095250_159a4816.bundle.json"
+  },
+  {
+   "name": "mcp-server-webdriver",
+   "registry": "pypi",
+   "version": "0.6.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-webdriver_20261113T095250_ae72530b.bundle.json"
+  },
+  {
+   "name": "mcp-server-websearch",
+   "registry": "pypi",
+   "version": "0.1.9",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-websearch_20261113T095250_57b3935d.bundle.json"
+  },
+  {
+   "name": "mcp-server-wechat",
+   "registry": "pypi",
+   "version": "0.8",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wechat_20261113T095250_7ac7b287.bundle.json"
+  },
+  {
+   "name": "mcp-server-wecom-doc",
+   "registry": "pypi",
+   "version": "1.0.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wecom-doc_20261113T095250_eb89ae32.bundle.json"
+  },
+  {
+   "name": "mcp-server-weibo",
+   "registry": "pypi",
+   "version": "1.3.4",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weibo_20261113T095250_9de37be8.bundle.json"
+  },
+  {
+   "name": "mcp-server-weisheng-scrm",
+   "registry": "pypi",
+   "version": "0.0.1",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-weisheng-scrm_20261113T095250_89157aa2.bundle.json"
+  },
+  {
+   "name": "mcp-server-whisper",
+   "registry": "pypi",
+   "version": "1.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-whisper_20261113T095250_8f487a25.bundle.json"
+  },
+  {
+   "name": "mcp-server-wikijs",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wikijs_20261113T095250_67364b43.bundle.json"
+  },
+  {
+   "name": "mcp-server-wikipedia",
+   "registry": "pypi",
+   "version": "0.5.6",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wikipedia_20261113T095250_a16b8336.bundle.json"
+  },
+  {
+   "name": "mcp-server-wildberries",
+   "registry": "pypi",
+   "version": "0.2.1",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wildberries_20261113T095250_febe17f4.bundle.json"
+  },
+  {
+   "name": "mcp-server-wlzdgk",
+   "registry": "pypi",
+   "version": "1.3.0",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-wlzdgk_20261113T095250_368fab85.bundle.json"
+  },
+  {
+   "name": "mcp-server-ws",
+   "registry": "pypi",
+   "version": "0.1.5",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-ws_20261113T095250_a01b0ec9.bundle.json"
+  },
+  {
+   "name": "mcp-server-wxa4z",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-wxa4z_20261113T095250_89db6f76.bundle.json"
+  },
+  {
+   "name": "mcp-server-x",
+   "registry": "pypi",
+   "version": "0.3.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-x_20261113T095251_8745b9c4.bundle.json"
+  },
+  {
+   "name": "mcp-server-xfetch",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-xfetch_20261113T095251_99f69510.bundle.json"
+  },
+  {
+   "name": "mcp-server-xigua",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-xigua_20261113T095251_178254bd.bundle.json"
+  },
+  {
+   "name": "mcp-server-xigualaoshi",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-xigualaoshi_20261113T095251_c2a513ca.bundle.json"
+  },
+  {
+   "name": "mcp-server-xlwings",
+   "registry": "pypi",
+   "version": "0.4.1",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-xlwings_20261113T095251_e58bf5a5.bundle.json"
+  },
+  {
+   "name": "mcp-server-y-demo",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-y-demo_20261113T095251_7d97a88e.bundle.json"
+  },
+  {
+   "name": "mcp-server-yandex-direct",
+   "registry": "pypi",
+   "version": "0.3.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-yandex-direct_20261113T095251_5d770009.bundle.json"
+  },
+  {
+   "name": "mcp-server-yandex-market-seller",
+   "registry": "pypi",
+   "version": "0.6.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-yandex-market-seller_20261113T095251_9603fe58.bundle.json"
+  },
+  {
+   "name": "mcp-server-yandex-metrika",
+   "registry": "pypi",
+   "version": "0.2.4",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-yandex-metrika_20261113T095251_bfa239da.bundle.json"
+  },
+  {
+   "name": "mcp-server-yfinance",
+   "registry": "pypi",
+   "version": "0.1.0a0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-yfinance_20261113T095251_0ef074f6.bundle.json"
+  },
+  {
+   "name": "mcp-server-youtube",
+   "registry": "pypi",
+   "version": "0.1.2",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-youtube_20261113T095251_93ec83ae.bundle.json"
+  },
+  {
+   "name": "mcp-server-youtube-info",
+   "registry": "pypi",
+   "version": "0.1.8",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-youtube-info_20261113T095251_ffdb99f7.bundle.json"
+  },
+  {
+   "name": "mcp-server-zap",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-zap_20261113T095251_0e73da1f.bundle.json"
+  },
+  {
+   "name": "mcp-server-zefix",
+   "registry": "pypi",
+   "version": "0.4.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-zefix_20261113T095251_24d7271e.bundle.json"
+  },
+  {
+   "name": "mcp-server-zf",
+   "registry": "pypi",
+   "version": "0.1.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-zf_20261113T095251_6eecb274.bundle.json"
+  },
+  {
+   "name": "mcp-server-ziwei",
+   "registry": "pypi",
+   "version": "0.1.1",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-ziwei_20261113T095251_fd7bc82e.bundle.json"
+  },
+  {
+   "name": "mcp-server-zoomeye",
+   "registry": "pypi",
+   "version": "0.1.6",
+   "verdict": "pass-with-findings",
+   "bundle_file": "pypi_mcp-server-zoomeye_20261113T095251_9e3d009f.bundle.json"
+  },
+  {
+   "name": "mcp-server-zwave-js-ui",
+   "registry": "pypi",
+   "version": "0.4.0",
+   "verdict": "pass",
+   "bundle_file": "pypi_mcp-server-zwave-js-ui_20261113T095251_78b0ddeb.bundle.json"
+  }
+ ]
+}
