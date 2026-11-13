@@ -3,7 +3,7 @@
   "name": "io.github.lanbass869-cell/canari",
   "title": "Canari",
   "description": "Signed, offline-verifiable attestations for agent components; ALLOW/BLOCK/REVIEW per install.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://github.com/lanbass869-cell/canari",
   "repository": {
     "url": "https://github.com/lanbass869-cell/canari",
@@ -13,7 +13,7 @@
     {
       "registryType": "pypi",
       "identifier": "canari-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       }
