@@ -1,0 +1,104 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImJhbmRpdCAoaW5nZXN0ZWQgYnkgY2FuYXJpKSIsICJraW5kIjogImF1dG9tYXRpb24ifSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiA4IHJlc3VsdChzKSwgaGlnaGVzdCBzZXZlcml0eT1tZWRpdW0iLCAiaWQiOiAiTDMuMV9TVEFUSUNfU0NBTiIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMTMgc2V2ZXJpdHk9bWVkaXVtIGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWx0ZXJ5eFxcc3JjXFxtY3Bfc2VydmVyX2FsdGVyeXgtMC4yLjIyXFxzcmNcXHNlcnZlcl9jbGllbnRcXGNvbmZpZ3VyYXRpb24ucHk6MjcyIiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDUgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWx0ZXJ5eFxcc3JjXFxtY3Bfc2VydmVyX2FsdGVyeXgtMC4yLjIyXFxzcmNcXHNlcnZlcl9jbGllbnRcXGNvbmZpZ3VyYXRpb24ucHk6NjIiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjEwNSBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1hbHRlcnl4XFxzcmNcXG1jcF9zZXJ2ZXJfYWx0ZXJ5eC0wLjIuMjJcXHNyY1xcc2VydmVyX2NsaWVudFxcY29uZmlndXJhdGlvbi5weTo2NCIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTA1IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsdGVyeXhcXHNyY1xcbWNwX3NlcnZlcl9hbHRlcnl4LTAuMi4yMlxcc3JjXFxzZXJ2ZXJfY2xpZW50XFxjb25maWd1cmF0aW9uLnB5OjIzNSIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTA1IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsdGVyeXhcXHNyY1xcbWNwX3NlcnZlcl9hbHRlcnl4LTAuMi4yMlxcc3JjXFxzZXJ2ZXJfY2xpZW50XFxtb2RlbHNcXHN1YnNjcmlwdGlvbi5weTozNyIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTA1IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsdGVyeXhcXHNyY1xcbWNwX3NlcnZlcl9hbHRlcnl4LTAuMi4yMlxcc3JjXFxzZXJ2ZXJfY2xpZW50XFxtb2RlbHNcXHN1YnNjcmlwdGlvbi5weTo1MyIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTAxIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsdGVyeXhcXHNyY1xcbWNwX3NlcnZlcl9hbHRlcnl4LTAuMi4yMlxcc3JjXFxzZXJ2ZXJfY2xpZW50XFxyZXN0LnB5OjEzNiIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNDA1IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsdGVyeXhcXHNyY1xcbWNwX3NlcnZlcl9hbHRlcnl4LTAuMi4yMlxcc3JjXFx0b29scy5weToxMCIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifV0sICJldmlkZW5jZV9jb21wbGV0ZW5lc3MiOiB7ImRyb3BwZWRfbG9ncyI6IDAsICJtaXNzaW5nX29ic2VydmVycyI6IFtdLCAidHJ1bmNhdGVkX2ZpZWxkcyI6IFtdfSwgImV2aWRlbmNlX3JlZnMiOiBbInNhcmlmOmJhbmRpdDoxNTVhODYyMDE4YjVmOTFjIl0sICJleHBpcmVzX2F0IjogIjIwMjYtMTEtMjFUMTI6MDI6NTBaIiwgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTExLTE0VDEyOjAyOjUwWiIsICJob3N0IjogeyJjbGFzcyI6ICJtY3AiLCAiaG9zdF92ZXJzaW9uIjogInVua25vd24ifSwgInNjZW5hcmlvX3NoYTI1NiI6ICIxNTVhODYyMDE4YjVmOTFjNDMzYmU2ODE0YjNjYmJlMzIxZTU3NTMzNjRjNmZiNDc2YzE3NTE0NTVhNjUwZjA0IiwgInNpZ25hdHVyZSI6IHsiZW52ZWxvcGUiOiAiRFNTRSIsICJrZXlpZCI6ICJkMWZkMGM3Y2M4ZjM4NGFmYjRmNTdhMzhhYTFjMGNhNmI5ODM0YTlmN2Y1YWY0MjJhZDIzMzA4YmYzOWE5ZGZlIiwgInBheWxvYWRfdHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic2lnIjogIjI4ZmFkNTBhYjcyNzAyODIzZjFjOTMzNTgzNGQ2ZGM5ZDRkZjM1MTJmNTgwYTY3N2VhOTdkYjRhZjQ3MjI4ZWU2NDA0MWI2YzhjNDc1M2ExYzVhZGQ1MDU0ODkzMmYyMGU3NGQxMGQyYTE2Y2JjM2Q4YjI4NTNjNDg2MDVlYTA1In0sICJzdWJqZWN0IjogeyJhcnRpZmFjdF9zaGEyNTYiOiAiNmRhOTA2OTViMzE3ZGRkZmIzNDEwYTYyMzY3ZmM4NWQwMTE4YTgwNWQyMTMzNGNmNjYxYzUyOTBiMmRjOWE2YiIsICJtYWludGFpbmVycyI6IFtdLCAibmFtZSI6ICJtY3Atc2VydmVyLWFsdGVyeXgiLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjAuMi4yMiJ9LCAidmVyZGljdCI6ICJwYXNzLXdpdGgtZmluZGluZ3MifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICI2ZGE5MDY5NWIzMTdkZGRmYjM0MTBhNjIzNjdmYzg1ZDAxMThhODA1ZDIxMzM0Y2Y2NjFjNTI5MGIyZGM5YTZiIn0sICJuYW1lIjogInB5cGk6bWNwLXNlcnZlci1hbHRlcnl4QDAuMi4yMiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "QIpvtUDaDI1rYG6gGNeVfhrBubN20ULohZSppOUgyT3xZsLn0aJFfx7FS2/ifPhNH8Q4bLwwggGMu4Ci0sD7DA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-alteryx",
+   "version": "0.2.22",
+   "registry": "pypi",
+   "artifact_sha256": "6da90695b317dddfb3410a62367fc85d0118a805d21334cf661c5290b2dc9a6b",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "unknown"
+  },
+  "scenario_sha256": "155a862018b5f91c433be6814b3cbbe321e5753364c6fb476c1751455a650f04",
+  "checks": [
+   {
+    "id": "L3.1_STATIC_SCAN",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: 8 result(s), highest severity=medium"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B113 severity=medium at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\configuration.py:272"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B105 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\configuration.py:62"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B105 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\configuration.py:64"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B105 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\configuration.py:235"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B105 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\models\\subscription.py:37"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B105 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\models\\subscription.py:53"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\server_client\\rest.py:136"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B405 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-alteryx\\src\\mcp_server_alteryx-0.2.22\\src\\tools.py:10"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "bandit (ingested by canari)"
+  },
+  "evidence_refs": [
+   "sarif:bandit:155a862018b5f91c"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-21T12:02:50Z",
+  "generated_at": "2026-11-14T12:02:50Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "408a6fb540da0c8d6b606ea018d7957e1ac1b9b376d142e88594a9a4e520c93df166c2e7d1a2457f1ec54b6fe27cf84d1fc4386cbc3082018cbb80a2d2c0fb0c",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

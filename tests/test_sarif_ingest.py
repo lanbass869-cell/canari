@@ -158,3 +158,47 @@ class TestSchemaConformance:
                 assert c["verdict"] in self.ALLOWED_CHECK_VERDICTS, c
             errors = validate_attestation(att)
             assert not errors, errors
+
+
+def _bandit(results=None, errors=None, version="1.9.4"):
+    return {"errors": errors or [], "metrics": {"_totals": {}},
+            "generated_at": "2026-11-14T10:00:00Z",
+            "bandit_version": version,
+            "results": results or []}
+
+
+def _bhit(sev="HIGH", test_id="B602", fname="pkg/run.py", line=10):
+    return {"filename": fname, "test_id": test_id, "test_name": "shell_injection",
+            "issue_severity": sev, "issue_confidence": "HIGH",
+            "issue_text": "subprocess call with shell=True", "line_number": line}
+
+
+class TestBanditAdapter:
+    def test_bandit_format_is_detected(self):
+        from canari.sarif_ingest import detect_format
+        assert detect_format(_bandit()) == "bandit"
+        assert detect_format(_sarif()) == "sarif"
+        assert detect_format({"whatever": 1}) is None
+
+    def test_high_severity_fails(self):
+        att = build_attestation(_bandit([_bhit("HIGH")]), "pkg-x", "pypi", SHA)
+        assert att["verdict"] == "fail"
+        assert att["checks"][0]["tool"] == "bandit/1.9.4"
+
+    def test_medium_is_pass_with_findings(self):
+        att = build_attestation(_bandit([_bhit("MEDIUM", "B101")]), "pkg-x", "pypi", SHA)
+        assert att["verdict"] == "pass-with-findings"
+        assert att["checks"][0]["verdict"] == "pass"
+
+    def test_clean_is_pass(self):
+        att = build_attestation(_bandit([]), "pkg-x", "pypi", SHA)
+        assert att["verdict"] == "pass"
+        assert att["checks"][0]["verdict"] == "pass"
+
+    def test_scanner_errors_are_error_not_pass(self):
+        att = build_attestation(_bandit([], errors=[{"filename": "x.py"}]), "pkg-x", "pypi", SHA)
+        assert att["verdict"] == "error"
+
+    def test_unknown_format_rejected(self):
+        with pytest.raises(ValueError):
+            build_attestation({"hello": "world"}, "pkg-x", "pypi", SHA)

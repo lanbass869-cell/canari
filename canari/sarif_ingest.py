@@ -183,20 +183,103 @@ def sarif_to_checks(sarif):
     return checks, scan_verdict, tool_name, tool_version, meta
 
 
-def build_attestation(sarif, name, registry, artifact_sha256, version="",
+def detect_format(doc):
+    """Return 'sarif' or 'bandit' for a parsed report, or None if unknown."""
+    if not isinstance(doc, dict):
+        return None
+    if isinstance(doc.get("runs"), list):
+        return "sarif"
+    if isinstance(doc.get("results"), list) and ("errors" in doc or "metrics" in doc):
+        return "bandit"
+    return None
+
+
+_BANDIT_SEVERITY = {"HIGH": "high", "MEDIUM": "medium", "LOW": "low"}
+
+
+def bandit_to_checks(doc):
+    """Map a bandit JSON report to (checks, verdict, tool_name, tool_version, meta).
+
+    Bandit does not emit SARIF (its formats are csv/json/xml/yaml/txt/html), but
+    it is a real static analyser that PyPA/OpenStack use, so it is accepted as a
+    second input format. Its severity is HIGH/MEDIUM/LOW per finding.
+    """
+    results = doc.get("results") or []
+    errors = doc.get("errors") or []
+
+    ranked = sorted(results, key=lambda r: {"HIGH": 0, "MEDIUM": 1, "LOW": 2}
+                    .get(str(r.get("issue_severity", "")).upper(), 3))
+    highest = _BANDIT_SEVERITY.get(
+        str(ranked[0].get("issue_severity", "")).upper(), "none") if ranked else "none"
+
+    if errors:
+        scan_verdict = "error"
+    elif highest == "high":
+        scan_verdict = "fail"
+    elif results:
+        scan_verdict = "pass-with-findings"
+    else:
+        scan_verdict = "pass"
+
+    version = str(doc.get("bandit_version") or doc.get("_meta", {}).get("bandit_version") or "unknown")
+    tool_ref = "bandit/%s" % version
+    check_verdict = {"pass-with-findings": "pass"}.get(scan_verdict, scan_verdict)
+
+    checks = [{
+        "id": SCAN_CHECK_ID,
+        "verdict": check_verdict,
+        "tool": tool_ref,
+        "evidence_ref": ("upstream scan failed: %d error(s)" % len(errors) if errors else
+                         ("finding: %d result(s), highest severity=%s"
+                          % (len(results), highest) if results else
+                          "upstream scan: 0 result(s), scanner reported no findings")),
+    }]
+
+    for r in ranked[:MAX_FINDING_CHECKS]:
+        sev = _BANDIT_SEVERITY.get(str(r.get("issue_severity", "")).upper(), "low")
+        where = "%s:%s" % (r.get("filename", ""), r.get("line_number", ""))
+        checks.append({
+            "id": "L3.1_FINDING",
+            "verdict": "fail" if sev == "high" else "pass",
+            "tool": tool_ref,
+            "evidence_ref": "finding: rule=%s severity=%s at %s"
+                            % (r.get("test_id") or "unknown", sev, where),
+        })
+
+    meta = {
+        "results": len(results),
+        "truncated": max(0, len(results) - MAX_FINDING_CHECKS),
+        "highest_severity": highest,
+        "execution_successful": not errors,
+        "generated_at": doc.get("generated_at"),
+    }
+    return checks, scan_verdict, "bandit", version, meta
+
+
+def build_attestation(report, name, registry, artifact_sha256, version="",
                       expires_in_days=DEFAULT_TTL_DAYS, now=None):
-    """Build (unsigned) attestation dict from a SARIF document."""
+    """Build (unsigned) attestation dict from an external scan report.
+
+    Accepts SARIF 2.1.0 or bandit JSON; the format is detected from the document.
+    """
+    fmt = detect_format(report)
+    if fmt is None:
+        raise ValueError("unrecognised report: expected SARIF (runs[]) or bandit JSON "
+                         "(results[] + errors/metrics)")
     if not artifact_sha256:
         raise ValueError("artifact_sha256 is required: a scan result without the "
                          "scanned artifact's digest cannot be bound to anything")
     if len(artifact_sha256) != 64 or any(c not in "0123456789abcdef" for c in artifact_sha256.lower()):
         raise ValueError("artifact_sha256 must be 64 lowercase hex characters")
 
-    checks, verdict, tool_name, tool_version, meta = sarif_to_checks(sarif)
+    if fmt == "sarif":
+        checks, verdict, tool_name, tool_version, meta = sarif_to_checks(report)
+    else:
+        checks, verdict, tool_name, tool_version, meta = bandit_to_checks(report)
     now = now or datetime.datetime.now(datetime.timezone.utc)
     generated = meta["generated_at"] or now.strftime("%Y-%m-%dT%H:%M:%SZ")
     expires = (now + datetime.timedelta(days=expires_in_days)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    scenario = _sha256_of_obj(sarif)
+    scenario = _sha256_of_obj(report)
 
     return {
         "_type": ATTESTATION_TYPE,
@@ -229,8 +312,8 @@ def ingest(sarif_path, name, registry, artifact_sha256, key_path, out_dir,
            version="", expires_in_days=DEFAULT_TTL_DAYS):
     """Read SARIF, sign an attestation, write the bundle. Returns the path."""
     with open(sarif_path, "r", encoding="utf-8") as f:
-        sarif = json.load(f)
-    att = build_attestation(sarif, name, registry, artifact_sha256,
+        report = json.load(f)
+    att = build_attestation(report, name, registry, artifact_sha256,
                             version=version, expires_in_days=expires_in_days)
     signer, _pub, _is_new = load_or_generate_keypair(key_path)
     signed = sign_attestation(att, signer)

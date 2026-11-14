@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canari scan log - 20 MCP servers</title>
+<style>
+:root{--bg:#0a1210;--fg:#dfe9e4;--dim:#8ba39a;--line:#1e2f2a;--ok:#3ddc97;--warn:#f0c14b;--bad:#ff6b6b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:40px 20px}
+main{max-width:980px;margin:0 auto}h1{font-size:26px;margin:0 0 6px}
+.sub{color:var(--dim);margin:0 0 26px}
+.note{border-left:3px solid var(--warn);background:#121d19;padding:14px 16px;margin:0 0 24px;
+color:#cfdcd6;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--dim);font-weight:500;border-bottom:1px solid var(--line);padding:8px 10px}
+td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+.name{font-family:ui-monospace,Consolas,monospace}.mono{font-family:ui-monospace,Consolas,monospace;color:var(--dim)}
+.pill{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;border:1px solid}
+.pill.ok{color:var(--ok);border-color:#1d6b4c}.pill.warn{color:var(--warn);border-color:#6b5a1d}
+.pill.bad{color:var(--bad);border-color:#6b2020}
+code{background:#101a17;padding:2px 6px;border-radius:4px;font-family:ui-monospace,Consolas,monospace}
+pre{background:#101a17;padding:14px;border-radius:6px;overflow:auto;font-size:12.5px}
+.counts{margin:22px 0;color:var(--dim)}
+footer{margin-top:34px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+</style></head><body><main>
+<h1>Canari scan log</h1>
+<p class=sub>20 PyPI MCP servers &middot; scanned 2026-11-14 &middot; 20 signed records</p>
+
+<div class=note>
+<b>What this is, and what it is not.</b> These records were produced by
+<b>bandit 1.9.4</b>, a third-party static analyser. Canari did not scan anything.
+It recorded what bandit reported, bound each result to the exact artifact digest it
+came from, signed the record, and made it verifiable offline. A verdict here means
+"bandit reported this", not "this package is safe".
+</div>
+
+<p class=counts>fail: 4 &middot; pass: 7 &middot; pass-with-findings: 9</p>
+
+<table><thead><tr><th>Package</th><th>Version</th><th>Bandit verdict</th>
+<th>Artifact sha256</th><th>Record</th></tr></thead><tbody>
+<tr><td class=name>mcp-server-2</td><td class=ver>0.1.0</td><td><span class='pill ok'>pass</span></td><td class=mono>e3de93c11b701f77…</td><td class=mono>pypi_mcp-server-2_20261114T114305_a3d67f29.bundle.json</td></tr>
+<tr><td class=name>mcp-server-3daistudio</td><td class=ver>1.0.1</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>d1122df63b0e3eb7…</td><td class=mono>pypi_mcp-server-3daistudio_20261114T114419_be68a1cb.bundle.json</td></tr>
+<tr><td class=name>mcp-server-aact</td><td class=ver>0.5.0</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>03a6b2b736bd00d4…</td><td class=mono>pypi_mcp-server-aact_20261114T114516_044be5a2.bundle.json</td></tr>
+<tr><td class=name>mcp-server-aact-fastmcp</td><td class=ver>0.4.1</td><td><span class='pill ok'>pass</span></td><td class=mono>2955f69bc58c62ac…</td><td class=mono>pypi_mcp-server-aact-fastmcp_20261114T114541_e58fbccc.bundle.json</td></tr>
+<tr><td class=name>mcp-server-ableton-live</td><td class=ver>1.8.1</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>a35edb0f89001651…</td><td class=mono>pypi_mcp-server-ableton-live_20261114T114613_9a8c79a0.bundle.json</td></tr>
+<tr><td class=name>mcp-server-abuseipdb</td><td class=ver>0.1.1</td><td><span class='pill ok'>pass</span></td><td class=mono>4801027da7499723…</td><td class=mono>pypi_mcp-server-abuseipdb_20261114T114622_ecd263ad.bundle.json</td></tr>
+<tr><td class=name>mcp-server-again</td><td class=ver>0.1.0</td><td><span class='pill ok'>pass</span></td><td class=mono>4dab10e411c28dbe…</td><td class=mono>pypi_mcp-server-again_20261114T114747_fc2addb0.bundle.json</td></tr>
+<tr><td class=name>mcp-server-agentpay</td><td class=ver>0.1.3</td><td><span class='pill bad'>fail</span></td><td class=mono>398171f406445dc6…</td><td class=mono>pypi_mcp-server-agentpay_20261114T114908_486e61cf.bundle.json</td></tr>
+<tr><td class=name>mcp-server-aidd</td><td class=ver>0.1.23</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>186f3a96c23d6b7a…</td><td class=mono>pypi_mcp-server-aidd_20261114T115138_177ab7e7.bundle.json</td></tr>
+<tr><td class=name>mcp-server-aidrac</td><td class=ver>0.2.0</td><td><span class='pill bad'>fail</span></td><td class=mono>eb797a3e070cba23…</td><td class=mono>pypi_mcp-server-aidrac_20261114T115224_d46341aa.bundle.json</td></tr>
+<tr><td class=name>mcp-server-ainternet</td><td class=ver>0.2.2</td><td><span class='pill ok'>pass</span></td><td class=mono>35ced6c0b0e9ed11…</td><td class=mono>pypi_mcp-server-ainternet_20261114T115420_ef843e11.bundle.json</td></tr>
+<tr><td class=name>mcp-server-airoom</td><td class=ver>0.4.1</td><td><span class='pill bad'>fail</span></td><td class=mono>eea0d20e4058a2ac…</td><td class=mono>pypi_mcp-server-airoom_20261114T115515_1c68c0fc.bundle.json</td></tr>
+<tr><td class=name>mcp-server-aistudio</td><td class=ver>0.1.0</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>09cd14763a2acdc7…</td><td class=mono>pypi_mcp-server-aistudio_20261114T115548_cf547174.bundle.json</td></tr>
+<tr><td class=name>mcp-server-akf</td><td class=ver>1.6.2</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>eab4e33c3e389d36…</td><td class=mono>pypi_mcp-server-akf_20261114T115832_cd7922c6.bundle.json</td></tr>
+<tr><td class=name>mcp-server-akshare</td><td class=ver>1.0.0</td><td><span class='pill ok'>pass</span></td><td class=mono>6823608cf2f82c7c…</td><td class=mono>pypi_mcp-server-akshare_20261114T120025_c12c5d53.bundle.json</td></tr>
+<tr><td class=name>mcp-server-aliyun-observability</td><td class=ver>1.0.8</td><td><span class='pill bad'>fail</span></td><td class=mono>a60d4ff1ea81a301…</td><td class=mono>pypi_mcp-server-aliyun-observability_20261114T120146_3507d651.bundle.json</td></tr>
+<tr><td class=name>mcp-server-alteryx</td><td class=ver>0.2.22</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>6da90695b317dddf…</td><td class=mono>pypi_mcp-server-alteryx_20261114T120250_448b50c3.bundle.json</td></tr>
+<tr><td class=name>mcp-server-altibase</td><td class=ver>0.0.3</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>cb3e938e6e365974…</td><td class=mono>pypi_mcp-server-altibase_20261114T120325_5de3b60e.bundle.json</td></tr>
+<tr><td class=name>mcp-server-amonhen</td><td class=ver>0.1.0</td><td><span class='pill ok'>pass</span></td><td class=mono>47aa3b28575b0568…</td><td class=mono>pypi_mcp-server-amonhen_20261114T120353_ae9163a4.bundle.json</td></tr>
+<tr><td class=name>mcp-server-analyzer</td><td class=ver>0.4.1</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>8c33d708659b508c…</td><td class=mono>pypi_mcp-server-analyzer_20261114T120438_25204074.bundle.json</td></tr>
+</tbody></table>
+
+<h2 style="font-size:18px;margin-top:32px">Verify it yourself</h2>
+<p class=sub style="margin-bottom:10px">No account, no network to us, no trust required.</p>
+<pre>pip install canari-mcp
+# public key
+curl -O &lt;url&gt;/public_key.json
+# any record
+canari-verify &lt;record&gt;.bundle.json --key public_key.json</pre>
+
+<p class=sub style="margin-bottom:10px">Public key:</p>
+<pre>{&quot;keytype&quot;: &quot;ed25519&quot;, &quot;keyval&quot;: {&quot;public&quot;: &quot;e0798797782bc82fb7700b113592971d1b03a473908cb3c16364a95fbd70d58e&quot;}, &quot;scheme&quot;: &quot;ed25519&quot;}...</pre>
+
+<footer>
+Generated 2026-11-14 by <code>canari-ingest-sarif</code>. Each record names its upstream
+tool (<code>bandit/1.9.4</code>) and carries the artifact sha256 it was bound to.
+Raw records: <code>docs/scan/records/</code>.
+</footer>
+</main></body></html>

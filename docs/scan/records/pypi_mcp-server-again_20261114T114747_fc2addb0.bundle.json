@@ -1,0 +1,56 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImJhbmRpdCAoaW5nZXN0ZWQgYnkgY2FuYXJpKSIsICJraW5kIjogImF1dG9tYXRpb24ifSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJ1cHN0cmVhbSBzY2FuOiAwIHJlc3VsdChzKSwgc2Nhbm5lciByZXBvcnRlZCBubyBmaW5kaW5ncyIsICJpZCI6ICJMMy4xX1NUQVRJQ19TQ0FOIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJzYXJpZjpiYW5kaXQ6NDQ3OWNhMzU3M2FmNTdkMSJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTIxVDExOjQ3OjQ3WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xNFQxMTo0Nzo0N1oiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJ1bmtub3duIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNDQ3OWNhMzU3M2FmNTdkMTgyMGI5NDAyYmNiYzVmNTM4ZTM5YzEwMWM5NTJlN2RlN2U3YTY1MmYwMjg5NTBjZSIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI0MjVkYjA0OTFlZjkwMTVmZTUzYWQ1OGE0NmE2MmRkYjVjMzNmMzJkNzJhMTViYTY0NDc2YzJiNzY0NjU0N2UyNzU2NjMyODA1NGM5YzQ1MzM1ODQ4YzUzZmQ0MzcwMjI0MzI2YThkNDI3ZTRiZjc5ZjUyMWNjNjkzYjhiNzMwMyJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogIjRkYWIxMGU0MTFjMjhkYmUzNjdiN2JmZjUxZTgyOWJmYjQ0NzUxOTY2NjZhZjJkYWFhNGY2NTE2Mzk4YWY3NTkiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAibWNwLXNlcnZlci1hZ2FpbiIsICJyZWdpc3RyeSI6ICJweXBpIiwgInZlcnNpb24iOiAiMC4xLjAifSwgInZlcmRpY3QiOiAicGFzcyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogIjRkYWIxMGU0MTFjMjhkYmUzNjdiN2JmZjUxZTgyOWJmYjQ0NzUxOTY2NjZhZjJkYWFhNGY2NTE2Mzk4YWY3NTkifSwgIm5hbWUiOiAicHlwaTptY3Atc2VydmVyLWFnYWluQDAuMS4wIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "Ua+xRvTWwm2Gf6dEMOBn1L0xm0QyJ5GO1ShDwkrvb3u8/mMKqezsQeBlJiEgNOK0rWMaBLdSaFOC3DbbVLsqCA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-again",
+   "version": "0.1.0",
+   "registry": "pypi",
+   "artifact_sha256": "4dab10e411c28dbe367b7bff51e829bfb4475196666af2daaa4f6516398af759",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "unknown"
+  },
+  "scenario_sha256": "4479ca3573af57d1820b9402bcbc5f538e39c101c952e7de7e7a652f028950ce",
+  "checks": [
+   {
+    "id": "L3.1_STATIC_SCAN",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "upstream scan: 0 result(s), scanner reported no findings"
+   }
+  ],
+  "verdict": "pass",
+  "checker": {
+   "kind": "automation",
+   "id": "bandit (ingested by canari)"
+  },
+  "evidence_refs": [
+   "sarif:bandit:4479ca3573af57d1"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-21T11:47:47Z",
+  "generated_at": "2026-11-14T11:47:47Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "51afb146f4d6c26d867fa74430e067d4bd319b443227918ed52843c24aef6f7bbcfe630aa9ecec41e06526212034e2b4ad631a04b752685382dc36db54bb2a08",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

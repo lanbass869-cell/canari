@@ -1,0 +1,92 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImJhbmRpdCAoaW5nZXN0ZWQgYnkgY2FuYXJpKSIsICJraW5kIjogImF1dG9tYXRpb24ifSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiA2IHJlc3VsdChzKSwgaGlnaGVzdCBzZXZlcml0eT1oaWdoIiwgImlkIjogIkwzLjFfU1RBVElDX1NDQU4iLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogImZhaWwifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMzI0IHNldmVyaXR5PWhpZ2ggYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1hbGl5dW4tb2JzZXJ2YWJpbGl0eVxcc3JjXFxtY3Bfc2VydmVyX2FsaXl1bl9vYnNlcnZhYmlsaXR5LTEuMC44XFxzcmNcXG1jcF9zZXJ2ZXJfYWxpeXVuX29ic2VydmFiaWxpdHlcXHV0aWxzLnB5OjI3NSIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogImZhaWwifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTA0IHNldmVyaXR5PW1lZGl1bSBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsaXl1bi1vYnNlcnZhYmlsaXR5XFxzcmNcXG1jcF9zZXJ2ZXJfYWxpeXVuX29ic2VydmFiaWxpdHktMS4wLjhcXHNyY1xcbWNwX3NlcnZlcl9hbGl5dW5fb2JzZXJ2YWJpbGl0eVxcc2VydmVyLnB5OjM2IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDQgc2V2ZXJpdHk9bWVkaXVtIGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWxpeXVuLW9ic2VydmFiaWxpdHlcXHNyY1xcbWNwX3NlcnZlcl9hbGl5dW5fb2JzZXJ2YWJpbGl0eS0xLjAuOFxcc3JjXFxtY3Bfc2VydmVyX2FsaXl1bl9vYnNlcnZhYmlsaXR5XFxzZXJ2ZXIucHk6NzMiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjEwNCBzZXZlcml0eT1tZWRpdW0gYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1hbGl5dW4tb2JzZXJ2YWJpbGl0eVxcc3JjXFxtY3Bfc2VydmVyX2FsaXl1bl9vYnNlcnZhYmlsaXR5LTEuMC44XFxzcmNcXG1jcF9zZXJ2ZXJfYWxpeXVuX29ic2VydmFiaWxpdHlcXHNlcnZlci5weTo3NyIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNDA0IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFsaXl1bi1vYnNlcnZhYmlsaXR5XFxzcmNcXG1jcF9zZXJ2ZXJfYWxpeXVuX29ic2VydmFiaWxpdHktMS4wLjhcXHNyY1xcbWNwX3NlcnZlcl9hbGl5dW5fb2JzZXJ2YWJpbGl0eVxcY2xpLnB5OjExIiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUI2MDMgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWxpeXVuLW9ic2VydmFiaWxpdHlcXHNyY1xcbWNwX3NlcnZlcl9hbGl5dW5fb2JzZXJ2YWJpbGl0eS0xLjAuOFxcc3JjXFxtY3Bfc2VydmVyX2FsaXl1bl9vYnNlcnZhYmlsaXR5XFxjbGkucHk6MjA1IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9XSwgImV2aWRlbmNlX2NvbXBsZXRlbmVzcyI6IHsiZHJvcHBlZF9sb2dzIjogMCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsic2FyaWY6YmFuZGl0OjEwZDA3NDhiYTVjM2VjMjUiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0yMVQxMjowMTo0NloiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTRUMTI6MDE6NDZaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAidW5rbm93biJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjEwZDA3NDhiYTVjM2VjMjU4YTJmOWYzODFlYmY3MTY0NDBiNWYyNzFiMzFmMGNkMmRmMDU5OTYyZDYzMTNkYTMiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiOGEyZTRkYzhjZjJiNjUyNWM1ODViMzI4Yjg4ZTA4NjMzNmYyNzIwNTAwNzg0NWM4NjM5NTBmNDcwMDMzNDE1NDc2NzNjODFmMmMwNzU1NDg4ZGJiMjg2NGVlZjRkMzVhODExMDhjNzgzMGE2ZTU2N2JkYzgyM2I3MWMwZjAyMDMifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICJhNjBkNGZmMWVhODFhMzAxZDMyZjU0NDFmMjFlZTQ2NWJjMTI4MTAwMmEyM2I3MTYzZGRiZTlkMmE3MGQyNDNkIiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIm1jcC1zZXJ2ZXItYWxpeXVuLW9ic2VydmFiaWxpdHkiLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjEuMC44In0sICJ2ZXJkaWN0IjogImZhaWwifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICJhNjBkNGZmMWVhODFhMzAxZDMyZjU0NDFmMjFlZTQ2NWJjMTI4MTAwMmEyM2I3MTYzZGRiZTlkMmE3MGQyNDNkIn0sICJuYW1lIjogInB5cGk6bWNwLXNlcnZlci1hbGl5dW4tb2JzZXJ2YWJpbGl0eUAxLjAuOCJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "hxfZ3m9ZaOi2AAyiYYhvBDQVXdmul1kFZM+s+vGCFDT67vuaU7QSo3dn9ZLkCDFq3uBzpAjlQtkyomMqqvnCDA=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-aliyun-observability",
+   "version": "1.0.8",
+   "registry": "pypi",
+   "artifact_sha256": "a60d4ff1ea81a301d32f5441f21ee465bc1281002a23b7163ddbe9d2a70d243d",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "unknown"
+  },
+  "scenario_sha256": "10d0748ba5c3ec258a2f9f381ebf716440b5f271b31f0cd2df059962d6313da3",
+  "checks": [
+   {
+    "id": "L3.1_STATIC_SCAN",
+    "verdict": "fail",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: 6 result(s), highest severity=high"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "fail",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B324 severity=high at E:\\Temp\\_mcp_scan\\mcp-server-aliyun-observability\\src\\mcp_server_aliyun_observability-1.0.8\\src\\mcp_server_aliyun_observability\\utils.py:275"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B104 severity=medium at E:\\Temp\\_mcp_scan\\mcp-server-aliyun-observability\\src\\mcp_server_aliyun_observability-1.0.8\\src\\mcp_server_aliyun_observability\\server.py:36"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B104 severity=medium at E:\\Temp\\_mcp_scan\\mcp-server-aliyun-observability\\src\\mcp_server_aliyun_observability-1.0.8\\src\\mcp_server_aliyun_observability\\server.py:73"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B104 severity=medium at E:\\Temp\\_mcp_scan\\mcp-server-aliyun-observability\\src\\mcp_server_aliyun_observability-1.0.8\\src\\mcp_server_aliyun_observability\\server.py:77"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B404 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aliyun-observability\\src\\mcp_server_aliyun_observability-1.0.8\\src\\mcp_server_aliyun_observability\\cli.py:11"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aliyun-observability\\src\\mcp_server_aliyun_observability-1.0.8\\src\\mcp_server_aliyun_observability\\cli.py:205"
+   }
+  ],
+  "verdict": "fail",
+  "checker": {
+   "kind": "automation",
+   "id": "bandit (ingested by canari)"
+  },
+  "evidence_refs": [
+   "sarif:bandit:10d0748ba5c3ec25"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-21T12:01:46Z",
+  "generated_at": "2026-11-14T12:01:46Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "8717d9de6f5968e8b6000ca261886f0434155dd9ae97590564cfacfaf1821434faeefb9a53b412a37767f592e408316adee073a408e542d932a2632aaaf9c20c",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImJhbmRpdCAoaW5nZXN0ZWQgYnkgY2FuYXJpKSIsICJraW5kIjogImF1dG9tYXRpb24ifSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiA3OCByZXN1bHQocyksIGhpZ2hlc3Qgc2V2ZXJpdHk9bG93IiwgImlkIjogIkwzLjFfU1RBVElDX1NDQU4iLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNDA0IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcY29kZV9hbmFseXNpcy5weTozIiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUI2MDcgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWlkZFxcc3JjXFxtY3Bfc2VydmVyX2FpZGQtMC4xLjIzXFxzcmNcXGFpZGRcXHRvb2xzXFxjb2RlX2FuYWx5c2lzLnB5OjM4NyIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNjAzIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcY29kZV9hbmFseXNpcy5weTozODciLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjQwNCBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGNvZGVfZXhlY3V0aW9uLnB5OjMiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjYwNyBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGNvZGVfZXhlY3V0aW9uLnB5OjExNiIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNjAzIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcY29kZV9leGVjdXRpb24ucHk6MTE2IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUI2MDMgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWlkZFxcc3JjXFxtY3Bfc2VydmVyX2FpZGQtMC4xLjIzXFxzcmNcXGFpZGRcXHRvb2xzXFxjb2RlX2V4ZWN1dGlvbi5weToxNjIiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjYwMyBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGNvZGVfZXhlY3V0aW9uLnB5OjE3NCIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTEwIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcY29kZV9leGVjdXRpb24ucHk6MTkxIiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUI2MDMgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWlkZFxcc3JjXFxtY3Bfc2VydmVyX2FpZGQtMC4xLjIzXFxzcmNcXGFpZGRcXHRvb2xzXFxjb2RlX2V4ZWN1dGlvbi5weToyNTciLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjExMCBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGNvZGVfZXhlY3V0aW9uLnB5OjI3MSIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNDA0IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcZGlyZWN0b3J5X3Rvb2xzLnB5OjMiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjYwNyBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGRpcmVjdG9yeV90b29scy5weToyMDMiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjYwMyBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGRpcmVjdG9yeV90b29scy5weToyMDMiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjQwNCBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGZpbGVfdG9vbHMucHk6NiIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNjA3IHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcZmlsZV90b29scy5weTo0MjciLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjYwMyBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGZpbGVfdG9vbHMucHk6NDI3IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUI2MDcgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWlkZFxcc3JjXFxtY3Bfc2VydmVyX2FpZGQtMC4xLjIzXFxzcmNcXGFpZGRcXHRvb2xzXFxmaWxlX3Rvb2xzLnB5OjQzNiIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CNjAzIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpZGRcXHNyY1xcbWNwX3NlcnZlcl9haWRkLTAuMS4yM1xcc3JjXFxhaWRkXFx0b29sc1xcZmlsZV90b29scy5weTo0MzYiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjQwNCBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haWRkXFxzcmNcXG1jcF9zZXJ2ZXJfYWlkZC0wLjEuMjNcXHNyY1xcYWlkZFxcdG9vbHNcXGdldF9hY3RpdmVfYXBwc190b29sLnB5OjMiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiA1OCwgIm1pc3Npbmdfb2JzZXJ2ZXJzIjogW10sICJ0cnVuY2F0ZWRfZmllbGRzIjogW119LCAiZXZpZGVuY2VfcmVmcyI6IFsic2FyaWY6YmFuZGl0OjE1ZDkyZDQxMzExYjg0NjMiXSwgImV4cGlyZXNfYXQiOiAiMjAyNi0xMS0yMVQxMTo1MTozOFoiLCAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMTEtMTRUMTE6NTE6MzhaIiwgImhvc3QiOiB7ImNsYXNzIjogIm1jcCIsICJob3N0X3ZlcnNpb24iOiAidW5rbm93biJ9LCAic2NlbmFyaW9fc2hhMjU2IjogIjE1ZDkyZDQxMzExYjg0NjMwMGNiYzFlOTJmNDhkOTBlNmEyNTlmNDAxY2M4YWE3YjNiOWM2Y2ZmM2UzYWQ5M2YiLCAic2lnbmF0dXJlIjogeyJlbnZlbG9wZSI6ICJEU1NFIiwgImtleWlkIjogImQxZmQwYzdjYzhmMzg0YWZiNGY1N2EzOGFhMWMwY2E2Yjk4MzRhOWY3ZjVhZjQyMmFkMjMzMDhiZjM5YTlkZmUiLCAicGF5bG9hZF90eXBlIjogImh0dHBzOi8vYWdlbnRjaGVjay5kZXYvYXR0ZXN0YXRpb24vdjAuMSIsICJzaWciOiAiODVhMzQ5YmZlZGM1NmZlMTVjODFlMDJkMzg1Mzg2YjYzOTdlYzg2NTBmM2E5YjJjNWM3OTJkMzc4OWNiMTE1NTkzNjBhY2MzODg1ZGQ2YTcwMmEwYjk0ZGQxYTBkMTdiYTVkYzZjOGJkNmYwY2NmYzFlZWQ4NTUyZDRkMjAzMGUifSwgInN1YmplY3QiOiB7ImFydGlmYWN0X3NoYTI1NiI6ICIxODZmM2E5NmMyM2Q2YjdhNjI5YWQyNDlhMmJiYTAwZDBhZmUyN2UzMDFiMzU5NGY4NzFmMTYyYzg3YzJmN2Y0IiwgIm1haW50YWluZXJzIjogW10sICJuYW1lIjogIm1jcC1zZXJ2ZXItYWlkZCIsICJyZWdpc3RyeSI6ICJweXBpIiwgInZlcnNpb24iOiAiMC4xLjIzIn0sICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogIjE4NmYzYTk2YzIzZDZiN2E2MjlhZDI0OWEyYmJhMDBkMGFmZTI3ZTMwMWIzNTk0Zjg3MWYxNjJjODdjMmY3ZjQifSwgIm5hbWUiOiAicHlwaTptY3Atc2VydmVyLWFpZGRAMC4xLjIzIn1dfQ==",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "OeYfsCzvPNJUyleolLIkn/ScyWL3sqCIkj2G1sLXgLNANRlB4pbYV7DB8QzREREB6wboGU3bNLJLqupWBCuaDQ=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-aidd",
+   "version": "0.1.23",
+   "registry": "pypi",
+   "artifact_sha256": "186f3a96c23d6b7a629ad249a2bba00d0afe27e301b3594f871f162c87c2f7f4",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "unknown"
+  },
+  "scenario_sha256": "15d92d41311b846300cbc1e92f48d90e6a259f401cc8aa7b3b9c6cff3e3ad93f",
+  "checks": [
+   {
+    "id": "L3.1_STATIC_SCAN",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: 78 result(s), highest severity=low"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B404 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py:3"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B607 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py:387"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py:387"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B404 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:3"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B607 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:116"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:116"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:162"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:174"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B110 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:191"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:257"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B110 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py:271"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B404 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py:3"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B607 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py:203"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py:203"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B404 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py:6"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B607 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py:427"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py:427"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B607 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py:436"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B603 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py:436"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B404 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py:3"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "bandit (ingested by canari)"
+  },
+  "evidence_refs": [
+   "sarif:bandit:15d92d41311b8463"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 58,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-21T11:51:38Z",
+  "generated_at": "2026-11-14T11:51:38Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "39e61fb02cef3cd254ca57a894b2249ff49cc962f7b2a088923d86d6c2d780b340351941e296d857b0c1f10cd1111101eb06e8194ddb34b24baaea56042b9a0d",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

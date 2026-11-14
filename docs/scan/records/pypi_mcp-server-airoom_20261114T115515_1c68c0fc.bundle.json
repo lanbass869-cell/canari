@@ -1,0 +1,86 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImJhbmRpdCAoaW5nZXN0ZWQgYnkgY2FuYXJpKSIsICJraW5kIjogImF1dG9tYXRpb24ifSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiA1IHJlc3VsdChzKSwgaGlnaGVzdCBzZXZlcml0eT1oaWdoIiwgImlkIjogIkwzLjFfU1RBVElDX1NDQU4iLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogImZhaWwifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMzI0IHNldmVyaXR5PWhpZ2ggYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haXJvb21cXHNyY1xcbWNwX3NlcnZlcl9haXJvb20tMC40LjFcXG1jcF9zZXJ2ZXJfYWlyb29tXFxfX21haW5fXy5weToyMCIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogImZhaWwifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMzI0IHNldmVyaXR5PWhpZ2ggYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1haXJvb21cXHNyY1xcbWNwX3NlcnZlcl9haXJvb20tMC40LjFcXG1jcF9zZXJ2ZXJfYWlyb29tXFxfX21haW5fXy5weToyMSIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogImZhaWwifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTEzIHNldmVyaXR5PW1lZGl1bSBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFpcm9vbVxcc3JjXFxtY3Bfc2VydmVyX2Fpcm9vbS0wLjQuMVxcbWNwX3NlcnZlcl9haXJvb21cXF9fbWFpbl9fLnB5OjU5IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMTMgc2V2ZXJpdHk9bWVkaXVtIGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWlyb29tXFxzcmNcXG1jcF9zZXJ2ZXJfYWlyb29tLTAuNC4xXFxtY3Bfc2VydmVyX2Fpcm9vbVxcX19tYWluX18ucHk6MTA5IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDUgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWlyb29tXFxzcmNcXG1jcF9zZXJ2ZXJfYWlyb29tLTAuNC4xXFxtY3Bfc2VydmVyX2Fpcm9vbVxcX19tYWluX18ucHk6MTEiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJzYXJpZjpiYW5kaXQ6YmNlOGNmOTFhYzdiYzRjMCJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTIxVDExOjU1OjE1WiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xNFQxMTo1NToxNVoiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJ1bmtub3duIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiYmNlOGNmOTFhYzdiYzRjMGFmOTE3OGNhYmU2MjU4OTNjNzA1YmRmYjA4OTU3YzU5MDgzYTZhOTNjOTM1MzVhYiIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICI0MGJjODliYWNhMTUzNWNiMjIwMGI0NjZhOGY5OGUxMTEzNjQ1Yzg3Mjg5NjU2YTNhZDk0YWI2ZDk4MjY1YjUyNTgyMjgxOTg3Zjc2ZDNiMDQ2NWY2NmU3MDY3NGY2MWE1N2RhOTBkMmZjOTczODgxNWI5MGFkMWJmMjQzMDIwNiJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogImVlYTBkMjBlNDA1OGEyYWM3NmVjZWE2NTJiNmNhMzM4Y2U5YTU2YzMxMWQ5NGEwNGJiNDIxMDY1MzRhMTk1ZGIiLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAibWNwLXNlcnZlci1haXJvb20iLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjAuNC4xIn0sICJ2ZXJkaWN0IjogImZhaWwifSwgInByZWRpY2F0ZVR5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInN1YmplY3QiOiBbeyJkaWdlc3QiOiB7InNoYTI1NiI6ICJlZWEwZDIwZTQwNThhMmFjNzZlY2VhNjUyYjZjYTMzOGNlOWE1NmMzMTFkOTRhMDRiYjQyMTA2NTM0YTE5NWRiIn0sICJuYW1lIjogInB5cGk6bWNwLXNlcnZlci1haXJvb21AMC40LjEifV19",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "uGYxZYdSh2mjOxEzp/V0rxJ7JL+5Ke8HFayKIAWs1bMp5SxIfThL7MOiU2q/Fwh/bsOJku+TDP1Oy9zjCBSjCg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-airoom",
+   "version": "0.4.1",
+   "registry": "pypi",
+   "artifact_sha256": "eea0d20e4058a2ac76ecea652b6ca338ce9a56c311d94a04bb42106534a195db",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "unknown"
+  },
+  "scenario_sha256": "bce8cf91ac7bc4c0af9178cabe625893c705bdfb08957c59083a6a93c93535ab",
+  "checks": [
+   {
+    "id": "L3.1_STATIC_SCAN",
+    "verdict": "fail",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: 5 result(s), highest severity=high"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "fail",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B324 severity=high at E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py:20"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "fail",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B324 severity=high at E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py:21"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B113 severity=medium at E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py:59"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B113 severity=medium at E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py:109"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B105 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py:11"
+   }
+  ],
+  "verdict": "fail",
+  "checker": {
+   "kind": "automation",
+   "id": "bandit (ingested by canari)"
+  },
+  "evidence_refs": [
+   "sarif:bandit:bce8cf91ac7bc4c0"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-21T11:55:15Z",
+  "generated_at": "2026-11-14T11:55:15Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "b866316587528769a33b1133a7f574af127b24bfb929ef0715ac8a2005acd5b329e52c487d384becc3a2536abf17087f6ec38992ef930cfd4ecbdce30814a30a",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}

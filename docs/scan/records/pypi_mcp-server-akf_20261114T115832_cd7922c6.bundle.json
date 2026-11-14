@@ -1,0 +1,122 @@
+{
+ "envelope": {
+  "payload": "eyJfdHlwZSI6ICJodHRwczovL2luLXRvdG8uaW8vU3RhdGVtZW50L3YxIiwgInByZWRpY2F0ZSI6IHsiX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgImNoZWNrZXIiOiB7ImlkIjogImJhbmRpdCAoaW5nZXN0ZWQgYnkgY2FuYXJpKSIsICJraW5kIjogImF1dG9tYXRpb24ifSwgImNoZWNrcyI6IFt7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiAxMSByZXN1bHQocyksIGhpZ2hlc3Qgc2V2ZXJpdHk9bG93IiwgImlkIjogIkwzLjFfU1RBVElDX1NDQU4iLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTAxIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFrZlxcc3JjXFxtY3Bfc2VydmVyX2FrZi0xLjYuMlxcdGVzdHNcXHRlc3Rfc2VydmVyLnB5OjMzIiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDEgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWtmXFxzcmNcXG1jcF9zZXJ2ZXJfYWtmLTEuNi4yXFx0ZXN0c1xcdGVzdF9zZXJ2ZXIucHk6MzkiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjEwMSBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1ha2ZcXHNyY1xcbWNwX3NlcnZlcl9ha2YtMS42LjJcXHRlc3RzXFx0ZXN0X3NlcnZlci5weTo0NiIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTAxIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFrZlxcc3JjXFxtY3Bfc2VydmVyX2FrZi0xLjYuMlxcdGVzdHNcXHRlc3Rfc2VydmVyLnB5OjQ3IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDEgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWtmXFxzcmNcXG1jcF9zZXJ2ZXJfYWtmLTEuNi4yXFx0ZXN0c1xcdGVzdF9zZXJ2ZXIucHk6NTQiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjEwMSBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1ha2ZcXHNyY1xcbWNwX3NlcnZlcl9ha2YtMS42LjJcXHRlc3RzXFx0ZXN0X3NlcnZlci5weTo1NSIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTAxIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFrZlxcc3JjXFxtY3Bfc2VydmVyX2FrZi0xLjYuMlxcdGVzdHNcXHRlc3Rfc2VydmVyLnB5OjU2IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDEgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWtmXFxzcmNcXG1jcF9zZXJ2ZXJfYWtmLTEuNi4yXFx0ZXN0c1xcdGVzdF9zZXJ2ZXIucHk6NTciLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn0sIHsiZXZpZGVuY2VfcmVmIjogImZpbmRpbmc6IHJ1bGU9QjEwMSBzZXZlcml0eT1sb3cgYXQgRTpcXFRlbXBcXF9tY3Bfc2NhblxcbWNwLXNlcnZlci1ha2ZcXHNyY1xcbWNwX3NlcnZlcl9ha2YtMS42LjJcXHRlc3RzXFx0ZXN0X3NlcnZlci5weTo2NiIsICJpZCI6ICJMMy4xX0ZJTkRJTkciLCAidG9vbCI6ICJiYW5kaXQvdW5rbm93biIsICJ2ZXJkaWN0IjogInBhc3MifSwgeyJldmlkZW5jZV9yZWYiOiAiZmluZGluZzogcnVsZT1CMTAxIHNldmVyaXR5PWxvdyBhdCBFOlxcVGVtcFxcX21jcF9zY2FuXFxtY3Atc2VydmVyLWFrZlxcc3JjXFxtY3Bfc2VydmVyX2FrZi0xLjYuMlxcdGVzdHNcXHRlc3Rfc2VydmVyLnB5OjY5IiwgImlkIjogIkwzLjFfRklORElORyIsICJ0b29sIjogImJhbmRpdC91bmtub3duIiwgInZlcmRpY3QiOiAicGFzcyJ9LCB7ImV2aWRlbmNlX3JlZiI6ICJmaW5kaW5nOiBydWxlPUIxMDEgc2V2ZXJpdHk9bG93IGF0IEU6XFxUZW1wXFxfbWNwX3NjYW5cXG1jcC1zZXJ2ZXItYWtmXFxzcmNcXG1jcF9zZXJ2ZXJfYWtmLTEuNi4yXFx0ZXN0c1xcdGVzdF9zZXJ2ZXIucHk6NzIiLCAiaWQiOiAiTDMuMV9GSU5ESU5HIiwgInRvb2wiOiAiYmFuZGl0L3Vua25vd24iLCAidmVyZGljdCI6ICJwYXNzIn1dLCAiZXZpZGVuY2VfY29tcGxldGVuZXNzIjogeyJkcm9wcGVkX2xvZ3MiOiAwLCAibWlzc2luZ19vYnNlcnZlcnMiOiBbXSwgInRydW5jYXRlZF9maWVsZHMiOiBbXX0sICJldmlkZW5jZV9yZWZzIjogWyJzYXJpZjpiYW5kaXQ6NzFlNDRhM2IzMTE5YjI3NiJdLCAiZXhwaXJlc19hdCI6ICIyMDI2LTExLTIxVDExOjU4OjMyWiIsICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0xMS0xNFQxMTo1ODozMloiLCAiaG9zdCI6IHsiY2xhc3MiOiAibWNwIiwgImhvc3RfdmVyc2lvbiI6ICJ1bmtub3duIn0sICJzY2VuYXJpb19zaGEyNTYiOiAiNzFlNDRhM2IzMTE5YjI3NjAxOTg5YmY3M2I1OWQ5MDgyMzBkNzkzM2VlY2U4ZWE4OGNhMGU2YTM3NzEwYmE2YiIsICJzaWduYXR1cmUiOiB7ImVudmVsb3BlIjogIkRTU0UiLCAia2V5aWQiOiAiZDFmZDBjN2NjOGYzODRhZmI0ZjU3YTM4YWExYzBjYTZiOTgzNGE5ZjdmNWFmNDIyYWQyMzMwOGJmMzlhOWRmZSIsICJwYXlsb2FkX3R5cGUiOiAiaHR0cHM6Ly9hZ2VudGNoZWNrLmRldi9hdHRlc3RhdGlvbi92MC4xIiwgInNpZyI6ICIyMmE4OGJkZjM2MmM4OWUzOTk1NTQzODJkZjgzMjk0YjMxOWY2MDJkZWY0Y2YxY2U4ZjYyYjQxM2FkNzQzYzZmOWJiY2MyZTk5ZWY3ZmQ5YzE5MzJjNjc2NTgxNjhhYTI3NWYyN2FiYzkyMDU5ZWRjMGU5NjIwMWFmYzVkNTcwZiJ9LCAic3ViamVjdCI6IHsiYXJ0aWZhY3Rfc2hhMjU2IjogImVhYjRlMzNjM2UzODlkMzYxMTg1ZWIwNDcyYzE4NDFjNjg4ZGU3OWI1ZTIxMGY4ZGE0NzViODBmOGRlOGI4ZTciLCAibWFpbnRhaW5lcnMiOiBbXSwgIm5hbWUiOiAibWNwLXNlcnZlci1ha2YiLCAicmVnaXN0cnkiOiAicHlwaSIsICJ2ZXJzaW9uIjogIjEuNi4yIn0sICJ2ZXJkaWN0IjogInBhc3Mtd2l0aC1maW5kaW5ncyJ9LCAicHJlZGljYXRlVHlwZSI6ICJodHRwczovL2FnZW50Y2hlY2suZGV2L2F0dGVzdGF0aW9uL3YwLjEiLCAic3ViamVjdCI6IFt7ImRpZ2VzdCI6IHsic2hhMjU2IjogImVhYjRlMzNjM2UzODlkMzYxMTg1ZWIwNDcyYzE4NDFjNjg4ZGU3OWI1ZTIxMGY4ZGE0NzViODBmOGRlOGI4ZTcifSwgIm5hbWUiOiAicHlwaTptY3Atc2VydmVyLWFrZkAxLjYuMiJ9XX0=",
+  "payloadType": "application/vnd.in-toto+json",
+  "signatures": [
+   {
+    "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+    "sig": "tsZmixfoEQJ0avg4AkMtOKW5KkvaJ5aRzDQz71wy78jsSSFLo6Ks8/afIPpaFng4ssfTakgq5REShwVSKm7wAg=="
+   }
+  ]
+ },
+ "payload": {
+  "_type": "https://agentcheck.dev/attestation/v0.1",
+  "subject": {
+   "name": "mcp-server-akf",
+   "version": "1.6.2",
+   "registry": "pypi",
+   "artifact_sha256": "eab4e33c3e389d361185eb0472c1841c688de79b5e210f8da475b80f8de8b8e7",
+   "maintainers": []
+  },
+  "host": {
+   "class": "mcp",
+   "host_version": "unknown"
+  },
+  "scenario_sha256": "71e44a3b3119b27601989bf73b59d908230d7933eece8ea88ca0e6a37710ba6b",
+  "checks": [
+   {
+    "id": "L3.1_STATIC_SCAN",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: 11 result(s), highest severity=low"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:33"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:39"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:46"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:47"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:54"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:55"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:56"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:57"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:66"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:69"
+   },
+   {
+    "id": "L3.1_FINDING",
+    "verdict": "pass",
+    "tool": "bandit/unknown",
+    "evidence_ref": "finding: rule=B101 severity=low at E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py:72"
+   }
+  ],
+  "verdict": "pass-with-findings",
+  "checker": {
+   "kind": "automation",
+   "id": "bandit (ingested by canari)"
+  },
+  "evidence_refs": [
+   "sarif:bandit:71e44a3b3119b276"
+  ],
+  "evidence_completeness": {
+   "dropped_logs": 0,
+   "missing_observers": [],
+   "truncated_fields": []
+  },
+  "expires_at": "2026-11-21T11:58:32Z",
+  "generated_at": "2026-11-14T11:58:32Z",
+  "signature": {
+   "envelope": "DSSE",
+   "keyid": "d1fd0c7cc8f384afb4f57a38aa1c0ca6b9834a9f7f5af422ad23308bf39a9dfe",
+   "sig": "b6c6668b17e81102746af83802432d38a5b92a4bda279691cc3433ef5c32efc8ec49214ba3a2acf3f69f20fa5a167838b2c7d36a482ae511128705522a6ef002",
+   "payload_type": "https://agentcheck.dev/attestation/v0.1"
+  }
+ }
+}
