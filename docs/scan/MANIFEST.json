@@ -1,0 +1,225 @@
+{
+ "generated_at": "2026-11-14",
+ "records": [
+  {
+   "package": "mcp-server-2",
+   "version": "0.1.0",
+   "registry": "pypi",
+   "artifact_sha256": "e3de93c11b701f77dd9db103620a8497aef0c98fe5caeaf4428cb107cbc44e62",
+   "artifact_filename": "mcp_server_2-0.1.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-2.bandit.json",
+   "bundle": "records/pypi_mcp-server-2_20261114T114305_a3d67f29.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-3daistudio",
+   "version": "1.0.1",
+   "registry": "pypi",
+   "artifact_sha256": "d1122df63b0e3eb7de3c9e76419d99345eaac90717e816e544c3fc872c428b98",
+   "artifact_filename": "mcp_server_3daistudio-1.0.1.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-3daistudio.bandit.json",
+   "bundle": "records/pypi_mcp-server-3daistudio_20261114T114419_be68a1cb.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-aact",
+   "version": "0.5.0",
+   "registry": "pypi",
+   "artifact_sha256": "03a6b2b736bd00d4f83cba64169b59a27e49a7a3f10d6f92e2742da5f59e145e",
+   "artifact_filename": "mcp_server_aact-0.5.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-aact.bandit.json",
+   "bundle": "records/pypi_mcp-server-aact_20261114T114516_044be5a2.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-aact-fastmcp",
+   "version": "0.4.1",
+   "registry": "pypi",
+   "artifact_sha256": "2955f69bc58c62ac767f0fbcbda0597d0a522d03ecaec139f2691e8586e4a017",
+   "artifact_filename": "mcp_server_aact_fastmcp-0.4.1.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-aact-fastmcp.bandit.json",
+   "bundle": "records/pypi_mcp-server-aact-fastmcp_20261114T114541_e58fbccc.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-ableton-live",
+   "version": "1.8.1",
+   "registry": "pypi",
+   "artifact_sha256": "a35edb0f890016519fb9b49df354b2efdb06f5eb00854d1b28e7b88c962bbac8",
+   "artifact_filename": "mcp_server_ableton_live-1.8.1.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-ableton-live.bandit.json",
+   "bundle": "records/pypi_mcp-server-ableton-live_20261114T114613_9a8c79a0.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-abuseipdb",
+   "version": "0.1.1",
+   "registry": "pypi",
+   "artifact_sha256": "4801027da749972348aec354b42ffe1bc2ba2415463390161ffd1dc65603bdfd",
+   "artifact_filename": "mcp_server_abuseipdb-0.1.1.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-abuseipdb.bandit.json",
+   "bundle": "records/pypi_mcp-server-abuseipdb_20261114T114622_ecd263ad.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-again",
+   "version": "0.1.0",
+   "registry": "pypi",
+   "artifact_sha256": "4dab10e411c28dbe367b7bff51e829bfb4475196666af2daaa4f6516398af759",
+   "artifact_filename": "mcp_server_again-0.1.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-again.bandit.json",
+   "bundle": "records/pypi_mcp-server-again_20261114T114747_fc2addb0.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-agentpay",
+   "version": "0.1.3",
+   "registry": "pypi",
+   "artifact_sha256": "398171f406445dc62055970f3a1cf56e0beb5ba66f99da4661a412cd0d62882e",
+   "artifact_filename": "mcp_server_agentpay-0.1.3.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-agentpay.bandit.json",
+   "bundle": "records/pypi_mcp-server-agentpay_20261114T114908_486e61cf.bundle.json",
+   "verdict": "fail"
+  },
+  {
+   "package": "mcp-server-aidd",
+   "version": "0.1.23",
+   "registry": "pypi",
+   "artifact_sha256": "186f3a96c23d6b7a629ad249a2bba00d0afe27e301b3594f871f162c87c2f7f4",
+   "artifact_filename": "mcp_server_aidd-0.1.23.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-aidd.bandit.json",
+   "bundle": "records/pypi_mcp-server-aidd_20261114T115138_177ab7e7.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-aidrac",
+   "version": "0.2.0",
+   "registry": "pypi",
+   "artifact_sha256": "eb797a3e070cba231cc782236cbb3ae605c8d49465f37a4ea77c3fb83e2f8cc9",
+   "artifact_filename": "mcp_server_aidrac-0.2.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-aidrac.bandit.json",
+   "bundle": "records/pypi_mcp-server-aidrac_20261114T115224_d46341aa.bundle.json",
+   "verdict": "fail"
+  },
+  {
+   "package": "mcp-server-ainternet",
+   "version": "0.2.2",
+   "registry": "pypi",
+   "artifact_sha256": "35ced6c0b0e9ed11c357f2186f7dc4b2940f26c72f1970b5ad602ac1ef375dd4",
+   "artifact_filename": "mcp_server_ainternet-0.2.2.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-ainternet.bandit.json",
+   "bundle": "records/pypi_mcp-server-ainternet_20261114T115420_ef843e11.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-airoom",
+   "version": "0.4.1",
+   "registry": "pypi",
+   "artifact_sha256": "eea0d20e4058a2ac76ecea652b6ca338ce9a56c311d94a04bb42106534a195db",
+   "artifact_filename": "mcp_server_airoom-0.4.1.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-airoom.bandit.json",
+   "bundle": "records/pypi_mcp-server-airoom_20261114T115515_1c68c0fc.bundle.json",
+   "verdict": "fail"
+  },
+  {
+   "package": "mcp-server-aistudio",
+   "version": "0.1.0",
+   "registry": "pypi",
+   "artifact_sha256": "09cd14763a2acdc7cbfa7296e2d0bb1f3936b8aa17909753e55a78f70ef12974",
+   "artifact_filename": "mcp_server_aistudio-0.1.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-aistudio.bandit.json",
+   "bundle": "records/pypi_mcp-server-aistudio_20261114T115548_cf547174.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-akf",
+   "version": "1.6.2",
+   "registry": "pypi",
+   "artifact_sha256": "eab4e33c3e389d361185eb0472c1841c688de79b5e210f8da475b80f8de8b8e7",
+   "artifact_filename": "mcp_server_akf-1.6.2.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-akf.bandit.json",
+   "bundle": "records/pypi_mcp-server-akf_20261114T115832_cd7922c6.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-akshare",
+   "version": "1.0.0",
+   "registry": "pypi",
+   "artifact_sha256": "6823608cf2f82c7ca6d646f3556d05dc05605a4e4707170a76b013b5ec046121",
+   "artifact_filename": "mcp_server_akshare-1.0.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-akshare.bandit.json",
+   "bundle": "records/pypi_mcp-server-akshare_20261114T120025_c12c5d53.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-aliyun-observability",
+   "version": "1.0.8",
+   "registry": "pypi",
+   "artifact_sha256": "a60d4ff1ea81a301d32f5441f21ee465bc1281002a23b7163ddbe9d2a70d243d",
+   "artifact_filename": "mcp_server_aliyun_observability-1.0.8.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-aliyun-observability.bandit.json",
+   "bundle": "records/pypi_mcp-server-aliyun-observability_20261114T120146_3507d651.bundle.json",
+   "verdict": "fail"
+  },
+  {
+   "package": "mcp-server-alteryx",
+   "version": "0.2.22",
+   "registry": "pypi",
+   "artifact_sha256": "6da90695b317dddfb3410a62367fc85d0118a805d21334cf661c5290b2dc9a6b",
+   "artifact_filename": "mcp_server_alteryx-0.2.22.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-alteryx.bandit.json",
+   "bundle": "records/pypi_mcp-server-alteryx_20261114T120250_448b50c3.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-altibase",
+   "version": "0.0.3",
+   "registry": "pypi",
+   "artifact_sha256": "cb3e938e6e365974ff57bede43e2d951d0b98d50e916852b99b42c34c37693b3",
+   "artifact_filename": "mcp_server_altibase-0.0.3.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-altibase.bandit.json",
+   "bundle": "records/pypi_mcp-server-altibase_20261114T120325_5de3b60e.bundle.json",
+   "verdict": "pass-with-findings"
+  },
+  {
+   "package": "mcp-server-amonhen",
+   "version": "0.1.0",
+   "registry": "pypi",
+   "artifact_sha256": "47aa3b28575b0568a0ee09a83e8a46e8fd02172d01381ffb90c78b5393e6522f",
+   "artifact_filename": "mcp_server_amonhen-0.1.0.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-amonhen.bandit.json",
+   "bundle": "records/pypi_mcp-server-amonhen_20261114T120353_ae9163a4.bundle.json",
+   "verdict": "pass"
+  },
+  {
+   "package": "mcp-server-analyzer",
+   "version": "0.4.1",
+   "registry": "pypi",
+   "artifact_sha256": "8c33d708659b508c6613e96f6a2b54b91e8a12f6267f9a09e309acd9304db7ab",
+   "artifact_filename": "mcp_server_analyzer-0.4.1.tar.gz",
+   "upstream_tool": "bandit 1.9.4",
+   "input": "inputs/mcp-server-analyzer.bandit.json",
+   "bundle": "records/pypi_mcp-server-analyzer_20261114T120438_25204074.bundle.json",
+   "verdict": "pass-with-findings"
+  }
+ ]
+}

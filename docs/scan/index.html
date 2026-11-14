@@ -59,6 +59,17 @@ came from, signed the record, and made it verifiable offline. A verdict here mea
 <tr><td class=name>mcp-server-analyzer</td><td class=ver>0.4.1</td><td><span class='pill warn'>pass-with-findings</span></td><td class=mono>8c33d708659b508c…</td><td class=mono>pypi_mcp-server-analyzer_20261114T120438_25204074.bundle.json</td></tr>
 </tbody></table>
 
+<h2 style="font-size:18px;margin-top:32px">Re-derive it yourself</h2>
+<p class=sub style="margin-bottom:10px">A signature only proves who signed. To check that the
+signed verdict actually matches what the scanner said, recompute it:</p>
+<pre>python verify.py</pre>
+<p class=sub style="margin-bottom:10px">That script does not import this project. It re-implements
+three checks from scratch: the DSSE/Ed25519 signature, the artifact digest binding, and the verdict
+derived straight from <code>inputs/*.bandit.json</code>. <code>MANIFEST.json</code> maps each
+package to its raw scanner output, its artifact sha256 and its record.</p>
+<p class=sub style="margin-bottom:10px">Verified negative control: downgrading the two HIGH findings
+in one raw report makes it fail with both a digest mismatch and a verdict mismatch, exit code 1.</p>
+
 <h2 style="font-size:18px;margin-top:32px">Verify it yourself</h2>
 <p class=sub style="margin-bottom:10px">No account, no network to us, no trust required.</p>
 <pre>pip install canari-mcp

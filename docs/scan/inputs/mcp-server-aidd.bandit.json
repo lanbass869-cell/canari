@@ -1,0 +1,1873 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T11:51:38Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 6,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\cli.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 112,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 43,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 143,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\base.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 14,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 561,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py": {
+      "CONFIDENCE.HIGH": 8,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 8,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 252,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 214,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py": {
+      "CONFIDENCE.HIGH": 5,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 5,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 596,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py": {
+      "CONFIDENCE.HIGH": 10,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 10,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 321,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py": {
+      "CONFIDENCE.HIGH": 12,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 12,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 263,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\git_tools.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 504,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\image_tools.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 87,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\path_tools.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 51,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py": {
+      "CONFIDENCE.HIGH": 30,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 30,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 739,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\state.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 36,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py": {
+      "CONFIDENCE.HIGH": 7,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 7,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 119,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 78,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 78,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 4061,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "2 import os\n3 import subprocess\n4 from typing import Any, Dict, List\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "386     try:\n387         result = subprocess.run(\n388             ['git', 'ls-files'],\n389             cwd=full_path,\n390             capture_output=True,\n391             text=True,\n392             check=True,\n393         )\n394         if result.returncode == 0:\n",
+      "col_offset": 17,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 387,
+      "line_range": [
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "386     try:\n387         result = subprocess.run(\n388             ['git', 'ls-files'],\n389             cwd=full_path,\n390             capture_output=True,\n391             text=True,\n392             check=True,\n393         )\n394         if result.returncode == 0:\n",
+      "col_offset": 17,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_analysis.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 387,
+      "line_range": [
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "2 import stat\n3 import subprocess\n4 from typing import Any, Dict, List\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "115     try:\n116         subprocess.run(['which', command],\n117                      stdout=subprocess.PIPE,\n118                      stderr=subprocess.PIPE,\n119                      check=True)\n120         return True\n",
+      "col_offset": 8,
+      "end_col_offset": 32,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 116,
+      "line_range": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "115     try:\n116         subprocess.run(['which', command],\n117                      stdout=subprocess.PIPE,\n118                      stderr=subprocess.PIPE,\n119                      check=True)\n120         return True\n",
+      "col_offset": 8,
+      "end_col_offset": 32,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 116,
+      "line_range": [
+        116,
+        117,
+        118,
+        119
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "161                 try:\n162                     subprocess.run(compile_cmd,\n163                                  check=True,\n164                                  capture_output=True,\n165                                  timeout=timeout)\n166                     cmd = [output_path]\n",
+      "col_offset": 20,
+      "end_col_offset": 49,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 162,
+      "line_range": [
+        162,
+        163,
+        164,
+        165
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "173             try:\n174                 result = subprocess.run(\n175                     cmd,\n176                     capture_output=True,\n177                     timeout=timeout,\n178                     text=True,\n179                 )\n180                 return result.stdout, result.stderr, result.returncode\n",
+      "col_offset": 25,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 174,
+      "line_range": [
+        174,
+        175,
+        176,
+        177,
+        178,
+        179
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "190                 os.unlink(output_path)\n191         except Exception:\n192             pass\n193 \n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 191,
+      "line_range": [
+        191,
+        192
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "256         try:\n257             result = subprocess.run(\n258                 [\"/bin/sh\", temp_file],  # Use sh explicitly for consistent behavior\n259                 capture_output=True,\n260                 timeout=timeout,\n261                 text=True,\n262             )\n263             return result.stdout, result.stderr, result.returncode\n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 257,
+      "line_range": [
+        257,
+        258,
+        259,
+        260,
+        261,
+        262
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "270             os.unlink(temp_file)\n271         except Exception:\n272             pass\n273 \n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\code_execution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 271,
+      "line_range": [
+        271,
+        272
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "2 import os\n3 import subprocess\n4 from datetime import datetime\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "202         # Get list of all files tracked by git\n203         result = subprocess.run(\n204             ['git', 'ls-files'],\n205             cwd=full_path,\n206             capture_output=True,\n207             text=True,\n208             check=True,\n209         )\n210 \n",
+      "col_offset": 17,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 203,
+      "line_range": [
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "202         # Get list of all files tracked by git\n203         result = subprocess.run(\n204             ['git', 'ls-files'],\n205             cwd=full_path,\n206             capture_output=True,\n207             text=True,\n208             check=True,\n209         )\n210 \n",
+      "col_offset": 17,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\directory_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 203,
+      "line_range": [
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "5 import stat\n6 import subprocess\n7 from datetime import datetime\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 6,
+      "line_range": [
+        6
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "426         # First, check if this is a git repository and get tracked files\n427         result = subprocess.run(\n428             ['git', 'ls-files'],\n429             cwd=full_start_path,\n430             capture_output=True,\n431             text=True,\n432             check=True\n433         )\n434 \n",
+      "col_offset": 17,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 427,
+      "line_range": [
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "426         # First, check if this is a git repository and get tracked files\n427         result = subprocess.run(\n428             ['git', 'ls-files'],\n429             cwd=full_start_path,\n430             capture_output=True,\n431             text=True,\n432             check=True\n433         )\n434 \n",
+      "col_offset": 17,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 427,
+      "line_range": [
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "435         # Also get git directories (excluding .git itself)\n436         dirs_result = subprocess.run(\n437             ['git', 'ls-tree', '-d', '-r', '--name-only', 'HEAD'],\n438             cwd=full_start_path,\n439             capture_output=True,\n440             text=True,\n441             check=True\n442         )\n443 \n",
+      "col_offset": 22,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 436,
+      "line_range": [
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "435         # Also get git directories (excluding .git itself)\n436         dirs_result = subprocess.run(\n437             ['git', 'ls-tree', '-d', '-r', '--name-only', 'HEAD'],\n438             cwd=full_start_path,\n439             capture_output=True,\n440             text=True,\n441             check=True\n442         )\n443 \n",
+      "col_offset": 22,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\file_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 436,
+      "line_range": [
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "2 import platform\n3 import subprocess\n4 from typing import Any, Dict, List\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "124             \n125             result = subprocess.run([\"osascript\", \"-e\", script], capture_output=True, text=True)\n126             if result.returncode == 0:\n",
+      "col_offset": 21,
+      "end_col_offset": 96,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 125,
+      "line_range": [
+        125
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "124             \n125             result = subprocess.run([\"osascript\", \"-e\", script], capture_output=True, text=True)\n126             if result.returncode == 0:\n",
+      "col_offset": 21,
+      "end_col_offset": 96,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 125,
+      "line_range": [
+        125
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "211             cmd = [\"powershell\", \"-Command\", script]\n212             process = subprocess.run(cmd, capture_output=True, text=True)\n213             \n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 212,
+      "line_range": [
+        212
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "277             cmd = [\"powershell\", \"-Command\", script]\n278             process = subprocess.run(cmd, capture_output=True, text=True)\n279             \n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 278,
+      "line_range": [
+        278
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "306         # Check if wmctrl is installed\n307         check_process = subprocess.run([\"which\", \"wmctrl\"], capture_output=True)\n308         if check_process.returncode == 0:\n",
+      "col_offset": 24,
+      "end_col_offset": 80,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 307,
+      "line_range": [
+        307
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "306         # Check if wmctrl is installed\n307         check_process = subprocess.run([\"which\", \"wmctrl\"], capture_output=True)\n308         if check_process.returncode == 0:\n",
+      "col_offset": 24,
+      "end_col_offset": 80,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 307,
+      "line_range": [
+        307
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "309             # Get window list with wmctrl\n310             wmctrl_process = subprocess.run([\"wmctrl\", \"-l\"], capture_output=True, text=True)\n311             \n",
+      "col_offset": 29,
+      "end_col_offset": 93,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 310,
+      "line_range": [
+        310
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "309             # Get window list with wmctrl\n310             wmctrl_process = subprocess.run([\"wmctrl\", \"-l\"], capture_output=True, text=True)\n311             \n",
+      "col_offset": 29,
+      "end_col_offset": 93,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 310,
+      "line_range": [
+        310
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "353             cmd = [\"ps\", \"-e\", \"-o\", \"comm=\"]\n354             process = subprocess.run(cmd, capture_output=True, text=True)\n355             \n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_active_apps_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 354,
+      "line_range": [
+        354
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "2 import platform\n3 import subprocess\n4 from typing import Any, Dict, List\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 3,
+      "line_range": [
+        3
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "206             cmd = [\"powershell\", \"-Command\", script]\n207             process = subprocess.run(cmd, capture_output=True, text=True)\n208             \n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 207,
+      "line_range": [
+        207
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "237         # Check if wmctrl is installed\n238         check_process = subprocess.run([\"which\", \"wmctrl\"], capture_output=True)\n239         if check_process.returncode == 0:\n",
+      "col_offset": 24,
+      "end_col_offset": 80,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 238,
+      "line_range": [
+        238
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "237         # Check if wmctrl is installed\n238         check_process = subprocess.run([\"which\", \"wmctrl\"], capture_output=True)\n239         if check_process.returncode == 0:\n",
+      "col_offset": 24,
+      "end_col_offset": 80,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 238,
+      "line_range": [
+        238
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "240             # Get the list of windows\n241             wmctrl_process = subprocess.run([\"wmctrl\", \"-l\"], capture_output=True, text=True)\n242             \n",
+      "col_offset": 29,
+      "end_col_offset": 93,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 241,
+      "line_range": [
+        241
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "240             # Get the list of windows\n241             wmctrl_process = subprocess.run([\"wmctrl\", \"-l\"], capture_output=True, text=True)\n242             \n",
+      "col_offset": 29,
+      "end_col_offset": 93,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 241,
+      "line_range": [
+        241
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "276             # Get the list of window IDs\n277             xwininfo_process = subprocess.run([\"xwininfo\", \"-root\", \"-children\"], capture_output=True, text=True)\n278             \n",
+      "col_offset": 31,
+      "end_col_offset": 113,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 277,
+      "line_range": [
+        277
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "276             # Get the list of window IDs\n277             xwininfo_process = subprocess.run([\"xwininfo\", \"-root\", \"-children\"], capture_output=True, text=True)\n278             \n",
+      "col_offset": 31,
+      "end_col_offset": 113,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 277,
+      "line_range": [
+        277
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "295                     # Get window name\n296                     xprop_name_process = subprocess.run([\"xprop\", \"-id\", window_id, \"WM_NAME\"], capture_output=True, text=True)\n297                     \n",
+      "col_offset": 41,
+      "end_col_offset": 127,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 296,
+      "line_range": [
+        296
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "295                     # Get window name\n296                     xprop_name_process = subprocess.run([\"xprop\", \"-id\", window_id, \"WM_NAME\"], capture_output=True, text=True)\n297                     \n",
+      "col_offset": 41,
+      "end_col_offset": 127,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 296,
+      "line_range": [
+        296
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "298                     # Get window class (application)\n299                     xprop_class_process = subprocess.run([\"xprop\", \"-id\", window_id, \"WM_CLASS\"], capture_output=True, text=True)\n300                     \n",
+      "col_offset": 42,
+      "end_col_offset": 129,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 299,
+      "line_range": [
+        299
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "298                     # Get window class (application)\n299                     xprop_class_process = subprocess.run([\"xprop\", \"-id\", window_id, \"WM_CLASS\"], capture_output=True, text=True)\n300                     \n",
+      "col_offset": 42,
+      "end_col_offset": 129,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\get_available_windows_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 299,
+      "line_range": [
+        299
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "3 import platform\n4 import subprocess\n5 import tempfile\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 4,
+      "line_range": [
+        4
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "311         \n312         result = subprocess.run([\"osascript\", \"-e\", script], capture_output=True, text=True)\n313         if result.returncode == 0:\n",
+      "col_offset": 17,
+      "end_col_offset": 92,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 312,
+      "line_range": [
+        312
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "311         \n312         result = subprocess.run([\"osascript\", \"-e\", script], capture_output=True, text=True)\n313         if result.returncode == 0:\n",
+      "col_offset": 17,
+      "end_col_offset": 92,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 312,
+      "line_range": [
+        312
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "425                     cmd = [\"screencapture\", \"-l\", str(window_region['id']), output_path]\n426                     process = subprocess.run(cmd, capture_output=True)\n427                     \n",
+      "col_offset": 30,
+      "end_col_offset": 70,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 426,
+      "line_range": [
+        426
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "453             cmd = [\"screencapture\", \"-w\", output_path]\n454             process = subprocess.run(cmd, capture_output=True)\n455             \n",
+      "col_offset": 22,
+      "end_col_offset": 62,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 454,
+      "line_range": [
+        454
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "474         cmd = [\"screencapture\", \"-x\", output_path]\n475         process = subprocess.run(cmd, capture_output=True)\n476         \n",
+      "col_offset": 18,
+      "end_col_offset": 58,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 475,
+      "line_range": [
+        475
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "520                 # Try to find the window using xdotool\n521                 if subprocess.run([\"which\", \"xdotool\"], capture_output=True).returncode == 0:\n522                     # Search for the window\n",
+      "col_offset": 19,
+      "end_col_offset": 76,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 521,
+      "line_range": [
+        521
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "520                 # Try to find the window using xdotool\n521                 if subprocess.run([\"which\", \"xdotool\"], capture_output=True).returncode == 0:\n522                     # Search for the window\n",
+      "col_offset": 19,
+      "end_col_offset": 76,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 521,
+      "line_range": [
+        521
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "523                     find_cmd = [\"xdotool\", \"search\", \"--name\", window_name]\n524                     result_cmd = subprocess.run(find_cmd, capture_output=True, text=True)\n525                     \n",
+      "col_offset": 33,
+      "end_col_offset": 89,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 524,
+      "line_range": [
+        524
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "530                         # Now capture the window\n531                         if subprocess.run([\"which\", \"gnome-screenshot\"], capture_output=True).returncode == 0:\n532                             cmd = [\"gnome-screenshot\", \"-w\", \"-f\", output_path, \"-w\", window_id]\n",
+      "col_offset": 27,
+      "end_col_offset": 93,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 531,
+      "line_range": [
+        531
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "530                         # Now capture the window\n531                         if subprocess.run([\"which\", \"gnome-screenshot\"], capture_output=True).returncode == 0:\n532                             cmd = [\"gnome-screenshot\", \"-w\", \"-f\", output_path, \"-w\", window_id]\n",
+      "col_offset": 27,
+      "end_col_offset": 93,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 531,
+      "line_range": [
+        531
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "532                             cmd = [\"gnome-screenshot\", \"-w\", \"-f\", output_path, \"-w\", window_id]\n533                             process = subprocess.run(cmd, capture_output=True)\n534                             \n",
+      "col_offset": 38,
+      "end_col_offset": 78,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 533,
+      "line_range": [
+        533
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "540                                 result[\"error\"] = f\"gnome-screenshot failed with return code {process.returncode}\"\n541                         elif subprocess.run([\"which\", \"scrot\"], capture_output=True).returncode == 0:\n542                             cmd = [\"scrot\", \"-u\", output_path]\n",
+      "col_offset": 29,
+      "end_col_offset": 84,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 541,
+      "line_range": [
+        541
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "540                                 result[\"error\"] = f\"gnome-screenshot failed with return code {process.returncode}\"\n541                         elif subprocess.run([\"which\", \"scrot\"], capture_output=True).returncode == 0:\n542                             cmd = [\"scrot\", \"-u\", output_path]\n",
+      "col_offset": 29,
+      "end_col_offset": 84,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 541,
+      "line_range": [
+        541
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "542                             cmd = [\"scrot\", \"-u\", output_path]\n543                             process = subprocess.run(cmd, capture_output=True)\n544                             \n",
+      "col_offset": 38,
+      "end_col_offset": 78,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 543,
+      "line_range": [
+        543
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "566         try:\n567             if subprocess.run([\"which\", \"gnome-screenshot\"], capture_output=True).returncode == 0:\n568                 cmd = [\"gnome-screenshot\", \"-w\", \"-f\", output_path]\n",
+      "col_offset": 15,
+      "end_col_offset": 81,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 567,
+      "line_range": [
+        567
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "566         try:\n567             if subprocess.run([\"which\", \"gnome-screenshot\"], capture_output=True).returncode == 0:\n568                 cmd = [\"gnome-screenshot\", \"-w\", \"-f\", output_path]\n",
+      "col_offset": 15,
+      "end_col_offset": 81,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 567,
+      "line_range": [
+        567
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "568                 cmd = [\"gnome-screenshot\", \"-w\", \"-f\", output_path]\n569                 process = subprocess.run(cmd, capture_output=True)\n570                 \n",
+      "col_offset": 26,
+      "end_col_offset": 66,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 569,
+      "line_range": [
+        569
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "576                     result[\"error\"] = f\"Active window capture failed with return code {process.returncode}\"\n577             elif subprocess.run([\"which\", \"scrot\"], capture_output=True).returncode == 0:\n578                 cmd = [\"scrot\", \"-u\", output_path]\n",
+      "col_offset": 17,
+      "end_col_offset": 72,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 577,
+      "line_range": [
+        577
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "576                     result[\"error\"] = f\"Active window capture failed with return code {process.returncode}\"\n577             elif subprocess.run([\"which\", \"scrot\"], capture_output=True).returncode == 0:\n578                 cmd = [\"scrot\", \"-u\", output_path]\n",
+      "col_offset": 17,
+      "end_col_offset": 72,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 577,
+      "line_range": [
+        577
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "578                 cmd = [\"scrot\", \"-u\", output_path]\n579                 process = subprocess.run(cmd, capture_output=True)\n580                 \n",
+      "col_offset": 26,
+      "end_col_offset": 66,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 579,
+      "line_range": [
+        579
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "600     try:\n601         if subprocess.run([\"which\", \"gnome-screenshot\"], capture_output=True).returncode == 0:\n602             cmd = [\"gnome-screenshot\", \"-f\", output_path]\n",
+      "col_offset": 11,
+      "end_col_offset": 77,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 601,
+      "line_range": [
+        601
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "600     try:\n601         if subprocess.run([\"which\", \"gnome-screenshot\"], capture_output=True).returncode == 0:\n602             cmd = [\"gnome-screenshot\", \"-f\", output_path]\n",
+      "col_offset": 11,
+      "end_col_offset": 77,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 601,
+      "line_range": [
+        601
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "602             cmd = [\"gnome-screenshot\", \"-f\", output_path]\n603             process = subprocess.run(cmd, capture_output=True)\n604             \n",
+      "col_offset": 22,
+      "end_col_offset": 62,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 603,
+      "line_range": [
+        603
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "610                 result[\"error\"] = f\"gnome-screenshot failed with return code {process.returncode}\"\n611         elif subprocess.run([\"which\", \"scrot\"], capture_output=True).returncode == 0:\n612             cmd = [\"scrot\", output_path]\n",
+      "col_offset": 13,
+      "end_col_offset": 68,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 611,
+      "line_range": [
+        611
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "610                 result[\"error\"] = f\"gnome-screenshot failed with return code {process.returncode}\"\n611         elif subprocess.run([\"which\", \"scrot\"], capture_output=True).returncode == 0:\n612             cmd = [\"scrot\", output_path]\n",
+      "col_offset": 13,
+      "end_col_offset": 68,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 611,
+      "line_range": [
+        611
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "612             cmd = [\"scrot\", output_path]\n613             process = subprocess.run(cmd, capture_output=True)\n614             \n",
+      "col_offset": 22,
+      "end_col_offset": 62,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 613,
+      "line_range": [
+        613
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "697                 cmd = [\"powershell\", \"-Command\", script]\n698                 process = subprocess.run(cmd, capture_output=True, text=True)\n699                 \n",
+      "col_offset": 26,
+      "end_col_offset": 77,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 698,
+      "line_range": [
+        698
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "753             cmd = [\"powershell\", \"-Command\", script]\n754             process = subprocess.run(cmd, capture_output=True, text=True)\n755             \n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 754,
+      "line_range": [
+        754
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "787             cmd = [\"powershell\", \"-Command\", script]\n788             process = subprocess.run(cmd, capture_output=True)\n789             \n",
+      "col_offset": 22,
+      "end_col_offset": 62,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\screenshot_tool.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 788,
+      "line_range": [
+        788
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "3 import re\n4 import subprocess\n5 from typing import Any, Dict, List\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 4,
+      "line_range": [
+        4
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "44             cmd = [\"system_profiler\", \"SPAirPortDataType\"]\n45             process = subprocess.run(cmd, capture_output=True, text=True)\n46             if process.returncode == 0:\n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 45,
+      "line_range": [
+        45
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "52             cmd = [\"nmcli\", \"-t\", \"-f\", \"active,ssid\", \"dev\", \"wifi\"]\n53             process = subprocess.run(cmd, capture_output=True, text=True)\n54             if process.returncode == 0:\n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 53,
+      "line_range": [
+        53
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "59             cmd = [\"netsh\", \"wlan\", \"show\", \"interfaces\"]\n60             process = subprocess.run(cmd, capture_output=True, text=True)\n61             if process.returncode == 0:\n",
+      "col_offset": 22,
+      "end_col_offset": 73,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 60,
+      "line_range": [
+        60
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "64                         return line.split(\":\")[1].strip()\n65     except Exception:\n66         pass  # Silently handle any errors and return \"Not available\"\n67     return \"Not available\"\n",
+      "col_offset": 4,
+      "end_col_offset": 12,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 65,
+      "line_range": [
+        65,
+        66
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "77         cmd = [\"system_profiler\", \"SPHardwareDataType\", \"SPSoftwareDataType\"]\n78         process = subprocess.run(cmd, capture_output=True, text=True)\n79 \n",
+      "col_offset": 18,
+      "end_col_offset": 69,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 78,
+      "line_range": [
+        78
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "97 \n98     except Exception:\n99         pass\n100 \n",
+      "col_offset": 4,
+      "end_col_offset": 12,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aidd\\src\\mcp_server_aidd-0.1.23\\src\\aidd\\tools\\system_tools.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 98,
+      "line_range": [
+        98,
+        99
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    }
+  ]
+}

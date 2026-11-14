@@ -1,0 +1,306 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T11:58:32Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\mcp_server_akf\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 10,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\mcp_server_akf\\__main__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\mcp_server_akf\\meta.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 25,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\mcp_server_akf\\server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 333,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py": {
+      "CONFIDENCE.HIGH": 11,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 11,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 56,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 11,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 11,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 428,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "32         names = {t.name for t in asyncio.run(run()).tools}\n33         assert names == {t.name for t in TOOLS}\n34 \n",
+      "col_offset": 8,
+      "end_col_offset": 47,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 33,
+      "line_range": [
+        33
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "38         payload = _payload(_call(\"check_file\", {\"path\": str(f)}))\n39         assert payload[\"status\"] == \"UNSTAMPED\"\n40 \n",
+      "col_offset": 8,
+      "end_col_offset": 47,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 39,
+      "line_range": [
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "45         payload = _payload(_call(\"check_file\", {\"path\": str(f)}))\n46         assert payload[\"status\"] in {\"OK\", \"LOW\"}\n47         assert payload[\"agent\"] == \"test-agent\"\n",
+      "col_offset": 8,
+      "end_col_offset": 49,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 46,
+      "line_range": [
+        46
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "46         assert payload[\"status\"] in {\"OK\", \"LOW\"}\n47         assert payload[\"agent\"] == \"test-agent\"\n48 \n",
+      "col_offset": 8,
+      "end_col_offset": 47,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 47,
+      "line_range": [
+        47
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "53         meta = _call(\"extract_file\", {\"path\": str(f)}).meta[TRUST_META_KEY]\n54         assert meta[\"v\"] == \"1\"\n55         assert meta[\"status\"] in {\"OK\", \"LOW\"}\n",
+      "col_offset": 8,
+      "end_col_offset": 31,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 54,
+      "line_range": [
+        54
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "54         assert meta[\"v\"] == \"1\"\n55         assert meta[\"status\"] in {\"OK\", \"LOW\"}\n56         assert meta[\"agent\"] == \"test-agent\"\n",
+      "col_offset": 8,
+      "end_col_offset": 46,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 55,
+      "line_range": [
+        55
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "55         assert meta[\"status\"] in {\"OK\", \"LOW\"}\n56         assert meta[\"agent\"] == \"test-agent\"\n57         assert \"test_pass\" in meta[\"evidence\"]\n",
+      "col_offset": 8,
+      "end_col_offset": 44,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 56,
+      "line_range": [
+        56
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "56         assert meta[\"agent\"] == \"test-agent\"\n57         assert \"test_pass\" in meta[\"evidence\"]\n58 \n",
+      "col_offset": 8,
+      "end_col_offset": 46,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 57,
+      "line_range": [
+        57
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "65         os.utime(f, (later, later))\n66         assert _call(\"extract_file\", {\"path\": str(f)}).meta[TRUST_META_KEY][\"status\"] == \"STALE\"\n67 \n",
+      "col_offset": 8,
+      "end_col_offset": 96,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 66,
+      "line_range": [
+        66
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "68     def test_result_meta_absent_without_file(self):\n69         assert not (_call(\"trust_score\", {\"content\": \"x\", \"confidence\": 0.9}).meta or {}).get(TRUST_META_KEY)\n70 \n",
+      "col_offset": 8,
+      "end_col_offset": 109,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 69,
+      "line_range": [
+        69
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "71     def test_unknown_tool_returns_error(self):\n72         assert \"Unknown tool\" in _payload(_call(\"nope\", {}))[\"error\"]\n",
+      "col_offset": 8,
+      "end_col_offset": 69,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-akf\\src\\mcp_server_akf-1.6.2\\tests\\test_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 72,
+      "line_range": [
+        72
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    }
+  ]
+}

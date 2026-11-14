@@ -1,0 +1,167 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T11:55:15Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 0,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 2,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 2,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 2,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 122,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\setup.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 37,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 2,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 2,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 2,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 159,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "10 APP_KEY = \"AI_MEETING\"\n11 SECRET_KEY = \"0266a29fa1fa4e02a1e960f25e4ae87e\"\n12 BASE_URL = \"https://shrg.test.searegal.com\"\n",
+      "col_offset": 13,
+      "end_col_offset": 47,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 259,
+        "link": "https://cwe.mitre.org/data/definitions/259.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Possible hardcoded password: '0266a29fa1fa4e02a1e960f25e4ae87e'",
+      "line_number": 11,
+      "line_range": [
+        11
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html",
+      "test_id": "B105",
+      "test_name": "hardcoded_password_string"
+    },
+    {
+      "code": "19     combined = f\"{app_key}{secret_key}\"\n20     first_hash = md5(combined.encode(\"utf-8\")).hexdigest().lower()\n21     return md5(first_hash.encode(\"utf-8\")).hexdigest().lower()\n",
+      "col_offset": 17,
+      "end_col_offset": 46,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 20,
+      "line_range": [
+        20
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "20     first_hash = md5(combined.encode(\"utf-8\")).hexdigest().lower()\n21     return md5(first_hash.encode(\"utf-8\")).hexdigest().lower()\n22 \n",
+      "col_offset": 11,
+      "end_col_offset": 42,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 21,
+      "line_range": [
+        21
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "58     try:\n59         response = requests.post(\n60             f\"{BASE_URL}/enterprise/oa/meeting-room/ai/list\",\n61             headers=auth_headers()\n62         )\n63         response.raise_for_status()\n",
+      "col_offset": 19,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 400,
+        "link": "https://cwe.mitre.org/data/definitions/400.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Call to requests without timeout",
+      "line_number": 59,
+      "line_range": [
+        59,
+        60,
+        61,
+        62
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b113_request_without_timeout.html",
+      "test_id": "B113",
+      "test_name": "request_without_timeout"
+    },
+    {
+      "code": "108         \n109         response = requests.post(\n110             f\"{BASE_URL}/enterprise/oa/meeting-reservation/ai/create\",\n111             json=payload,\n112             headers=auth_headers()\n113         )\n114         \n",
+      "col_offset": 19,
+      "end_col_offset": 9,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-airoom\\src\\mcp_server_airoom-0.4.1\\mcp_server_airoom\\__main__.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 400,
+        "link": "https://cwe.mitre.org/data/definitions/400.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Call to requests without timeout",
+      "line_number": 109,
+      "line_range": [
+        109,
+        110,
+        111,
+        112,
+        113
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b113_request_without_timeout.html",
+      "test_id": "B113",
+      "test_name": "request_without_timeout"
+    }
+  ]
+}

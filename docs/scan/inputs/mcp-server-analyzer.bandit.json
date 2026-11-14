@@ -1,0 +1,642 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T12:04:38Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 5,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\__main__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 4,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 6,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py": {
+      "CONFIDENCE.HIGH": 7,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 7,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 144,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py": {
+      "CONFIDENCE.HIGH": 6,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 6,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 148,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ty.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 117,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\vulture.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 143,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\models.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 114,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 359,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 21,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 21,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1040,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "4 import logging\n5 import subprocess\n6 \n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 5,
+      "line_range": [
+        5
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "32         try:\n33             subprocess.run(\n34                 [\"biome\", \"--version\"],\n35                 capture_output=True,\n36                 text=True,\n37                 timeout=10,\n38                 check=True,\n39             )\n40         except _BIOME_ERRORS:\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 33,
+      "line_range": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "32         try:\n33             subprocess.run(\n34                 [\"biome\", \"--version\"],\n35                 capture_output=True,\n36                 text=True,\n37                 timeout=10,\n38                 check=True,\n39             )\n40         except _BIOME_ERRORS:\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 33,
+      "line_range": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "45         try:\n46             subprocess.run(\n47                 [\"npx\", \"--no-install\", \"biome\", \"--version\"],\n48                 capture_output=True,\n49                 text=True,\n50                 timeout=10,\n51                 check=True,\n52             )\n53         except _BIOME_ERRORS as e:\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 46,
+      "line_range": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "45         try:\n46             subprocess.run(\n47                 [\"npx\", \"--no-install\", \"biome\", \"--version\"],\n48                 capture_output=True,\n49                 text=True,\n50                 timeout=10,\n51                 check=True,\n52             )\n53         except _BIOME_ERRORS as e:\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 46,
+      "line_range": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "79         try:\n80             result = subprocess.run(\n81                 cmd,\n82                 input=code,\n83                 capture_output=True,\n84                 text=True,\n85                 timeout=30,\n86                 check=False,\n87             )\n88         except subprocess.TimeoutExpired:\n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 80,
+      "line_range": [
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "153         try:\n154             result = subprocess.run(\n155                 cmd,\n156                 input=code,\n157                 capture_output=True,\n158                 text=True,\n159                 timeout=30,\n160                 check=False,\n161             )\n162         except subprocess.TimeoutExpired:\n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\biome.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 154,
+      "line_range": [
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "3 import json\n4 import subprocess\n5 import tempfile\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 4,
+      "line_range": [
+        4
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "21         try:\n22             subprocess.run(\n23                 [\"ruff\", \"--version\"],\n24                 capture_output=True,\n25                 text=True,\n26                 check=True,\n27                 timeout=10,\n28             )\n29         except (subprocess.CalledProcessError, FileNotFoundError) as e:\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 22,
+      "line_range": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "21         try:\n22             subprocess.run(\n23                 [\"ruff\", \"--version\"],\n24                 capture_output=True,\n25                 text=True,\n26                 check=True,\n27                 timeout=10,\n28             )\n29         except (subprocess.CalledProcessError, FileNotFoundError) as e:\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 22,
+      "line_range": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "52 \n53             result = subprocess.run(\n54                 cmd, capture_output=True, text=True, timeout=30, check=False\n55             )\n56 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 53,
+      "line_range": [
+        53,
+        54,
+        55
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "114 \n115             result = subprocess.run(\n116                 cmd, capture_output=True, text=True, timeout=30, check=False\n117             )\n118 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 115,
+      "line_range": [
+        115,
+        116,
+        117
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "150 \n151             result = subprocess.run(\n152                 cmd, input=code, capture_output=True, text=True, timeout=30, check=False\n153             )\n154 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ruff.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 151,
+      "line_range": [
+        151,
+        152,
+        153
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "3 import re\n4 import subprocess\n5 import tempfile\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ty.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 4,
+      "line_range": [
+        4
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "20         try:\n21             subprocess.run(\n22                 [\"ty\", \"version\"],\n23                 capture_output=True,\n24                 text=True,\n25                 timeout=10,\n26                 check=True,\n27             )\n28         except (\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ty.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 21,
+      "line_range": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "20         try:\n21             subprocess.run(\n22                 [\"ty\", \"version\"],\n23                 capture_output=True,\n24                 text=True,\n25                 timeout=10,\n26                 check=True,\n27             )\n28         except (\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ty.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 21,
+      "line_range": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "70 \n71             result = subprocess.run(\n72                 cmd, capture_output=True, text=True, timeout=30, check=False\n73             )\n74 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\ty.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 71,
+      "line_range": [
+        71,
+        72,
+        73
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "3 import re\n4 import subprocess\n5 import tempfile\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\vulture.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 4,
+      "line_range": [
+        4
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "20         try:\n21             subprocess.run(\n22                 [\"vulture\", \"--version\"],\n23                 capture_output=True,\n24                 text=True,\n25                 timeout=10,\n26                 check=True,\n27             )\n28         except (\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\vulture.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 21,
+      "line_range": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "20         try:\n21             subprocess.run(\n22                 [\"vulture\", \"--version\"],\n23                 capture_output=True,\n24                 text=True,\n25                 timeout=10,\n26                 check=True,\n27             )\n28         except (\n",
+      "col_offset": 12,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\vulture.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 21,
+      "line_range": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "66 \n67             result = subprocess.run(\n68                 cmd, capture_output=True, text=True, timeout=30, check=False\n69             )\n70 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-analyzer\\src\\mcp_server_analyzer-0.4.1\\src\\mcp_server_analyzer\\analyzers\\vulture.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 67,
+      "line_range": [
+        67,
+        68,
+        69
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    }
+  ]
+}

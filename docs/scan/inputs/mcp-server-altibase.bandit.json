@@ -1,0 +1,82 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T12:03:25Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-altibase\\src\\mcp_server_altibase-0.0.3\\src\\mcp_server_altibase\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 12,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-altibase\\src\\mcp_server_altibase-0.0.3\\src\\mcp_server_altibase\\server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 1,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 353,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 1,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 365,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "340                 results = db._execute_query(\n341                     f\"\"\"\n342                     SELECT C.COLUMN_NAME 'COLUMN_NAME'\n343                         , DECODE(C.DATA_TYPE, 1, 'CHAR', 12, 'VARCHAR', -8, 'NCHAR', -9, 'NVARCHAR', 2, 'NUMERIC/DECIMAL', 6, 'FLOAT/NUMBER', 8, 'DOUBLE', 7, 'REAL', -5, 'BIGINT', 4, 'INTEGER', 5, 'SMALLINT', 9, 'DATE', 30, 'BLOB', 40, 'CLOB', 20001, 'BYTE', 20002, 'NIBBLE', -7, 'BIT', -100, 'VARBIT', 10003, 'GEOMETRY') 'DATA_TYPE'\n344                         , DECODE(C.DATA_TYPE, 2, C.PRECISION||'.'||C.SCALE, 6, C.PRECISION||'.'||C.SCALE, C.PRECISION) 'COLUMN_SIZE'\n345                         , DECODE(CONST.CONSTRAINT_TYPE, 0, 'FK', 1, 'NOT NULL', 2, 'UNIQUE', 3, 'PK', 4, 'NULL', 5, 'TIMESTAMP', 6, 'LOCAL UNIQUE', 7, 'CHECK') 'CONSTRAINT_TYPE'\n346                         , CONST.CHECK_CONDITION 'CHECK_CONDITION'\n347                     FROM SYSTEM_.SYS_TABLES_ T\n348                         , SYSTEM_.SYS_COLUMNS_ C\n349                         LEFT OUTER JOIN system_.SYS_CONSTRAINT_COLUMNS_ CONST_COL ON CONST_COL.COLUMN_ID = C.COLUMN_ID\n350                         LEFT OUTER JOIN SYSTEM_.SYS_CONSTRAINTS_ CONST ON CONST.CONSTRAINT_ID = CONST_COL.CONSTRAINT_ID\n351                     WHERE T.TABLE_NAME = UPPER('{arguments['table_name']}')\n352                     AND T.TABLE_TYPE = 'T'\n353                     AND T.USER_ID = USER_ID()\n354                     AND T.TABLE_ID = C.TABLE_ID \n355                     ORDER BY C.COLUMN_ORDER\n356                     \"\"\"\n357                 )\n",
+      "col_offset": 24,
+      "end_col_offset": 48,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-altibase\\src\\mcp_server_altibase-0.0.3\\src\\mcp_server_altibase\\server.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 341,
+      "line_range": [
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    }
+  ]
+}

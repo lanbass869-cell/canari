@@ -1,0 +1,281 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T11:55:48Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\aistudio_mcp_server.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 513,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 7,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\__main__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 6,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\automation.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 473,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\config.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 11,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 220,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 8,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 8,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1230,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "24 import logging\n25 import subprocess\n26 import sys\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\aistudio_mcp_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 25,
+      "line_range": [
+        25
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "189                 await page.wait_for_load_state(\"networkidle\", timeout=10000)\n190             except:\n191                 pass\n192 \n",
+      "col_offset": 12,
+      "end_col_offset": 20,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\aistudio_mcp_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 190,
+      "line_range": [
+        190,
+        191
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "286 \n287             result = subprocess.run(\n288                 [\"git\", \"clone\", \"--depth\", \"1\", \"--branch\", branch, repo_url, str(local_path)],\n289                 capture_output=True,\n290                 text=True,\n291                 timeout=60\n292             )\n293 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\aistudio_mcp_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 287,
+      "line_range": [
+        287,
+        288,
+        289,
+        290,
+        291,
+        292
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "286 \n287             result = subprocess.run(\n288                 [\"git\", \"clone\", \"--depth\", \"1\", \"--branch\", branch, repo_url, str(local_path)],\n289                 capture_output=True,\n290                 text=True,\n291                 timeout=60\n292             )\n293 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\aistudio_mcp_server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 287,
+      "line_range": [
+        287,
+        288,
+        289,
+        290,
+        291,
+        292
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    },
+    {
+      "code": "15 import logging\n16 import subprocess\n17 from datetime import datetime\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\automation.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 16,
+      "line_range": [
+        16
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "254                 await page.wait_for_load_state(\"networkidle\", timeout=10000)\n255             except:\n256                 pass  # May timeout but that's okay, we'll check manually\n257 \n",
+      "col_offset": 12,
+      "end_col_offset": 20,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\automation.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 255,
+      "line_range": [
+        255,
+        256
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "393             # Clone repository\n394             result = subprocess.run(\n395                 [\"git\", \"clone\", \"--depth\", \"1\", \"--branch\", branch, repo_url, str(local_path)],\n396                 capture_output=True,\n397                 text=True,\n398                 timeout=60\n399             )\n400 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\automation.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Starting a process with a partial executable path",
+      "line_number": 394,
+      "line_range": [
+        394,
+        395,
+        396,
+        397,
+        398,
+        399
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html",
+      "test_id": "B607",
+      "test_name": "start_process_with_partial_path"
+    },
+    {
+      "code": "393             # Clone repository\n394             result = subprocess.run(\n395                 [\"git\", \"clone\", \"--depth\", \"1\", \"--branch\", branch, repo_url, str(local_path)],\n396                 capture_output=True,\n397                 text=True,\n398                 timeout=60\n399             )\n400 \n",
+      "col_offset": 21,
+      "end_col_offset": 13,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aistudio\\src\\mcp_server_aistudio-0.1.0\\src\\mcp_server_aistudio\\automation.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "subprocess call - check for execution of untrusted input.",
+      "line_number": 394,
+      "line_range": [
+        394,
+        395,
+        396,
+        397,
+        398,
+        399
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html",
+      "test_id": "B603",
+      "test_name": "subprocess_without_shell_equals_true"
+    }
+  ]
+}

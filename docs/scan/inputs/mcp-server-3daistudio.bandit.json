@@ -1,0 +1,107 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T11:44:19Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-3daistudio\\src\\mcp_server_3daistudio-1.0.1\\src\\mcp_server_3daistudio\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 3,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-3daistudio\\src\\mcp_server_3daistudio-1.0.1\\src\\mcp_server_3daistudio\\server.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 218,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 221,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "35     req = urllib.request.Request(BASE_URL + path, data=body, headers=HEADERS, method=\"POST\")\n36     with urllib.request.urlopen(req, timeout=30) as r:\n37         return json.loads(r.read())\n",
+      "col_offset": 9,
+      "end_col_offset": 48,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-3daistudio\\src\\mcp_server_3daistudio-1.0.1\\src\\mcp_server_3daistudio\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 36,
+      "line_range": [
+        36
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "40     req = urllib.request.Request(BASE_URL + path, headers=HEADERS)\n41     with urllib.request.urlopen(req, timeout=30) as r:\n42         return json.loads(r.read())\n",
+      "col_offset": 9,
+      "end_col_offset": 48,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-3daistudio\\src\\mcp_server_3daistudio-1.0.1\\src\\mcp_server_3daistudio\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 41,
+      "line_range": [
+        41
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "68 def download_url(url: str, output_path: str):\n69     urllib.request.urlretrieve(url, output_path)\n70 \n",
+      "col_offset": 4,
+      "end_col_offset": 48,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-3daistudio\\src\\mcp_server_3daistudio-1.0.1\\src\\mcp_server_3daistudio\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 22,
+        "link": "https://cwe.mitre.org/data/definitions/22.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.",
+      "line_number": 69,
+      "line_range": [
+        69
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen",
+      "test_id": "B310",
+      "test_name": "blacklist"
+    }
+  ]
+}

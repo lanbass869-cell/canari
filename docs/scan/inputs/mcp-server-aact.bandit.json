@@ -1,0 +1,2156 @@
+{
+  "errors": [],
+  "generated_at": "2026-11-14T11:45:16Z",
+  "metrics": {
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\run_server.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 3,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 12,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\database.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 92,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\models.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 44,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\server.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 3,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 2,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 407,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 0,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\conftest.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 51,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py": {
+      "CONFIDENCE.HIGH": 95,
+      "CONFIDENCE.LOW": 1,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 95,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 407,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "_totals": {
+      "CONFIDENCE.HIGH": 97,
+      "CONFIDENCE.LOW": 4,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 97,
+      "SEVERITY.MEDIUM": 4,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1016,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "182             vals, _ = app.db.execute_query(\n183                 f\"SELECT {col_name} AS value, COUNT(*) AS count \"\n184                 f\"FROM ctgov.{table_name} \"\n185                 f\"WHERE {col_name} IS NOT NULL \"\n186                 f\"GROUP BY {col_name} \"\n187                 f\"ORDER BY count DESC LIMIT 10\"\n188             )\n",
+      "col_offset": 18,
+      "end_col_offset": 25,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\server.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 183,
+      "line_range": [
+        183,
+        184,
+        185,
+        186,
+        187
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "189             sample_values_map[col_name] = [str(v['value']) for v in vals]\n190         except Exception:\n191             pass  # Skip columns that fail (e.g. unsupported types)\n192 \n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 190,
+      "line_range": [
+        190,
+        191
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "203             sample_rows, _ = app.db.execute_query(\n204                 f\"SELECT * FROM ctgov.{table_name} LIMIT 3\"\n205             )\n",
+      "col_offset": 18,
+      "end_col_offset": 38,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\server.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 204,
+      "line_range": [
+        204
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "209                     example_values_map[col] = vals\n210         except Exception:\n211             pass  # Skip if sample query fails\n212 \n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 210,
+      "line_range": [
+        210,
+        211
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "253     results, _ = app.db.execute_query(\n254         f\"SELECT {column_name} AS value, COUNT(*) AS count \"\n255         f\"FROM ctgov.{table_name} \"\n256         f\"WHERE {column_name} IS NOT NULL \"\n257         f\"GROUP BY {column_name} \"\n258         f\"ORDER BY count DESC \"\n259         f\"LIMIT {limit}\"\n260     )\n",
+      "col_offset": 10,
+      "end_col_offset": 17,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\src\\server.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 254,
+      "line_range": [
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "25 \n26         assert len(table_names) > 10, \"AACT should have many tables\"\n27         assert \"studies\" in table_names\n",
+      "col_offset": 8,
+      "end_col_offset": 68,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 26,
+      "line_range": [
+        26
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "26         assert len(table_names) > 10, \"AACT should have many tables\"\n27         assert \"studies\" in table_names\n28         assert \"sponsors\" in table_names\n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 27,
+      "line_range": [
+        27
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "27         assert \"studies\" in table_names\n28         assert \"sponsors\" in table_names\n29         assert \"interventions\" in table_names\n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 28,
+      "line_range": [
+        28
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "28         assert \"sponsors\" in table_names\n29         assert \"interventions\" in table_names\n30 \n",
+      "col_offset": 8,
+      "end_col_offset": 45,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 29,
+      "line_range": [
+        29
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "37 \n38         assert len(col_names) > 5, \"studies table should have many columns\"\n39         assert \"nct_id\" in col_names\n",
+      "col_offset": 8,
+      "end_col_offset": 75,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 38,
+      "line_range": [
+        38
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "38         assert len(col_names) > 5, \"studies table should have many columns\"\n39         assert \"nct_id\" in col_names\n40         assert \"brief_title\" in col_names\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 39,
+      "line_range": [
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "39         assert \"nct_id\" in col_names\n40         assert \"brief_title\" in col_names\n41 \n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 40,
+      "line_range": [
+        40
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "43         for col in columns:\n44             assert \"data_type\" in col\n45             assert isinstance(col[\"data_type\"], str)\n",
+      "col_offset": 12,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 44,
+      "line_range": [
+        44
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "44             assert \"data_type\" in col\n45             assert isinstance(col[\"data_type\"], str)\n46 \n",
+      "col_offset": 12,
+      "end_col_offset": 52,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 45,
+      "line_range": [
+        45
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "52         data = parse_tool_result(result)[0]\n53         assert data[\"columns\"] == []\n54 \n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 53,
+      "line_range": [
+        53
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "71 \n72         assert \"query_id\" in summary\n73         assert summary[\"query_id\"].startswith(\"q\")\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 72,
+      "line_range": [
+        72
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "72         assert \"query_id\" in summary\n73         assert summary[\"query_id\"].startswith(\"q\")\n74         assert \"nct_id\" in summary[\"columns\"]\n",
+      "col_offset": 8,
+      "end_col_offset": 50,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 73,
+      "line_range": [
+        73
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "73         assert summary[\"query_id\"].startswith(\"q\")\n74         assert \"nct_id\" in summary[\"columns\"]\n75         assert \"brief_title\" in summary[\"columns\"]\n",
+      "col_offset": 8,
+      "end_col_offset": 45,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 74,
+      "line_range": [
+        74
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "74         assert \"nct_id\" in summary[\"columns\"]\n75         assert \"brief_title\" in summary[\"columns\"]\n76         assert summary[\"row_count\"] == 20\n",
+      "col_offset": 8,
+      "end_col_offset": 50,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 75,
+      "line_range": [
+        75
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "75         assert \"brief_title\" in summary[\"columns\"]\n76         assert summary[\"row_count\"] == 20\n77         assert summary[\"truncated\"] is False\n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 76,
+      "line_range": [
+        76
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "76         assert summary[\"row_count\"] == 20\n77         assert summary[\"truncated\"] is False\n78         assert len(summary[\"preview\"]) == 3\n",
+      "col_offset": 8,
+      "end_col_offset": 44,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 77,
+      "line_range": [
+        77
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "77         assert summary[\"truncated\"] is False\n78         assert len(summary[\"preview\"]) == 3\n79 \n",
+      "col_offset": 8,
+      "end_col_offset": 43,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 78,
+      "line_range": [
+        78
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "89         query_id = summary[\"query_id\"]\n90         assert summary[\"row_count\"] == 50\n91 \n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 90,
+      "line_range": [
+        90
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "96         page1_data = parse_tool_result(page1)[0]\n97         assert page1_data[\"count\"] == 10\n98         assert page1_data[\"start\"] == 0\n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 97,
+      "line_range": [
+        97
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "97         assert page1_data[\"count\"] == 10\n98         assert page1_data[\"start\"] == 0\n99         assert page1_data[\"total_rows\"] == 50\n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 98,
+      "line_range": [
+        98
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "98         assert page1_data[\"start\"] == 0\n99         assert page1_data[\"total_rows\"] == 50\n100         assert page1_data[\"has_more\"] is True\n",
+      "col_offset": 8,
+      "end_col_offset": 45,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 99,
+      "line_range": [
+        99
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "99         assert page1_data[\"total_rows\"] == 50\n100         assert page1_data[\"has_more\"] is True\n101         assert len(page1_data[\"rows\"]) == 10\n",
+      "col_offset": 8,
+      "end_col_offset": 45,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 100,
+      "line_range": [
+        100
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "100         assert page1_data[\"has_more\"] is True\n101         assert len(page1_data[\"rows\"]) == 10\n102 \n",
+      "col_offset": 8,
+      "end_col_offset": 44,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 101,
+      "line_range": [
+        101
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "107         page2_data = parse_tool_result(page2)[0]\n108         assert page2_data[\"start\"] == 10\n109         assert page2_data[\"has_more\"] is True\n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 108,
+      "line_range": [
+        108
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "108         assert page2_data[\"start\"] == 10\n109         assert page2_data[\"has_more\"] is True\n110 \n",
+      "col_offset": 8,
+      "end_col_offset": 45,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 109,
+      "line_range": [
+        109
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "113         page2_ids = [r[\"nct_id\"] for r in page2_data[\"rows\"]]\n114         assert page1_ids != page2_ids\n115 \n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 114,
+      "line_range": [
+        114
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "130         page_data = parse_tool_result(page)[0]\n131         assert page_data[\"count\"] == 10\n132         assert page_data[\"has_more\"] is False\n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 131,
+      "line_range": [
+        131
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "131         assert page_data[\"count\"] == 10\n132         assert page_data[\"has_more\"] is False\n133 \n",
+      "col_offset": 8,
+      "end_col_offset": 45,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 132,
+      "line_range": [
+        132
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "151 \n152         assert preview_ids == fetched_ids\n153 \n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 152,
+      "line_range": [
+        152
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "169         summary = parse_tool_result(result)[0]\n170         assert summary[\"truncated\"] is True\n171         assert summary[\"row_count\"] == 5  # capped at max_rows\n",
+      "col_offset": 8,
+      "end_col_offset": 43,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 170,
+      "line_range": [
+        170
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "170         assert summary[\"truncated\"] is True\n171         assert summary[\"row_count\"] == 5  # capped at max_rows\n172 \n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 171,
+      "line_range": [
+        171
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "180         summary = parse_tool_result(result)[0]\n181         assert summary[\"truncated\"] is False\n182         assert summary[\"row_count\"] == 3\n",
+      "col_offset": 8,
+      "end_col_offset": 44,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 181,
+      "line_range": [
+        181
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "181         assert summary[\"truncated\"] is False\n182         assert summary[\"row_count\"] == 3\n183 \n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 182,
+      "line_range": [
+        182
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "203 \n204         assert q1 != q2\n205 \n",
+      "col_offset": 8,
+      "end_col_offset": 23,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 204,
+      "line_range": [
+        204
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "221         })\n222         assert page1.isError is not True\n223         page1_data = parse_tool_result(page1)[0]\n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 222,
+      "line_range": [
+        222
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "223         page1_data = parse_tool_result(page1)[0]\n224         assert page1_data[\"count\"] == 5\n225 \n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 224,
+      "line_range": [
+        224
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "228         })\n229         assert page2.isError is not True\n230         page2_data = parse_tool_result(page2)[0]\n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 229,
+      "line_range": [
+        229
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "230         page2_data = parse_tool_result(page2)[0]\n231         assert page2_data[\"count\"] == 5\n232 \n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 231,
+      "line_range": [
+        231
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "237             r = await client.call_tool(\"read_query\", {\n238                 \"query\": f\"SELECT nct_id FROM ctgov.studies LIMIT {i + 1}\",\n239             })\n",
+      "col_offset": 27,
+      "end_col_offset": 66,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 238,
+      "line_range": [
+        238
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "245         })\n246         assert result.isError is True\n247 \n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 246,
+      "line_range": [
+        246
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "251         })\n252         assert result.isError is not True\n253 \n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 252,
+      "line_range": [
+        252
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "258         })\n259         assert result.isError is True\n260 \n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 259,
+      "line_range": [
+        259
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "273         })\n274         assert result.isError is True\n275 \n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 274,
+      "line_range": [
+        274
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "280         })\n281         assert result.isError is True\n282 \n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 281,
+      "line_range": [
+        281
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "287         })\n288         assert result.isError is True\n289 \n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 288,
+      "line_range": [
+        288
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "294         })\n295         assert result.isError is not True\n296 \n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 295,
+      "line_range": [
+        295
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "301         })\n302         assert result.isError is not True\n303 \n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 302,
+      "line_range": [
+        302
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "308         })\n309         assert result.isError is not True\n310         summary = parse_tool_result(result)[0]\n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 309,
+      "line_range": [
+        309
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "310         summary = parse_tool_result(result)[0]\n311         assert summary[\"row_count\"] == 3\n312 \n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 311,
+      "line_range": [
+        311
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "326         summary = parse_tool_result(result)[0]\n327         assert summary[\"row_count\"] == 0\n328         assert summary[\"preview\"] == []\n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 327,
+      "line_range": [
+        327
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "327         assert summary[\"row_count\"] == 0\n328         assert summary[\"preview\"] == []\n329         assert summary[\"columns\"] == []\n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 328,
+      "line_range": [
+        328
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "328         assert summary[\"preview\"] == []\n329         assert summary[\"columns\"] == []\n330         assert summary[\"truncated\"] is False\n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 329,
+      "line_range": [
+        329
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "329         assert summary[\"columns\"] == []\n330         assert summary[\"truncated\"] is False\n331 \n",
+      "col_offset": 8,
+      "end_col_offset": 44,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 330,
+      "line_range": [
+        330
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "344         studies = next(t for t in tables if t[\"table_name\"] == \"studies\")\n345         assert \"approximate_row_count\" in studies\n346         assert isinstance(studies[\"approximate_row_count\"], int)\n",
+      "col_offset": 8,
+      "end_col_offset": 49,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 345,
+      "line_range": [
+        345
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "345         assert \"approximate_row_count\" in studies\n346         assert isinstance(studies[\"approximate_row_count\"], int)\n347         assert studies[\"approximate_row_count\"] > 0\n",
+      "col_offset": 8,
+      "end_col_offset": 64,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 346,
+      "line_range": [
+        346
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "346         assert isinstance(studies[\"approximate_row_count\"], int)\n347         assert studies[\"approximate_row_count\"] > 0\n348 \n",
+      "col_offset": 8,
+      "end_col_offset": 51,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 347,
+      "line_range": [
+        347
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "356         phase_col = next((c for c in columns if c[\"column_name\"] == \"phase\"), None)\n357         assert phase_col is not None\n358         assert phase_col[\"sample_values\"] is not None\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 357,
+      "line_range": [
+        357
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "357         assert phase_col is not None\n358         assert phase_col[\"sample_values\"] is not None\n359         assert len(phase_col[\"sample_values\"]) > 0\n",
+      "col_offset": 8,
+      "end_col_offset": 53,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 358,
+      "line_range": [
+        358
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "358         assert phase_col[\"sample_values\"] is not None\n359         assert len(phase_col[\"sample_values\"]) > 0\n360         # Verify at least one expected phase value is present\n",
+      "col_offset": 8,
+      "end_col_offset": 50,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 359,
+      "line_range": [
+        359
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "360         # Verify at least one expected phase value is present\n361         assert any(\"PHASE\" in v for v in phase_col[\"sample_values\"])\n362 \n",
+      "col_offset": 8,
+      "end_col_offset": 68,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 361,
+      "line_range": [
+        361
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "369         nct_col = next((c for c in columns if c[\"column_name\"] == \"nct_id\"), None)\n370         assert nct_col is not None\n371         assert nct_col[\"sample_values\"] is None\n",
+      "col_offset": 8,
+      "end_col_offset": 34,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 370,
+      "line_range": [
+        370
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "370         assert nct_col is not None\n371         assert nct_col[\"sample_values\"] is None\n372 \n",
+      "col_offset": 8,
+      "end_col_offset": 47,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 371,
+      "line_range": [
+        371
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "379         title_col = next((c for c in columns if c[\"column_name\"] == \"brief_title\"), None)\n380         assert title_col is not None\n381         assert title_col[\"example_values\"] is not None\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 380,
+      "line_range": [
+        380
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "380         assert title_col is not None\n381         assert title_col[\"example_values\"] is not None\n382         assert len(title_col[\"example_values\"]) > 0\n",
+      "col_offset": 8,
+      "end_col_offset": 54,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 381,
+      "line_range": [
+        381
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "381         assert title_col[\"example_values\"] is not None\n382         assert len(title_col[\"example_values\"]) > 0\n383 \n",
+      "col_offset": 8,
+      "end_col_offset": 51,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 382,
+      "line_range": [
+        382
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "387         data = parse_tool_result(result)[0]\n388         assert \"approximate_row_count\" in data\n389         assert isinstance(data[\"approximate_row_count\"], int)\n",
+      "col_offset": 8,
+      "end_col_offset": 46,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 388,
+      "line_range": [
+        388
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "388         assert \"approximate_row_count\" in data\n389         assert isinstance(data[\"approximate_row_count\"], int)\n390         assert data[\"approximate_row_count\"] > 0\n",
+      "col_offset": 8,
+      "end_col_offset": 61,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 389,
+      "line_range": [
+        389
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "389         assert isinstance(data[\"approximate_row_count\"], int)\n390         assert data[\"approximate_row_count\"] > 0\n391 \n",
+      "col_offset": 8,
+      "end_col_offset": 48,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 390,
+      "line_range": [
+        390
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "399         phase_col = next((c for c in columns if c[\"column_name\"] == \"phase\"), None)\n400         assert phase_col is not None\n401         assert phase_col[\"total_distinct\"] is not None\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 400,
+      "line_range": [
+        400
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "400         assert phase_col is not None\n401         assert phase_col[\"total_distinct\"] is not None\n402         assert phase_col[\"total_distinct\"] > 0\n",
+      "col_offset": 8,
+      "end_col_offset": 54,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 401,
+      "line_range": [
+        401
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "401         assert phase_col[\"total_distinct\"] is not None\n402         assert phase_col[\"total_distinct\"] > 0\n403 \n",
+      "col_offset": 8,
+      "end_col_offset": 46,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 402,
+      "line_range": [
+        402
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "416         })\n417         assert result.isError is not True\n418         summary = parse_tool_result(result)[0]\n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 417,
+      "line_range": [
+        417
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "418         summary = parse_tool_result(result)[0]\n419         assert summary[\"row_count\"] == 5\n420 \n",
+      "col_offset": 8,
+      "end_col_offset": 40,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 419,
+      "line_range": [
+        419
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "425         })\n426         assert result.isError is not True\n427         summary = parse_tool_result(result)[0]\n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 426,
+      "line_range": [
+        426
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "427         summary = parse_tool_result(result)[0]\n428         assert summary[\"row_count\"] > 0\n429 \n",
+      "col_offset": 8,
+      "end_col_offset": 39,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 428,
+      "line_range": [
+        428
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "435         })\n436         assert result.isError is not True\n437         summary = parse_tool_result(result)[0]\n",
+      "col_offset": 8,
+      "end_col_offset": 41,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 436,
+      "line_range": [
+        436
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "438         # All plan rows should appear in preview\n439         assert len(summary[\"preview\"]) == summary[\"row_count\"]\n440 \n",
+      "col_offset": 8,
+      "end_col_offset": 62,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 439,
+      "line_range": [
+        439
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "453         })\n454         assert result.isError is True\n455         error_text = result.content[0].text\n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 454,
+      "line_range": [
+        454
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "455         error_text = result.content[0].text\n456         assert \"nonexistent_column_xyz\" in error_text\n457 \n",
+      "col_offset": 8,
+      "end_col_offset": 53,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 456,
+      "line_range": [
+        456
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "462         })\n463         assert result.isError is True\n464         error_text = result.content[0].text\n",
+      "col_offset": 8,
+      "end_col_offset": 37,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 463,
+      "line_range": [
+        463
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "464         error_text = result.content[0].text\n465         assert \"nonexistent_table_xyz\" in error_text\n466 \n",
+      "col_offset": 8,
+      "end_col_offset": 52,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 465,
+      "line_range": [
+        465
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "479         tables = [m[\"table_name\"] for m in matches]\n480         assert len(tables) > 5\n481         assert \"studies\" in tables\n",
+      "col_offset": 8,
+      "end_col_offset": 30,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 480,
+      "line_range": [
+        480
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "480         assert len(tables) > 5\n481         assert \"studies\" in tables\n482 \n",
+      "col_offset": 8,
+      "end_col_offset": 34,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 481,
+      "line_range": [
+        481
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "486         matches = parse_tool_result(result)\n487         assert len(matches) > 0\n488 \n",
+      "col_offset": 8,
+      "end_col_offset": 31,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 487,
+      "line_range": [
+        487
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "492         matches = parse_tool_result(result)\n493         assert matches == []\n494 \n",
+      "col_offset": 8,
+      "end_col_offset": 28,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 493,
+      "line_range": [
+        493
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "499         col_names = [m[\"column_name\"] for m in matches]\n500         assert any(\"mask\" in c for c in col_names)\n501 \n",
+      "col_offset": 8,
+      "end_col_offset": 50,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 500,
+      "line_range": [
+        500
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "508         matches = parse_tool_result(result)\n509         assert len(matches) > 0\n510         assert all(m[\"table_name\"] == \"studies\" for m in matches)\n",
+      "col_offset": 8,
+      "end_col_offset": 31,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 509,
+      "line_range": [
+        509
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "509         assert len(matches) > 0\n510         assert all(m[\"table_name\"] == \"studies\" for m in matches)\n511 \n",
+      "col_offset": 8,
+      "end_col_offset": 65,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 510,
+      "line_range": [
+        510
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "523         info = parse_tool_result(result)[0]\n524         assert \"server_time\" in info\n525         assert \"pg_version\" in info\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 524,
+      "line_range": [
+        524
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "524         assert \"server_time\" in info\n525         assert \"pg_version\" in info\n526         assert \"schema_name\" in info\n",
+      "col_offset": 8,
+      "end_col_offset": 35,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 525,
+      "line_range": [
+        525
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "525         assert \"pg_version\" in info\n526         assert \"schema_name\" in info\n527         assert \"table_count\" in info\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 526,
+      "line_range": [
+        526
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "526         assert \"schema_name\" in info\n527         assert \"table_count\" in info\n528         assert \"note\" in info\n",
+      "col_offset": 8,
+      "end_col_offset": 36,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 527,
+      "line_range": [
+        527
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "527         assert \"table_count\" in info\n528         assert \"note\" in info\n529 \n",
+      "col_offset": 8,
+      "end_col_offset": 29,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 528,
+      "line_range": [
+        528
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "534         # current_schema() returns the first schema in search_path\n535         assert isinstance(info[\"schema_name\"], str)\n536 \n",
+      "col_offset": 8,
+      "end_col_offset": 51,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 535,
+      "line_range": [
+        535
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "540         info = parse_tool_result(result)[0]\n541         assert info[\"table_count\"] > 0\n542 \n",
+      "col_offset": 8,
+      "end_col_offset": 38,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 541,
+      "line_range": [
+        541
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    },
+    {
+      "code": "556         summary = parse_tool_result(result)[0]\n557         assert len(summary[\"preview\"]) == 10\n",
+      "col_offset": 8,
+      "end_col_offset": 44,
+      "filename": "E:\\Temp\\_mcp_scan\\mcp-server-aact\\src\\mcp_server_aact-0.5.0\\tests\\test_integration.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+      "line_number": 557,
+      "line_range": [
+        557
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b101_assert_used.html",
+      "test_id": "B101",
+      "test_name": "assert_used"
+    }
+  ]
+}
