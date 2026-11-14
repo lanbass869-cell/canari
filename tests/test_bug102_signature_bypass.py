@@ -27,7 +27,8 @@ def _attestation(verdict="unsupported", name="pkg-a"):
                     "artifact_sha256": "0" * 64, "maintainers": []},
         "host": {"class": "mcp", "host_version": "t"},
         "scenario_sha256": "a" * 64,
-        "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"}],
+        "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+                       {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
         "verdict": verdict,
         "checker": {"kind": "automation", "id": "t"},
         "evidence_refs": [],
@@ -80,7 +81,8 @@ class TestSignedPayloadIsSourceOfTruth:
         bp, kp, bundle = _signed_bundle(tmp_path, verdict="unsupported", name="evil")
         bundle["payload"]["verdict"] = "pass"
         bundle["payload"]["checks"] = [
-            {"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"}]
+            {"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+        {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}]
         bp.write_text(json.dumps(bundle, ensure_ascii=False), encoding="utf-8")
 
         dec = evaluate_gate(str(bp), key_path=str(kp), policy_name="lax")

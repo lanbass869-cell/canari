@@ -56,9 +56,10 @@ verification conclude, when, under which scenario, and what came before?*
 | `key_registry.json` | key lifecycle (valid_from / valid_until / revoked_at) |
 | `MANIFEST.json` | sha256 of every file in this dataset |
 
-**Scale of this snapshot:** 3251 attestations over 883 components across four
-registries (npm, PyPI, MCP Registry, dsh.so), 880 supersession chains,
-13 run feeds, 3272 files.
+**Scale of this snapshot:** 5170 attestations over 1417 components across four
+registries (npm 225 / PyPI 611 / MCP Registry 60 / dsh.so 521 components;
+1064 / 2051 / 465 / 1590 records respectively), 2402 chained attestations,
+6 multi feeds + 10 run feeds, 5196 hashed files.
 
 ## Record format
 
@@ -89,7 +90,7 @@ canari-verify --chain attestations/     # whole supersession DAG
 ```
 
 No network, no account, no service. Then verify the snapshot itself against
-`MANIFEST.json` (3272 sha256 entries).
+`MANIFEST.json` (5196 sha256 entries).
 
 ## Honest limits
 
@@ -102,12 +103,12 @@ No network, no account, no service. Then verify the snapshot itself against
 - **Weekly cadence, and records go stale.** Every attestation carries
   `expires_at` (7 days). `MANIFEST.json.generated_at` says when this snapshot
   was cut.
-- **581 of the 883 components carry no `digest.sha256`** (521 dsh.so +
+- **581 of the 1417 components carry no artifact `sha256`** (521 dsh.so +
   60 MCP Registry). Those sources publish identity but no downloadable
-  artifact, so the record uses `digest.canari-component-id` (sha256 of the
-  component reference) instead of fabricating an all-zero artifact hash.
-  The other **302 components carry a real `sha256`** obtained by fetching the
-  artifact bytes (202 npm + 100 PyPI). 302 + 581 = 883.
+  artifact, so the record keeps an all-zero `artifact_sha256` and relies on
+  registry identity instead of fabricating a hash. The other **836 components
+  carry a real `sha256`** obtained by fetching the artifact bytes (225 npm +
+  611 PyPI). 836 + 581 = 1417.
 
 ## License
 

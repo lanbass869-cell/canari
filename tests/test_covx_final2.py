@@ -76,7 +76,8 @@ class TestVerifyCliFinal:
                            "artifact_sha256": "a" * 64, "maintainers": []},
                "host": {"class": "mcp", "host_version": "t"},
                "scenario_sha256": "b" * 64,
-               "checks": checks or [{"id": "L1.1", "verdict": "pass", "tool": "t"}],
+               "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+                                     {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
                "verdict": verdict, "checker": {"kind": "automation", "id": "t"},
                "evidence_refs": [],
                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],
@@ -151,4 +152,4 @@ class TestVerifyCliFinal:
         (ad / "a1.bundle.json").write_text(
             json.dumps({"envelope": sa["envelope"], "payload": sa["payload"]}),
             encoding="utf-8")
-        assert verify_chain(str(ad)) == 0
+        assert verify_chain(str(ad), require_signatures=False) == 0

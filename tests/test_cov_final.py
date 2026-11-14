@@ -35,10 +35,17 @@ def Op(mapping):
 class TestSchemaMore:
     def test_gate_passing_matrix(self):
         from canari.schema import is_gate_passing
-        assert is_gate_passing({"verdict": "pass"})
-        assert is_gate_passing({"verdict": "pass-with-findings"})
+        # 2026-11-14: a passing verdict ALSO requires artifact evidence. A record
+        # whose only check is "the name exists in a registry" must not pass.
+        art = [{"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}]
+        assert is_gate_passing({"verdict": "pass", "checks": art})
+        assert is_gate_passing({"verdict": "pass-with-findings", "checks": art})
         for v in ("fail", "error", "unsupported", "", None):
-            assert not is_gate_passing({"verdict": v})
+            assert not is_gate_passing({"verdict": v, "checks": art})
+        # no artifact evidence -> never passing, whatever the verdict says
+        assert not is_gate_passing({"verdict": "pass", "checks": []})
+        assert not is_gate_passing(
+            {"verdict": "pass", "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass"}]})
 
     def test_unverified_reason_helper(self):
         from canari.schema import assert_unverified_has_reason
@@ -57,7 +64,8 @@ class TestGatePoliciesMore:
                            "artifact_sha256": "a" * 64, "maintainers": []},
                "host": {"class": "mcp", "host_version": "t"},
                "scenario_sha256": "b" * 64,
-               "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"}],
+               "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+                                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
                "verdict": verdict, "checker": {"kind": "automation", "id": "t"},
                "evidence_refs": [],
                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],

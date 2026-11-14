@@ -23,8 +23,8 @@ import json
 import sys
 
 from canari.schema import load_schema, validate_attestation, is_gate_passing
-from canari.signing import (verify_signed_raw, unwrap_statement, read_signed_payload,
-                            payload_digest)
+from canari.signing import (verify_signed_raw, verify_signed, unwrap_statement,
+                            read_signed_payload, payload_digest)
 
 
 def _independent_pae(payload_type: str, payload_bytes: bytes) -> bytes:
@@ -258,16 +258,28 @@ def verify_bundle(bundle_path: str, key_path: str, verbose: bool = False,
     return 0
 
 
-def verify_chain(directory: str, key_path: str = None) -> int:
+def verify_chain(directory: str, key_path: str = None, require_signatures: bool = True) -> int:
     """Verify supersession chains in a directory of bundles.
-    
+
     Checks:
     1. Each supersedes pointer resolves to an existing payload digest
     2. No circular references
     3. Chain heads are unique (one head per component)
     4. Every chain is traceable to a head
-    
-    Exit codes: 0 = all chains valid, 4 = chain errors found
+    5. ★2026-11-13: every bundle's DSSE signature verifies against the key
+
+    Check 5 was missing. A chain composed entirely of self-signed bundles (any
+    attacker key) previously reported "all chains valid" - structure was
+    checked, authorship was not. Measured: two bundles signed by two different
+    throwaway keypairs, same component, returned rc=0. Chain validity without
+    signature validity is meaningless, so verification is now mandatory:
+      - key_path given  -> that key is used
+      - key_path absent -> <directory>/../public_key.json, then <directory>/public_key.json
+      - no key at all   -> rc=4 (cannot establish authorship; fails closed)
+    Pass require_signatures=False only for a structural-only audit.
+
+    Exit codes: 0 = all chains valid AND all signatures verified,
+                4 = chain/signature errors found
     """
     import hashlib
     from collections import defaultdict
@@ -288,6 +300,25 @@ def verify_chain(directory: str, key_path: str = None) -> int:
     supersedes_map = {}  # filename -> digest it supersedes
     components = defaultdict(list)  # name -> [filenames]
 
+    # Resolve ONE verification key for the whole directory.
+    _pub_key = None
+    if require_signatures:
+        cands = [key_path] if key_path else [
+            os.path.join(os.path.dirname(os.path.abspath(att_dir)), "public_key.json"),
+            os.path.join(att_dir, "public_key.json"),
+        ]
+        for c in cands:
+            if c and os.path.isfile(c):
+                try:
+                    with open(c, "r", encoding="utf-8") as _kf:
+                        _pub_key = json.load(_kf)
+                    break
+                except Exception:
+                    _pub_key = None
+        if _pub_key is None:
+            print("chain: FAIL - no public key (checked %s)" % ", ".join(str(c) for c in cands if c))
+            return 4
+
     skipped = []
     for fn in files:
         fp = os.path.join(att_dir, fn)
@@ -306,6 +337,15 @@ def verify_chain(directory: str, key_path: str = None) -> int:
             ok_int, why_int, _signed = check_payload_integrity(bundle)
             if not ok_int:
                 raise ValueError("payload integrity: %s" % why_int)
+            if require_signatures:
+                if _pub_key is None:
+                    raise ValueError(
+                        "no public key available; authorship of this bundle cannot "
+                        "be established (pass --key / place public_key.json beside "
+                        "the store, or use --no-signatures for a structural audit)")
+                _ok_sig, _, _sig_err = verify_signed(bundle.get("envelope"), _pub_key)
+                if not _ok_sig:
+                    raise ValueError("signature FAILED: %s" % (_sig_err or "unknown"))
             payload = unwrap_statement(bundle.get("payload"))
             if not isinstance(payload, dict) or not payload:
                 raise ValueError("bundle has no top-level payload")

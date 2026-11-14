@@ -57,6 +57,23 @@ def latest_attestation(store_dir, registry, name, version=None):
     return cands[-1] if cands else None
 
 
+def resolve_key(store_dir, key_path=None):
+    """Public key that belongs to this store.
+
+    ★2026-11-13 (F1): a decision is only meaningful when the signature behind it
+    can be checked. Callers used to obtain ALLOW by simply omitting key_path.
+    The store normally ships `public_key.json` next to `attestations/`, so we
+    auto-discover it instead of silently skipping verification. Returns None
+    only when no key exists at all - and then the gate fails closed.
+    """
+    if key_path:
+        return key_path
+    if not store_dir:
+        return None
+    cand = os.path.join(store_dir, "public_key.json")
+    return cand if os.path.isfile(cand) else None
+
+
 def check_component(store_dir, registry, name, version=None, key_path=None,
                     key_registry_path=None, policy="default", policy_file=None):
     """Resolve the latest attestation and run the install gate.
@@ -73,7 +90,8 @@ def check_component(store_dir, registry, name, version=None, key_path=None,
                 "policy": policy, "verdict": "", "subject": "", "generated_at": "",
                 "bundle": None}
     fp, payload = hit
-    dec = evaluate_gate(fp, key_path=key_path, key_registry_path=key_registry_path,
+    dec = evaluate_gate(fp, key_path=resolve_key(store_dir, key_path),
+                        key_registry_path=key_registry_path,
                         policy_name=policy, policy_file=policy_file)
     s = payload.get("subject", {})
     return {"found": True, "decision": dec.decision, "reasons": dec.reasons,

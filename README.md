@@ -39,8 +39,8 @@ canari-gate --store out --list
 
 ## Open dataset
 
-`dataset/` is the published snapshot of the ledger under **CC-BY-4.0**: **3251 signed
-attestations over 883 components**, the canonical feed, drift reports, the schema, both
+`dataset/` is the published snapshot of the ledger under **CC-BY-4.0**: **5170 signed
+attestations over 1417 components**, the canonical feed, drift reports, the schema, both
 public keys and a `MANIFEST.json` with a sha256 per file. Verify a bundle offline with
 `canari-verify`; verify the whole snapshot with the manifest (see `dataset/README.md`).
 Refresh it after a scan with `python scripts/sync_dataset.py`.
@@ -120,7 +120,7 @@ canari-drift --store out --write out/drift
 ```
 
 No arguments needed: the wheel ships a snapshot of the newest signed attestation
-per component (883 components, rebuilt by `scripts/build_snapshot.py` from
+per component (1417 components, rebuilt by `scripts/build_snapshot.py` from
 `dataset/`), so `gate_check` answers out of the box. Point `--store` (or
 `$CANARI_STORE`) at a full ledger checkout when you want the complete
 supersession history instead of the snapshot.

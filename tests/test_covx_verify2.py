@@ -20,7 +20,8 @@ def _mk(tmp_path, name="p", checks=None, verdict="pass", fname="a.bundle.json",
                        "artifact_sha256": "a" * 64, "maintainers": []},
            "host": {"class": "mcp", "host_version": "t"},
            "scenario_sha256": "b" * 64,
-           "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"}],
+           "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+                                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
            "verdict": verdict, "checker": {"kind": "automation", "id": "t"},
            "evidence_refs": [],
            "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],
@@ -122,12 +123,12 @@ class TestChainBranches:
         ad = tmp_path / "attestations"
         ad.mkdir()
         (ad / "bad.bundle.json").write_text("{broken", encoding="utf-8")
-        assert verify_chain(str(ad)) == 4
+        assert verify_chain(str(ad), require_signatures=False) == 4
 
     def test_single_no_supersedes_ok(self, tmp_path):
         from canari.verify_cli import verify_chain
         _mk(tmp_path, fname="a.bundle.json")
-        assert verify_chain(str(tmp_path / "attestations")) == 0
+        assert verify_chain(str(tmp_path / "attestations"), require_signatures=False) == 0
 
     def test_single_self_pointer_errors(self, tmp_path):
         from canari.verify_cli import verify_chain
@@ -141,7 +142,7 @@ class TestChainBranches:
         d = hashlib.sha256(json.dumps(p, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         p["supersedes"] = d
         _signed_bundle_file(ad / "s.bundle.json", p)
-        assert verify_chain(str(ad)) == 4
+        assert verify_chain(str(ad), require_signatures=False) == 4
 
     def test_no_head_cycle(self, tmp_path):
         from canari.verify_cli import verify_chain
@@ -155,7 +156,7 @@ class TestChainBranches:
         b = dict(base, supersedes="1" * 64)
         _signed_bundle_file(ad / "a.bundle.json", a)
         _signed_bundle_file(ad / "b.bundle.json", b)
-        assert verify_chain(str(ad)) == 4
+        assert verify_chain(str(ad), require_signatures=False) == 4
 
     def test_diamond_dag(self, tmp_path):
         from canari.verify_cli import verify_chain
@@ -187,7 +188,7 @@ class TestChainBranches:
                             dict(base, generated_at="2026-11-13T00:00:00Z",
                                  supersedes=d1))
         # both children hang off head; leaf extends the c1 branch -> all reachable
-        assert verify_chain(str(ad)) == 0
+        assert verify_chain(str(ad), require_signatures=False) == 0
 
 
 class TestMainBranches:

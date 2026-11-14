@@ -21,7 +21,8 @@ from canari.signing import (generate_keypair, sign_attestation,
 
 def _att(verdict="unsupported", name="pkg", expires="2027-01-01T00:00:00Z",
          finding=False, registry="npm"):
-    checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"}]
+    checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+              {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}]
     if finding:
         checks.append({"id": "L2.4_CADENCE", "verdict": "pass", "tool": "t",
                        "evidence_ref": "finding: odd cadence"})

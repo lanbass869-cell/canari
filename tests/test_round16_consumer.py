@@ -11,14 +11,20 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def _mk_bundle(tmp_path, name, version, verdict, checks=None, gen="2026-11-09T00:00:00Z",
                sha="a" * 64, registry="npm", fname=None):
-    from canari.signing import generate_keypair, sign_attestation
+    """Bundle + matching public key, i.e. what a real store ships.
+
+    The gate fails closed without a key (2026-11-13), so fixtures must publish
+    the key they signed with instead of relying on an unsigned ALLOW.
+    """
+    from canari.signing import generate_keypair, sign_attestation, export_public_key
     signer, pub = generate_keypair()
     att = {"_type": "https://agentcheck.dev/attestation/v0.1",
            "subject": {"name": name, "version": version, "registry": registry,
                        "artifact_sha256": sha, "maintainers": []},
            "host": {"class": "mcp", "host_version": "t"},
            "scenario_sha256": "b" * 64,
-           "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"}],
+           "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"},
+                                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t/0.1"}],
            "verdict": verdict, "checker": {"kind": "automation", "id": "t"},
            "evidence_refs": [],
            "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
@@ -26,6 +32,7 @@ def _mk_bundle(tmp_path, name, version, verdict, checks=None, gen="2026-11-09T00
            "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
                          "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
     s = sign_attestation(att, signer)
+    (tmp_path / "public_key.json").write_text(export_public_key(pub), encoding="utf-8")
     ad = tmp_path / "attestations"
     ad.mkdir(exist_ok=True)
     fp = ad / (fname or ("%s_%s_%s.bundle.json" % (registry, name.replace("/", "_"), gen.replace(":", ""))))

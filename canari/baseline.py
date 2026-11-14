@@ -47,6 +47,20 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(HERE, "out")
 
 
+def _usable_meta(meta):
+    """True only for a REAL metadata baseline (maintainers/homepage snapshot).
+
+    ★2026-11-14: `metadata_scan` stores `{"tier": "meta"}` under a plain-name key
+    with no maintainers/homepage. `_prev()` falls back to that key, so H2 kept
+    receiving a truthy-but-empty baseline and compared against nothing (or
+    reported "no change" on garbage). A baseline without the fields H2 reads is
+    not a baseline.
+    """
+    if not isinstance(meta, dict):
+        return False
+    return ("maintainers" in meta) or ("homepage" in meta)
+
+
 def _read_pred(bundle):
     """(attestation predicate, error) from a bundle - signed copy only."""
     return read_signed_payload(bundle)
@@ -592,7 +606,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             try:
                 _prev_npm = _prev("npm", name)
                 _prev_meta = (_prev_npm or {}).get("meta")
-                if _prev_meta:
+                if _usable_meta(_prev_meta):
                     _cur_meta = {"maintainers": [m.get("name", "") for m in (lv["maintainers"] or [])
                                                  if isinstance(m, dict)],
                                  "homepage": (lv.get("homepage") or "")}
@@ -609,8 +623,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                                "tool": "canari-anomaly/0.1",
                                "evidence_ref": "anomaly check failed: %s" % str(_ae)[:80]})
             try:
-                from canari.typosquat import check_typosquatting
-                _tq = check_typosquatting(name, {p["name"] for p in npm_pkgs})
+                from canari.typosquat import check_typosquatting, find_mutual_pairs
+                _tn = {p["name"] for p in npm_pkgs}
+                _tq = check_typosquatting(name, _tn, mutual_pairs=find_mutual_pairs(_tn))
                 checks.append(_tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
                                       "tool": "canari-typosquat/0.1",
                                       "evidence_ref": "no close match to another component in this scan"})
@@ -704,7 +719,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         try:
             prev_comp = _prev("pypi", name)
             prev_meta = (prev_comp or {}).get("meta")
-            if prev_meta:
+            if _usable_meta(prev_meta):
                 cur_meta = {"maintainers": pkg.get("maintainers", []),
                             "homepage": (pkg.get("links") or {}).get("homepage", "")}
                 _an = detect_metadata_anomaly(cur_meta, prev_meta)
@@ -722,8 +737,18 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         # H3: typosquatting (BUG-76 fix: was dead code; the co-enumerated PyPI
         # namespace of this scan is the trusted set)
         try:
-            from canari.typosquat import check_typosquatting
-            tq = check_typosquatting(name, {q["name"] for q in pypi_pkgs if "error" not in q})
+            from canari.typosquat import check_typosquatting, find_mutual_pairs
+            _trusted = {q["name"] for q in pypi_pkgs if "error" not in q}
+            # age_rank: first-seen generation order from state (higher = older).
+            # Direction matters - without it the established package gets accused
+            # by its own imitator (measured: mcp-server-fetch vs mcp-server-xfetch).
+            _age = {}
+            for _n in _trusted:
+                _st = _prev("pypi", _n) or {}
+                _age[_n] = 0 if _st else 1
+            tq = check_typosquatting(name, _trusted,
+                                     mutual_pairs=find_mutual_pairs(_trusted),
+                                     age_rank=_age)
             checks.append(tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
                                  "tool": "canari-typosquat/0.1",
                                  "evidence_ref": "no close match to another component in this scan"})
@@ -894,20 +919,39 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     key_path = os.path.join(out_dir, "public_key.json")
     with open(key_path, "w", encoding="utf-8") as f:
         f.write(export_public_key(pub_key))
-    # update state for supersession chain on next run
-    meta_snapshots = {pkg["name"]: {"maintainers": pkg.get("maintainers", []),
-                                     "homepage": (pkg.get("links") or {}).get("homepage", "")}
-                      for pkg in pypi_pkgs if "error" not in pkg}
+    # ---- persist state (supersession chain + metadata baseline for H2) ----
+    #
+    # ★2026-11-14 (H2 root cause): meta_snapshots was built from pypi_pkgs only,
+    # so npm/mcp/dsh components were stored with NO metadata baseline. The next
+    # run then found `prev_meta = None` and every L2.5 row landed on "skip -
+    # first scan of this component": measured 1635 of 1662 PyPI records, and H2
+    # had never produced a single finding. The baseline is now captured for
+    # EVERY registry from the enumeration result, at scan time.
+    def _meta_of(reg, name):
+        src = {
+            "npm": npm_pkgs,
+            "pypi": pypi_pkgs,
+            "mcp-registry": mcp_pkgs,
+        }.get(reg) or []
+        for _p in src:
+            if _p.get("name") == name:
+                _links = _p.get("links") or {}
+                return {"maintainers": _p.get("maintainers", []) or [],
+                        "homepage": _p.get("homepage") or _links.get("homepage", "") or ""}
+        return None
+
     for r in all_results:
         if r.get("bundle"):
             try:
                 bp = json.load(open(r["bundle"], encoding="utf-8"))
                 _pred, _e = _read_pred(bp)
                 payload_digest = payload_digest_of(_pred)
-                state.set_component("%s:%s" % (r.get("registry", "?"), r["name"]),
+                _reg = r.get("registry", "?")
+                state.set_component("%s:%s" % (_reg, r["name"]),
                                     r.get("version", ""),
-                                    (_pred or {}).get("subject", {}).get("artifact_sha256", ""), payload_digest,
-                                    meta=meta_snapshots.get(r["name"]))
+                                    (_pred or {}).get("subject", {}).get("artifact_sha256", ""),
+                                    payload_digest,
+                                    meta=_meta_of(_reg, r["name"]))
             except Exception:
                 pass
     state.save()

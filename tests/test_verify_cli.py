@@ -37,7 +37,9 @@ def _att():
         "scenario_sha256": "b" * 64,
         "checks": [
             {"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "canari-meta/0.1", "duration_ms": 12},
-            {"id": "L2.1_ARTIFACT_HASH", "verdict": "unsupported", "tool": "canari-meta/0.1",
+            {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "canari-meta/0.1",
+             "evidence_ref": "npm-tarball:demo-mcp"},
+            {"id": "L2.5_METADATA_ANOMALY", "verdict": "unsupported", "tool": "canari-meta/0.1",
              "evidence_ref": "not downloaded"},
         ],
         "verdict": "pass-with-findings",

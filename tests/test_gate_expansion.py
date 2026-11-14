@@ -24,7 +24,8 @@ def _att(verdict="pass", checks=None, expires="2026-12-01T00:00:00Z"):
                         "artifact_sha256": "a" * 64, "maintainers": []},
             "host": {"class": "mcp", "host_version": "t"},
             "scenario_sha256": "b" * 64,
-            "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"}],
+            "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"},
+                                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t/0.1"}],
             "verdict": verdict, "checker": {"kind": "automation", "id": "t"},
             "evidence_refs": [],
             "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
@@ -38,10 +39,16 @@ def env():
     d = tempfile.mkdtemp()
     paths = {}
     clean = _att()
+    # Explicit checks REPLACE the default list, so each variant must still carry
+    # artifact evidence (L2.1) - otherwise the record is "name exists only" and
+    # the gate correctly BLOCKs it instead of reviewing the finding.
+    _art = {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t/0.1"}
     finding = _att(verdict="pass-with-findings", checks=[
+        _art,
         {"id": "L2.6_TYPOSQUATTING", "verdict": "pass", "tool": "t/0.1",
          "evidence_ref": "finding: typosquatting_name_similarity candidate=reqests"}])
     cadence = _att(verdict="pass-with-findings", checks=[
+        _art,
         {"id": "L2.4_RELEASE_CADENCE", "verdict": "pass", "tool": "t/0.1",
          "evidence_ref": "finding: release_burst - 5 versions in 24h"}])
     for nm, att in (("clean", clean), ("finding", finding), ("cadence", cadence)):

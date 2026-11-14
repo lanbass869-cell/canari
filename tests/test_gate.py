@@ -21,7 +21,8 @@ def _make_bundle(tmp_path, verdict="pass", expires_in_days=7, extra_checks=None)
     now = datetime.now(timezone.utc)
     expires = (now + timedelta(days=expires_in_days)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "test/0.1"}]
+    checks = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "test/0.1"},
+              {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "test/0.1"}]
     if extra_checks:
         checks.extend(extra_checks)
 

@@ -69,13 +69,21 @@ class StateStore:
         self._data.setdefault('components', {})[name] = entry
         return entry
     def diff(self, current, prev=None):
-        prev = prev if prev is not None else self._data.get('components', {})
+        """Classify each component against the previous snapshot.
+
+        ★2026-11-14: `changed` only compared sha256, so a VERSION change with an
+        unchanged artifact hash was reported as "unchanged" - a downgrade
+        (2.0 -> 1.0, same bytes) was invisible, as was a metadata-only re-release.
+        Both are exactly the kind of movement a verification ledger must show.
+        """
+        prev = prev if prev is not None else self._data.get("components", {})
         new, changed, unchanged, removed = [], [], [], []
         for name, info in current.items():
             p = prev.get(name)
             if p is None:
                 new.append(name)
-            elif p.get('sha256') != info.get('sha256'):
+            elif (p.get("sha256") != info.get("sha256")
+                  or p.get("version") != info.get("version")):
                 changed.append(name)
             else:
                 unchanged.append(name)

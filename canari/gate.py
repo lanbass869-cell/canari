@@ -38,10 +38,6 @@ class GatePolicy:
     # custom policies say yes (a human should read the findings); the explicitly
     # lax posture says no. Keyed on this field, never on the policy *name*.
     review_findings: bool = True
-    # F7: should pass-with-findings escalate ALLOW -> REVIEW? default/strict/
-    # custom policies say yes (a human should read the findings); the explicitly
-    # lax posture says no. Keyed on this field, never on the policy *name*.
-    review_findings: bool = True
     # Optional list of finding kinds to always treat as blocking, e.g.
     # ["typosquatting", "metadata", "cadence"]; empty = no keyword blocking.
     block_finding_kinds: list = field(default_factory=list)
@@ -130,7 +126,8 @@ def _check_freshness(payload):
 
 
 def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
-                  policy_name="default", policy_overrides=None, policy_file=None):
+                  policy_name="default", policy_overrides=None, policy_file=None,
+                  allow_unsigned=False):
     from dataclasses import replace
     if policy_file:
         file_def = load_policy_file(policy_file)
@@ -205,6 +202,31 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     verdict = payload.get("verdict", "error")
     subject = payload.get("subject", {})
     subject_name = "%s@%s (%s)" % (subject.get("name", "?"), subject.get("version", "?"), subject.get("registry", "?"))
+
+    # ★2026-11-13 (F1) FAIL-CLOSED ON MISSING KEY.
+    # evaluate_gate() used to skip signature verification entirely when
+    # key_path was None, so `evaluate_gate(forged_bundle)` returned ALLOW for a
+    # bundle whose verdict had been rewritten. Demonstrated: take an
+    # `unsupported` record, flip the signed payload to `pass`, re-encode - gate
+    # said ALLOW with no reasons. A decision that cannot be tied to a signature
+    # is not a decision, so the only correct default is BLOCK.
+    # Callers that genuinely want an unsigned structural check must ask for it
+    # explicitly with allow_unsigned=True, and the result is REVIEW at best.
+    if key_path is None and not allow_unsigned:
+        return GateDecision(
+            decision="BLOCK",
+            reasons=["no public key supplied: the bundle's signature cannot be "
+                     "verified, so its verdict cannot be trusted "
+                     "(pass key_path=..., or allow_unsigned=True for a "
+                     "structural-only check)"],
+            policy=policy_name, verdict=verdict, subject=subject_name,
+            key_valid=False)
+    if not key_path:
+        # explicit opt-in: never ALLOW without a signature
+        reasons.append("UNVERIFIED: signature check skipped (allow_unsigned=True); "
+                       "this is a structural check only, not a trust decision")
+        if decision == "ALLOW":
+            decision = "REVIEW"
 
     if key_path:
         if not os.path.exists(key_path):

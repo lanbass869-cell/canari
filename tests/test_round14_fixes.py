@@ -49,7 +49,8 @@ class TestParallelGenerations:
                            "artifact_sha256": "a" * 64, "maintainers": []},
                "host": {"class": "mcp", "host_version": "t"},
                "scenario_sha256": "b" * 64,
-               "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"}],
+               "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"},
+                       {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t/0.1"}],
                "verdict": "pass", "checker": {"kind": "automation", "id": "t"},
                "evidence_refs": [],
                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
@@ -68,7 +69,7 @@ class TestParallelGenerations:
         from canari.verify_cli import verify_chain
         self._bundle(tmp_path, "pkg", "1.0.0")
         self._bundle(tmp_path, "pkg", "1.0.0-b")
-        rc = verify_chain(str(tmp_path))
+        rc = verify_chain(str(tmp_path), require_signatures=False)
         assert rc == 0
 
     def test_unbridged_supersedes_target_is_error(self, tmp_path):
@@ -76,7 +77,7 @@ class TestParallelGenerations:
         self._bundle(tmp_path, "pkg", "1.0.0")
         # second bundle claims to supersede a digest that does not exist
         self._bundle(tmp_path, "pkg", "2.0.0", extra={"supersedes": "f" * 64})
-        rc = verify_chain(str(tmp_path))
+        rc = verify_chain(str(tmp_path), require_signatures=False)
         assert rc == 4
 
 
@@ -136,7 +137,8 @@ class TestVerifyNoMutation:
                            "artifact_sha256": "a" * 64, "maintainers": []},
                "host": {"class": "mcp", "host_version": "t"},
                "scenario_sha256": "b" * 64,
-               "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"}],
+               "checks": [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t/0.1"},
+                       {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t/0.1"}],
                "verdict": "pass", "checker": {"kind": "automation", "id": "t"},
                "evidence_refs": [],
                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],

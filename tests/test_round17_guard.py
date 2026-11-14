@@ -11,14 +11,21 @@ from canari.guard import parse_install, main as guard_main
 
 
 def _mk(tmp_path, name, verdict, registry="dsh-registry", checks=None):
-    from canari.signing import generate_keypair, sign_attestation
+    """Write a bundle AND the matching public key.
+
+    A real store always publishes `public_key.json` next to attestations/; the
+    gate now fails closed when no key is available (2026-11-13), so the fixture
+    has to look like a real store instead of relying on unsigned ALLOW.
+    """
+    from canari.signing import generate_keypair, sign_attestation, export_public_key
     signer, pub = generate_keypair()
     att = {"_type": "https://agentcheck.dev/attestation/v0.1",
            "subject": {"name": name, "version": "1.0.0", "registry": registry,
                        "artifact_sha256": "a" * 64, "maintainers": []},
            "host": {"class": "mcp", "host_version": "t"},
            "scenario_sha256": "b" * 64,
-           "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"}],
+           "checks": checks or [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+                                  {"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
            "verdict": verdict, "checker": {"kind": "automation", "id": "t"},
            "evidence_refs": [],
            "evidence_completeness": {"dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
@@ -26,6 +33,7 @@ def _mk(tmp_path, name, verdict, registry="dsh-registry", checks=None):
            "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
                          "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
     s = sign_attestation(att, signer)
+    (tmp_path / "public_key.json").write_text(export_public_key(pub), encoding="utf-8")
     ad = tmp_path / "attestations"
     ad.mkdir(exist_ok=True)
     (ad / ("%s_%s.bundle.json" % (registry, name.replace("/", "_")))).write_text(

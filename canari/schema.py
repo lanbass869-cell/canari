@@ -94,13 +94,56 @@ def verdict_semantics():
     }
 
 
+# Checks that establish something substantive about the COMPONENT, as opposed
+# to merely proving its name exists in a registry. Two legitimate families:
+#   1. we fetched the bytes ourselves   (L2.1 hash / L3.1 static scan)
+#   2. an upstream authority evaluated it (L2.7 / L2.8 = dsh.so install+security
+#      conclusions, which Canari references rather than re-derives)
+# Measured 2026-11-14 against the live store: with family 1 only, 321 dsh
+# records that DO carry upstream install/security conclusions were wrongly
+# blocked; adding family 2 keeps every legitimately-evidenced record (1157) and
+# still blocks the 346 registry-presence-only records.
+_ARTIFACT_EVIDENCE_IDS = frozenset({
+    "L2.1_ARTIFACT_HASH",
+    "L3.1_STATIC_SCAN",
+    "L2.7_PLUGIN_SECURITY_REF",
+    "L2.8_PLUGIN_INSTALL_REF",
+})
+
+
+def has_artifact_evidence(att):
+    """True if at least one check actually assessed the artifact (not just its name).
+
+    ★2026-11-13: 346 published mcp-registry records carried verdict
+    `pass-with-findings` with ONE check - L1.1_REGISTRY_PRESENT - and an
+    all-zero artifact_sha256. Under `lax` the gate said ALLOW, and
+    `canari-verify` printed "gate: ALLOW". Nothing about the component was
+    verified. A verdict without artifact evidence must never read as
+    installable.
+    """
+    checks = (att or {}).get("checks") or []
+    for c in checks:
+        if c.get("id") in _ARTIFACT_EVIDENCE_IDS and c.get("verdict") in ("pass", "pass-with-findings"):
+            return True
+        # an explicit "we could not check the bytes" verdict is evidence of
+        # ABSENCE, not of safety, so it never counts
+    return False
+
+
 def is_gate_passing(att):
     """Install-gate predicate: artifact hash matches latest attestation AND
     verdict is not gate-blocking. Per plan section 5.3:
     verdict NOT IN {fail, error} (pass-with-findings still installs).
     Unsupported/error are excluded from the gate - absence of a verdict is
-    NOT a pass (dsh-testkit semantics: unsupported != failed != pass)."""
+    NOT a pass (dsh-testkit semantics: unsupported != failed != pass).
+
+    ★2026-11-13: additionally requires ARTIFACT evidence. A record whose only
+    check is registry presence is not a passing verdict - see
+    has_artifact_evidence().
+    """
     v = (att or {}).get("verdict")
     if not v:
         return False
-    return v in _LIVE_STATUSES
+    if v not in _LIVE_STATUSES:
+        return False
+    return has_artifact_evidence(att)
