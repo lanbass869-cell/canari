@@ -96,6 +96,36 @@ canari-gate --store out --registry dsh-registry --name aegis --policy paranoid -
 canari-gate --store out --list
 ```
 
+### 2. Record another scanner's result as a signed, timestamped attestation
+
+Canari does not scan anything itself. What it adds is durability: a scanner
+tells you what it thinks *today*, Canari records what it said *on each date*,
+signed and offline-verifiable, and keeps the history when the verdict flips.
+
+`canari-ingest-sarif` reads a SARIF 2.1.0 report from any external scanner
+(NVIDIA SkillSpector, Snyk agent-scan, Tencent AI-Infra-Guard, ...) and writes a
+normal Canari bundle:
+
+```
+canari-ingest-sarif \
+  --sarif skillspector.sarif \
+  --name @modelcontextprotocol/server-filesystem --version 2025.1.0 \
+  --registry npm \
+  --artifact-sha256 <sha256 of the scanned artifact> \
+  --key out/private_key.pem --out out/attestations
+```
+
+Rules it enforces, so the ledger cannot become a rubber stamp:
+
+- **The upstream tool is named, not hidden.** Every check records
+  `tool = <scanner>/<version>` and `checker.id` says it was ingested by Canari.
+- **The artifact digest is required.** A scan result without the scanned
+  artifact's sha256 cannot be bound to anything, so the command refuses.
+- **An unusable report is an error, not a pass.** No run block, or
+  `executionSuccessful: false`, yields verdict `error`.
+- **Findings move the verdict.** Critical/high → `fail`; lower severity →
+  `pass-with-findings`; no findings → `pass`.
+
 ### 2. Drift report (what changed since last week)
 
 ```

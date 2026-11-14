@@ -33,6 +33,7 @@ canari-gate = "canari.gate_cli:main"
 canari-drift = "canari.drift_cli:main"
 canari-mcp = "canari.mcp_server:main"
 canari-guard = "canari.guard:main"
+canari-ingest-sarif = "canari.sarif_ingest:main"
 
 [project.urls]
 Homepage = "https://github.com/lanbass869-cell/canari"
