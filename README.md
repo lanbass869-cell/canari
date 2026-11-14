@@ -98,6 +98,9 @@ canari-gate --store out --list
 
 ### 2. Record another scanner's result as a signed, timestamped attestation
 
+**Live example:** [20 PyPI MCP servers, scanned by bandit, recorded and signed](https://lanbass869-cell.github.io/canari/scan/) - every record on that page
+can be verified with `canari-verify` using the public key shipped beside it.
+
 Canari does not scan anything itself. What it adds is durability: a scanner
 tells you what it thinks *today*, Canari records what it said *on each date*,
 signed and offline-verifiable, and keeps the history when the verdict flips.
