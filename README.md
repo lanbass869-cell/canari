@@ -3,10 +3,11 @@
 <!-- mcp-name: io.github.lanbass869-cell/canari -->
 
 [![CI](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml/badge.svg)](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml)
-![tests](https://img.shields.io/badge/tests-434%20passing-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-90%25%20line%20%7C%2083%25%20branch-brightgreen)
+![tests](https://img.shields.io/badge/tests-496%20passing-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-89%25%20line%20%7C%2086%25%20branch-brightgreen)
 ![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
 ![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
+[![mcpservers.org](https://img.shields.io/badge/mcpservers.org-listed-blue)](https://mcpservers.org/servers/lanbass869-cell/canari)
 
 Agent component verification ledger - signed, offline-verifiable, history-preserving attestations for MCP servers, agent skills, and DSH plugins.
 
@@ -49,9 +50,9 @@ Refresh it after a scan with `python scripts/sync_dataset.py`.
 
 | Gate | Threshold | Current |
 |---|---|---|
-| tests | green on 3.10/3.12/3.13 | 434 passing |
-| line coverage | >= 85% | 90% |
-| mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (50/50) |
+| tests | green on 3.10/3.12/3.13 | 496 passing (1 env-skip) |
+| line coverage | >= 85% | 89% (branch 86%) |
+| mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (47/47 killed + 2 equivalent, 3 skipped) |
 | live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
 
 Run them yourself: `python scripts/quality_gate.py`
