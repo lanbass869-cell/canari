@@ -8,6 +8,7 @@
 ![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
 ![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
 [![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/lanbass869-cell/canari)
+[![Canari on Glama](https://glama.ai/mcp/servers/lanbass869-cell/canari/badges/score.svg)](https://glama.ai/mcp/servers/lanbass869-cell/canari)
 
 Agent component verification ledger - signed, offline-verifiable, history-preserving attestations for MCP servers, agent skills, and DSH plugins.
 
