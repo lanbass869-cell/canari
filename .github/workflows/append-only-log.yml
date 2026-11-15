@@ -54,6 +54,9 @@ jobs:
             python scripts/log_daily.py --log-dir docs/log \
               --out docs/log/head-latest.json
 
+      - name: Log our own verdict bundles
+        run: python scripts/log_verdicts.py --out docs/log/verdicts-latest.json
+
       - name: Rebuild the published page and latest bundle
         run: python scripts/publish_log.py
 

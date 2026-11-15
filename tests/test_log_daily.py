@@ -98,12 +98,13 @@ class TestDailyPath:
         d = str(tmp_path / "log")
         out = tmp_path / "head.json"
         rc = log_daily.main(["--log-dir", d, "--out", str(out),
-                             "--url", "https://example.invalid/x.json.gz"])
+                             "--url", "https://example.invalid/a.json.gz",
+                             "--url", "https://example.invalid/b.json.gz"])
         assert rc == 0
         assert out.exists()
         saved = json.loads(out.read_text(encoding="utf-8"))
         assert saved["audit"]["ok"] is True
-        assert saved["head"]["body"]["size"] == 1
+        assert saved["head"]["body"]["size"] == 2
 
     def test_no_network_mode_only_audits(self, tmp_path):
         d = str(tmp_path / "log")
@@ -156,14 +157,13 @@ class TestIdempotencyAndPublishing:
         self.fake(payload(3), monkeypatch)
         d = str(tmp_path / "log")
         out = tmp_path / "h.json"
-        assert log_daily.main(["--log-dir", d, "--out", str(out),
-                               "--url", "https://x.invalid/a.gz"]) == 0
-        assert json.loads(out.read_text(encoding="utf-8"))["appended"] == [0]
-        assert log_daily.main(["--log-dir", d, "--out", str(out),
-                               "--url", "https://x.invalid/a.gz"]) == 0
+        urls = ["--url", "https://x.invalid/a.gz", "--url", "https://x.invalid/b.gz"]
+        assert log_daily.main(["--log-dir", d, "--out", str(out), *urls]) == 0
+        assert json.loads(out.read_text(encoding="utf-8"))["appended"] == [0, 1]
+        assert log_daily.main(["--log-dir", d, "--out", str(out), *urls]) == 0
         saved = json.loads(out.read_text(encoding="utf-8"))
         assert saved["appended"] == []
-        assert open(os.path.join(d, "log.jsonl"), encoding="utf-8").read().count("\n") == 1
+        assert open(os.path.join(d, "log.jsonl"), encoding="utf-8").read().count("\n") == 2
 
     def test_second_run_keeps_publishing_the_last_head(self, tmp_path, monkeypatch):
         self.fake(payload(3), monkeypatch)
@@ -179,13 +179,202 @@ class TestIdempotencyAndPublishing:
     def test_changed_bytes_append_and_reseal(self, tmp_path, monkeypatch):
         d = str(tmp_path / "log")
         out = tmp_path / "h.json"
+        urls = ["--url", "https://x.invalid/a.gz", "--url", "https://x.invalid/b.gz"]
         self.fake(payload(3), monkeypatch)
-        log_daily.main(["--log-dir", d, "--out", str(out), "--url", "https://x.invalid/a.gz"])
+        log_daily.main(["--log-dir", d, "--out", str(out), *urls])
         h1 = json.loads(out.read_text(encoding="utf-8"))["head"]
         self.fake(payload(6), monkeypatch)
-        log_daily.main(["--log-dir", d, "--out", str(out), "--url", "https://x.invalid/a.gz"])
+        log_daily.main(["--log-dir", d, "--out", str(out), *urls])
         saved = json.loads(out.read_text(encoding="utf-8"))
-        assert saved["appended"] == [1]
-        assert saved["head"]["body"]["size"] == 2
+        assert saved["appended"] == [2, 3]
+        assert saved["head"]["body"]["size"] == 4
         assert saved["head"]["body"]["root"] != h1["body"]["root"]
         assert saved["audit"]["ok"] is True
+
+
+class TestCrossCheckAgainstPublisher:
+    """mcpcost publishes its own sha256/bytes in latest.index.json. Comparing
+    our recomputation to that claim is what catches a truncated download or a
+    swapped body -- and it is the difference between "we hashed some bytes" and
+    "the bytes we saw are the bytes the publisher says it published"."""
+
+    @staticmethod
+    def rec(raw, rows=3):
+        return log_daily.summarize({"name": "x", "url": "u.gz", "license": "C"},
+                                   raw, "2026-01-01T00:00:00Z")
+
+    def test_matching_index_is_ok(self):
+        raw = payload(3)
+        r = self.rec(raw)
+        idx = {"sha256": r["sha256"], "bytes": len(raw), "entries": r["rows"]}
+        cc = log_daily.cross_check_index(r, idx, "i")
+        assert cc["ok"] is True
+        assert cc["sha256_matches_publisher"] is True
+        assert cc["bytes_matches_publisher"] is True
+        assert cc["rows_matches_publisher"] is True
+
+    def test_hash_mismatch_is_a_problem(self):
+        raw = payload(3)
+        r = self.rec(raw)
+        idx = {"sha256": "00" * 32, "bytes": len(raw), "entries": r["rows"]}
+        cc = log_daily.cross_check_index(r, idx, "i")
+        assert cc["ok"] is False
+        assert cc["sha256_matches_publisher"] is False
+        assert any("sha256 mismatch" in p for p in cc["problems"])
+
+    def test_byte_count_mismatch_is_a_problem(self):
+        raw = payload(3)
+        r = self.rec(raw)
+        idx = {"sha256": r["sha256"], "bytes": len(raw) + 1, "entries": r["rows"]}
+        cc = log_daily.cross_check_index(r, idx, "i")
+        assert cc["ok"] is False
+        assert any("byte count mismatch" in p for p in cc["problems"])
+
+    def test_row_count_mismatch_is_a_problem(self):
+        raw = payload(3)
+        r = self.rec(raw)
+        idx = {"sha256": r["sha256"], "bytes": len(raw), "entries": r["rows"] + 10}
+        cc = log_daily.cross_check_index(r, idx, "i")
+        assert cc["ok"] is False
+        assert any("row count mismatch" in p for p in cc["problems"])
+
+    def test_missing_publisher_hash_fails_closed(self):
+        raw = payload(3)
+        r = self.rec(raw)
+        cc = log_daily.cross_check_index(r, {"bytes": len(raw)}, "i")
+        assert cc["ok"] is False
+        assert cc["sha256_matches_publisher"] is None
+
+    def test_unreachable_index_is_recorded_not_fatal(self, tmp_path, monkeypatch):
+        class Fake:
+            def __init__(self, *a, **k):
+                pass
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+            def read(self, n):
+                return payload(2)
+
+        def urlopen(req, *a, **k):
+            if "index" in str(getattr(req, "full_url", req)):
+                raise OSError("index down")
+            return Fake()
+
+        monkeypatch.setattr(log_daily.urllib.request, "urlopen", urlopen)
+        d = str(tmp_path / "log")
+        out = tmp_path / "h.json"
+        rc = log_daily.main(["--log-dir", d, "--out", str(out),
+                             "--url", "https://x.invalid/a.gz",
+                             "--index-url", "https://x.invalid/index.json"])
+        assert rc == 0
+        saved = json.loads(out.read_text(encoding="utf-8"))
+        assert saved["audit"]["ok"] is True
+        entry = json.loads(open(os.path.join(d, "log.jsonl"), encoding="utf-8").readline())
+        assert entry["payload"]["cross_check"]["ok"] is None
+        assert "error" in entry["payload"]["cross_check"]
+
+
+class TestGzipByMagicBytes:
+    """Real bug (2026-11-15): ProtocolProbe serves gzip from a URL with no
+    .gz suffix. The old suffix check took the raw branch, json.loads choked on
+    gzip bytes, and the row count was silently recorded as "?" -- the hash was
+    right, the human-readable summary was wrong. Decide by magic bytes."""
+
+    def test_gzip_without_suffix_is_decompressed(self):
+        raw = payload(4)
+        rec = log_daily.summarize(
+            {"name": "pp", "url": "https://x/api/v1/evidence", "license": "CC"},
+            raw, "t")
+        assert "parse_error" not in rec
+        assert rec["rows"] == 4
+        assert rec["plain_bytes"] > 0
+
+    def test_plain_json_still_parses(self):
+        raw = json.dumps([{"state": "alive"}, {"state": "dead"}]).encode()
+        rec = log_daily.summarize(
+            {"name": "p", "url": "https://x/e.json", "license": "CC"}, raw, "t")
+        assert rec["rows"] == 2
+        assert rec["states"] == {"alive": 1, "dead": 1}
+
+    def test_broken_gzip_is_recorded(self):
+        rec = log_daily.summarize(
+            {"name": "p", "url": "https://x/e", "license": "CC"},
+            b"\x1f\x8bnotreallygzip", "t")
+        assert "parse_error" in rec
+
+    def test_metadata_fields_captured(self):
+        doc = {"dataset": "d", "probed_at": "P", "snapshot": "S",
+               "generated_at": "G", "format": "f", "servers": 7,
+               "rows": [{"state": "alive"}]}
+        raw = gzip.compress(json.dumps(doc).encode())
+        rec = log_daily.summarize(
+            {"name": "p", "url": "https://x/e", "license": "CC"}, raw, "t")
+        assert rec["source_dataset"] == "d"
+        assert rec["source_probed_at"] == "P"
+        assert rec["source_snapshot"] == "S"
+        assert rec["source_generated_at"] == "G"
+        assert rec["source_format"] == "f"
+        assert rec["servers"] == 7
+
+
+class TestCorrections:
+    """Append-only means a published field is never edited. The honest repair
+    for wrong metadata is a `correction` record, and re-running the corrector
+    must be a no-op (the first version kept re-appending because it compared
+    against the original value instead of the already-corrected one)."""
+
+    def test_correction_is_appended_and_applied(self, tmp_path):
+        import log_correct
+        d = str(tmp_path / "log")
+        L = open_log(d, log_id="canari-snapshot-log")
+        L.append({"source": "x", "sha256": "ab" * 32, "rows": None}, kind="source-snapshot")
+        L.seal()
+        assert log_correct.main(["--log-dir", d, "--seq", "0", "--field", "rows",
+                                 "--value", "63318", "--reason", "parser bug"]) == 0
+        L2 = open_log(d, log_id="canari-snapshot-log")
+        entries = L2.entry_objs()
+        assert len(entries) == 2
+        assert entries[0]["payload"]["rows"] is None          # original untouched
+        assert entries[1]["payload"]["new_value"] == 63318
+        assert L2.audit()["ok"] is True
+
+    def test_rerun_is_idempotent(self, tmp_path):
+        import log_correct
+        d = str(tmp_path / "log")
+        L = open_log(d, log_id="canari-snapshot-log")
+        L.append({"source": "x", "rows": None}, kind="source-snapshot")
+        L.seal()
+        args = ["--log-dir", d, "--seq", "0", "--field", "rows",
+                "--value", "5", "--reason", "r"]
+        assert log_correct.main(args) == 0
+        before = len(open(os.path.join(d, "log.jsonl"), encoding="utf-8").readlines())
+        assert log_correct.main(args) == 0
+        after = len(open(os.path.join(d, "log.jsonl"), encoding="utf-8").readlines())
+        assert before == after
+
+    def test_correction_out_of_range_is_usage_error(self, tmp_path):
+        import log_correct
+        d = str(tmp_path / "log")
+        L = open_log(d, log_id="canari-snapshot-log")
+        L.append({"source": "x"}, kind="source-snapshot")
+        L.seal()
+        assert log_correct.main(["--log-dir", d, "--seq", "99", "--field",
+                                 "rows", "--value", "1", "--reason", "r"]) == 3
+
+    def test_page_applies_correction_and_keeps_original_in_log(self, tmp_path):
+        import publish_log
+        d = str(tmp_path / "log")
+        L = open_log(d, log_id=publish_log.LOG_ID)
+        L.append({"source": "x", "rows": None}, kind="source-snapshot")
+        L.seal()
+        L.append({"kind": "correction", "corrects_seq": 0, "field": "rows",
+                  "old_value": None, "new_value": 7, "reason": "fix"}, kind="correction")
+        L.seal()
+        entries, corrections = publish_log.apply_corrections(L.entry_objs())
+        assert corrections and corrections[0]["new"] == 7
+        assert entries[0]["payload"]["rows"] == 7
+        assert L.entry_objs()[0]["payload"]["rows"] is None

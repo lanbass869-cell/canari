@@ -82,20 +82,64 @@ def esc(s):
     return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
+def apply_corrections(entries):
+    """Return (effective_entries, corrections) applying `correction` records.
+
+    The log itself is never rewritten: entry N keeps whatever it said. For a
+    reader, though, showing a field we already know is wrong (and that we
+    corrected in public) is just confusing. So the rendered view shows the
+    corrected value and lists the correction so nothing is hidden.
+    """
+    effective = [dict(e, payload=dict(e.get("payload") or {})) for e in entries]
+    corrections = []
+    for i, e in enumerate(entries):
+        p = e.get("payload") or {}
+        if p.get("kind") != "correction":
+            continue
+        corrections.append({"seq": i, "corrects_seq": p.get("corrects_seq"),
+                            "field": p.get("field"), "old": p.get("old_value"),
+                            "new": p.get("new_value"), "reason": p.get("reason", "")})
+        tgt = p.get("corrects_seq")
+        if isinstance(tgt, int) and 0 <= tgt < len(effective):
+            effective[tgt]["payload"][p.get("field")] = p.get("new_value")
+            effective[tgt]["corrected"] = True
+    return effective, corrections
+
+
 def build_page(L, path):
-    entries = L.entry_objs()
+    entries, corrections = apply_corrections(L.entry_objs())
     heads = L.heads()
     pub = L.public_key()
     last = heads[-1]["body"] if heads else None
     rows = []
-    for e in entries:
+    for i, e in enumerate(entries):
         p = e.get("payload") or {}
         states = p.get("states") or {}
         statestr = " ".join("%s=%s" % (k, v) for k, v in sorted(states.items()))
+        kind = p.get("kind") or e.get("kind") or ""
+        if kind == "correction":
+            # A correction record has no snapshot fields; rendering it as a
+            # blank snapshot row (the first run did) makes the table look
+            # broken. Point at the corrected entry instead.
+            rows.append(
+                "<tr><td>%s</td><td>%s</td><td colspan=\"5\">correction of "
+                "entry %s: <code>%s</code> = <code>%s</code></td></tr>"
+                % (i, esc(e.get("timestamp")), p.get("corrects_seq"),
+                   esc(p.get("field")), esc(p.get("new_value"))))
+            continue
+        if kind == "verdict":
+            subject = p.get("component") or ""
+            rows.append(
+                "<tr><td>%s</td><td>%s</td><td colspan=\"2\"><code>%s</code></td>"
+                "<td colspan=\"3\">verdict <strong>%s</strong> "
+                "(bundle sha256 <code>%s...</code>)</td></tr>"
+                % (i, esc(e.get("timestamp")), esc(subject), esc(p.get("verdict")),
+                   esc((p.get("bundle_sha256") or "")[:16])))
+            continue
         rows.append(
             "<tr><td>%s</td><td>%s</td><td><code>%s...</code></td>"
             "<td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
-            % (e.get("seq"), esc(e.get("timestamp")), esc((p.get("sha256") or "")[:16]),
+            % (i, esc(e.get("timestamp")), esc((p.get("sha256") or "")[:16]),
                esc(p.get("bytes", "")), esc(p.get("rows", "")), esc(statestr),
                esc(p.get("source_probed_at", ""))))
     headrows = ["<tr><td>%s</td><td><code>%s</code></td><td>%s</td></tr>"
@@ -105,6 +149,20 @@ def build_page(L, path):
     size = last["size"] if last else 0
     ts = last["timestamp"] if last else ""
     kid = esc(pub.get("keyid", ""))
+    corr_rows = "".join(
+        "<tr><td>%s</td><td>%s</td><td><code>%s</code></td><td><code>%s</code></td>"
+        "<td>%s</td></tr>" % (c["seq"], c["corrects_seq"], esc(c["field"]),
+                              esc(c["new"]), esc(c["reason"]))
+        for c in corrections)
+    corr_block = ("<h2>Corrections</h2>"
+                  "<p class=\"note\">This log is append-only, so a published field "
+                  "is never edited. When a committed entry's metadata turns out to "
+                  "be wrong, a correction record is appended and the entry above "
+                  "shows the corrected value. The original value stays in "
+                  "<code>log.jsonl</code> and is covered by the same proofs.</p>"
+                  "<table><tr><th>seq</th><th>corrects</th><th>field</th>"
+                  "<th>corrected value</th><th>reason</th></tr>%s</table>"
+                  % corr_rows) if corrections else ""
     page = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <title>Canari append-only log</title>
@@ -133,11 +191,12 @@ looked like on a given day. Checkable offline, without trusting this server.</p>
 </div>
 
 <h2>Entries</h2>
-<table><tr><th>#</th><th>logged at (UTC)</th><th>sha256</th><th>bytes</th>
-<th>rows</th><th>upstream states</th><th>upstream probed</th></tr>
+<table><tr><th>#</th><th>logged at (UTC)</th><th>sha256 / subject</th><th>bytes</th>
+<th>rows</th><th>upstream states / verdict</th><th>upstream probed</th></tr>
 __ROWS__
 </table>
 
+__CORRECTIONS__
 <h2>Published tree heads</h2>
 <table><tr><th>size</th><th>root</th><th>signed at</th></tr>__HEADROWS__</table>
 
@@ -161,7 +220,8 @@ Test vectors: <a href="../spec/merkle-vectors.json">merkle-vectors.json</a> (168
 """
     page = (page.replace("__SIZE__", str(size)).replace("__ROOT__", root)
                 .replace("__TS__", esc(ts)).replace("__ROWS__", "".join(rows))
-                .replace("__HEADROWS__", "".join(headrows)).replace("__KID__", kid))
+                .replace("__HEADROWS__", "".join(headrows)).replace("__KID__", kid)
+                .replace("__CORRECTIONS__", corr_block))
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(page)
 
