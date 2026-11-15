@@ -247,7 +247,7 @@ Test vectors: <a href="../spec/merkle-vectors.json">merkle-vectors.json</a> (168
 
 
 def main():
-    L = open_log(LOG_DIR, log_id=LOG_ID)
+    L = open_log(LOG_DIR, log_id=LOG_ID, c2sp_origin=C2SP_ORIGIN)
     audit = L.audit()
     if not audit["ok"]:
         print("AUDIT FAILED: %s" % "; ".join(audit["errors"]), file=sys.stderr)

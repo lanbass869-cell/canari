@@ -1,5 +1,5 @@
 {
- "checkpoint": "canari-snapshot-log\n43\nGvBX8acxdn+1W2rDCVRQe2Y7j68bM7fmfpulMTELkao=\n\n— canari-snapshot-log A4FYpTk6VnRyMF6JZYXFc6gIfDqAx63ggsQ2C/aqRYm8bFQvlLvLj0BViG+/JinyxZFpnm2EI9voXzyN4hF7o2n+jgQ=\n",
+ "checkpoint": "github.com/lanbass869-cell/canari/log\n43\nGvBX8acxdn+1W2rDCVRQe2Y7j68bM7fmfpulMTELkao=\n\n— github.com/lanbass869-cell/canari/log eIfAqK49AJHn67xIlixl2OnRKiWRWhlkHUZVHkDgvsVmXSv/mMJANppcCX5PaJC42Nrcf5msTNbn6/B2JO+y9HfKKAs=\n",
  "consistency": {
   "from_head": {
    "body": {

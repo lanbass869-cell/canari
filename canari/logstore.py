@@ -139,9 +139,17 @@ def check_head_body(body: dict, log_id=None) -> str:
 
 
 class AppendOnlyLog:
-    def __init__(self, log_dir, log_id="canari-log", private_key_path=None):
+    def __init__(self, log_dir, log_id="canari-log", private_key_path=None,
+                 c2sp_origin=None):
         self.dir = os.path.abspath(log_dir)
         self.log_id = log_id
+        # The origin a witness keys its state by. Defaults to log_id so a caller
+        # that does not care gets one consistent identity, but the published log
+        # sets it to a collision-resistant URL. export_bundle and
+        # checkpoint_note must agree, or the bundle carries a checkpoint under a
+        # different origin than the published checkpoint.txt -- which is exactly
+        # the inconsistency this parameter removes.
+        self.c2sp_origin = c2sp_origin or log_id
         self.entries_path = os.path.join(self.dir, "log.jsonl")
         self.heads_path = os.path.join(self.dir, "heads.jsonl")
         self.key_path = os.path.join(self.dir, "public_key.json")
@@ -426,7 +434,7 @@ class AppendOnlyLog:
             raise LogError("no signed head exists; call seal() first")
         body = h["body"]
         signer = self._ensure_signer()
-        return c2sp.sign_checkpoint(signer, origin or self.log_id,
+        return c2sp.sign_checkpoint(signer, origin or self.c2sp_origin,
                                     body["size"],
                                     bytes.fromhex(body["root"]))
 
@@ -453,7 +461,7 @@ class AppendOnlyLog:
                   "tree_head": inc["head"],
                   "inclusion_proof": inc["proof"]}
         try:
-            bundle["checkpoint"] = self.checkpoint_note(origin=self.log_id)
+            bundle["checkpoint"] = self.checkpoint_note()
         except LogError:
             pass
         if consistency:
@@ -466,5 +474,7 @@ class AppendOnlyLog:
         return bundle
 
 
-def open_log(log_dir, log_id="canari-log", private_key_path=None) -> AppendOnlyLog:
-    return AppendOnlyLog(log_dir, log_id=log_id, private_key_path=private_key_path)
+def open_log(log_dir, log_id="canari-log", private_key_path=None,
+             c2sp_origin=None) -> AppendOnlyLog:
+    return AppendOnlyLog(log_dir, log_id=log_id, private_key_path=private_key_path,
+                         c2sp_origin=c2sp_origin)

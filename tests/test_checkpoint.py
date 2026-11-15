@@ -159,3 +159,33 @@ class TestStrictness:
     def test_signature_line_without_em_dash_refused(self):
         with pytest.raises(cp.NoteError):
             cp.parse_signature_line("- example.com/witness AAAA")
+
+
+class TestBundleAndCheckpointAgree:
+    """The bundle's checkpoint and docs/log/checkpoint.txt are two renderings of
+    one head. If they carry different origins, a witness co-signs one identity
+    while a consumer verifies another. Found while diffing a fresh clone: the
+    bundle still said the internal log_id after the published origin changed."""
+
+    def test_bundle_checkpoint_uses_c2sp_origin(self, tmp_path):
+        from canari.logstore import open_log
+        L = open_log(str(tmp_path / "log"), log_id="internal-id",
+                     c2sp_origin="example.org/canari/log")
+        L.append({"a": 1})
+        L.seal()
+        b = L.export_bundle(0)
+        assert b["checkpoint"].split("\n")[0] == "example.org/canari/log"
+        assert L.checkpoint_note().split("\n")[0] == "example.org/canari/log"
+
+    def test_default_origin_is_log_id(self, tmp_path):
+        from canari.logstore import open_log
+        L = open_log(str(tmp_path / "log2"), log_id="plain-id")
+        L.append({"a": 1})
+        L.seal()
+        assert L.checkpoint_note().split("\n")[0] == "plain-id"
+
+    def test_published_origin_is_namespaced(self):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        src = open(os.path.join(root, "scripts", "publish_log.py"),
+                   encoding="utf-8").read()
+        assert 'C2SP_ORIGIN = "github.com/lanbass869-cell/canari/log"' in src
