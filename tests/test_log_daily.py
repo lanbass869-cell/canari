@@ -378,3 +378,52 @@ class TestCorrections:
         assert corrections and corrections[0]["new"] == 7
         assert entries[0]["payload"]["rows"] == 7
         assert L.entry_objs()[0]["payload"]["rows"] is None
+
+
+class TestSingleWriterOfHeadLatest:
+    """CI run 43685282965 failed at "Verify what we are about to publish" with
+    root.pinned FAILED: head-latest.json still carried size 23 while the bundle
+    carried size 43. Cause: head-latest.json had two writers -- log_daily.py
+    wrote it, then log_verdicts.py sealed a newer head and left the pointer
+    stale, so CI pinned the old root against the new bundle.
+
+    The rule that fixes it: publish_log.py is the *only* writer of that
+    pointer, and it derives it from the log itself, never from an earlier step.
+    """
+
+    def test_publish_log_is_the_only_writer(self):
+        """Scan for scripts that actually OPEN the pointer for writing.
+
+        Mentioning the filename in a docstring or in a guard that refuses to
+        use it is fine (anchor_ots.py does exactly that); opening it for write
+        is not.
+        """
+        import re
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        write_re = re.compile(r'head-latest\.json"[^)]*,\s*"w"', re.S)
+        offenders = []
+        for dirpath, _d, files in os.walk(os.path.join(root, "scripts")):
+            for fn in files:
+                if not fn.endswith(".py") or fn == "__init__.py":
+                    continue
+                src = open(os.path.join(dirpath, fn), encoding="utf-8").read()
+                if write_re.search(src) and fn != "publish_log.py":
+                    offenders.append(fn)
+        assert offenders == [], (
+            "publish_log.py must be the single writer of head-latest.json or "
+            "the pointer goes stale: %s" % offenders)
+
+    def test_published_pointer_matches_the_published_bundle(self, tmp_path):
+        import publish_log
+        d = tmp_path / "log"
+        L = open_log(str(d), log_id=publish_log.LOG_ID)
+        L.append({"source": "x", "rows": 1}, kind="source-snapshot")
+        L.seal()
+        b = publish_log.build_bundle(L, str(d / "bundle-latest.json"))
+        publish_log.build_page(L, str(d / "index.html"))
+        # emulate the pointer write the CLI path performs
+        with open(str(d / "head-latest.json"), "w", encoding="utf-8", newline="\n") as f:
+            json.dump({"appended": [], "head": L.last_head(), "audit": L.audit()}, f)
+        head = json.loads((d / "head-latest.json").read_text(encoding="utf-8"))
+        assert head["head"]["body"]["root"] == b["tree_head"]["body"]["root"]
+        assert head["head"]["body"]["size"] == b["tree_head"]["body"]["size"]

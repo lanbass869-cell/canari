@@ -51,10 +51,11 @@ jobs:
       - name: Append today's snapshot and seal
         run: |
           env -u HTTPS_PROXY -u HTTP_PROXY -u ALL_PROXY \
-            python scripts/log_daily.py --log-dir docs/log \
-              --out docs/log/head-latest.json
+            python scripts/log_daily.py --log-dir docs/log
 
       - name: Log our own verdict bundles
+        # --out is deliberately not head-latest.json: publish_log.py is the
+        # single writer of that pointer, so a later seal cannot leave it stale.
         run: python scripts/log_verdicts.py --out docs/log/verdicts-latest.json
 
       - name: Rebuild the published page and latest bundle

@@ -248,6 +248,19 @@ def main():
     except Exception as e:
         print("checkpoint export failed: %s: %s" % (type(e).__name__, e),
               file=sys.stderr)
+    # head-latest.json is the pointer everything downstream pins against
+    # (CI verification, a consumer's --root, the OTS target choice). It used to
+    # be written by log_daily.py, which meant that any later step that sealed a
+    # new head (log_verdicts.py) left it stale -- CI then pinned yesterday's
+    # root against today's bundle and failed, which is exactly how this was
+    # found (run 43685282965). Exactly one writer now: this function.
+    audit = L.audit()
+    with open(os.path.join(LOG_DIR, "head-latest.json"), "w",
+              encoding="utf-8", newline="\n") as f:
+        json.dump({"appended": [], "head": L.last_head(), "audit": audit},
+                  f, ensure_ascii=False, indent=1, sort_keys=True)
+        f.write("\n")
+
     heads = write_immutable_heads(L, os.path.join(LOG_DIR, "heads"))
     new_heads = [p for p, created in heads if created]
     print("size=%d root=%s entry=%d immutable_heads=%d new=%d"

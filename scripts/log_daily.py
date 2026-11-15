@@ -23,7 +23,7 @@ Cross-publisher checks (the part that is real evidence, not ceremony):
     commitments can tell they describe the same day without trusting either.
 
 Usage:
-  python scripts/log_daily.py --log-dir docs/log --out docs/log/head-latest.json
+  python scripts/log_daily.py --log-dir docs/log
   python scripts/log_daily.py --log-dir docs/log --no-network   # audit only
 """
 import argparse
