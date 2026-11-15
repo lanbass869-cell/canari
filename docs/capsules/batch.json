@@ -1,0 +1,20 @@
+{
+ "as_of": "2026-11-15T13:50:04Z",
+ "authority_state": "NONE: measurement only; this batch grants and records no execution authority",
+ "capsules_file": {
+  "bytes": 46416,
+  "format": "one JCS capsule per line, LF-terminated, sorted by capsule_id",
+  "sha256": "d48a79b30fcfe26cfd89c92469549ca6e54ab2adeafd82dbb5f80a3d24c7ebae"
+ },
+ "excluded": {},
+ "inclusion_rule": "every endpoint probed in this run; nothing excluded",
+ "kind": "measurement.contract_parity",
+ "merkle": "RFC 9162 section 2.1.1 Merkle Tree Hash, SHA-256, over the capsule_id values as 32-byte strings sorted ascending",
+ "merkle_root": "b95081e9cc3069dc6ee3b3e1be1118f49d4afd2a0de41096ff68e31f95a65950",
+ "n_capsules": 36,
+ "schema": "csoai.measurement-capsule-batch/0.2",
+ "states": {
+  "CONSISTENT": 24,
+  "UNCHECKABLE": 12
+ }
+}
