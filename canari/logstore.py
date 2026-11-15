@@ -38,6 +38,7 @@ import json
 import os
 import time
 
+from canari import checkpoint as c2sp
 from canari.merkle import (consistency_proof, inclusion_proof, leaf_hash,
                            merkle_root)
 from canari.signing import (generate_keypair, load_or_generate_keypair,
@@ -383,6 +384,36 @@ class AppendOnlyLog:
         return {"from_head": first, "to_head": cur,
                 "proof": [p.hex() for p in proof]}
 
+    # ---- c2sp interoperability -----------------------------------------
+    def checkpoint_note(self, head=None, origin=None) -> str:
+        """The same head as a c2sp.org signed note, co-signable by any witness.
+
+        Our native head format is `{"body":...,"signature":...}` signed over a
+        domain prefix. That is fine for us but useless to an existing
+        transparency-log witness, which speaks c2sp.org/signed-note,
+        tlog-checkpoint and tlog-cosignature. Emitting both costs nothing and
+        is the difference between "a log only our verifier can read" and "a log
+        the witness network can co-sign".
+        """
+        h = head or self.last_head()
+        if not h:
+            raise LogError("no signed head exists; call seal() first")
+        body = h["body"]
+        signer = self._ensure_signer()
+        return c2sp.sign_checkpoint(signer, origin or self.log_id,
+                                    body["size"],
+                                    bytes.fromhex(body["root"]))
+
+    def verify_checkpoint_note(self, note=None, origin=None) -> dict:
+        """Verify our own checkpoint note and return what it commits to."""
+        text_src = note if note is not None else self.checkpoint_note(origin=origin)
+        text, sigs = c2sp.parse_note(text_src)
+        o, size, root = c2sp.parse_checkpoint(text)
+        pub = bytes.fromhex(self.public_key()["key"]["keyval"]["public"])
+        vk = c2sp.VerifierKey(o, c2sp.LOG_KEY_TYPE, pub)
+        return {"ok": c2sp.verify_log_signature(text, sigs, vk),
+                "origin": o, "size": size, "root": root.hex(), "note": text_src}
+
     def export_bundle(self, index, consistency=True) -> dict:
         """Offline-verifiable package for one record: signature + inclusion
         (+ consistency vs the previous head). Contains no secret material."""
@@ -395,6 +426,10 @@ class AppendOnlyLog:
                   "entry": {"index": inc["index"], "data_b64": inc["data_b64"]},
                   "tree_head": inc["head"],
                   "inclusion_proof": inc["proof"]}
+        try:
+            bundle["checkpoint"] = self.checkpoint_note(origin=self.log_id)
+        except LogError:
+            pass
         if consistency:
             try:
                 c = self.prove_consistency(head=inc["head"])

@@ -224,6 +224,21 @@ def verify_bundle(bundle: dict, expected_log_id=None, expected_root=None,
         add("size.min", isinstance(size, int) and size >= min_size,
             "size=%r min=%r" % (size, min_size))
 
+    ckpt = bundle.get("checkpoint")
+    if ckpt:
+        # c2sp.org/tlog-checkpoint inside a c2sp.org/signed-note. Verified here
+        # with the same ~20 lines a witness uses, not by importing our own
+        # encoder: the point is that the bytes travel.
+        try:
+            text, style = _parse_note(ckpt)
+            o, sz, rt = _parse_checkpoint_text(text)
+            pub_bytes = bytes.fromhex(key["keyval"]["public"])
+            good = _verify_note_sig(text, style, o, pub_bytes) and sz == size and rt.hex() == body.get("root")
+            add("checkpoint.c2sp", good,
+                "origin=%r size=%r root=%r" % (o, sz, rt.hex()[:16]))
+        except Exception as e:
+            add("checkpoint.c2sp", False, "%s: %s" % (type(e).__name__, e))
+
     cons = bundle.get("consistency")
     if cons:
         fh = cons.get("from_head") or {}
@@ -260,6 +275,71 @@ def verify_bundle(bundle: dict, expected_log_id=None, expected_root=None,
 
     return {"ok": all(c["ok"] for c in checks), "checks": checks,
             "log_id": log_id, "size": size, "root": body.get("root")}
+
+
+EM_DASH = "\u2014"
+LOG_KEY_TYPE = 0x01
+
+
+def _b64d(text):
+    import base64 as _b
+    raw = _b.b64decode(text, validate=True)
+    if _b.b64encode(raw).decode("ascii") != text:
+        raise ValueError("non-canonical base64")
+    return raw
+
+
+def _parse_checkpoint_text(text):
+    if not text.endswith("\n"):
+        raise ValueError("checkpoint text must end with newline")
+    lines = text[:-1].split("\n")
+    if len(lines) < 3 or any(not x for x in lines):
+        raise ValueError("checkpoint needs at least three non-empty lines")
+    origin, size_s, root_b64 = lines[0], lines[1], lines[2]
+    if not size_s.isdigit() or (size_s != "0" and size_s.startswith("0")):
+        raise ValueError("bad size")
+    root = _b64d(root_b64)
+    if len(root) != 32:
+        raise ValueError("root must be 32 bytes")
+    return origin, int(size_s), root
+
+
+def _parse_note(data):
+    if not data.endswith("\n"):
+        raise ValueError("note ends with newline")
+    split = data.rfind("\n\n")
+    if split < 0:
+        raise ValueError("note needs a blank line before signatures")
+    text, block = data[:split + 1], data[split + 2:]
+    sigs = []
+    for line in block[:-1].split("\n"):
+        if not line.startswith(EM_DASH + " "):
+            raise ValueError("signature line must start with em dash")
+        rest = line[len(EM_DASH) + 1:]
+        name, _, payload = rest.partition(" ")
+        raw = _b64d(payload)
+        if len(raw) < 5:
+            raise ValueError("signature payload too short")
+        sigs.append((name, raw[:4], raw[4:]))
+    if not sigs:
+        raise ValueError("no signature lines")
+    return text, sigs
+
+
+def _verify_note_sig(text, sigs, origin, pub_bytes):
+    import hashlib as _h
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+    want = _h.sha256(origin.encode("utf-8") + b"\n" + bytes([LOG_KEY_TYPE])
+                     + pub_bytes).digest()[:4]
+    for name, kid, sig in sigs:
+        if name == origin and kid == want and len(sig) == 64:
+            try:
+                Ed25519PublicKey.from_public_bytes(pub_bytes).verify(
+                    sig, text.encode("utf-8"))
+                return True
+            except Exception:
+                return False
+    return False
 
 
 def ferr_ok(cons) -> bool:

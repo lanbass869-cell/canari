@@ -58,6 +58,11 @@ different verdict.
 
 - **Latest head**: `docs/log/head-latest.json` (size, root, Ed25519 signature)
 - **Latest offline bundle**: `docs/log/bundle-latest.json`
+- **c2sp.org checkpoint**: `docs/log/checkpoint.txt` -- the same head as a
+  signed note in `c2sp.org/tlog-checkpoint` + `signed-note` +
+  `tlog-cosignature` form, so an existing transparency-log witness can co-sign
+  it without adopting anything of ours. Pinned against another project's
+  published test vectors (`tests/test_checkpoint.py`).
 - **Format**: [`docs/spec/append-only-log.md`](docs/spec/append-only-log.md)
   (RFC 9162 hashing, inclusion + consistency proofs, explicit list of what the
   proof does *not* claim)

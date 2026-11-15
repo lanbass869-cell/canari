@@ -289,3 +289,38 @@ class TestOfflineBundle:
         L.seal()
         with pytest.raises(IndexError):
             L.prove_inclusion(0)
+
+
+class TestC2SPCheckpoint:
+    """Our native head format is not what the witness network speaks. These
+    tests pin the c2sp.org signed-note / tlog-checkpoint emission so a witness
+    can co-sign us without adopting anything of ours."""
+
+    def test_checkpoint_note_verifies_and_matches_head(self, logdir):
+        L = make_log(logdir, 6)
+        note = L.checkpoint_note(origin="canari-test/log")
+        rep = L.verify_checkpoint_note(note)
+        assert rep["ok"] is True
+        assert rep["origin"] == "canari-test/log"
+        assert rep["size"] == 6
+        assert rep["root"] == L.last_head()["body"]["root"]
+
+    def test_checkpoint_is_in_the_bundle(self, logdir):
+        L = make_log(logdir, 3)
+        b = L.export_bundle(0)
+        assert "checkpoint" in b
+        assert b["checkpoint"].startswith("test-log\n") or \
+            b["checkpoint"].startswith(L.log_id + "\n")
+
+    def test_checkpoint_requires_a_head(self, logdir):
+        from canari.logstore import LogError
+        L = open_log(logdir, log_id="empty")
+        L.append({"a": 1})
+        with pytest.raises(LogError):
+            L.checkpoint_note()
+
+    def test_tampered_checkpoint_fails_own_verification(self, logdir):
+        L = make_log(logdir, 4)
+        note = L.checkpoint_note()
+        bad = note.replace("\n4\n", "\n5\n", 1)
+        assert L.verify_checkpoint_note(bad)["ok"] is False

@@ -112,6 +112,68 @@ function verifyConsistency(first, second, firstRootHex, secondRootHex, proof) {
          sr.toString("hex") === secondRootHex;
 }
 
+const EM_DASH = "\u2014";
+const LOG_KEY_TYPE = 1;
+
+function strictB64(text) {
+  const raw = Buffer.from(String(text), "base64");
+  if (raw.toString("base64") !== text) throw new Error("non-canonical base64");
+  return raw;
+}
+
+function parseC2SPCheckpoint(text) {
+  if (!text.endsWith("\n")) throw new Error("checkpoint must end with newline");
+  const lines = text.slice(0, -1).split("\n");
+  if (lines.length < 3 || lines.some(l => !l)) throw new Error("checkpoint needs 3+ lines");
+  const origin = lines[0];
+  const sizeText = lines[1];
+  if (!/^[0-9]+$/.test(sizeText) || (sizeText !== "0" && sizeText.startsWith("0"))) {
+    throw new Error("bad tree size");
+  }
+  const root = strictB64(lines[2]);
+  if (root.length !== 32) throw new Error("root must be 32 bytes");
+  return { origin, size: parseInt(sizeText, 10), root };
+}
+
+function parseC2SPNote(data) {
+  if (!data.endsWith("\n")) throw new Error("note must end with newline");
+  const split = data.lastIndexOf("\n\n");
+  if (split < 0) throw new Error("note needs a blank line before signatures");
+  const text = data.slice(0, split + 1);
+  const block = data.slice(split + 2, -1);
+  const sigs = block.split("\n").map(line => {
+    if (!line.startsWith(EM_DASH + " ")) throw new Error("signature line must start with em dash");
+    const rest = line.slice(EM_DASH.length + 1);
+    const idx = rest.indexOf(" ");
+    if (idx < 0) throw new Error("bad signature line");
+    const name = rest.slice(0, idx);
+    const raw = strictB64(rest.slice(idx + 1));
+    if (raw.length < 5) throw new Error("short signature payload");
+    return { name, keyId: raw.slice(0, 4), sig: raw.slice(4) };
+  });
+  if (!sigs.length) throw new Error("no signature lines");
+  return { text, sigs };
+}
+
+function verifyC2SPNoteSig(text, sigs, origin, pubBytes) {
+  const want = crypto.createHash("sha256")
+    .update(Buffer.concat([Buffer.from(origin, "utf8"), Buffer.from("\n"),
+                           Buffer.from([LOG_KEY_TYPE]), pubBytes]))
+    .digest().slice(0, 4);
+  const der = Buffer.concat([Buffer.from("302a300506032b6570032100", "hex"), pubBytes]);
+  const keyObj = crypto.createPublicKey({ key: der, format: "der", type: "spki" });
+  for (const s of sigs) {
+    if (s.name === origin && s.keyId.equals(want) && s.sig.length === 64) {
+      try {
+        return crypto.verify(null, Buffer.from(text, "utf8"), keyObj, s.sig);
+      } catch (e) {
+        return false;
+      }
+    }
+  }
+  return false;
+}
+
 function verifyHeadSignature(head, key) {
   try {
     const body = head.body;
@@ -207,6 +269,24 @@ function verifyBundle(bundle, opts = {}) {
   if (opts.minSize) {
     add("size.min", Number.isInteger(body.size) && body.size >= opts.minSize,
         "size=" + body.size + " min=" + opts.minSize);
+  }
+
+  const ckpt = bundle.checkpoint;
+  if (ckpt) {
+    // c2sp.org/tlog-checkpoint inside a c2sp.org/signed-note. Parsed and
+    // verified here with the same rules a witness uses -- not by calling our
+    // own encoder, because the whole point is that the bytes travel.
+    try {
+      const parsed = parseC2SPNote(ckpt);
+      const ck = parseC2SPCheckpoint(parsed.text);
+      const pubBytes = hexToBuf(key.keyval.public);
+      const good = verifyC2SPNoteSig(parsed.text, parsed.sigs, ck.origin, pubBytes) &&
+                   ck.size === body.size && ck.root.toString("hex") === body.root;
+      add("checkpoint.c2sp", good,
+          "origin=" + JSON.stringify(ck.origin) + " size=" + ck.size);
+    } catch (e) {
+      add("checkpoint.c2sp", false, String(e && e.message || e));
+    }
   }
 
   const cons = bundle.consistency;

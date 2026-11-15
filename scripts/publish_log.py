@@ -234,6 +234,20 @@ def main():
         return 2
     b = build_bundle(L, os.path.join(LOG_DIR, "bundle-latest.json"))
     build_page(L, os.path.join(LOG_DIR, "index.html"))
+    # The c2sp checkpoint note at a stable path: this is what a witness client
+    # polls. Without it a witness has nothing to co-sign, no matter how correct
+    # our Merkle proofs are.
+    try:
+        note = L.checkpoint_note(origin=LOG_ID)
+        chk = L.verify_checkpoint_note(note)
+        if not chk["ok"]:
+            raise SystemExit("our own checkpoint note does not verify")
+        with open(os.path.join(LOG_DIR, "checkpoint.txt"), "w",
+                  encoding="utf-8", newline="\n") as f:
+            f.write(note)
+    except Exception as e:
+        print("checkpoint export failed: %s: %s" % (type(e).__name__, e),
+              file=sys.stderr)
     heads = write_immutable_heads(L, os.path.join(LOG_DIR, "heads"))
     new_heads = [p for p, created in heads if created]
     print("size=%d root=%s entry=%d immutable_heads=%d new=%d"

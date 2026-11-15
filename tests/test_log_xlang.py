@@ -100,3 +100,24 @@ def test_pinned_prefix_agreement(tmp_path):
     from canari.verify_offline import verify_bundle
     assert verify_bundle(b, pinned_prefix_root=early)["ok"] is True
     assert verify_bundle(b, pinned_prefix_root="cd" * 32)["ok"] is False
+
+
+@needs_node
+def test_c2sp_checkpoint_agrees_between_implementations(tmp_path):
+    L, b, p = make_bundle(tmp_path)
+    assert "checkpoint" in b
+    r = run_node(str(p))
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "PASS checkpoint.c2sp" in r.stdout
+    from canari.verify_offline import verify_bundle
+    assert verify_bundle(b)["ok"] is True
+
+@needs_node
+def test_c2sp_checkpoint_tamper_fails_both(tmp_path):
+    L, b, p = make_bundle(tmp_path)
+    b["checkpoint"] = b["checkpoint"].replace("\n17\n", "\n18\n", 1)
+    p.write_text(json.dumps(b), encoding="utf-8")
+    assert verify_bundle(b)["ok"] is False
+    r = run_node(str(p))
+    assert r.returncode == 2
+    assert "FAIL checkpoint.c2sp" in r.stdout
