@@ -110,7 +110,9 @@ MUTATIONS_2 = [
     ("pypi_tools.none_bypass", "canari/pypi_native.py",
      "    if not files:\n        return None",
      "    if False:\n        return None",
-     ["tests/test_pypi_native.py"]),
+     # test_pypi_native.py is marked `network` and skipped by default, so it can
+     # no longer kill this mutant. The offline suite covers the same branch.
+     ["tests/test_pypi_native_offline.py"]),
     # --- mcp server / CLIs
     ("mcp.gate_policy_ignored", "canari/mcp_server.py",
      '                          policy=args.get("policy", "default"))',
