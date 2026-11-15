@@ -60,9 +60,30 @@ def digest_of(path):
     return hashlib.sha256(open(path, "rb").read()).digest()
 
 
+def check_mutable_target(path):
+    """Refuse to timestamp a file whose bytes are expected to change.
+
+    A timestamp commits to a byte string; once the file is rewritten the proof
+    can never match it again, and the damage is silent (the .ots file still
+    looks valid). head-latest.json is a mutable pointer and must never be a
+    target; heads/<size>-<root>.json is content-addressed and write-once.
+    """
+    base = os.path.basename(path)
+    if base in ("head-latest.json", "log.jsonl", "heads.jsonl", "index.html"):
+        return ("refusing to timestamp mutable file %r: the proof would break "
+                "the next time it is rewritten" % base)
+    if os.path.exists(path + ".ots") and base.startswith("head-"):
+        return "refusing: %s looks like a mutable pointer" % base
+    return ""
+
+
 def cmd_submit(a):
     from opentimestamps.calendar import RemoteCalendar
     from opentimestamps.core.timestamp import Timestamp
+    bad = check_mutable_target(a.target)
+    if bad:
+        print(bad, file=sys.stderr)
+        return 3
     digest = digest_of(a.target)
     ts = Timestamp(digest)
     ok = 0
@@ -84,6 +105,16 @@ def cmd_submit(a):
 
 
 def cmd_upgrade(a):
+    """Ask each calendar for the proof of the commitment it actually holds.
+
+    The subtlety that broke the first version: a pending attestation does not
+    hang off the file digest. It hangs off a *derived* commitment (the calendar
+    applies an op, e.g. some nonce, before accepting, so the message in the
+    proof tree differs from SHA-256(file)). Querying the calendar with the file
+    digest therefore returned CommitmentNotFoundError for every calendar while
+    the proof was perfectly healthy. We must ask each calendar about the exact
+    commitment recorded in the attestation, at the URI recorded with it.
+    """
     from opentimestamps.calendar import RemoteCalendar
     digest = digest_of(a.target)
     proof = a.target + ".ots"
@@ -92,17 +123,33 @@ def cmd_upgrade(a):
         return 3
     ts = _load(proof, digest)
     before = _stage(ts)
+
+    targets = []
+    for msg, att in ts.all_attestations():
+        if type(att).__name__ == "PendingAttestation":
+            uri = getattr(att, "uri", None)
+            if uri:
+                targets.append((uri, msg))
+    if not targets:
+        print(json.dumps({"stage_before": before, "stage_after": before,
+                          "note": "no pending attestations to upgrade"},
+                         ensure_ascii=False, indent=1))
+        return 0 if before == "bitcoin" else 1
+
     errors = []
-    for url in CALENDARS:
+    upgraded = 0
+    for uri, commitment in targets:
         try:
-            remote_ts = RemoteCalendar(url).get_timestamp(digest, timeout=a.timeout)
+            remote_ts = RemoteCalendar(uri).get_timestamp(commitment, timeout=a.timeout)
             ts.merge(remote_ts)
+            upgraded += 1
         except Exception as e:
-            errors.append("%s: %s" % (url, type(e).__name__))
+            errors.append("%s: %s" % (uri, type(e).__name__))
     n = _save(ts, proof)
     after = _stage(ts)
     print(json.dumps({"stage_before": before, "stage_after": after,
-                      "proof_bytes": n, "errors": errors},
+                      "proof_bytes": n, "queried": len(targets),
+                      "upgraded": upgraded, "errors": errors},
                      ensure_ascii=False, indent=1))
     return 0 if after == "bitcoin" else 1
 

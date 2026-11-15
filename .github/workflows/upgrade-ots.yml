@@ -1,0 +1,71 @@
+name: upgrade-ots
+
+# OpenTimestamps calendar commitments go pending -> Bitcoin block only after
+# the calendar aggregates them, which takes hours to a couple of days. A daily
+# job is far too slow to notice, and a pending proof proves nothing about the
+# past, so this runs hourly and promotes whatever is ready.
+#
+# It rewrites only the .ots proof files (never the heads themselves) and only
+# commits when a proof actually changed stage.
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: upgrade-ots
+  cancel-in-progress: false
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install --no-build-isolation opentimestamps-client
+
+      - name: Upgrade every pending proof
+        run: |
+          set -u
+          changed=0
+          pending=0
+          anchored=0
+          for head in docs/log/heads/*.json; do
+            proof="$head.ots"
+            [ -f "$proof" ] || continue
+            out=$(python scripts/anchor_ots.py status "$head" 2>/dev/null || true)
+            case "$out" in
+              *'"stage": "bitcoin"'*) anchored=$((anchored+1)); continue;;
+            esac
+            pending=$((pending+1))
+            before=$(sha256sum "$proof" | cut -d' ' -f1)
+            env -u HTTPS_PROXY -u HTTP_PROXY -u ALL_PROXY \
+              python scripts/anchor_ots.py upgrade "$head" >/dev/null 2>&1 || true
+            after=$(sha256sum "$proof" | cut -d' ' -f1)
+            if [ "$before" != "$after" ]; then changed=$((changed+1)); fi
+            out2=$(python scripts/anchor_ots.py status "$head" 2>/dev/null || true)
+            case "$out2" in
+              *'"stage": "bitcoin"'*) anchored=$((anchored+1));;
+            esac
+          done
+          echo "anchored=$anchored pending=$pending proofs_changed=$changed"
+
+      - name: Commit any promoted proof
+        run: |
+          git config user.name "canari-log"
+          git config user.email "canari-log@users.noreply.github.com"
+          git add docs/log/heads
+          if git diff --cached --quiet; then
+            echo "no proof promotion this hour"
+          else
+            git commit -m "anchor: promote OpenTimestamps proof(s) to bitcoin"
+            git push
+          fi

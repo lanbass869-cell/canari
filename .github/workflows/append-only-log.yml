@@ -57,19 +57,23 @@ jobs:
       - name: Rebuild the published page and latest bundle
         run: python scripts/publish_log.py
 
-      # Anchor the new head to Bitcoin. SUBMIT only gets a *pending* calendar
-      # attestation; the proof becomes a real Bitcoin timestamp after the
-      # calendar aggregates it into a block, so a later `upgrade` is what
-      # promotes it. The job records whichever stage it is at and never claims
-      # a Bitcoin proof it does not have.
-      - name: Anchor head (OpenTimestamps submit)
+      # Anchor the NEWEST IMMUTABLE head file, never head-latest.json.
+      #
+      # Real bug caught here (2026-11-15): the first version stamped
+      # head-latest.json, which the next run rewrote (new audit block, new
+      # appended list). Its bytes changed, so the OTS commitment no longer
+      # matched any file on disk and every calendar returned
+      # CommitmentNotFoundError -- the proof was permanently dead. A timestamp
+      # is only meaningful over bytes that never change. heads/<size>-<root>.json
+      # is content-addressed and write-once, so it is the only correct target.
+      - name: Anchor newest immutable head (OpenTimestamps submit)
         continue-on-error: true
         run: |
           pip install --no-build-isolation opentimestamps-client
+          HEAD=$(ls -1 docs/log/heads/*.json | tail -1)
+          echo "anchoring $HEAD"
           env -u HTTPS_PROXY -u HTTP_PROXY -u ALL_PROXY \
-            python scripts/anchor_ots.py upgrade docs/log/head-latest.json || true
-          env -u HTTPS_PROXY -u HTTP_PROXY -u ALL_PROXY \
-            python scripts/anchor_ots.py submit docs/log/head-latest.json
+            python scripts/anchor_ots.py submit "$HEAD"
 
       - name: Verify what we are about to publish
         run: |

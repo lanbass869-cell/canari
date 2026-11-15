@@ -86,3 +86,44 @@ def test_no_calendar_reachable_is_failure(tmp_path, monkeypatch):
         timeout = 1
 
     assert anchor_ots.cmd_submit(A()) == 3
+
+
+class TestMutableTargetGuard:
+    """The bug this encodes, found in production 2026-11-15: an OTS proof was
+    made over docs/log/head-latest.json. The next daily run rewrote that file,
+    so the commitment no longer matched any bytes on disk and all four
+    calendars returned CommitmentNotFoundError -- the proof was permanently
+    dead while still looking like a valid .ots file. Timestamps must only ever
+    cover write-once bytes."""
+
+    @pytest.mark.parametrize("name", [
+        "head-latest.json", "log.jsonl", "heads.jsonl", "index.html",
+    ])
+    def test_mutable_names_are_refused(self, tmp_path, name):
+        p = tmp_path / name
+        p.write_bytes(b"{}")
+        assert anchor_ots.check_mutable_target(str(p)) != ""
+
+    def test_content_addressed_head_is_allowed(self, tmp_path):
+        p = tmp_path / "000021-92f6b635deadbeef.json"
+        p.write_bytes(b"{}")
+        assert anchor_ots.check_mutable_target(str(p)) == ""
+
+    def test_submit_refuses_mutable_target(self, tmp_path):
+        # No calendar should be contacted for a file we already refuse.
+        p = tmp_path / "head-latest.json"
+        p.write_bytes(b"{}")
+
+        def boom(*a, **k):            # pragma: no cover - must not be called
+            raise AssertionError("submitted a mutable target")
+
+        import opentimestamps.calendar as cal
+        old = cal.RemoteCalendar.submit
+        cal.RemoteCalendar.submit = boom
+        try:
+            class A:
+                target = str(p)
+                timeout = 1
+            assert anchor_ots.cmd_submit(A()) == 3
+        finally:
+            cal.RemoteCalendar.submit = old

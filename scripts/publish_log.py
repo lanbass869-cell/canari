@@ -39,6 +39,45 @@ def build_bundle(L, path):
     return b
 
 
+def write_immutable_heads(L, heads_dir):
+    """Write one file per published head, named by its root.
+
+    Why this exists (real bug, 2026-11-15): the OpenTimestamps proof was made
+    over docs/log/head-latest.json. That file is a *mutable pointer* -- the
+    daily job rewrites it (new audit block, new appended list), so its bytes
+    change and the OTS commitment no longer matches the file on disk. The proof
+    then 404s at every calendar and proves nothing.
+
+    A timestamp is only meaningful over bytes that never change. Each historic
+    head body is immutable by construction (it is fixed once signed), so we
+    write it to heads/<size>-<root>.json and anchor THAT. The filename contains
+    the root, so the file is self-identifying: if it is ever altered, the
+    filename contradicts its content.
+    """
+    os.makedirs(heads_dir, exist_ok=True)
+    written = []
+    for h in L.heads():
+        body = h["body"]
+        name = "%06d-%s.json" % (body["size"], body["root"])
+        path = os.path.join(heads_dir, name)
+        payload = canonical_head_bytes(body)
+        if os.path.exists(path):
+            if open(path, "rb").read() != payload:
+                raise SystemExit(
+                    "REFUSING to overwrite immutable head %s with different bytes" % name)
+            written.append((path, False))
+            continue
+        with open(path, "wb") as f:
+            f.write(payload)
+        written.append((path, True))
+    return written
+
+
+def canonical_head_bytes(body):
+    return json.dumps(body, ensure_ascii=False, sort_keys=True,
+                      separators=(",", ":")).encode("utf-8")
+
+
 def esc(s):
     return (str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
@@ -135,8 +174,13 @@ def main():
         return 2
     b = build_bundle(L, os.path.join(LOG_DIR, "bundle-latest.json"))
     build_page(L, os.path.join(LOG_DIR, "index.html"))
-    print("size=%d root=%s entry=%d" % (L.size(), b["tree_head"]["body"]["root"],
-                                        b["entry"]["index"]))
+    heads = write_immutable_heads(L, os.path.join(LOG_DIR, "heads"))
+    new_heads = [p for p, created in heads if created]
+    print("size=%d root=%s entry=%d immutable_heads=%d new=%d"
+          % (L.size(), b["tree_head"]["body"]["root"], b["entry"]["index"],
+             len(heads), len(new_heads)))
+    for p in new_heads:
+        print("  new head file: %s" % os.path.basename(p))
     return 0
 
 

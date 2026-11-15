@@ -183,3 +183,32 @@ proof that has since been aggregated is promoted in place.
 Verification of a Bitcoin-stage proof still requires a source of block headers
 (`ots verify -c <bitcoin node>` or a chain API); the block height in the proof
 alone is a claim, not a proof. Do not report it as one.
+
+
+### 11.1 What may be timestamped (hard rule)
+
+A timestamp commits to a byte string. If the file is later rewritten, the proof
+silently stops matching and every calendar returns `CommitmentNotFoundError`
+while the `.ots` file still looks valid. Production hit exactly this on
+2026-11-15 by stamping `head-latest.json`, a mutable pointer that the daily job
+rewrites.
+
+Therefore:
+
+| target | allowed | why |
+|---|---|---|
+| `heads/<size>-<root>.json` | **yes** | content-addressed, write-once; filename contradicts any edit |
+| `head-latest.json` | no | mutable pointer, rewritten every run |
+| `log.jsonl`, `heads.jsonl` | no | append-only but grows; older proofs break |
+| `index.html` | no | presentation layer, regenerated |
+
+`scripts/anchor_ots.py` enforces this and exits 3 rather than submitting.
+
+### 11.2 Pending is the normal state for hours
+
+A calendar returns `PendingAttestation` immediately; it aggregates pending
+commitments into a transaction later (the public calendar commonly shows ~1-2k
+pending and one unconfirmed transaction). Promotion to
+`BitcoinBlockHeaderAttestation` happens on the next upgrade after that
+transaction confirms. `.github/workflows/upgrade-ots.yml` runs hourly to promote
+whatever is ready and commits only when a proof's bytes actually changed.
