@@ -120,3 +120,72 @@ class TestDailyPath:
         open(p, "wb").write(b"\n".join(lines))
         rep = open_log(d, log_id="canari-snapshot-log").audit()
         assert rep["ok"] is False
+
+
+class TestIdempotencyAndPublishing:
+    """Two production bugs found while running this for real (2026-11-15):
+
+    1. Re-running the daily job appended a duplicate commitment for identical
+       bytes. The log then contained the same data twice, which inflates proof
+       sizes and, worse, makes "how many days of history do we have" a lie.
+    2. On the no-new-data path, `head` was None and head-latest.json was
+       overwritten with null -- deleting the only published root a consumer
+       could have pinned against.
+
+    Both are locked down here.
+    """
+
+    @staticmethod
+    def fake(raw, monkeypatch):
+        class Fake:
+            def __init__(self, *a, **k):
+                pass
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+            def read(self, n):
+                return raw
+
+        monkeypatch.setattr(log_daily.urllib.request, "urlopen", lambda *a, **k: Fake())
+
+    def test_second_run_appends_nothing(self, tmp_path, monkeypatch):
+        self.fake(payload(3), monkeypatch)
+        d = str(tmp_path / "log")
+        out = tmp_path / "h.json"
+        assert log_daily.main(["--log-dir", d, "--out", str(out),
+                               "--url", "https://x.invalid/a.gz"]) == 0
+        assert json.loads(out.read_text(encoding="utf-8"))["appended"] == [0]
+        assert log_daily.main(["--log-dir", d, "--out", str(out),
+                               "--url", "https://x.invalid/a.gz"]) == 0
+        saved = json.loads(out.read_text(encoding="utf-8"))
+        assert saved["appended"] == []
+        assert open(os.path.join(d, "log.jsonl"), encoding="utf-8").read().count("\n") == 1
+
+    def test_second_run_keeps_publishing_the_last_head(self, tmp_path, monkeypatch):
+        self.fake(payload(3), monkeypatch)
+        d = str(tmp_path / "log")
+        out = tmp_path / "h.json"
+        log_daily.main(["--log-dir", d, "--out", str(out), "--url", "https://x.invalid/a.gz"])
+        first = json.loads(out.read_text(encoding="utf-8"))["head"]["body"]
+        log_daily.main(["--log-dir", d, "--out", str(out), "--url", "https://x.invalid/a.gz"])
+        second = json.loads(out.read_text(encoding="utf-8"))["head"]["body"]
+        assert second is not None
+        assert second["root"] == first["root"] and second["size"] == first["size"]
+
+    def test_changed_bytes_append_and_reseal(self, tmp_path, monkeypatch):
+        d = str(tmp_path / "log")
+        out = tmp_path / "h.json"
+        self.fake(payload(3), monkeypatch)
+        log_daily.main(["--log-dir", d, "--out", str(out), "--url", "https://x.invalid/a.gz"])
+        h1 = json.loads(out.read_text(encoding="utf-8"))["head"]
+        self.fake(payload(6), monkeypatch)
+        log_daily.main(["--log-dir", d, "--out", str(out), "--url", "https://x.invalid/a.gz"])
+        saved = json.loads(out.read_text(encoding="utf-8"))
+        assert saved["appended"] == [1]
+        assert saved["head"]["body"]["size"] == 2
+        assert saved["head"]["body"]["root"] != h1["body"]["root"]
+        assert saved["audit"]["ok"] is True

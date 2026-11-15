@@ -1,0 +1,12 @@
+{
+ "key": {
+  "keytype": "ed25519",
+  "keyval": {
+   "public": "e72a7918d9d91a7e48ed8a1e36d5ce48817834a8fba4567b2744c069f2eeb8ea"
+  },
+  "scheme": "ed25519"
+ },
+ "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
+ "log_id": "canari-snapshot-log",
+ "spec": "canari-append-only-log/v1"
+}

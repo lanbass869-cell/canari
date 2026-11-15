@@ -1,0 +1,37 @@
+{
+ "appended": [],
+ "audit": {
+  "errors": [],
+  "last_head": {
+   "body": {
+    "log_id": "canari-snapshot-log",
+    "root": "c0182963ebbcda4f16fbed356dcb883e22debd01bbebbe178f0919daae482fe4",
+    "size": 1,
+    "spec": "canari-append-only-log/v1",
+    "timestamp": "2026-11-15T04:49:40Z"
+   },
+   "signature": {
+    "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
+    "scheme": "ed25519",
+    "sig": "b81c9f3599f6416452590e488f77b63867f0a74b8564377fc6f3b31d52f01294ef8304d3f20599ebc78b427df8a0cc9be0b60bde5ed99fa138e395ef7f577c0c"
+   }
+  },
+  "ok": true,
+  "root": "c0182963ebbcda4f16fbed356dcb883e22debd01bbebbe178f0919daae482fe4",
+  "size": 1
+ },
+ "head": {
+  "body": {
+   "log_id": "canari-snapshot-log",
+   "root": "c0182963ebbcda4f16fbed356dcb883e22debd01bbebbe178f0919daae482fe4",
+   "size": 1,
+   "spec": "canari-append-only-log/v1",
+   "timestamp": "2026-11-15T04:49:40Z"
+  },
+  "signature": {
+   "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
+   "scheme": "ed25519",
+   "sig": "b81c9f3599f6416452590e488f77b63867f0a74b8564377fc6f3b31d52f01294ef8304d3f20599ebc78b427df8a0cc9be0b60bde5ed99fa138e395ef7f577c0c"
+  }
+ }
+}

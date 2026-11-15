@@ -69,7 +69,17 @@ def summarize(src, raw, now):
     except Exception as e:
         rec["parse_error"] = "not JSON: %s" % e
         return rec
-    rows = data if isinstance(data, list) else data.get("entries") or data.get("rows")
+    # Real exports use `rows` (a list) with a sibling `entries` (an int count);
+    # an earlier draft of this script took `entries` first and silently
+    # recorded no row count at all. Prefer a list field, never an int.
+    if isinstance(data, list):
+        rows = data
+    else:
+        rows = None
+        for key in ("rows", "entries", "items"):
+            if isinstance(data.get(key), list):
+                rows = data[key]
+                break
     if isinstance(rows, list):
         rec["rows"] = len(rows)
         states = {}
@@ -78,6 +88,10 @@ def summarize(src, raw, now):
                 states[str(row["state"])] = states.get(str(row["state"]), 0) + 1
         if states:
             rec["states"] = dict(sorted(states.items()))
+        if isinstance(data, dict) and isinstance(data.get("probed_at"), str):
+            rec["source_probed_at"] = data["probed_at"]
+        if isinstance(data, dict) and isinstance(data.get("dataset"), str):
+            rec["source_dataset"] = data["dataset"]
     return rec
 
 
@@ -97,6 +111,11 @@ def main(argv=None):
         return 0 if rep["ok"] else 2
 
     now = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    existing = {}
+    for e in L.entry_objs():
+        p = e.get("payload") or {}
+        if p.get("source"):
+            existing[p["source"]] = p.get("sha256")
     appended = []
     for i, src in enumerate(SOURCES):
         url = (a.url[i] if a.url and i < len(a.url) else src["url"])
@@ -106,12 +125,22 @@ def main(argv=None):
             print("fetch failed for %s: %s" % (src["name"], e), file=sys.stderr)
             return 3
         rec = summarize(dict(src, url=url), raw, now)
+        if existing.get(src["name"]) == rec["sha256"]:
+            # Same bytes as the newest commitment for this source: nothing new
+            # happened. Re-running must not inflate the log with duplicates.
+            print("%s  unchanged  sha256=%s" % (src["name"], rec["sha256"]))
+            continue
         appended.append(L.append(rec, kind="source-snapshot",
                                  timestamp=now)["index"])
         print("%s  %d bytes  sha256=%s  rows=%s"
               % (src["name"], rec["bytes"], rec["sha256"],
                  rec.get("rows", "?")))
     head = L.seal(timestamp=now)
+    if head is None:
+        # Nothing new: keep publishing the latest head rather than writing
+        # null. Overwriting head-latest.json with null would delete the only
+        # published root a consumer could have pinned yesterday.
+        head = L.last_head()
     audit = L.audit()
     out = {"appended": appended, "head": head, "audit": audit}
     if a.out:

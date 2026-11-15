@@ -17,3 +17,6 @@ dist/
 # private signing keys must never be committed
 signing_key.pem
 *.pem
+
+# cross-process locks (canari.state.FileLock)
+docs/log/*.lock
