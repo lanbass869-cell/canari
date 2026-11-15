@@ -7,7 +7,6 @@ The point is not "does it produce 32 bytes". It is:
   - tampering with a leaf, a proof element, an index, or a tree head must fail
   - a consistency proof must reject a second tree that is not an extension
 """
-import hashlib
 import os
 import sys
 

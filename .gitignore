@@ -13,3 +13,7 @@ dist/
 *.bak
 *.bak-*
 *.orig
+
+# private signing keys must never be committed
+signing_key.pem
+*.pem
