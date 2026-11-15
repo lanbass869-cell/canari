@@ -3,6 +3,7 @@
 # clone would report "REWRITTEN" on a perfectly intact log. This is a real bug
 # found on 2026-11-15 (local audit failed while CI passed).
 docs/log/** -text
+docs/capsules/** -text
 docs/spec/merkle-vectors.json -text
 
 # Normal source files may be normalised as usual.
