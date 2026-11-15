@@ -225,6 +225,25 @@ function verifyBundle(bundle, opts = {}) {
       add("consistency.proof", false, "bad proof encoding");
     }
   }
+  if (opts.pinnedPrefix !== undefined && opts.pinnedPrefix !== null) {
+    if (!cons) {
+      add("prefix.pinned", false,
+          "no consistency block, so a pinned earlier root cannot be shown to be a prefix");
+    } else {
+      const fh = cons.from_head || {};
+      const fb = fh.body || {};
+      const got = fb.root;
+      add("prefix.pinned", got === opts.pinnedPrefix,
+          "from_head.root=" + got + " pinned=" + opts.pinnedPrefix);
+      if (got === opts.pinnedPrefix) {
+        const cproof2 = (cons.proof || []).map(hexToBuf);
+        const chainOk = validHeadBody(fb, bundle.log_id) === "" &&
+          cproof2.every(Boolean) &&
+          verifyConsistency(fb.size, body.size, fb.root, body.root, cproof2);
+        add("prefix.chain", chainOk, "pinned root is a prefix of this head");
+      }
+    }
+  }
   return { ok: checks.every(c => c.ok), checks, log_id: bundle.log_id,
            size: body.size, root: body.root };
 }
@@ -242,6 +261,7 @@ function main(argv) {
     if (a === "--log-id") opts.logId = args[++i];
     else if (a === "--root") opts.root = args[++i];
     else if (a === "--min-size") opts.minSize = parseInt(args[++i], 10);
+    else if (a === "--pinned-prefix") opts.pinnedPrefix = args[++i];
     else if (a === "--json") opts.json = true;
     else if (file === null) file = a;
   }

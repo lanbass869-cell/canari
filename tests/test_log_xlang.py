@@ -86,3 +86,17 @@ def test_node_verifier_does_not_import_canari():
     src = open(NODE_VERIFIER, encoding="utf-8").read()
     assert "canari/" not in src
     assert "require(\"child_process\")" not in src
+
+
+@needs_node
+def test_pinned_prefix_agreement(tmp_path):
+    """Both implementations must accept a pinned earlier root and reject a
+    forged one. This is the check that binds a consumer's own past observation
+    to the publisher's current head."""
+    L, b, p = make_bundle(tmp_path)
+    early = b["consistency"]["from_head"]["body"]["root"]
+    assert run_node(str(p), "--pinned-prefix", early).returncode == 0
+    assert run_node(str(p), "--pinned-prefix", "cd" * 32).returncode == 2
+    from canari.verify_offline import verify_bundle
+    assert verify_bundle(b, pinned_prefix_root=early)["ok"] is True
+    assert verify_bundle(b, pinned_prefix_root="cd" * 32)["ok"] is False

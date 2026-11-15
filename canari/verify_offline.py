@@ -162,7 +162,7 @@ def _valid_head_body(body, log_id=None) -> str:
 
 
 def verify_bundle(bundle: dict, expected_log_id=None, expected_root=None,
-                  min_size=0) -> dict:
+                  min_size=0, pinned_prefix_root=None) -> dict:
     """Return {"ok": bool, "checks": [{"name","ok","detail"}], "log_id", "size", "root"}.
 
     Never raises for malformed input; malformed input is a failed check.
@@ -240,8 +240,32 @@ def verify_bundle(bundle: dict, expected_log_id=None, expected_root=None,
         else:
             add("consistency.proof", False, "unusable from_head")
 
+    if pinned_prefix_root is not None:
+        # The consumer recorded an earlier head root out of band. Demand that
+        # the bundle's consistency block connects *that* root to the current
+        # head. Without this, "the publisher is consistent with itself" can be
+        # true while the consumer's own observation was rewritten away.
+        if not cons:
+            add("prefix.pinned", False,
+                "bundle has no consistency block, so a pinned earlier root "
+                "cannot be shown to be a prefix of this head")
+        else:
+            got = ((cons.get("from_head") or {}).get("body") or {}).get("root")
+            add("prefix.pinned", got == pinned_prefix_root,
+                "from_head.root=%r pinned=%r" % (got, pinned_prefix_root))
+            if got == pinned_prefix_root and not ferr_ok(cons):
+                add("prefix.chain", False, "consistency block did not verify")
+            elif got == pinned_prefix_root:
+                add("prefix.chain", True, "pinned root is a prefix of this head")
+
     return {"ok": all(c["ok"] for c in checks), "checks": checks,
             "log_id": log_id, "size": size, "root": body.get("root")}
+
+
+def ferr_ok(cons) -> bool:
+    """True when the consistency block's from_head is structurally valid."""
+    fb = ((cons or {}).get("from_head") or {}).get("body") or {}
+    return _valid_head_body(fb, fb.get("log_id")) == ""
 
 
 def main(argv=None) -> int:
@@ -250,6 +274,9 @@ def main(argv=None) -> int:
     ap.add_argument("--log-id", default=None)
     ap.add_argument("--root", default=None, help="pin an expected head root (hex)")
     ap.add_argument("--min-size", type=int, default=0)
+    ap.add_argument("--pinned-prefix", default=None,
+                    help="a tree-head root you recorded earlier; proves this "
+                         "head still contains that history")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     a = ap.parse_args(argv)
     try:
@@ -258,7 +285,7 @@ def main(argv=None) -> int:
     except Exception as e:
         print("cannot read bundle: %s" % e, file=sys.stderr)
         return 3
-    rep = verify_bundle(bundle, a.log_id, a.root, a.min_size)
+    rep = verify_bundle(bundle, a.log_id, a.root, a.min_size, a.pinned_prefix)
     if a.json:
         print(json.dumps(rep, ensure_ascii=False, indent=1, sort_keys=True))
     else:

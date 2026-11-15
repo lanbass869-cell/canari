@@ -218,3 +218,24 @@ class TestLogStoreEdges:
     def test_bundle_has_public_keyid(self, log):
         b = log.export_bundle(0)
         assert b["public_key"]["keyid"] == log.public_key()["keyid"]
+
+
+class TestPinnedPrefix:
+    """A consumer who recorded yesterday's root must be able to demand proof
+    that today's head still contains it. Pinning the *current* root is a
+    different check (root.pinned) and must not be conflated with it."""
+
+    def test_pinned_prefix_pass_and_fail(self, log):
+        log.append_many([{"payload": {"more": i}} for i in range(3)])
+        log.seal()
+        early = log.heads()[0]["body"]["root"]
+        b = log.export_bundle(1)
+        assert verify_bundle(b, pinned_prefix_root=early)["ok"] is True
+        assert verify_bundle(b, pinned_prefix_root="cd" * 32)["ok"] is False
+
+    def test_pinned_prefix_without_consistency_fails(self, log):
+        b = log.export_bundle(0)          # single head -> no consistency block
+        early = b["tree_head"]["body"]["root"]
+        rep = verify_bundle(b, pinned_prefix_root=early)
+        assert rep["ok"] is False
+        assert any(c["name"] == "prefix.pinned" and not c["ok"] for c in rep["checks"])

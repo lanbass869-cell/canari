@@ -118,9 +118,21 @@ to `canari`.
 5. Any malformed field is a **failure**, never a skip. A verifier that treats
    an unparsable proof as "not applicable" has no security value.
 
-A verifier MAY additionally pin `root`, `log_id`, and `min_size` out of band
-(the head the consumer recorded yesterday). That is what turns "the publisher
-is consistent with itself" into "the publisher is consistent with what I saw".
+A verifier MAY additionally pin `root`, `log_id`, and `min_size` out of band.
+
+Two distinct pins, do not conflate them:
+
+| flag | question it answers |
+|---|---|
+| `--root HEX` | "is this bundle's head exactly the head I expected?" |
+| `--min-size N` | "does this head cover at least N entries?" |
+| `--pinned-prefix HEX` | "is the head I recorded earlier still a **prefix** of this one?" |
+
+`--pinned-prefix` is the one that detects a publisher who keeps their signing
+key and re-signs a different history: the new signature is valid and the new
+root differs, so only a consistency proof from *your* recorded root can show
+the older entries survived. If the bundle carries no consistency block the
+check fails closed rather than passing by omission.
 
 ## 9. What this does not prove
 

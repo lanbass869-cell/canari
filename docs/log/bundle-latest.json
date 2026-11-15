@@ -1,9 +1,35 @@
 {
- "entry": {
-  "data_b64": "eyJraW5kIjoic291cmNlLXNuYXBzaG90IiwicGF5bG9hZCI6eyJieXRlcyI6MjQ0MDgzNCwiZmV0Y2hlZF9hdCI6IjIwMjYtMTEtMTVUMDQ6NDk6NDBaIiwibGljZW5zZSI6IkNDIEJZIDQuMCIsInBsYWluX2J5dGVzIjoyMDg0MjUzNywicGxhaW5fc2hhMjU2IjoiMGE1NGU1MTJmYzlkYjljZTc0YTQ3OWExNDA1ZWI2NjNmMTdhMGY4NDRlZjhhNWNiMTQwODA3NmYxNmFmMjc4YyIsInJvd3MiOjYyNDkzLCJzaGEyNTYiOiI0Yzg2ZDYzNjA2ODZkZmUyZDAxY2RkZjAzZGUwZWQ2YTZkMWZhNDIyOWNiODA0MmM3ZGRlZmUyNDkxMjc5ODY4Iiwic291cmNlIjoibWNwY29zdC1ldmlkZW5jZSIsInNvdXJjZV9kYXRhc2V0IjoibWNwY29zdC1ldmlkZW5jZSIsInNvdXJjZV9wcm9iZWRfYXQiOiIyMDI2LTExLTE0VDExOjMzOjI5LjYxMloiLCJzdGF0ZXMiOnsiYWxpdmUiOjM2Mjc3LCJhdXRoIjoxMzQzNSwiZGVhZCI6Mzg3MCwidHJhbnNpZW50IjoyNjg5LCJ1bmtub3duIjo2MjIyfSwidXJsIjoiaHR0cHM6Ly9tY3Bjb3N0LnVsZWhsYS5kZXYvZGF0YS9tY3Bjb3N0LWV2aWRlbmNlLWxhdGVzdC5qc29uLmd6In0sInNlcSI6MCwic3BlYyI6ImNhbmFyaS1sb2ctZW50cnkvdjEiLCJ0aW1lc3RhbXAiOiIyMDI2LTExLTE1VDA0OjQ5OjQwWiJ9",
-  "index": 0
+ "consistency": {
+  "from_head": {
+   "body": {
+    "log_id": "canari-snapshot-log",
+    "root": "c0182963ebbcda4f16fbed356dcb883e22debd01bbebbe178f0919daae482fe4",
+    "size": 1,
+    "spec": "canari-append-only-log/v1",
+    "timestamp": "2026-11-15T04:49:40Z"
+   },
+   "signature": {
+    "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
+    "scheme": "ed25519",
+    "sig": "b81c9f3599f6416452590e488f77b63867f0a74b8564377fc6f3b31d52f01294ef8304d3f20599ebc78b427df8a0cc9be0b60bde5ed99fa138e395ef7f577c0c"
+   }
+  },
+  "proof": [
+   "82fead22a58e3594a1f98babe0e5a3973bc936e5578520b63999b9e64f63b92b",
+   "9d992d19f20527c602dd8ada256731e9c9282e7dd34caee756aa76a1314a3fdb",
+   "e1979349b72691aa7a8d984f109b319d22bac10ab286622ae46de1a7576fe6b2",
+   "472c6f5e4b1bc927e11541a93a71917a6bc986af8391f3b61ccfcdf78af027f5",
+   "5054be61023382e4c5d97ace69db46fe879ab9d9a11e54bcbd04117848252e59"
+  ]
  },
- "inclusion_proof": [],
+ "entry": {
+  "data_b64": "eyJraW5kIjoidmVyZGljdCIsInBheWxvYWQiOnsiYXJ0aWZhY3Rfc2hhMjU2IjoiOGMzM2Q3MDg2NTliNTA4YzY2MTNlOTZmNmEyYjU0YjkxZThhMTJmNjI2N2Y5YTA5ZTMwOWFjZDkzMDRkYjdhYiIsImJ1bmRsZV9ieXRlcyI6MTU2MzgsImJ1bmRsZV9maWxlIjoicHlwaV9tY3Atc2VydmVyLWFuYWx5emVyXzIwMjYxMTE0VDEyMDQzOF8yNTIwNDA3NC5idW5kbGUuanNvbiIsImJ1bmRsZV9zaGEyNTYiOiIzNTM4ZjM0ZDdlNjgwZjI3Nzg2MjRjNWMwYzIyZmZiYjYzOGI4MDFmY2Q4YjQ5YzBkYWMxODlhMjExYmFhZDU5IiwiY29tcG9uZW50IjoicHlwaTptY3Atc2VydmVyLWFuYWx5emVyQDAuNC4xIiwiZXhwaXJlc19hdCI6IjIwMjYtMTEtMjFUMTI6MDQ6MzhaIiwiZ2VuZXJhdGVkX2F0IjoiMjAyNi0xMS0xNFQxMjowNDozOFoiLCJraW5kIjoidmVyZGljdCIsIm5hbWUiOiJtY3Atc2VydmVyLWFuYWx5emVyIiwicGF5bG9hZF9kaWdlc3QiOiIyNTIwNDA3NDJjZWQwNTZhNDYzNWFiZmZmMDQxOWY3YTQ5OThkMjAzMDI0MmFhNzQ3NjlkOGNlMjUzNjdhNzFmIiwicmVnaXN0cnkiOiJweXBpIiwidmVyZGljdCI6InBhc3Mtd2l0aC1maW5kaW5ncyIsInZlcnNpb24iOiIwLjQuMSJ9LCJzZXEiOjIwLCJzcGVjIjoiY2FuYXJpLWxvZy1lbnRyeS92MSIsInRpbWVzdGFtcCI6IjIwMjYtMTEtMTVUMDQ6NTg6MThaIn0=",
+  "index": 20
+ },
+ "inclusion_proof": [
+  "0536c6a050e25c7b72fe3ded802ddffd2741996f1668bee2505085b557e5e63d",
+  "b72e0aa78e0f7f47daf8ec03b244b885e59a6dfbdd21a08062f463c6ca62f1b8"
+ ],
  "log_id": "canari-snapshot-log",
  "public_key": {
   "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
@@ -17,15 +43,15 @@
  "tree_head": {
   "body": {
    "log_id": "canari-snapshot-log",
-   "root": "c0182963ebbcda4f16fbed356dcb883e22debd01bbebbe178f0919daae482fe4",
-   "size": 1,
+   "root": "92f6b635b7edeefdf5e5227d0cad7533767bf955d5ba814a5bc34487f3faec7d",
+   "size": 21,
    "spec": "canari-append-only-log/v1",
-   "timestamp": "2026-11-15T04:49:40Z"
+   "timestamp": "2026-11-15T04:58:18Z"
   },
   "signature": {
    "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
    "scheme": "ed25519",
-   "sig": "b81c9f3599f6416452590e488f77b63867f0a74b8564377fc6f3b31d52f01294ef8304d3f20599ebc78b427df8a0cc9be0b60bde5ed99fa138e395ef7f577c0c"
+   "sig": "b452b708e68efa91a188676b745a048b4296d504b41d96962b5e815184b4a5c3e4a1a204174de936752a27039e795efdd5cabc98ee44076126c456784e7e7f08"
   }
  }
 }
