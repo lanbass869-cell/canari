@@ -154,13 +154,30 @@ class AppendOnlyLog:
 
     # ---- storage -------------------------------------------------------
     def _read_entries(self):
+        """Read the raw entry bytes, one per line, LF-terminated.
+
+        CRLF handling is deliberate, not sloppiness. A leaf hash is over the
+        exact bytes of the line, so a repository checkout that converts LF to
+        CRLF changes *every* leaf and makes an intact log report as rewritten.
+        That happened here on 2026-11-15: CI (Linux) verified fine while a
+        Windows checkout audited as REWRITTEN, with a completely different root.
+
+        The real fix is `.gitattributes` marking docs/log/** as `-text`. This
+        reader is the second line of defence: it drops one trailing CR so a
+        mangled checkout still verifies, and records that it had to, so audit()
+        can report it instead of hiding it.
+        """
         out = []
+        self._crlf_seen = False
         if not os.path.exists(self.entries_path):
             return out
         with open(self.entries_path, "rb") as f:
             for line in f.read().split(b"\n"):
                 if not line.strip():
                     continue
+                if line.endswith(b"\r"):
+                    line = line[:-1]
+                    self._crlf_seen = True
                 out.append(line)
         return out
 
@@ -309,8 +326,17 @@ class AppendOnlyLog:
             elif body.get("root") != self._prefix_root(body["size"]):
                 errors.append("REWRITTEN: prefix root at signed size %d no longer matches"
                               % body["size"])
+        if getattr(self, "_crlf_seen", False):
+            # Not an integrity failure -- the hashes were computed over the
+            # bytes this reader returns -- but a consumer must know their
+            # checkout mangles evidence files, because any *other* tool that
+            # hashes the file directly will disagree.
+            print("[log] WARNING: %s contains CRLF line endings; a checkout "
+                  "converted evidence files. Add docs/log/** -text to "
+                  ".gitattributes." % self.entries_path)
         return {"ok": not errors, "size": len(entries), "root": root,
-                "last_head": lh, "errors": errors}
+                "last_head": lh, "errors": errors,
+                "crlf_normalized": bool(getattr(self, "_crlf_seen", False))}
 
     def seal(self, timestamp=None, force=False) -> dict:
         """Publish a signed head over the current log. Returns head or None.

@@ -20,7 +20,27 @@ if ROOT not in sys.path:
 from canari.logstore import open_log  # noqa: E402
 
 LOG_DIR = os.path.join(ROOT, "docs", "log")
+
+# The internal log_id, embedded in every native head body since the first
+# entry. It cannot be changed without re-signing history, which this project
+# refuses to do.
 LOG_ID = "canari-snapshot-log"
+
+# The c2sp origin line, which is what a witness keys its state by. It is
+# deliberately NOT the internal log_id:
+#
+#   * an origin must never change once a witness has co-signed it, so it has to
+#     be collision-resistant from the start -- a bare name like
+#     "canari-snapshot-log" could be claimed by any other operator, and a
+#     witness would then hold state for two different logs under one key;
+#   * a namespaced URL we control ("github.com/<owner>/<repo>/log") cannot
+#     collide by accident.
+#
+# The two identities describe the same tree: the checkpoint's (size, root) must
+# equal a signed head body's (size, root), which is checkable by anyone. The
+# mismatch between the two labels is documented in docs/spec/append-only-log.md
+# section 12.1 rather than papered over.
+C2SP_ORIGIN = "github.com/lanbass869-cell/canari/log"
 
 
 def build_bundle(L, path):
@@ -238,7 +258,7 @@ def main():
     # polls. Without it a witness has nothing to co-sign, no matter how correct
     # our Merkle proofs are.
     try:
-        note = L.checkpoint_note(origin=LOG_ID)
+        note = L.checkpoint_note(origin=C2SP_ORIGIN)
         chk = L.verify_checkpoint_note(note)
         if not chk["ok"]:
             raise SystemExit("our own checkpoint note does not verify")

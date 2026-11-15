@@ -1,0 +1,13 @@
+# Evidence files are hashed byte-for-byte. Git's end-of-line conversion must
+# never touch them: a CRLF checkout changes every leaf hash, so a Windows
+# clone would report "REWRITTEN" on a perfectly intact log. This is a real bug
+# found on 2026-11-15 (local audit failed while CI passed).
+docs/log/** -text
+docs/spec/merkle-vectors.json -text
+
+# Normal source files may be normalised as usual.
+*.py text eol=lf
+*.md text eol=lf
+*.js text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf

@@ -239,3 +239,47 @@ class TestPinnedPrefix:
         rep = verify_bundle(b, pinned_prefix_root=early)
         assert rep["ok"] is False
         assert any(c["name"] == "prefix.pinned" and not c["ok"] for c in rep["checks"])
+
+
+class TestCRLFCheckout:
+    """Real bug, 2026-11-15: a Windows git checkout converted docs/log/log.jsonl
+    from LF to CRLF. Every leaf hash changed, so an intact log audited as
+    REWRITTEN with a different root, while CI on Linux stayed green. Since a
+    leaf commits to exact bytes, line-ending conversion attacks the log itself.
+
+    Two defences, both tested here:
+      1. .gitattributes marks docs/log/** as -text (verified by a scan)
+      2. the reader drops one trailing CR and *reports* that it did, so a
+         mangled checkout still verifies but the fact is not hidden
+    """
+
+    def test_crlf_checkout_still_verifies_and_is_reported(self, log):
+        p = log.entries_path
+        raw = open(p, "rb").read()
+        open(p, "wb").write(raw.replace(b"\n", b"\r\n"))
+        L2 = open_log(log.dir, log_id="cov")
+        rep = L2.audit()
+        assert rep["ok"] is True
+        assert rep["crlf_normalized"] is True
+        assert rep["root"] == log.audit()["root"]
+
+    def test_lf_log_reports_no_normalisation(self, log):
+        assert log.audit()["crlf_normalized"] is False
+
+    def test_leaf_bytes_are_identical_under_both_line_endings(self, log):
+        """The normalised leaf must equal the original leaf, not merely produce
+        a consistent but different tree."""
+        before = log.entry_objs()[0]
+        p = log.entries_path
+        raw = open(p, "rb").read()          # read first: opening "wb" truncates
+        with open(p, "wb") as f:
+            f.write(raw.replace(b"\n", b"\r\n"))
+        after = open_log(log.dir, log_id="cov").entry_objs()[0]
+        assert before == after
+
+    def test_gitattributes_protects_evidence_files(self):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        text = open(os.path.join(root, ".gitattributes"), encoding="utf-8").read()
+        assert "docs/log/** -text" in text, (
+            "evidence files must never be EOL-converted; without this a "
+            "Windows checkout reports an intact log as rewritten")

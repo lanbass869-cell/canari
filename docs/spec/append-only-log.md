@@ -247,3 +247,26 @@ The honest limit: emitting a co-signable checkpoint is a **precondition** for
 being witnessed, not evidence of it. Until an independent operator actually
 co-signs our origin, our log is still self-anchored apart from the Bitcoin
 timestamp. Do not describe it otherwise.
+
+
+## 13. Line endings are part of the hash
+
+A leaf commits to the exact bytes of a line. Therefore **any** tool that
+rewrites line endings changes every leaf and makes an intact log report as
+rewritten.
+
+This is not hypothetical: on 2026-11-15 a Windows git checkout converted
+`docs/log/log.jsonl` from LF to CRLF. CI on Linux verified fine; the same
+commit on Windows audited as `REWRITTEN` with a completely different root
+(`5ed24610...` instead of `1af057f1...`).
+
+Two defences, both required:
+
+1. `.gitattributes` marks `docs/log/**` as `-text`, so git stores and checks
+   out those bytes untouched.
+2. `AppendOnlyLog._read_entries()` drops one trailing CR and sets
+   `crlf_normalized`, which `audit()` reports. A mangled checkout still
+   verifies, and the fact is surfaced rather than hidden.
+
+Consumers must do the same: if your tooling hashes the file directly, hash the
+LF-normalised bytes, or you will disagree with every other verifier.
