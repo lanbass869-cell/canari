@@ -1,0 +1,156 @@
+{
+ "total": 25,
+ "passed": 25,
+ "results": [
+  {
+   "group": "V1",
+   "case": "https://mcp-a.example/mcp capsule_id",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-a.example/mcp validate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-c.example/mcp capsule_id",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-c.example/mcp validate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-e.example/mcp capsule_id",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-e.example/mcp validate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-b.example/mcp capsule_id",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-b.example/mcp validate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-d.example/mcp capsule_id",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V1",
+   "case": "https://mcp-d.example/mcp validate",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V2",
+   "case": "merkle_root",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V2",
+   "case": "states cover every capsule",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V2",
+   "case": "audit_path reproduced byte-for-byte",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V2",
+   "case": "audit_path verifies against root",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V2",
+   "case": "record_sha256",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V2",
+   "case": "record.merkle_root agrees",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "V3",
+   "case": "cose_sign1 attached verifies",
+   "ok": true,
+   "detail": "kid=b'did:web:measurer.example#test-key-1'"
+  },
+  {
+   "group": "V3",
+   "case": "protected header decodes",
+   "ok": true,
+   "detail": "alg=-19"
+  },
+  {
+   "group": "V4",
+   "case": "hash envelope verifies",
+   "ok": true,
+   "detail": "payload=77c6996d9794b8de"
+  },
+  {
+   "group": "N",
+   "case": "N1-forbidden-member",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "N",
+   "case": "N2-source-not-a-digest",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "N",
+   "case": "N3-stored-line-not-jcs",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "N",
+   "case": "N4-payload-byte-flipped",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "N",
+   "case": "N5-hash-envelope-with-label-3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "group": "N",
+   "case": "N6-duplicated-last-leaf",
+   "ok": true,
+   "detail": ""
+  }
+ ]
+}

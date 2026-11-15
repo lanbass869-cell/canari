@@ -24,7 +24,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7"]
+dev = ["pytest>=7", "cbor2>=5.6"]
 
 [project.scripts]
 canari-verify = "canari.verify_cli:main"
