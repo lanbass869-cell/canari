@@ -11,3 +11,4 @@ docs/spec/merkle-vectors.json -text
 *.js text eol=lf
 *.yml text eol=lf
 *.toml text eol=lf
+*.html text eol=lf
