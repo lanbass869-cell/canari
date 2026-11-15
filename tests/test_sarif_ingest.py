@@ -242,3 +242,48 @@ class TestUnspecifiedSeverity:
         _c, verdict, _t, _v, meta = sarif_to_checks(s)
         assert meta["highest_severity"] == "high"
         assert verdict == "fail"
+
+
+class TestEvidenceNotary:
+    """Notarizing someone else's published export: bind, but never overclaim."""
+
+    def _idx(self, sha=None, entries=10, states=None, checks=None):
+        return {"dataset": "demo-evidence", "run": "2026-11-14",
+                "probed_at": "2026-11-14T10:00:00Z", "entries": entries,
+                "states": states if states is not None else {"alive": 7, "dead": 3},
+                "checks": checks if checks is not None else {"endpoint": 10},
+                "bytes": 1234, "sha256": sha or "f" * 64,
+                "checked_with": {"client": "demo 1.0", "sdk": "sdk 1.0"}}
+
+    def test_consistent_index_passes_with_findings(self):
+        from canari.evidence_notary import build_attestation
+        att = build_attestation(self._idx())
+        assert att["verdict"] == "pass-with-findings"
+        assert att["subject"]["registry"] == "dataset"
+        assert att["subject"]["artifact_sha256"] == "f" * 64
+
+    def test_inconsistent_summary_fails(self):
+        from canari.evidence_notary import build_attestation
+        att = build_attestation(self._idx(entries=10, states={"alive": 1}))
+        assert att["verdict"] == "fail"
+
+    def test_digest_is_not_claimed_as_recomputed(self):
+        """The notary must not pretend it downloaded and hashed the data file."""
+        from canari.evidence_notary import build_attestation
+        att = build_attestation(self._idx())
+        hashcheck = [c for c in att["checks"] if c["id"] == "L2.1_ARTIFACT_HASH"][0]
+        assert hashcheck["verdict"] == "unsupported"
+        assert "not recomputed" in hashcheck["evidence_ref"]
+
+    def test_missing_sha_is_refused(self):
+        import pytest
+        from canari.evidence_notary import build_attestation
+        bad = self._idx()
+        bad.pop("sha256")
+        with pytest.raises(ValueError):
+            build_attestation(bad)
+
+    def test_schema_accepts_dataset_records(self):
+        from canari.evidence_notary import build_attestation
+        from canari.schema import validate_attestation
+        assert validate_attestation(build_attestation(self._idx())) == []

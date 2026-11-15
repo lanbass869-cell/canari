@@ -1,0 +1,33 @@
+{
+  "dataset": "mcpcost-evidence",
+  "shape": "modelcontextprotocol/registry#1715: entry, version, checked_at, check (endpoint | package), state (alive | auth | transient | dead | unknown), evidence",
+  "url": "https://mcpcost.ulehla.dev/data/mcpcost-evidence-latest.json.gz",
+  "run": "2026-11-14",
+  "probed_at": "2026-11-14T11:33:29.612Z",
+  "entries": 62493,
+  "states": {
+    "alive": 36277,
+    "auth": 13435,
+    "transient": 2689,
+    "dead": 3870,
+    "unknown": 6222
+  },
+  "checks": {
+    "endpoint": 43002,
+    "package": 19491
+  },
+  "bytes": 2440834,
+  "sha256": "4c86d6360686dfe2d01cddf03de0ed6a6d1fa4229cb8042c7ddefe2491279868",
+  "license": "CC BY 4.0",
+  "updates": "after each successful daily probe run; the monthly copies stay at /data/mcpcost-evidence-YYYY-MM.json.gz",
+  "checked_with": {
+    "client": "mcpcost 0.3.4",
+    "sdk": "@modelcontextprotocol/sdk 1.32.0 (TypeScript)",
+    "requested_protocol_version": "2025-11-25",
+    "answered_protocol_version": "evidence.protocol_version of each row: the version the server answered in initialize",
+    "endpoint": "initialize, then tools/list, over the transport the entry lists (streamable-http, else SSE), with no credentials; a 401 or 403 is read for its WWW-Authenticate header and OAuth metadata",
+    "package": "the same client in a container with the network off, after an install with the network on; the container has the newest 1.x SDK on the day of the run, so its requested version can be newer"
+  },
+  "run_id": 43585441781,
+  "run_url": "https://github.com/ondraulehla/mcpcost/actions/runs/43585441781"
+}

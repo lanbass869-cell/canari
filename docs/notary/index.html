@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canari notary - one published evidence export</title>
+<style>
+:root{--bg:#0a1210;--fg:#dfe9e4;--dim:#8ba39a;--line:#1e2f2a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:40px 20px}
+main{max-width:860px;margin:0 auto}h1{font-size:24px;margin:0 0 6px}
+.sub{color:var(--dim);margin:0 0 24px}
+.note{border-left:3px solid #2a6b55;background:#101d19;padding:14px 16px;margin:0 0 22px;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:22px}
+th{text-align:left;color:var(--dim);font-weight:500;border-bottom:1px solid var(--line);padding:6px 10px}
+td{border-bottom:1px solid var(--line);padding:6px 10px}
+.mono{font-family:ui-monospace,Consolas,monospace;color:var(--dim)}
+code{background:#101a17;padding:2px 6px;border-radius:4px}
+pre{background:#101a17;padding:14px;border-radius:6px;overflow:auto;font-size:12.5px}
+footer{margin-top:28px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+</style></head><body><main>
+<h1>Notary record for one published evidence export</h1>
+<p class=sub>mcpcost-evidence &middot; run 2026-11-14 &middot; probed 2026-11-14T11:33:29.612Z</p>
+
+<div class=note>
+<b>What this is.</b> An independent project publishes a daily file describing whether each registry
+entry still resolves. That file is unsigned. This record is a signed, timestamped statement of
+<i>what that project published on that date</i>, bound to the sha256 it published.
+Canari did not produce the data and did not recompute the digest - the record says so.
+</div>
+
+<p class=sub>Entries: <b>62493</b> &middot; state counts:</p>
+<table><tr><td>alive</td><td class=mono>36277</td></tr><tr><td>auth</td><td class=mono>13435</td></tr><tr><td>dead</td><td class=mono>3870</td></tr><tr><td>transient</td><td class=mono>2689</td></tr><tr><td>unknown</td><td class=mono>6222</td></tr></table>
+<p class=sub>Check kinds:</p>
+<table><tr><td>endpoint</td><td class=mono>43002</td></tr><tr><td>package</td><td class=mono>19491</td></tr></table>
+
+<p class=sub>Producer: <code>mcpcost 0.3.4</code> &middot; sdk <code>@modelcontextprotocol/sdk 1.32.0 (TypeScript)</code></p>
+<p class=sub>Published data sha256: <code class=mono>4c86d6360686dfe2d01cddf03de0ed6a6d1fa4229cb8042c7ddefe2491279868</code> (2440834 bytes)</p>
+
+<h2 style="font-size:17px;margin-top:26px">Verify</h2>
+<pre>python verify.py</pre>
+<p class=sub>It re-derives the record's signature and its consistency check without importing Canari,
+and confirms the sha256 in the record equals the one the producer published in its index.</p>
+
+<footer>Record: <code>mcpcost-evidence_2026-11-14_cad46e8c.bundle.json</code> &middot; signed with Ed25519 over a DSSE envelope whose payload
+is an in-toto Statement v1. Public key: <code>public_key.json</code>.</footer>
+</main></body></html>
