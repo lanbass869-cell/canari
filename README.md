@@ -3,8 +3,8 @@
 <!-- mcp-name: io.github.lanbass869-cell/canari -->
 
 [![CI](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml/badge.svg)](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml)
-![tests](https://img.shields.io/badge/tests-496%20passing-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-89%25%20line%20%7C%2086%25%20branch-brightgreen)
+![tests](https://img.shields.io/badge/tests-653%20passing-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-86%25%20line%20%7C%2086%25%20branch-brightgreen)
 ![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
 ![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
 [![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/lanbass869-cell/canari)
@@ -47,12 +47,43 @@ public keys and a `MANIFEST.json` with a sha256 per file. Verify a bundle offlin
 `canari-verify`; verify the whole snapshot with the manifest (see `dataset/README.md`).
 Refresh it after a scan with `python scripts/sync_dataset.py`.
 
+## Append-only public log (verifiable without trusting us)
+
+Every published verdict bundle and every upstream dataset snapshot is committed
+into a signed, append-only Merkle log at
+[`docs/log/`](https://lanbass869-cell.github.io/canari/log/). This closes a gap
+that a signature alone cannot: a signed attestation proves *who* said something,
+never that an older statement was not quietly deleted or re-issued with a
+different verdict.
+
+- **Latest head**: `docs/log/head-latest.json` (size, root, Ed25519 signature)
+- **Latest offline bundle**: `docs/log/bundle-latest.json`
+- **Format**: [`docs/spec/append-only-log.md`](docs/spec/append-only-log.md)
+  (RFC 9162 hashing, inclusion + consistency proofs, explicit list of what the
+  proof does *not* claim)
+- **Cross-implementation vectors**: `docs/spec/merkle-vectors.json` (168 cases),
+  checked by two independent verifiers
+
+```
+# no network, no canari install needed for the Node path
+node docs/spec/verify_offline.js docs/log/bundle-latest.json --log-id canari-snapshot-log
+
+# "the head I recorded yesterday is still a prefix of today's"
+python -m canari.verify_offline docs/log/bundle-latest.json \
+  --pinned-prefix <root-you-saved-last-week>
+```
+
+A new head is appended daily by `.github/workflows/append-only-log.yml`. The
+publish path refuses to sign (`LogTruncated` / `LogRewritten`) if the on-disk
+log contradicts a head it already published, because a log that re-signs a
+rewrite under its own key manufactures false assurance.
+
 ## Quality gates (enforced in CI)
 
 | Gate | Threshold | Current |
 |---|---|---|
-| tests | green on 3.10/3.12/3.13 | 496 passing (1 env-skip) |
-| line coverage | >= 85% | 89% (branch 86%) |
+| tests | green on 3.10/3.12/3.13 | 653 passing (1 env-skip) |
+| line coverage | >= 85% | 86% line (branch 86%) |
 | mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (47/47 killed + 2 equivalent, 3 skipped) |
 | live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
 
