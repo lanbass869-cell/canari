@@ -202,3 +202,43 @@ class TestBanditAdapter:
     def test_unknown_format_rejected(self):
         with pytest.raises(ValueError):
             build_attestation({"hello": "world"}, "pkg-x", "pypi", SHA)
+
+
+class TestUnspecifiedSeverity:
+    """gitleaks 8.30.1 writes no level and no security-severity.
+
+    Before this fix, a missing level defaulted to "warning" -> medium, so a
+    leaked credential was recorded as pass-with-findings and could never fail.
+    Absence of severity is not evidence of low severity.
+    """
+
+    def _no_level_sarif(self, rule_level=None):
+        res = {"ruleId": "github-pat", "message": {"text": "leak"}}
+        rule = {"id": "github-pat"}
+        if rule_level:
+            rule["defaultConfiguration"] = {"level": rule_level}
+        return {"version": "2.1.0", "runs": [{
+            "tool": {"driver": {"name": "gitleaks", "semanticVersion": "8.30.1",
+                                "rules": [rule]}},
+            "invocations": [{"executionSuccessful": True}],
+            "results": [res]}]}
+
+    def test_missing_level_is_unknown_not_medium(self):
+        from canari.sarif_ingest import sarif_to_checks
+        checks, verdict, _t, _v, meta = sarif_to_checks(self._no_level_sarif())
+        assert meta["highest_severity"] == "unknown"
+        assert verdict == "fail"
+
+    def test_rule_default_configuration_is_used(self):
+        from canari.sarif_ingest import sarif_to_checks
+        _c, verdict, _t, _v, meta = sarif_to_checks(self._no_level_sarif("note"))
+        assert meta["highest_severity"] == "low"
+        assert verdict == "pass-with-findings"
+
+    def test_explicit_error_still_fails(self):
+        from canari.sarif_ingest import sarif_to_checks
+        s = self._no_level_sarif()
+        s["runs"][0]["results"][0]["level"] = "error"
+        _c, verdict, _t, _v, meta = sarif_to_checks(s)
+        assert meta["highest_severity"] == "high"
+        assert verdict == "fail"

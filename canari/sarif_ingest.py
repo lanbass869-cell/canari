@@ -55,14 +55,29 @@ def _tool_identity(sarif):
     return str(name), str(ver)
 
 
-def _severity(result):
-    """Best-effort severity for one SARIF result.
+_LEVEL_SEVERITY = {"error": "high", "warning": "medium",
+                   "note": "low", "none": "none"}
+
+
+def _severity(result, rule_levels=None):
+    """Severity for one SARIF result, or "unknown" when the report omits it.
 
     SARIF does not mandate a severity scale. Order of preference:
-      1. rule-level security-severity metadata (GitHub code scanning convention,
-         a CVSS-like 0-10 number stored as a string)
+      1. properties.security-severity (GitHub code scanning convention, a
+         CVSS-like 0-10 value stored as a string)
       2. result.level (error / warning / note / none)
-    Returns one of: critical, high, medium, low, none.
+      3. the rule's defaultConfiguration.level
+
+    Returns one of: critical, high, medium, low, none, unknown.
+
+    ★ Measured 2026-11-15 with gitleaks 8.30.1: it writes neither
+    properties.security-severity nor result.level nor
+    defaultConfiguration.level. The earlier code defaulted a missing level to
+    "warning", so EVERY finding from such a scanner became "medium" and the
+    verdict could never reach "fail" - a leaked credential was recorded as
+    pass-with-findings. Absence of a severity is not evidence of low severity,
+    so it is now reported as "unknown" and treated as blocking at the verdict
+    level (fail-closed).
     """
     properties = result.get("properties") or {}
     raw = properties.get("security-severity")
@@ -81,9 +96,13 @@ def _severity(result):
             if score > 0:
                 return "low"
             return "none"
-    level = str(result.get("level") or "warning").lower()
-    return {"error": "high", "warning": "medium",
-            "note": "low", "none": "none"}.get(level, "medium")
+    level = result.get("level")
+    if level:
+        return _LEVEL_SEVERITY.get(str(level).lower(), "unknown")
+    rule_id = result.get("ruleId") or (result.get("rule") or {}).get("id")
+    if rule_levels and rule_id in rule_levels:
+        return _LEVEL_SEVERITY.get(str(rule_levels[rule_id]).lower(), "unknown")
+    return "unknown"
 
 
 def _location(result):
@@ -119,10 +138,19 @@ def sarif_to_checks(sarif):
             if end and not generated_at:
                 generated_at = end
 
-    ranked = sorted(results, key=lambda r: (
-        {"critical": 0, "high": 1, "medium": 2, "low": 3, "none": 4}
-        .get(_severity(r), 5)))
-    highest = _severity(ranked[0]) if ranked else "none"
+    rule_levels = {}
+    for run in runs:
+        drv = ((run.get("tool") or {}).get("driver") or {})
+        for rule in (drv.get("rules") or []):
+            rid = rule.get("id")
+            lvl = ((rule.get("defaultConfiguration") or {}).get("level"))
+            if rid and lvl:
+                rule_levels[rid] = lvl
+
+    rank = {"critical": 0, "high": 1, "unknown": 2,
+            "medium": 3, "low": 4, "none": 5}
+    ranked = sorted(results, key=lambda r: rank.get(_severity(r, rule_levels), 6))
+    highest = _severity(ranked[0], rule_levels) if ranked else "none"
 
     checks = []
     tool_ref = "%s/%s" % (tool_name, tool_version)
@@ -136,7 +164,7 @@ def sarif_to_checks(sarif):
         execution_ok = False
     elif not execution_ok:
         scan_verdict = "error"
-    elif highest in ("critical", "high"):
+    elif highest in ("critical", "high", "unknown"):
         scan_verdict = "fail"
     elif results:
         scan_verdict = "pass-with-findings"
@@ -163,11 +191,11 @@ def sarif_to_checks(sarif):
     # Individual findings, capped, each attributable to a rule + location.
     for r in ranked[:MAX_FINDING_CHECKS]:
         rule_id = r.get("ruleId") or (r.get("rule") or {}).get("id") or "unknown-rule"
-        sev = _severity(r)
+        sev = _severity(r, rule_levels)
         where = _location(r)
         checks.append({
             "id": "L3.1_FINDING",
-            "verdict": "fail" if sev in ("critical", "high") else "pass",
+            "verdict": "fail" if sev in ("critical", "high", "unknown") else "pass",
             "tool": tool_ref,
             "evidence_ref": "finding: rule=%s severity=%s%s"
                             % (rule_id, sev, (" at " + where) if where else ""),
