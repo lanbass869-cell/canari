@@ -159,3 +159,27 @@ is that they need gossip or witness cosignature. Do not claim otherwise.
 A log that signs a rewrite under its own key is worse than no log, because it
 manufactures false assurance. Directory writes take a cross-process lock so a
 scheduled run and a manual run cannot interleave.
+
+
+## 11. Bitcoin anchoring (optional, independent of us)
+
+Everything above is verifiable but still anchored to a key we hold. An
+OpenTimestamps proof removes that: it commits the SHA-256 of a published file
+into a Bitcoin transaction, and anyone can check the block header afterwards
+with no trust in Canari.
+
+Stages, and they must not be conflated:
+
+| stage | what it proves |
+|---|---|
+| `pending` | a calendar accepted the commitment. **Nothing about the past.** |
+| `bitcoin` | the commitment is inside a Bitcoin block; the file existed before that block |
+
+`scripts/anchor_ots.py` submits to four public calendars and reports the stage
+it actually reached. A `pending` proof is never described as an anchor. The
+daily workflow upgrades an existing proof before submitting a fresh one, so a
+proof that has since been aggregated is promoted in place.
+
+Verification of a Bitcoin-stage proof still requires a source of block headers
+(`ots verify -c <bitcoin node>` or a chain API); the block height in the proof
+alone is a claim, not a proof. Do not report it as one.
