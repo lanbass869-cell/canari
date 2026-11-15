@@ -229,6 +229,9 @@ None of that says the underlying data is correct -- only that the record was
 not added, dropped, or rewritten after the fact.</p>
 
 <h2>Verification</h2>
+<p><strong><a href="../verify/">Verify this bundle in your browser</a></strong>
+&mdash; no install, no upload, no network request. It runs the same checks
+described below and shows each one.</p>
 <p class="note">Two independent implementations, both offline:
 <code>python -m canari.verify_offline bundle-latest.json</code> and
 <code>node docs/spec/verify_offline.js bundle-latest.json</code>. Format:
