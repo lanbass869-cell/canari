@@ -31,8 +31,7 @@ from canari.schema import _PREDICATE_TYPE
 from canari.signing import (generate_keypair, sign_attestation, export_public_key,
                             load_or_generate_keypair, create_key_registry_entry,
                             save_key_registry, load_key_registry, is_key_valid,
-                            save_private_key, read_signed_payload, payload_digest,
-                            unwrap_statement)
+                            save_private_key, read_signed_payload, payload_digest)
 from canari.state import FileLock, StateStore
 from canari.dead_letter import DeadLetterLog
 from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info,
@@ -163,8 +162,15 @@ def _download_sha256(tarball_url: str, timeout: int = 60):
 UA_CONST = "canari-m0/0.1 (research; repo issues)"
 
 
-def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256: str) -> dict:
-    """Build one meta-only attestation for one component."""
+def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256: str,
+                      packument: dict = None) -> dict:
+    """Build one meta-only attestation for one component.
+
+    `packument` is the npm packument this attestation was derived from. It is
+    passed so the release-cadence check can use the version timestamps already
+    in hand. Without it that check had to fetch something, and it fetched the
+    wrong registry (see the L2.4 block below).
+    """
     checks = []
     # L1.1 packument fetchable = we got here
     checks.append({"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass",
@@ -270,18 +276,35 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
     heuristic_checks = []
     # H1: Release cadence - always leaves a row (see the PyPI loop for why).
     try:
-        from canari.cadence import analyze_release_cadence
-        _cd = analyze_release_cadence(name, meta.get("version", ""))
-        heuristic_checks.extend(_cd or [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
-                                         "tool": "canari-cadence/0.1",
-                                         "evidence_ref": "no cadence anomaly detected"}])
+        from canari.cadence import analyze_npm_cadence
+        if isinstance(packument, dict) and isinstance(packument.get("time"), dict):
+            # npm cadence comes from the packument we already fetched: zero
+            # extra requests, and it is the right registry.
+            _cd = analyze_npm_cadence(packument, meta.get("version", ""))
+            heuristic_checks.extend(_cd or [{
+                "id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+                "tool": "canari-cadence/0.1",
+                "evidence_ref": "no cadence anomaly detected (%d versions in packument)"
+                                % len(packument.get("time") or {})}])
+        else:
+            # BUG fixed 2026-11-15: this used to call analyze_release_cadence(),
+            # i.e. fetch https://pypi.org/pypi/<npm-name>/json for an npm
+            # package. That is a guaranteed 404 (20-44s on a slow link) and the
+            # empty result was then reported as verdict "pass" with
+            # "no cadence anomaly detected" -- a false pass: nothing had been
+            # checked. analyze_npm_cadence() already existed and its docstring
+            # said npm "previously got NO cadence signal at all"; the call site
+            # was simply never switched over.
+            heuristic_checks.append({
+                "id": "L2.4_RELEASE_CADENCE", "verdict": "unknown",
+                "tool": "canari-cadence/0.1",
+                "evidence_ref": "no npm packument supplied; cadence not checked"})
     except Exception as _ce:
         heuristic_checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "error",
                                  "tool": "canari-cadence/0.1",
                                  "evidence_ref": "cadence check failed: %s" % str(_ce)[:80]})
     # H2: Metadata anomaly (only if we have previous metadata in state)
     try:
-        from canari.anomaly import detect_metadata_anomaly
         # previous metadata would come from state.json (not implemented yet)
         # For now, skip if no previous data available
         pass
@@ -295,6 +318,13 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
         result["checks"].append(hf)
         # If any heuristic has a finding, upgrade verdict
         if "finding:" in (hf.get("evidence_ref") or ""):
+            if result["verdict"] == "pass":
+                result["verdict"] = "pass-with-findings"
+        # A heuristic that could not run is not a clean result. Leaving the
+        # verdict at "pass" when a check reports "unknown" or "error" is the
+        # same false-pass shape as the gitleaks severity bug: absence of a
+        # signal was being reported as absence of a problem.
+        if hf.get("verdict") in ("unknown", "error"):
             if result["verdict"] == "pass":
                 result["verdict"] = "pass-with-findings"
     return result
@@ -380,7 +410,7 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
             continue
         import time as _t
         _t.sleep(1)  # politeness: npm CDN throttles rapid sequential tarball fetches
-        att = build_attestation(name, meta, pkg, scenario_sha256)
+        att = build_attestation(name, meta, pkg, scenario_sha256, packument=pack)
         _prev = state.get_component("npm:" + name) or state.get_component(name)
         if _prev and _prev.get("attestation_digest"):
             _pd = _prev["attestation_digest"]
@@ -983,7 +1013,7 @@ def metadata_scan(registry="npm", limit=5000, out_dir=None):
                 try:
                     with _opener().open(req, timeout=30) as r:
                         d = json.loads(r.read().decode("utf-8"))
-                except Exception as e:
+                except Exception:
                     break
                 objects = d.get("objects", [])
                 if not objects:

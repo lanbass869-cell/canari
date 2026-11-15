@@ -7,7 +7,6 @@ Offline tests use the recorded bundle structure (no network).
 """
 
 # GUARDS_AGAINST: false signing claim (v0.1 publicKey-hint bundles treated as verified), credential leakage into attestation payload
-import json
 import os
 import sys
 
@@ -98,6 +97,7 @@ except ImportError:
     HAS_SIGSTORE = False
 
 
+@pytest.mark.network
 @pytest.mark.skipif(not HAS_SIGSTORE, reason="sigstore-python not installed")
 class TestLiveExpress:
     """Live npm-registry tests.

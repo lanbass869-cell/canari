@@ -17,6 +17,16 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SCENARIO = "d" * 64
 
 
+@pytest.fixture(autouse=True)
+def _offline(no_native_ingest):
+    """Every test in this file is about hashing and verdict stability, not about
+    npm being reachable. Without this, each build_attestation() call paid up to
+    90 seconds for a live provenance fetch whose result the test then discarded
+    -- and a slow link turned a 20-second file into a 200-second one.
+    """
+    return no_native_ingest
+
+
 def _meta(**kw):
     import base64
     integ = "sha512-" + base64.b64encode(bytes(64)).decode()

@@ -27,6 +27,13 @@ class TestIntegrity:
 
 
 class TestBuildAttestation:
+    # build_attestation() calls native_ingest() with a 90-second budget. This
+    # file says "offline: no npm calls" in its own docstring, and it was not
+    # true: the fetch ran for real and cost up to 16s per test.
+    @pytest.fixture(autouse=True)
+    def _offline(self, no_native_ingest):
+        return no_native_ingest
+
     @pytest.fixture(autouse=True)
     def _mock_download(self, monkeypatch):
         """Tests are offline: fake successful tarball download."""
@@ -43,8 +50,18 @@ class TestBuildAttestation:
 
     def test_all_pass(self):
         search_meta = {"description": "A thing", "links": {"homepage": "https://x"}}
-        att = build_attestation("pkg-a", self._meta(), search_meta, SCENARIO)
-        assert att["verdict"] == "pass"  # all checks pass incl. L2.1 (mocked download)
+        # Pass the packument so L2.4 can actually be evaluated. Without it the
+        # cadence check now reports "unknown" (it used to fetch PyPI with an npm
+        # name and report that as "pass"), and an unrun check correctly keeps
+        # the verdict out of a clean "pass".
+        packument = {"time": {"created": "2025-01-01T00:00:00.000Z",
+                              "modified": "2026-11-01T00:00:00.000Z",
+                              "1.0.0": "2026-05-01T00:00:00.000Z",
+                              "1.2.3": "2026-11-01T00:00:00.000Z"}}
+        att = build_attestation("pkg-a", self._meta(), search_meta, SCENARIO,
+                                packument=packument)
+        assert att["verdict"] == "pass", [c["id"] for c in att["checks"]
+                                           if c["verdict"] != "pass"]
         ids = [c["id"] for c in att["checks"]]
         assert "L1.1_REGISTRY_PRESENT" in ids and "L2.3_MANIFEST_FIELDS" in ids
 

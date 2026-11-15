@@ -16,7 +16,17 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from canari.pypi_native import fetch_pypi_attestations, ingest_pypi
 
 
+@pytest.mark.network
 class TestPyPINative:
+    """These call the real PyPI JSON API. Marked `network` so a normal run does
+    not depend on pypi.org being reachable or fast, and runs only with
+    CANARI_NETWORK_TESTS=1.
+
+    Known weakness, left visible rather than papered over: `assert r is None`
+    cannot tell "this package has no attestations" from "the fetch failed", so
+    on a broken link these tests pass for the wrong reason. Fixing that needs
+    the fetch result to distinguish the two, which is a product change.
+    """
     def test_import_clean(self):
         from canari.pypi_native import ingest_pypi
         assert callable(ingest_pypi)
