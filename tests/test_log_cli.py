@@ -105,3 +105,34 @@ def test_seal_reports_no_new_entries(tmp_path):
 def test_verify_missing_file_is_usage_error(tmp_path):
     r = run(["verify", str(tmp_path / "nope.json")])
     assert r.returncode == 3
+
+def test_audit_infers_a_non_default_log_id(tmp_path):
+    """`audit DIR` must not report corruption just because the log was created
+    with --log-id.
+
+    Reproduced on the repo's own log before the fix: `canari-log audit docs/log`
+    returned {"ok": false, errors: ["log_id mismatch: 'canari-snapshot-log' !=
+    'canari-log'"]} and exit 2, on a completely intact log. A reader who had just
+    cloned the repo would reasonably conclude the transparency log was corrupt.
+    """
+    d = str(tmp_path / "log")
+    assert run(["init", d, "--log-id", "custom-id",
+                "--timestamp", "2026-01-01T00:00:00Z"]).returncode == 0
+    src = tmp_path / "recs.json"
+    src.write_text(json.dumps([{"a": 1}, {"a": 2}]), encoding="utf-8")
+    assert run(["append", d, "--file", str(src)]).returncode == 0
+    assert run(["seal", d, "--timestamp", "2026-01-02T00:00:00Z"]).returncode == 0
+
+    # no --log-id: infer it from the published head
+    r = run(["audit", d])
+    assert r.returncode == 0, (r.stdout, r.stderr)
+    out = json.loads(r.stdout)
+    assert out["ok"] is True, out
+    assert out["size"] == 2
+
+    # an explicitly wrong id must still fail closed
+    r = run(["audit", d, "--log-id", "definitely-wrong"])
+    assert r.returncode == 2
+    out = json.loads(r.stdout)
+    assert out["ok"] is False
+    assert any("log_id mismatch" in e for e in out["errors"]), out["errors"]

@@ -21,7 +21,9 @@ Named after the canary in the coal mine: the first to detect that something went
 3. Attestations are **offline-verifiable** by anyone with the public key
 4. History is **never deleted** - version changes create supersession chains
 5. Public **machine-readable feed** for any AI agent or host to consume
-6. **Trust heuristics**: release cadence (L2.4), metadata anomaly (L2.5), typosquatting (L2.6)
+6. **Trust heuristics**: release cadence (L2.4), metadata anomaly (L2.5), typosquatting (L2.6).
+   Which of these appear in an attestation depends on the entry point - see
+   [Which checks come from which entry point](#which-checks-come-from-which-entry-point).
 7. **Consumer install gate** with policies: `canari-verify bundle.json --key pub.json --gate --gate-policy paranoid`
 
 ## Install
@@ -243,12 +245,53 @@ received the live component count):
 | MCP Registry | official REST | identity presence | - |
 | dsh.so | JSON API | **reference existing L1-L5 conclusions** (not re-scanned) | dsh.so verdicts |
 
+## Which checks come from which entry point
+
+Two entry points produce attestations, and they do **not** run the same checks.
+That is deliberate: a single-component CLI has no comparison corpus, so it cannot
+answer a question about a set.
+
+| check | `canari-baseline` (one component) | weekly scan / `run_multi` |
+|---|---|---|
+| L1.1 registry present | yes | yes |
+| L1.2 version resolved | yes | - |
+| L2.1 artifact hash | yes | yes |
+| L2.2 maintainer set | yes | - |
+| L2.3 manifest fields | yes | - |
+| L2.4 release cadence | yes | yes |
+| L2.5 metadata anomaly | - | yes |
+| L2.6 typosquatting | **no** | yes |
+| L2.7 / L2.8 dsh plugin refs | - | yes (dsh only) |
+
+L2.6 is absent from the single-component path because a typosquat verdict is a
+statement about a **set** of names, not about one name. When it does run, the row
+records the set it compared against:
+
+```json
+"comparison_corpus": {
+  "registry": "pypi",
+  "kind": "name-set",
+  "size": 620,
+  "digest": "sha256:...",
+  "canonicalization": "sha256(utf-8, casefolded names sorted asc, LF-joined, trailing LF)",
+  "as_of": "2026-11-16T05:31:35Z"
+}
+```
+
+plus a `corpus:<registry>:sha256:...:n=<size>` line in `evidence_refs`. Without it
+the same package can be "clean" against five names and "a typosquat" against six
+hundred; see [docs/analysis-corpus-dependence.md](docs/analysis-corpus-dependence.md)
+for the measurements. A small `size` is itself the warning: `n=1` cannot produce a
+typosquat finding at all.
+
 ## Honest limitations
 
 - This is a **risk signal, not a safety guarantee**
 - M0/M1 covers meta-level checks (L1-L2); behavioral checks (L3+) are M1+
 - Scan coverage is limited to what registries expose publicly
 - `expires_at` is 7 days - attestations go stale, re-scan needed
+- L2.6 verdicts are **relative to the recorded comparison corpus**. Comparing two
+  attestations that used different corpora is not a comparison of the packages.
 
 ## The threat model this addresses
 

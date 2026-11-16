@@ -14,6 +14,7 @@ Every command is offline; none of them contacts a registry. Exit codes:
 """
 import argparse
 import json
+import os
 import sys
 
 from canari.logstore import LogError, open_log
@@ -173,8 +174,48 @@ def build_parser():
     return p
 
 
+DEFAULT_LOG_ID = "canari-log"
+
+
+def _resolve_log_id(a):
+    """Read the log id from the published head instead of assuming the default.
+
+    `init` writes whatever id it was given; every other command then has to read
+    that same id. Without this, `canari-log audit docs/log` on a log created with
+    --log-id canari-snapshot-log reports `"ok": false` with a "log_id mismatch"
+    error even though the log is perfectly intact - a false alarm that looks
+    exactly like corruption. Only a caller-supplied id is authoritative; the
+    default is treated as "figure it out".
+    """
+    if getattr(a, "log_id", None) and a.log_id != DEFAULT_LOG_ID:
+        return a.log_id
+    d = getattr(a, "dir", "") or ""
+    try:
+        with open(os.path.join(d, "head-latest.json"), "r", encoding="utf-8") as f:
+            doc = json.load(f)
+        # head-latest.json nests the head under "head"; older layouts put the
+        # body at the top level, so accept both.
+        for candidate in (doc.get("head"), doc):
+            body = (candidate or {}).get("body") or {}
+            if body.get("log_id"):
+                return body["log_id"]
+    except (OSError, ValueError):
+        pass
+    try:
+        with open(os.path.join(d, "heads.jsonl"), "r", encoding="utf-8") as f:
+            lines = [ln for ln in f if ln.strip()]
+        body = (json.loads(lines[-1]).get("body") or {})
+        if body.get("log_id"):
+            return body["log_id"]
+    except (OSError, ValueError, IndexError):
+        pass
+    return a.log_id
+
+
 def main(argv=None):
     a = build_parser().parse_args(argv)
+    if a.fn is not cmd_init and getattr(a, "log_id", None):
+        a.log_id = _resolve_log_id(a)
     try:
         return a.fn(a)
     except LogError as e:
