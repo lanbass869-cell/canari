@@ -1,0 +1,127 @@
+{
+ "benchmark": "Kemalyavas/agent-skill-typosquat-bench",
+ "rows": 2000,
+ "protected_base": 200,
+ "curve": [
+  {
+   "threshold": 1,
+   "n": 200,
+   "trials": 3,
+   "precision_mean": 1.0,
+   "precision_min": 1.0,
+   "recall_mean": 0.8575,
+   "f1_mean": 0.9233,
+   "fp_mean": 0,
+   "hard_neg_fp_mean": 0,
+   "new_fps_vs_base_mean": 0
+  },
+  {
+   "threshold": 1,
+   "n": 400,
+   "trials": 3,
+   "precision_mean": 0.9965,
+   "precision_min": 0.9952,
+   "recall_mean": 0.8575,
+   "f1_mean": 0.9218,
+   "fp_mean": 3.7,
+   "hard_neg_fp_mean": 1.7,
+   "new_fps_vs_base_mean": 3.7
+  },
+  {
+   "threshold": 1,
+   "n": 800,
+   "trials": 3,
+   "precision_mean": 0.9929,
+   "precision_min": 0.9913,
+   "recall_mean": 0.8575,
+   "f1_mean": 0.9203,
+   "fp_mean": 7.3,
+   "hard_neg_fp_mean": 2,
+   "new_fps_vs_base_mean": 7.3
+  },
+  {
+   "threshold": 1,
+   "n": 1200,
+   "trials": 3,
+   "precision_mean": 0.9897,
+   "precision_min": 0.9875,
+   "recall_mean": 0.8575,
+   "f1_mean": 0.9189,
+   "fp_mean": 10.7,
+   "hard_neg_fp_mean": 3.7,
+   "new_fps_vs_base_mean": 10.7
+  },
+  {
+   "threshold": 1,
+   "n": 1617,
+   "trials": 1,
+   "precision_mean": 0.9866,
+   "precision_min": 0.9866,
+   "recall_mean": 0.8575,
+   "f1_mean": 0.9175,
+   "fp_mean": 14,
+   "hard_neg_fp_mean": 4,
+   "new_fps_vs_base_mean": 14
+  },
+  {
+   "threshold": 2,
+   "n": 200,
+   "trials": 3,
+   "precision_mean": 0.9847,
+   "precision_min": 0.9847,
+   "recall_mean": 0.9642,
+   "f1_mean": 0.9743,
+   "fp_mean": 18,
+   "hard_neg_fp_mean": 10,
+   "new_fps_vs_base_mean": 0
+  },
+  {
+   "threshold": 2,
+   "n": 400,
+   "trials": 3,
+   "precision_mean": 0.9731,
+   "precision_min": 0.9674,
+   "recall_mean": 0.9642,
+   "f1_mean": 0.9686,
+   "fp_mean": 32,
+   "hard_neg_fp_mean": 14.3,
+   "new_fps_vs_base_mean": 14
+  },
+  {
+   "threshold": 2,
+   "n": 800,
+   "trials": 3,
+   "precision_mean": 0.9581,
+   "precision_min": 0.9554,
+   "recall_mean": 0.9642,
+   "f1_mean": 0.9611,
+   "fp_mean": 50.7,
+   "hard_neg_fp_mean": 20,
+   "new_fps_vs_base_mean": 32.7
+  },
+  {
+   "threshold": 2,
+   "n": 1200,
+   "trials": 3,
+   "precision_mean": 0.9499,
+   "precision_min": 0.946,
+   "recall_mean": 0.9642,
+   "f1_mean": 0.957,
+   "fp_mean": 61,
+   "hard_neg_fp_mean": 25.3,
+   "new_fps_vs_base_mean": 43
+  },
+  {
+   "threshold": 2,
+   "n": 1617,
+   "trials": 1,
+   "precision_mean": 0.9399,
+   "precision_min": 0.9399,
+   "recall_mean": 0.9642,
+   "f1_mean": 0.9519,
+   "fp_mean": 74,
+   "hard_neg_fp_mean": 29,
+   "new_fps_vs_base_mean": 56
+  }
+ ]
+}
