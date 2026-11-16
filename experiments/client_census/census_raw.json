@@ -1,0 +1,511 @@
+{
+ "LibreChat-AI__LibreChat": {
+  "files": 6218,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [
+    [
+     "api\\server\\controllers\\agents\\client.js",
+     54,
+     "computeAgentRequestFingerprint,"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.js",
+     55,
+     "computeLegacyAgentRequestFingerprint,"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.js",
+     198,
+     "createInitializedAgentContextFingerprint,"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.js",
+     2176,
+     "if (state?.contextFingerprint == null) {"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.js",
+     2293,
+     "fingerprint: createInitializedAgentContextFingerprint({"
+    ]
+   ],
+   "ENDPOINT_CHANGE": [
+    [
+     "api\\app\\clients\\specs\\BaseClient.test.js",
+     2295,
+     "const previousEndpoint = TestClient.options.endpoint;"
+    ],
+    [
+     "api\\app\\clients\\specs\\BaseClient.test.js",
+     2322,
+     "TestClient.options.endpoint = previousEndpoint;"
+    ],
+    [
+     "api\\server\\controllers\\auth\\LogoutController.spec.js",
+     238,
+     "it('warns and returns no redirect when end_session_endpoint is missing', async () => {"
+    ],
+    [
+     "api\\server\\middleware\\limiters\\loginLimiter.js",
+     4,
+     "const { isOAuthNavigation, redirectOAuthFailure } = require('~/server/middleware/oauthNavigation');"
+    ],
+    [
+     "api\\server\\routes\\actions.js",
+     125,
+     "const redirectUrl = `${basePath}/oauth/success?serverName=${encodeURIComponent(serverName)}`;"
+    ]
+   ],
+   "ATTESTATION": [
+    [
+     "api\\app\\clients\\specs\\BaseClient.test.js",
+     803,
+     "test('persists exact provenance paths for edited and steered assistant content', async () => {"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.test.js",
+     1328,
+     "/** Only the compact tiers travel: the SDK's provenance flag is stripped. */"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.test.js",
+     3120,
+     "provenance: _provenance,"
+    ],
+    [
+     "api\\server\\controllers\\agents\\client.test.js",
+     3120,
+     "provenance: _provenance,"
+    ],
+    [
+     "api\\server\\controllers\\agents\\request.js",
+     3029,
+     "* later actor turns, so a failed status upgrade costs provenance,"
+    ]
+   ],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 995,
+   "ENDPOINT_CHANGE": 69,
+   "ATTESTATION": 688,
+   "ALLOWLIST": 0
+  }
+ },
+ "Mintplex-Labs__anything-llm": {
+  "files": 1182,
+  "hits": {
+   "TLS_DISABLED": [
+    [
+     "collector\\utils\\extensions\\Confluence\\ConfluenceLoader\\index.js",
+     66,
+     "// If SSL bypass is enabled, set the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
+    ],
+    [
+     "collector\\utils\\extensions\\Confluence\\ConfluenceLoader\\index.js",
+     67,
+     "if (this.bypassSSL) process.env.NODE_TLS_REJECT_UNAUTHORIZED = \"0\";"
+    ],
+    [
+     "collector\\utils\\extensions\\Confluence\\ConfluenceLoader\\index.js",
+     79,
+     "if (this.bypassSSL) process.env.NODE_TLS_REJECT_UNAUTHORIZED = \"1\";"
+    ]
+   ],
+   "PINNING": [],
+   "ENDPOINT_CHANGE": [
+    [
+     "collector\\utils\\extensions\\RepoLoader\\GiteaRepo\\RepoLoader\\index.js",
+     406,
+     "`[Gitea Loader]: Unexpected status ${response.status} for ${endpoint}. Skipping.`"
+    ],
+    [
+     "collector\\utils\\extensions\\RepoLoader\\GithubRepo\\RepoLoader\\index.js",
+     57,
+     "* of GitHub serves the same REST API v3 endpoints - only the root differs."
+    ],
+    [
+     "collector\\utils\\extensions\\RepoLoader\\GitlabRepo\\RepoLoader\\index.js",
+     517,
+     "`[Gitlab Loader]: Unexpected status ${response.status} for ${endpoint}. Skipping.`"
+    ],
+    [
+     "collector\\utils\\extensions\\RepoLoader\\GitlabRepo\\RepoLoader\\index.js",
+     524,
+     "console.warn(`Unexpected response format for ${endpoint}:`, data);"
+    ],
+    [
+     "frontend\\public\\embed\\anythingllm-chat-widget.min.js",
+     37,
+     "*/function M(t){for(var e=\"https://reactjs.org/docs/error-decoder.html?invariant=\"+t,n=1;n<arguments.length;n++)e+=\"&arg"
+    ]
+   ],
+   "ATTESTATION": [],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 3,
+   "PINNING": 0,
+   "ENDPOINT_CHANGE": 7,
+   "ATTESTATION": 0,
+   "ALLOWLIST": 0
+  }
+ },
+ "PrefectHQ__fastmcp": {
+  "files": 309,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [
+    [
+     "fastmcp_slim\\fastmcp\\cli\\client.py",
+     299,
+     "key_fingerprint = hashlib.sha256(key).hexdigest()[:12]"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\cli\\client.py",
+     300,
+     "storage_dir = settings.home / \"cli-oauth\" / key_fingerprint"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\experimental\\transforms\\jev_search.py",
+     73,
+     "def _fingerprint(tool: Tool) -> str:"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\experimental\\transforms\\jev_search.py",
+     186,
+     "# rendered text per tool fingerprint; shared across searches but only"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\experimental\\transforms\\jev_search.py",
+     247,
+     "key = _fingerprint(tool)"
+    ]
+   ],
+   "ENDPOINT_CHANGE": [
+    [
+     "fastmcp_slim\\fastmcp\\cli\\deploy\\command.py",
+     225,
+     "raise StateFileError(\"The Horizon host changed during login\")"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\cli\\deploy\\credentials.py",
+     97,
+     "raise StateFileError(\"The Horizon host changed during login\")"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\client\\auth\\oauth.py",
+     243,
+     "callback_host: Hostname used for OAuth redirect URI and callback server."
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\server\\auth\\redirect_validation.py",
+     118,
+     "Every redirect this server sends back to an OAuth client from the"
+    ],
+    [
+     "fastmcp_slim\\fastmcp\\server\\mixins\\transport.py",
+     43,
+     "invalid URL. Hostnames and IPv4 addresses are returned unchanged, as are"
+    ]
+   ],
+   "ATTESTATION": [
+    [
+     "fastmcp_slim\\fastmcp\\server\\auth\\providers\\google.py",
+     100,
+     "when the token's provenance is guaranteed elsewhere (as in"
+    ]
+   ],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 7,
+   "ENDPOINT_CHANGE": 5,
+   "ATTESTATION": 1,
+   "ALLOWLIST": 0
+  }
+ },
+ "daodao97__chatmcp": {
+  "files": 3,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [],
+   "ENDPOINT_CHANGE": [],
+   "ATTESTATION": [],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 0,
+   "ENDPOINT_CHANGE": 0,
+   "ATTESTATION": 0,
+   "ALLOWLIST": 0
+  }
+ },
+ "modelcontextprotocol__go-sdk": {
+  "files": 125,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [],
+   "ENDPOINT_CHANGE": [
+    [
+     "mcp\\client_example_test.go",
+     327,
+     "// The hosted page redirects back to the server, whose callback endpoint"
+    ],
+    [
+     "mcp\\sse_test.go",
+     612,
+     "http.Error(w, \"redirect target\", http.StatusInternalServerError)"
+    ],
+    [
+     "mcp\\streamable_client_test.go",
+     2498,
+     "http.Error(w, \"redirect target\", http.StatusInternalServerError)"
+    ],
+    [
+     "oauthex\\dcr_test.go",
+     135,
+     "w.Write([]byte(`{\"client_id\":\"example-client-id\",\"redirect_uris\":[\"http://127.0.0.1:7777/callback\"],\"token_endpoint_auth"
+    ],
+    [
+     "oauthex\\dcr_test.go",
+     274,
+     "redirector := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {"
+    ]
+   ],
+   "ATTESTATION": [],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 0,
+   "ENDPOINT_CHANGE": 7,
+   "ATTESTATION": 0,
+   "ALLOWLIST": 0
+  }
+ },
+ "modelcontextprotocol__python-sdk": {
+  "files": 355,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [
+    [
+     "src\\mcp\\server\\request_state.py",
+     192,
+     "Each token carries a 4-byte non-secret key fingerprint for an O(1) ring"
+    ],
+    [
+     "src\\mcp\\server\\request_state.py",
+     193,
+     "lookup, and the \"v1.\" prefix and fingerprint are bound into the GCM"
+    ]
+   ],
+   "ENDPOINT_CHANGE": [
+    [
+     "src\\mcp\\client\\sse.py",
+     56,
+     "returns, MCP requests follow a redirect only when it stays on the endpoint's origin"
+    ],
+    [
+     "src\\mcp\\client\\streamable_http.py",
+     79,
+     "f\"Redirect to {location} not followed: it would downgrade this HTTPS endpoint to plain HTTP.\\n\""
+    ],
+    [
+     "src\\mcp\\client\\streamable_http.py",
+     84,
+     "return f\"Redirect to {location} not followed; use that URL as the endpoint if it is the intended server\""
+    ],
+    [
+     "src\\mcp\\shared\\auth.py",
+     142,
+     "`redirect_uris` elements are still parsed as URLs, as the authorization server compares"
+    ],
+    [
+     "src\\mcp\\shared\\_httpx_utils.py",
+     42,
+     "redirects within the endpoint's origin themselves, see `stream_within_origin`."
+    ]
+   ],
+   "ATTESTATION": [],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 2,
+   "ENDPOINT_CHANGE": 6,
+   "ATTESTATION": 0,
+   "ALLOWLIST": 0
+  }
+ },
+ "modelcontextprotocol__typescript-sdk": {
+  "files": 272,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [],
+   "ENDPOINT_CHANGE": [
+    [
+     "packages\\client\\src\\client\\sse.ts",
+     450,
+     "const response = await this._redirects(this._fetch ?? fetch)(this._endpoint, init);"
+    ],
+    [
+     "packages\\client\\src\\client\\sse.ts",
+     489,
+     "`Error POSTing to endpoint (HTTP ${response.status}): ${this._unfollowedRedirect(this._endpoint, response) ?? text}`"
+    ],
+    [
+     "packages\\core-internal\\src\\shared\\transport.ts",
+     109,
+     "return `Redirect from https to plain http not followed; try ${target.href} as the endpoint`;"
+    ],
+    [
+     "packages\\core-internal\\src\\shared\\transport.ts",
+     111,
+     "return `Redirect to ${target.href} not followed; use that URL as the endpoint if it is the intended server`;"
+    ],
+    [
+     "packages\\server-legacy\\src\\auth\\provider.ts",
+     34,
+     "* Begins the authorization flow, which can either be implemented by this server itself or via redirection to a separate "
+    ]
+   ],
+   "ATTESTATION": [
+    [
+     "packages\\client\\src\\client\\authSeam.ts",
+     2,
+     "* Auth-seam provenance stamp (internal — not part of the public API)."
+    ],
+    [
+     "packages\\client\\src\\client\\authSeam.ts",
+     8,
+     "* errors as auth outcomes; provenance is recorded where it is known, never"
+    ],
+    [
+     "packages\\client\\src\\client\\authSeam.ts",
+     21,
+     "* outranks provenance. Primitive throws cannot carry the stamp."
+    ],
+    [
+     "packages\\client\\src\\client\\versionNegotiation.ts",
+     395,
+     "// Provenance recorded at the throw boundary: the transport"
+    ],
+    [
+     "scripts\\fetch-schema-twins.ts",
+     8,
+     "* authority rests on provenance, so they are vendored verbatim — no"
+    ]
+   ],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 0,
+   "ENDPOINT_CHANGE": 8,
+   "ATTESTATION": 7,
+   "ALLOWLIST": 0
+  }
+ },
+ "nanbingxyz__5ire": {
+  "files": 309,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [],
+   "ENDPOINT_CHANGE": [],
+   "ATTESTATION": [],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 0,
+   "ENDPOINT_CHANGE": 0,
+   "ATTESTATION": 0,
+   "ALLOWLIST": 0
+  }
+ },
+ "op7418__CodePilot": {
+  "files": 1385,
+  "hits": {
+   "TLS_DISABLED": [],
+   "PINNING": [
+    [
+     "src\\app\\api\\codex\\proxy\\v1\\responses\\route.ts",
+     28,
+     "* because the proxy can't fingerprint the wire format without more"
+    ],
+    [
+     "src\\app\\api\\workspace\\quick-actions\\route.ts",
+     67,
+     "const generation = await quickActionSuggestions.get(workspacePath, route?.fingerprint, async () => {"
+    ],
+    [
+     "src\\app\\api\\workspace\\quick-actions\\route.ts",
+     87,
+     "const stale = !!route?.fingerprint && currentRoute?.fingerprint !== route.fingerprint;"
+    ],
+    [
+     "src\\app\\api\\workspace\\quick-actions\\route.ts",
+     87,
+     "const stale = !!route?.fingerprint && currentRoute?.fingerprint !== route.fingerprint;"
+    ],
+    [
+     "src\\app\\api\\workspace\\quick-actions\\route.ts",
+     87,
+     "const stale = !!route?.fingerprint && currentRoute?.fingerprint !== route.fingerprint;"
+    ]
+   ],
+   "ENDPOINT_CHANGE": [
+    [
+     "src\\lib\\openai-chat-image-normalizer.ts",
+     105,
+     "* one URL changed, or undefined when the body is already normal."
+    ],
+    [
+     "src\\lib\\xai-oauth-manager.ts",
+     479,
+     "const redirectUri = await startBrowserServer();"
+    ]
+   ],
+   "ATTESTATION": [
+    [
+     "electron\\updater.ts",
+     80,
+     "// A packaged Windows updater without readable provenance must fall back to"
+    ],
+    [
+     "src\\app\\api\\harness-home\\route.ts",
+     66,
+     "provenance: section.provenance,"
+    ],
+    [
+     "src\\app\\api\\harness-home\\route.ts",
+     66,
+     "provenance: section.provenance,"
+    ],
+    [
+     "src\\app\\api\\harness-home\\definitions\\route.ts",
+     38,
+     "provenance: ref.provenance,"
+    ],
+    [
+     "src\\app\\api\\harness-home\\definitions\\route.ts",
+     38,
+     "provenance: ref.provenance,"
+    ]
+   ],
+   "ALLOWLIST": []
+  },
+  "counts": {
+   "TLS_DISABLED": 0,
+   "PINNING": 127,
+   "ENDPOINT_CHANGE": 2,
+   "ATTESTATION": 154,
+   "ALLOWLIST": 0
+  }
+ }
+}
