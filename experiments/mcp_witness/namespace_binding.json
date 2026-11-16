@@ -1,0 +1,1842 @@
+[
+ {
+  "name": "ac.inference.sh/mcp",
+  "host": "api.inference.sh",
+  "cat": "exact"
+ },
+ {
+  "name": "ac.mizan/registry",
+  "host": "mizan.ac",
+  "cat": "exact"
+ },
+ {
+  "name": "ac.snag/snag",
+  "host": "mcp.snag.ac",
+  "cat": "exact"
+ },
+ {
+  "name": "ac.tandem/docs-mcp",
+  "host": "tandem.ac",
+  "cat": "exact"
+ },
+ {
+  "name": "academy.apexai/apex-ai-academy",
+  "host": "apexai.academy",
+  "cat": "exact"
+ },
+ {
+  "name": "academy.ase/periodic-system",
+  "host": "ase.academy",
+  "cat": "exact"
+ },
+ {
+  "name": "academy.serviceengineer/se-ai",
+  "host": "api.serviceengineer.academy",
+  "cat": "exact"
+ },
+ {
+  "name": "ad.apogee/apogee",
+  "host": "app.apogee.ad",
+  "cat": "exact"
+ },
+ {
+  "name": "ad.getle/leads",
+  "host": "mcp.getle.ad",
+  "cat": "exact"
+ },
+ {
+  "name": "ad.inside/inside-ads",
+  "host": "app.inside.ad",
+  "cat": "exact"
+ },
+ {
+  "name": "ad.pantheon/mcp",
+  "host": "mcp.pantheon.ad",
+  "cat": "exact"
+ },
+ {
+  "name": "ad.tide/mcp",
+  "host": "api.tide.ad",
+  "cat": "exact"
+ },
+ {
+  "name": "ad.tributs/mcp",
+  "host": "mcp.tributs.ad",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.alexeysound/alexey-sound",
+  "host": "alexeysound.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.beachclubs/mcp",
+  "host": "www.beachclubs.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.brainy/grocery-prices",
+  "host": "prices.brainy.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.datadubai/dubai-real-estate",
+  "host": "mcp.datadubai.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.discond/discond",
+  "host": "mcp.discond.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.easyvoice/tts",
+  "host": "easyvoice.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.employerofrecord/moha",
+  "host": "employerofrecord.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.employerofrecord/moha-account",
+  "host": "employerofrecord.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.framerfy/store-builder",
+  "host": "mcp.framerfy.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.genosys/genosys",
+  "host": "genosys.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.grovisor/grotax",
+  "host": "mcp.grovisor.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.mrk/dubai-property",
+  "host": "mrk.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.plantguide/dubai-gardening",
+  "host": "plantguide.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.projectory/mcp",
+  "host": "mcp.projectory.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.propick/propick",
+  "host": "propick.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.waggle/fenlight",
+  "host": "fenlight.waggle.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "ae.waggle/vera",
+  "host": "vera.waggle.ae",
+  "cat": "exact"
+ },
+ {
+  "name": "aero.events/events",
+  "host": "events.aero",
+  "cat": "exact"
+ },
+ {
+  "name": "africa.lomi/mcp",
+  "host": "mcp.lomi.africa",
+  "cat": "exact"
+ },
+ {
+  "name": "africa.startuplist/mcp",
+  "host": "mcp.startuplist.africa",
+  "cat": "exact"
+ },
+ {
+  "name": "africa.ugc/ugc",
+  "host": "api.ugc.africa",
+  "cat": "exact"
+ },
+ {
+  "name": "ag.hood/name-service",
+  "host": "www.hood.ag",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.extremely/agency",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "agency.goji/goji",
+  "host": "mcp.goji.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.granek.signal/signal",
+  "host": "signal.granek.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.justidea/justidea-agency",
+  "host": "justidea.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.kesey/pretrip",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "agency.lona/trading",
+  "host": "mcp.lona.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.ottobot/business-contact-finder",
+  "host": "business-contact-finder-mcp.ottobot2025.workers.dev",
+  "cat": "partial"
+ },
+ {
+  "name": "agency.ottobot/contractor-license-changes",
+  "host": "license-changes-mcp.ottobot2025.workers.dev",
+  "cat": "partial"
+ },
+ {
+  "name": "agency.ottobot/licensed-house-painters",
+  "host": "house-painters.ottobot.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.thebureauoflostcontext/bureau-public",
+  "host": "thebureauoflostcontext.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.thirdhemisphere/ai-authority-index",
+  "host": "thirdhemisphere.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "agency.zoll/ausfuhr",
+  "host": "zoll.agency",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.0si/disclosures",
+  "host": "app.0si.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.1325/mcp",
+  "host": "agoclnqfyinwjxdmjnns.supabase.co",
+  "cat": "mismatch"
+ },
+ {
+  "name": "ai.1clickwebsite/mcp",
+  "host": "www.1clickwebsite.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.1court.state/court-directory",
+  "host": "state.1court.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.28in28/agent-service-desk",
+  "host": "28in28.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.2kw/mcp-server",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.4ai/domains",
+  "host": "4ai.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.69ai/69ai",
+  "host": "69ai.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.a1lane/a1lane",
+  "host": "a1lane.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.a2uicatalog/catalog",
+  "host": "a2uicatalog.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.a2uicatalog/docs",
+  "host": "a2uicatalog.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aard/aard",
+  "host": "api.aard.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aarna/atars-mcp",
+  "host": "mcp.aarna.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.abmeter/abmeter",
+  "host": "mcp.abmeter.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.achromat/mcp-server",
+  "host": "achromat.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.acquisity/mcp",
+  "host": "api.acquisity.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.actwise/ideation",
+  "host": "actwise.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adadvisor/mcp-server",
+  "host": "api.adadvisor.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adako/ads",
+  "host": "adako.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adeu/adeu",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.adkix/adkix",
+  "host": "adkix.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.admux/admux",
+  "host": "api.admux.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adoraads/beauty",
+  "host": "mcp.adoraads.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adplane/google-ads",
+  "host": "mcp.adplane.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adrails/adrails",
+  "host": "adrails.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adramp/google-ads",
+  "host": "mcp.adramp.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adrio/adrio",
+  "host": "api.adrio.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adsap/adsap",
+  "host": "mcp.adsap.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.adside/adside",
+  "host": "api.adside.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adtest/adtest-mcp",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.advisorsai/service-navigator",
+  "host": "advisorsai.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.advisorsai/store-readiness",
+  "host": "advisorsai.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.adweave/meta-ads-mcp",
+  "host": "mcp.adweave.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aeoengine/best-ai-search-agency-aeo-report",
+  "host": "aeoengine.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aetherwealth/mcp",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.aetherya/mcp",
+  "host": "mcp.aetherya.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aeviamodeler/aevia",
+  "host": "app.aeviamodeler.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.afg/afg",
+  "host": "afg.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.afmr/discovery",
+  "host": "afmr.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenlify/catalog",
+  "host": "agenlify.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agent-bev/bev-door",
+  "host": "mcp.bev-buyer.ai",
+  "cat": "partial"
+ },
+ {
+  "name": "ai.agent-bev/bevgtin",
+  "host": "gtin-bev.ai",
+  "cat": "partial"
+ },
+ {
+  "name": "ai.agent-bev/library",
+  "host": "mcp.bev-cuvee.org",
+  "cat": "mismatch"
+ },
+ {
+  "name": "ai.agentasy/cronjob",
+  "host": "cronjob.agentasy.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentberg/agentberg",
+  "host": "agentberg.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentblueprint/agent-blueprint",
+  "host": "agentblueprint.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentboard/agentboard",
+  "host": "www.agentboard.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentcv/registry",
+  "host": "agentcv.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentdm/agentdm",
+  "host": "api.agentdm.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentese.lifeclaw/lifeclaw",
+  "host": "api-v2.lifeclaw.agentese.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentgates/compute",
+  "host": "mcp.agentgates.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentgates/mcp",
+  "host": "mcp.agentgates.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentic-news/mcp",
+  "host": "api.agentic-news.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticaffiliate/affiliate-networks-mcp",
+  "host": "mcp.agenticaffiliate.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticblue/agentic-blue",
+  "host": "api.agenticblue.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticbooks/books",
+  "host": "mcp.agenticbooks.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticfabricationnetwork/ufp",
+  "host": "agenticfabricationnetwork.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticplug/agent-ready-report",
+  "host": "scan.agenticplug.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticshelf/graffeo",
+  "host": "api.agenticshelf.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticshelf/mcp",
+  "host": "api.agenticshelf.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticshelf/puroair",
+  "host": "api.agenticshelf.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenticterminal/directory",
+  "host": "mcp.agenticterminal.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/counterscript",
+  "host": "rx.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/greenlight",
+  "host": "solar.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/groundrules",
+  "host": "law.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/groundtruth",
+  "host": "env.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/overassessed",
+  "host": "overassessed.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/plumbline",
+  "host": "contractors.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentlookups/spoon-scout",
+  "host": "food.agentlookups.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentmash/agentmash",
+  "host": "agentmash.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentmesh/mesh",
+  "host": "api.agentmesh.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentplaybooks/agentplaybooks",
+  "host": "agentplaybooks.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentrapay/agentra",
+  "host": "api.agentrapay.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentroam/agentroam",
+  "host": "agentroam.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentsindex/mcp",
+  "host": "agentsindex.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentsrank/agentsrank",
+  "host": "agentsrank.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agenttrust/mcp-server",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentui/apps",
+  "host": "api.agentui.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentutility/mcp-agentops",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-bestiary",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-browser-workflow",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-compose",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-edge-finance",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-edge-market",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-locale",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-matchpoint",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-mediakit",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-model-router",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-prooflayer",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-retail",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-rollforge",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-statline",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-synthforge",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-web-probe",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentutility/mcp-wordmint",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.agentxray/amazon-seller-mcp",
+  "host": "agentxray.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agentxray/mcp",
+  "host": "agentxray.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agilex.service/docs",
+  "host": "service.agilex.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agimon/agimon",
+  "host": "agimon.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aginera/preconstruction",
+  "host": "mcp.aginera.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.agothe.mcp-chatgpt/agent-contract-preflight",
+  "host": "mcp-chatgpt.agothe.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ahel/ahel",
+  "host": "mcp.ahel.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ai-advisors/mcp",
+  "host": "app.ai-advisors.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ai-akari/agent-trust-receipt",
+  "host": "ai-akari.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ai-akari/one-minute-akari",
+  "host": "ai-akari.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ai-portal/ai-portal",
+  "host": "www.ai-portal.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aiadvisorlab/teamops",
+  "host": "teamops.aiadvisorlab.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aibotoffice/bot-office",
+  "host": "aibotoffice.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aidoo/aidoo",
+  "host": "mcp.aidoo.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aient/mcp",
+  "host": "aient.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aigamedev/aigamedev",
+  "host": "aigamedev.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aimentiontracker/mcp",
+  "host": "mcp.aimentiontracker.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aimochi/notes",
+  "host": "api.aimochi.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aiphotoanimator/photo-animator",
+  "host": "aiphotoanimator.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.airboxship/shipping-public",
+  "host": "airboxship.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.airpulse/airpulse",
+  "host": "prod-api.airpulse.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.airshelf/catalog",
+  "host": "mcp.airshelf.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aislabs/cve",
+  "host": "api.aislabs.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aislabs/gateway",
+  "host": "api.aislabs.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aislabs/recorder",
+  "host": "api.aislabs.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aisma/aisma",
+  "host": "api.aisma.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aistlabs/aistlabs",
+  "host": "aistlabs.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aitopia/aitopia",
+  "host": "mcp.aitopia.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aivikings/registrar",
+  "host": "mcp.aivikings.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aivonic/mcp",
+  "host": "mcp.aivonic.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.akaphone/akaphone",
+  "host": "app.akaphone.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.akkrudata/akkrudata",
+  "host": "api.akkrudata.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alcock/arena",
+  "host": "alcock.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aldro/tax",
+  "host": "aldro.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.algoriq/mcp",
+  "host": "mcp.algoriq.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aliengiraffe/spotdb",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.alphabazaar/arena",
+  "host": "api.alphabazaar.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alphacreek/alphacreek-mcp",
+  "host": "mcp.alphacreek.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alphaquantlabs/propertycheck",
+  "host": "agents.alphaquantlabs.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alpic.alpix/Alpix",
+  "host": "alpix.alpic.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alpic.mcp/alpic-mcp",
+  "host": "mcp.alpic.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alpic.test/test-mcp-server",
+  "host": "test.alpic.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.alvinsclub.studio/brandpilot",
+  "host": "studio.alvinsclub.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alvinsclub.studio/channel",
+  "host": "studio.alvinsclub.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alvinsclub.studio/seo",
+  "host": "studio.alvinsclub.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alvinsclub.studio/studio",
+  "host": "studio.alvinsclub.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.alwen/alwen",
+  "host": "api.alwen.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ambix/ambix",
+  "host": "mcp.ambix.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.amdahl/amdahl",
+  "host": "app.amdahl.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.amigurumi/patterns",
+  "host": "amigurumi.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.analyticslegends/sap-analytics",
+  "host": "analyticslegends.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anam/anam",
+  "host": "lab.anam.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anha/resolver",
+  "host": "resolver.anha.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.animeapi/mcp",
+  "host": "animeapi.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ankidecks/ankidecks",
+  "host": "ankidecks.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ankimcp/anki-mcp-server",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.ankimcp/anki-mcp-server-addon",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.ankra/docs",
+  "host": "docs.ankra.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ankra/platform",
+  "host": "platform.ankra.app",
+  "cat": "partial"
+ },
+ {
+  "name": "ai.annsa/annsa",
+  "host": "app.annsa.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anomalyarmor/armor-mcp",
+  "host": "mcp.anomalyarmor.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anyforge/anyforge",
+  "host": "crew.anyforge.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anyreach/anyreach",
+  "host": "api.anyreach.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anysoft.share/anyshare",
+  "host": "share.anysoft.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anywhereintelligence/switchboard",
+  "host": "switchboard.anywhereintelligence.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.anzenna/anzenna",
+  "host": "mcp.anzenna.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.apatero/studio",
+  "host": "mcp.apatero.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.apexrunner/signals",
+  "host": "apexrunner.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.apiant/apiant",
+  "host": "mcp.apiant.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.apir/verify",
+  "host": "apir.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.apithreshold/apithreshold",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.apitree/apitree",
+  "host": "apitree.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.appdeploy/deploy-app",
+  "host": "api-v2.appdeploy.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.appgoat/mcp",
+  "host": "api.appgoat.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aqta/seal",
+  "host": "app.aqta.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aquex/reasonbook",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.aquex/stage1",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.arabickeyboard/name-calligraphy",
+  "host": "arabickeyboard.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arcangel/arcangel",
+  "host": "www.arcangel.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arcangel/trademark-search",
+  "host": "mcp.arcangel.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arcdeck/arcdeck",
+  "host": "arcdeck.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.archome/archome",
+  "host": "archome.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arclan/registry",
+  "host": "arclan.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arcreport/ask",
+  "host": "www.arcreport.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arcreport/mcp",
+  "host": "www.arcreport.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.argushq/enforcement-database",
+  "host": "argushq.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.arihaan/jobs",
+  "host": "jobs-api.arihaan.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.ariso/ari",
+  "host": "mcp.ari.ariso.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arketo/arketo",
+  "host": "arketo.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arpi/arpi-mcp",
+  "host": "mcp.arpi.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.arsentev/contextburn",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.artemisgtm/gtm-engineer",
+  "host": "artemisgtm.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.artidrop/artidrop",
+  "host": "artidrop.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.artifactry/artifactry",
+  "host": "mcp.artifactry.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.artil/artil",
+  "host": "mcp.artil.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.arvx/arvx",
+  "host": "mcp.arvx.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askadia/askadia",
+  "host": "askadia.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askatria/atria",
+  "host": "askatria.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askgina/gina",
+  "host": "askgina.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askgina/perps",
+  "host": "askgina.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askgina/predictions",
+  "host": "askgina.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askgina/spot",
+  "host": "askgina.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askline/askline",
+  "host": "askline.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askmiles/catalog",
+  "host": "api.askmiles.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askwatch/gsc",
+  "host": "mcp.askwatch.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.askyouraudience/ask-your-audience",
+  "host": "mcp.askyouraudience.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.asms/asms",
+  "host": "asms.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.asrm/asrm",
+  "host": "asrm.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.assetlog/assetlog",
+  "host": "api.assetlog.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.assistable/assistable",
+  "host": "api.assistable.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.astrofabric/mcp",
+  "host": "www.astrofabric.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atako/mcp",
+  "host": "api.atako.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atalay/mcp",
+  "host": "mcp.atalay.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atdev/supershopping",
+  "host": "supershopping-mcp.atdev.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.athaus/immobiliensuche",
+  "host": "suche.mcp.athaus.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.athaus/makler",
+  "host": "anbieter.mcp.athaus.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.athenahq/mcp",
+  "host": "api.athenahq.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atlaso/mcp",
+  "host": "mcp.atlaso.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atlasverified/atlas-mcp",
+  "host": "api.atlasverified.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atlier/project-desk",
+  "host": "atlier.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atmark/atmark",
+  "host": "api.atmark.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.atmy/air-quality",
+  "host": "api.atmy.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.atomsell/atomsell",
+  "host": "app.atomsell.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.attestari/attestari",
+  "host": "mcp.attestari.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.audiomap/audiomap",
+  "host": "mcp.audiomap.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.audiopod/audiopod",
+  "host": "mcp.audiopod.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.audiopod/audiopod-core",
+  "host": "mcp.audiopod.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.audo/audo",
+  "host": "audo.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.augenix/build",
+  "host": "app.augenix.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.augmap/maps",
+  "host": "mcp.augmap.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.augmentev/fabric-verify",
+  "host": "mcp.augmentev.com",
+  "cat": "partial"
+ },
+ {
+  "name": "ai.augmentev/paseo",
+  "host": "api.augmentev.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.augworlds/travel-world",
+  "host": "travel.augworlds.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aunoo/agentic",
+  "host": "agentic.aunoo.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.auralogs/auralogs",
+  "host": "mcp.auralogs.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.auten/mcp",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.auteng/docs",
+  "host": "auteng.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.auteng/mcp",
+  "host": "auteng.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.authoryze/authoryze",
+  "host": "authoryze.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.autoblocks/contextlayer-mcp",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.autoblocks/ctxl",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.autoblocks/ctxl-mcp",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.autoblogging/autoblogging",
+  "host": "autoblogging.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.autonomad/computeback",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.autonomad/travel",
+  "host": "mcp.autonomad.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.autonomous.harness/harness",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.autoposter/autoposter",
+  "host": "agent.autoposter.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.autoposting/autoposting",
+  "host": "app.autoposting.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.autorfp/mcp",
+  "host": "{api_host}",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.autovox/autovox",
+  "host": "autovox.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.autron/autron",
+  "host": "agent.autron.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.auxen/auxen",
+  "host": "api.auxen.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.avaloncompany/web-content-url-tools",
+  "host": "avalonai--web-content-url-tools-mcp.apify.actor",
+  "cat": "partial"
+ },
+ {
+  "name": "ai.avasis.agents/avasis",
+  "host": "agents.avasis.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.avasis/quant-research",
+  "host": "quant-mcp.avasis.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.aviado/health",
+  "host": "aviado.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.avlira/back-office",
+  "host": "app.avlira.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.awardcast/federal-contracts",
+  "host": "awardcast.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.awen/awen",
+  "host": "app.awen.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.awraiter/telegram",
+  "host": "awraiter.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.axonagentic/neuroautomata",
+  "host": "mcp.neuroautomata.axonagentic.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.azquo/azquo",
+  "host": "data.azquo.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/ai-media-studio",
+  "host": "ai-media-studio.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/apple-search-ads",
+  "host": "apple-search-ads.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/chess-results",
+  "host": "chess-results.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/feedback",
+  "host": "feedback.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/fibalo",
+  "host": "fibalo.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/file-storage",
+  "host": "file-storage.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/google-ads",
+  "host": "google-ads.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/google-news",
+  "host": "google-news.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/google-search-console",
+  "host": "google-search-console.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/kinnovis-storage",
+  "host": "kinnovis-storage.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/knowledge-base",
+  "host": "knowledge-base.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/nightscout",
+  "host": "nightscout.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/seo-content-factory",
+  "host": "seo-content-factory.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/teamwork",
+  "host": "teamwork.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/time",
+  "host": "time.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.b77/web-analytics",
+  "host": "web-analytics.b77.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.backengine/backengine-mcp",
+  "host": "backengine-prod.backengine.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.backrow/backrow",
+  "host": "backrow.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.balancos/mcp",
+  "host": "mcp.balancos.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bamf/bamf",
+  "host": "mcp.bamf.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bananabread/bananabread",
+  "host": "mcp.bananabread.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bankee/inferventis-mcp",
+  "host": "mcp-server-295985738387.europe-west1.run.app",
+  "cat": "mismatch"
+ },
+ {
+  "name": "ai.bankrolled/agent-hub",
+  "host": "bankrolled.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bareun/bareun",
+  "host": "api.bareun.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.baselight/baselight",
+  "host": "api.baselight.app",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.baseray/baseray",
+  "host": "api.baseray.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.basethread/basethread",
+  "host": "mcp.basethread.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bassethound/bassethound",
+  "host": "mcp.bassethound.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bcited/bcited",
+  "host": "mcp.bcited.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beatbandit/beatbandit",
+  "host": "beatbandit.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beatra/beatra",
+  "host": "mcp.beatra.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beefi/mcp",
+  "host": "mcp.beefi.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beevr/beevr",
+  "host": "beevr.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beexcellent/excellent",
+  "host": "beexcellent.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beexcellent/reference",
+  "host": "beexcellent.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beket/audit",
+  "host": "mcp.beket.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.beliefstate/investor-research",
+  "host": "beliefstate.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.benchgecko/benchgecko",
+  "host": "benchgecko.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.benchlm/data",
+  "host": "data.benchlm.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.benroberts/b4-index",
+  "host": "b4-index.vercel.app",
+  "cat": "mismatch"
+ },
+ {
+  "name": "ai.betslipdoctor/mcp",
+  "host": "api.betslipdoctor.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.betterpost/server",
+  "host": "betterpost.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bezal/local-commerce",
+  "host": "app.bezal.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bidbetter/collector-car-values",
+  "host": "bidbetter.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bidclub/bidclub",
+  "host": "bidclub.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.biddeed/biddeed-mcp",
+  "host": "mcp.biddeed.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.biel/biel-ai",
+  "host": "mcp.biel.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bindry/bindry",
+  "host": "api.bindry.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bithuman/characters",
+  "host": "mcp.bithuman.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bithuman/docs",
+  "host": "docs.bithuman.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bitroad/bitroad",
+  "host": "app.bitroad.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bittlebits/bittlebits",
+  "host": "bittlebits.ai",
+  "cat": "tls-fail"
+ },
+ {
+  "name": "ai.bittuitive.api/bittuitive",
+  "host": "api.bittuitive.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bizmoon/regulatory",
+  "host": "bizmoon.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bizmuse/bizmuse",
+  "host": null,
+  "cat": "no-remote"
+ },
+ {
+  "name": "ai.blast-radius/blast-radius",
+  "host": "blast-radius.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.blaze.app/blaze",
+  "host": "app.blaze.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.blinibot/agent-lounge",
+  "host": "blinibot.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.blipsmith/sound-effects",
+  "host": "blipsmith.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.blitz-api/b2b-data",
+  "host": "api.blitz-api.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bloopo/bloopo",
+  "host": "mcp.bloopo.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.blopus/search",
+  "host": "mcp.blopus.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bluebed.property/new-launches",
+  "host": "property.bluebed.ai",
+  "cat": "exact"
+ },
+ {
+  "name": "ai.bluenexus/universal-mcp",
+  "host": "api.bluenexus.ai",
+  "cat": "exact"
+ }
+]

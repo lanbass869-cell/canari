@@ -1,0 +1,2172 @@
+[
+ {
+  "host": "28in28.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "4ai.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "69ai.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 0.4
+ },
+ {
+  "host": "a1lane.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "a2uicatalog.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "achromat.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "actwise.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "adako.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "adkix.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "adrails.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "advisorsai.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "aeoengine.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "afg.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 5.7
+ },
+ {
+  "host": "afmr.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "agenlify.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "agent.autoposter.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.4
+ },
+ {
+  "host": "agent.autron.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "agentberg.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "agentblueprint.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "agentcv.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "agentic.aunoo.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.1
+ },
+ {
+  "host": "agenticfabricationnetwork.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "agentmash.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.3
+ },
+ {
+  "host": "agentplaybooks.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "agentroam.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "agents.alphaquantlabs.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "agents.avasis.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "agentsindex.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "agentsrank.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "agentxray.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "agimon.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.9
+ },
+ {
+  "host": "agoclnqfyinwjxdmjnns.supabase.co",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "ai-akari.ai",
+  "ok": true,
+  "status": 402,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "ai-media-studio.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "aibotoffice.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "aient.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "aigamedev.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "aiphotoanimator.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.2
+ },
+ {
+  "host": "airboxship.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "aistlabs.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "alcock.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "aldro.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "alexeysound.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "alpix.alpic.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.4
+ },
+ {
+  "host": "amigurumi.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "analyticslegends.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "anbieter.mcp.athaus.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "animeapi.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "ankidecks.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "apexai.academy",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "apexrunner.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.4
+ },
+ {
+  "host": "api-v2.appdeploy.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 2.1
+ },
+ {
+  "host": "api-v2.lifeclaw.agentese.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "api.aard.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "api.acquisity.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "api.adadvisor.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "api.admux.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.2
+ },
+ {
+  "host": "api.adrio.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "api.adside.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "api.agentdm.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "api.agentic-news.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "api.agenticblue.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 3.3
+ },
+ {
+  "host": "api.agenticshelf.ai",
+  "ok": true,
+  "status": 503,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "api.agentmesh.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "api.agentrapay.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 2.5
+ },
+ {
+  "host": "api.agentui.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "api.aimochi.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "api.aislabs.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "api.aisma.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "api.akkrudata.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "api.alphabazaar.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "api.alwen.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "api.anyreach.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "api.appgoat.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "api.askmiles.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "api.assetlog.ai",
+  "ok": true,
+  "status": 403,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "api.assistable.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "api.atako.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "api.athenahq.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "api.atlasverified.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.3
+ },
+ {
+  "host": "api.atmark.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 1.0
+ },
+ {
+  "host": "api.atmy.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.0
+ },
+ {
+  "host": "api.augmentev.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "api.auxen.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "api.bareun.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.5
+ },
+ {
+  "host": "api.baselight.app",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 3.3
+ },
+ {
+  "host": "api.baseray.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "api.betslipdoctor.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "api.bindry.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "api.bittuitive.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "api.blitz-api.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.1
+ },
+ {
+  "host": "api.bluenexus.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 3.8
+ },
+ {
+  "host": "api.inference.sh",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "api.serviceengineer.academy",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "api.tide.ad",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "api.ugc.africa",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "apir.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "apitree.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "app.0si.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "app.aeviamodeler.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "app.ai-advisors.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.5
+ },
+ {
+  "host": "app.akaphone.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "app.amdahl.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "app.annsa.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "app.apogee.ad",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "app.aqta.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.4
+ },
+ {
+  "host": "app.atomsell.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "app.augenix.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "app.autoposting.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "app.avlira.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "app.awen.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.4
+ },
+ {
+  "host": "app.bezal.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "app.bitroad.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.7
+ },
+ {
+  "host": "app.blaze.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "app.inside.ad",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "apple-search-ads.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "arabickeyboard.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "arcdeck.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "archome.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "arclan.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "argushq.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 4.6
+ },
+ {
+  "host": "arketo.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "artemisgtm.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 5.6
+ },
+ {
+  "host": "artidrop.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "ase.academy",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "askadia.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "askatria.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "askgina.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "askline.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "asms.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "asrm.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "atlier.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "audo.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.9
+ },
+ {
+  "host": "auteng.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "authoryze.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "autoblogging.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "autovox.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "avalonai--web-content-url-tools-mcp.apify.actor",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "aviado.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "awardcast.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "awraiter.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "b4-index.vercel.app",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "backengine-prod.backengine.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "backrow.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "bankrolled.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "beatbandit.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "beevr.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "beexcellent.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "beliefstate.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "benchgecko.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "betterpost.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "bidbetter.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "bidclub.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "bittlebits.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 0.3
+ },
+ {
+  "host": "bizmoon.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "blast-radius.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 5.5
+ },
+ {
+  "host": "blinibot.ai",
+  "ok": true,
+  "status": 429,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "blipsmith.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "business-contact-finder-mcp.ottobot2025.workers.dev",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.3
+ },
+ {
+  "host": "chess-results.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "contractors.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 5.3
+ },
+ {
+  "host": "crew.anyforge.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "cronjob.agentasy.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "data.azquo.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.4
+ },
+ {
+  "host": "data.benchlm.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "docs.ankra.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "docs.bithuman.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "easyvoice.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "employerofrecord.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "env.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.4
+ },
+ {
+  "host": "events.aero",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "feedback.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "fenlight.waggle.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "fibalo.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 3.3
+ },
+ {
+  "host": "file-storage.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 5.2
+ },
+ {
+  "host": "food.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "genosys.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "google-ads.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "google-news.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "google-search-console.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "gtin-bev.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "house-painters.ottobot.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "jobs-api.arihaan.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "justidea.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "kinnovis-storage.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 2.7
+ },
+ {
+  "host": "knowledge-base.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 3.2
+ },
+ {
+  "host": "lab.anam.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "law.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.4
+ },
+ {
+  "host": "license-changes-mcp.ottobot2025.workers.dev",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "mcp-chatgpt.agothe.ai",
+  "ok": true,
+  "status": 530,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp-server-295985738387.europe-west1.run.app",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.aarna.ai",
+  "ok": true,
+  "status": 502,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "mcp.abmeter.ai",
+  "ok": true,
+  "status": 405,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.adoraads.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "mcp.adplane.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "mcp.adramp.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.adsap.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 7.6
+ },
+ {
+  "host": "mcp.adweave.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "mcp.aetherya.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.agentgates.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "mcp.agenticaffiliate.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "mcp.agenticbooks.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "mcp.agenticterminal.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.aginera.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "mcp.ahel.ai",
+  "ok": true,
+  "status": 405,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.aidoo.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.aimentiontracker.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 3.2
+ },
+ {
+  "host": "mcp.airshelf.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "mcp.aitopia.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.3
+ },
+ {
+  "host": "mcp.aivikings.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.aivonic.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 7.5
+ },
+ {
+  "host": "mcp.algoriq.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.alphacreek.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.alpic.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "mcp.ambix.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "mcp.anomalyarmor.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "mcp.anzenna.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "mcp.apatero.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "mcp.apiant.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.arcangel.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "mcp.ari.ariso.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "mcp.arpi.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 0.4
+ },
+ {
+  "host": "mcp.artifactry.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "mcp.artil.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.arvx.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.askwatch.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "mcp.askyouraudience.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "mcp.atalay.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "mcp.atlaso.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "mcp.attestari.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "mcp.audiomap.ai",
+  "ok": true,
+  "status": 405,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.audiopod.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "mcp.augmap.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.4
+ },
+ {
+  "host": "mcp.augmentev.com",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.auralogs.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "mcp.autonomad.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "mcp.balancos.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.bamf.ai",
+  "ok": true,
+  "status": 405,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.bananabread.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "mcp.basethread.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.2
+ },
+ {
+  "host": "mcp.bassethound.ai",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "mcp.bcited.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.beatra.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "mcp.beefi.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "mcp.beket.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.bev-buyer.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "mcp.bev-cuvee.org",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.9
+ },
+ {
+  "host": "mcp.biddeed.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "mcp.biel.ai",
+  "ok": true,
+  "status": 530,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "mcp.bithuman.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.bloopo.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "mcp.blopus.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.datadubai.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.discond.ae",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mcp.framerfy.ae",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "mcp.getle.ad",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.2
+ },
+ {
+  "host": "mcp.goji.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "mcp.grovisor.ae",
+  "ok": true,
+  "status": 406,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "mcp.lomi.africa",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "mcp.lona.agency",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 4.8
+ },
+ {
+  "host": "mcp.neuroautomata.axonagentic.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "mcp.pantheon.ad",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.7
+ },
+ {
+  "host": "mcp.projectory.ae",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "mcp.snag.ac",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "mcp.startuplist.africa",
+  "ok": true,
+  "status": 401,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "mcp.tributs.ad",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.3
+ },
+ {
+  "host": "mizan.ac",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "mrk.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "nightscout.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.6
+ },
+ {
+  "host": "overassessed.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "plantguide.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.1
+ },
+ {
+  "host": "platform.ankra.app",
+  "ok": true,
+  "status": 302,
+  "err": null,
+  "secs": 15.9
+ },
+ {
+  "host": "prices.brainy.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "prod-api.airpulse.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "property.bluebed.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.4
+ },
+ {
+  "host": "propick.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.3
+ },
+ {
+  "host": "quant-mcp.avasis.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "resolver.anha.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "rx.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "scan.agenticplug.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "seo-content-factory.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 5.1
+ },
+ {
+  "host": "service.agilex.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.5
+ },
+ {
+  "host": "share.anysoft.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "signal.granek.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.5
+ },
+ {
+  "host": "solar.agentlookups.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "state.1court.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.9
+ },
+ {
+  "host": "studio.alvinsclub.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "suche.mcp.athaus.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "supershopping-mcp.atdev.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "switchboard.anywhereintelligence.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.5
+ },
+ {
+  "host": "tandem.ac",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.2
+ },
+ {
+  "host": "teamops.aiadvisorlab.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 3.5
+ },
+ {
+  "host": "teamwork.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 4.5
+ },
+ {
+  "host": "test.alpic.ai",
+  "ok": false,
+  "status": null,
+  "err": "SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred i",
+  "secs": 3.4
+ },
+ {
+  "host": "thebureauoflostcontext.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.0
+ },
+ {
+  "host": "thirdhemisphere.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "time.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.8
+ },
+ {
+  "host": "travel.augworlds.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.1
+ },
+ {
+  "host": "vera.waggle.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.0
+ },
+ {
+  "host": "web-analytics.b77.ai",
+  "ok": true,
+  "status": 404,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "www.1clickwebsite.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 4.1
+ },
+ {
+  "host": "www.agentboard.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.9
+ },
+ {
+  "host": "www.ai-portal.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "www.arcangel.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 0.8
+ },
+ {
+  "host": "www.arcreport.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.7
+ },
+ {
+  "host": "www.astrofabric.ai",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 2.0
+ },
+ {
+  "host": "www.beachclubs.ae",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 5.9
+ },
+ {
+  "host": "www.hood.ag",
+  "ok": true,
+  "status": 402,
+  "err": null,
+  "secs": 0.6
+ },
+ {
+  "host": "zoll.agency",
+  "ok": true,
+  "status": 200,
+  "err": null,
+  "secs": 1.1
+ },
+ {
+  "host": "{api_host}",
+  "ok": false,
+  "status": null,
+  "err": "RemoteDisconnected: Remote end closed connection without response",
+  "secs": 0.0
+ }
+]
