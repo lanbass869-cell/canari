@@ -1,20 +1,20 @@
 {
- "as_of": "2026-11-15T13:50:04Z",
+ "as_of": "2026-11-16T05:43:39Z",
  "authority_state": "NONE: measurement only; this batch grants and records no execution authority",
  "capsules_file": {
-  "bytes": 46416,
+  "bytes": 52503,
   "format": "one JCS capsule per line, LF-terminated, sorted by capsule_id",
-  "sha256": "d48a79b30fcfe26cfd89c92469549ca6e54ab2adeafd82dbb5f80a3d24c7ebae"
+  "sha256": "bef71e6a1f83ff0f39d678d7cc470114dc1606e286de556b27cd1fa364e0dd1b"
  },
  "excluded": {},
  "inclusion_rule": "every endpoint probed in this run; nothing excluded",
  "kind": "measurement.contract_parity",
  "merkle": "RFC 9162 section 2.1.1 Merkle Tree Hash, SHA-256, over the capsule_id values as 32-byte strings sorted ascending",
- "merkle_root": "b95081e9cc3069dc6ee3b3e1be1118f49d4afd2a0de41096ff68e31f95a65950",
- "n_capsules": 36,
+ "merkle_root": "4e4570ce3c2250a92c89613510cbe6aa2361894f47ac4e002350b11e991dc96c",
+ "n_capsules": 41,
  "schema": "csoai.measurement-capsule-batch/0.2",
  "states": {
-  "CONSISTENT": 24,
-  "UNCHECKABLE": 12
+  "CONSISTENT": 27,
+  "UNCHECKABLE": 14
  }
 }

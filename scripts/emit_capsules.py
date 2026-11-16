@@ -14,6 +14,7 @@ import json
 import os
 import sys
 import time
+import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +26,7 @@ from canari import capsule_emit as emit      # noqa: E402
 from canari.mcp_probe import probe_endpoint  # noqa: E402
 
 REGISTRY = "https://registry.modelcontextprotocol.io/v0/servers?limit=%d"
+SEARCH = "https://registry.modelcontextprotocol.io/v0/servers?limit=100&search=%s"
 
 
 def fetch_registry(limit):
@@ -32,6 +34,26 @@ def fetch_registry(limit):
                                  headers={"User-Agent": "canari-probe/0.1"})
     with urllib.request.urlopen(req, timeout=90) as r:
         return json.loads(r.read().decode("utf-8"))
+
+
+def fetch_by_name(name):
+    """Registry records whose declared name matches `name` exactly.
+
+    Needed because the default listing is ordered and capped: a server can be
+    perfectly well declared and still never appear in the first N records (the
+    inbin endpoint was declared under two names and absent from the first 100,
+    while only 64 of those 100 records had a unique remote URL).
+    """
+    url = SEARCH % urllib.parse.quote(name, safe="")
+    req = urllib.request.Request(url, headers={"User-Agent": "canari-probe/0.1"})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        data = json.loads(r.read().decode("utf-8"))
+    out = []
+    for s in data.get("servers") or []:
+        server = s.get("server") or s
+        if server.get("name") == name:
+            out.append(s)
+    return out
 
 
 def targets(data):
@@ -54,10 +76,31 @@ def main(argv=None):
     ap.add_argument("--out", default=os.path.join(ROOT, "docs", "capsules"))
     ap.add_argument("--timeout", type=int, default=12)
     ap.add_argument("--max-probe", type=int, default=40)
+    ap.add_argument("--include", action="append", default=[],
+                    metavar="REGISTRY_NAME",
+                    help="also probe the endpoints declared by this registry "
+                         "name (repeatable). Use it for servers that are "
+                         "declared but fall outside the default listing window.")
     a = ap.parse_args(argv)
 
     data = fetch_registry(a.limit)
     todo = targets(data)[:a.max_probe]
+    if a.include:
+        seen = {u for _, u in todo}
+        for name in a.include:
+            found = fetch_by_name(name)
+            if not found:
+                print("[include] %s: no exact registry match" % name)
+                continue
+            added = 0
+            for entry, url in targets({"servers": found}):
+                if url in seen:
+                    continue
+                seen.add(url)
+                todo.append((entry, url))
+                added += 1
+            print("[include] %s: %d record(s), %d new endpoint(s)"
+                  % (name, len(found), added))
     print("registry entries=%d, endpoints to probe=%d"
           % (len(data.get("servers") or []), len(todo)))
 
