@@ -18,13 +18,12 @@ counters public - anti pass-rate-inflation", RUSE lesson).
 """
 import argparse
 import os
-import hashlib
 import json
 import sys
 
-from canari.schema import load_schema, validate_attestation, is_gate_passing
+from canari.schema import validate_attestation, is_gate_passing
 from canari.signing import (verify_signed_raw, verify_signed, unwrap_statement,
-                            read_signed_payload, payload_digest)
+                            payload_digest)
 
 
 def _independent_pae(payload_type: str, payload_bytes: bytes) -> bytes:
@@ -281,7 +280,6 @@ def verify_chain(directory: str, key_path: str = None, require_signatures: bool 
     Exit codes: 0 = all chains valid AND all signatures verified,
                 4 = chain/signature errors found
     """
-    import hashlib
     from collections import defaultdict
 
     att_dir = directory
@@ -331,7 +329,7 @@ def verify_chain(directory: str, key_path: str = None, require_signatures: bool 
             # producer's definition, but require the top-level copy to be the
             # one the signature covers (ignoring that inline block); otherwise
             # a tampered mirror could still hide a dangling pointer.
-            from canari.signing import read_signed_payload, check_payload_integrity
+            from canari.signing import check_payload_integrity
             if not isinstance(bundle, dict) or not isinstance(bundle.get("envelope"), dict):
                 raise ValueError("no DSSE envelope (unsigned file cannot join a chain)")
             ok_int, why_int, _signed = check_payload_integrity(bundle)

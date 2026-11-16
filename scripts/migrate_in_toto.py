@@ -36,7 +36,7 @@ if REPO not in sys.path:
     sys.path.insert(0, REPO)
 
 from canari.signing import (load_private_key, payload_digest, sign_attestation,
-                            unwrap_statement, verify_signed)
+                            verify_signed)
 
 OUT = os.path.join(REPO, "out")
 ATT = os.path.join(OUT, "attestations")

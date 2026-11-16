@@ -22,7 +22,8 @@ class FileLock:
             except (IOError, OSError):
                 if time.time() - t0 >= self.timeout:
                     self._fd.close()
-                    raise TimeoutError('lock %s after %.0fs' % (self.path, self.timeout))
+                    raise TimeoutError(
+                        'lock %s after %.0fs' % (self.path, self.timeout)) from None
                 time.sleep(0.5)
     def __exit__(self, *exc):
         if self._fd:

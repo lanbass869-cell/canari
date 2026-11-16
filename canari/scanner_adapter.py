@@ -19,7 +19,6 @@ import json
 import os
 import subprocess
 
-from canari.npm_enum import _opener
 
 
 def compute_source_digest(scanner_path):

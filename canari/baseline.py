@@ -665,7 +665,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                                "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]})
             if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
                 verdict = "pass-with-findings" if sha else "fail"
-            np = _with_timeout(lambda: native_ingest(name, lv["version"]), 90, None)
+            np = _with_timeout(
+                lambda _n=name, _v=lv["version"]: native_ingest(_n, _v), 90, None)
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
                             ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
             bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
@@ -718,8 +719,13 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                     _pyjson = json.loads(_r.read().decode("utf-8"))
             except Exception:
                 _pyjson = None
+        # Bind the loop variables. _with_timeout runs the lambda on a daemon
+        # thread; when the timeout fires that thread keeps running while the
+        # loop advances, so an unbound closure would fetch the *next* package's
+        # metadata and silently report a result for the wrong name.
         pn = _with_timeout(
-            lambda: pypi_native_ingest(name, pkg.get("version", "") or None, pypi_json=_pyjson),
+            lambda _n=name, _p=pkg, _j=_pyjson:
+                pypi_native_ingest(_n, _p.get("version", "") or None, pypi_json=_j),
             90, None)
         # H1: release cadence (BUG-77/69/71 fixed in cadence.py)
         #

@@ -70,7 +70,6 @@ def main():
     bundle = json.load(open(victim, encoding="utf-8"))
     import base64
     raw = base64.b64decode(bundle["envelope"]["payload"])
-    idx = raw.find(b'"verdict"')
     mutated = raw.replace(b'"pass"', b'"fail"', 1) if b'"pass"' in raw else raw[:10] + b"X" + raw[11:]
     env = dict(bundle["envelope"])
     env["payload"] = base64.b64encode(mutated).decode()

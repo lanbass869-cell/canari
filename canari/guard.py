@@ -16,7 +16,6 @@ through untouched (the guard is not a shell parser).
 Exit codes: 0 allowed+executed, 5 blocked by ledger, 6 review not confirmed,
 3 usage / store missing, otherwise the wrapped command's own exit code.
 """
-import shlex
 import subprocess
 import sys
 

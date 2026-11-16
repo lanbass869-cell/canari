@@ -9,7 +9,11 @@ This module is READY for when coverage arrives - the paper records the
 blank as a finding, and Canari's ingestion is the bridge for the future.
 """
 import json
-import urllib.request
+# Load-bearing: the function below does `import urllib.parse`, which binds
+# the name `urllib` but does NOT guarantee the `request` submodule exists.
+# This import is what makes `urllib.request.Request` work at line ~37.
+# Ruff reports it as unused; removing it is a runtime error.
+import urllib.request  # noqa: F401
 from canari.npm_enum import _opener, UA
 
 
@@ -61,7 +65,7 @@ def verify_pypi_bundle(bundle, distribution_bytes=None):
     """Verify a Sigstore Bundle from PEP 740. Returns dict with ok/error.
     If distribution_bytes provided, uses verify_artifact; otherwise verify_dsse."""
     try:
-        from sigstore.verify import Verifier, policy
+        from sigstore.verify import Verifier
         from sigstore.verify.policy import UnsafeNoOp
         v = Verifier.production()
         if distribution_bytes:

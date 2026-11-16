@@ -3,8 +3,8 @@
 <!-- mcp-name: io.github.lanbass869-cell/canari -->
 
 [![CI](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml/badge.svg)](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml)
-![tests](https://img.shields.io/badge/tests-716%20passing-brightgreen)
-![coverage](https://img.shields.io/badge/coverage-86%25%20line%20%7C%2086%25%20branch-brightgreen)
+![tests](https://img.shields.io/badge/tests-762%20passing-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-86%25%20line%20%7C%2085%25%20branch-brightgreen)
 ![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
 ![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
 [![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/lanbass869-cell/canari)
@@ -87,8 +87,8 @@ rewrite under its own key manufactures false assurance.
 
 | Gate | Threshold | Current |
 |---|---|---|
-| tests | green on 3.10/3.12/3.13 | 716 passing (1 env-skip) |
-| line coverage | >= 85% | 86% line (branch 86%) |
+| tests | green on 3.10/3.12/3.13 | 762 passing (11 env-skip: 10 network + 1 platform) |
+| line coverage | >= 85% | 86.4% line, 84.6% branch (85.1% combined; CI gates on combined) |
 | mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (47/47 killed + 2 equivalent, 3 skipped) |
 | live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
 

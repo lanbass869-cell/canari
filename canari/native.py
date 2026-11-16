@@ -52,7 +52,7 @@ def verify_v1_cert(bundle_json, expected_identity=None):
     """Verify one v1 (certificate-based) Sigstore bundle via sigstore-python.
     Uses Verifier.verify_dsse(). Returns dict with ok/identity/error."""
     try:
-        from sigstore.verify import Verifier, policy
+        from sigstore.verify import Verifier
         from sigstore.models import Bundle
         from sigstore.verify.policy import Identity, UnsafeNoOp
         b = Bundle.from_json(json.dumps(bundle_json))

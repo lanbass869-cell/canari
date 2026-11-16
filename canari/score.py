@@ -88,8 +88,6 @@ def score(out_dir: str, public_key: dict = None, public_keys: list = None) -> di
         else:
             n_stale_no_expiry += 1
 
-    n_verified = n_sig_pass if (public_key or public_keys) else total
-
     return {
         "total_attestations": total,
         "coverage": {

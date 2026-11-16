@@ -102,7 +102,7 @@ def npm_search(text, size=250, from_offset=0, timeout=30, retries=3):
     for attempt in range(retries):
         try:
             return npm_search_orig(text, size, from_offset, timeout)
-        except (urllib.error.HTTPError, TimeoutError, OSError) as e:
+        except (urllib.error.HTTPError, TimeoutError, OSError):
             if attempt < retries - 1:
                 wait = 5 * (3 ** attempt)
                 print("[npm] retry", attempt+1, "/", retries)

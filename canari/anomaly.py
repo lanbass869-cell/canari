@@ -66,7 +66,9 @@ def _maintainer_identities(meta):
             for item in value:
                 if isinstance(item, dict):
                     name = item.get("name", "")
-                    email = item.get("email", "")
+                    # email is deliberately not part of the identity key: it
+                    # changes far more often than the name and would make every
+                    # maintainer look like a new one after a domain move.
                     if name:
                         identities.add(name.strip().casefold())
                 elif isinstance(item, str) and item.strip():

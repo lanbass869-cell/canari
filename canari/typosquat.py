@@ -5,7 +5,6 @@ Uses Damerau-Levenshtein distance (supports adjacent transposition) + compact na
 
 trustcheck reference: malicious.py _typosquatting_findings L758-803
 """
-from difflib import SequenceMatcher
 
 
 def _damerau_levenshtein(left, right):
@@ -108,7 +107,6 @@ def check_typosquatting(project, trusted_names, mutual_pairs=None, age_rank=None
             return a[cut:], b[cut:]
         return a, b
 
-    candidate = project.replace("-", "").casefold()
     matches = []
     for trusted in trusted_names:
         if trusted == project:

@@ -16,7 +16,7 @@ import urllib.request
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, HERE)
-from canari.npm_enum import _opener, UA, fetch_packument, latest_version_info  # noqa: E402
+from canari.npm_enum import _opener, UA, fetch_packument  # noqa: E402
 
 N_NPM = int(os.environ.get("SAMPLE_NPM", "10"))
 N_PYPI = int(os.environ.get("SAMPLE_PYPI", "8"))

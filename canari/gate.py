@@ -187,7 +187,7 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     # signed one, so editing the top-level verdict to "pass" produced ALLOW
     # with signature_ok=true. Decisions must come from the signed payload, and
     # any divergence must fail closed.
-    from canari.signing import read_signed_payload, check_payload_integrity
+    from canari.signing import check_payload_integrity
     ok_integrity, integrity_reason, payload = check_payload_integrity(bundle)
     if payload is None:
         return GateDecision(decision="BLOCK",
