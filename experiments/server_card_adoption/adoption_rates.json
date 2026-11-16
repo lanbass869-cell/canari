@@ -1,0 +1,32 @@
+[
+ {
+  "group": "gap",
+  "hosts": 972,
+  "self_described": 31,
+  "rate": 0.0319,
+  "ci95": [
+   0.0226,
+   0.0449
+  ]
+ },
+ {
+  "group": "exact-sample",
+  "hosts": 578,
+  "self_described": 51,
+  "rate": 0.0882,
+  "ci95": [
+   0.0677,
+   0.1142
+  ]
+ },
+ {
+  "group": "github-sample",
+  "hosts": 359,
+  "self_described": 17,
+  "rate": 0.0474,
+  "ci95": [
+   0.0298,
+   0.0745
+  ]
+ }
+]
