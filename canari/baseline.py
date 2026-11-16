@@ -609,6 +609,29 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     except Exception as _e:
         print("[multi] npm enumerate failed:", str(_e)[:80])
         npm_pkgs = []
+    # H3 typosquatting judges a package against the ENTIRE co-enumerated
+    # namespace, so its result is loop-invariant. Recomputing it per package
+    # made the sweep O(n^3): measured 2026-11-16, 620 names cost 10.4s per
+    # find_mutual_pairs() call x 620 packages = ~108 min of pure CPU, which
+    # pushed the weekly job past its 2h ExecutionTimeLimit and it was killed
+    # before writing the drift report. Compute once, reuse for every package.
+    try:
+        from canari.typosquat import check_typosquatting as _tq_check
+        from canari.typosquat import find_mutual_pairs as _tq_pairs
+    except Exception as _tqe_imp:
+        _tq_check = None
+        _tq_pairs = None
+        _tq_import_err = "typosquat import failed: %s" % str(_tqe_imp)[:60]
+    else:
+        _tq_import_err = None
+    _npm_trusted = {p["name"] for p in npm_pkgs}
+    _npm_mutual = None
+    _npm_mutual_err = _tq_import_err
+    if _tq_pairs is not None:
+        try:
+            _npm_mutual = _tq_pairs(_npm_trusted)
+        except Exception as _tqe:
+            _npm_mutual_err = str(_tqe)[:80]
     for pkg in npm_pkgs:
         name = pkg["name"]
         try:
@@ -653,9 +676,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                                "tool": "canari-anomaly/0.1",
                                "evidence_ref": "anomaly check failed: %s" % str(_ae)[:80]})
             try:
-                from canari.typosquat import check_typosquatting, find_mutual_pairs
-                _tn = {p["name"] for p in npm_pkgs}
-                _tq = check_typosquatting(name, _tn, mutual_pairs=find_mutual_pairs(_tn))
+                if _npm_mutual_err is not None:
+                    raise RuntimeError(_npm_mutual_err)
+                _tq = _tq_check(name, _npm_trusted, mutual_pairs=_npm_mutual)
                 checks.append(_tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
                                       "tool": "canari-typosquat/0.1",
                                       "evidence_ref": "no close match to another component in this scan"})
@@ -695,6 +718,23 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     except Exception as _e:
         print("[multi] PyPI enumerate failed:", str(_e)[:80])
         pypi_pkgs = []
+    # Same loop-invariant hoist as the npm branch (see comment above). This is
+    # the one that actually mattered: 620 PyPI names x 10.4s = 108 minutes.
+    _pypi_trusted = {q["name"] for q in pypi_pkgs if "error" not in q}
+    # age_rank: first-seen generation order from state (higher = older).
+    # Direction matters - without it the established package gets accused by
+    # its own imitator (measured: mcp-server-fetch vs mcp-server-xfetch).
+    _pypi_age = {}
+    for _n in _pypi_trusted:
+        _st = _prev("pypi", _n) or {}
+        _pypi_age[_n] = 0 if _st else 1
+    _pypi_mutual = None
+    _pypi_mutual_err = _tq_import_err
+    if _tq_pairs is not None:
+        try:
+            _pypi_mutual = _tq_pairs(_pypi_trusted)
+        except Exception as _tqe:
+            _pypi_mutual_err = str(_tqe)[:80]
     for pkg in pypi_pkgs:
         name = pkg["name"]
         if "error" in pkg:
@@ -773,18 +813,11 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         # H3: typosquatting (BUG-76 fix: was dead code; the co-enumerated PyPI
         # namespace of this scan is the trusted set)
         try:
-            from canari.typosquat import check_typosquatting, find_mutual_pairs
-            _trusted = {q["name"] for q in pypi_pkgs if "error" not in q}
-            # age_rank: first-seen generation order from state (higher = older).
-            # Direction matters - without it the established package gets accused
-            # by its own imitator (measured: mcp-server-fetch vs mcp-server-xfetch).
-            _age = {}
-            for _n in _trusted:
-                _st = _prev("pypi", _n) or {}
-                _age[_n] = 0 if _st else 1
-            tq = check_typosquatting(name, _trusted,
-                                     mutual_pairs=find_mutual_pairs(_trusted),
-                                     age_rank=_age)
+            if _pypi_mutual_err is not None:
+                raise RuntimeError(_pypi_mutual_err)
+            tq = _tq_check(name, _pypi_trusted,
+                           mutual_pairs=_pypi_mutual,
+                           age_rank=_pypi_age)
             checks.append(tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
                                  "tool": "canari-typosquat/0.1",
                                  "evidence_ref": "no close match to another component in this scan"})
