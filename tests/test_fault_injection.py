@@ -116,18 +116,69 @@ def test_mutated_head_root_fails_audit(tmp_path):
     assert json.loads(r.stdout)["ok"] is False
 
 
-@pytest.mark.xfail(strict=True, reason=(
-    "known gap: heads carry no link to their predecessor, so deleting a historical "
-    "head leaves every remaining signature valid - see docs/log/SECURITY-NOTES.md"))
 def test_removed_historical_head_is_detected(tmp_path):
+    """Heads chain to their predecessor, so a deleted head breaks the chain.
+
+    Before the `prev` field this case passed the audit: every surviving head was
+    individually valid and the last one still matched log.jsonl, so removing
+    heads[1] of 3 was invisible (measured 2026-11-16).
+    """
+    d = make_log(str(tmp_path / "log"))
+    # a second and third head so there is something to delete in the middle
+    for i in (2, 3):
+        recs = os.path.join(d, "more%d.json" % i)
+        with open(recs, "w", encoding="utf-8") as f:
+            json.dump([{"i": i}], f)
+        assert run(["canari.log_cli", "append", d, "--file", recs]).returncode == 0
+        assert run(["canari.log_cli", "seal", d, "--timestamp",
+                    "2026-01-0%dT00:00:00Z" % i]).returncode == 0
+    hp = os.path.join(d, "heads.jsonl")
+    lines = [l for l in open(hp, encoding="utf-8").read().splitlines() if l.strip()]
+    assert len(lines) >= 3, lines
+    open(hp, "w", encoding="utf-8").write("\n".join([lines[0]] + lines[2:]) + "\n")
+    r = run(["canari.log_cli", "audit", d])
+    out = json.loads(r.stdout)
+    assert r.returncode != 0 and out["ok"] is False
+    assert any("CHAIN BROKEN" in e for e in out["errors"]), out["errors"]
+
+
+def test_new_heads_chain_to_their_predecessor(tmp_path):
+    from canari.logstore import head_body_digest
+    d = make_log(str(tmp_path / "log"))
+    recs = os.path.join(d, "more.json")
+    with open(recs, "w", encoding="utf-8") as f:
+        json.dump([{"i": 99}], f)
+    assert run(["canari.log_cli", "append", d, "--file", recs]).returncode == 0
+    assert run(["canari.log_cli", "seal", d, "--timestamp",
+                "2026-02-01T00:00:00Z"]).returncode == 0
+    heads = [json.loads(l) for l in
+             open(os.path.join(d, "heads.jsonl"), encoding="utf-8") if l.strip()]
+    assert "prev" in heads[-1]["body"]
+    assert heads[-1]["body"]["prev"] == head_body_digest(heads[-2]["body"])
+
+
+def test_legacy_unchained_heads_still_audit(tmp_path):
+    """A head written before `prev` existed must not fail the audit - it is a
+    documented prefix, reported as unchained rather than treated as tampering."""
     d = make_log(str(tmp_path / "log"))
     hp = os.path.join(d, "heads.jsonl")
     lines = [l for l in open(hp, encoding="utf-8").read().splitlines() if l.strip()]
-    if len(lines) < 2:
-        pytest.skip("fixture produced a single head")
-    open(hp, "w", encoding="utf-8").write("\n".join([lines[0]] + lines[2:]) + "\n")
+    # Re-sign each body WITHOUT prev: that is what a head written by the
+    # pre-chain code looked like. Simply deleting the field would invalidate the
+    # signature, which is the correct behaviour and is covered elsewhere.
+    from canari.logstore import sign_head, canonical_bytes
+    from canari.signing import load_or_generate_keypair
+    signer = load_or_generate_keypair(os.path.join(d, "signing_key.pem"))[0]
+    stripped = []
+    for line in lines:
+        body = dict(json.loads(line)["body"])
+        body.pop("prev", None)
+        stripped.append(canonical_bytes(sign_head(body, signer)).decode("utf-8"))
+    open(hp, "w", encoding="utf-8").write("\n".join(stripped) + "\n")
     r = run(["canari.log_cli", "audit", d])
-    assert r.returncode != 0
+    out = json.loads(r.stdout)
+    assert out["ok"] is True, out["errors"]
+    assert out["unchained_heads"] >= 1
 
 
 def test_corrupt_bundle_does_not_break_drift(tmp_path):

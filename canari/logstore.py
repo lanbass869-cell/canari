@@ -79,9 +79,23 @@ def _utc(ts=None) -> str:
     return ts
 
 
-def head_body(log_id, size, root_hex, timestamp) -> dict:
-    return {"spec": SPEC, "log_id": log_id, "size": int(size),
+def head_body(log_id, size, root_hex, timestamp, prev=None) -> dict:
+    body = {"spec": SPEC, "log_id": log_id, "size": int(size),
             "root": root_hex, "timestamp": timestamp}
+    if prev:
+        body["prev"] = prev
+    return body
+
+
+def head_body_digest(body: dict) -> str:
+    """sha256 over the canonical head body - the link a successor commits to.
+
+    This is the same bytes the signature covers (minus the SIGN_PREFIX domain
+    separator), so anything that would invalidate a signature also breaks the
+    chain.
+    """
+    import hashlib
+    return hashlib.sha256(canonical_bytes(body)).hexdigest()
 
 
 def head_signing_input(body: dict) -> bytes:
@@ -135,6 +149,14 @@ def check_head_body(body: dict, log_id=None) -> str:
         return "root is not hex"
     if not isinstance(body.get("timestamp"), str) or not body["timestamp"]:
         return "bad timestamp"
+    if "prev" in body:
+        prev = body["prev"]
+        if not isinstance(prev, str) or len(prev) != 64:
+            return "bad prev: %r" % (prev,)
+        try:
+            bytes.fromhex(prev)
+        except ValueError:
+            return "prev is not hex"
     return ""
 
 
@@ -310,6 +332,25 @@ class AppendOnlyLog:
         errors = []
         entries = self.entries()
         lh = self.last_head()
+
+        # Chain check. Every head from the first one that carries `prev` onward
+        # must name its immediate predecessor's body digest. Without this, heads
+        # are independent signatures and a deleted historical head is invisible:
+        # each survivor still verifies and the last one still matches the log
+        # (measured 2026-11-16: removing heads[1] of 3 gave ok=true).
+        unchained = 0
+        heads = self.heads()
+        for i in range(1, len(heads)):
+            prev_claim = (heads[i].get("body") or {}).get("prev")
+            if not prev_claim:
+                unchained += 1
+                continue
+            expected = head_body_digest(heads[i - 1].get("body") or {})
+            if prev_claim != expected:
+                errors.append(
+                    "CHAIN BROKEN at head %d: prev=%s but head %d hashes to %s "
+                    "(a head was removed, reordered, or rewritten)"
+                    % (i, prev_claim[:12], i - 1, expected[:12]))
         for i, b in enumerate(entries):
             try:
                 obj = json.loads(b.decode("utf-8"))
@@ -344,6 +385,7 @@ class AppendOnlyLog:
                   ".gitattributes." % self.entries_path)
         return {"ok": not errors, "size": len(entries), "root": root,
                 "last_head": lh, "errors": errors,
+                "unchained_heads": unchained,
                 "crlf_normalized": bool(getattr(self, "_crlf_seen", False))}
 
     def seal(self, timestamp=None, force=False) -> dict:
@@ -373,9 +415,10 @@ class AppendOnlyLog:
                 if len(entries) == body["size"] and not force:
                     return None
             signer = self._ensure_signer()
+            prev_digest = head_body_digest(last["body"]) if last else None
             body = head_body(self.log_id, len(entries),
                              merkle_root([leaf_hash(b) for b in entries]).hex(),
-                             _utc(timestamp))
+                             _utc(timestamp), prev=prev_digest)
             head = sign_head(body, signer)
             line = canonical_bytes(head)
             with open(self.heads_path, "ab") as f:

@@ -23,37 +23,74 @@ earlier head.
 
 ## What it does not prove
 
-### 1. Deleting a historical head is not detected
+### 1. Heads are chained, so deleting one is detected
 
-`heads.jsonl` is a sequence of independent signatures. Each is valid on its own, and
-the last one still matches `log.jsonl`, so **removing an entry from the middle of
-the file leaves the audit green**:
+Each head body carries an optional `prev` field: the SHA-256 of the previous
+head's canonical body (the same bytes the signature covers, minus the domain
+separator). `canari-log audit` verifies every link.
 
 ```
-$ python -m canari.log_cli audit ./log      # after deleting heads[1]
-{"ok": true, "size": 3}
+head[i].body.prev == sha256(canonical_bytes(head[i-1].body))
 ```
 
-Measured on a three-head fixture: deleting the middle head gives `rc=0`, `ok: true`.
-Mutating a head's root gives `rc=2`, `ok: false` — so the signatures are checked;
-what is missing is a link *between* heads.
+Removing, reordering or rewriting a head therefore breaks the chain:
 
-**Consequence.** The head log is append-only by convention, not by evidence. An
-operator who can write `heads.jsonl` can drop the record of a size it published
-earlier and the log cannot tell.
+```
+$ python -m canari.log_cli audit ./log      # after deleting heads[1] of 3
+{"ok": false,
+ "errors": ["CHAIN BROKEN at head 1: prev=54e51b36a7d9 but head 0 hashes to
+             ea7b5e859d22 (a head was removed, reordered, or rewritten)"]}
+rc=2
+```
 
-**Mitigation available today.** Publish the head, or a digest of the whole
-`heads.jsonl`, somewhere you do not control — a git commit, a release, a witness.
-`docs/log/witness-request-draft.txt` is the draft for exactly that. A party holding
-an older head can also verify a later one against it, which is what
-`canari-verify --chain DIR` is for.
+Before this field existed the same deletion was invisible: every surviving head
+verified on its own and the last one still matched `log.jsonl`, so the audit
+returned `ok: true` (measured 2026-11-16). That is the defect this closes.
 
-**Mitigation not implemented.** A `prev` field holding the hash of the previous
-head body would make deletion and reordering evident without any external party. It
-has not been added because it changes the signed head body, and the 43 heads already
-published under `.../v1` would then be "unchained" relative to their successors. That
-is a format-version decision, not a bug fix, so it is recorded here rather than made
-silently.
+**The legacy prefix is unchained and is reported as such.** `prev` cannot be
+retrofitted without invalidating the signatures that already exist, so heads
+written before the field still have no link. The audit does not treat that as
+tampering - it counts them:
+
+```json
+"unchained_heads": 4
+```
+
+Those four links are the gap that remains. A consumer who cares should start
+pinning from the first head that has `prev`, and treat earlier ones as history
+rather than as evidence.
+
+**Still not covered: rollback to an older head.** Nothing references the newest
+head, so deleting the *last* one and republishing nothing leaves a shorter but
+internally valid history. Only a party outside the log can catch that - pin a head
+somewhere the operator does not control (`canari-verify --chain`, a git commit, a
+release, a witness). `docs/log/witness-request-draft.txt` is the draft for the
+witness route.
+
+**Why the fix was not made silently.** Adding a field to the signed head body is a
+format change: every consumer that recomputes `prev` or verifies the body must know
+about it, and the published log's existing heads cannot be made to comply after the
+fact. It is recorded here, versioned as an additive field (old verifiers ignore it;
+new ones check it), and covered by tests before being sealed into the published log.
+
+### 1b. Do not force-seal an unchanged log
+
+`seal --force` can publish a second head at a size that already has one. Its
+timestamp (and, now, its `prev`) differ, so its canonical bytes differ, but its
+`(size, root)` pair is identical - and `scripts/publish_log.py` names the immutable
+snapshot `heads/%06d-%s.json % (size, root)`. Two heads with the same pair collide,
+and the publisher correctly refuses to overwrite the anchored file:
+
+```
+REFUSING to overwrite immutable head 000043-1af057f1....json with different bytes
+```
+
+Measured 2026-11-16 while starting the chain on the published log. The seal itself
+succeeded and the audit stayed green; the collision only appeared at publish time.
+Renaming the snapshot to include the head digest would fix it, but the existing
+files are already anchored with OpenTimestamps under the `(size, root)` name, so the
+name is frozen. Consequence: the first chained head will be the next *natural* seal
+(one that grows the log), not a forced re-seal.
 
 ### 2. A signature proves who said it, not that it is true
 
@@ -80,7 +117,7 @@ traceback, or a documented degraded result — never a silent pass.
 | A | bundle file truncated to half | reject | clean, rc=3, no traceback |
 | B | top-level payload rewritten (verdict -> pass) | reject | clean, rc=2 |
 | C | `log.jsonl` truncated mid-record | audit fails | clean, rc=2, no traceback |
-| **D** | **head removed from `heads.jsonl`** | **audit fails** | **`ok: true`, rc=0 — gap** |
+| D | head removed from `heads.jsonl` | audit fails | clean, rc=2, `CHAIN BROKEN` (fixed by the `prev` field) |
 | E | signed head root mutated | audit fails | clean, rc=2 |
 | F | non-JSON file dropped into `attestations/` | drift survives | clean |
 | G | empty store | empty report | clean |
@@ -91,5 +128,7 @@ traceback, or a documented degraded result — never a silent pass.
 | M | per-package fetch raises | error attestation, no raise | clean, 1 bundle |
 | N | unwritable output directory | no crash | clean |
 
-Twelve of thirteen fail safely. The one that does not is D, and it is a property of
-the format rather than of the implementation.
+All thirteen now fail safely. D was the exception when this pass started - it
+succeeded silently because heads were independent signatures. The `prev` field closed
+it for every link that carries one; the four legacy links and rollback-to-older-head
+remain, and both are stated above rather than hidden.
