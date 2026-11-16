@@ -44,16 +44,43 @@ Two immediate consequences:
 
 ## 3. Corollary — a fixed threshold cannot hold its false discovery proportion
 
-If all candidates are clean, the **false discovery proportion** is 1 whenever
-anything is flagged. For a mixture of clean and attacked names, the expected FDP
-is bounded below by the clean flag count divided by total flags, so
+Write `a = a(n)` for the number of attacked names in a corpus of size `n`. Using
+Lemma 1, the expected counts are
 
 ```
-FDP(n) → 1   as n → ∞   unless  n · p(τ) → 0
+E[FP]  = (n - a) · p(τ)
+E[TP]  = a · P_A[d ≤ τ]
 ```
 
-Since `p(τ)` does not depend on `n`, the only way to keep `n · p(τ)` bounded is to
-let `τ` itself shrink as `n` grows.
+so the expected false discovery proportion is
+
+```
+FDP(n) ≈ (n - a) p(τ) / ( (n - a) p(τ) + a P_A )
+```
+
+Three regimes follow, and they must be kept apart:
+
+- **Fixed number of attacks** (`a` constant): `FDP(n) → 1`. This is the
+  "all-clean corpus" case and is what an early draft of this note asserted
+  without the qualifying assumption.
+- **Fixed attack density** (`a = q·n`): `FDP(n)` does **not** tend to 1. It tends
+  to the constant `(1−q)p / ((1−q)p + q P_A)`, which is strictly positive for any
+  `p(τ) > 0` but bounded away from 1.
+- **FDP budget.** For `FDP ≤ α` we need
+
+  ```
+  a ≥ ((1 − α)/α) · (n − a) · p(τ) / P_A
+  ```
+
+  i.e. the number of real attacks has to grow at least **linearly in `n`**, with
+  slope `((1−α)/α)·p(τ)/P_A`, for a *fixed* threshold to stay inside the budget.
+
+That last line is the honest statement of the corollary: at a fixed threshold,
+holding a false-discovery budget requires the attack rate in the catalogue to
+**rise** with catalogue size. No real registry does that; the attack rate is
+roughly constant or falling. So the budget fails in practice — but it fails
+because the required attack growth is absent, not because `FDP → 1` for
+mathematical reasons.
 
 ## 4. Proposition — the trade-off, and the exact condition for escaping it
 
@@ -61,9 +88,11 @@ Let `τ(n)` be any corpus-size-dependent threshold, let `α ∈ (0,1)` be a
 false-discovery budget, and let `A` be the distribution of distances between a
 real typosquat and its genuine target. Then:
 
-**(i)** If `FDP(n) ≤ α` for all `n`, then `n · p(τ(n)) ≤ α`, hence
-`p(τ(n)) → 0`, hence the set of distances `τ(n)` permits must eventually carry no
-null mass.
+**(i)** If `FDP(n) ≤ α` for all `n` at a constant attack density `a = q·n`, then
+`(1−q) p(τ(n)) / ((1−q) p(τ(n)) + q P_A) ≤ α`, hence
+`p(τ(n)) ≤ α q P_A / ((1−α)(1−q))`, so `p(τ(n)) → 0` is **required** as soon as
+the budget is tighter than the `n → ∞` constant — i.e. the permitted distance set
+must eventually carry no null mass.
 
 **(ii)** Recall at that operating point is bounded by `P_A[d ≤ τ(n)]`, which is
 non-increasing in `n` once `τ` starts shrinking.

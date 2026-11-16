@@ -14,13 +14,19 @@ to corpus size alone.
 
 Edit distance ≤ 2, exactly the benchmark's own loosest operating point:
 
-| corpus n | precision | recall | F1 | false positives |
-|---|---|---|---|---|
-| **200** (benchmark default) | **0.985** | 0.964 | 0.974 | 18 |
-| 400 | 0.978 | 0.964 | 0.971 | 26 |
-| 800 | 0.961 | 0.964 | 0.963 | 47 |
-| 1200 | 0.946 | 0.964 | 0.955 | 66 |
-| 1617 | **0.940** | 0.964 | 0.952 | **74** |
+| corpus n | precision (mean) | recall | F1 | false positives (mean) | trials |
+|---|---|---|---|---|---|
+| **200** | **0.985** | 0.964 | 0.974 | **18** | 3 |
+| 400 | 0.973 | 0.964 | 0.969 | 32 | 3 |
+| 800 | 0.958 | 0.964 | 0.961 | 51 | 3 |
+| 1200 | 0.950 | 0.964 | 0.957 | 61 | 3 |
+| **1617** | **0.940** | 0.964 | 0.952 | **74** | 1 |
+
+> All figures are means over the trials listed; `results_threshold_sweep.json`
+> is the machine output this table is generated from. (Earlier revisions of this
+> file quoted a per-trial minimum for precision alongside a different
+> false-positive figure at n=400/800/1200; the table above is now consistent with
+> the JSON.)
 
 Edit distance ≤ 1 behaves the same way, one order of magnitude smaller:
 precision 1.000 → 0.987, false positives 0 → 14.
