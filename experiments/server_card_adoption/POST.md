@@ -13,14 +13,16 @@ I did a full census to see what a client can actually check today. The answer is
 for the remaining 1,335 there is currently no runnable check at all** — because
 three small pieces are missing.
 
-1. **The registry does not publish the domain it verified.** Publishing under
-   `com.example` means you proved you own `example.com`
+1. **Nothing lets a client tie the endpoint to the publisher.** `#29` settled
+   that `publisher.id` is the reverse-DNS namespace, which answers *who claims the
+   name*. It does not answer *whether this endpoint belongs to them*. Publishing
+   under `com.example` means you proved you own `example.com`
    (`auth.BuildPermissions` reverses the domain; a subdomain grant extends it by
-   labels). But the published entry's `_meta` contains only `status`,
-   `statusChangedAt`, `publishedAt`, `updatedAt`, `isLatest`. The verified domain
-   is in the publish token (`AuthMethodSubject`), not in the record. For 1,335
-   servers the namespace does not say which candidate domain was verified, so a
-   client cannot reconstruct the check.
+   labels), but the published entry's `_meta` contains only `status`,
+   `statusChangedAt`, `publishedAt`, `updatedAt`, `isLatest` — the verified domain
+   lives in the publish token (`AuthMethodSubject`), not in the record. With that
+   field, the check would be possible without enforcing anything; without it,
+   the 1,335 entries below cannot be resolved even in principle.
 2. **`server.json` has no field pointing at a card.** None of the seven
    versioned schemas under `internal/validators/schemas/`, nor the draft schema
    under `docs/reference/server-json/draft/`, defines a property for the card's
@@ -95,10 +97,11 @@ tenant's. An explicit pointer on the registry entry removes the ambiguity.
 
 ### What I would change, in order
 
-1. **Publish `verifiedDomain` and `authMethod` in `_meta`.** Both already exist at
-   publish time. This makes the domain check reconstructable without
-   re-introducing any rule, and it is the only way to resolve the 1,335
-   ambiguous entries.
+1. **Expose the verified domain** (e.g. `_meta` `verifiedDomain` / `authMethod`).
+   Both already exist at publish time. This is separate from `#29`:
+   `publisher.id` says who claims the name; the verified domain is what lets a
+   client tell whether the endpoint on the other end is theirs. It re-introduces
+   no rule — nothing is rejected, the check just becomes possible.
 2. **Add an optional `serverCard` (URL) to the server object** (or a documented
    `_meta` key under the publisher-provided extension) so a client does not have
    to guess, and so a platform card cannot be mistaken for the tenant's.
@@ -130,6 +133,7 @@ and the three scripts that produce them are in
 `https://github.com/lanbass869-cell/canari/tree/main/experiments/server_card_adoption`
 (CC BY 4.0 data, MIT scripts).
 
-Related: `#494` (rule removed), `#1715` (no periodic re-validation), `#1706`
-(target changes between versions), `#1783` (content-integrity fields),
-`ext-server-card#54` (card schema 404).
+Related: `#494` (rule removed), `#29` (publisher identity — settled as the
+namespace itself), `#1715` (no periodic re-validation), `#1706` (target changes
+between versions), `#1783` (content-integrity fields), `ext-server-card#54`
+(card schema 404).
