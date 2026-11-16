@@ -2,8 +2,8 @@
 > sampling artifact and should not be quoted. The 800-record sample came from the
 > first pages of `/v0/servers`, which paginate in name order, so it covered only
 > names beginning with `a` — almost entirely reverse-DNS namespaces. The full
-> census (all 65,340 latest records) finds **94.78% of the 27,064 reverse-DNS
-> servers with a remote endpoint sitting on the domain their name claims**, while
+> census (all 65,340 latest records) finds **95.07% of the 27,064 reverse-DNS
+> servers with a remote endpoint sitting on a domain their namespace implies**, while
 > `io.github.*` servers cannot satisfy a domain rule by construction (0.06% do).
 > See `experiments/server_card_adoption/` for the full numbers, and for what the
 > registry put in place of the domain rule.

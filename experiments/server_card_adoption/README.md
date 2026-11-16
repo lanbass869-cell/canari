@@ -1,151 +1,149 @@
-# Does the replacement for namespace↔endpoint binding actually exist in the wild?
+# Does the replacement for namespace-to-endpoint binding actually exist in the wild?
 
-The MCP registry used to require that a remote endpoint sit on the domain the
-server name claimed. That rule was implemented (#180 → PR #306, Aug 2025),
-then deliberately removed (#494 → PR #769, Nov 2025) because it could not be
-satisfied by `io.github.*` publishers or by anyone deploying to a PaaS. The
-stated replacement was for the endpoint to identify itself: *"we should make a
-`GET https://.../mcp` or .well-known-adjacent type flow possible where you can
+The MCP registry verifies that a publisher owns the domain behind a reverse-DNS
+namespace. It used to also require that the remote endpoint sit on that domain
+(`#180`, implemented in PR #306, Aug 2025). That requirement was deliberately
+removed (`#494`, PR #769, Nov 2025) because `io.github.*` publishers and anyone
+deploying to a PaaS could not satisfy it.
+
+The stated replacement was for the endpoint to identify itself: *"we should make
+a `GET https://.../mcp` or .well-known-adjacent type flow possible where you can
 query the URL directly to properly identify the name of the server hosted
-there"* (#494, maintainer comment).
+there"* (#494, maintainer comment). That shipped as **SEP-2127: MCP Server
+Cards** (merged 2026-10-06): a card at `<streamable-http-url>/server-card`, and
+an `/.well-known/ai-catalog.json` at the host root.
 
-That replacement shipped as **SEP-2127: MCP Server Cards** (merged 2026-10-06,
-Extensions Track): a card at `<streamable-http-url>/server-card` and an
-`/.well-known/ai-catalog.json` at the host root.
+This measures whether the replacement is actually in use. **It is, at 2.81% in
+exactly the population that needs it.**
 
-**Nobody has published how many registry endpoints actually serve one.** This
-measures that, and the result is that the mechanism is adopted least by exactly
-the servers that need it.
+## The rule used to decide "should this endpoint be on this domain"
 
-## What we measured
-
-Two passes over the same snapshot, both on 2026-11-16.
-
-### Pass 1 — full registry census, no network
-
-Full pagination of `GET /v0/servers?version=latest`: **654 pages, 65,340
-latest server records** (65,340 distinct names). 21,021 declare no `remotes`
-(32.2%); 44,319 do (67.8%).
-
-For each server with a remote, take the first remote URL's host and derive the
-domain its namespace implies:
+Namespace authentication in `internal/api/handlers/v0/auth/common.go`
+(`BuildPermissions`) works like this: a verified domain `D` yields the reverse
+namespace `reverse(D)`, and a subdomain grant extends it by labels. So a server
+may publish under namespace `N` only if some domain `D` exists whose reverse is a
+**prefix** of `N`.
 
 ```
-ac.inference.sh/mcp -> {inference.sh, ac.inference.sh}
-ai.ankra/platform   -> {ankra.ai, ai.ankra}
-io.github.user/repo -> {user.github.io}
+com.example/server   -> own example.com
+ac.inference.sh/mcp  -> own inference.ac  (or sh.inference.ac)
+io.github.user/repo  -> GB auth, not DNS; user.github.io is the natural reading
 ```
 
-`exact` = host equals a candidate or is a subdomain of one. `partial` = same
-registrable suffix but not equal or a subdomain. `mismatch` = neither.
+So the domains implied by a namespace are `reverse(n1..ni)` for every prefix
+length `i >= 2` (a single label is a TLD, not an ownable domain). `exact` means
+the endpoint host equals one of those or is a subdomain of one. This is stricter
+and more faithful than a "reversed string plus suffixes" heuristic — under it,
+`ac.inference.sh/mcp` serving `api.inference.sh` is **not** exact, because the
+name claims `inference.ac`.
 
-| namespace kind | with remote | exact | partial | mismatch |
-|---|---|---|---|---|
-| reverse-DNS (`ai.x`, `com.x.y`, …) | 27,064 | **25,650 (94.78%)** | 88 (0.33%) | 1,326 (4.90%) |
-| `io.github.*` | 17,255 | 11 (0.06%) | 0 | 17,244 (99.94%) |
+## Pass 1 — full census, no network
 
-`io.github.*` cannot satisfy a domain rule by construction — that is the reason
-#494 removed the check. The interesting population is the **1,414 reverse-DNS
-servers whose endpoint is not on the domain their own name claims**.
+Full pagination of `GET /v0/servers?version=latest`: **654 pages, 65,340 latest
+records** (65,340 distinct names), 2026-11-16. 21,021 declare no `remotes`
+(32.2%); 44,319 do (67.8%). First remote URL per server.
 
-### Pass 2 — probe those endpoints for self-identification
+| namespace kind | with remote | exact | mismatch |
+|---|---|---|---|
+| reverse-DNS (`ai.x`, `com.a.b`, …) | 27,064 | **25,729 (95.07%)** | 1,335 (4.93%) |
+| `io.github.*` | 17,255 | 10 (0.06%) | 17,245 (99.94%) |
+
+`io.github.*` cannot satisfy a domain rule by construction — which is the reason
+`#494` removed it. The population a card is meant to cover is therefore the
+**1,335 reverse-DNS servers whose endpoint is not on a domain their name
+implies**.
+
+## Pass 2 — probe those endpoints
 
 For each host, `GET <remote-url>/server-card` and
-`GET https://<host>/.well-known/ai-catalog.json`. A hit requires a parseable
-JSON object with either the server-card media type, or `$schema` + `name` +
-`remotes` together, for the card; and `entries` or `specVersion` for the
-catalog. Error bodies (`{"error": ...}`) are not counted — 144 responses parsed
-as JSON but only 22 were cards.
+`GET https://<host>/.well-known/ai-catalog.json`. A card counts only if it is a
+JSON object with the server-card media type, or with `$schema` + `name` +
+`remotes`. A catalog counts only if it is a JSON object with `entries` or
+`specVersion`. Error bodies do not count — most JSON responses were
+`{"error": ...}` or `{"detail": ...}`.
 
-Coverage:
-
-- **gap** — all 972 unique hosts in the 1,414-server gap, no sampling.
-- **exact-sample** — 578 unique hosts, random sample of the 25,650 `exact`.
-- **github-sample** — 359 unique hosts, random sample of the 17,255
-  `io.github.*` with a remote.
+Coverage: **all 889 unique hosts** in the 1,335-server gap (no sampling), plus
+random samples of 574 `exact` hosts and 359 `io.github.*` hosts as controls.
 
 ## Result
 
-| group | hosts | self-describes (card or catalog) | rate (95% CI) |
+| group | hosts probed | self-describes (card or catalog) | rate (95% CI) |
 |---|---|---|---|
-| **gap** (claims a domain, endpoint elsewhere) | 972 | 31 | **3.19%** (2.26–4.49) |
-| exact-sample (control) | 578 | 51 | 8.82% (6.77–11.42) |
-| github-sample | 359 | 17 | 4.74% (2.98–7.45) |
+| **gap** — claims a domain, endpoint elsewhere | 889 | 25 | **2.81%** (1.91–4.12) |
+| exact — control | 574 | 48 | 8.36% (6.37–10.91) |
+| `io.github.*` | 359 | 17 | 4.74% (2.98–7.45) |
 
-Gap vs exact: **χ² (Yates) = 21.85, df = 1, p < 0.001**. Adoption is *inversely*
+Gap vs exact: **chi2 (Yates) = 21.51, df = 1, p < 0.001.** Adoption is inversely
 related to need.
 
-Narrowing the gap to the worst class — a reverse-DNS name, an endpoint on a
-different domain, and that domain being a PaaS default host
-(`*.workers.dev`, `*.supabase.co`, `*.run.app`, `*.vercel.app`, …):
+Restricting the gap to the class that most needs machine-readable identity —
+endpoint on a PaaS default host (`*.workers.dev`, `*.supabase.co`, `*.run.app`,
+`*.vercel.app`, …):
 
 | class | hosts | self-describes |
 |---|---|---|
-| gap, brand label still appears in the host | 427 | 20 (4.7%) |
-| gap, no brand overlap at all | 545 | 11 (2.0%) |
-| gap, hosted on a PaaS default domain | 347 | **3 (0.9%)** |
+| gap, hosted on a PaaS default domain | 342 | **3 (0.9%)** |
 
-So the endpoint that is least able to be identified — 347 of them — almost
-never identifies itself.
+## The cards that do exist are mostly, not always, correct
 
-### The cards that do exist are correct
+54 cards were returned across all probes. **46 (85.2%) carry a `name` identical
+to the registry name.** The 8 that differ:
 
-In the 330-server pass-1 sample, 22 served a genuine card. **22/22 had `name`
-byte-identical to the registry name.** Adoption is low, but where it exists it
-is not wrong. Example (`https://app.apogee.ad/mcp/server-card`):
+| registry name | card `name` | what it looks like |
+|---|---|---|
+| `co.huggingface/hf-mcp-server` | `huggingface.co/mcp` | not reverse-DNS — spec requires reverse-DNS |
+| `io.github.gokimedia/sewlore-measurement-reference` | `com.gitbook.sites.mcp/site_qHMh7` | the **hosting platform's** card, served for someone else's server |
+| `ai.echoo.www/public-catalog` | `ai.echoo/public-catalog` | namespace variant |
+| `com.modevc/chart-ollama-downloads-local-llm-adoption` | `com.modevc/radar` | different leaf |
+| `io.planzer/mcp` | `io.planzer/planzer` | different leaf |
+| `io.github.moelayyan90/xguard-control-plane` | `io.github.moelayyan90/xguard` | different leaf |
+| `io.github.pipeworx-io/worldbank` | `io.pipeworx/worldbank` | migrated to a domain namespace |
+| `io.github.bitcoinresearchkit/bitview` | `space.bitview.mcp/bitview` | migrated to a domain namespace |
 
-```json
-{"$schema":"https://static.modelcontextprotocol.io/schemas/v1/server-card.schema.json",
- "name":"ad.apogee/apogee","version":"1.1.0",
- "remotes":[{"type":"streamable-http","url":"https://app.apogee.ad/mcp"}]}
-```
+Two are worth attention: one card is not in the required reverse-DNS form, and
+one is a platform card that a naive "does the card name match the registry name"
+check would flag — correctly, but for the wrong reason.
 
-## Why this matters
+## What the registry does not publish
 
-The gap is 1,414 servers, or 3.2% of every remote server in the registry. A
-client that wants to know "is the thing at this URL the thing this name
-describes" has, today:
+The publish token carries the verified domain in `AuthMethodSubject`
+(`CreateJWTClaimsAndToken`), but the published entry does not. Every entry's
+`_meta` contains only `status`, `statusChangedAt`, `publishedAt`, `updatedAt`,
+`isLatest`. There is no field naming the domain that was verified and no field
+naming the authentication method.
 
-1. **the domain check** — works for 94.78% of reverse-DNS servers, but was
-   deliberately removed as a *policy*, so nothing enforces it and nothing
-   surfaces it;
-2. **the card check** — works for 3.19% of exactly the servers that need it.
-
-Neither covers the gap. A registry entry also has **no field pointing at the
-card**: the `server.json` schema in `modelcontextprotocol/registry` (all seven
-versioned schemas under `internal/validators/schemas/`, plus
-`docs/reference/server-json/draft/server.schema.json`) contains no
-`serverCard`/`server-card`/`cardUrl` property. A client that has a registry
-entry must guess `<endpoint>/server-card`, which is why "no card" and "card
-somewhere else" are indistinguishable.
-
-## Limits
-
-- One snapshot, one day. The registry grows fast; these are point estimates.
-- "Exact" is a string relation between name and host. It does not prove the
-  same organisation controls both — a squatter can own `evil.example` and
-  publish `example.evil/mcp`. It only proves the endpoint sits on the domain
-  the name names.
-- Only the first remote URL per server is used when a server declares several.
-- `partial` is computed by comparing the last two DNS labels; a namespace like
-  `ai.ankra` and a host `platform.ankra.app` are counted as `mismatch`, which is
-  correct under a strict reading (the name claims `ankra.ai`) but understates
-  same-organisation cases. 440 of the 1,414 gap servers still carry their brand
-  label in the endpoint host.
-- 10 hosts in the earlier 330-server sample failed TLS; they are excluded from
-  the rates rather than counted as misses.
-- The card probe sends a `GET` to the endpoint path plus `/server-card`. Servers
-  that publish a card at another location are counted as absent, which is the
-  point: a client cannot find them either.
+So a client cannot reconstruct the domain check even if it wanted to: for a
+reverse-DNS name it can *guess* the domain from the namespace, and for the 1,335
+servers in the gap that guess is wrong by construction. The namespace does not
+tell you which prefix length was actually verified.
 
 ## Files
 
 | file | contents |
 |---|---|
-| `summary.json` | census aggregates |
-| `gap_servers.json` | the 1,414 addresses, with `brand_overlap` soft/hard |
-| `card_probe.json` | all 1,909 probe results, per host |
+| `summary.json` | census aggregates and the classification rule |
+| `gap_servers.json` | the 1,335 gap addresses |
+| `card_probe.json` | all 1,822 probe results |
 | `adoption_rates.json` | rates with Wilson 95% intervals |
 | `scripts/pull_registry.py` | full pagination of the latest snapshot |
-| `scripts/classify_domain.py` | name → candidate domains → exact/partial/mismatch |
+| `scripts/classify_domain.py` | namespace → implied domains → exact/mismatch |
 | `scripts/probe_cards.py` | card + catalog probe |
+
+## Limits
+
+- One snapshot, one day. Point estimates, not a trend.
+- `exact` is a string relation. It does not prove the same organisation controls
+  both sides; a squatter can own `evil.example` and publish `example.evil/mcp`.
+- Only the first remote URL is used when a server declares several.
+- Public suffixes are not special-cased: a namespace like `uk.co.foo` yields a
+  candidate `co.uk`, which is not an ownable domain. This affects multilevel-TLD
+  namespaces only.
+- The probe requests `<endpoint>/server-card`. A card published elsewhere is
+  counted as absent — which is the point: a client cannot find it either.
+
+## Note on an earlier number
+
+`experiments/mcp_witness/` reported 84.0% for this question. That was a sampling
+artifact: the 800 records were the first pages of a name-ordered listing, so they
+covered only names beginning with `a`, almost all reverse-DNS. The figures above
+replace it.

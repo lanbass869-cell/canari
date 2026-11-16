@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
-"""Classify each remote endpoint host against the domain its registry name claims.
+"""Classify each remote endpoint host against the domains its registry name implies.
 
-    ac.inference.sh/mcp -> {inference.sh, ac.inference.sh}
-    ai.ankra/platform   -> {ankra.ai, ai.ankra}
-    io.github.user/repo -> {user.github.io}
+Auth rule (internal/api/handlers/v0/auth/common.go, BuildPermissions): a verified
+domain D grants the reverse namespace reverse(D); a subdomain grant extends it by
+labels. So namespace N is legitimate if some domain D has reverse(D) as a PREFIX
+of N, i.e. D = reverse(n1..ni) for some prefix length i.
 
-exact    host equals a candidate, or is a subdomain of one
-partial  same last-two-labels suffix, not a subdomain
-mismatch neither
+A single label is a TLD and not ownable, so i >= 2.
+
+    com.example/server   -> example.com
+    ac.inference.sh/mcp  -> inference.ac, sh.inference.ac
+    io.github.user/repo  -> github.io (GitHub auth), user.github.io
+
+exact    host equals one of those domains or is a subdomain of one
+mismatch otherwise
 """
 import json
 import sys
@@ -15,35 +21,22 @@ import urllib.parse
 from collections import Counter
 
 
-def candidates(name):
-    if "/" not in name:
-        return []
-    parts = name.split("/")[0].split(".")
-    out = {".".join(reversed(parts))}
-    for i in range(len(parts)):
-        out.add(".".join(parts[i:]))
-    if len(parts) == 3 and parts[:2] == ["io", "github"]:
-        out.add(parts[2] + ".github.io")
-    return [c for c in out if c]
+def domains_for(namespace):
+    labels = namespace.split(".")
+    return {".".join(reversed(labels[:i])) for i in range(2, len(labels) + 1)}
 
 
-def _reg(h):
-    p = h.split(".")
-    return ".".join(p[-2:]) if len(p) >= 2 else h
-
-
-def classify(name, host):
+def classify(namespace, host):
     host = (host or "").lower().rstrip(".")
-    cands = candidates(name)
-    if not cands:
-        return "no-namespace"
-    for c in cands:
-        if host == c.lower() or host.endswith("." + c.lower()):
+    for d in domains_for(namespace):
+        d = d.lower()
+        if host == d or host.endswith("." + d):
             return "exact"
-    for c in cands:
-        if _reg(c.lower()) == _reg(host):
-            return "partial"
     return "mismatch"
+
+
+def kind(name):
+    return "github" if name.split("/")[0].startswith("io.github.") else "reverse_dns"
 
 
 def main(src="latest.json", out="domain_binding.json"):
@@ -59,15 +52,16 @@ def main(src="latest.json", out="domain_binding.json"):
         url = remotes[0].get("url") or ""
         host = urllib.parse.urlsplit(url).hostname
         recs.append({"name": name, "host": host, "url": url,
-                     "cat": classify(name, host) if host else "bad-url"})
+                     "cat": classify(name.split("/")[0], host) if host else "bad-url"})
     json.dump(recs, open(out, "w", encoding="utf-8"))
-    counts = Counter(r["cat"] for r in recs)
-    print(dict(counts), file=sys.stderr)
-    for kind, pred in (("reverse_dns", lambda n: not n.startswith("io.github.")),
-                       ("github", lambda n: n.startswith("io.github."))):
-        sub = [r for r in recs if r["cat"] != "no-remote" and pred(r["name"])]
+    print(dict(Counter(r["cat"] for r in recs)), file=sys.stderr)
+    for k in ("reverse_dns", "github"):
+        sub = [r for r in recs if r["cat"] != "no-remote" and kind(r["name"]) == k]
         c = Counter(r["cat"] for r in sub)
-        print("%s total=%d %s" % (kind, len(sub), dict(c)), file=sys.stderr)
+        print("%-11s total=%6d exact=%6d (%.2f%%) mismatch=%6d (%.2f%%)"
+              % (k, len(sub), c.get("exact", 0), 100.0 * c.get("exact", 0) / len(sub),
+                 c.get("mismatch", 0), 100.0 * c.get("mismatch", 0) / len(sub)),
+              file=sys.stderr)
 
 
 if __name__ == "__main__":

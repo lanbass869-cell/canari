@@ -1,27 +1,27 @@
 [
  {
   "group": "gap",
-  "hosts": 972,
-  "self_described": 31,
-  "rate": 0.0319,
+  "hosts_probed": 889,
+  "self_described": 25,
+  "rate": 0.0281,
   "ci95": [
-   0.0226,
-   0.0449
+   0.0191,
+   0.0412
   ]
  },
  {
   "group": "exact-sample",
-  "hosts": 578,
-  "self_described": 51,
-  "rate": 0.0882,
+  "hosts_probed": 574,
+  "self_described": 48,
+  "rate": 0.0836,
   "ci95": [
-   0.0677,
-   0.1142
+   0.0637,
+   0.1091
   ]
  },
  {
   "group": "github-sample",
-  "hosts": 359,
+  "hosts_probed": 359,
   "self_described": 17,
   "rate": 0.0474,
   "ci95": [

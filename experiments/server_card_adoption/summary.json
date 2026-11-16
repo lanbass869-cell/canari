@@ -1,21 +1,20 @@
 {
  "as_of": "2026-11-16",
- "registry": "https://registry.modelcontextprotocol.io/v0/servers?version=latest",
+ "endpoint": "https://registry.modelcontextprotocol.io/v0/servers?version=latest",
  "pages": 654,
- "latest_servers": 65340,
+ "latest_records": 65340,
  "no_remote": 21021,
  "with_remote": 44319,
+ "rule": "auth-aligned (reverse of an owned domain is a prefix of the namespace)",
  "by_namespace_type": {
   "reverse_dns": {
-   "exact": 25650,
-   "partial": 88,
-   "mismatch": 1326,
+   "exact": 25729,
+   "mismatch": 1335,
    "total": 27064
   },
   "github": {
-   "exact": 11,
-   "partial": 0,
-   "mismatch": 17244,
+   "exact": 10,
+   "mismatch": 17245,
    "total": 17255
   }
  }
