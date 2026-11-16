@@ -134,3 +134,40 @@ skeleton-exact and affix paths that catch some of those cases without distance.
 4. Where the gap condition fails (which is the normal case), choose explicitly:
    fixed threshold and accept growing false positives, or a calibrated threshold
    and accept falling recall. There is no third option at fixed corpus model.
+
+## 8. Three attempted escapes, and why each just moves along the trade-off
+
+If the gap condition fails, maybe a better *name normalization* creates one. Three
+candidates were tested on the same labelled benchmark (`run_brand_gate.py`,
+`run_margin_gate.py`, and the calibration row from `README.md`). All three reduce
+the growth of false positives; none keeps recall.
+
+| strategy | precision 200 -> 1617 | recall 200 -> 1617 | false positives 200 -> 1617 |
+|---|---|---|---|
+| shipped rule (edit <= 2) | 0.985 -> 0.940 | **0.964 -> 0.964** | 18 -> 74 |
+| brand gate (compare only names sharing a non-generic token) | 0.994 -> 0.977 | 0.667 -> 0.667 | 5 -> 19 |
+| margin gate (best match must be strictly closer than the next) | 0.980 -> 0.937 | 0.599 -> 0.596 | 15 -> 48 |
+| threshold calibration (E[nb] <= 0.05) | 0.985 -> 0.987 | 0.964 -> 0.858 | 18 -> 14 |
+
+Read as points on one curve rather than as competing designs:
+
+- the **brand gate** buys precision by refusing to compare names that share only
+  generic tokens (\`mcp\`, \`server\`, \`skill\`...). It throws away most attacks
+  that rename or extend the brand (combosquat, affix), which is why recall sits at
+  0.667 before the corpus even grows.
+- the **margin gate** buys precision by requiring a distinctive winner. Attacks
+  whose target is one of several equally close names — which is exactly what a real
+  registry looks like — lose. Recall 0.599 at every corpus size.
+- **threshold calibration** keeps the shipped rule and shrinks the radius. Recall
+  0.858, the smallest loss of the three, but still a 10.6-point charge.
+
+None of them achieves the gap condition of Section 4(iii): each is precise *and*
+blind, i.e. it buys stability by lowering recall rather than by separating attacks
+from accidents. That is consistent with the proposition: since `p(tau) > 0` for
+every usable `tau`, no re-weighting of the same distance signal can make accidents
+disappear; it can only make the detector stop looking.
+
+**What would actually work** is not a normalization but a protocol decision: fix a
+comparison corpus of declared size and publish it with every verdict, so that the
+number is reproducible by construction and its coverage limits are explicit. That
+is the direction taken in \`canari/typosquat.py:corpus_commitment\`.
