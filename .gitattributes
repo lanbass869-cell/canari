@@ -4,6 +4,7 @@
 # found on 2026-11-15 (local audit failed while CI passed).
 docs/log/** -text
 docs/capsules/** -text
+dataset/** -text
 docs/spec/merkle-vectors.json -text
 
 # Normal source files may be normalised as usual.
