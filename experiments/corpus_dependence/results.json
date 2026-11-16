@@ -1,0 +1,92 @@
+{
+ "pool_size": 620,
+ "seed": 20261116,
+ "flip": {
+  "n_targets": 60,
+  "flagged_in_small_corpus": 8,
+  "flagged_in_full_corpus": 21,
+  "both": 8,
+  "clean_only_in_small": 0,
+  "typosquat_only_in_full": 13,
+  "neither": 39,
+  "flip_rate_of_all_targets": 0.2167,
+  "examples_flagged_only_in_full": [
+   "mcp-server-aistudio",
+   "mcp-server-b24",
+   "mcp-server-deepresearch-thy",
+   "mcp-server-demo-9",
+   "mcp-server-docs"
+  ]
+ },
+ "corpus_size_curve": [
+  {
+   "n": 50,
+   "flagged_fraction_mean": 0.112,
+   "flagged_fraction_sd": 0.0204,
+   "pairs_mean": 4.4,
+   "pairs_per_n_squared": 0.00176
+  },
+  {
+   "n": 100,
+   "flagged_fraction_mean": 0.176,
+   "flagged_fraction_sd": 0.0476,
+   "pairs_mean": 18.4,
+   "pairs_per_n_squared": 0.00184
+  },
+  {
+   "n": 200,
+   "flagged_fraction_mean": 0.224,
+   "flagged_fraction_sd": 0.0328,
+   "pairs_mean": 83.8,
+   "pairs_per_n_squared": 0.0021
+  },
+  {
+   "n": 300,
+   "flagged_fraction_mean": 0.2387,
+   "flagged_fraction_sd": 0.0249,
+   "pairs_mean": 150.4,
+   "pairs_per_n_squared": 0.00167
+  },
+  {
+   "n": 400,
+   "flagged_fraction_mean": 0.291,
+   "flagged_fraction_sd": 0.015,
+   "pairs_mean": 241,
+   "pairs_per_n_squared": 0.00151
+  },
+  {
+   "n": 500,
+   "flagged_fraction_mean": 0.3048,
+   "flagged_fraction_sd": 0.0094,
+   "pairs_mean": 375.2,
+   "pairs_per_n_squared": 0.0015
+  },
+  {
+   "n": 620,
+   "flagged_fraction_mean": 0.3371,
+   "flagged_fraction_sd": 0.0,
+   "pairs_mean": 573,
+   "pairs_per_n_squared": 0.00149
+  }
+ ],
+ "threshold_sensitivity": [
+  {
+   "max_distance": 1,
+   "flagged": 64,
+   "flagged_fraction": 0.1032,
+   "pairs": 51
+  },
+  {
+   "max_distance": 2,
+   "flagged": 209,
+   "flagged_fraction": 0.3371,
+   "pairs": 573
+  },
+  {
+   "max_distance": 3,
+   "flagged": 336,
+   "flagged_fraction": 0.5419,
+   "pairs": 3385
+  }
+ ]
+}
