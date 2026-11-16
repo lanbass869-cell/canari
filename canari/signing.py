@@ -109,6 +109,11 @@ _OWN_HASH_FIELDS = {
     "homepage",
     # Supersession chain and revocation references (contain our own digests)
     "supersedes", "ref",
+    # Our own content digests. `comparison_corpus.digest` (2026-11-16) is a
+    # sha256 over the name set a similarity verdict was computed against; without
+    # this exemption the "long hex run" rule rejects every attestation that
+    # carries a corpus commitment, exactly like the Sigstore-identity case below.
+    "digest",
     # Provenance identity references: a Sigstore identity ends with the git commit
     # SHA (".../release.yml@af0ad67c..."), which is a *reference*, not a secret.
     # Without this exemption the long-hex-run rule rejects every npm package whose

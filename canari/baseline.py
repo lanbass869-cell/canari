@@ -618,9 +618,13 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     try:
         from canari.typosquat import check_typosquatting as _tq_check
         from canari.typosquat import find_mutual_pairs as _tq_pairs
+        from canari.typosquat import corpus_commitment as _tq_corpus
+        from canari.typosquat import corpus_ref as _tq_cref
     except Exception as _tqe_imp:
         _tq_check = None
         _tq_pairs = None
+        _tq_corpus = None
+        _tq_cref = None
         _tq_import_err = "typosquat import failed: %s" % str(_tqe_imp)[:60]
     else:
         _tq_import_err = None
@@ -632,6 +636,16 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             _npm_mutual = _tq_pairs(_npm_trusted)
         except Exception as _tqe:
             _npm_mutual_err = str(_tqe)[:80]
+    # Commit to the exact name set the verdict is relative to. A similarity
+    # verdict is a property of the set, so a record without the set cannot be
+    # re-derived (see experiments/corpus_dependence).
+    _npm_corpus = None
+    if _tq_corpus is not None and _npm_trusted:
+        try:
+            _npm_corpus = _tq_corpus(_npm_trusted, "npm")
+        except Exception:
+            _npm_corpus = None
+    _npm_cref = _tq_cref(_npm_corpus) if (_tq_cref and _npm_corpus) else None
     for pkg in npm_pkgs:
         name = pkg["name"]
         try:
@@ -679,19 +693,27 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                 if _npm_mutual_err is not None:
                     raise RuntimeError(_npm_mutual_err)
                 _tq = _tq_check(name, _npm_trusted, mutual_pairs=_npm_mutual)
-                checks.append(_tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
-                                      "tool": "canari-typosquat/0.1",
-                                      "evidence_ref": "no close match to another component in this scan"})
-            except Exception as _te:
-                checks.append({"id": "L2.6_TYPOSQUATTING", "verdict": "error",
+                _row = _tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
                                "tool": "canari-typosquat/0.1",
-                               "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]})
+                               "evidence_ref": "no close match to another component in this scan"}
+                if _npm_corpus:
+                    _row["comparison_corpus"] = _npm_corpus
+                checks.append(_row)
+            except Exception as _te:
+                _row = {"id": "L2.6_TYPOSQUATTING", "verdict": "error",
+                        "tool": "canari-typosquat/0.1",
+                        "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]}
+                if _npm_corpus:
+                    _row["comparison_corpus"] = _npm_corpus
+                checks.append(_row)
             if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
                 verdict = "pass-with-findings" if sha else "fail"
             np = _with_timeout(
                 lambda _n=name, _v=lv["version"]: native_ingest(_n, _v), 90, None)
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
-                            ["canari-m1/0.1"], ["npm-packument:" + name], native_prov=np)
+                            ["canari-m1/0.1"],
+                            [x for x in ("npm-packument:" + name, _npm_cref) if x],
+                            native_prov=np)
             bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
             all_results.append({"name": name, "registry": "npm", "version": lv["version"],
                                 "verdict": verdict, "bundle": bpath})
@@ -735,6 +757,13 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             _pypi_mutual = _tq_pairs(_pypi_trusted)
         except Exception as _tqe:
             _pypi_mutual_err = str(_tqe)[:80]
+    _pypi_corpus = None
+    if _tq_corpus is not None and _pypi_trusted:
+        try:
+            _pypi_corpus = _tq_corpus(_pypi_trusted, "pypi")
+        except Exception:
+            _pypi_corpus = None
+    _pypi_cref = _tq_cref(_pypi_corpus) if (_tq_cref and _pypi_corpus) else None
     for pkg in pypi_pkgs:
         name = pkg["name"]
         if "error" in pkg:
@@ -818,18 +847,25 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             tq = _tq_check(name, _pypi_trusted,
                            mutual_pairs=_pypi_mutual,
                            age_rank=_pypi_age)
-            checks.append(tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
-                                 "tool": "canari-typosquat/0.1",
-                                 "evidence_ref": "no close match to another component in this scan"})
+            _row = tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
+                          "tool": "canari-typosquat/0.1",
+                          "evidence_ref": "no close match to another component in this scan"}
+            if _pypi_corpus:
+                _row["comparison_corpus"] = _pypi_corpus
+            checks.append(_row)
         except Exception as _te:
-            checks.append({"id": "L2.6_TYPOSQUATTING", "verdict": "error",
-                           "tool": "canari-typosquat/0.1",
-                           "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]})
+            _row = {"id": "L2.6_TYPOSQUATTING", "verdict": "error",
+                    "tool": "canari-typosquat/0.1",
+                    "evidence_ref": "typosquat check failed: %s" % str(_te)[:80]}
+            if _pypi_corpus:
+                _row["comparison_corpus"] = _pypi_corpus
+            checks.append(_row)
         verdict = "pass" if sha else "fail"
         if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
             verdict = "pass-with-findings"
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
-                        verdict, ["canari-m1/0.1"], ["pypi-json:" + name],
+                        verdict, ["canari-m1/0.1"],
+                        [x for x in ("pypi-json:" + name, _pypi_cref) if x],
                         native_prov=pn)
         # A single bad package must never abort the whole registry sweep. This
         # used to raise straight out of run_multi: one package whose NAME tripped

@@ -33,6 +33,44 @@ def _damerau_levenshtein(left, right):
     return matrix[-1][-1]
 
 
+def corpus_commitment(names, registry, as_of=None):
+    """Commit to the exact name set a similarity verdict was computed against.
+
+    Why this exists (measured 2026-11-16, experiments/corpus_dependence): a
+    name-similarity verdict is a property of a *set*, not of one package. On 620
+    real ``mcp-server-*`` names, 13 of 60 sampled packages were clean against a
+    60-name corpus and became "typosquat" against the full 620 -- with no change
+    to the packages. Without the corpus, nobody can re-derive the verdict, so a
+    record that carries one without the other is not reproducible.
+
+    Canonicalization is deliberately simple and stated in the record itself:
+    sha256 over the UTF-8 bytes of the casefolded names sorted ascending,
+    LF-joined, with a trailing LF. Dedup happens before hashing, so callers may
+    pass a set or a list.
+    """
+    import datetime as _dt
+    import hashlib as _hl
+    folded = sorted({n.casefold() for n in names if n})
+    blob = ("\n".join(folded) + "\n").encode("utf-8")
+    return {
+        "registry": registry,
+        "kind": "name-set",
+        "size": len(folded),
+        "digest": "sha256:" + _hl.sha256(blob).hexdigest(),
+        "canonicalization": "sha256(utf-8, casefolded names sorted asc, LF-joined, trailing LF)",
+        "as_of": as_of or _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    }
+
+
+def corpus_ref(commitment):
+    """One-line form of a corpus commitment, for evidence_refs."""
+    if not commitment:
+        return None
+    return "corpus:%s:%s:n=%d" % (commitment["registry"],
+                                  commitment["digest"],
+                                  commitment["size"])
+
+
 def find_mutual_pairs(names):
     """Pairs where BOTH names flag each other.
 

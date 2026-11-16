@@ -107,3 +107,86 @@ def test_mutual_pair_failure_degrades_to_error_check(tmp_path, monkeypatch):
         assert len(rows) == 1, rows
         assert rows[0]["verdict"] == "error", rows
         assert "similarity backend exploded" in rows[0]["evidence_ref"]
+
+# ---------------------------------------------------------------------------
+# corpus commitment: a similarity verdict is relative to a name set, so the
+# record has to say which set. Without it the verdict cannot be re-derived
+# (see experiments/corpus_dependence).
+# ---------------------------------------------------------------------------
+
+def test_corpus_commitment_is_order_and_duplicate_insensitive():
+    from canari.typosquat import corpus_commitment
+
+    a = corpus_commitment(["b-x", "A-y", "a-y"], "pypi", as_of="2026-11-16T00:00:00Z")
+    b = corpus_commitment(["A-y", "b-x"], "pypi", as_of="2026-11-16T00:00:00Z")
+    assert a["digest"] == b["digest"], "casefold+dedup must make order irrelevant"
+    assert a["size"] == 2
+
+
+def test_corpus_commitment_changes_when_the_set_changes():
+    from canari.typosquat import corpus_commitment
+
+    a = corpus_commitment(["A-y", "b-x"], "pypi", as_of="2026-11-16T00:00:00Z")
+    b = corpus_commitment(["A-y", "b-x", "c-z"], "pypi", as_of="2026-11-16T00:00:00Z")
+    assert a["digest"] != b["digest"]
+    assert b["size"] == 3
+
+
+def test_corpus_ref_is_greppable():
+    from canari.typosquat import corpus_commitment, corpus_ref
+
+    c = corpus_commitment(["A-y", "b-x"], "npm", as_of="2026-11-16T00:00:00Z")
+    ref = corpus_ref(c)
+    assert ref.startswith("corpus:npm:sha256:")
+    assert ref.endswith(":n=2")
+    assert corpus_ref(None) is None
+
+
+def test_attestation_carries_the_comparison_corpus(tmp_path, monkeypatch):
+    """Every L2.6 row and every attestation must name the set it compared against."""
+    import json
+
+    monkeypatch.setattr(tq, "find_mutual_pairs", lambda names: set())
+
+    packument = {"time": {"created": "2025-01-01T00:00:00.000Z",
+                          "modified": "2026-11-01T00:00:00.000Z"}}
+    lv = {"version": "1.0.0", "tarball": "https://example.invalid/x.tgz",
+          "maintainers": ["alice"], "homepage": "https://example.invalid"}
+
+    monkeypatch.setattr(bl, "enumerate_top", lambda limit=50: _npm_pkgs(3))
+    monkeypatch.setattr(bl, "fetch_packument", lambda name: packument)
+    monkeypatch.setattr(bl, "latest_version_info", lambda pack: dict(lv))
+    monkeypatch.setattr(bl, "_download_sha256", lambda url, timeout=60: "e" * 64)
+    monkeypatch.setattr(bl, "pypi_enumerate", lambda **kw: _pypi_pkgs(3))
+    monkeypatch.setattr(bl, "mcp_registry_enumerate", lambda **kw: [])
+    monkeypatch.setattr(bl, "dsh_enumerate", lambda **kw: [])
+    monkeypatch.setattr(bl, "native_ingest", lambda *a, **k: None)
+    monkeypatch.setattr(bl, "pypi_native_ingest", lambda *a, **k: None)
+
+    signer, pub_key = bl.generate_keypair()
+    res = bl.run_multi(npm_limit=3, pypi_limit=3, registry_limit=0,
+                       dsh_limit=0, signer=signer, pub_key=pub_key,
+                       out_dir=str(tmp_path))
+
+    seen = {"npm": 0, "pypi": 0}
+    for item in res["results"]:
+        payload = json.load(open(item["bundle"], encoding="utf-8"))["payload"]
+        reg = payload["subject"]["registry"]
+        row = [c for c in payload["checks"] if c["id"] == "L2.6_TYPOSQUATTING"]
+        assert len(row) == 1, row
+        corpus = row[0].get("comparison_corpus")
+        assert corpus, "L2.6 must name its comparison corpus: %s" % row[0]
+        assert corpus["registry"] == reg
+        assert corpus["size"] == 3
+        assert corpus["digest"].startswith("sha256:")
+        assert corpus["canonicalization"]
+        assert corpus["as_of"]
+        # the same commitment must also appear in the attestation-level refs
+        assert any(r == "corpus:%s:%s:n=3" % (reg, corpus["digest"])
+                   for r in payload["evidence_refs"]), payload["evidence_refs"]
+        # and the attestation must still validate against the published schema:
+        # comparison_corpus is an additive field, not a schema break
+        from canari.schema import validate_attestation
+        assert validate_attestation(payload) == [], validate_attestation(payload)
+        seen[reg] += 1
+    assert seen == {"npm": 3, "pypi": 3}, seen

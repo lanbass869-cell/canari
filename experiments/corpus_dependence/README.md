@@ -89,6 +89,29 @@ Consequences:
 - Cross-registry or cross-time comparisons of typosquat rates are meaningless
   unless the corpora are identical.
 
+## Fix that landed because of this
+
+Attestations now carry the name set they were computed against, on the L2.6 row
+and in `evidence_refs`:
+
+```json
+"comparison_corpus": {
+  "registry": "pypi",
+  "kind": "name-set",
+  "size": 620,
+  "digest": "sha256:…",
+  "canonicalization": "sha256(utf-8, casefolded names sorted asc, LF-joined, trailing LF)",
+  "as_of": "2026-11-16T05:31:35Z"
+}
+```
+
+plus a one-line `corpus:pypi:sha256:…:n=620` entry in `evidence_refs`. Two
+attestations that disagree on a typosquat verdict can now be told apart by
+whether they compared against the same corpus, instead of looking like a
+contradiction. Drift is unaffected: `canari/drift.py` compares chain id -> verdict
+only, so the corpus commitment does not register as a "silent change" on every
+run.
+
 ## Reproduce
 
 ```
