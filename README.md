@@ -228,10 +228,9 @@ received the live component count):
       config:
         serverName: canari
         transport: stdio
-        command: 'E:\Temp\tbdig\_venv_pr_a\Scripts\python.exe'
-        args: ['-m', 'canari.mcp_server', '--store', 'E:\Temp\tbdig\canari\out',
-               '--key', 'E:\Temp\tbdig\canari\out\public_key.json']
-        cwd: 'E:\Temp\tbdig\canari'
+        command: 'canari-mcp'          # or: python -m canari.mcp_server
+        args: ['--store', '<path-to-store>',
+               '--key', '<path-to-store>/public_key.json']
         failOnStartupError: true
 ```
 
