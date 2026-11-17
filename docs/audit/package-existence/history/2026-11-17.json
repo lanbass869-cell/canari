@@ -2,14 +2,14 @@
  "as_of": "2026-11-17",
  "pages": 661,
  "summary": {
-  "checked": 22652,
-  "ok": 22372,
+  "checked": 22655,
+  "ok": 22375,
   "package_gone": 152,
   "version_absent": 123,
   "reserved_tag": 5,
   "unknown": 0,
   "missing": 275,
-  "missing_rate": 0.012140208370121844,
+  "missing_rate": 0.012138600750386228,
   "affected_servers": 273,
   "by_registry": {
    "npm": 198,
