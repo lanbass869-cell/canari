@@ -2,14 +2,14 @@
  "as_of": "2026-11-17",
  "pages": 661,
  "summary": {
-  "checked": 22655,
-  "ok": 22375,
+  "checked": 22656,
+  "ok": 22376,
   "package_gone": 152,
   "version_absent": 123,
   "reserved_tag": 5,
   "unknown": 0,
   "missing": 275,
-  "missing_rate": 0.012138600750386228,
+  "missing_rate": 0.012138064971751412,
   "affected_servers": 273,
   "by_registry": {
    "npm": 198,
@@ -17,6 +17,68 @@
   }
  },
  "excluded_reserved_tag": 5,
+ "ranking": [
+  {
+   "namespace": "eu.ansvar",
+   "entries": 39,
+   "refs": 39,
+   "share": 0.14285714285714285
+  },
+  {
+   "namespace": "tech.thecompound",
+   "entries": 11,
+   "refs": 11,
+   "share": 0.040293040293040296
+  },
+  {
+   "namespace": "ai.dinglebear",
+   "entries": 10,
+   "refs": 10,
+   "share": 0.03663003663003663
+  },
+  {
+   "namespace": "io.github.AIWerk",
+   "entries": 7,
+   "refs": 7,
+   "share": 0.02564102564102564
+  },
+  {
+   "namespace": "io.github.cyanheads",
+   "entries": 6,
+   "refs": 6,
+   "share": 0.02197802197802198
+  },
+  {
+   "namespace": "io.github.oaslananka",
+   "entries": 6,
+   "refs": 6,
+   "share": 0.02197802197802198
+  },
+  {
+   "namespace": "io.arxo",
+   "entries": 4,
+   "refs": 4,
+   "share": 0.014652014652014652
+  },
+  {
+   "namespace": "io.github.arpe-io",
+   "entries": 4,
+   "refs": 4,
+   "share": 0.014652014652014652
+  },
+  {
+   "namespace": "io.github.huoshuiai42",
+   "entries": 3,
+   "refs": 3,
+   "share": 0.01098901098901099
+  },
+  {
+   "namespace": "io.github.ipezygj",
+   "entries": 3,
+   "refs": 3,
+   "share": 0.01098901098901099
+  }
+ ],
  "rows": [
   {
    "registry": "npm",
