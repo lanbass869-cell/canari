@@ -325,6 +325,7 @@ def write_outputs(out_dir, summary, rows, as_of, pages, ranking=None, ns_totals=
     missing = [r for r in rows if r["status"] in ("package-gone", "version-absent")]
     doc = {"as_of": as_of, "pages": pages, "summary": summary,
            "excluded_reserved_tag": summary["reserved_tag"],
+           "ranking": ranking or [],
            "rows": missing}
     with open(os.path.join(out_dir, "latest.json"), "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
@@ -361,7 +362,6 @@ def main(argv=None):
     summary = summarize(rows)
     ranking = rank_namespaces(rows)
     doc = write_outputs(a.out, summary, rows, as_of, pages, ranking, namespace_totals(records))
-    doc["ranking"] = ranking
     print(json.dumps(summary, indent=1), file=sys.stderr)
     print("wrote %s" % os.path.join(a.out, "latest.json"), file=sys.stderr)
     return 0
