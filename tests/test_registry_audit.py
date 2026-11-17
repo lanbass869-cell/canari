@@ -11,7 +11,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from canari.registry_audit import classify, collect_refs, summarize
+from canari.registry_audit import classify, collect_refs, rank_namespaces, namespace_totals, summarize
 
 
 def _rec(name, packages):
@@ -105,3 +105,49 @@ class TestSummarize:
     def test_empty_is_safe(self):
         s = summarize([])
         assert s["checked"] == 0 and s["missing"] == 0 and s["missing_rate"] == 0.0
+
+
+class TestRankNamespaces:
+    def _rows(self):
+        return [
+            {"registry": "npm", "identifier": "a", "version": "1", "status": "package-gone",
+             "servers": ["eu.ansvar/x", "eu.ansvar/y"]},
+            {"registry": "npm", "identifier": "b", "version": "1", "status": "version-absent",
+             "servers": ["eu.ansvar/z"]},
+            {"registry": "npm", "identifier": "c", "version": "1", "status": "package-gone",
+             "servers": ["io.github.a/one"]},
+            {"registry": "npm", "identifier": "d", "version": "1", "status": "ok",
+             "servers": ["io.github.a/two"]},
+            {"registry": "npm", "identifier": "e", "version": "latest", "status": "reserved-tag",
+             "servers": ["noise/one"]},
+        ]
+
+    def test_ranks_by_affected_entry_count(self):
+        r = rank_namespaces(self._rows())
+        assert r[0]["namespace"] == "eu.ansvar"
+        assert r[0]["entries"] == 3
+        assert r[0]["refs"] == 3
+
+    def test_excludes_ok_and_reserved_tag(self):
+        names = {x["namespace"] for x in rank_namespaces(self._rows())}
+        assert "noise" not in names           # reserved-tag is not a missing entry
+        assert "io.github.a" in names         # the ok row must not inflate the count
+
+    def test_share_is_of_all_affected_entries(self):
+        r = rank_namespaces(self._rows())
+        top = r[0]
+        assert abs(top["share"] - 3 / 4) < 1e-9   # 3 of 4 affected entries
+
+    def test_limit(self):
+        assert len(rank_namespaces(self._rows(), limit=1)) == 1
+
+    def test_empty(self):
+        assert rank_namespaces([]) == []
+
+    def test_namespace_totals_counts_all_entries(self):
+        recs = [{"server": {"name": "eu.ansvar/x"}},
+                {"server": {"name": "eu.ansvar/y"}},
+                {"server": {"name": "io.github.a/one"}},
+                {"server": {"name": "no-slash"}}]
+        t = namespace_totals(recs)
+        assert t["eu.ansvar"] == 2 and t["io.github.a"] == 1 and "no-slash" not in t

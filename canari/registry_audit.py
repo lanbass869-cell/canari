@@ -113,6 +113,38 @@ def summarize(rows):
     }
 
 
+def rank_namespaces(rows, limit=10):
+    """Which publishers account for most of the affected entries.
+
+    A publisher with 40 broken entries out of 40 is a different problem from one with 6
+    out of 166, so the share of that namespace's own entries is reported alongside the
+    count. Returns the top `limit` namespaces by affected entry count.
+    """
+    servers_by_ns = defaultdict(set)
+    refs_by_ns = Counter()
+    for r in rows:
+        if r["status"] not in ("package-gone", "version-absent"):
+            continue
+        for name in r["servers"]:
+            ns = name.split("/")[0] if "/" in name else name
+            servers_by_ns[ns].add(name)
+            refs_by_ns[ns] += 1
+    total = sum(len(v) for v in servers_by_ns.values())
+    ranked = sorted(servers_by_ns.items(), key=lambda kv: (-len(kv[1]), kv[0]))[:limit]
+    return [{"namespace": ns, "entries": len(sv), "refs": refs_by_ns[ns],
+             "share": (len(sv) / total) if total else 0.0} for ns, sv in ranked]
+
+
+def namespace_totals(records):
+    """How many entries each namespace has in total, so a ratio can be quoted."""
+    counts = Counter()
+    for rec in records:
+        name = (rec.get("server") or {}).get("name") or ""
+        if "/" in name:
+            counts[name.split("/")[0]] += 1
+    return counts
+
+
 # ---------------------------------------------------------------- network
 
 def _get(url, timeout=20, tries=3):
@@ -179,7 +211,7 @@ def check_refs(refs, workers=32):
 
 # ---------------------------------------------------------------- output
 
-def render_page(summary, rows, as_of, pages):
+def render_page(summary, rows, as_of, pages, ranking=None, ns_totals=None):
     """Build the page with explicit placeholder substitution.
 
     Not %-formatting: the stylesheet contains literal percent signs, which would
@@ -198,6 +230,19 @@ def render_page(summary, rows, as_of, pages):
     if len(rows) > 400:
         more = ("<p class=sub>This page lists the first 400 rows; the full list is in "
                 "<code>latest.csv</code>.</p>")
+    rank_html = ""
+    if ranking:
+        ns_totals = ns_totals or {}
+        rows_html = "".join(
+            "<tr><td class=mono>%s</td><td class=mono>%d</td><td class=mono>%d/%s</td>"
+            "<td class=mono>%.0f%%</td></tr>"
+            % (r["namespace"], r["entries"], r["entries"], ns_totals.get(r["namespace"], "?"),
+               100.0 * r["share"])
+            for r in ranking
+        )
+        rank_html = ("<table><thead><tr><th>namespace</th><th>affected entries</th>"
+                     "<th>of that namespace</th><th>share of all affected</th></tr></thead>"
+                     "<tbody>" + rows_html + "</tbody></table>")
     template = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -244,6 +289,11 @@ missing versions.
 <tr><td>unresolved after retries</td><td class=mono>@@UNKNOWN@@</td></tr>
 </tbody></table>
 
+<h2>Where to start</h2>
+<p class=sub>The affected entries are spread thinly: most publishers have one or two. These
+namespaces account for the largest shares, so fixing them moves the total most.</p>
+@@RANKING@@
+
 <h2>Cannot be installed</h2>
 @@MORE@@
 <table><thead><tr><th>registry</th><th>identifier</th><th>version</th><th>status</th><th>listed as</th></tr></thead>
@@ -263,14 +313,14 @@ silently replaced.</footer>
         "@@SERVERS@@": str(summary["affected_servers"]),
         "@@TAGS@@": str(summary["reserved_tag"]),
         "@@UNKNOWN@@": str(summary["unknown"]),
-        "@@MORE@@": more, "@@ROWS@@": body_rows,
+        "@@MORE@@": more, "@@ROWS@@": body_rows, "@@RANKING@@": rank_html,
     }
     for k, v in repl.items():
         template = template.replace(k, v)
     return template
 
 
-def write_outputs(out_dir, summary, rows, as_of, pages):
+def write_outputs(out_dir, summary, rows, as_of, pages, ranking=None, ns_totals=None):
     os.makedirs(os.path.join(out_dir, "history"), exist_ok=True)
     missing = [r for r in rows if r["status"] in ("package-gone", "version-absent")]
     doc = {"as_of": as_of, "pages": pages, "summary": summary,
@@ -289,7 +339,7 @@ def write_outputs(out_dir, summary, rows, as_of, pages):
                         "version": r["version"], "status": r["status"],
                         "servers": ";".join(r["servers"])})
     with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
-        f.write(render_page(summary, missing, as_of, pages))
+        f.write(render_page(summary, missing, as_of, pages, ranking, ns_totals))
     return doc
 
 
@@ -309,7 +359,9 @@ def main(argv=None):
           % (len(records), pages, len(refs)), file=sys.stderr)
     rows = check_refs(refs, workers=a.workers)
     summary = summarize(rows)
-    doc = write_outputs(a.out, summary, rows, as_of, pages)
+    ranking = rank_namespaces(rows)
+    doc = write_outputs(a.out, summary, rows, as_of, pages, ranking, namespace_totals(records))
+    doc["ranking"] = ranking
     print(json.dumps(summary, indent=1), file=sys.stderr)
     print("wrote %s" % os.path.join(a.out, "latest.json"), file=sys.stderr)
     return 0
