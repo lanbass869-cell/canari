@@ -326,6 +326,8 @@ def write_outputs(out_dir, summary, rows, as_of, pages, ranking=None, ns_totals=
     doc = {"as_of": as_of, "pages": pages, "summary": summary,
            "excluded_reserved_tag": summary["reserved_tag"],
            "ranking": ranking or [],
+           "ranking_denominators": {r["namespace"]: (ns_totals or {}).get(r["namespace"])
+                                    for r in (ranking or [])},
            "rows": missing}
     with open(os.path.join(out_dir, "latest.json"), "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
