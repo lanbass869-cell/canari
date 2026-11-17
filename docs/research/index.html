@@ -39,6 +39,8 @@ listed component is safe. Where a figure is a string relation rather than a proo
 <td>Nine open-source MCP clients and SDKs, 10,158 source files read by hand: <span class=num>0</span> pin a server's identity, warn on endpoint change, or verify an attestation. The single existing defence is the official SDKs refusing cross-origin redirects, which 6 of 9 inherit.</td><td>2026-11-16</td></tr>
 <tr><td><a href="corpus-dependence-20261116.md">A name detector's operating point is a property of its corpus</a><br><span class=mono>experiments/corpus_benchmark</span></td>
 <td>Same detector, corpus 200 &rarr; 1,617: precision <span class=num>0.985</span> &rarr; <span class=num>0.940</span>, false positives <span class=num>18</span> &rarr; <span class=num>74</span>, recall unchanged. Self-calibrating the threshold buys the precision back and charges <span class=num>10.6</span> points of recall.</td><td>2026-11-16</td></tr>
+<tr><td><a href="package-existence-audit-20261117.md">Package existence audit</a><br><span class=mono>data/package-existence-20261117.csv</span></td>
+<td><span class=num>274</span> of 22,526 npm/PyPI package references (<span class=num>1.22%</span>) point at a version that cannot be installed: <span class=num>151</span> where the package is gone, <span class=num>123</span> where the version is not published. Full list published. All 274 passed publish-time validation and were removed upstream afterwards.</td><td>2026-11-16</td></tr>
 </tbody></table>
 
 <h2>Competitor teardowns</h2>

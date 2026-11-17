@@ -1,0 +1,87 @@
+# Audit: 274 registry entries reference a package version that cannot be installed
+
+Snapshot **2026-11-16**. Source: `GET /v0/servers?version=latest`, full pagination —
+654 pages, 65,340 latest records.
+
+## What was checked
+
+Every `packages[]` entry with `registryType` npm or pypi, de-duplicated to
+`(registry, identifier, version)`: **22,526 distinct references** across 22,384 servers.
+Each was resolved against its publisher's own registry:
+
+- npm: `GET https://registry.npmjs.org/<identifier>` → is `<version>` a key of `versions`?
+- PyPI: `GET https://pypi.org/pypi/<identifier>/json` → is `<version>` a key of `releases` with at least one file?
+
+One HTTP request per reference, no download, no install. 84 references failed on the
+first pass for network reasons and were retried individually until **0 were unknown**.
+
+## Result
+
+| outcome | references | share |
+|---|---|---|
+| version resolves | 22,247 | 98.78% |
+| **package no longer exists (HTTP 404)** | **151** | 0.67% |
+| **package exists, that version is not published** | **123** | 0.55% |
+| **total that cannot be installed** | **274** | **1.22%** |
+
+272 distinct server entries are affected. By registry: npm 198, PyPI 76.
+
+Full list: [`data/package-existence-20261117.csv`](data/package-existence-20261117.csv)
+(274 rows: registry, identifier, version, status, affected registry entries) and
+[`data/package-existence-20261117.json`](data/package-existence-20261117.json)
+(same data plus the denominators and the exclusions below).
+
+## What this is not
+
+- **This is not a report of a publish-time validation failure.** The registry does check
+  the exact listed version at publish and edit time. Every one of these 274 entries passed
+  that check; the upstream package or version disappeared afterwards. That is precisely the
+  class of problem a periodic re-check would catch, which is what #93 asked for.
+- **This is not a security report.** A removed package is usually an unpublish, a rename, a
+  yank or an abandoned project. It says nothing about whether it was malicious.
+- **The 5 entries that use `version: "latest"` are excluded from the 274.** `validateVersion`
+  rejects `latest` as a reserved string today, but all five were published **2025-09-09**,
+  the day after the registry previewed, i.e. before that rule existed. Counting them as a
+  current validation gap would be wrong.
+
+## Why it matters
+
+A client that reads an entry and tries to install it gets a hard failure, and the entry keeps
+advertising a version that no longer exists. `registry#93` was closed on 2026-10-23 by
+consolidating into `#1715`, with the explicit note that *"this closure does not mean checks or
+removals have been implemented"*; `#1715` was then closed as completed on 2026-11-03. This
+snapshot, 13 days later, is the measurement of what such a check would still find.
+
+For comparison, `#1715` measured 157 entries whose version did not exist against a
+14,431-entry npm/PyPI denominator (1.09%) on 2026-10-04. This snapshot gives 274 against
+22,526 references (1.22%) on 2026-11-16. The **rate is roughly stable; the count nearly
+doubled** because the registry grew. The denominators differ (entries vs distinct
+registry/identifier/version triples) and the two numbers should not be subtracted.
+
+## Cheapest fix
+
+The registry already has `ValidatePackage`, which performs exactly this check at publish
+time. Re-running it on a schedule and recording the result rather than deleting anything
+keeps the entry's history intact while letting clients see the state:
+
+- on failure, set a `_meta` field such as `lastVerifiedAt` + `verificationStatus:
+  ok | package-missing | version-missing` and leave the entry in place;
+- do not delete — `#93`'s concern about cross-distribution revocation (npm removed, OCI and
+  MCPB copies still live) needs a decision, not an automatic delete.
+
+## Reproducing
+
+The check is one request per package against the public registry APIs. There is no
+authentication and nothing is downloaded. The list above is regenerable in about 8 minutes
+with 48 concurrent workers on a consumer connection.
+
+## Limits
+
+- One snapshot. Packages are unpublished and re-published continuously; a different day
+  gives a different list.
+- "version not published" is decided from the registry's own `versions`/`releases` maps. A
+  version present with zero files is counted as absent, because it cannot be installed.
+- Only npm and PyPI were checked. mcpb (2,384), oci (1,941), nuget (183) and cargo (134)
+  entries are out of scope here.
+- Ties between a missing package and a network failure were resolved by retrying; the final
+  run had no unresolved entries, but a transient 404 from a CDN would be recorded as missing.

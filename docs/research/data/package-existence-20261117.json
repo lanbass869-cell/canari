@@ -1,0 +1,1935 @@
+{
+ "as_of": "2026-11-16",
+ "source": "GET /v0/servers?version=latest — 654 pages, 65,340 latest records",
+ "checked": {
+  "distinct_registry_identifier_version": 22526,
+  "servers_with_npm_or_pypi_package": 22384
+ },
+ "missing_total": 274,
+ "package_gone": 151,
+ "version_absent": 123,
+ "excluded": {
+  "reserved_tag_latest": 5,
+  "note": "all 5 published 2025-09-09, before the reserved-string rule; excluded rather than counted as missing"
+ },
+ "rows": [
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-cal",
+   "version": "1.0.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-cal"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-clawhub",
+   "version": "0.1.4",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-clawhub"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-imap",
+   "version": "1.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-imap"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-shopify",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-shopify"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-vault",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-vault"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-wheel-size",
+   "version": "0.3.3",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-wheel-size"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-wise",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "registry_entries": "io.github.AIWerk/mcp-server-wise"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@alexendros/proton-mail-mcp",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.Alexendros/proton-mail-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@anara123/mcp-weather-server",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.anara123/weather"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/argentine-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/argentine-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/australian-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/australian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/botswana-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/botswana-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/cameroonian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/cameroonian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/dominican-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/dominican-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ecuadorian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/ecuadorian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ethiopian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/ethiopian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ghana-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/ghana-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/india-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/india-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/indonesian-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/indonesian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/israel-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/israel-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ivorian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/ivorian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/jordanian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/jordanian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/kenya-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/kenya-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/malawi-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/malawi-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/malaysian-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/malaysian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/moroccan-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/moroccan-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/mozambican-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/mozambican-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/namibian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/namibian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/nepal-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/nepal-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/newzealand-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/newzealand-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/nigeria-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/nigeria-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ot-security-mcp",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.Ansvar-Systems/ot-security-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/philippine-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/philippine-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/russian-law-mcp",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/russian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/senegalese-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/senegalese-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/singapore-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/singapore-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/southafrica-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/southafrica-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/srilanka-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/srilanka-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/switzerland-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/switzerland-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/tanzanian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/tanzanian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/thailand-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/thailand-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/tunisian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/tunisian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/turkish-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/turkish-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/uae-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/uae-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ugandan-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/ugandan-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/us-regulations-mcp",
+   "version": "1.2.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.Ansvar-Systems/us-regulations-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/us-regulations-mcp",
+   "version": "1.2.5",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/us-regulations-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/vietnamese-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/vietnamese-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/zambian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/zambian-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/zimbabwe-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "eu.ansvar/zimbabwe-law-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@appcraft-io/mcp-server",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.terminalis/appcraft"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-charter",
+   "version": "0.1.8",
+   "status": "package-gone",
+   "registry_entries": "io.arxo/charter"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-code-civil",
+   "version": "0.1.10",
+   "status": "package-gone",
+   "registry_entries": "io.arxo/code-civil"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-de-bgb",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "registry_entries": "io.arxo/de-bgb"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-picc",
+   "version": "0.3.11",
+   "status": "package-gone",
+   "registry_entries": "io.arxo/picc"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@asterpay/mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.timolein74/asterpay"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@authzx/mcp-gateway",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.authzx/mcp-gateway"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@beremaran/godot-agent-loop",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.beremaran/godot-agent-loop"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@bgorzelic/ghostlink",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.bgorzelic/ghostlink"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@briangaoo/totem",
+   "version": "1.4.3",
+   "status": "package-gone",
+   "registry_entries": "io.github.briangaoo/totem"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@calnflow/snapclap-mcp",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.calnflow/snapclap-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cognitivemyriad/vrm-local",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.cognitivemyriad/verified-repo-memory"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@collapseindex/ci1t-mcp",
+   "version": "1.7.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.collapseindex/ci1t-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/bls-mcp-server",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "registry_entries": "io.github.cyanheads/bls-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/eia-mcp-server",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "registry_entries": "io.github.cyanheads/eia-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/fred-mcp-server",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.cyanheads/fred-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/gbif-mcp-server",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "registry_entries": "io.github.cyanheads/gbif-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/nominatim-mcp-server",
+   "version": "0.1.8",
+   "status": "package-gone",
+   "registry_entries": "io.github.cyanheads/nominatim-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/uspto-mcp-server",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.cyanheads/uspto-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@datasynx/agentic-ai-cartography",
+   "version": "2.12.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.datasynx/cartography"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@datasynx/agentic-ai-shadowing",
+   "version": "2.1.4",
+   "status": "package-gone",
+   "registry_entries": "io.github.datasynx/agentic-ai-shadowing"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@edestory/mcp-starmeet",
+   "version": "1.2.1",
+   "status": "package-gone",
+   "registry_entries": "com.star-meet/mcp-starmeet"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@elixium.ai/mcp-server",
+   "version": "0.15.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.IndirectTek/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@galaxy-stack/design-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.buikevin/galaxy-design-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@gaviwhatsapp/mcp",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.gaviwhatsapp/whatsapp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@gener8v/mcp-geographic-data",
+   "version": "0.1.3",
+   "status": "package-gone",
+   "registry_entries": "io.github.gener8v-thomas/mcp-geographic-data"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ingeniux/ctnp-mcp",
+   "version": "0.7.7",
+   "status": "package-gone",
+   "registry_entries": "io.github.jitsmaster/ctnp-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@intencion/mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.intencion/mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@itechsoftsolutions/social-mcp-server",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.itechsoftsolution16/feedlio"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@j0hanz/code-review-analyst-mcp",
+   "version": "1.7.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.j0hanz/code-review-analyst"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@j0hanz/fetch-url-mcp",
+   "version": "3.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.j0hanz/fetch-url-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@j0hanz/filesystem-context-mcp",
+   "version": "1.0.9",
+   "status": "package-gone",
+   "registry_entries": "io.github.j0hanz/filesystem-context"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@jamesrez/valoria",
+   "version": "1.3.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.jamesrez/valoria"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@jamesrez/valoria-intelligence",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.jamesrez/valoria-intelligence"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@joy-trust/mcp-server",
+   "version": "2.40.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.tlkc888-Jenkins/joy"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@kynth/api-mcp",
+   "version": "0.5.2",
+   "status": "package-gone",
+   "registry_entries": "studio.kynth/core"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@latam-mcp/mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.Tolomere21/latam-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@littlebearapps/outlook-mcp",
+   "version": "3.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.littlebearapps/outlook-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@lofder/dsers-mcp-product",
+   "version": "1.5.7",
+   "status": "package-gone",
+   "registry_entries": "io.github.lofder/dsers-mcp-product"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@marocain/mcp-server",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "registry_entries": "io.github.Hei33enberg/marocain-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@mehmoodqureshi/figma-mcp",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.Mehmoodqureshi/figma-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@meltingpixels/harvey-tools",
+   "version": "1.1.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.meltingpixelsai/harvey-tools"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@memoro/mcp-server",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.circassian1977-byte/memoro"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@merk.a2a/mcp-server",
+   "version": "1.0.10",
+   "status": "package-gone",
+   "registry_entries": "io.github.globallayer/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@mojomo/mcp-server",
+   "version": "1.4.4",
+   "status": "version-absent",
+   "registry_entries": "io.github.MojoMo-io/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@nottiboy1337/mcp-update-hijack-poc",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.NOTTIBOY137/update-hijack-poc"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@oaslananka/composer",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.oaslananka/composer"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@oaslananka/sentinel",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.oaslananka/sentinel"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@openplan/mcp",
+   "version": "0.1.22",
+   "status": "package-gone",
+   "registry_entries": "io.github.vncsleal/openplan"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@pasichdev/todo-mcp",
+   "version": "2.2.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.pasichDev/todo-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@pavelpiha/specrun",
+   "version": "1.4.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.pavelpiha/specrun"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ramaris/mcp-server",
+   "version": "0.1.4",
+   "status": "package-gone",
+   "registry_entries": "io.github.ramaris-app/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@referencime/mcp-server",
+   "version": "2.0.9",
+   "status": "package-gone",
+   "registry_entries": "io.github.ThomasViennet/referencime"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@scratchpadsh/mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.scratchpad-sh/scratchpad"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@seojeom/mcp-server",
+   "version": "0.2.3",
+   "status": "package-gone",
+   "registry_entries": "io.github.seojeom/seojeom-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@shirbarzur/planform-mcp-server",
+   "version": "1.0.7",
+   "status": "package-gone",
+   "registry_entries": "io.github.ShirBarZur/planform-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@shmindmaster/repocontext",
+   "version": "0.3.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.shmindmaster/repocontext"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@strajkpolski/mcp",
+   "version": "0.4.4",
+   "status": "package-gone",
+   "registry_entries": "io.github.Hei33enberg/strajkpolski-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@unifiedoffer/mcp-server",
+   "version": "2.0.1",
+   "status": "package-gone",
+   "registry_entries": "com.unifiedoffer/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@veilquota/mcp",
+   "version": "0.3.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.omkardongre/veilquota"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@walensis/mcp-for-ynab",
+   "version": "0.2.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.walensis-labs/mcp-for-ynab"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@whiteintel/mcp-server",
+   "version": "0.7.10",
+   "status": "package-gone",
+   "registry_entries": "dev.whiteintel/whiteintel"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@yawlabs/nol-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.YawLabs/nol-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@zebpay_rajesh/zebpay-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.ZebpayRajesh/zebpay-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "@zguiyang/pi-worker-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.zguiyang/pi-worker-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "ace-context-mcp",
+   "version": "0.1.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.Dw-Dwain/ace-context-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "acf-mcp",
+   "version": "1.0.3",
+   "status": "version-absent",
+   "registry_entries": "io.github.aiconsulting06000-tech/acf-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "adobe-commerce-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.zeluizr/adobe-commerce-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "apprise-rmcp",
+   "version": "0.1.3",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/apprise-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "arcane-rmcp",
+   "version": "0.4.2",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/arcane-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "ark-runtime-kernel",
+   "version": "2.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.pedroknigge/ark"
+  },
+  {
+   "registry": "npm",
+   "identifier": "bash-command-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.mrorigo/bash-command-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "board-and-stable-mcp",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.kevindarstNBB/board-and-stable-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "celestialnode-mcp",
+   "version": "1.1.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.christerso/celestial-node"
+  },
+  {
+   "registry": "npm",
+   "identifier": "civicbinder-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/civicbinder"
+  },
+  {
+   "registry": "npm",
+   "identifier": "clarvia-mcp-server",
+   "version": "1.1.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.digitamaz/clarvia"
+  },
+  {
+   "registry": "npm",
+   "identifier": "coalesce-transform-mcp",
+   "version": "0.10.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.Coalesce-Software-Inc/coalesce-transform"
+  },
+  {
+   "registry": "npm",
+   "identifier": "coalesce-transform-mcp",
+   "version": "0.7.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.jessemarshall/coalesce-transform"
+  },
+  {
+   "registry": "npm",
+   "identifier": "cortex-rmcp",
+   "version": "3.9.1",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/cortex-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "crewhaus-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.crewhaus/validation"
+  },
+  {
+   "registry": "npm",
+   "identifier": "dea-agents",
+   "version": "0.4.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.shreyassaw5394/dea"
+  },
+  {
+   "registry": "npm",
+   "identifier": "dev953-mcp",
+   "version": "1.2.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.GRU-953/dev953"
+  },
+  {
+   "registry": "npm",
+   "identifier": "drainbrain-mcp-server",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.meltingpixelsai/drainbrain"
+  },
+  {
+   "registry": "npm",
+   "identifier": "dsh-codebase-chat-mcp",
+   "version": "0.10.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.shinzarou-eng/dsh-codebase-chat"
+  },
+  {
+   "registry": "npm",
+   "identifier": "eol-check-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "com.mervenor/eol-check-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "esrpmicrosoft-oss-mcp-test",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.sravanism/esrp-mcp-server-test"
+  },
+  {
+   "registry": "npm",
+   "identifier": "festo-codesys-mcp",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.efranceschetti/festo-codesys-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "figma-designer-mcp",
+   "version": "0.3.6",
+   "status": "version-absent",
+   "registry_entries": "io.github.a1245582339/figma-designer"
+  },
+  {
+   "registry": "npm",
+   "identifier": "finhay-mcp-server",
+   "version": "1.0.8",
+   "status": "version-absent",
+   "registry_entries": "io.github.finhay/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "freelance-os",
+   "version": "0.2.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.Sohlin2/freelance-os"
+  },
+  {
+   "registry": "npm",
+   "identifier": "godavaii-mcp-server",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.GoDavai01/godavaii-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "goodstanding-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/goodstanding"
+  },
+  {
+   "registry": "npm",
+   "identifier": "google-researcher-mcp",
+   "version": "6.3.3",
+   "status": "version-absent",
+   "registry_entries": "io.github.zoharbabin/google-researcher"
+  },
+  {
+   "registry": "npm",
+   "identifier": "gotify-rmcp",
+   "version": "0.1.3",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/gotify-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "gru953-crew-mcp",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.GRU-953/gru953-crew"
+  },
+  {
+   "registry": "npm",
+   "identifier": "guesty-mcp-server",
+   "version": "0.11.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.DLJRealty/guesty"
+  },
+  {
+   "registry": "npm",
+   "identifier": "ha-mcp-server",
+   "version": "0.6.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.Koneisto/HomeAssistant-Light-MCP"
+  },
+  {
+   "registry": "npm",
+   "identifier": "hedera-hcs-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.mountainmystic/hedera-hcs-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "identifier": "image-puma",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.panth-net/Image-Puma"
+  },
+  {
+   "registry": "npm",
+   "identifier": "italian-bus-search",
+   "version": "0.3.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.Alexxanddr/italian-bus-search"
+  },
+  {
+   "registry": "npm",
+   "identifier": "jamgate",
+   "version": "0.20.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.amirj4m/jamgate"
+  },
+  {
+   "registry": "npm",
+   "identifier": "k8s-port-forward-mcp",
+   "version": "0.0.8",
+   "status": "version-absent",
+   "registry_entries": "io.github.oijusti/k8s-port-forward-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "kitgrade-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/kitgrade"
+  },
+  {
+   "registry": "npm",
+   "identifier": "lightning-fm-mcp",
+   "version": "0.1.5",
+   "status": "version-absent",
+   "registry_entries": "fm.lightning/lightning-fm-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "local-llm-worker",
+   "version": "0.1.4",
+   "status": "version-absent",
+   "registry_entries": "io.github.JoblessJoe/local-llm-worker"
+  },
+  {
+   "registry": "npm",
+   "identifier": "makers-page-mcp",
+   "version": "0.1.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.alexcloudstar/makers-page-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "marketintell",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "registry_entries": "ai.marketintell/marketintell"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-1c-platform-tools",
+   "version": "0.1.5",
+   "status": "version-absent",
+   "registry_entries": "io.github.yellow-hammer/mcp-1c-platform-tools"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-debug-recorder",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.oaslananka/mcp-debug-recorder"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-health-monitor",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.oaslananka/mcp-health-monitor"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-infra-lens",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.oaslananka/mcp-infra-lens"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-meet",
+   "version": "0.3.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.pzep1/mcp-meet"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-sap-docs",
+   "version": "0.3.9",
+   "status": "version-absent",
+   "registry_entries": "io.github.marianfoo/mcp-sap-docs"
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-ssh-tool",
+   "version": "2.2.7",
+   "status": "version-absent",
+   "registry_entries": "io.github.oaslananka/mcp-ssh-tool"
+  },
+  {
+   "registry": "npm",
+   "identifier": "md-md-mcp-server",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.kedarvartak/md-md"
+  },
+  {
+   "registry": "npm",
+   "identifier": "neural-memory-mcp",
+   "version": "4.27.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.nhadaututtheky/neural-memory"
+  },
+  {
+   "registry": "npm",
+   "identifier": "omnipost-mcp",
+   "version": "0.1.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.OmniGoAI/omnipost"
+  },
+  {
+   "registry": "npm",
+   "identifier": "openlookup",
+   "version": "0.5.1",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/openlookup"
+  },
+  {
+   "registry": "npm",
+   "identifier": "paidwithtab",
+   "version": "3.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.paidwithtab/tab"
+  },
+  {
+   "registry": "npm",
+   "identifier": "parserail-mcp",
+   "version": "0.6.2",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/parserail-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "positif-ai",
+   "version": "0.2.2",
+   "status": "version-absent",
+   "registry_entries": "ai.positif/positif"
+  },
+  {
+   "registry": "npm",
+   "identifier": "rulestack-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/rulestack"
+  },
+  {
+   "registry": "npm",
+   "identifier": "rustok-agent-mcp",
+   "version": "0.2.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.temrjan/rustok-wallet"
+  },
+  {
+   "registry": "npm",
+   "identifier": "santuri-mcp-server",
+   "version": "1.1.7",
+   "status": "version-absent",
+   "registry_entries": "io.github.sonofakel/santuri"
+  },
+  {
+   "registry": "npm",
+   "identifier": "scriptprobe-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/scriptprobe"
+  },
+  {
+   "registry": "npm",
+   "identifier": "silpo-mcp",
+   "version": "1.1.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.MIt9/silpo-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "skillworks-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/skillworks"
+  },
+  {
+   "registry": "npm",
+   "identifier": "skolverket-mcp",
+   "version": "2.1.3",
+   "status": "version-absent",
+   "registry_entries": "io.github.KSAklfszf921/skolverket-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "spec-score-mcp",
+   "version": "2.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.openpoem/spec-score-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "spendlog",
+   "version": "1.0.4",
+   "status": "version-absent",
+   "registry_entries": "io.github.makz81/spendlog"
+  },
+  {
+   "registry": "npm",
+   "identifier": "stacktab-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/stacktab"
+  },
+  {
+   "registry": "npm",
+   "identifier": "stillshipping-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/stillshipping"
+  },
+  {
+   "registry": "npm",
+   "identifier": "synapse-rmcp",
+   "version": "0.5.4",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/synapse-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "tailscale-rmcp",
+   "version": "0.1.3",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/tailscale-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "telegram-channel-scraper-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.khadinakbaronline/telegram-channel-scraper-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "temporal-continuity-mcp",
+   "version": "0.1.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.VRhodes68/temporal-continuity"
+  },
+  {
+   "registry": "npm",
+   "identifier": "tooldrift-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "tech.thecompound/tooldrift"
+  },
+  {
+   "registry": "npm",
+   "identifier": "unifi-rmcp",
+   "version": "0.2.4",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/unifi-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "universal-brute-workpack",
+   "version": "0.1.4",
+   "status": "version-absent",
+   "registry_entries": "io.github.haoyun18881-beep/universal-brute-workpack"
+  },
+  {
+   "registry": "npm",
+   "identifier": "unraid-rmcp",
+   "version": "0.2.3",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/unraid-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "vaspera-hardening-mcp-server",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.RCOLKITT/vaspera-hardening"
+  },
+  {
+   "registry": "npm",
+   "identifier": "vaspera-pm",
+   "version": "2.15.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.RCOLKITT/vaspera-pm"
+  },
+  {
+   "registry": "npm",
+   "identifier": "vault-mcp-tools",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.afable702/vault-mcp-tools"
+  },
+  {
+   "registry": "npm",
+   "identifier": "vtex-io-mcp",
+   "version": "0.1.8",
+   "status": "version-absent",
+   "registry_entries": "io.github.zeluizr/vtex-io-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "xbird-mcp",
+   "version": "0.1.4",
+   "status": "version-absent",
+   "registry_entries": "io.github.checkra1neth/xbird"
+  },
+  {
+   "registry": "npm",
+   "identifier": "yarr-mcp",
+   "version": "1.1.1",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/yarr-mcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "ytdl-rmcp",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "ai.dinglebear/ytdl-rmcp"
+  },
+  {
+   "registry": "npm",
+   "identifier": "zotero-bridge",
+   "version": "1.0.3",
+   "status": "version-absent",
+   "registry_entries": "io.github.Combjellyshen/zotero-bridge"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "agent-tripwire",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.ipezygj/agent-guard"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "aifp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.aryanduntley/aifp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "aihawk",
+   "version": "0.69.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.feder-cr/aihawk"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "aion-news-to-signal",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.AION-Analytics/aion-news-to-signal"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "alloc-context",
+   "version": "0.3.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.AllocContext/alloc-context"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "artefact-mcp",
+   "version": "0.3.3",
+   "status": "version-absent",
+   "registry_entries": "io.github.alexboissAV/artefact-revenue-intelligence"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "atlaso",
+   "version": "0.1.0a6",
+   "status": "package-gone",
+   "registry_entries": "io.github.imashishkh21/atlaso"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "atomic-clock-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.theoddden/atomic-clock"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "backroom-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.pardhuparimi/backroom"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "baton-orchestrator",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.ribato22/baton"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "c3fst-mcp-server",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.mjandrews1/c3fst-biomedical-search"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "cg-agent-kit",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "registry_entries": "io.neosyn/cg-agent-kit"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "codeintel-navigation-mcp",
+   "version": "0.4.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.phuongddx/codeintel"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "codelogic-mcp-server",
+   "version": "1.3.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.CodeLogicIncEngineering/codelogic-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "contest-mcp",
+   "version": "0.1.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.sbrunner-atx/contest-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "contextual-engine",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.Contextual-Laboratories/contextual"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "cougarmap",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.bryantclark/cougarmap"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "crosstabs-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.barangaroo/crosstabs-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "dataraum",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.dataraum/dataraum"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "db-compare-mcp",
+   "version": "v0.1.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.yadu-tv/db-compare"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "edinet-mcp",
+   "version": "0.4.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.ajtgjmdjp/edinet-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "elesync",
+   "version": "1.24.18",
+   "status": "package-gone",
+   "registry_entries": "io.github.darknodebros/elesync"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "elite-reasoning-mcp",
+   "version": "8.1.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.Snehgabani/elite-reasoning-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "eval-integrity",
+   "version": "0.4.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.ipezygj/evalgate"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "fastbcp-mcp",
+   "version": "0.1.5",
+   "status": "package-gone",
+   "registry_entries": "io.github.arpe-io/fastbcp-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "fasttransfer-mcp",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.arpe-io/fasttransfer-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "fitness-influencer-mcp",
+   "version": "1.3.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.wmarceau/fitness-influencer"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "ghostqa",
+   "version": "0.2.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.SyncTekLLC/ghostqa"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "glitch-grow-linkedin-ad-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "com.glitchexecutor.grow/glitch-grow-linkedin-ad-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "grandline-mcp",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.dmsnavin/grandline-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "grandline-mcp",
+   "version": "0.2.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.luzomi/grandline-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "holographic-memory-mcp",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.writerslogic/holographic-memory-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "horus-flow-mcp",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.horustechltd/horus-flow-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "huoshui-fetch",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.huoshuiai42/huoshui-fetch"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "huoshui-file-converter",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.huoshuiai42/huoshui-file-converter"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "huoshui-pdf-translator",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.huoshuiai42/huoshui-pdf-translator"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "infraveil-guard",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.infraveilhq/agent-guard"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "infraveil-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.infraveilhq/control-plane"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "innoday",
+   "version": "0.112.2-beta",
+   "status": "version-absent",
+   "registry_entries": "io.github.havilandsoftware/mcp-server-innoday"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "instinct-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.yakuphanycl/instinct"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "labs-mcp-server",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.albertbolanoss/labs_mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "lakexpress-mcp",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.arpe-io/lakexpress-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "leangate",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.lambdabypi/leangate"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "local-faiss-mcp",
+   "version": "0.2.0-rc.3",
+   "status": "version-absent",
+   "registry_entries": "io.github.nonatofabio/local-faiss-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-edgar",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.birthday-tools/edgarmcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-search-server",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.KazKozDev/search"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-server-evolutiondb",
+   "version": "1.17.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.alptekin/evolutiondb-memory"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-trace-inspector",
+   "version": "0.3.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.abhishekash/mcp-trace-inspector"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-weather-augee99",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.augee99/mcp-weather"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "migratorxpress-mcp",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.arpe-io/migratorxpress-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mnemex",
+   "version": "0.5.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.simplemindedbot/mnemex"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "msmcp-azure",
+   "version": "3.0.0b48",
+   "status": "version-absent",
+   "registry_entries": "com.microsoft/azure"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "msmcp-template",
+   "version": "0.0.12-alpha.5932986",
+   "status": "version-absent",
+   "registry_entries": "com.microsoft/template-server-name"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "nanobanana-mcp-server",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.zhongweili/nanobanana-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "neopat-mcp",
+   "version": "0.1.4",
+   "status": "package-gone",
+   "registry_entries": "io.github.Udhay-Adithya/neopat-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "numguard",
+   "version": "0.1.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.ipezygj/numguard"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "olane-cosync-local",
+   "version": "0.2.0",
+   "status": "package-gone",
+   "registry_entries": "com.olane/cosync-local"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "omega-memory",
+   "version": "1.3.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.omega-memory/omega-memory"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "orionbelt-semantic-layer",
+   "version": "0.3.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.ralfbecher/orionbelt-semantic-layer"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "positif-ai",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "registry_entries": "ai.positif/positif"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "prefect-mcp",
+   "version": "0.0.1-beta.13",
+   "status": "version-absent",
+   "registry_entries": "io.github.PrefectHQ/prefect-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "regula-ai",
+   "version": "1.9.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.kuzivaai/regula"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "selvo",
+   "version": "2.1.1",
+   "status": "package-gone",
+   "registry_entries": "io.github.Cope-Labs/selvo"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "signalbrain",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "registry_entries": "io.github.whitestone1121-web/signalbrain"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "spineframe",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "registry_entries": "io.github.Ratnaditya-J/spineframe"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "sqlite-mcp-server-enhanced",
+   "version": "2.6.3",
+   "status": "package-gone",
+   "registry_entries": "io.github.neverinfamous/sqlite-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "stockfish-mcp",
+   "version": "v1.0.2",
+   "status": "version-absent",
+   "registry_entries": "io.github.stepbot/stockfish-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "stv",
+   "version": "0.4.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.Hybirdss/smartest-tv"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "tiktok-creator-mcp",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.wmarceau/tiktok-creator"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "toon-parse-mcp",
+   "version": "1.0.4-beta",
+   "status": "version-absent",
+   "registry_entries": "io.github.ankitpal181/toon-parse-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "twilize",
+   "version": "0.34.0",
+   "status": "package-gone",
+   "registry_entries": "io.github.subhatta123/twilize"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "uop-mcp-server",
+   "version": "2.0.1",
+   "status": "version-absent",
+   "registry_entries": "com.unifiedoffer/mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "video-editor-mcp",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "registry_entries": "io.github.burningion/video-editing-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "vulnfeed-mcp",
+   "version": "0.3.3",
+   "status": "package-gone",
+   "registry_entries": "io.github.infai-tech/vulnfeed"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "waggle-mcp",
+   "version": "0.1.8",
+   "status": "version-absent",
+   "registry_entries": "io.github.Abhigyan-Shekhar/Waggle-mcp"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "youtube-creator-mcp",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "registry_entries": "io.github.wmarceau/youtube-creator"
+  }
+ ]
+}
