@@ -112,3 +112,146 @@ class TestProxy:
                             "--quiet", "--", "definitely-not-a-real-exe-xyz"],
                            input=b"", capture_output=True, timeout=60, env=env)
         assert p.returncode == 127
+
+
+# ----------------------------------------------------------------- in-process
+# The tests above run the gate in a subprocess, which is the right way to prove the
+# stdio proxy works -- but coverage cannot see inside a subprocess. These cover the
+# same code paths in-process so the repository's coverage gate stays honest.
+
+import io
+
+import canari.mcp_gate as mg
+
+
+class _FakePipe(io.BytesIO):
+    """BytesIO with the few attributes Popen's pipes expose.
+
+    close() is a no-op so the value written by the pump threads can still be read
+    after _proxy's finally block closes the child's stdin.
+    """
+    def flush(self):
+        pass
+
+    def close(self):
+        pass
+
+
+class _FakeChild:
+    def __init__(self, out_bytes=b"", code=0):
+        self.stdin = _FakePipe()
+        self.stdout = _FakePipe(out_bytes)
+        self._code = code
+
+    def wait(self):
+        return self._code
+
+
+class _FakeStdin:
+    def __init__(self, data):
+        self.buffer = _FakePipe(data)
+
+
+class _FakeStdout:
+    def __init__(self):
+        self.buffer = _FakePipe()
+
+    def write(self, s):
+        return len(s)
+
+
+class TestProxyInProcess:
+    def test_copies_stdin_to_child_and_child_to_stdout(self, monkeypatch):
+        child = _FakeChild(out_bytes=b"hi")
+        monkeypatch.setattr(mg.subprocess, "Popen", lambda *a, **k: child)
+        monkeypatch.setattr(mg.sys, "stdin", _FakeStdin(b"ping"))
+        out = _FakeStdout()
+        monkeypatch.setattr(mg.sys, "stdout", out)
+
+        code = mg._proxy(["whatever"])
+        assert code == 0
+        assert child.stdin.getvalue() == b"ping"
+        assert out.buffer.getvalue() == b"hi"
+
+    def test_child_exit_code_propagates(self, monkeypatch):
+        monkeypatch.setattr(mg.subprocess, "Popen", lambda *a, **k: _FakeChild(code=7))
+        monkeypatch.setattr(mg.sys, "stdin", _FakeStdin(b""))
+        monkeypatch.setattr(mg.sys, "stdout", _FakeStdout())
+        assert mg._proxy(["whatever"]) == 7
+
+    def test_missing_command_returns_127(self, monkeypatch):
+        def boom(*a, **k):
+            raise FileNotFoundError()
+        monkeypatch.setattr(mg.subprocess, "Popen", boom)
+        monkeypatch.setattr(mg.sys, "stderr", io.StringIO())
+        assert mg._proxy(["nope"]) == 127
+
+
+class TestMainInProcess:
+    def _setup(self, monkeypatch, decision=None, found=True):
+        seen = {}
+
+        def fake_check(store, registry, name, version=None, key_path=None, policy="default"):
+            seen.update(store=store, registry=registry, name=name, version=version)
+            return {"found": found, "decision": decision or "ALLOW",
+                    "reasons": ["r1"], "policy": policy, "verdict": "pass",
+                    "subject": "s", "generated_at": "", "bundle": None}
+
+        monkeypatch.setattr(mg, "check_component", fake_check)
+        monkeypatch.setattr(mg, "_proxy", lambda argv: seen.setdefault("ran", argv) and 0)
+        monkeypatch.setattr(mg.sys, "stderr", io.StringIO())
+        return seen
+
+    def test_allow_runs_the_child(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch)
+        rc = mg.main(["--store", str(tmp_path), "--", "npx", "-y", "pkg"])
+        assert rc == 0
+        assert seen["ran"] == ["npx", "-y", "pkg"]
+        assert seen["registry"] == "npm" and seen["name"] == "pkg"
+
+    def test_block_never_runs_the_child(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch, decision="BLOCK")
+        rc = mg.main(["--store", str(tmp_path), "--", "npx", "pkg"])
+        assert rc == 5
+        assert "ran" not in seen
+
+    def test_review_requires_the_flag(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch, decision="REVIEW")
+        assert mg.main(["--store", str(tmp_path), "--", "npx", "pkg"]) == 6
+        assert "ran" not in seen
+        assert mg.main(["--store", str(tmp_path), "--allow-review", "--", "npx", "pkg"]) == 0
+        assert "ran" in seen
+
+    def test_unknown_component_allowed_by_default(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch, found=False)
+        assert mg.main(["--store", str(tmp_path), "--registry", "npm", "--name", "x",
+                        "--", "node", "s.js"]) == 0
+        assert "ran" in seen
+
+    def test_unknown_component_blocked_when_strict(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch, found=False)
+        assert mg.main(["--store", str(tmp_path), "--registry", "npm", "--name", "x",
+                        "--on-unknown", "block", "--", "node", "s.js"]) == 5
+        assert "ran" not in seen
+
+    def test_unknown_component_review_when_asked(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch, found=False)
+        assert mg.main(["--store", str(tmp_path), "--registry", "npm", "--name", "x",
+                        "--on-unknown", "review", "--", "node", "s.js"]) == 6
+        assert "ran" not in seen
+
+    def test_missing_store_warns_but_runs(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch)
+        missing = str(tmp_path / "nope")
+        err = io.StringIO(); monkeypatch.setattr(mg.sys, "stderr", err)
+        assert mg.main(["--store", missing, "--", "node", "s.js"]) == 0
+        assert "store not found" in err.getvalue()
+        assert "ran" in seen
+
+    def test_no_command_is_a_usage_error(self):
+        try:
+            mg.main([])
+        except SystemExit as e:
+            assert e.code == 2
+        else:
+            raise AssertionError("expected SystemExit")

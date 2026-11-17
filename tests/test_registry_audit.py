@@ -151,3 +151,194 @@ class TestRankNamespaces:
                 {"server": {"name": "no-slash"}}]
         t = namespace_totals(recs)
         assert t["eu.ansvar"] == 2 and t["io.github.a"] == 1 and "no-slash" not in t
+
+
+# ------------------------------------------------------------------ network half
+# The network half is covered with a stubbed opener so the suite stays offline and
+# deterministic. These tests exist because the module is mostly network code, and
+# leaving it uncovered dropped the repository's overall coverage below its gate.
+
+import json
+import urllib.error
+
+import canari.registry_audit as ra
+
+
+class _Resp:
+    def __init__(self, payload):
+        self._b = json.dumps(payload).encode()
+        self.status = 200
+
+    def read(self):
+        return self._b
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+def _stub(monkeypatch, table):
+    """table: url-substring -> payload | int (http status)."""
+    calls = []
+
+    def fake(req, timeout=None, context=None):
+        url = req.full_url if hasattr(req, "full_url") else str(req)
+        calls.append(url)
+        for key, val in table.items():
+            if key in url:
+                if isinstance(val, int):
+                    raise urllib.error.HTTPError(url, val, "err", {}, None)
+                return _Resp(val)
+        raise urllib.error.HTTPError(url, 404, "nf", {}, None)
+
+    monkeypatch.setattr(ra.urllib.request, "urlopen", fake)
+    return calls
+
+
+class TestGet:
+    def test_returns_payload(self, monkeypatch):
+        _stub(monkeypatch, {"example.test": {"ok": 1}})
+        status, data = ra._get("https://example.test/x")
+        assert status == 200 and data == {"ok": 1}
+
+    def test_404_is_returned_not_retried(self, monkeypatch):
+        calls = _stub(monkeypatch, {"gone.test": 404})
+        status, data = ra._get("https://gone.test/x")
+        assert status == 404 and data is None
+        assert len(calls) == 1
+
+    def test_network_failure_retries_then_unknown(self, monkeypatch):
+        calls = []
+
+        def boom(req, timeout=None, context=None):
+            calls.append(1)
+            raise OSError("no route")
+
+        monkeypatch.setattr(ra.urllib.request, "urlopen", boom)
+        monkeypatch.setattr(ra.time, "sleep", lambda *_: None)
+        status, data = ra._get("https://x.test/y", tries=2)
+        assert status is None
+        assert data and "_err" in data
+        assert len(calls) == 2
+
+
+class TestFetchRegistry:
+    def test_paginates_until_no_cursor(self, monkeypatch):
+        pages = [
+            {"servers": [{"server": {"name": "a/x"}}], "metadata": {"nextCursor": "c1"}},
+            {"servers": [{"server": {"name": "b/y"}}], "metadata": {}},
+        ]
+        seq = iter(pages)
+        monkeypatch.setattr(ra, "_get", lambda *a, **k: (200, next(seq)))
+        recs, n = ra.fetch_registry()
+        assert n == 2 and len(recs) == 2
+
+    def test_max_pages_stops_early(self, monkeypatch):
+        monkeypatch.setattr(ra, "_get", lambda *a, **k: (200, {"servers": [], "metadata": {"nextCursor": "z"}}))
+        recs, n = ra.fetch_registry(max_pages=3)
+        assert n == 3
+
+    def test_raises_on_bad_status(self, monkeypatch):
+        monkeypatch.setattr(ra, "_get", lambda *a, **k: (500, None))
+        try:
+            ra.fetch_registry()
+        except RuntimeError as e:
+            assert "registry fetch failed" in str(e)
+        else:
+            raise AssertionError("expected RuntimeError")
+
+
+class TestCheckOne:
+    def test_npm_version_present(self, monkeypatch):
+        _stub(monkeypatch, {"registry.npmjs.org": {"versions": {"1.0.0": {}}}})
+        r = ra.check_one((("npm", "pkg", "1.0.0"), ["a/x"]))
+        assert r["status"] == "ok"
+
+    def test_npm_version_missing(self, monkeypatch):
+        _stub(monkeypatch, {"registry.npmjs.org": {"versions": {"2.0.0": {}}}})
+        r = ra.check_one((("npm", "pkg", "1.0.0"), ["a/x"]))
+        assert r["status"] == "version-absent"
+
+    def test_pypi_release_with_no_files_is_absent(self, monkeypatch):
+        _stub(monkeypatch, {"pypi.org": {"releases": {"1.0.0": []}}})
+        r = ra.check_one((("pypi", "pkg", "1.0.0"), ["a/x"]))
+        assert r["status"] == "version-absent"
+
+    def test_pypi_release_with_files_is_ok(self, monkeypatch):
+        _stub(monkeypatch, {"pypi.org": {"releases": {"1.0.0": [{"filename": "w.whl"}]}}})
+        r = ra.check_one((("pypi", "pkg", "1.0.0"), ["a/x"]))
+        assert r["status"] == "ok"
+
+    def test_missing_package(self, monkeypatch):
+        _stub(monkeypatch, {"registry.npmjs.org": 404})
+        r = ra.check_one((("npm", "gone", "1.0.0"), ["a/x"]))
+        assert r["status"] == "package-gone"
+
+
+class TestCheckRefs:
+    def test_runs_all_items(self, monkeypatch):
+        monkeypatch.setattr(ra, "check_one", lambda item: {"status": "ok", "servers": item[1]})
+        rows = ra.check_refs({("npm", "a", "1"): ["x/y"], ("npm", "b", "1"): ["x/z"]}, workers=2)
+        assert len(rows) == 2
+
+
+class TestOutputs:
+    def _rows(self):
+        return [
+            {"registry": "npm", "identifier": "a", "version": "1", "status": "package-gone",
+             "http": 404, "servers": ["ns/one"]},
+            {"registry": "pypi", "identifier": "b", "version": "2", "status": "ok",
+             "http": 200, "servers": ["ns/two"]},
+        ]
+
+    def test_render_page_contains_the_numbers(self):
+        rows = [r for r in self._rows() if r["status"] != "ok"]
+        html = ra.render_page(ra.summarize(self._rows()), rows, "2026-11-17", 654)
+        assert "2026-11-17" in html and "654" in html
+        assert "cannot be installed" in html
+        assert "ns/one" in html
+
+    def test_render_page_truncates_long_lists(self):
+        rows = [{"registry": "npm", "identifier": "p%d" % i, "version": "1",
+                 "status": "package-gone", "servers": ["ns/x"]} for i in range(450)]
+        html = ra.render_page(ra.summarize(rows), rows, "2026-11-17", 1)
+        assert "first 400 rows" in html
+
+    def test_render_page_with_ranking(self):
+        rows = [r for r in self._rows() if r["status"] != "ok"]
+        html = ra.render_page(ra.summarize(self._rows()), rows, "2026-11-17", 1,
+                              ranking=[{"namespace": "ns", "entries": 1, "refs": 1, "share": 1.0}],
+                              ns_totals={"ns": 4})
+        assert "Where to start" in html and "1/4" in html
+
+    def test_write_outputs_creates_all_files(self, tmp_path):
+        rows = self._rows()
+        doc = ra.write_outputs(str(tmp_path), ra.summarize(rows), rows, "2026-11-17", 10,
+                               ranking=[], ns_totals={})
+        assert doc["summary"]["missing"] == 1
+        for name in ("latest.json", "latest.csv", "index.html",
+                     os.path.join("history", "2026-11-17.json")):
+            assert (tmp_path / name).exists()
+        csv_text = (tmp_path / "latest.csv").read_text(encoding="utf-8")
+        assert "package-gone" in csv_text
+        assert "a" in csv_text and "ns/one" in csv_text
+
+
+class TestMain:
+    def test_end_to_end_with_stubs(self, tmp_path, monkeypatch):
+        recs = [{"server": {"name": "ns/one",
+                            "packages": [{"registryType": "npm", "identifier": "gone",
+                                          "version": "1.0.0"}]}}]
+        monkeypatch.setattr(ra, "fetch_registry", lambda max_pages=None: (recs, 1))
+        monkeypatch.setattr(ra, "check_one",
+                            lambda item: {"registry": "npm", "identifier": "gone",
+                                          "version": "1.0.0", "status": "package-gone",
+                                          "http": 404, "servers": item[1]})
+        rc = ra.main(["--out", str(tmp_path), "--as-of", "2026-11-17"])
+        assert rc == 0
+        doc = json.loads((tmp_path / "latest.json").read_text(encoding="utf-8"))
+        assert doc["summary"]["missing"] == 1
+        assert doc["rows"][0]["identifier"] == "gone"
+        assert doc["ranking"][0]["namespace"] == "ns"
