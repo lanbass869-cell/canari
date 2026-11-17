@@ -2,14 +2,14 @@
  "as_of": "2026-11-17",
  "pages": 661,
  "summary": {
-  "checked": 22656,
-  "ok": 22376,
+  "checked": 22657,
+  "ok": 22377,
   "package_gone": 152,
   "version_absent": 123,
   "reserved_tag": 5,
   "unknown": 0,
   "missing": 275,
-  "missing_rate": 0.012138064971751412,
+  "missing_rate": 0.012137529240411352,
   "affected_servers": 273,
   "by_registry": {
    "npm": 198,
@@ -79,6 +79,18 @@
    "share": 0.01098901098901099
   }
  ],
+ "ranking_denominators": {
+  "eu.ansvar": 106,
+  "tech.thecompound": 14,
+  "ai.dinglebear": 23,
+  "io.github.AIWerk": 7,
+  "io.github.cyanheads": 166,
+  "io.github.oaslananka": 13,
+  "io.arxo": 6,
+  "io.github.arpe-io": 5,
+  "io.github.huoshuiai42": 5,
+  "io.github.ipezygj": 3
+ },
  "rows": [
   {
    "registry": "npm",
