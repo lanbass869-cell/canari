@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canari research</title>
+<style>:root{--bg:#0a1210;--fg:#dfe9e4;--dim:#8ba39a;--line:#1e2f2a;--ok:#3ddc97;--warn:#f0c14b;--bad:#ff6b6b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:40px 20px}
+main{max-width:980px;margin:0 auto}h1{font-size:26px;margin:0 0 6px}h2{font-size:18px;margin:34px 0 10px}
+.sub{color:var(--dim);margin:0 0 26px}
+.note{border-left:3px solid var(--warn);background:#121d19;padding:14px 16px;margin:0 0 24px;color:#cfdcd6;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--dim);font-weight:500;border-bottom:1px solid var(--line);padding:8px 10px}
+td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+a{color:#7fd1ff;text-decoration:none}a:hover{text-decoration:underline}
+.mono{font-family:ui-monospace,Consolas,monospace;color:var(--dim)}
+.num{font-family:ui-monospace,Consolas,monospace;color:var(--ok)}
+nav{margin:0 0 22px;color:var(--dim);font-size:14px}
+footer{margin-top:34px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:16px}</style></head><body><main>
+<nav><a href="/canari/">Canari</a> &middot; <a href="/canari/research/">Research</a> &middot; <a href="/canari/scan/">Scan log</a> &middot; <a href="/canari/log/">Ledger</a> &middot; <a href="/canari/verify/">Verify</a></nav>
+<h1>Canari research</h1>
+<p class=sub>Measurements taken against the live MCP ecosystem. Each one lists its method, its
+limits, and the scripts or data behind it. Dates are the date of the snapshot, not the date of publication.</p>
+
+<div class=note>
+<b>How to read these.</b> Every number below is a point-in-time observation with a stated
+population. Nothing here is a certification, a grade of any server, or a claim that a
+listed component is safe. Where a figure is a string relation rather than a proof, it says so.
+</div>
+
+<h2>Measurements</h2>
+<table><thead><tr><th>Report</th><th>Headline</th><th>Date</th></tr></thead><tbody>
+<tr><td><a href="server-card-adoption-20261116.md">Server Card adoption</a><br><span class=mono>experiments/server_card_adoption</span></td>
+<td>Of 27,064 reverse-DNS servers with a remote endpoint, <span class=num>95.07%</span> serve from a domain their namespace implies. Probing all <span class=num>889</span> hosts of the <span class=num>1,335</span> that do not: <span class=num>2.81%</span> publish a Server Card or AI catalog (control <span class=num>8.36%</span>, chi2=21.51, p&lt;0.001). Of 54 real cards, <span class=num>0</span> reference a schema URL that resolves.</td><td>2026-11-16</td></tr>
+<tr><td><a href="awesome-list-conversion-20261117.md">What an awesome-list listing is worth</a></td>
+<td>Sampled <span class=num>294</span> repositories added to the largest MCP awesome list (96K stars, 5,189 merged "Add" PRs), each merged at least 30 days earlier: median <span class=num>1</span> star, <span class=num>33%</span> at zero, <span class=num>72%</span> at five or fewer. Rejected entries from the same window are statistically indistinguishable.</td><td>2026-11-17</td></tr>
+<tr><td><a href="demand-vs-adoption-20261117.md">Who actually gets traction in this category</a></td>
+<td>Of the 15 most relevant MCP security tools: organization-owned repositories have a median of <span class=num>1,119</span> stars, individual-owned <span class=num>82.5</span>, and individual-owned excluding the single success case <span class=num>0</span>. That one case is a sub-project of a 304,751-star repository by the same author.</td><td>2026-11-17</td></tr>
+<tr><td><a href="client-census-20261116.md">Do MCP clients verify the server they connect to?</a><br><span class=mono>experiments/client_census</span></td>
+<td>Nine open-source MCP clients and SDKs, 10,158 source files read by hand: <span class=num>0</span> pin a server's identity, warn on endpoint change, or verify an attestation. The single existing defence is the official SDKs refusing cross-origin redirects, which 6 of 9 inherit.</td><td>2026-11-16</td></tr>
+<tr><td><a href="corpus-dependence-20261116.md">A name detector's operating point is a property of its corpus</a><br><span class=mono>experiments/corpus_benchmark</span></td>
+<td>Same detector, corpus 200 &rarr; 1,617: precision <span class=num>0.985</span> &rarr; <span class=num>0.940</span>, false positives <span class=num>18</span> &rarr; <span class=num>74</span>, recall unchanged. Self-calibrating the threshold buys the precision back and charges <span class=num>10.6</span> points of recall.</td><td>2026-11-16</td></tr>
+</tbody></table>
+
+<h2>Competitor teardowns</h2>
+<table><thead><tr><th>Subject</th><th>What it is</th><th>Reading</th></tr></thead><tbody>
+<tr><td>mcpcheckup</td><td>Scan and score a single MCP server</td><td><a href="mcpcheckup_teardown_20261109.md">teardown</a> &middot; <a href="mcpcheckup_textbook_20261109.md">textbook</a></td></tr>
+<tr><td>trustcheck</td><td>Risk-factor scoring for MCP servers</td><td><a href="trustcheck_rf_agtmls_teardown_20261109.md">teardown</a> &middot; <a href="trustcheck_textbook_full_20261109.md">textbook</a></td></tr>
+<tr><td>MCP Queen</td><td>Continuous live probing + operational grades + trust receipts for the whole registry; free public API and an MCP endpoint of its own</td><td><a href="https://github.com/lanbass869-cell/canari/blob/main/docs/research/mcpqueen-teardown-20261117.md">teardown</a></td></tr>
+</tbody></table>
+
+<h2>Field notes</h2>
+<table><thead><tr><th>Note</th><th>Date</th></tr></thead><tbody>
+<tr><td><a href="honest_gap_analysis_20261108.md">Honest gap analysis</a> &mdash; what Canari does not do</td><td>2026-11-08</td></tr>
+<tr><td><a href="competitive_landscape_20261108.md">Competitive landscape</a></td><td>2026-11-08</td></tr>
+<tr><td><a href="competitor_deep_research_v5_20261109.md">Competitor deep research v5</a></td><td>2026-11-09</td></tr>
+<tr><td><a href="e2e_data_flow_trace_20261109.md">End-to-end data flow trace</a></td><td>2026-11-09</td></tr>
+<tr><td><a href="deep_audit_round13_14_20261109.md">Audit rounds 13-14</a></td><td>2026-11-09</td></tr>
+</tbody></table>
+
+<h2>Paper snapshots</h2>
+<p class=sub>Local HTML copies of papers this work is positioned against, kept so the numbers in
+the reports above can be checked without depending on a third-party host.</p>
+<ul>
+<li><a href="papers/kraishan_same_name_census.html">Same Name, Different Server</a> &mdash; registry-level MCP security census</li>
+<li><a href="papers/bharti_89day_drift.html">Registry descriptions go stale</a></li>
+<li><a href="papers/kan_tool_update_gap.html">Tool update gap</a></li>
+<li><a href="papers/metere_attested_admission.html">Attested admission</a></li>
+</ul>
+
+<footer>Data in these reports is CC BY 4.0. Scripts are MIT.
+Corrections are welcome as issues; if a number here is wrong it should be fixed in place with a note,
+not silently replaced.</footer>
+</main></body></html>

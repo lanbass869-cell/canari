@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canari - signed, offline-verifiable records for agent components</title>
+<style>:root{--bg:#0a1210;--fg:#dfe9e4;--dim:#8ba39a;--line:#1e2f2a;--ok:#3ddc97;--warn:#f0c14b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:40px 20px}
+main{max-width:980px;margin:0 auto}h1{font-size:27px;margin:0 0 6px}h2{font-size:18px;margin:32px 0 10px}
+.sub{color:var(--dim);margin:0 0 26px}
+.note{border-left:3px solid var(--warn);background:#121d19;padding:14px 16px;margin:0 0 24px;color:#cfdcd6;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:var(--dim);font-weight:500;border-bottom:1px solid var(--line);padding:8px 10px}
+td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+a{color:#7fd1ff;text-decoration:none}a:hover{text-decoration:underline}
+.mono{font-family:ui-monospace,Consolas,monospace;color:var(--dim)}
+code{background:#101a17;padding:2px 6px;border-radius:4px;font-family:ui-monospace,Consolas,monospace;font-size:13px}
+pre{background:#101a17;padding:14px;border-radius:6px;overflow:auto;font-size:12.5px}
+footer{margin-top:34px;color:var(--dim);font-size:13px;border-top:1px solid var(--line);padding-top:16px}</style></head><body><main>
+
+<h1>Canari</h1>
+<p class=sub>Records what a scanner found about an agent component, binds it to the exact
+artifact bytes it came from, signs it, and lets anyone check the record without trusting us.</p>
+
+<div class=note>
+<b>What this is, and what it is not.</b> Canari is not a scanner and not a certification.
+The scanners are third-party tools (bandit, gitleaks, npm audit, and others). Canari records
+what they reported, binds each verdict to an artifact digest, signs the record, and publishes
+an append-only log. A verdict means "this tool reported this about these bytes" &mdash; never
+"this component is safe". A graded badge is not a security guarantee, and absence of a record
+is not evidence of anything.
+</div>
+
+<h2>Check something right now</h2>
+<table><thead><tr><th>I want to&hellip;</th><th>Go to</th></tr></thead><tbody>
+<tr><td>Verify a record in my browser, with no install and no network</td><td><a href="/canari/verify/"><code>/verify/</code></a></td></tr>
+<tr><td>See the raw scan output for 20 PyPI MCP servers, with the re-derivation script</td><td><a href="/canari/scan/"><code>/scan/</code></a></td></tr>
+<tr><td>Read the append-only ledger and its current head</td><td><a href="/canari/log/"><code>/log/</code></a></td></tr>
+<tr><td>See the measurements taken against this ecosystem</td><td><a href="/canari/research/"><code>/research/</code></a></td></tr>
+</tbody></table>
+
+<h2>Use it</h2>
+<pre># gate an MCP server before it starts, from an existing client config
+pip install canari-mcp==0.1.4
+canari-mcp-gate --store /path/to/store -- npx -y @modelcontextprotocol/server-filesystem /tmp
+
+# verify a record offline, given the published public key
+canari-verify record.bundle.json --key public_key.json</pre>
+<p class=sub>The gate wraps a stdio MCP entry: it resolves the component in the signed ledger,
+refuses to start it if the ledger blocks it, and otherwise proxies stdio byte for byte so the
+protocol is untouched. It is a <b>configuration-level</b> gate &mdash; whoever can edit the
+config can remove it. It is not a policy engine and not tamper-proof.</p>
+
+<h2>Why a signature and not a score</h2>
+<p class=sub>A score asks you to trust the scorer. A signature asks you to trust arithmetic.
+Canari publishes the key, the exact bytes that were hashed, and a verifier that runs offline, so
+a third party can disagree with our verdict while still confirming the record is the one we
+signed and has not changed since.</p>
+
+<h2>Limits, stated up front</h2>
+<ul>
+<li>Records cover the components we have actually scanned &mdash; currently 1,311 deep scans plus
+metadata for ~22,000 registry entries. Anything else returns "no record", which is not a verdict.</li>
+<li>An append-only log proves a record has not changed. It does not prove the record was right.</li>
+<li>Third-party scanners have their own false positives and false negatives; we inherit both.
+Where a scanner reported nothing, the record says so rather than claiming a pass.</li>
+<li>Every published number carries its population and date. Several earlier figures were corrected
+in place after review; the corrections are kept in the repository history rather than quietly edited.</li>
+</ul>
+
+<footer>
+Source: <a href="https://github.com/lanbass869-cell/canari">github.com/lanbass869-cell/canari</a>
+&middot; package: <a href="https://pypi.org/project/canari-mcp/">canari-mcp</a>
+&middot; data CC BY 4.0, code Apache-2.0.</footer>
+</main></body></html>
