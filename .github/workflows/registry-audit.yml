@@ -1,0 +1,70 @@
+name: registry-audit
+
+# Weekly: resolve every npm/PyPI package reference in the registry's latest snapshot
+# against the publisher's own registry, and commit a dated snapshot of what cannot be
+# installed. The registry checks a version at publish and never again, so this is the
+# only place that number gets refreshed.
+on:
+  schedule:
+    - cron: "41 5 * * 1"    # Mondays, 05:41 UTC - an odd minute to avoid the top-of-hour queue
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "stop after N registry pages (leave empty for full pagination)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: registry-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -e .
+
+      - name: Run the audit
+        env:
+          MAX_PAGES: ${{ inputs.max_pages }}
+        run: |
+          ARGS="--out docs/audit/package-existence --workers 48"
+          if [ -n "$MAX_PAGES" ]; then ARGS="$ARGS --max-pages $MAX_PAGES"; fi
+          python -m canari.registry_audit $ARGS
+
+      - name: Show what changed
+        run: |
+          python - <<'PY'
+          import json
+          d = json.load(open("docs/audit/package-existence/latest.json"))
+          s = d["summary"]
+          print("as_of", d["as_of"], "pages", d["pages"])
+          print("checked", s["checked"], "missing", s["missing"],
+                "gone", s["package_gone"], "absent", s["version_absent"],
+                "unknown", s["unknown"])
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "canari-audit"
+          git config user.email "canari-audit@users.noreply.github.com"
+          git add docs/audit/package-existence
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "audit: $(date -u +%Y-%m-%d) package existence snapshot"
+            git push
+          fi

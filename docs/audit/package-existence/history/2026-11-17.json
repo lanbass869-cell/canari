@@ -1,0 +1,18 @@
+{
+ "as_of": "2026-11-17",
+ "pages": 2,
+ "summary": {
+  "checked": 29,
+  "ok": 29,
+  "package_gone": 0,
+  "version_absent": 0,
+  "reserved_tag": 0,
+  "unknown": 0,
+  "missing": 0,
+  "missing_rate": 0.0,
+  "affected_servers": 0,
+  "by_registry": {}
+ },
+ "excluded_reserved_tag": 0,
+ "rows": []
+}
