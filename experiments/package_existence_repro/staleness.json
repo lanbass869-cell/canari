@@ -1,0 +1,2813 @@
+{
+ "as_of": "2026-11-18",
+ "broken_refs": 274,
+ "matched": 311,
+ "unmatched": 0,
+ "ages_days": {
+  "min": 2.0,
+  "median": 218.3,
+  "p90": 282.7,
+  "max": 435.4
+ },
+ "entries": [
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-cal",
+   "version": "1.0.6",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-cal",
+   "publishedAt": "2026-06-22T09:09:26.23263Z",
+   "age_days": 149.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-clawhub",
+   "version": "0.1.4",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-clawhub",
+   "publishedAt": "2026-06-24T00:24:30.332274Z",
+   "age_days": 147.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-imap",
+   "version": "1.2.1",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-imap",
+   "publishedAt": "2026-06-24T00:24:28.543284Z",
+   "age_days": 147.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-shopify",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-shopify",
+   "publishedAt": "2026-06-24T00:24:29.768163Z",
+   "age_days": 147.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-vault",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-vault",
+   "publishedAt": "2026-06-24T00:24:31.489282Z",
+   "age_days": 147.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-wheel-size",
+   "version": "0.3.3",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-wheel-size",
+   "publishedAt": "2026-06-24T00:24:30.931633Z",
+   "age_days": 147.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-wise",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "server": "io.github.AIWerk/mcp-server-wise",
+   "publishedAt": "2026-06-24T00:24:29.127594Z",
+   "age_days": 147.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@alexendros/proton-mail-mcp",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.Alexendros/proton-mail-mcp",
+   "publishedAt": "2026-05-02T01:26:35.965192Z",
+   "age_days": 200.6
+  },
+  {
+   "registry": "npm",
+   "identifier": "@anara123/mcp-weather-server",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "io.github.anara123/weather",
+   "publishedAt": "2025-12-23T09:30:38.371005Z",
+   "age_days": 330.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/argentine-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/argentine-law-mcp",
+   "publishedAt": "2026-02-22T17:46:45.579819Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/australian-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/australian-law-mcp",
+   "publishedAt": "2026-02-22T16:53:12.276028Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/australian-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/australian-law-mcp",
+   "publishedAt": "2026-02-22T16:53:12.276028Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/botswana-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/botswana-law-mcp",
+   "publishedAt": "2026-03-06T10:37:07.661877Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/botswana-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/botswana-law-mcp",
+   "publishedAt": "2026-03-06T10:37:07.661877Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/cameroonian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/cameroonian-law-mcp",
+   "publishedAt": "2026-03-06T10:37:23.311661Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/cameroonian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/cameroonian-law-mcp",
+   "publishedAt": "2026-03-06T10:37:23.311661Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/dominican-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/dominican-law-mcp",
+   "publishedAt": "2026-03-06T10:44:51.063342Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/dominican-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/dominican-law-mcp",
+   "publishedAt": "2026-03-06T10:44:51.063342Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ecuadorian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ecuadorian-law-mcp",
+   "publishedAt": "2026-03-06T10:45:28.074086Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ecuadorian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ecuadorian-law-mcp",
+   "publishedAt": "2026-03-06T10:45:28.074086Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ethiopian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ethiopian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:41.050236Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ethiopian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ethiopian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:41.050236Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ghana-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "eu.ansvar/ghana-law-mcp",
+   "publishedAt": "2026-02-22T16:53:15.605094Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ghana-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "eu.ansvar/ghana-law-mcp",
+   "publishedAt": "2026-02-22T16:53:15.605094Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/india-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/india-law-mcp",
+   "publishedAt": "2026-02-22T16:53:16.415353Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/india-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/india-law-mcp",
+   "publishedAt": "2026-02-22T16:53:16.415353Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/indonesian-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/indonesian-law-mcp",
+   "publishedAt": "2026-02-22T17:46:47.961771Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/israel-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/israel-law-mcp",
+   "publishedAt": "2026-02-22T16:53:17.197511Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/israel-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/israel-law-mcp",
+   "publishedAt": "2026-02-22T16:53:17.197511Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ivorian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ivorian-law-mcp",
+   "publishedAt": "2026-03-06T10:37:31.465422Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ivorian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ivorian-law-mcp",
+   "publishedAt": "2026-03-06T10:37:31.465422Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/jordanian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/jordanian-law-mcp",
+   "publishedAt": "2026-03-06T10:37:27.187963Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/jordanian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/jordanian-law-mcp",
+   "publishedAt": "2026-03-06T10:37:27.187963Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/kenya-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/kenya-law-mcp",
+   "publishedAt": "2026-02-22T16:53:19.814948Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/kenya-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/kenya-law-mcp",
+   "publishedAt": "2026-02-22T16:53:19.814948Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/malawi-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/malawi-law-mcp",
+   "publishedAt": "2026-03-06T10:37:12.891487Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/malawi-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/malawi-law-mcp",
+   "publishedAt": "2026-03-06T10:37:12.891487Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/malaysian-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/malaysian-law-mcp",
+   "publishedAt": "2026-02-22T17:46:48.575739Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/moroccan-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/moroccan-law-mcp",
+   "publishedAt": "2026-02-22T17:46:44.920469Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/mozambican-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/mozambican-law-mcp",
+   "publishedAt": "2026-03-06T10:45:30.953469Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/mozambican-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/mozambican-law-mcp",
+   "publishedAt": "2026-03-06T10:45:30.953469Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/namibian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/namibian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:23.553338Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/namibian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/namibian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:23.553338Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/nepal-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/nepal-law-mcp",
+   "publishedAt": "2026-03-06T10:45:10.670296Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/nepal-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/nepal-law-mcp",
+   "publishedAt": "2026-03-06T10:45:10.670296Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/newzealand-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/newzealand-law-mcp",
+   "publishedAt": "2026-02-22T16:53:20.699423Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/newzealand-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/newzealand-law-mcp",
+   "publishedAt": "2026-02-22T16:53:20.699423Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/nigeria-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/nigeria-law-mcp",
+   "publishedAt": "2026-02-22T16:53:21.620733Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/nigeria-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/nigeria-law-mcp",
+   "publishedAt": "2026-02-22T16:53:21.620733Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ot-security-mcp",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "server": "io.github.Ansvar-Systems/ot-security-mcp",
+   "publishedAt": "2026-01-31T20:29:41.20575Z",
+   "age_days": 290.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/philippine-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/philippine-law-mcp",
+   "publishedAt": "2026-02-22T17:46:50.046775Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/russian-law-mcp",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/russian-law-mcp",
+   "publishedAt": "2026-03-06T10:46:23.797276Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/russian-law-mcp",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/russian-law-mcp",
+   "publishedAt": "2026-03-06T10:46:23.797276Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/senegalese-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/senegalese-law-mcp",
+   "publishedAt": "2026-03-06T10:44:18.229354Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/senegalese-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/senegalese-law-mcp",
+   "publishedAt": "2026-03-06T10:44:18.229354Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/singapore-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/singapore-law-mcp",
+   "publishedAt": "2026-02-22T16:53:22.590453Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/singapore-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/singapore-law-mcp",
+   "publishedAt": "2026-02-22T16:53:22.590453Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/southafrica-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/southafrica-law-mcp",
+   "publishedAt": "2026-02-22T16:53:23.350357Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/southafrica-law-mcp",
+   "version": "1.1.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/southafrica-law-mcp",
+   "publishedAt": "2026-02-22T16:53:23.350357Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/srilanka-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/srilanka-law-mcp",
+   "publishedAt": "2026-03-06T10:44:28.470542Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/srilanka-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/srilanka-law-mcp",
+   "publishedAt": "2026-03-06T10:44:28.470542Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/switzerland-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/switzerland-law-mcp",
+   "publishedAt": "2026-02-22T16:53:25.185626Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/switzerland-law-mcp",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/switzerland-law-mcp",
+   "publishedAt": "2026-02-22T16:53:25.185626Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/tanzanian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/tanzanian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:36.137367Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/tanzanian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/tanzanian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:36.137367Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/thailand-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "eu.ansvar/thailand-law-mcp",
+   "publishedAt": "2026-02-22T16:53:25.946834Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/thailand-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "eu.ansvar/thailand-law-mcp",
+   "publishedAt": "2026-02-22T16:53:25.946834Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/tunisian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/tunisian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:48.471795Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/tunisian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/tunisian-law-mcp",
+   "publishedAt": "2026-03-06T10:44:48.471795Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/turkish-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/turkish-law-mcp",
+   "publishedAt": "2026-02-22T17:46:52.759236Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/uae-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "eu.ansvar/uae-law-mcp",
+   "publishedAt": "2026-02-22T16:53:27.16322Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/uae-law-mcp",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "eu.ansvar/uae-law-mcp",
+   "publishedAt": "2026-02-22T16:53:27.16322Z",
+   "age_days": 269.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ugandan-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ugandan-law-mcp",
+   "publishedAt": "2026-03-06T10:37:19.048049Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/ugandan-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/ugandan-law-mcp",
+   "publishedAt": "2026-03-06T10:37:19.048049Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/us-regulations-mcp",
+   "version": "1.2.2",
+   "status": "package-gone",
+   "server": "io.github.Ansvar-Systems/us-regulations-mcp",
+   "publishedAt": "2026-01-31T15:56:18.363028Z",
+   "age_days": 291.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/us-regulations-mcp",
+   "version": "1.2.5",
+   "status": "package-gone",
+   "server": "eu.ansvar/us-regulations-mcp",
+   "publishedAt": "2026-01-31T20:49:31.630734Z",
+   "age_days": 290.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/vietnamese-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/vietnamese-law-mcp",
+   "publishedAt": "2026-02-22T17:46:53.46247Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/zambian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/zambian-law-mcp",
+   "publishedAt": "2026-03-06T10:45:02.356075Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/zambian-law-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "eu.ansvar/zambian-law-mcp",
+   "publishedAt": "2026-03-06T10:45:02.356075Z",
+   "age_days": 257.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ansvar/zimbabwe-law-mcp",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "eu.ansvar/zimbabwe-law-mcp",
+   "publishedAt": "2026-02-22T17:46:54.749401Z",
+   "age_days": 268.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@appcraft-io/mcp-server",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.terminalis/appcraft",
+   "publishedAt": "2026-07-06T20:25:06.461565Z",
+   "age_days": 134.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-charter",
+   "version": "0.1.8",
+   "status": "package-gone",
+   "server": "io.arxo/charter",
+   "publishedAt": "2026-10-14T21:30:52.814205Z",
+   "age_days": 34.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-code-civil",
+   "version": "0.1.10",
+   "status": "package-gone",
+   "server": "io.arxo/code-civil",
+   "publishedAt": "2026-10-14T21:30:54.574178Z",
+   "age_days": 34.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-de-bgb",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "server": "io.arxo/de-bgb",
+   "publishedAt": "2026-10-14T21:30:57.050433Z",
+   "age_days": 34.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@arxo/mcp-picc",
+   "version": "0.3.11",
+   "status": "package-gone",
+   "server": "io.arxo/picc",
+   "publishedAt": "2026-10-14T21:30:51.088425Z",
+   "age_days": 34.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@asterpay/mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.timolein74/asterpay",
+   "publishedAt": "2026-03-15T20:32:04.907415Z",
+   "age_days": 247.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@authzx/mcp-gateway",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "io.github.authzx/mcp-gateway",
+   "publishedAt": "2026-05-30T05:40:37.818047Z",
+   "age_days": 172.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@beremaran/godot-agent-loop",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "io.github.beremaran/godot-agent-loop",
+   "publishedAt": "2026-07-15T08:23:59.680758Z",
+   "age_days": 126.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@bgorzelic/ghostlink",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "server": "io.github.bgorzelic/ghostlink",
+   "publishedAt": "2026-07-21T12:25:20.676648Z",
+   "age_days": 120.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@briangaoo/totem",
+   "version": "1.4.3",
+   "status": "package-gone",
+   "server": "io.github.briangaoo/totem",
+   "publishedAt": "2026-06-08T00:00:06.804869Z",
+   "age_days": 163.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@calnflow/snapclap-mcp",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "server": "io.github.calnflow/snapclap-mcp",
+   "publishedAt": "2026-11-01T15:59:56.522729Z",
+   "age_days": 17.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cognitivemyriad/vrm-local",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.cognitivemyriad/verified-repo-memory",
+   "publishedAt": "2026-02-21T16:03:31.889938Z",
+   "age_days": 270.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@collapseindex/ci1t-mcp",
+   "version": "1.7.1",
+   "status": "package-gone",
+   "server": "io.github.collapseindex/ci1t-mcp",
+   "publishedAt": "2026-02-28T08:08:46.182774Z",
+   "age_days": 263.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/bls-mcp-server",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/bls-mcp-server",
+   "publishedAt": "2026-05-24T22:17:21.784979Z",
+   "age_days": 177.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/bls-mcp-server",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/bls-mcp-server",
+   "publishedAt": "2026-05-24T22:17:21.784979Z",
+   "age_days": 177.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/eia-mcp-server",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/eia-mcp-server",
+   "publishedAt": "2026-05-23T18:39:56.838798Z",
+   "age_days": 178.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/eia-mcp-server",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/eia-mcp-server",
+   "publishedAt": "2026-05-23T18:39:56.838798Z",
+   "age_days": 178.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/fred-mcp-server",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/fred-mcp-server",
+   "publishedAt": "2026-05-23T16:59:55.744921Z",
+   "age_days": 179.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/fred-mcp-server",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/fred-mcp-server",
+   "publishedAt": "2026-05-23T16:59:55.744921Z",
+   "age_days": 179.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/gbif-mcp-server",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/gbif-mcp-server",
+   "publishedAt": "2026-05-24T22:03:50.082219Z",
+   "age_days": 177.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/gbif-mcp-server",
+   "version": "0.1.7",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/gbif-mcp-server",
+   "publishedAt": "2026-05-24T22:03:50.082219Z",
+   "age_days": 177.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/nominatim-mcp-server",
+   "version": "0.1.8",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/nominatim-mcp-server",
+   "publishedAt": "2026-05-24T22:08:17.971525Z",
+   "age_days": 177.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/nominatim-mcp-server",
+   "version": "0.1.8",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/nominatim-mcp-server",
+   "publishedAt": "2026-05-24T22:08:17.971525Z",
+   "age_days": 177.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/uspto-mcp-server",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/uspto-mcp-server",
+   "publishedAt": "2026-05-26T03:18:50.355261Z",
+   "age_days": 176.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "@cyanheads/uspto-mcp-server",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.cyanheads/uspto-mcp-server",
+   "publishedAt": "2026-05-26T03:18:50.355261Z",
+   "age_days": 176.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "@datasynx/agentic-ai-cartography",
+   "version": "2.12.1",
+   "status": "package-gone",
+   "server": "io.github.datasynx/cartography",
+   "publishedAt": "2026-06-19T22:55:47.284522Z",
+   "age_days": 151.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@datasynx/agentic-ai-shadowing",
+   "version": "2.1.4",
+   "status": "package-gone",
+   "server": "io.github.datasynx/agentic-ai-shadowing",
+   "publishedAt": "2026-06-16T09:30:18.435054Z",
+   "age_days": 155.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@edestory/mcp-starmeet",
+   "version": "1.2.1",
+   "status": "package-gone",
+   "server": "com.star-meet/mcp-starmeet",
+   "publishedAt": "2026-07-11T17:46:01.989842Z",
+   "age_days": 129.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@elixium.ai/mcp-server",
+   "version": "0.15.1",
+   "status": "package-gone",
+   "server": "io.github.IndirectTek/mcp-server",
+   "publishedAt": "2026-07-20T13:09:11.065295Z",
+   "age_days": 121.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@galaxy-stack/design-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.buikevin/galaxy-design-mcp",
+   "publishedAt": "2026-09-17T04:16:43.898106Z",
+   "age_days": 62.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "@gaviwhatsapp/mcp",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.gaviwhatsapp/whatsapp",
+   "publishedAt": "2026-04-23T15:42:49.45621Z",
+   "age_days": 209.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@gener8v/mcp-geographic-data",
+   "version": "0.1.3",
+   "status": "package-gone",
+   "server": "io.github.gener8v-thomas/mcp-geographic-data",
+   "publishedAt": "2026-03-31T03:11:16.389239Z",
+   "age_days": 232.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ingeniux/ctnp-mcp",
+   "version": "0.7.7",
+   "status": "package-gone",
+   "server": "io.github.jitsmaster/ctnp-mcp",
+   "publishedAt": "2026-05-21T22:35:34.30858Z",
+   "age_days": 180.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@intencion/mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.intencion/mcp",
+   "publishedAt": "2026-06-18T02:48:16.309067Z",
+   "age_days": 153.6
+  },
+  {
+   "registry": "npm",
+   "identifier": "@itechsoftsolutions/social-mcp-server",
+   "version": "0.1.0",
+   "status": "package-gone",
+   "server": "io.github.itechsoftsolution16/feedlio",
+   "publishedAt": "2026-09-10T09:24:30.852781Z",
+   "age_days": 69.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@j0hanz/code-review-analyst-mcp",
+   "version": "1.7.6",
+   "status": "package-gone",
+   "server": "io.github.j0hanz/code-review-analyst",
+   "publishedAt": "2026-02-25T07:20:10.953821Z",
+   "age_days": 266.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@j0hanz/fetch-url-mcp",
+   "version": "3.0.1",
+   "status": "version-absent",
+   "server": "io.github.j0hanz/fetch-url-mcp",
+   "publishedAt": "2026-04-11T10:59:27.037756Z",
+   "age_days": 221.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@j0hanz/filesystem-context-mcp",
+   "version": "1.0.9",
+   "status": "package-gone",
+   "server": "io.github.j0hanz/filesystem-context",
+   "publishedAt": "2025-12-12T20:48:28.313318Z",
+   "age_days": 340.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@jamesrez/valoria",
+   "version": "1.3.0",
+   "status": "version-absent",
+   "server": "io.github.jamesrez/valoria",
+   "publishedAt": "2026-03-11T05:46:44.347764Z",
+   "age_days": 252.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@jamesrez/valoria-intelligence",
+   "version": "1.1.0",
+   "status": "package-gone",
+   "server": "io.github.jamesrez/valoria-intelligence",
+   "publishedAt": "2026-03-05T03:59:53.464995Z",
+   "age_days": 258.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "@joy-trust/mcp-server",
+   "version": "2.40.0",
+   "status": "package-gone",
+   "server": "io.github.tlkc888-Jenkins/joy",
+   "publishedAt": "2026-05-06T12:55:57.849199Z",
+   "age_days": 196.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@kynth/api-mcp",
+   "version": "0.5.2",
+   "status": "package-gone",
+   "server": "studio.kynth/core",
+   "publishedAt": "2026-08-14T15:18:07.44223Z",
+   "age_days": 96.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@latam-mcp/mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.Tolomere21/latam-mcp",
+   "publishedAt": "2026-04-22T02:59:50.248336Z",
+   "age_days": 210.6
+  },
+  {
+   "registry": "npm",
+   "identifier": "@littlebearapps/outlook-mcp",
+   "version": "3.2.1",
+   "status": "package-gone",
+   "server": "io.github.littlebearapps/outlook-mcp",
+   "publishedAt": "2026-03-06T04:40:51.445384Z",
+   "age_days": 257.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "@lofder/dsers-mcp-product",
+   "version": "1.5.7",
+   "status": "package-gone",
+   "server": "io.github.lofder/dsers-mcp-product",
+   "publishedAt": "2026-04-15T07:54:16.757845Z",
+   "age_days": 217.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@marocain/mcp-server",
+   "version": "0.1.9",
+   "status": "package-gone",
+   "server": "io.github.Hei33enberg/marocain-mcp-server",
+   "publishedAt": "2026-07-09T21:54:52.823336Z",
+   "age_days": 131.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@mehmoodqureshi/figma-mcp",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "server": "io.github.Mehmoodqureshi/figma-mcp",
+   "publishedAt": "2026-09-26T10:02:58.251741Z",
+   "age_days": 53.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@meltingpixels/harvey-tools",
+   "version": "1.1.0",
+   "status": "version-absent",
+   "server": "io.github.meltingpixelsai/harvey-tools",
+   "publishedAt": "2026-03-20T00:32:17.817062Z",
+   "age_days": 243.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@memoro/mcp-server",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.circassian1977-byte/memoro",
+   "publishedAt": "2026-09-16T21:29:16.819021Z",
+   "age_days": 62.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@merk.a2a/mcp-server",
+   "version": "1.0.10",
+   "status": "package-gone",
+   "server": "io.github.globallayer/mcp-server",
+   "publishedAt": "2026-07-23T17:36:13.361861Z",
+   "age_days": 117.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@mojomo/mcp-server",
+   "version": "1.4.4",
+   "status": "version-absent",
+   "server": "io.github.MojoMo-io/mcp-server",
+   "publishedAt": "2026-10-24T20:56:09.97141Z",
+   "age_days": 24.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "@nottiboy1337/mcp-update-hijack-poc",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.NOTTIBOY137/update-hijack-poc",
+   "publishedAt": "2026-02-03T05:55:49.963322Z",
+   "age_days": 288.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@oaslananka/composer",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "io.github.oaslananka/composer",
+   "publishedAt": "2026-04-08T14:56:05.30016Z",
+   "age_days": 224.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@oaslananka/sentinel",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "io.github.oaslananka/sentinel",
+   "publishedAt": "2026-04-08T14:56:06.093007Z",
+   "age_days": 224.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@openplan/mcp",
+   "version": "0.1.22",
+   "status": "package-gone",
+   "server": "io.github.vncsleal/openplan",
+   "publishedAt": "2026-06-22T13:23:00.718097Z",
+   "age_days": 149.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@pasichdev/todo-mcp",
+   "version": "2.2.0",
+   "status": "package-gone",
+   "server": "io.github.pasichDev/todo-mcp",
+   "publishedAt": "2026-09-02T14:34:07.211305Z",
+   "age_days": 77.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@pavelpiha/specrun",
+   "version": "1.4.0",
+   "status": "package-gone",
+   "server": "io.github.pavelpiha/specrun",
+   "publishedAt": "2026-02-17T15:05:10.247959Z",
+   "age_days": 274.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@ramaris/mcp-server",
+   "version": "0.1.4",
+   "status": "package-gone",
+   "server": "io.github.ramaris-app/mcp-server",
+   "publishedAt": "2026-02-15T07:20:33.318297Z",
+   "age_days": 276.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@referencime/mcp-server",
+   "version": "2.0.9",
+   "status": "package-gone",
+   "server": "io.github.ThomasViennet/referencime",
+   "publishedAt": "2026-03-16T12:17:33.617254Z",
+   "age_days": 247.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "@scratchpadsh/mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "io.github.scratchpad-sh/scratchpad",
+   "publishedAt": "2026-11-01T15:51:38.025765Z",
+   "age_days": 17.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@seojeom/mcp-server",
+   "version": "0.2.3",
+   "status": "package-gone",
+   "server": "io.github.seojeom/seojeom-mcp",
+   "publishedAt": "2026-04-23T06:54:27.687205Z",
+   "age_days": 209.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@shirbarzur/planform-mcp-server",
+   "version": "1.0.7",
+   "status": "package-gone",
+   "server": "io.github.ShirBarZur/planform-mcp",
+   "publishedAt": "2026-02-26T07:00:08.403925Z",
+   "age_days": 265.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "@shmindmaster/repocontext",
+   "version": "0.3.1",
+   "status": "package-gone",
+   "server": "io.github.shmindmaster/repocontext",
+   "publishedAt": "2026-07-30T08:07:45.648882Z",
+   "age_days": 111.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@strajkpolski/mcp",
+   "version": "0.4.4",
+   "status": "package-gone",
+   "server": "io.github.Hei33enberg/strajkpolski-mcp",
+   "publishedAt": "2026-07-05T03:03:19.596687Z",
+   "age_days": 136.6
+  },
+  {
+   "registry": "npm",
+   "identifier": "@unifiedoffer/mcp-server",
+   "version": "2.0.1",
+   "status": "package-gone",
+   "server": "com.unifiedoffer/mcp-server",
+   "publishedAt": "2025-10-15T08:37:56.540755Z",
+   "age_days": 399.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "@veilquota/mcp",
+   "version": "0.3.0",
+   "status": "package-gone",
+   "server": "io.github.omkardongre/veilquota",
+   "publishedAt": "2026-10-11T15:14:11.404585Z",
+   "age_days": 38.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@walensis/mcp-for-ynab",
+   "version": "0.2.0",
+   "status": "package-gone",
+   "server": "io.github.walensis-labs/mcp-for-ynab",
+   "publishedAt": "2026-07-31T15:37:38.272744Z",
+   "age_days": 110.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "@whiteintel/mcp-server",
+   "version": "0.7.10",
+   "status": "package-gone",
+   "server": "dev.whiteintel/whiteintel",
+   "publishedAt": "2026-08-19T22:48:11.333089Z",
+   "age_days": 90.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "@yawlabs/nol-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.YawLabs/nol-mcp",
+   "publishedAt": "2026-06-09T14:43:38.623892Z",
+   "age_days": 162.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "@zebpay_rajesh/zebpay-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.ZebpayRajesh/zebpay-mcp-server",
+   "publishedAt": "2026-03-15T17:54:11.441606Z",
+   "age_days": 247.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "@zguiyang/pi-worker-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.zguiyang/pi-worker-mcp",
+   "publishedAt": "2026-10-08T07:43:31.136051Z",
+   "age_days": 41.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "ace-context-mcp",
+   "version": "0.1.1",
+   "status": "version-absent",
+   "server": "io.github.Dw-Dwain/ace-context-mcp",
+   "publishedAt": "2026-07-20T14:25:40.005213Z",
+   "age_days": 121.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "acf-mcp",
+   "version": "1.0.3",
+   "status": "version-absent",
+   "server": "io.github.aiconsulting06000-tech/acf-mcp",
+   "publishedAt": "2026-06-09T17:49:06.962935Z",
+   "age_days": 161.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "adobe-commerce-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "io.github.zeluizr/adobe-commerce-mcp",
+   "publishedAt": "2026-10-25T21:02:28.820057Z",
+   "age_days": 23.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "apprise-rmcp",
+   "version": "0.1.3",
+   "status": "version-absent",
+   "server": "ai.dinglebear/apprise-rmcp",
+   "publishedAt": "2026-07-12T11:58:27.866195Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "arcane-rmcp",
+   "version": "0.4.2",
+   "status": "version-absent",
+   "server": "ai.dinglebear/arcane-rmcp",
+   "publishedAt": "2026-07-12T11:58:28.276344Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "ark-runtime-kernel",
+   "version": "2.0.1",
+   "status": "version-absent",
+   "server": "io.github.pedroknigge/ark",
+   "publishedAt": "2026-07-08T22:01:35.436872Z",
+   "age_days": 132.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "bash-command-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "io.github.mrorigo/bash-command-mcp",
+   "publishedAt": "2026-02-17T14:17:15.733152Z",
+   "age_days": 274.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "board-and-stable-mcp",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.kevindarstNBB/board-and-stable-mcp",
+   "publishedAt": "2026-03-31T21:50:52.794311Z",
+   "age_days": 231.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "celestialnode-mcp",
+   "version": "1.1.0",
+   "status": "version-absent",
+   "server": "io.github.christerso/celestial-node",
+   "publishedAt": "2026-02-22T12:13:05.615155Z",
+   "age_days": 269.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "civicbinder-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/civicbinder",
+   "publishedAt": "2026-10-05T11:35:24.521146Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "clarvia-mcp-server",
+   "version": "1.1.2",
+   "status": "version-absent",
+   "server": "io.github.digitamaz/clarvia",
+   "publishedAt": "2026-03-28T03:46:28.189846Z",
+   "age_days": 235.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "coalesce-transform-mcp",
+   "version": "0.10.1",
+   "status": "version-absent",
+   "server": "io.github.Coalesce-Software-Inc/coalesce-transform",
+   "publishedAt": "2026-07-03T03:21:08.713633Z",
+   "age_days": 138.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "coalesce-transform-mcp",
+   "version": "0.7.2",
+   "status": "version-absent",
+   "server": "io.github.jessemarshall/coalesce-transform",
+   "publishedAt": "2026-04-20T16:33:27.369165Z",
+   "age_days": 212.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "cortex-rmcp",
+   "version": "3.9.1",
+   "status": "version-absent",
+   "server": "ai.dinglebear/cortex-rmcp",
+   "publishedAt": "2026-07-12T11:58:28.58298Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "crewhaus-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.crewhaus/validation",
+   "publishedAt": "2026-03-02T17:46:33.557554Z",
+   "age_days": 260.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "dea-agents",
+   "version": "0.4.0",
+   "status": "version-absent",
+   "server": "io.github.shreyassaw5394/dea",
+   "publishedAt": "2026-10-19T08:44:36.433579Z",
+   "age_days": 30.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "dev953-mcp",
+   "version": "1.2.0",
+   "status": "version-absent",
+   "server": "io.github.GRU-953/dev953",
+   "publishedAt": "2026-06-23T03:46:44.611534Z",
+   "age_days": 148.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "drainbrain-mcp-server",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.meltingpixelsai/drainbrain",
+   "publishedAt": "2026-02-19T17:08:27.948289Z",
+   "age_days": 272.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "dsh-codebase-chat-mcp",
+   "version": "0.10.0",
+   "status": "version-absent",
+   "server": "io.github.shinzarou-eng/dsh-codebase-chat",
+   "publishedAt": "2026-09-13T18:47:48.210802Z",
+   "age_days": 65.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "eol-check-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "com.mervenor/eol-check-mcp",
+   "publishedAt": "2026-11-16T16:30:40.2385Z",
+   "age_days": 2.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "esrpmicrosoft-oss-mcp-test",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.sravanism/esrp-mcp-server-test",
+   "publishedAt": "2025-12-18T09:14:55.072451Z",
+   "age_days": 335.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "festo-codesys-mcp",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.efranceschetti/festo-codesys-mcp",
+   "publishedAt": "2026-07-17T17:06:27.113454Z",
+   "age_days": 124.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "figma-designer-mcp",
+   "version": "0.3.6",
+   "status": "version-absent",
+   "server": "io.github.a1245582339/figma-designer",
+   "publishedAt": "2026-03-06T04:06:21.104739Z",
+   "age_days": 257.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "finhay-mcp-server",
+   "version": "1.0.8",
+   "status": "version-absent",
+   "server": "io.github.finhay/mcp-server",
+   "publishedAt": "2026-04-10T03:23:06.1567Z",
+   "age_days": 222.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "freelance-os",
+   "version": "0.2.2",
+   "status": "version-absent",
+   "server": "io.github.Sohlin2/freelance-os",
+   "publishedAt": "2026-04-07T08:26:55.716502Z",
+   "age_days": 225.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "godavaii-mcp-server",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.GoDavai01/godavaii-mcp-server",
+   "publishedAt": "2026-04-14T08:12:32.326731Z",
+   "age_days": 218.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "goodstanding-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/goodstanding",
+   "publishedAt": "2026-10-05T11:36:12.520171Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "google-researcher-mcp",
+   "version": "6.3.3",
+   "status": "version-absent",
+   "server": "io.github.zoharbabin/google-researcher",
+   "publishedAt": "2026-05-17T03:48:37.194583Z",
+   "age_days": 185.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "gotify-rmcp",
+   "version": "0.1.3",
+   "status": "version-absent",
+   "server": "ai.dinglebear/gotify-rmcp",
+   "publishedAt": "2026-07-12T11:58:28.849931Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "gru953-crew-mcp",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.GRU-953/gru953-crew",
+   "publishedAt": "2026-06-26T11:09:33.504097Z",
+   "age_days": 145.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "guesty-mcp-server",
+   "version": "0.11.2",
+   "status": "version-absent",
+   "server": "io.github.DLJRealty/guesty",
+   "publishedAt": "2026-09-24T21:55:27.867542Z",
+   "age_days": 54.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "ha-mcp-server",
+   "version": "0.6.1",
+   "status": "version-absent",
+   "server": "io.github.Koneisto/HomeAssistant-Light-MCP",
+   "publishedAt": "2025-12-08T18:08:33.081891Z",
+   "age_days": 344.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "hedera-hcs-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.mountainmystic/hedera-hcs-mcp-server",
+   "publishedAt": "2026-02-25T16:26:16.440764Z",
+   "age_days": 266.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "image-puma",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.panth-net/Image-Puma",
+   "publishedAt": "2026-07-28T18:59:09.996928Z",
+   "age_days": 112.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "italian-bus-search",
+   "version": "0.3.0",
+   "status": "version-absent",
+   "server": "io.github.Alexxanddr/italian-bus-search",
+   "publishedAt": "2026-10-26T13:53:32.792336Z",
+   "age_days": 23.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "jamgate",
+   "version": "0.20.0",
+   "status": "version-absent",
+   "server": "io.github.amirj4m/jamgate",
+   "publishedAt": "2026-08-11T09:10:02.209221Z",
+   "age_days": 99.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "k8s-port-forward-mcp",
+   "version": "0.0.8",
+   "status": "version-absent",
+   "server": "io.github.oijusti/k8s-port-forward-mcp",
+   "publishedAt": "2026-02-24T19:48:40.258727Z",
+   "age_days": 266.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "kitgrade-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/kitgrade",
+   "publishedAt": "2026-10-05T11:53:04.070707Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "lightning-fm-mcp",
+   "version": "0.1.5",
+   "status": "version-absent",
+   "server": "fm.lightning/lightning-fm-mcp",
+   "publishedAt": "2026-08-20T15:10:04.207629Z",
+   "age_days": 90.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "local-llm-worker",
+   "version": "0.1.4",
+   "status": "version-absent",
+   "server": "io.github.JoblessJoe/local-llm-worker",
+   "publishedAt": "2026-10-08T19:12:28.726103Z",
+   "age_days": 40.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "makers-page-mcp",
+   "version": "0.1.2",
+   "status": "version-absent",
+   "server": "io.github.alexcloudstar/makers-page-mcp",
+   "publishedAt": "2026-07-31T19:28:08.197823Z",
+   "age_days": 109.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "marketintell",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "server": "ai.marketintell/marketintell",
+   "publishedAt": "2026-06-01T22:07:15.763336Z",
+   "age_days": 169.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-1c-platform-tools",
+   "version": "0.1.5",
+   "status": "version-absent",
+   "server": "io.github.yellow-hammer/mcp-1c-platform-tools",
+   "publishedAt": "2026-02-28T23:01:24.90338Z",
+   "age_days": 262.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-debug-recorder",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.oaslananka/mcp-debug-recorder",
+   "publishedAt": "2026-04-08T15:29:29.814326Z",
+   "age_days": 224.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-health-monitor",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.oaslananka/mcp-health-monitor",
+   "publishedAt": "2026-04-08T15:19:04.105338Z",
+   "age_days": 224.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-infra-lens",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.oaslananka/mcp-infra-lens",
+   "publishedAt": "2026-04-08T18:08:57.822828Z",
+   "age_days": 223.9
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-meet",
+   "version": "0.3.1",
+   "status": "version-absent",
+   "server": "io.github.pzep1/mcp-meet",
+   "publishedAt": "2025-10-09T15:27:11.703854Z",
+   "age_days": 405.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-sap-docs",
+   "version": "0.3.9",
+   "status": "version-absent",
+   "server": "io.github.marianfoo/mcp-sap-docs",
+   "publishedAt": "2025-09-09T05:59:06.222569Z",
+   "age_days": 435.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-ssh-tool",
+   "version": "2.2.7",
+   "status": "version-absent",
+   "server": "io.github.oaslananka/mcp-ssh-tool",
+   "publishedAt": "2026-05-10T06:39:33.078571Z",
+   "age_days": 192.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "mcp-ssh-tool",
+   "version": "2.2.7",
+   "status": "version-absent",
+   "server": "io.github.oaslananka/mcp-ssh-tool",
+   "publishedAt": "2026-05-10T06:39:33.078571Z",
+   "age_days": 192.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "md-md-mcp-server",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.kedarvartak/md-md",
+   "publishedAt": "2026-04-10T11:16:35.755644Z",
+   "age_days": 222.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "neural-memory-mcp",
+   "version": "4.27.2",
+   "status": "version-absent",
+   "server": "io.github.nhadaututtheky/neural-memory",
+   "publishedAt": "2026-04-02T11:59:07.794926Z",
+   "age_days": 230.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "omnipost-mcp",
+   "version": "0.1.2",
+   "status": "version-absent",
+   "server": "io.github.OmniGoAI/omnipost",
+   "publishedAt": "2026-10-24T00:56:19.354687Z",
+   "age_days": 25.6
+  },
+  {
+   "registry": "npm",
+   "identifier": "openlookup",
+   "version": "0.5.1",
+   "status": "version-absent",
+   "server": "tech.thecompound/openlookup",
+   "publishedAt": "2026-10-02T14:38:36.459883Z",
+   "age_days": 47.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "paidwithtab",
+   "version": "3.0.0",
+   "status": "version-absent",
+   "server": "io.github.paidwithtab/tab",
+   "publishedAt": "2026-11-03T05:07:38.64005Z",
+   "age_days": 15.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "parserail-mcp",
+   "version": "0.6.2",
+   "status": "version-absent",
+   "server": "tech.thecompound/parserail-mcp",
+   "publishedAt": "2026-10-15T23:24:21.47013Z",
+   "age_days": 33.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "positif-ai",
+   "version": "0.2.2",
+   "status": "version-absent",
+   "server": "ai.positif/positif",
+   "publishedAt": "2026-07-14T23:19:23.238169Z",
+   "age_days": 126.7
+  },
+  {
+   "registry": "npm",
+   "identifier": "rulestack-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/rulestack",
+   "publishedAt": "2026-10-05T11:53:46.261859Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "rustok-agent-mcp",
+   "version": "0.2.2",
+   "status": "version-absent",
+   "server": "io.github.temrjan/rustok-wallet",
+   "publishedAt": "2026-05-24T07:17:31.827355Z",
+   "age_days": 178.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "santuri-mcp-server",
+   "version": "1.1.7",
+   "status": "version-absent",
+   "server": "io.github.sonofakel/santuri",
+   "publishedAt": "2026-01-22T01:20:21.388587Z",
+   "age_days": 300.6
+  },
+  {
+   "registry": "npm",
+   "identifier": "scriptprobe-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/scriptprobe",
+   "publishedAt": "2026-10-05T11:55:00.910757Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "silpo-mcp",
+   "version": "1.1.0",
+   "status": "version-absent",
+   "server": "io.github.MIt9/silpo-mcp",
+   "publishedAt": "2026-02-06T05:35:53.781497Z",
+   "age_days": 285.4
+  },
+  {
+   "registry": "npm",
+   "identifier": "skillworks-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/skillworks",
+   "publishedAt": "2026-10-05T12:13:23.267937Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "skolverket-mcp",
+   "version": "2.1.3",
+   "status": "version-absent",
+   "server": "io.github.KSAklfszf921/skolverket-mcp",
+   "publishedAt": "2025-10-31T16:14:12.916822Z",
+   "age_days": 383.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "spec-score-mcp",
+   "version": "2.0.2",
+   "status": "version-absent",
+   "server": "io.github.openpoem/spec-score-mcp",
+   "publishedAt": "2026-02-28T16:24:20.80819Z",
+   "age_days": 263.0
+  },
+  {
+   "registry": "npm",
+   "identifier": "spendlog",
+   "version": "1.0.4",
+   "status": "version-absent",
+   "server": "io.github.makz81/spendlog",
+   "publishedAt": "2026-03-30T13:02:15.513615Z",
+   "age_days": 233.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "stacktab-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/stacktab",
+   "publishedAt": "2026-10-05T12:03:26.161335Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "stillshipping-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/stillshipping",
+   "publishedAt": "2026-10-05T12:07:42.731805Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "synapse-rmcp",
+   "version": "0.5.4",
+   "status": "version-absent",
+   "server": "ai.dinglebear/synapse-rmcp",
+   "publishedAt": "2026-07-12T12:00:37.079017Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "tailscale-rmcp",
+   "version": "0.1.3",
+   "status": "version-absent",
+   "server": "ai.dinglebear/tailscale-rmcp",
+   "publishedAt": "2026-07-12T12:00:37.314618Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "telegram-channel-scraper-mcp-server",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.khadinakbaronline/telegram-channel-scraper-mcp",
+   "publishedAt": "2026-04-02T11:24:31.459203Z",
+   "age_days": 230.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "temporal-continuity-mcp",
+   "version": "0.1.1",
+   "status": "version-absent",
+   "server": "io.github.VRhodes68/temporal-continuity",
+   "publishedAt": "2026-10-15T09:50:56.643067Z",
+   "age_days": 34.3
+  },
+  {
+   "registry": "npm",
+   "identifier": "tooldrift-mcp",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "tech.thecompound/tooldrift",
+   "publishedAt": "2026-10-05T12:08:12.206451Z",
+   "age_days": 44.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "unifi-rmcp",
+   "version": "0.2.4",
+   "status": "version-absent",
+   "server": "ai.dinglebear/unifi-rmcp",
+   "publishedAt": "2026-07-12T12:00:37.570413Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "universal-brute-workpack",
+   "version": "0.1.4",
+   "status": "version-absent",
+   "server": "io.github.haoyun18881-beep/universal-brute-workpack",
+   "publishedAt": "2026-06-29T14:33:56.497964Z",
+   "age_days": 142.1
+  },
+  {
+   "registry": "npm",
+   "identifier": "unraid-rmcp",
+   "version": "0.2.3",
+   "status": "version-absent",
+   "server": "ai.dinglebear/unraid-rmcp",
+   "publishedAt": "2026-07-12T12:00:37.970335Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "vaspera-hardening-mcp-server",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.RCOLKITT/vaspera-hardening",
+   "publishedAt": "2026-04-13T20:28:10.385891Z",
+   "age_days": 218.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "vaspera-pm",
+   "version": "2.15.0",
+   "status": "version-absent",
+   "server": "io.github.RCOLKITT/vaspera-pm",
+   "publishedAt": "2026-07-19T12:35:44.588847Z",
+   "age_days": 122.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "vault-mcp-tools",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.afable702/vault-mcp-tools",
+   "publishedAt": "2026-04-11T04:48:50.790139Z",
+   "age_days": 221.5
+  },
+  {
+   "registry": "npm",
+   "identifier": "vtex-io-mcp",
+   "version": "0.1.8",
+   "status": "version-absent",
+   "server": "io.github.zeluizr/vtex-io-mcp",
+   "publishedAt": "2026-09-26T21:56:22.737889Z",
+   "age_days": 52.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "xbird-mcp",
+   "version": "0.1.4",
+   "status": "version-absent",
+   "server": "io.github.checkra1neth/xbird",
+   "publishedAt": "2026-02-11T22:05:26.710745Z",
+   "age_days": 279.8
+  },
+  {
+   "registry": "npm",
+   "identifier": "yarr-mcp",
+   "version": "1.1.1",
+   "status": "version-absent",
+   "server": "ai.dinglebear/yarr-mcp",
+   "publishedAt": "2026-07-12T12:00:38.673496Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "ytdl-rmcp",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "ai.dinglebear/ytdl-rmcp",
+   "publishedAt": "2026-07-12T12:00:38.93391Z",
+   "age_days": 129.2
+  },
+  {
+   "registry": "npm",
+   "identifier": "zotero-bridge",
+   "version": "1.0.3",
+   "status": "version-absent",
+   "server": "io.github.Combjellyshen/zotero-bridge",
+   "publishedAt": "2026-02-01T06:39:40.260609Z",
+   "age_days": 290.4
+  },
+  {
+   "registry": "pypi",
+   "identifier": "agent-tripwire",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "server": "io.github.ipezygj/agent-guard",
+   "publishedAt": "2026-07-23T16:48:06.345123Z",
+   "age_days": 118.0
+  },
+  {
+   "registry": "pypi",
+   "identifier": "aifp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.aryanduntley/aifp",
+   "publishedAt": "2026-02-12T02:14:55.325074Z",
+   "age_days": 279.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "aihawk",
+   "version": "0.69.2",
+   "status": "package-gone",
+   "server": "io.github.feder-cr/aihawk",
+   "publishedAt": "2026-09-22T22:25:13.006664Z",
+   "age_days": 56.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "aion-news-to-signal",
+   "version": "1.0.1",
+   "status": "package-gone",
+   "server": "io.github.AION-Analytics/aion-news-to-signal",
+   "publishedAt": "2026-04-26T14:15:30.933374Z",
+   "age_days": 206.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "alloc-context",
+   "version": "0.3.0",
+   "status": "package-gone",
+   "server": "io.github.AllocContext/alloc-context",
+   "publishedAt": "2026-06-21T02:54:33.548072Z",
+   "age_days": 150.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "artefact-mcp",
+   "version": "0.3.3",
+   "status": "version-absent",
+   "server": "io.github.alexboissAV/artefact-revenue-intelligence",
+   "publishedAt": "2026-02-13T18:23:52.114645Z",
+   "age_days": 277.9
+  },
+  {
+   "registry": "pypi",
+   "identifier": "atlaso",
+   "version": "0.1.0a6",
+   "status": "package-gone",
+   "server": "io.github.imashishkh21/atlaso",
+   "publishedAt": "2026-05-12T23:10:29.144962Z",
+   "age_days": 189.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "atomic-clock-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.theoddden/atomic-clock",
+   "publishedAt": "2026-09-06T18:51:01.682631Z",
+   "age_days": 72.9
+  },
+  {
+   "registry": "pypi",
+   "identifier": "backroom-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.pardhuparimi/backroom",
+   "publishedAt": "2026-10-28T20:23:30.835027Z",
+   "age_days": 20.8
+  },
+  {
+   "registry": "pypi",
+   "identifier": "baton-orchestrator",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "server": "io.github.ribato22/baton",
+   "publishedAt": "2026-07-24T02:13:44.819726Z",
+   "age_days": 117.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "c3fst-mcp-server",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "io.github.mjandrews1/c3fst-biomedical-search",
+   "publishedAt": "2026-09-20T22:57:59.532254Z",
+   "age_days": 58.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "cg-agent-kit",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "server": "io.neosyn/cg-agent-kit",
+   "publishedAt": "2026-08-19T20:24:09.597818Z",
+   "age_days": 90.8
+  },
+  {
+   "registry": "pypi",
+   "identifier": "codeintel-navigation-mcp",
+   "version": "0.4.0",
+   "status": "package-gone",
+   "server": "io.github.phuongddx/codeintel",
+   "publishedAt": "2026-08-04T07:09:49.264685Z",
+   "age_days": 106.4
+  },
+  {
+   "registry": "pypi",
+   "identifier": "codelogic-mcp-server",
+   "version": "1.3.0",
+   "status": "package-gone",
+   "server": "io.github.CodeLogicIncEngineering/codelogic-mcp-server",
+   "publishedAt": "2026-07-30T19:23:54.942229Z",
+   "age_days": 110.9
+  },
+  {
+   "registry": "pypi",
+   "identifier": "contest-mcp",
+   "version": "0.1.2",
+   "status": "version-absent",
+   "server": "io.github.sbrunner-atx/contest-mcp",
+   "publishedAt": "2026-06-26T19:21:56.327431Z",
+   "age_days": 144.9
+  },
+  {
+   "registry": "pypi",
+   "identifier": "contextual-engine",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.Contextual-Laboratories/contextual",
+   "publishedAt": "2026-09-07T11:27:52.061293Z",
+   "age_days": 72.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "cougarmap",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.bryantclark/cougarmap",
+   "publishedAt": "2026-10-07T02:25:30.744541Z",
+   "age_days": 42.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "crosstabs-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "io.github.barangaroo/crosstabs-mcp",
+   "publishedAt": "2026-01-30T11:10:19.155447Z",
+   "age_days": 292.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "dataraum",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "server": "io.github.dataraum/dataraum",
+   "publishedAt": "2026-04-17T12:13:13.131705Z",
+   "age_days": 215.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "db-compare-mcp",
+   "version": "v0.1.1",
+   "status": "version-absent",
+   "server": "io.github.yadu-tv/db-compare",
+   "publishedAt": "2026-07-16T14:29:52.244725Z",
+   "age_days": 125.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "edinet-mcp",
+   "version": "0.4.1",
+   "status": "version-absent",
+   "server": "io.github.ajtgjmdjp/edinet-mcp",
+   "publishedAt": "2026-02-13T12:43:25.768868Z",
+   "age_days": 278.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "elesync",
+   "version": "1.24.18",
+   "status": "package-gone",
+   "server": "io.github.darknodebros/elesync",
+   "publishedAt": "2026-09-02T04:41:40.718697Z",
+   "age_days": 77.5
+  },
+  {
+   "registry": "pypi",
+   "identifier": "elite-reasoning-mcp",
+   "version": "8.1.0",
+   "status": "package-gone",
+   "server": "io.github.Snehgabani/elite-reasoning-mcp",
+   "publishedAt": "2026-08-29T13:13:19.96355Z",
+   "age_days": 81.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "eval-integrity",
+   "version": "0.4.1",
+   "status": "package-gone",
+   "server": "io.github.ipezygj/evalgate",
+   "publishedAt": "2026-07-23T12:59:32.144854Z",
+   "age_days": 118.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "fastbcp-mcp",
+   "version": "0.1.5",
+   "status": "package-gone",
+   "server": "io.github.arpe-io/fastbcp-mcp",
+   "publishedAt": "2026-03-16T14:41:34.088342Z",
+   "age_days": 247.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "fasttransfer-mcp",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.arpe-io/fasttransfer-mcp",
+   "publishedAt": "2026-03-16T14:41:35.884897Z",
+   "age_days": 247.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "fitness-influencer-mcp",
+   "version": "1.3.0",
+   "status": "version-absent",
+   "server": "io.github.wmarceau/fitness-influencer",
+   "publishedAt": "2026-01-16T00:43:49.417345Z",
+   "age_days": 306.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "ghostqa",
+   "version": "0.2.2",
+   "status": "package-gone",
+   "server": "io.github.SyncTekLLC/ghostqa",
+   "publishedAt": "2026-02-23T06:55:09.304497Z",
+   "age_days": 268.4
+  },
+  {
+   "registry": "pypi",
+   "identifier": "glitch-grow-linkedin-ad-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "com.glitchexecutor.grow/glitch-grow-linkedin-ad-mcp",
+   "publishedAt": "2026-05-07T07:41:24.88112Z",
+   "age_days": 195.4
+  },
+  {
+   "registry": "pypi",
+   "identifier": "grandline-mcp",
+   "version": "0.2.1",
+   "status": "package-gone",
+   "server": "io.github.dmsnavin/grandline-mcp",
+   "publishedAt": "2026-07-09T16:40:28.439789Z",
+   "age_days": 132.0
+  },
+  {
+   "registry": "pypi",
+   "identifier": "grandline-mcp",
+   "version": "0.2.2",
+   "status": "package-gone",
+   "server": "io.github.luzomi/grandline-mcp",
+   "publishedAt": "2026-07-11T05:15:01.869403Z",
+   "age_days": 130.5
+  },
+  {
+   "registry": "pypi",
+   "identifier": "holographic-memory-mcp",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.writerslogic/holographic-memory-mcp",
+   "publishedAt": "2026-10-25T23:47:33.998347Z",
+   "age_days": 23.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "horus-flow-mcp",
+   "version": "1.0.2",
+   "status": "version-absent",
+   "server": "io.github.horustechltd/horus-flow-mcp",
+   "publishedAt": "2026-04-19T17:08:07.184969Z",
+   "age_days": 213.0
+  },
+  {
+   "registry": "pypi",
+   "identifier": "huoshui-fetch",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.huoshuiai42/huoshui-fetch",
+   "publishedAt": "2025-09-11T01:33:53.944849Z",
+   "age_days": 433.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "huoshui-file-converter",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.huoshuiai42/huoshui-file-converter",
+   "publishedAt": "2025-09-11T01:34:28.334413Z",
+   "age_days": 433.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "huoshui-pdf-translator",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.huoshuiai42/huoshui-pdf-translator",
+   "publishedAt": "2025-09-11T01:31:51.354566Z",
+   "age_days": 433.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "infraveil-guard",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.infraveilhq/agent-guard",
+   "publishedAt": "2026-06-22T09:48:37.234774Z",
+   "age_days": 149.3
+  },
+  {
+   "registry": "pypi",
+   "identifier": "infraveil-mcp",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.infraveilhq/control-plane",
+   "publishedAt": "2026-06-19T20:11:12.77829Z",
+   "age_days": 151.8
+  },
+  {
+   "registry": "pypi",
+   "identifier": "innoday",
+   "version": "0.112.2-beta",
+   "status": "version-absent",
+   "server": "io.github.havilandsoftware/mcp-server-innoday",
+   "publishedAt": "2026-07-13T20:12:47.65249Z",
+   "age_days": 127.8
+  },
+  {
+   "registry": "pypi",
+   "identifier": "instinct-mcp",
+   "version": "1.0.0",
+   "status": "package-gone",
+   "server": "io.github.yakuphanycl/instinct",
+   "publishedAt": "2026-04-10T10:34:37.51044Z",
+   "age_days": 222.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "labs-mcp-server",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.albertbolanoss/labs_mcp",
+   "publishedAt": "2026-05-25T03:16:24.617388Z",
+   "age_days": 177.5
+  },
+  {
+   "registry": "pypi",
+   "identifier": "lakexpress-mcp",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.arpe-io/lakexpress-mcp",
+   "publishedAt": "2026-03-16T14:41:37.501199Z",
+   "age_days": 247.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "leangate",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.lambdabypi/leangate",
+   "publishedAt": "2026-10-17T22:30:00.66857Z",
+   "age_days": 31.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "local-faiss-mcp",
+   "version": "0.2.0-rc.3",
+   "status": "version-absent",
+   "server": "io.github.nonatofabio/local-faiss-mcp",
+   "publishedAt": "2025-12-07T16:30:38.871566Z",
+   "age_days": 346.0
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-edgar",
+   "version": "0.1.2",
+   "status": "package-gone",
+   "server": "io.github.birthday-tools/edgarmcp",
+   "publishedAt": "2026-06-21T10:54:52.030263Z",
+   "age_days": 150.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-search-server",
+   "version": "0.1.1",
+   "status": "package-gone",
+   "server": "io.github.KazKozDev/search",
+   "publishedAt": "2025-12-16T14:31:50.255265Z",
+   "age_days": 337.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-server-evolutiondb",
+   "version": "1.17.0",
+   "status": "package-gone",
+   "server": "io.github.alptekin/evolutiondb-memory",
+   "publishedAt": "2026-06-22T12:50:38.544986Z",
+   "age_days": 149.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-trace-inspector",
+   "version": "0.3.1",
+   "status": "package-gone",
+   "server": "io.github.abhishekash/mcp-trace-inspector",
+   "publishedAt": "2026-10-13T15:01:18.780924Z",
+   "age_days": 36.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mcp-weather-augee99",
+   "version": "0.1.0",
+   "status": "version-absent",
+   "server": "io.github.augee99/mcp-weather",
+   "publishedAt": "2025-09-12T13:24:44.527457Z",
+   "age_days": 432.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "migratorxpress-mcp",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.arpe-io/migratorxpress-mcp",
+   "publishedAt": "2026-03-16T14:44:22.763573Z",
+   "age_days": 247.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "mnemex",
+   "version": "0.5.2",
+   "status": "version-absent",
+   "server": "io.github.simplemindedbot/mnemex",
+   "publishedAt": "2025-10-20T22:50:49.953818Z",
+   "age_days": 393.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "msmcp-azure",
+   "version": "3.0.0b48",
+   "status": "version-absent",
+   "server": "com.microsoft/azure",
+   "publishedAt": "2026-09-30T02:07:19.637605Z",
+   "age_days": 49.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "msmcp-template",
+   "version": "0.0.12-alpha.5932986",
+   "status": "version-absent",
+   "server": "com.microsoft/template-server-name",
+   "publishedAt": "2026-02-27T00:23:29.091405Z",
+   "age_days": 264.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "nanobanana-mcp-server",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.zhongweili/nanobanana-mcp-server",
+   "publishedAt": "2025-09-09T13:45:29.896269Z",
+   "age_days": 435.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "neopat-mcp",
+   "version": "0.1.4",
+   "status": "package-gone",
+   "server": "io.github.Udhay-Adithya/neopat-mcp",
+   "publishedAt": "2026-10-16T10:47:20.582167Z",
+   "age_days": 33.2
+  },
+  {
+   "registry": "pypi",
+   "identifier": "numguard",
+   "version": "0.1.1",
+   "status": "version-absent",
+   "server": "io.github.ipezygj/numguard",
+   "publishedAt": "2026-07-24T00:20:05.614632Z",
+   "age_days": 117.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "olane-cosync-local",
+   "version": "0.2.0",
+   "status": "package-gone",
+   "server": "com.olane/cosync-local",
+   "publishedAt": "2026-03-04T22:23:03.883672Z",
+   "age_days": 258.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "omega-memory",
+   "version": "1.3.0",
+   "status": "version-absent",
+   "server": "io.github.omega-memory/omega-memory",
+   "publishedAt": "2026-03-16T04:45:27.184485Z",
+   "age_days": 247.5
+  },
+  {
+   "registry": "pypi",
+   "identifier": "orionbelt-semantic-layer",
+   "version": "0.3.0",
+   "status": "version-absent",
+   "server": "io.github.ralfbecher/orionbelt-semantic-layer",
+   "publishedAt": "2026-02-19T23:39:12.633789Z",
+   "age_days": 271.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "positif-ai",
+   "version": "0.2.1",
+   "status": "version-absent",
+   "server": "ai.positif/positif",
+   "publishedAt": "2026-07-14T23:19:23.238169Z",
+   "age_days": 126.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "prefect-mcp",
+   "version": "0.0.1-beta.13",
+   "status": "version-absent",
+   "server": "io.github.PrefectHQ/prefect-mcp-server",
+   "publishedAt": "2026-09-01T19:31:31.228977Z",
+   "age_days": 77.9
+  },
+  {
+   "registry": "pypi",
+   "identifier": "regula-ai",
+   "version": "1.9.0",
+   "status": "package-gone",
+   "server": "io.github.kuzivaai/regula",
+   "publishedAt": "2026-08-14T06:56:16.313206Z",
+   "age_days": 96.4
+  },
+  {
+   "registry": "pypi",
+   "identifier": "selvo",
+   "version": "2.1.1",
+   "status": "package-gone",
+   "server": "io.github.Cope-Labs/selvo",
+   "publishedAt": "2026-04-24T21:23:50.657663Z",
+   "age_days": 207.8
+  },
+  {
+   "registry": "pypi",
+   "identifier": "signalbrain",
+   "version": "0.1.6",
+   "status": "package-gone",
+   "server": "io.github.whitestone1121-web/signalbrain",
+   "publishedAt": "2026-08-24T12:55:53.196623Z",
+   "age_days": 86.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "spineframe",
+   "version": "1.1.2",
+   "status": "package-gone",
+   "server": "io.github.Ratnaditya-J/spineframe",
+   "publishedAt": "2026-03-19T01:50:55.157909Z",
+   "age_days": 244.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "sqlite-mcp-server-enhanced",
+   "version": "2.6.3",
+   "status": "package-gone",
+   "server": "io.github.neverinfamous/sqlite-mcp-server",
+   "publishedAt": "2025-10-13T08:08:01.494568Z",
+   "age_days": 401.3
+  },
+  {
+   "registry": "pypi",
+   "identifier": "stockfish-mcp",
+   "version": "v1.0.2",
+   "status": "version-absent",
+   "server": "io.github.stepbot/stockfish-mcp",
+   "publishedAt": "2025-11-10T01:28:47.646677Z",
+   "age_days": 373.6
+  },
+  {
+   "registry": "pypi",
+   "identifier": "stv",
+   "version": "0.4.1",
+   "status": "version-absent",
+   "server": "io.github.Hybirdss/smartest-tv",
+   "publishedAt": "2026-04-02T23:08:24.753385Z",
+   "age_days": 229.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "tiktok-creator-mcp",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.wmarceau/tiktok-creator",
+   "publishedAt": "2026-02-09T00:43:47.379068Z",
+   "age_days": 282.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "toon-parse-mcp",
+   "version": "1.0.4-beta",
+   "status": "version-absent",
+   "server": "io.github.ankitpal181/toon-parse-mcp",
+   "publishedAt": "2026-01-17T13:41:06.399422Z",
+   "age_days": 305.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "twilize",
+   "version": "0.34.0",
+   "status": "package-gone",
+   "server": "io.github.subhatta123/twilize",
+   "publishedAt": "2026-05-02T17:24:17.719296Z",
+   "age_days": 200.0
+  },
+  {
+   "registry": "pypi",
+   "identifier": "uop-mcp-server",
+   "version": "2.0.1",
+   "status": "version-absent",
+   "server": "com.unifiedoffer/mcp-server",
+   "publishedAt": "2025-10-15T08:37:56.540755Z",
+   "age_days": 399.3
+  },
+  {
+   "registry": "pypi",
+   "identifier": "video-editor-mcp",
+   "version": "1.0.1",
+   "status": "version-absent",
+   "server": "io.github.burningion/video-editing-mcp",
+   "publishedAt": "2025-09-12T12:58:23.949573Z",
+   "age_days": 432.1
+  },
+  {
+   "registry": "pypi",
+   "identifier": "vulnfeed-mcp",
+   "version": "0.3.3",
+   "status": "package-gone",
+   "server": "io.github.infai-tech/vulnfeed",
+   "publishedAt": "2026-05-28T00:23:20.032504Z",
+   "age_days": 174.7
+  },
+  {
+   "registry": "pypi",
+   "identifier": "waggle-mcp",
+   "version": "0.1.8",
+   "status": "version-absent",
+   "server": "io.github.Abhigyan-Shekhar/Waggle-mcp",
+   "publishedAt": "2026-04-21T06:52:36.101524Z",
+   "age_days": 211.4
+  },
+  {
+   "registry": "pypi",
+   "identifier": "youtube-creator-mcp",
+   "version": "1.0.0",
+   "status": "version-absent",
+   "server": "io.github.wmarceau/youtube-creator",
+   "publishedAt": "2026-01-16T02:35:33.286301Z",
+   "age_days": 306.6
+  }
+ ]
+}
