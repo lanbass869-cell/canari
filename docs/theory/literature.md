@@ -5,7 +5,7 @@ bounded memory, irreversible decisions" is a real gap or a known problem in
 disguise. Method: read full text (arXiv HTML, not abstract), record what each
 paper *solves* and where its model differs from ours.
 
-Status: 8 abstracts + **5 full texts read** (2026-11-18). Target is 20 full texts
+Status: 14 abstracts + **10 full texts read** (2026-11-18). Target is 20 full texts
 across four adjacent fields; this file grows until that is done.
 
 ## Read in full (text extracted from arXiv HTML, key sections read)
@@ -138,3 +138,59 @@ The last row is the only thing left, and after five reads it looks more like a
 *composition* of known results than a new problem. The honest default is now:
 
 > **Assume there is no gap until the remaining 15 reads produce one.**
+
+### 6. arXiv:1703.01847 - Tight Space-Approximation Tradeoff for Streaming Set Cover
+**Solves:** resolves the tradeoff: any `alpha`-approximation needs
+`Omega~(m n^{1/alpha})` space, **even with polylog passes and even on random
+arrival order**; maximum coverage needs `Omega~(m/eps^2)`.
+**Occupies:** the whole "streaming + space bound + approximation" space for
+covering problems. Random arrival does not buy anything - relevant because it
+rules out "our stream is not adversarial" as an escape.
+
+### 7. arXiv:1404.6763 - Semi-Streaming Set Cover
+**Solves:** `O(sqrt(n))`-approximation in semi-streaming, plus a negative result
+for `(1-eps)`-cover certificates: cannot guarantee `E[|Im(chi)|] = o(OPT/eps)`.
+**Occupies:** the positive side of the same tradeoff.
+
+### 8. arXiv:2610.07759 - Stateless Recovery and Byzantine Quorum Safety
+**Solves:** exact accounting of the slack between the classical intersection bound
+`2q-n` and actual Byzantine/recovering identities; tightness construction.
+**Occupies:** the fine structure of quorum safety accounting - the same slack
+identity our "surplus" argument rests on.
+
+### 9. arXiv:0803.2842 - Admission Control to Minimize Rejections and Online Set Cover with Repetitions
+**Solves:** preemptive online admission with the objective of minimizing rejected
+requests; `O(log^2(mn))`-competitive randomized algorithm; reduction between
+admission control and online set cover with repetitions.
+
+**Crucial sentence for us:** the paper notes that **allowing preemption is
+essential for avoiding trivial lower bounds**. That is the opposite of our
+setting - we assumed admissions are irreversible. So irreversibility is not a fresh
+twist; it is precisely the condition that makes this family of problems collapse
+to trivial bounds.
+
+### 10. arXiv:1704.08835 - Relaxing the Irrevocability Requirement for Online Graph Algorithms
+**Solves:** studies online models where acceptance is delayed but **irrevocable**
+(Late Accept / Late Reject), for Independent Set, Matching, Vertex Cover, MST, and
+shows the competitive ratio changes by model (Matching: 2 -> 3/2).
+**Occupies:** "irreversible online decisions with a competitive ratio" as a
+modelling dimension. It is established vocabulary, not a new axis.
+
+## Verdict after 10 full texts
+
+| candidate gap | status |
+|---|---|
+| evidence budget allocation | occupied (2609.34376) |
+| adaptive adversary vs published certificates | occupied (2610.10597) |
+| skew / single point of failure | occupied (cs/9908011 quorum load) |
+| stream + budget + competitive ratio | occupied, actively tightened (2610.41136) |
+| streaming covering with space bounds | fully settled (1703.01847, 1404.6763) |
+| irreversible online decisions | an established model dimension (1704.08835), and preemption is what makes the admission version tractable (0803.2842) |
+| **anything left** | one question: does *irreversibility plus a memory bound* together produce a genuinely different, tractable problem - or just a trivially hard one? |
+
+That last question now reads like a warning rather than an opening: 0803.2842 says
+preemption is needed to avoid trivial lower bounds, which suggests our setting is
+hard for a boring reason, not an interesting one.
+
+Honest default stands: **assume no gap** until the remaining 10 reads produce
+evidence otherwise.
