@@ -129,35 +129,44 @@ estimation problem the first section identified, now with a measured price tag.
 
 ## Proposition 1 (elementary, but it settles an argument)
 
-**Statement.** Let a policy admit `m >= 1` components, each citing at most `r`
-distinct roots out of a universe of `k`. Admissions are irreversible. Then there
-is a root whose corruption retroactively invalidates at least `ceil(r*m/k)` of the
-`m` admissions.
+> **Correction, same day.** The first version of this section said "at most r
+> citations", which makes the bound FALSE: a component citing fewer roots breaks
+> the average. The correct hypothesis is **exactly r**, and it also forces a
+> second correction - a component citing more than r roots is *immune* to a single
+> corrupted root, which is the useful part. Both fixed below.
 
-**Proof.** Each admitted component contributes at most `r` root citations, so the
-total number of citations is at most `r*m`. These are spread over `k` roots.
-By the pigeonhole principle (equivalently, averaging: the mean is at most
-`r*m/k`), some root is cited by at least `ceil(r*m/k)` of the admitted components.
-Corrupting that one root invalidates exactly those. QED.
+**Statement.** Suppose a policy admits `m` components, and every admitted
+component cites **exactly** `r` distinct roots from a universe of `k`. Then some
+root is cited by at least `ceil(r*m/k)` of them, and corrupting that one root
+invalidates all of those (each drops to `r-1` witnesses).
 
-**Corollary.** No policy - whatever its memory, whatever its online strategy - can
-hold single-root damage below a `r/k` fraction of admissions while admitting a
-constant fraction of the stream. The bound is a property of `r` and `k`, not of the
-algorithm.
+**Proof.** Total citations are exactly `r*m`, spread over `k` roots. By
+pigeonhole, some root carries at least `ceil(r*m/k)` citations. A component citing
+exactly `r` roots falls below the threshold when one of them is corrupted, so every
+such component is invalidated. QED.
+
+**Corollary 1.** No policy - whatever its memory or online strategy - can hold
+single-root damage below an `r/k` fraction of admissions, *within the population of
+components that cite exactly `r` roots*.
+
+**Corollary 2 (the useful one).** A component citing `r+s` roots survives `s`
+simultaneous corruptions. So the defence against a `c`-root adversary is **surplus**
+`c` witnesses per component, not a higher threshold and not a per-root quota: surplus
+costs evidence, and it costs no admissions.
 
 ### What this does and does not settle
 
-**Settles:** the "just require more witnesses per component" instinct cannot work
-by itself. Raising `r` *raises* the guaranteed damage floor (`r/k`), because the
-same roots are cited more often. The only lever that lowers the floor is increasing
-`k` - more *independent sources in the population* - which is exactly the
-corruption-distinct class accounting the survey identified as missing.
+**Settles:** "just require more witnesses" is wrong in the direction people assume.
+Raising `r` raises the damage floor `r/k` for components that sit exactly at the
+threshold; what protects them is being *above* it.
 
-**Does not settle:** the observed 44.9% in the adaptive experiment is far above
-this floor (with `r=2, k=200` the floor is 1%). The gap comes from *skew*: the
-adversary corrupts the most-cited root, not the average one. Proposition 1 bounds
-the average case; the worst case under skew is what a real bound would need to
-characterise, and that is not done.
+**Explains the measurement:** in `adaptive.py` every admitted component cited
+exactly `r=2` roots, so the floor applied and the skew pushed the observed damage
+(44.9%) far above the uniform-case 1%.
+
+**Does not settle:** the worst case under skew, and the cost of surplus when
+evidence is scarce (each extra witness is a request that may not exist). Those are
+the open questions.
 
 **Deliberately not claimed:** this is pigeonhole. It is written down because it
-rules out a whole family of proposed defences, not because it is deep.
+rules out a family of proposed defences, not because it is deep.
