@@ -9,10 +9,13 @@ It does not measure whether clients defend themselves.
 
 ## Method
 
-Twelve repositories from `punkweye/awesome-mcp-clients` plus the three official
-SDKs and `fastmcp` were fetched as source tarballs. Nine succeeded; `cline/cline`,
-`Chainlit/chainlit` and `CherryHQ/cherry-studio` failed to download completely and
-are excluded rather than half-scanned.
+**Attempted: 12 repositories. Usable: 9.** Each was fetched as a source tarball
+from `punkweye/awesome-mcp-clients` plus the three official SDKs and `fastmcp`.
+Three tarballs did not download completely -- `cline/cline`, `Chainlit/chainlit`
+and `CherryHQ/cherry-studio` -- and are excluded rather than half-scanned. The
+nine below are what "nine clients" means throughout this document: nine
+repositories that could be read in full, not nine of twelve claims about the
+whole ecosystem.
 
 **10,158 source files** (`.py .ts .tsx .js .jsx .go`) were scanned, excluding
 `node_modules`, `dist`, `build`, tests, docs, examples and fixtures. Five capability
@@ -94,8 +97,9 @@ truth.
 
 ## Limits
 
-- Nine repositories, not the whole ecosystem. Three downloads failed; the two
-  largest closed-source clients (Claude Desktop, Cursor) cannot be inspected at all.
+- Nine usable repositories out of twelve attempted, not the whole ecosystem.
+  Three tarball downloads failed; the two largest closed-source clients (Claude
+  Desktop, Cursor) cannot be inspected at all.
 - Source inspection shows what a client *can* do, not what its users do. A client
   with no pinning code cannot pin; a client with none found here is not proof that
   every deployment is unprotected (an operator may pin at the network layer).

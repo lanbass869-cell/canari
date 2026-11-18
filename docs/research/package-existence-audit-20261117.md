@@ -1,6 +1,11 @@
 # Audit: 274 registry entries reference a package version that cannot be installed
 
-Snapshot **2026-11-16**. Source: `GET /v0/servers?version=latest`, full pagination —
+Snapshot **2026-11-16**. This is the first of a recurring audit: the **current** figure is
+regenerated every Monday at `docs/audit/package-existence/` (see `latest.json`). The next
+run, on 2026-11-17, measured **275 of 22,657** because the registry had grown; the number
+and its snapshot date must always be quoted together.
+
+Source: `GET /v0/servers?version=latest`, full pagination —
 654 pages, 65,340 latest records.
 
 ## What was checked
