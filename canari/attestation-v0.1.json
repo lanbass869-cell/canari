@@ -54,6 +54,10 @@
     "homepage": {
      "type": "string"
     },
+    "repository": {
+     "type": "string",
+     "description": "Normalised publishing repository (host/owner/name). Absent when the registry publishes none; absent is UNKNOWN, never DIFFERENT."
+    },
     "maintainers": {
      "type": "array",
      "items": {

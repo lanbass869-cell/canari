@@ -61,3 +61,63 @@ class TestCli:
         assert main(["check", "ato-mcp", "pypi:ato-mcp"]) == 2
         err = capsys.readouterr().err
         assert "registry:name" in err
+
+
+class TestRepositoryCapture:
+    """The attestation has to carry the repository, or the identity layer has
+    nothing to work with at scan time."""
+
+    def test_npm_packument_dict_and_string_forms(self):
+        from canari.baseline import repo_from_npm_packument
+        assert (repo_from_npm_packument({"repository": {"url": "https://github.com/o/r.git"}})
+                == "github.com/o/r")
+        assert repo_from_npm_packument({"repository": "git+https://github.com/o/r"}) == "github.com/o/r"
+        assert repo_from_npm_packument({}) is None
+        assert repo_from_npm_packument(None) is None
+
+    def test_pypi_prefers_a_repo_like_project_url(self):
+        from canari.baseline import repo_from_pypi_doc
+        doc = {"info": {"project_urls": {"Homepage": "https://example.com/x",
+                                         "Source Code": "https://github.com/o/r"},
+                        "home_page": "https://example.com/x"}}
+        assert repo_from_pypi_doc(doc) == "github.com/o/r"
+
+    def test_pypi_falls_back_to_home_page(self):
+        from canari.baseline import repo_from_pypi_doc
+        doc = {"info": {"project_urls": {}, "home_page": "https://github.com/o/r"}}
+        assert repo_from_pypi_doc(doc) == "github.com/o/r"
+
+    def test_pypi_without_any_url_is_none(self):
+        from canari.baseline import repo_from_pypi_doc
+        assert repo_from_pypi_doc({"info": {}}) is None
+        assert repo_from_pypi_doc(None) is None
+
+
+class TestSchemaAcceptsRepository:
+    def _att(self, **subject_extra):
+        subject = {"name": "p", "version": "1", "registry": "npm",
+                   "artifact_sha256": "a" * 64, "maintainers": []}
+        subject.update(subject_extra)
+        return {"_type": "https://agentcheck.dev/attestation/v0.1",
+                "subject": subject,
+                "host": {"class": "mcp", "host_version": "t"},
+                "scenario_sha256": "b" * 64,
+                "checks": [{"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
+                "verdict": "pass",
+                "checker": {"kind": "automation", "id": "t"},
+                "evidence_refs": [],
+                "evidence_completeness": {"dropped_logs": 0, "missing_observers": [],
+                                          "truncated_fields": []},
+                "expires_at": "2026-12-30T00:00:00Z",
+                "generated_at": "2026-11-18T00:00:00Z",
+                "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                              "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
+
+    def test_repository_is_allowed(self):
+        from canari.schema import validate_attestation
+        assert validate_attestation(self._att(repository="github.com/o/r")) == []
+
+    def test_repository_is_not_required(self):
+        # Old records stay valid: absent repository means UNKNOWN, not invalid.
+        from canari.schema import validate_attestation
+        assert validate_attestation(self._att()) == []

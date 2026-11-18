@@ -38,6 +38,7 @@ from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
                             _opener, UA)
 from canari.native import ingest as native_ingest
+from canari.identity import normalize_repo
 from canari.cadence import analyze_release_cadence
 from canari.anomaly import detect_metadata_anomaly
 from canari.pypi_native import ingest_pypi as pypi_native_ingest
@@ -581,6 +582,35 @@ if __name__ == "__main__":
 
 
 
+def repo_from_npm_packument(pack):
+    """Publishing repository from an npm packument, normalised, or None.
+
+    ★2026-11-18: a bare name is not an identity - measured in
+    experiments/identity_conflict, 134 names exist on both npm and PyPI and 33 of
+    those are unrelated projects. The repository a package is published from is
+    the cheap disambiguator, so it is recorded in the attestation itself. Old
+    records have no such field and stay valid: absence of a repository is
+    "unknown", never "different".
+    """
+    if not isinstance(pack, dict):
+        return None
+    repo = pack.get("repository")
+    if isinstance(repo, dict):
+        repo = repo.get("url")
+    return normalize_repo(repo)
+
+
+def repo_from_pypi_doc(doc):
+    """Same, for a PyPI JSON document."""
+    info = (doc or {}).get("info") or {}
+    for key, val in (info.get("project_urls") or {}).items():
+        low = (key or "").lower()
+        if "repo" in low or "source" in low or "code" in low:
+            got = normalize_repo(val)
+            if got:
+                return got
+    return normalize_repo(info.get("home_page"))
+
 def _prev_from(state, registry, name):
     """Previous state entry for (registry, name). Registry-qualified key first,
     plain-name fallback keeps continuity with pre-qualification state files.
@@ -648,10 +678,15 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     all_results = []
     total_errors = 0
 
-    def _make_att(name, version, registry, sha, host_class, checks, verdict, tools, ev_refs, native_prov=None):
+    def _make_att(name, version, registry, sha, host_class, checks, verdict, tools, ev_refs,
+                  native_prov=None, repository=None):
+        subject = {"name": name, "version": version, "registry": registry,
+                   "artifact_sha256": sha or "0" * 64, "maintainers": []}
+        repo = normalize_repo(repository)
+        if repo:
+            subject["repository"] = repo
         att = {"_type": _PREDICATE_TYPE,
-                "subject": {"name": name, "version": version, "registry": registry,
-                            "artifact_sha256": sha or "0" * 64, "maintainers": []},
+                "subject": subject,
                 "host": {"class": host_class, "host_version": "registry-meta-v1"},
                 "scenario_sha256": scenario_sha256, "checks": checks, "verdict": verdict,
                 "checker": {"kind": "automation", "id": "canari-m1", "tools": tools},
@@ -800,7 +835,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
                             ["canari-m1/0.1"],
                             [x for x in ("npm-packument:" + name, _npm_cref) if x],
-                            native_prov=np)
+                            native_prov=np,
+                            repository=repo_from_npm_packument(pack))
             bpath = _save_att(att, "npm", name, prev_state=_prev("npm", name))
             all_results.append({"name": name, "registry": "npm", "version": lv["version"],
                                 "verdict": verdict, "bundle": bpath})
@@ -945,7 +981,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
                         verdict, ["canari-m1/0.1"],
                         [x for x in ("pypi-json:" + name, _pypi_cref) if x],
-                        native_prov=pn)
+                        native_prov=pn,
+                        repository=repo_from_pypi_doc(_pyjson))
         # A single bad package must never abort the whole registry sweep. This
         # used to raise straight out of run_multi: one package whose NAME tripped
         # the credential heuristics ("...-pypi-test") killed a 700-package run
