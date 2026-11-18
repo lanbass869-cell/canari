@@ -1,0 +1,2039 @@
+{
+ "as_of": "2026-11-18",
+ "requested": 200,
+ "elapsed_s": 1318.0,
+ "npm": {
+  "candidates": 200,
+  "with_repository": 188,
+  "rate": 0.94
+ },
+ "pypi": {
+  "candidates": 200,
+  "with_repository": 65,
+  "rate": 0.325
+ },
+ "clusters": 218,
+ "monorepo_clusters": 13,
+ "cross_registry_clusters": 1,
+ "name_collision": 0,
+ "repo_changed": 0,
+ "without_repository_examples": [
+  "agent-install",
+  "@imgly/codesign-mcp",
+  "@microsoft/jsts-upgrade-assistant",
+  "@taiga-ai/mcp-server",
+  "@agimon-ai/po-logsink",
+  "hlims-mcp",
+  "12306-mcp",
+  "@johnymontana/neo4j-mcp",
+  "@21st-dev/cli",
+  "leadsradar-agent",
+  "@agimon-ai/po-style-system-tooling",
+  "ag-mcp",
+  "mcp-server-12306",
+  "mcp-server-aact",
+  "mcp-server-airoom"
+ ],
+ "rows": [
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/sdk",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/core",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/server",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@anthropic-ai/claude-agent-sdk",
+   "repository": "github.com/anthropics/claude-agent-sdk-typescript"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/client",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/ext-apps",
+   "repository": "github.com/modelcontextprotocol/ext-apps"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/node",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "agent-install",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@earendil-works/pi-mcp",
+   "repository": "github.com/earendil-works/pi"
+  },
+  {
+   "registry": "npm",
+   "name": "eve",
+   "repository": "github.com/vercel/eve"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/express",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "mcp-handler",
+   "repository": "github.com/vercel-labs/mcp-handler"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/server-pdf",
+   "repository": "github.com/modelcontextprotocol/ext-apps"
+  },
+  {
+   "registry": "npm",
+   "name": "@better-auth/mcp",
+   "repository": "github.com/better-auth/better-auth"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/server-filesystem",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "npm",
+   "name": "@wonderwhy-er/desktop-commander",
+   "repository": "github.com/wonderwhy-er/desktopcommandermcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/inspector",
+   "repository": "github.com/modelcontextprotocol/inspector"
+  },
+  {
+   "registry": "npm",
+   "name": "@lovable.dev/mcp-js",
+   "repository": "github.com/lovablelabs/lovable"
+  },
+  {
+   "registry": "npm",
+   "name": "@posthog/mcp",
+   "repository": "github.com/posthog/posthog-js"
+  },
+  {
+   "registry": "npm",
+   "name": "agent-device",
+   "repository": "github.com/callstack/agent-device"
+  },
+  {
+   "registry": "npm",
+   "name": "mcporter",
+   "repository": "github.com/openclaw/mcporter"
+  },
+  {
+   "registry": "npm",
+   "name": "pi-mcp-adapter",
+   "repository": "github.com/nicobailon/pi-mcp-adapter"
+  },
+  {
+   "registry": "npm",
+   "name": "evmole",
+   "repository": "github.com/cdump/evmole"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/ext-tasks",
+   "repository": "github.com/modelcontextprotocol/ext-tasks"
+  },
+  {
+   "registry": "npm",
+   "name": "rea-agents",
+   "repository": "github.com/morluto/rea"
+  },
+  {
+   "registry": "npm",
+   "name": "@langchain/mcp-adapters",
+   "repository": "github.com/langchain-ai/langchainjs"
+  },
+  {
+   "registry": "npm",
+   "name": "add-mcp",
+   "repository": "github.com/neon-solutions/add-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/server-everything",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "npm",
+   "name": "@copilotkit/mcp-apps-renderer",
+   "repository": "github.com/copilotkit/copilotkit"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/server-memory",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "npm",
+   "name": "pi-mcp-extension",
+   "repository": "github.com/irahardianto/pi-mcp-extension"
+  },
+  {
+   "registry": "npm",
+   "name": "yahoo-finance2",
+   "repository": "github.com/gadicc/yahoo-finance2"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/server-sequential-thinking",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "npm",
+   "name": "@tanstack/ai-mcp",
+   "repository": "github.com/tanstack/ai"
+  },
+  {
+   "registry": "npm",
+   "name": "@zereight/mcp-gitlab",
+   "repository": "github.com/zereight/gitlab-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@sentry/mcp-server",
+   "repository": "github.com/getsentry/toolkit"
+  },
+  {
+   "registry": "npm",
+   "name": "dsh-windows-mcp",
+   "repository": "github.com/hellohub1212/dsh-windows-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/global",
+   "repository": "github.com/webmcp-org/npm-packages"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/transports",
+   "repository": "github.com/webmcp-org/npm-packages"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/webmcp-ts-sdk",
+   "repository": "github.com/webmcp-org/npm-packages"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/conformance",
+   "repository": "github.com/modelcontextprotocol/conformance"
+  },
+  {
+   "registry": "npm",
+   "name": "@azure/mcp",
+   "repository": "github.com/microsoft/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@supabase/mcp-utils",
+   "repository": "github.com/supabase/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/hono",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@openai/mcp-extensions",
+   "repository": "github.com/openai/mcp-extensions"
+  },
+  {
+   "registry": "npm",
+   "name": "codex-multi-profile",
+   "repository": "github.com/hung2124/codex-multi-profile"
+  },
+  {
+   "registry": "npm",
+   "name": "@claude-flow/cli",
+   "repository": "github.com/ruvnet/ruflo"
+  },
+  {
+   "registry": "npm",
+   "name": "metaharness",
+   "repository": "github.com/ruvnet/metaharness"
+  },
+  {
+   "registry": "npm",
+   "name": "@kubb/mcp",
+   "repository": "github.com/kubb-labs/kubb"
+  },
+  {
+   "registry": "npm",
+   "name": "@azure/mcp-linux-x64",
+   "repository": "github.com/microsoft/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@sap-ux/fiori-docs-embeddings",
+   "repository": "github.com/sap/open-ux-tools"
+  },
+  {
+   "registry": "npm",
+   "name": "@nitrostack/core",
+   "repository": "github.com/nitrocloudofficial/nitrostack"
+  },
+  {
+   "registry": "npm",
+   "name": "@currents/mcp",
+   "repository": "github.com/currents-dev/currents-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "ruflo",
+   "repository": "github.com/ruvnet/ruflo"
+  },
+  {
+   "registry": "npm",
+   "name": "@modelcontextprotocol/fastify",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@claude-flow/neural",
+   "repository": "github.com/ruvnet/ruflo"
+  },
+  {
+   "registry": "npm",
+   "name": "n8n-mcp",
+   "repository": "github.com/czlonkowski/n8n-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@azure/mcp-win32-x64",
+   "repository": "github.com/microsoft/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "judgeval",
+   "repository": "github.com/judgmentlabs/judgeval-js"
+  },
+  {
+   "registry": "npm",
+   "name": "kordoc",
+   "repository": "github.com/chrisryugj/kordoc"
+  },
+  {
+   "registry": "npm",
+   "name": "@letoribo/mcp-graphql-enhanced",
+   "repository": "github.com/letoribo/mcp-graphql-enhanced"
+  },
+  {
+   "registry": "npm",
+   "name": "@traceloop/instrumentation-mcp",
+   "repository": "github.com/traceloop/openllmetry-js"
+  },
+  {
+   "registry": "npm",
+   "name": "@tacticlaunch/mcp-linear",
+   "repository": "github.com/tacticlaunch/mcp-linear"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcpjam/sdk",
+   "repository": "github.com/mcpjam/inspector"
+  },
+  {
+   "registry": "npm",
+   "name": "gitnexus",
+   "repository": "github.com/abhigyanpatwari/gitnexus"
+  },
+  {
+   "registry": "npm",
+   "name": "@cargo-ai/cli",
+   "repository": "github.com/getcargohq/cargo"
+  },
+  {
+   "registry": "npm",
+   "name": "@n8n/mcp-apps",
+   "repository": "github.com/n8n-io/n8n"
+  },
+  {
+   "registry": "npm",
+   "name": "@cloudbase/cloudbase-mcp",
+   "repository": "github.com/tencentcloudbase/cloudbase-ai-toolkit"
+  },
+  {
+   "registry": "npm",
+   "name": "@imgly/codesign-mcp",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "mcp-hello-world",
+   "repository": "github.com/lobehub/mcp-hello-world"
+  },
+  {
+   "registry": "npm",
+   "name": "@serdnaley/metabase-mcp",
+   "repository": "github.com/serdnaley/metabase-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@agents-dev/cli",
+   "repository": "github.com/amtiyo/agents"
+  },
+  {
+   "registry": "npm",
+   "name": "@vantasdk/vanta-mcp-server",
+   "repository": "github.com/vantainc/vanta-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "mcp-use",
+   "repository": "github.com/mcp-use/mcp-use"
+  },
+  {
+   "registry": "npm",
+   "name": "@ericthered926/duckduckgo-mcp-server",
+   "repository": "github.com/ericthered926/duckduckgo-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@yawlabs/ctxlint",
+   "repository": "github.com/yawlabs/ctxlint"
+  },
+  {
+   "registry": "npm",
+   "name": "@azure/mcp-darwin-arm64",
+   "repository": "github.com/microsoft/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-use/cli",
+   "repository": "github.com/mcp-use/mcp-use"
+  },
+  {
+   "registry": "npm",
+   "name": "dsh-free-search",
+   "repository": "github.com/dddmuc/dsh-free-search"
+  },
+  {
+   "registry": "npm",
+   "name": "agnix",
+   "repository": "github.com/agent-sh/agnix"
+  },
+  {
+   "registry": "npm",
+   "name": "@microsoft/jsts-upgrade-assistant",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@microsoft/postgres-mcp",
+   "repository": "github.com/microsoft/postgres-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@meshy-ai/meshy-mcp-server",
+   "repository": "github.com/meshy-dev/meshy-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@taiga-ai/mcp-server",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@nanonets/graft",
+   "repository": "github.com/trailhq/trail-code"
+  },
+  {
+   "registry": "npm",
+   "name": "opencode-mcp",
+   "repository": "github.com/alaeddinemessadi/opencode-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "loki-mode",
+   "repository": "github.com/asklokesh/loki-mode"
+  },
+  {
+   "registry": "npm",
+   "name": "tavily-mcp",
+   "repository": "github.com/tavily-ai/tavily-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@prefecthq/fastmcp-ts",
+   "repository": "github.com/prefecthq/fastmcp-ts"
+  },
+  {
+   "registry": "npm",
+   "name": "@nest-openapi/mcp",
+   "repository": "github.com/ts-oas/nest-openapi"
+  },
+  {
+   "registry": "npm",
+   "name": "@docmd/core",
+   "repository": "github.com/docmd-io/docmd"
+  },
+  {
+   "registry": "npm",
+   "name": "@foldkit/devtools-mcp",
+   "repository": "github.com/foldkit/foldkit"
+  },
+  {
+   "registry": "npm",
+   "name": "@hasna/skills",
+   "repository": "github.com/hasna/skills"
+  },
+  {
+   "registry": "npm",
+   "name": "@bitbonsai/mcpvault",
+   "repository": "github.com/bitbonsai/mcpvault"
+  },
+  {
+   "registry": "npm",
+   "name": "@cyanheads/mcp-ts-core",
+   "repository": "github.com/cyanheads/mcp-ts-core"
+  },
+  {
+   "registry": "npm",
+   "name": "@agimon-ai/po-logsink",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@next-ai-drawio/mcp-server",
+   "repository": "github.com/dayuanjiang/next-ai-draw-io"
+  },
+  {
+   "registry": "npm",
+   "name": "@benborla29/mcp-server-mysql",
+   "repository": "github.com/benborla/mcp-server-mysql"
+  },
+  {
+   "registry": "npm",
+   "name": "decocms",
+   "repository": "github.com/decocms/studio"
+  },
+  {
+   "registry": "npm",
+   "name": "@aashari/mcp-server-atlassian-jira",
+   "repository": "github.com/aashari/mcp-server-atlassian-jira"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcpjam/cli",
+   "repository": "github.com/mcpjam/inspector"
+  },
+  {
+   "registry": "npm",
+   "name": "@kubb/plugin-mcp",
+   "repository": "github.com/kubb-labs/plugins"
+  },
+  {
+   "registry": "npm",
+   "name": "hlims-mcp",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "openapi-mcp-generator",
+   "repository": "github.com/harsha-iiiv/openapi-mcp-generator"
+  },
+  {
+   "registry": "npm",
+   "name": "@gongrzhe/server-gmail-autoauth-mcp",
+   "repository": "github.com/gongrzhe/server-gmail-autoauth-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@gleanwork/mcp-config-schema",
+   "repository": "github.com/gleanwork/mcp-config"
+  },
+  {
+   "registry": "npm",
+   "name": "tiny-stdio-mcp-server",
+   "repository": "github.com/poe-platform/poe-code"
+  },
+  {
+   "registry": "npm",
+   "name": "malicious-mcp-server",
+   "repository": "github.com/anysource-ai/malicious-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-b/react-webmcp",
+   "repository": "github.com/webmcp-org/npm-packages"
+  },
+  {
+   "registry": "npm",
+   "name": "freee-mcp",
+   "repository": "github.com/freee/freee-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "mcp-from-openapi",
+   "repository": "github.com/agentfront/mcp-from-openapi"
+  },
+  {
+   "registry": "npm",
+   "name": "ai-hist",
+   "repository": "github.com/agentworkforce/relayhistory"
+  },
+  {
+   "registry": "npm",
+   "name": "convex-mcp-gateway",
+   "repository": "github.com/tfohlmeister/convex-mcp-gateway"
+  },
+  {
+   "registry": "npm",
+   "name": "claude-flow",
+   "repository": "github.com/ruvnet/ruflo"
+  },
+  {
+   "registry": "npm",
+   "name": "@goke/mcp",
+   "repository": "github.com/remorses/goke"
+  },
+  {
+   "registry": "npm",
+   "name": "mcp-gsc",
+   "repository": "github.com/pijusz/mcp-gsc"
+  },
+  {
+   "registry": "npm",
+   "name": "mcp-server-whisper",
+   "repository": "github.com/hlos-ai/mcp-servers"
+  },
+  {
+   "registry": "npm",
+   "name": "@vizejs/musea-mcp-server",
+   "repository": "github.com/ubugeeei-prod/vize"
+  },
+  {
+   "registry": "npm",
+   "name": "@columenlabs/lumen-ai",
+   "repository": "github.com/columenlabs/lumen"
+  },
+  {
+   "registry": "npm",
+   "name": "ssh-mcp",
+   "repository": "github.com/tufantunc/ssh-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@juspay/neurolink",
+   "repository": "github.com/juspay/neurolink"
+  },
+  {
+   "registry": "npm",
+   "name": "@microsoft/powerbi-modeling-mcp",
+   "repository": "github.com/microsoft/powerbi-modeling-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "comfyui-mcp",
+   "repository": "github.com/artokun/comfyui-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@json-render/mcp",
+   "repository": "github.com/vercel-labs/json-render"
+  },
+  {
+   "registry": "npm",
+   "name": "hono-mcp-server-sse-transport",
+   "repository": "github.com/nikabuligini/hono-mcp-server-sse-transport"
+  },
+  {
+   "registry": "npm",
+   "name": "@hypothesi/tauri-mcp-server",
+   "repository": "github.com/hypothesi/mcp-server-tauri"
+  },
+  {
+   "registry": "npm",
+   "name": "@21st-dev/magic",
+   "repository": "github.com/21st-dev/magic-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@bangdao-ai/acw-tools",
+   "repository": "github.com/bangdao-ai/acw-tools"
+  },
+  {
+   "registry": "npm",
+   "name": "usewebmcp",
+   "repository": "github.com/webmcp-org/npm-packages"
+  },
+  {
+   "registry": "npm",
+   "name": "cclsp",
+   "repository": "github.com/ktnyt/cclsp"
+  },
+  {
+   "registry": "npm",
+   "name": "@microsoft/powerbi-modeling-mcp-win32-x64",
+   "repository": "github.com/microsoft/powerbi-modeling-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@atlassian-dc-mcp/common",
+   "repository": "github.com/b1ff/atlassian-dc-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@cocal/google-calendar-mcp",
+   "repository": "github.com/nspady/google-calendar-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-use/modelcontextprotocol-sdk",
+   "repository": "github.com/modelcontextprotocol/typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@runpod/mcp-server",
+   "repository": "github.com/runpod/runpod-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "elysia-mcp",
+   "repository": "github.com/kerlos/elysia-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "12306-mcp",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@muggleai/works",
+   "repository": "github.com/multiplex-ai/muggle-ai-works"
+  },
+  {
+   "registry": "npm",
+   "name": "semiotic",
+   "repository": "github.com/nteract/semiotic"
+  },
+  {
+   "registry": "npm",
+   "name": "aiwg",
+   "repository": "github.com/jmagly/aiwg"
+  },
+  {
+   "registry": "npm",
+   "name": "@frontmcp/sdk",
+   "repository": "github.com/agentfront/frontmcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@sendinel/mcp-server",
+   "repository": "github.com/kmdesle/sendinel-ai"
+  },
+  {
+   "registry": "npm",
+   "name": "@johnymontana/neo4j-mcp",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@tokenizin/mcp-npx-fetch",
+   "repository": "github.com/tokenizin-agency/mcp-npx-fetch"
+  },
+  {
+   "registry": "npm",
+   "name": "@microsoft/workiq",
+   "repository": "github.com/microsoft/work-iq"
+  },
+  {
+   "registry": "npm",
+   "name": "@postman/postman-mcp-server",
+   "repository": "github.com/postmanlabs/postman-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@ironbee-ai/cli",
+   "repository": "github.com/ironbee-ai/ironbee-cli"
+  },
+  {
+   "registry": "npm",
+   "name": "@hypequery/mcp",
+   "repository": "github.com/hypequery/hypequery"
+  },
+  {
+   "registry": "npm",
+   "name": "dsh-mcp-connector",
+   "repository": "github.com/duhu2000/dsh-mcp-connector"
+  },
+  {
+   "registry": "npm",
+   "name": "@mantine/mcp-server",
+   "repository": "github.com/mantinedev/mantine"
+  },
+  {
+   "registry": "npm",
+   "name": "@ironbee-ai/devtools",
+   "repository": "github.com/ironbee-ai/ironbee-devtools"
+  },
+  {
+   "registry": "npm",
+   "name": "@pinecone-database/mcp",
+   "repository": "github.com/pinecone-io/pinecone-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@tinycloud/mcp",
+   "repository": "github.com/tinycloudlabs/js-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@primeuix/mcp",
+   "repository": "github.com/primefaces/primeuix-nextchapter"
+  },
+  {
+   "registry": "npm",
+   "name": "@knip/mcp",
+   "repository": "github.com/webpro-nl/knip"
+  },
+  {
+   "registry": "npm",
+   "name": "@typia/mcp",
+   "repository": "github.com/samchon/typia"
+  },
+  {
+   "registry": "npm",
+   "name": "@atlassian-dc-mcp/jira",
+   "repository": "github.com/b1ff/atlassian-dc-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@arizeai/openinference-instrumentation-mcp",
+   "repository": "github.com/arize-ai/openinference"
+  },
+  {
+   "registry": "npm",
+   "name": "@primeng/mcp",
+   "repository": "github.com/primefaces/primeng-nextchapter"
+  },
+  {
+   "registry": "npm",
+   "name": "elasticsearch-mcp",
+   "repository": "github.com/rajwardhanshinde/elk-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@hasna/connectors",
+   "repository": "github.com/hasna/apps"
+  },
+  {
+   "registry": "npm",
+   "name": "@aashari/mcp-server-atlassian-bitbucket",
+   "repository": "github.com/aashari/mcp-server-atlassian-bitbucket"
+  },
+  {
+   "registry": "npm",
+   "name": "@agimon-ai/po-mcp-proxy",
+   "repository": "github.com/agiflow/po"
+  },
+  {
+   "registry": "npm",
+   "name": "ffmpeg-skill",
+   "repository": "github.com/kajisho5/ffmpeg-skill"
+  },
+  {
+   "registry": "npm",
+   "name": "@21st-dev/cli",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@agimon-ai/po-browse-tool",
+   "repository": "github.com/agiflow/po"
+  },
+  {
+   "registry": "npm",
+   "name": "leadsradar-agent",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@aashari/mcp-server-atlassian-confluence",
+   "repository": "github.com/aashari/mcp-server-atlassian-confluence"
+  },
+  {
+   "registry": "npm",
+   "name": "aiterm-mcp",
+   "repository": "github.com/kitepon/aiterm-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "stitchkit",
+   "repository": "github.com/max-listov/stitchkit"
+  },
+  {
+   "registry": "npm",
+   "name": "@taiga-ui/mcp",
+   "repository": "github.com/taiga-family/taiga-ui-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@qase/mcp-server",
+   "repository": "github.com/qase-tms/qase-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@trailhq/trail-code",
+   "repository": "github.com/trailhq/trail-code"
+  },
+  {
+   "registry": "npm",
+   "name": "@florentine-ai/mcp",
+   "repository": "github.com/florentine-ai/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@maildev/mcp",
+   "repository": "github.com/maildev/maildev"
+  },
+  {
+   "registry": "npm",
+   "name": "@nexus2520/bitbucket-mcp-server",
+   "repository": "github.com/pdogra1299/bitbucket-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@agimon-ai/po-style-system-tooling",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@agimon-ai/po-mcp",
+   "repository": "github.com/agiflow/po"
+  },
+  {
+   "registry": "npm",
+   "name": "@bilig/headless",
+   "repository": "github.com/proompteng/bilig"
+  },
+  {
+   "registry": "npm",
+   "name": "@amplitude/mcp-analytics",
+   "repository": "github.com/amplitude/amplitude-mcp-analytics-node"
+  },
+  {
+   "registry": "npm",
+   "name": "@alcyone-labs/modelcontextprotocol-sdk",
+   "repository": "github.com/alcyone-labs/mcp-typescript-sdk"
+  },
+  {
+   "registry": "npm",
+   "name": "@elgato/mcp-server",
+   "repository": "github.com/elgatosf/elgato-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@claude-flow/mcp",
+   "repository": "github.com/ruvnet/ruflo"
+  },
+  {
+   "registry": "npm",
+   "name": "davinci-resolve-mcp",
+   "repository": "github.com/samuelgursky/davinci-resolve-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "@heroui/react-mcp",
+   "repository": "github.com/heroui-inc/heroui-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "ag-mcp",
+   "repository": null
+  },
+  {
+   "registry": "npm",
+   "name": "@mcp-use/client",
+   "repository": "github.com/mcp-use/mcp-use"
+  },
+  {
+   "registry": "npm",
+   "name": "@procedures/mcp",
+   "repository": "github.com/mark1russell7/client"
+  },
+  {
+   "registry": "npm",
+   "name": "docusaurus-plugin-mcp-server",
+   "repository": "github.com/scalvert/docusaurus-plugin-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@procedures/mcp-server",
+   "repository": "github.com/mark1russell7/client"
+  },
+  {
+   "registry": "npm",
+   "name": "@kya-os/id",
+   "repository": "github.com/kya-os/id"
+  },
+  {
+   "registry": "npm",
+   "name": "@cap-js/mcp",
+   "repository": "github.com/cap-js/mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "gdharness",
+   "repository": "github.com/aureliolo/gdharness"
+  },
+  {
+   "registry": "npm",
+   "name": "hermoso",
+   "repository": "github.com/hermoso-ai/hermoso"
+  },
+  {
+   "registry": "npm",
+   "name": "@jpisnice/shadcn-ui-mcp-server",
+   "repository": "github.com/jpisnice/shadcn-ui-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@esaio/esa-mcp-server",
+   "repository": "github.com/esaio/esa-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "brilliant-directories-mcp",
+   "repository": "github.com/brilliantdirectories/brilliant-directories-mcp"
+  },
+  {
+   "registry": "npm",
+   "name": "harness-mcp-v2",
+   "repository": "github.com/harness/mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "obsidian-mcp-server",
+   "repository": "github.com/cyanheads/obsidian-mcp-server"
+  },
+  {
+   "registry": "npm",
+   "name": "@orpc/mcp",
+   "repository": "github.com/middleapi/orpc"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-12306",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-aact",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-abuseipdb",
+   "repository": "github.com/abuseipdb/abuseipdb-mcp"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-aidd",
+   "repository": "github.com/skydeckai/mcp-server-aidd"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-airoom",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-akshare",
+   "repository": "github.com/yourusername/mcp-server-akshare"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-altibase",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ancestry",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-apache-airflow",
+   "repository": "github.com/yangkyeongmo/mcp-server-apache-airflow"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-architect",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-atlassian",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-autocad-lisp-helper",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-b24",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-baidu-maps-enhanced",
+   "repository": "github.com/baidu-maps/mcp"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-bailian-video-synthesis",
+   "repository": "github.com/johnchen/mcp-server-bailian-video-synthesis"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-beehiiv",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-bigquery-fastmcp",
+   "repository": "github.com/fastmcp-me/mcp-server-bigquery"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-bitbucket",
+   "repository": "github.com/javimaligno/mcp-server-bitbucket"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-botak",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-brewfather",
+   "repository": "github.com/cacack/mcp-server-brewfather"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-builder",
+   "repository": "github.com/praveenc/mcp-server-builder"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-cal",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-canteen",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ccxt",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-changelog",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-cloudmonitor",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-codetree",
+   "repository": "github.com/thinkyminer/codetree"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-colab-exec",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-consignspace",
+   "repository": "github.com/evangan2023/mcp-server-consignspace"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-copilot",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-cronpilot",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-cxzja-music",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-dagster",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-database",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-datahub-shemreader",
+   "repository": "github.com/shemreader/mcp-server-datahub"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-decisions",
+   "repository": "github.com/roberton003/mcp-server-decisions"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-deepresearch-20250617",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-deepresearch-gqr-02",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-deepresearch-thy",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-deepresearch-yixing1684",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-demo-8",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-demo-lei",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-dev-kit",
+   "repository": "github.com/aiagentkarl/mcp-tools"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-dexscreener",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-digitalocean",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-dnspod",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-doctor",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-dongjunqaq",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-dpo",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-duckdb",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-edgar",
+   "repository": "github.com/sudiptohaldar/mcp_server_edgar"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-email",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-epanet",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-evefleet",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-everything-wrong",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-excel-sql",
+   "repository": "github.com/ivan-loh/mcp-excel"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-fastmcp-me",
+   "repository": "github.com/fastmcp-me/mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-fetch",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-fetch-save",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-fetch2",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-fine-print",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-flyder",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-for-powershell",
+   "repository": "github.com/danielklecha/mcp-server-for-powershell"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-forge",
+   "repository": "github.com/manasvardhan/mcp-forge"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-fujian",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-gac",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-gaode-sse-thy",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-gaode-thy-sse-2",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-gcodeclean",
+   "repository": "github.com/ivan-loh/mcp-server-gcodeclean"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-gelato",
+   "repository": "github.com/madzarmaksim/mcp-server-gelato"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-get-weather-0518",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-git",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-glk",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-google-patents",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-googlesearch",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-grist",
+   "repository": "github.com/nic01asfr/mcp-server-grist"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-hacker-news",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-hatena-weekly",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-helm",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-home-assistant",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-hyperplexity",
+   "repository": "github.com/eliyahuai/mcp-server-hyperplexity"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-image-upload",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-inject-bender",
+   "repository": "github.com/jaspertvdm/mcp-inject-bender"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-invoicepilot",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-iterm2",
+   "repository": "github.com/r6e/mcp-server-iterm2"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-jetour0094766-deepresearch",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-jisuanqi",
+   "repository": "github.com/yourusername/mcp-server-jisuanqi"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-k8s",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-kalshi",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-kit",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ladybug",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-lark-docx",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-law-recognition",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-linkedin-zero",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-llmling",
+   "repository": "https://app.codecov.io/gh/phil65/mcp-server-llmling"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-lvmsm",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-make",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-mariadb",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-math",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-maven",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-medium",
+   "repository": "github.com/afikrim/medium-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-memos",
+   "repository": "github.com/ryojerryyu/mcp-server-memos-py"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-metasearch",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-mikrotik",
+   "repository": "github.com/wiresage/mikrotik-mcp"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-mm1",
+   "repository": "github.com/yourusername/mcp-server-mm1"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-monday",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-moralis-bacar",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-mql5",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-mteam",
+   "repository": "github.com/07freedom/mcp-server-mteam"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-my-lark-doc",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-nbotbb",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-nmap",
+   "repository": "github.com/daedalus/mcp-server-nmap"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-notmuch",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ns-bridge",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-obsidian-omnisearch",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-odoo",
+   "repository": "github.com/ivnvxd/mcp-server-odoo"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ogp",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-omi",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-openai-bridge",
+   "repository": "github.com/jaspertvdm/mcp-server-openai-bridge"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-openmetadata",
+   "repository": "github.com/yangkyeongmo/mcp-server-openmetadata"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-oracle",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ozon-seller",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-pak",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-pdf-to-markdown",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-perplexity",
+   "repository": "github.com/tanigami/mcp-server-perplexity"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-plaid",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-poc-rahmac",
+   "repository": "github.com/rahmac/mcp_poc"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-postgres",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-privatedns",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-project",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-proxmox",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-pubtator3",
+   "repository": "github.com/qingyuanfl/mcp-server-pubtator3"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-qdrant",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-qdrant-memory",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-qdrant-pro",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-qnap-qvs",
+   "repository": "github.com/arnstarn/mcp-server-qnap-qvs"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-r4j",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-rag",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ray",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-reddit",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-relay",
+   "repository": "github.com/mhcoen/mcp-relay"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-repairworld",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-restart",
+   "repository": "github.com/non-dirty/mcp-server-restart"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-roboflow",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-s3",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-saxo-openapi",
+   "repository": "github.com/nohikomiso/mcp-server-saxo-openapi"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-schedule-manager-new",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-sdlxliff",
+   "repository": "github.com/eugeneant/mcp-server-sdlxliff"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-selenium",
+   "repository": "github.com/phungxuananh/selenium-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-sensory",
+   "repository": "github.com/jaspertvdm/mcp-server-sensory"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-servicenow",
+   "repository": "github.com/jschuller/mcp-server-servicenow"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-shield",
+   "repository": "github.com/trihedron1240/mcp-server-shield"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-siglent-sdm3045x",
+   "repository": "github.com/shaag7967/mcp-server-siglent-sdm3045x"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-site-search",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-sms",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-solotodo",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-sparql-cert",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-spidy",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-splunk-oncall",
+   "repository": "github.com/arnstarn/mcp-server-splunk-oncall"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-spreadsheet",
+   "repository": "github.com/marekrost/mcp-server-spreadsheet"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-sqlite3",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ssh-exec",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-stat",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-stdio",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-subindex",
+   "repository": "github.com/eliyahuai/mcp-server-subindex"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-svn",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-tapd",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-taxcode",
+   "repository": "github.com/christianclaudio/mcp-server-taxcode"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-tb-project-stat-2",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-telegram-bot",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-tester",
+   "repository": "github.com/stgmt/mcp-server-tester-python"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-the-dpo",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-threatbook",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-tibet-core",
+   "repository": "github.com/jaspertvdm/tibet-core"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-time",
+   "repository": "github.com/modelcontextprotocol/servers"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-tke",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-toolhouse",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-trading212",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-trello",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-tuya",
+   "repository": "github.com/juanmartinsantos/mcp-server-tuya"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-unipile",
+   "repository": "github.com/sundeepg98/mcp-server-unipile"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-vdb",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-vefaas-function",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-vikingdb-fastmcp",
+   "repository": "github.com/fastmcp-me/vikingdb-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-vyos",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-waitlistkit",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-weather",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-weather-cjshen",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-weather-lei",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-weather-yumi",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-websearch",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-weibo",
+   "repository": "github.com/qinyuanpei/mcp-server-weibo"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-wikijs",
+   "repository": "github.com/margus/wikijs-mcp"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-wlzdgk",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-x",
+   "repository": "github.com/afikrim/x-mcp-server"
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-xigualaoshi",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-yandex-direct",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-yfinance",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-zap",
+   "repository": null
+  },
+  {
+   "registry": "pypi",
+   "name": "mcp-server-ziwei",
+   "repository": null
+  }
+ ]
+}

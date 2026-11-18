@@ -98,3 +98,27 @@ Artifacts written here: `result.json` (registry pass), `cross_registry.json`
 (per-name comparison), `multi_publisher.json`, `different_owner.json`.
 `servers.json` and `servers.partial.json` are gitignored: tens of MB and
 regenerable.
+
+## Result 3 - how often is the repository even published? (2026-11-18)
+
+`repo_coverage.py` asks each registry for the repository behind a package, without
+downloading or hashing anything. 200 candidates per ecosystem:
+
+| ecosystem | candidates | with a repository | rate |
+|---|---|---|---|
+| npm (`enumerate_top`) | 200 | 188 | **94.0%** |
+| PyPI (`mcp-server-*`, cached simple index, 200 spread across the alphabet) | 200 | 65 | **32.5%** |
+
+The asymmetry is the finding, and it is a data gap, not an extractor bug: spot
+checks of the misses (`mcp-server-12306`, `mcp-server-aact`) return an empty
+`project_urls` **and** a null `home_page`. Those packages publish no repository
+anywhere in their metadata.
+
+Consequence for the identity layer: a repository link can cover ~94% of npm MCP
+packages and only ~33% of PyPI ones. For the other two thirds of PyPI, no
+repository-based claim can ever be issued - "no repository" is UNKNOWN, so those
+components stay outside identity enforcement until a different link exists
+(maintainer identity, tool-surface fingerprint, or PyPI provenance attestations).
+
+Also in this sample: 253 records with a repository formed 218 clusters, 13 of them
+monorepos, 1 cross-registry, 0 name collisions, 0 repo changes.
