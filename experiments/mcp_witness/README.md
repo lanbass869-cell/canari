@@ -106,6 +106,22 @@ cannot mint - and most servers actually use it.
 > now agree. The 2.24 figure was correct all along - it was the artifact that was
 > stale.
 
+### Population warning (2026-11-18)
+
+**This sample contains no `io.github.*` entries.** It was drawn from the first pages of a
+name-ordered listing, so only reverse-DNS namespaces (`ac.*`, `ad.*`, `ai.*`, …) appear. That
+matters for the collapse factor above:
+
+- for `io.github.<user>` namespaces the registry verifies account ownership *through GitHub*,
+  and the repository witness is also GitHub — the two records share one authority;
+- those entries are where the collapse happens, and there are **17,255** of them in the full
+  registry (38.9% of all entries with a remote endpoint), 13,585 of which also declare a
+  repository;
+- so `beta = 0.000` here is a property of *reverse-DNS namespaces only*, not of MCP as a whole.
+
+A full-registry accounting of the shared-root case is in
+`workdocs/canari/paper/witness-floor-draft-20261118.md` (§3).
+
 ## Limits
 
 - One registry snapshot, one day. The registry grows fast; the 84% is a point
