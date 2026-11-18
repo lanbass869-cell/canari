@@ -72,6 +72,11 @@ and `ETARGET notarget`, pip `No matching distribution`. The one that did not fai
 PEP 440 case discussed in §2 — i.e. it is evidence for the correction, not against the
 finding.
 
+**Re-check three days later (2026-11-19).** Re-resolving all 274 references with the
+corrected checker gives **267 still broken, 7 "recovered"** — and all seven are exactly the
+PEP 440 cases from §2. In other words **zero upstream repairs in three days**; the only
+movement is our own measurement correction. These are not transient blips.
+
 ## 4. RQ2 — how long has it been dead?
 
 Joining the 274 references back to the registry snapshot yields **311 entries** (a
@@ -132,6 +137,8 @@ history intact. Deletion is a separate decision, because revocation across distr
   estimate should not be read as an exact population rate.
 - **Upper bound on age.** §4.
 - **Package-level downloads.** §5.
+- **Short re-check window.** §3 re-checks three days after the snapshot, which shows these
+  are not transient but cannot show the annual inflow; a second full audit is scheduled.
 - **Snapshot drift.** The registry grows; 274 (2026-11-16) became 275 (2026-11-17) on the
   same definition. Every figure here is tied to its snapshot.
 - **Normalisation.** One measurement defect was found and corrected during the study; the

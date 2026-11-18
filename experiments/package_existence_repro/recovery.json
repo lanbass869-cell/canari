@@ -1,0 +1,43 @@
+{
+ "checked": 274,
+ "still_broken": 267,
+ "recovered": 7,
+ "unknown": 0,
+ "recovered_list": [
+  {
+   "registry": "pypi",
+   "identifier": "db-compare-mcp",
+   "version": "v0.1.1"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "innoday",
+   "version": "0.112.2-beta"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "local-faiss-mcp",
+   "version": "0.2.0-rc.3"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "msmcp-template",
+   "version": "0.0.12-alpha.5932986"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "prefect-mcp",
+   "version": "0.0.1-beta.13"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "stockfish-mcp",
+   "version": "v1.0.2"
+  },
+  {
+   "registry": "pypi",
+   "identifier": "toon-parse-mcp",
+   "version": "1.0.4-beta"
+  }
+ ]
+}
