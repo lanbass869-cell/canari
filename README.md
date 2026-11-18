@@ -283,6 +283,30 @@ received the live component count):
 ```
 
 
+### 6. Ask whether two names are the same component
+
+A name is not an identity: 134 bare names exist on both npm and PyPI inside one
+MCP Registry snapshot, and 33 of those are unrelated projects under different
+GitHub owners (`experiments/identity_conflict/`). The repository a package is
+published from is the cheap disambiguator:
+
+```
+canari-identity check npm:ato-mcp pypi:ato-mcp
+# npm:ato-mcp vs pypi:ato-mcp: DIFFERENT
+#   github.com/william-laverty/ato-mcp and github.com/bigred97/ato-mcp are...
+
+canari-identity check npm:aether-browser pypi:aether-browser
+# SAME - both sides publish from github.com/aetherai3/agent-browser
+
+# exit 0 same | 1 different | 2 unknown (no repository URL, or lookup failed)
+```
+
+`unknown` is never reported as `same`: absence of a repository URL on either
+side fails the comparison rather than passing it. This is the pair verdict only;
+it does not index the ecosystem. ecosyste.ms already serves repo -> packages in
+bulk, and Canari does not rebuild that index - it produces a verdict that can be
+signed, kept in the append-only log and enforced at install time.
+
 ## Multi-registry coverage
 
 | Registry | Source | What we check | What we inherit |

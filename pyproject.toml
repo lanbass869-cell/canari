@@ -35,6 +35,7 @@ canari-mcp = "canari.mcp_server:main"
 canari-guard = "canari.guard:main"
 canari-mcp-gate = "canari.mcp_gate:main"
 canari-registry-audit = "canari.registry_audit:main"
+canari-identity = "canari.identity:main"
 canari-ingest-sarif = "canari.sarif_ingest:main"
 canari-log = "canari.log_cli:main"
 
