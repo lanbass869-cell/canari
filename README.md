@@ -449,6 +449,19 @@ bytes the user is about to install).
   L3.1 static scan and refuses a record that only relays someone else's verdict.
 - L2.6 verdicts are **relative to the recorded comparison corpus**. Comparing two
   attestations that used different corpora is not a comparison of the packages.
+  - **Identity coverage is measured, not assumed (2026-11-18).** Identity links
+    need a publishing repository. Of 200 candidates per ecosystem, npm publishes
+    one for **188 (94.0%)**; PyPI only **65 (32.5%)**, and PyPI Trusted Publishing
+    provenance (`files[].provenance` -> `publisher.repository`) recovers another
+    **15 of the 135** misses, for **80/200 (40.0%)**. The remaining PyPI packages
+    publish neither a repository URL nor an attestation, so no repository-based
+    identity claim can ever cover them. Identity enforcement is therefore strong
+    on npm and partial on PyPI - it is not a universal identity layer.
+  - **We do not execute packages to read their tool surface.** `tools/list` would
+    identify a server independently of its repository, and it is the obvious way
+    to cover the PyPI gap - but it requires running untrusted code, which this
+    project's META-ONLY rule forbids. That coverage is a deliberate non-goal, not
+    an oversight.
 
 ## The threat model this addresses
 
