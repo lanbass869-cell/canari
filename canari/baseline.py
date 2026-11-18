@@ -581,6 +581,31 @@ if __name__ == "__main__":
 
 
 
+def _prev_from(state, registry, name):
+    """Previous state entry for (registry, name). Registry-qualified key first,
+    plain-name fallback keeps continuity with pre-qualification state files.
+
+    ★2026-11-18: the fallback used to be unconditional, so a plain-name entry
+    written by a *different* registry became the "previous snapshot" for this
+    one. Measured in experiments/identity_conflict: 134 bare names are used by
+    both npm and PyPI inside one registry snapshot, and 33 of those are
+    unrelated projects. Comparing maintainers across them would report a rename
+    that never happened (or hide one). A plain entry is now accepted only when
+    it does not claim a different registry; entries written before the registry
+    stamp existed keep the old behaviour.
+    """
+    exact = state.get_component("%s:%s" % (registry, name))
+    if exact is not None:
+        return exact
+    legacy = state.get_component(name)
+    if legacy is None:
+        return None
+    claimed = (legacy.get("meta") or {}).get("registry")
+    if claimed and claimed != registry:
+        return None
+    return legacy
+
+
 def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
               signer=None, pub_key=None, out_dir=None, dsh_names=None):
     """Multi-registry scan: npm + PyPI + MCP Registry + dsh.so -> unified attestations + feed."""
@@ -611,10 +636,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
     state = StateStore(os.path.join(out_dir, "state.json"))
 
     def _prev(registry, name):
-        """Previous state entry for (registry, name). Registry-qualified key first,
-        plain-name fallback keeps continuity with pre-qualification state files."""
-        return (state.get_component("%s:%s" % (registry, name))
-                or state.get_component(name))
+        return _prev_from(state, registry, name)
 
     dead = DeadLetterLog(os.path.join(out_dir, "dead_letters.json"))
 
@@ -1276,8 +1298,16 @@ def deep_scan_with_metadata(npm_deep=200, pypi_deep=100, npm_meta=5000,
             # keep the deep-scan sha256, only update version
             existing["version"] = r.get("version", "")
         else:
-            state.set_component(r["name"], r.get("version", ""), "", "",
-                                meta={"tier": "meta"})
+            # Stamp the registry and never overwrite another registry's plain
+            # entry with this one (see _prev for why the collision matters).
+            reg = r.get("registry") or ""
+            slot = r["name"]
+            holder = state.get_component(slot)
+            holder_reg = ((holder or {}).get("meta") or {}).get("registry")
+            if holder is not None and holder_reg and holder_reg != reg:
+                slot = "%s:%s" % (reg, r["name"])
+            state.set_component(slot, r.get("version", ""), "", "",
+                                meta={"tier": "meta", "registry": reg})
     state.save()
     lock.__exit__()
 

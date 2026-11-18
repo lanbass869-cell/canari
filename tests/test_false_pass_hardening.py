@@ -152,3 +152,50 @@ class TestEmptyCorpusIsSkipNotPass:
         assert row["verdict"] == "pass-with-findings"
         assert row["comparison_corpus"]["size"] == 2
 
+
+class TestPreviousSnapshotIsRegistryAware:
+    """A plain-name state entry from another registry is not this one's baseline.
+
+    134 bare names appear on both npm and PyPI in one MCP Registry snapshot and
+    33 of those are unrelated projects (experiments/identity_conflict). Letting
+    the meta tier write plain names and the reader fall back unconditionally
+    meant an npm package could be compared against a PyPI package with the same
+    name - a maintainer "change" that never happened, or a real one hidden.
+    """
+
+    def test_qualified_entry_wins(self):
+        from canari.baseline import _prev_from
+        from canari.state import StateStore
+        st = StateStore.__new__(StateStore)
+        st._data = {"components": {
+            "npm:foo": {"version": "1", "sha256": "a"},
+            "foo": {"version": "9", "sha256": "b"},
+        }}
+        assert _prev_from(st, "npm", "foo")["version"] == "1"
+
+    def test_plain_entry_from_other_registry_is_ignored(self):
+        from canari.baseline import _prev_from
+        from canari.state import StateStore
+        st = StateStore.__new__(StateStore)
+        st._data = {"components": {
+            "foo": {"version": "2", "sha256": "",
+                    "meta": {"tier": "meta", "registry": "pypi"}},
+        }}
+        assert _prev_from(st, "npm", "foo") is None
+
+    def test_plain_entry_from_same_registry_is_used(self):
+        from canari.baseline import _prev_from
+        from canari.state import StateStore
+        st = StateStore.__new__(StateStore)
+        st._data = {"components": {
+            "foo": {"version": "2", "sha256": "",
+                    "meta": {"tier": "meta", "registry": "npm"}},
+        }}
+        assert _prev_from(st, "npm", "foo")["version"] == "2"
+
+    def test_unstamped_legacy_entry_keeps_working(self):
+        from canari.baseline import _prev_from
+        from canari.state import StateStore
+        st = StateStore.__new__(StateStore)
+        st._data = {"components": {"foo": {"version": "3", "sha256": "c"}}}
+        assert _prev_from(st, "npm", "foo")["version"] == "3"

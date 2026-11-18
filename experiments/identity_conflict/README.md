@@ -73,8 +73,15 @@ where the two repositories are not even under the same account.
 **Shows**: a bare name is not an identity. 33 unambiguous collisions exist in a
 single snapshot of one registry's own package list, and 371 identifiers are
 claimed from more than one publisher namespace. Any system that keys components
-by name alone (including Canari's own `StateStore` legacy plain-name fallback in
-`baseline._prev`) is liable to mix two components.
+by name alone is liable to mix two components.
+
+This experiment found one such bug in Canari itself. The metadata tier wrote
+`StateStore` entries under the bare name, and `baseline._prev()` fell back to a
+plain entry unconditionally, so an npm package could be compared against a PyPI
+package with the same name. Fixed in the same change: the metadata tier stamps
+`meta.registry` and `baseline._prev_from()` refuses a plain entry that claims a
+different registry (`tests/test_false_pass_hardening.py`,
+`TestPreviousSnapshotIsRegistryAware`).
 
 **Does not show**: which claimant is legitimate, that any of these is malicious,
 or how often a *user* is affected. This is a supply-chain ambiguity measurement,
