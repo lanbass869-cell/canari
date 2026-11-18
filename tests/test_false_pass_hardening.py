@@ -121,3 +121,34 @@ class TestGuardRecognisesLaunchers:
 
     def test_unrecognised_still_returns_empty(self):
         assert parse_install(["node", "server.js"]) == []
+
+
+class TestEmptyCorpusIsSkipNotPass:
+    """A similarity verdict needs a corpus. No corpus -> skip, never pass."""
+
+    def test_typosquat_returns_none_on_empty_corpus(self):
+        from canari.typosquat import check_typosquatting
+        assert check_typosquatting("mcp-server-fetch", set()) is None
+
+    def test_empty_corpus_becomes_skip(self):
+        from canari.baseline import _typosquat_row
+        row = _typosquat_row(None, set())
+        assert row["verdict"] == "skip"
+        assert row["id"] == "L2.6_TYPOSQUATTING"
+        assert "corpus" in row["evidence_ref"]
+
+    def test_non_empty_corpus_with_no_finding_is_pass(self):
+        from canari.baseline import _typosquat_row
+        row = _typosquat_row(None, {"pkg-a", "pkg-b"})
+        assert row["verdict"] == "pass"
+
+    def test_finding_is_kept_and_corpus_attached(self):
+        from canari.baseline import _typosquat_row
+        corpus = {"registry": "npm", "size": 2, "digest": "sha256:aa"}
+        found = {"id": "L2.6_TYPOSQUATTING", "verdict": "pass-with-findings",
+                 "tool": "canari-typosquat/0.1",
+                 "evidence_ref": "distance 1 from pkg-a"}
+        row = _typosquat_row(found, {"pkg-a", "pkg-b"}, corpus)
+        assert row["verdict"] == "pass-with-findings"
+        assert row["comparison_corpus"]["size"] == 2
+

@@ -182,6 +182,29 @@ def _cadence_rows(cd, clean_ref):
 _UNRESOLVED_CHECK_VERDICTS = ("unsupported", "error", "skip")
 
 
+
+def _typosquat_row(row, trusted, corpus=None):
+    """Normalise one typosquat result into an attestation check.
+
+    ★2026-11-18: the call sites used `row or {"verdict": "pass"}`. But
+    `check_typosquatting` returns None for two different things -- "compared and
+    found nothing" and "there was no corpus to compare against" -- so an empty
+    corpus was recorded as a clean pass. No corpus means no judgement, so that
+    case is a skip. The current loops happen to skip the empty-corpus case (the
+    loop body does not run), which made the bug unreachable by accident; this
+    function makes it unreachable by contract.
+    """
+    if row is None and not trusted:
+        row = {"id": "L2.6_TYPOSQUATTING", "verdict": "skip",
+               "tool": "canari-typosquat/0.1",
+               "evidence_ref": "empty comparison corpus; no similarity judgement made"}
+    row = row or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
+                  "tool": "canari-typosquat/0.1",
+                  "evidence_ref": "no close match to another component in this scan"}
+    if corpus:
+        row["comparison_corpus"] = corpus
+    return row
+
 def _record_verdict(checks, sha):
     """Derive the record verdict from the checks that actually ran.
 
@@ -741,12 +764,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                 if _npm_mutual_err is not None:
                     raise RuntimeError(_npm_mutual_err)
                 _tq = _tq_check(name, _npm_trusted, mutual_pairs=_npm_mutual)
-                _row = _tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
-                               "tool": "canari-typosquat/0.1",
-                               "evidence_ref": "no close match to another component in this scan"}
-                if _npm_corpus:
-                    _row["comparison_corpus"] = _npm_corpus
-                checks.append(_row)
+                checks.append(_typosquat_row(_tq, _npm_trusted, _npm_corpus))
             except Exception as _te:
                 _row = {"id": "L2.6_TYPOSQUATTING", "verdict": "error",
                         "tool": "canari-typosquat/0.1",
@@ -893,12 +911,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             tq = _tq_check(name, _pypi_trusted,
                            mutual_pairs=_pypi_mutual,
                            age_rank=_pypi_age)
-            _row = tq or {"id": "L2.6_TYPOSQUATTING", "verdict": "pass",
-                          "tool": "canari-typosquat/0.1",
-                          "evidence_ref": "no close match to another component in this scan"}
-            if _pypi_corpus:
-                _row["comparison_corpus"] = _pypi_corpus
-            checks.append(_row)
+            checks.append(_typosquat_row(tq, _pypi_trusted, _pypi_corpus))
         except Exception as _te:
             _row = {"id": "L2.6_TYPOSQUATTING", "verdict": "error",
                     "tool": "canari-typosquat/0.1",
