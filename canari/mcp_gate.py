@@ -153,6 +153,15 @@ def _proxy(child_argv):
     return code
 
 
+def _unknown_decision(on_unknown):
+    """Map --on-unknown to a decision for anything the gate cannot evaluate."""
+    if on_unknown == "block":
+        return BLOCK
+    if on_unknown == "review":
+        return REVIEW
+    return ALLOW
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(
         prog="canari-mcp-gate",
@@ -192,15 +201,30 @@ def main(argv=None):
         res = check_component(a.store, registry, name, version=version,
                               key_path=a.key, policy=a.policy)
         if not res["found"]:
-            if a.on_unknown == "block":
-                decision, reasons = BLOCK, res["reasons"]
-            elif a.on_unknown == "review" and not a.allow_review:
-                decision, reasons = REVIEW, res["reasons"]
+            decision = _unknown_decision(a.on_unknown)
+            if decision != ALLOW:
+                reasons = res["reasons"]
         else:
             decision = res["decision"]
             reasons = res["reasons"]
-    elif not os.path.isdir(a.store):
-        sys.stderr.write("canari-mcp-gate: store not found: %s (running anyway)\n" % a.store)
+    else:
+        # ★2026-11-18: --on-unknown used to be consulted only when a lookup ran
+        # and returned "not found". A command whose identity cannot be derived
+        # (python -m x, node ./server.js) and a missing store never reached that
+        # branch, so --on-unknown=block silently allowed exactly the case it is
+        # documented to refuse. Both are UNKNOWN now.
+        problems = []
+        if not (registry and name):
+            problems.append("cannot identify a registry component from the launch command")
+        if not os.path.isdir(a.store):
+            problems.append("store not found: %s" % a.store)
+        why = "; ".join(problems)
+        decision = _unknown_decision(a.on_unknown)
+        if decision == ALLOW:
+            sys.stderr.write("canari-mcp-gate: %s (running anyway; "
+                             "use --on-unknown=block to refuse)\n" % why)
+        else:
+            reasons = [why]
 
     subject = "%s:%s%s" % (registry, name, ("@" + version) if version else "") if (registry and name) else "<unidentified>"
     if not a.quiet:

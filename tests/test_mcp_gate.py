@@ -240,6 +240,43 @@ class TestMainInProcess:
                         "--on-unknown", "review", "--", "node", "s.js"]) == 6
         assert "ran" not in seen
 
+    def test_unidentifiable_command_blocked_when_strict(self, tmp_path, monkeypatch):
+        """--on-unknown=block must cover commands with no derivable identity.
+
+        Regression 2026-11-18: the flag was only consulted after a lookup ran and
+        answered "not found". `node s.js` never reaches the lookup, so the strict
+        posture silently allowed it.
+        """
+        seen = self._setup(monkeypatch)
+        err = io.StringIO(); monkeypatch.setattr(mg.sys, "stderr", err)
+        assert mg.main(["--store", str(tmp_path), "--on-unknown", "block",
+                        "--", "node", "s.js"]) == 5
+        assert "ran" not in seen
+        assert "cannot identify" in err.getvalue()
+
+    def test_unidentifiable_command_review_when_asked(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch)
+        err = io.StringIO(); monkeypatch.setattr(mg.sys, "stderr", err)
+        assert mg.main(["--store", str(tmp_path), "--on-unknown", "review",
+                        "--", "node", "s.js"]) == 6
+        assert "ran" not in seen
+
+    def test_unidentifiable_command_warns_by_default(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch)
+        err = io.StringIO(); monkeypatch.setattr(mg.sys, "stderr", err)
+        assert mg.main(["--store", str(tmp_path), "--", "node", "s.js"]) == 0
+        assert "ran" in seen
+        assert "use --on-unknown=block" in err.getvalue()
+
+    def test_missing_store_blocked_when_strict(self, tmp_path, monkeypatch):
+        seen = self._setup(monkeypatch)
+        err = io.StringIO(); monkeypatch.setattr(mg.sys, "stderr", err)
+        missing = str(tmp_path / "nope")
+        assert mg.main(["--store", missing, "--on-unknown", "block",
+                        "--registry", "npm", "--name", "x", "--", "node", "s.js"]) == 5
+        assert "ran" not in seen
+        assert "store not found" in err.getvalue()
+
     def test_missing_store_warns_but_runs(self, tmp_path, monkeypatch):
         seen = self._setup(monkeypatch)
         missing = str(tmp_path / "nope")

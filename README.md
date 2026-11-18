@@ -3,7 +3,7 @@
 <!-- mcp-name: io.github.lanbass869-cell/canari -->
 
 [![CI](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml/badge.svg)](https://github.com/lanbass869-cell/canari/actions/workflows/ci.yml)
-![tests](https://img.shields.io/badge/tests-762%20passing-brightgreen)
+![tests](https://img.shields.io/badge/tests-889%20collected-brightgreen)
 ![coverage](https://img.shields.io/badge/coverage-86%25%20line%20%7C%2085%25%20branch-brightgreen)
 ![mutation](https://img.shields.io/badge/mutation%20kill-100%25%20(52%20mutants)-brightgreen)
 ![release](https://img.shields.io/github/v/release/lanbass869-cell/canari)
@@ -87,11 +87,13 @@ rewrite under its own key manufactures false assurance.
 
 ## Quality gates (enforced in CI)
 
+Measured on 2026-11-18 (local run, `python scripts/quality_gate.py`):
+
 | Gate | Threshold | Current |
 |---|---|---|
-| tests | green on 3.10/3.12/3.13 | 863 collected, 852 passing, 11 env-skip (10 network, 1 platform) |
+| tests | green on 3.10/3.12/3.13 | 889 collected, 878 passing, 11 env-skip (10 network, 1 platform) |
 | line coverage | >= 85% | 85.3% combined (CI gates on the combined figure) |
-| mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (47/47 killed + 2 equivalent, 3 skipped) |
+| mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (47 killed + 2 survivors classed equivalent, 3 skipped) |
 | live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
 
 Run them yourself before every push:
@@ -226,6 +228,43 @@ canari-guard -- pip install mcp-server-fetch==0.2.1
 ```
 
 The host is never patched - the guard sits in front of the install command.
+
+### 5. Gate a server before it starts: `canari-mcp-gate`
+
+`canari-mcp-gate` is a stdio wrapper. Put it where the MCP client's `command`
+used to be; it looks the component up in the signed ledger, then execs the real
+server and proxies the stream byte-for-byte.
+
+**Its default is fail-open, and that is a choice you should know you are making.**
+A component with no attestation, an unidentifiable command, or a missing store
+does not block: the wrapper prints a warning to stderr and runs the server anyway.
+A gate that refuses every server it has never seen gets uninstalled after one use.
+If you want the opposite posture, ask for it explicitly:
+
+```
+# strict: refuse anything not in the ledger
+canari-mcp-gate --store out --key out/public_key.json --on-unknown=block -- \
+    npx -y @modelcontextprotocol/server-filesystem /tmp
+
+# review: stop and make a human confirm (exit 6 unless --allow-review)
+canari-mcp-gate --store out --on-unknown=review -- npx -y some-server
+
+# default (allow): unknown components run with a warning
+canari-mcp-gate --store out -- npx -y some-server
+```
+
+| situation | default behaviour | with `--on-unknown=block` |
+|---|---|---|
+| ledger has a BLOCK verdict | blocked (exit 5) | blocked (exit 5) |
+| ledger has a REVIEW verdict | exit 6 unless `--allow-review` | same |
+| component not in the ledger | **runs**, warning on stderr | blocked (exit 5) |
+| command has no derivable registry identity | **runs** | blocked (exit 5) |
+| `--store` directory does not exist | **runs**, warning on stderr | blocked (exit 5) |
+
+Two things it cannot do: it is configuration-level (whoever edits the MCP config
+can remove the wrapper), and it gates *starting* a server, not what that server
+does afterwards. Client-specific setup, including a dsh profile that was tested
+end-to-end, is in [docs/integrations/cline.md](docs/integrations/cline.md).
 
 For DeepSeek Harness (dsh), add this to the profile's `cordis.patch.yml`
 (verified end-to-end on dsh: the model called `mcp__canari__store_summary` and
