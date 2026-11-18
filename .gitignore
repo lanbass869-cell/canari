@@ -20,3 +20,7 @@ signing_key.pem
 
 # cross-process locks (canari.state.FileLock)
 docs/log/*.lock
+
+# resumable fetch checkpoints (tens of MB, regenerable)
+servers.partial.json
+experiments/*/servers.partial.json

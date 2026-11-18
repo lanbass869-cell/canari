@@ -111,6 +111,27 @@ _ARTIFACT_EVIDENCE_IDS = frozenset({
 })
 
 
+_BYTE_EVIDENCE_IDS = frozenset({
+    "L2.1_ARTIFACT_HASH",
+    "L3.1_STATIC_SCAN",
+})
+
+
+def has_byte_evidence(att):
+    """True only when *we* hashed or scanned the artifact ourselves.
+
+    `has_artifact_evidence()` also accepts L2.7 / L2.8, which are dsh.so's own
+    install/security conclusions that Canari records rather than re-derives --
+    the right call for an install decision (1157 dsh records carry nothing else),
+    but not the same claim as "we fetched these bytes". Policies that need the
+    stronger claim ask for this predicate instead.
+    """
+    for c in (att or {}).get("checks") or []:
+        if c.get("id") in _BYTE_EVIDENCE_IDS and c.get("verdict") in ("pass", "pass-with-findings"):
+            return True
+    return False
+
+
 def has_artifact_evidence(att):
     """True if at least one check actually assessed the artifact (not just its name).
 

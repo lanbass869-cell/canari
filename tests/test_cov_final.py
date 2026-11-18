@@ -86,6 +86,36 @@ class TestGatePoliciesMore:
         d = evaluate_gate(bp, key_path=kp, policy_name="release-gate")
         assert d.decision in ("REVIEW", "BLOCK")
 
+    def test_artifact_only_rejects_relayed_upstream_conclusion(self, tmp_path):
+        """L2.7/L2.8 are dsh.so's conclusions, not bytes we hashed ourselves."""
+        from canari.gate import evaluate_gate
+        relayed = [{"id": "L1.1_REGISTRY_PRESENT", "verdict": "pass", "tool": "t"},
+                   {"id": "L2.7_PLUGIN_SECURITY_REF", "verdict": "pass", "tool": "t"}]
+        bp, kp = self._bundle(tmp_path, checks=relayed)
+        # default posture still accepts a relayed authoritative conclusion
+        assert evaluate_gate(bp, key_path=kp).decision == "ALLOW"
+        # artifact-only demands that we fetched and hashed the bytes
+        d = evaluate_gate(bp, key_path=kp, policy_name="artifact-only")
+        assert d.decision == "BLOCK"
+        assert any("byte-level" in r for r in d.reasons)
+
+    def test_artifact_only_accepts_own_hash(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp = self._bundle(tmp_path)   # default checks include L2.1 hash
+        assert evaluate_gate(bp, key_path=kp, policy_name="artifact-only").decision == "ALLOW"
+
+    def test_require_artifact_bytes_is_a_bool_in_policy_files(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp = self._bundle(tmp_path)
+        pf = tmp_path / "p.json"
+        pf.write_text('{"name": "x", "require_artifact_bytes": "yes"}', encoding="utf-8")
+        try:
+            evaluate_gate(bp, key_path=kp, policy_file=str(pf))
+        except ValueError as e:
+            assert "require_artifact_bytes" in str(e)
+        else:
+            raise AssertionError("a truthy string must not enable a strict policy")
+
     def test_allowed_registries(self, tmp_path):
         from canari.gate import evaluate_gate
         bp, kp = self._bundle(tmp_path)

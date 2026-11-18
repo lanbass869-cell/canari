@@ -354,6 +354,12 @@ bytes the user is about to install).
 - M0/M1 covers meta-level checks (L1-L2); behavioral checks (L3+) are M1+
 - Scan coverage is limited to what registries expose publicly
 - `expires_at` is 7 days - attestations go stale, re-scan needed
+- **L2.7 / L2.8 are relayed, not re-derived.** They are dsh.so's install and
+  security conclusions that Canari records; they are not bytes we hashed. The
+  default policies accept them as evidence (otherwise 1,157 dsh records that
+  carry only an upstream conclusion would block), but the stronger claim is
+  available: `--policy artifact-only` requires our own L2.1 artifact hash or
+  L3.1 static scan and refuses a record that only relays someone else's verdict.
 - L2.6 verdicts are **relative to the recorded comparison corpus**. Comparing two
   attestations that used different corpora is not a comparison of the packages.
 

@@ -15,7 +15,7 @@ import json
 import os
 from dataclasses import dataclass, field
 
-from canari.schema import is_gate_passing
+from canari.schema import has_byte_evidence, is_gate_passing
 from canari.signing import verify_signed
 
 
@@ -41,6 +41,11 @@ class GatePolicy:
     # Optional list of finding kinds to always treat as blocking, e.g.
     # ["typosquatting", "metadata", "cadence"]; empty = no keyword blocking.
     block_finding_kinds: list = field(default_factory=list)
+    # ★2026-11-18: by default a relayed upstream conclusion (L2.7 / L2.8 from
+    # dsh.so) counts as evidence that the artifact was assessed. That is a
+    # weaker claim than "we fetched and hashed these bytes". Policies that need
+    # the stronger claim set this to True; the `artifact-only` builtin does.
+    require_artifact_bytes: bool = False
 
 
 BUILTIN_POLICIES = {
@@ -58,6 +63,13 @@ BUILTIN_POLICIES = {
         name="lax", require_fresh=False,
         require_key_valid=False, fail_on_error_check=False,
         review_findings=False,
+    ),
+    # artifact-only: a relayed upstream verdict is not enough; we must have
+    # hashed or scanned the bytes ourselves.
+    "artifact-only": GatePolicy(
+        name="artifact-only", require_fresh=True,
+        require_key_valid=True, fail_on_error_check=True,
+        require_artifact_bytes=True,
     ),
     # G1: paranoid = any trust-heuristic finding blocks outright
     "paranoid": GatePolicy(
@@ -94,7 +106,8 @@ def load_policy_file(path: str) -> dict:
     if out.get("block_finding_kinds") is not None and not isinstance(out["block_finding_kinds"], list):
         raise ValueError("block_finding_kinds must be a list")
     for bool_key in ("require_fresh", "require_key_valid", "require_native_provenance",
-                     "fail_on_error_check", "block_on_findings", "allow_findings"):
+                     "fail_on_error_check", "block_on_findings", "allow_findings",
+                     "require_artifact_bytes"):
         if bool_key in out and not isinstance(out[bool_key], bool):
             raise ValueError("%s must be a boolean" % bool_key)
     return out
@@ -249,6 +262,14 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     if not is_gate_passing(payload):
         decision = "BLOCK"
         reasons.append("verdict is %s (gate blocks)" % verdict)
+
+    if policy.require_artifact_bytes and not has_byte_evidence(payload):
+        if decision == "ALLOW":
+            decision = "BLOCK"
+        reasons.append(
+            "policy %s requires byte-level evidence (L2.1 artifact hash or L3.1 "
+            "static scan); this record only relays an upstream conclusion"
+            % policy.name)
 
     # Strict postures (strict / paranoid / release-gate) do not accept
     # pass-with-findings; the field is explicit so policy files can override it.
