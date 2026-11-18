@@ -89,12 +89,21 @@ rewrite under its own key manufactures false assurance.
 
 | Gate | Threshold | Current |
 |---|---|---|
-| tests | green on 3.10/3.12/3.13 | 762 passing (11 env-skip: 10 network + 1 platform) |
-| line coverage | >= 85% | 86.4% line, 84.6% branch (85.1% combined; CI gates on combined) |
+| tests | green on 3.10/3.12/3.13 | 863 collected, 852 passing, 11 env-skip (10 network, 1 platform) |
+| line coverage | >= 85% | 85.3% combined (CI gates on the combined figure) |
 | mutation kill rate | >= 90% (equivalent mutants excluded) | 100% (47/47 killed + 2 equivalent, 3 skipped) |
 | live-data audit | sampled attestations re-derive from npm/PyPI | 18/18 |
 
-Run them yourself: `python scripts/quality_gate.py`
+Run them yourself before every push:
+
+```
+python scripts/quality_gate.py
+```
+
+That single command runs **lint + tests + coverage + mutation**, which is the same
+set CI enforces. Running only `pytest tests` is not a substitute: it skips the
+coverage gate and the lint gate, and this repository once stayed red for nine
+consecutive commits that way.
 
 ## Quick start
 

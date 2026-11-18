@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 """quality_gate.py - the three quality thresholds as one command.
 
-1. test suite green
-2. line coverage >= 85%
-3. mutation kill rate >= 90% (equivalent mutants excluded)
+1. lint (ruff, the same rule set CI uses)
+2. test suite green
+3. line coverage >= 85%
+4. mutation kill rate >= 90% (equivalent mutants excluded)
+
+This mirrors every gate in .github/workflows/ci.yml. Run it before pushing:
+  python scripts/quality_gate.py
+
+Running only `pytest tests` is not enough -- it skips the coverage gate and the
+lint gate, which is how the repository once stayed red for nine commits.
 
 Exit code 0 only if all three pass; used by CI and by hand before a release.
 """
@@ -25,11 +32,18 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="quality-gate")
     ap.add_argument("--cov-min", type=float, default=85.0)
     ap.add_argument("--kill-min", type=float, default=90.0)
+    ap.add_argument("--skip-lint", action="store_true",
+                    help="skip the ruff gate (only if ruff is not installed)")
     ap.add_argument("--skip-mutation", action="store_true",
                     help="run tests+coverage only (CI matrix uses this for speed)")
     a = ap.parse_args(argv)
 
     failures = []
+
+    if not a.skip_lint:
+        rc = run([PY, "-m", "ruff", "check", ".", "--select", "E9,F63,F7,F82"])
+        if rc != 0:
+            failures.append("lint (rc=%d)" % rc)
 
     rc = run([PY, "-m", "pytest", "tests", "-q", "-p", "no:cacheprovider",
               "--cov=canari", "--cov-branch",
@@ -47,7 +61,7 @@ def main(argv=None):
     if failures:
         print("QUALITY GATE: FAIL -> %s" % "; ".join(failures))
         return 1
-    print("QUALITY GATE: PASS (coverage >= %.0f%%, kill rate >= %.0f%%)"
+    print("QUALITY GATE: PASS (lint, coverage >= %.0f%%, kill rate >= %.0f%%)"
           % (a.cov_min, a.kill_min if not a.skip_mutation else 0))
     return 0
 
