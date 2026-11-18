@@ -319,6 +319,17 @@ different repository over time - a transfer or a takeover, either way visible)
 and `name_collision` (the same bare name from different repositories in different
 ecosystems - legal, but the consumer needs to know).
 
+```
+canari-identity sign   --store out --key out/private_key.pem --out out/identity
+canari-identity verify --claims out/identity --key out/public_key.json
+```
+
+`sign` writes one DSSE/Ed25519 claim per cluster. The claim asserts only the
+**link** - these members share one publishing repository, by
+`publishing-repository/v1` - plus the conflicts visible for that cluster. It
+does not assert that any member is safe; that stays the attestation's job.
+`verify` needs no network and no Canari store: signature plus claim structure.
+
 The live store currently reports **0 clusters / 6,787 records without a
 repository**, because every record predates the field. That is the honest state,
 not a bug: the first scan after this change starts populating it.

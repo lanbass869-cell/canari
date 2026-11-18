@@ -197,3 +197,104 @@ class TestStoreLoading:
         records, unreadable = load_store(str(tmp_path))
         assert records == []
         assert len(unreadable) == 1 and "bad.json" in unreadable[0]["path"]
+
+
+def _signed_bundle(tmp_path, att):
+    import json as _json
+    from canari.signing import sign_attestation
+    signer, pub = _signed_bundle.signer, _signed_bundle.pub
+    bundle = sign_attestation(att, signer)
+    p = tmp_path / ("%s.bundle.json" % att["subject"]["name"])
+    p.write_text(_json.dumps(bundle), encoding="utf-8")
+    return p
+
+
+def _make_store(tmp_path, repos):
+    """tmp_path/store/attestations with one signed record per (registry, name, repo)."""
+    import json as _json
+    from canari.signing import generate_keypair
+    signer, pub = generate_keypair()
+    _signed_bundle.signer, _signed_bundle.pub = signer, pub
+    d = tmp_path / "store" / "attestations"
+    d.mkdir(parents=True)
+    for i, (reg, name, repo) in enumerate(repos):
+        att = {"_type": "https://agentcheck.dev/attestation/v0.1",
+               "subject": {"name": name, "version": "1", "registry": reg,
+                           "artifact_sha256": "a" * 64, "maintainers": [],
+                           "repository": repo},
+               "host": {"class": "mcp", "host_version": "t"},
+               "scenario_sha256": "b" * 64,
+               "checks": [{"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
+               "verdict": "pass", "checker": {"kind": "automation", "id": "t"},
+               "evidence_refs": [], "evidence_completeness": {
+                   "dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
+               "expires_at": "2026-12-30T00:00:00Z",
+               "generated_at": "2026-11-18T00:00:00Z",
+               "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                             "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
+        b = _signed_bundle(tmp_path, att)
+        b.rename(d / ("%d.json" % i))
+    kp = tmp_path / "k.pem"
+    from canari.signing import save_private_key
+    save_private_key(signer, str(kp))
+    pubp = tmp_path / "pub.json"
+    pubp.write_text(_json.dumps(pub.to_dict()), encoding="utf-8")
+    return tmp_path / "store", kp, pubp
+
+
+class TestClaims:
+    def test_claim_shape_and_validation(self):
+        from canari.identity import build_claim, validate_claim
+        cluster = {"id": "sha256:abc", "repository": "github.com/o/r",
+                   "registries": ["npm", "pypi"],
+                   "members": [{"registry": "npm", "name": "a", "version": "1"},
+                               {"registry": "pypi", "name": "a", "version": "1"}]}
+        claim = build_claim(cluster, {"name_collision": []}, "2026-11-18T00:00:00Z")
+        assert validate_claim(claim) == []
+        assert claim["members"] == cluster["members"]
+        assert claim["method"] == "publishing-repository/v1"
+
+    def test_claim_rejects_missing_repository(self):
+        from canari.identity import build_claim, validate_claim
+        cluster = {"id": "sha256:abc", "repository": "", "registries": ["npm"],
+                   "members": [{"registry": "npm", "name": "a", "version": "1"}]}
+        claim = build_claim(cluster, {}, "2026-11-18T00:00:00Z")
+        assert any("repository" in e for e in validate_claim(claim))
+
+    def test_claim_rejects_empty_members(self):
+        from canari.identity import build_claim, validate_claim
+        cluster = {"id": "sha256:abc", "repository": "github.com/o/r",
+                   "registries": [], "members": []}
+        claim = build_claim(cluster, {}, "2026-11-18T00:00:00Z")
+        assert any("members" in e for e in validate_claim(claim))
+
+    def test_sign_then_verify_end_to_end(self, tmp_path):
+        from canari.identity import main
+        store, key, pub = _make_store(tmp_path, [
+            ("npm", "aamio", "https://github.com/o/aamio-js"),
+            ("pypi", "aamio", "https://github.com/o/aamio-js"),
+        ])
+        assert main(["clusters", "--store", str(store)]) == 0
+        assert main(["sign", "--store", str(store), "--key", str(key)]) == 0
+        claims = tmp_path / "store" / "identity"
+        assert len(list(claims.glob("*.identity.json"))) == 1
+        assert main(["verify", "--claims", str(claims), "--key", str(pub)]) == 0
+
+    def test_tampered_claim_fails_verification(self, tmp_path):
+        import json as _json
+        from canari.identity import main
+        store, key, pub = _make_store(tmp_path, [
+            ("npm", "x", "https://github.com/o/r"),
+            ("pypi", "x", "https://github.com/o/r"),
+        ])
+        main(["sign", "--store", str(store), "--key", str(key)])
+        claims = tmp_path / "store" / "identity"
+        path = next(claims.glob("*.identity.json"))
+        bundle = _json.loads(path.read_text(encoding="utf-8"))
+        # Corrupt the signed bytes: an attacker who edits the claim must not be
+        # able to keep a valid signature.
+        env = bundle["envelope"]
+        raw = env["payload"]
+        env["payload"] = raw[:-8] + ("A" if raw[-8] != "A" else "B") + raw[-7:]
+        path.write_text(_json.dumps(bundle), encoding="utf-8")
+        assert main(["verify", "--claims", str(claims), "--key", str(pub)]) == 1

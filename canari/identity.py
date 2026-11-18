@@ -231,6 +231,66 @@ def load_store(store_dir):
     return records, unreadable
 
 
+def _sign_cmd(a):
+    import datetime as _dt
+    import os as _os
+    records, unreadable = load_store(a.store)
+    built = build_clusters(records)
+    conflicts = find_conflicts(records)
+    out_dir = a.out or _os.path.join(a.store, "identity")
+    observed = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    written, errors = sign_claims(built["clusters"], conflicts, observed, a.key, out_dir)
+    report = {"clusters": len(built["clusters"]), "signed": len(written),
+              "errors": errors, "out": out_dir,
+              "without_repository": built["without_repository"]}
+    if a.json:
+        print(json.dumps(report, ensure_ascii=False, indent=1))
+    else:
+        print("clusters %d  signed %d  errors %d  -> %s" % (
+            report["clusters"], report["signed"], len(errors), out_dir))
+        if report["without_repository"]:
+            print("  %d record(s) had no repository and produced no claim"
+                  % report["without_repository"])
+    return 0 if not errors else 1
+
+
+def _verify_cmd(a):
+    import glob
+    import os as _os
+    from canari.signing import verify_signed
+    with open(a.key, "r", encoding="utf-8") as f:
+        pub = json.load(f)
+    ok_n = bad_n = 0
+    failures = []
+    for path in sorted(glob.glob(_os.path.join(a.claims, "*.identity.json"))):
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                bundle = json.load(f)
+        except Exception as e:
+            failures.append({"path": path, "error": "not json: %s" % str(e)[:80]})
+            bad_n += 1
+            continue
+        good, claim, err = verify_signed(bundle.get("envelope") or {}, pub)
+        if not good or not isinstance(claim, dict):
+            failures.append({"path": path, "error": "signature: %s" % err})
+            bad_n += 1
+            continue
+        bad = validate_claim(claim)
+        if bad:
+            failures.append({"path": path, "error": "; ".join(bad[:3])})
+            bad_n += 1
+        else:
+            ok_n += 1
+    if a.json:
+        print(json.dumps({"verified": ok_n, "failed": bad_n,
+                          "failures": failures[:10]}, indent=1))
+    else:
+        print("verified %d  failed %d" % (ok_n, bad_n))
+        for f in failures[:5]:
+            print("  %s: %s" % (f["path"], f["error"]))
+    return 0 if bad_n == 0 else 1
+
+
 def _clusters_cmd(a):
     import os as _os
     records, unreadable = load_store(a.store)
@@ -271,6 +331,90 @@ def _clusters_cmd(a):
     return 0
 
 
+_CLAIM_TYPE = "https://agentcheck.dev/identity/v0.1"
+
+
+def build_claim(cluster, conflicts, observed_at):
+    """One signed statement: "these members are the same component, and here is why".
+
+    The claim is deliberately narrow. It asserts a *link*, records the method that
+    produced it (publishing repository, normalised), and repeats the conflicts
+    visible for this cluster so a reader does not have to re-derive them. It does
+    not assert that any member is safe - that stays the attestation's job.
+    """
+    related = [c for c in conflicts.get("name_collision", [])
+               if c["name"] in {m["name"] for m in cluster["members"]}]
+    return {
+        "_type": _CLAIM_TYPE,
+        "subject": {"repository": cluster["repository"],
+                    "cluster_id": cluster["id"]},
+        "members": cluster["members"],
+        "registries": cluster["registries"],
+        "method": "publishing-repository/v1",
+        "method_note": ("members share one normalised publishing repository; "
+                        "a missing repository is never treated as a match"),
+        "conflicts": {"name_collision": related},
+        "observed_at": observed_at,
+    }
+
+
+def validate_claim(claim):
+    """Structural check for an identity claim. Empty list = valid."""
+    errs = []
+    if not isinstance(claim, dict):
+        return ["claim is not an object"]
+    if claim.get("_type") != _CLAIM_TYPE:
+        errs.append("_type must be %s" % _CLAIM_TYPE)
+    subj = claim.get("subject")
+    if not isinstance(subj, dict):
+        errs.append("subject missing")
+    else:
+        if not isinstance(subj.get("repository"), str) or not subj["repository"]:
+            errs.append("subject.repository must be a non-empty string")
+        if not isinstance(subj.get("cluster_id"), str) or not subj["cluster_id"]:
+            errs.append("subject.cluster_id must be a non-empty string")
+    members = claim.get("members")
+    if not isinstance(members, list) or not members:
+        errs.append("members must be a non-empty list")
+    else:
+        for i, m in enumerate(members):
+            if not isinstance(m, dict):
+                errs.append("members[%d] is not an object" % i)
+                continue
+            for key in ("registry", "name"):
+                if not isinstance(m.get(key), str) or not m[key]:
+                    errs.append("members[%d].%s must be a non-empty string" % (i, key))
+    if not isinstance(claim.get("observed_at"), str) or not claim["observed_at"]:
+        errs.append("observed_at must be a non-empty string")
+    if not isinstance(claim.get("conflicts"), dict):
+        errs.append("conflicts must be an object")
+    return errs
+
+
+def sign_claims(clusters, conflicts, observed_at, key_path, out_dir):
+    """Sign one claim per cluster. Returns (written paths, errors)."""
+    import os as _os
+    from canari.signing import load_private_key, sign_attestation
+    signer = load_private_key(key_path)
+    if signer is None:
+        raise RuntimeError("could not load private key: %s" % key_path)
+    _os.makedirs(out_dir, exist_ok=True)
+    written, errors = [], []
+    for cluster in clusters:
+        claim = build_claim(cluster, conflicts, observed_at)
+        bad = validate_claim(claim)
+        if bad:
+            errors.append({"cluster": cluster.get("id"), "errors": bad})
+            continue
+        bundle = sign_attestation(claim, signer)
+        name = cluster["id"].split(":")[-1] + ".identity.json"
+        path = _os.path.join(out_dir, name)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(bundle, f, ensure_ascii=False, indent=1)
+        written.append(path)
+    return written, errors
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(
         prog="canari-identity",
@@ -284,10 +428,23 @@ def main(argv=None):
     cl.add_argument("--store", default="out", help="attestation store dir (default: out)")
     cl.add_argument("--write", default=None, help="write clusters.json/conflicts.json here")
     cl.add_argument("--json", action="store_true")
+    sg = sub.add_parser("sign", help="sign one identity claim per cluster")
+    sg.add_argument("--store", default="out")
+    sg.add_argument("--key", required=True, help="private key PEM")
+    sg.add_argument("--out", default=None, help="output dir (default: <store>/identity)")
+    sg.add_argument("--json", action="store_true")
+    vf = sub.add_parser("verify", help="verify signed identity claims offline")
+    vf.add_argument("--claims", required=True, help="directory of *.identity.json")
+    vf.add_argument("--key", required=True, help="public key JSON")
+    vf.add_argument("--json", action="store_true")
     a = ap.parse_args(argv)
 
     if a.cmd == "clusters":
         return _clusters_cmd(a)
+    if a.cmd == "sign":
+        return _sign_cmd(a)
+    if a.cmd == "verify":
+        return _verify_cmd(a)
 
     try:
         left, right = repo_of(a.a), repo_of(a.b)
