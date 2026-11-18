@@ -69,3 +69,31 @@
 
 **建议：停止理论投入，把测量论文写出来。** 若仍要赌理论，唯一入口是方案 2，
 且必须接受它需要 2–3 个月且胜率约三成。
+
+## 七、更正：移动拜占庭不是"小而慢"，是我只看了 arXiv
+
+上一节说"十年只有 8 篇 arXiv，圈子小而慢"——**这个判断错了**，原因是 arXiv 对该子领域覆盖极差。
+
+用 Crossref 查 2024 年之后的非 arXiv 出版物，同一主题下有：
+
+| 年份 | 标题 | 出处 |
+|---|---|---|
+| 2026 | A Unified Framework for Mobile Byzantine Agreement with Trusted Monotonic Counters | SSRN |
+| **2025** | **Mobile Byzantine Agreement with Trusted Monotonic Counters** | **ISPDC 2025** |
+| 2025 | Message-Loss-Tolerant Byzantine Consensus for Mobile Ad-Hoc Networks | TechRxiv |
+| 2024 | A further study on weak Byzantine gathering of mobile agents | Theoretical Computer Science |
+
+**含义（两条，方向相反）**：
+
+1. **坏消息**：这个方向比我说得更活跃，2025–2026 有新结果，"无人做"的假设不成立 → 竞争比我估的高。
+2. **好消息**：它有**真实存在的发表出口**（ISPDC / TCS / TechRxiv），不是死胡同 →
+   如果真要做，至少有地方投。
+
+**因此 E1 的胜率我下修到 20%，但"能不能发出去"这一项上修。**
+
+## 八、覆盖缺口的处理
+
+- 已补：Crossref 扫了 2024+ 的非 arXiv 出版物（mobile Byzantine / quorum / agent supply chain）
+- 仍未系统扫：PODC / DISC / DSN / CCS / S&P 的正式论文集（这些需要 ACM DL / IEEE Xplore，
+  本机没有直接 API 访问）
+- **"全网"这个词我不再宣称做到了**，只宣称：arXiv 全文 21 篇 + Crossref 2024+ 定向检索
