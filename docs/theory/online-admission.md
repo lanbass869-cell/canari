@@ -126,3 +126,38 @@ levels that actually bound damage, a fixed quota throws away most of the useful
 admissions. Allocating a *shared* budget across components - rather than a
 per-root quota - is the open problem, and it is the same corruption-budget
 estimation problem the first section identified, now with a measured price tag.
+
+## Proposition 1 (elementary, but it settles an argument)
+
+**Statement.** Let a policy admit `m >= 1` components, each citing at most `r`
+distinct roots out of a universe of `k`. Admissions are irreversible. Then there
+is a root whose corruption retroactively invalidates at least `ceil(r*m/k)` of the
+`m` admissions.
+
+**Proof.** Each admitted component contributes at most `r` root citations, so the
+total number of citations is at most `r*m`. These are spread over `k` roots.
+By the pigeonhole principle (equivalently, averaging: the mean is at most
+`r*m/k`), some root is cited by at least `ceil(r*m/k)` of the admitted components.
+Corrupting that one root invalidates exactly those. QED.
+
+**Corollary.** No policy - whatever its memory, whatever its online strategy - can
+hold single-root damage below a `r/k` fraction of admissions while admitting a
+constant fraction of the stream. The bound is a property of `r` and `k`, not of the
+algorithm.
+
+### What this does and does not settle
+
+**Settles:** the "just require more witnesses per component" instinct cannot work
+by itself. Raising `r` *raises* the guaranteed damage floor (`r/k`), because the
+same roots are cited more often. The only lever that lowers the floor is increasing
+`k` - more *independent sources in the population* - which is exactly the
+corruption-distinct class accounting the survey identified as missing.
+
+**Does not settle:** the observed 44.9% in the adaptive experiment is far above
+this floor (with `r=2, k=200` the floor is 1%). The gap comes from *skew*: the
+adversary corrupts the most-cited root, not the average one. Proposition 1 bounds
+the average case; the worst case under skew is what a real bound would need to
+characterise, and that is not done.
+
+**Deliberately not claimed:** this is pigeonhole. It is written down because it
+rules out a whole family of proposed defences, not because it is deep.
