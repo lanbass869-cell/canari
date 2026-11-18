@@ -5,7 +5,7 @@ bounded memory, irreversible decisions" is a real gap or a known problem in
 disguise. Method: read full text (arXiv HTML, not abstract), record what each
 paper *solves* and where its model differs from ours.
 
-Status: 16 abstracts + **16 full texts read** (2026-11-18). Target is 20 full texts
+Status: 16 abstracts + **20 full texts read** (2026-11-18) - TARGET MET. Target is 20 full texts
 across four adjacent fields; this file grows until that is done.
 
 ## Read in full (text extracted from arXiv HTML, key sections read)
@@ -289,3 +289,31 @@ for completeness only.
 **Two of our own earlier claims were wrong and are corrected here:**
 1. "corruption-distinct evidence classes is missing" - it is 2609.34245's core concept.
 2. "evidence budget allocation is the open problem" - it is 2609.34376.
+
+### 17. arXiv:1906.09314 - Asymmetric Distributed Trust
+Each process holds its own trust set (asymmetric quorums); protocols emulated in that
+model. **Occupies** "different observers trust different roots".
+
+### 18. arXiv:2107.11331 - How to Trust Strangers: Composition of Byzantine Quorum Systems
+Answers the explicitly-posed open question of how to compose trust assumptions across
+disjoint participant sets. **Occupies** composition of heterogeneous trust.
+
+### 19. arXiv:1603.07768 - Online Budgeted Allocation with General Budgets
+**Complete characterisation:** in the general multi-budget setting a constant
+competitive ratio is **impossible** (asymptotically tight upper and lower bounds);
+tractable when budgets are laminar. **Occupies** the hardness shape of "allocate a
+budget across arriving items" - including why it is hard.
+
+### 20. arXiv:2611.12210 - Tight Competitive Bounds for Online Matching on Forests
+Tight bounds (e.g. no algorithm beats 4/7 for fractional matching). **Occupies** the
+"how tight can a competitive ratio be" question in the closest online-matching family.
+
+## FINAL VERDICT (20/20 full texts)
+
+**No gap.** See `docs/theory/why-no-gap.md` for the ownership table and the two
+corrections of our own earlier claims. See `docs/theory/paper-skeleton.md` for what
+is actually publishable.
+
+Known limitation of this pass: the per-field *survey* open-problem lists were not
+obtained (arXiv API returned 429 on the survey queries). That is recorded as a gap in
+this pass, not as a completed step.
