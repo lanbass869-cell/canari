@@ -1,0 +1,94 @@
+# Literature ledger - is the online-admission gap real?
+
+Goal: decide, on evidence, whether "online admission with a corruption budget,
+bounded memory, irreversible decisions" is a real gap or a known problem in
+disguise. Method: read full text (arXiv HTML, not abstract), record what each
+paper *solves* and where its model differs from ours.
+
+Status: 6 abstracts + **3 full texts read** (2026-11-18). Target is 20 full texts
+across four adjacent fields; this file grows until that is done.
+
+## Read in full (text extracted from arXiv HTML, key sections read)
+
+### 1. arXiv:2610.01007 - Settling the Pass Complexity of Streaming Set Cover
+**Field:** streaming algorithms / space lower bounds.
+**Solves:** the optimal three-way tradeoff between space, passes and approximation
+for streaming set cover, with a communication-complexity lower bound: beating a
+`(log n)/2` approximation requires `Omega(m)` bits, which gives `Omega(m/p)` space
+for `p` passes.
+
+**Model vs ours:** sets arriving in a stream, goal is a minimum cover at the end,
+unlimited memory of the *final* answer. Ours is: witnesses arriving, per-component
+irreversible decision at arrival time, adversary corrupts roots, memory bound.
+
+**Occupies our slot?** No - different decision object. **But** it settles that the
+"online set cover" framing is taken, and it supplies the lower-bound technique
+(pointer chasing -> communication complexity) that a bound for our problem would
+have to use.
+
+### 2. arXiv:2610.10597 - Certified Corruption Budgets: Anytime-Valid Leaderboard Claims
+**Field:** robust statistics / sequential testing under adaptive corruption.
+**Solves:** an anytime-valid corruption tolerance `B_t` published with every
+pairwise claim, with **matching upper and lower bounds**: faking a margin `delta`
+requires forging a `2*delta` fraction of records (or flipping `delta`), and the
+tolerance nearly reaches that fraction. Attacker may insert forged records, flip
+records, and sees every published certificate.
+
+**Model vs ours:** their decision object is a **ranking claim**; ours is an
+**irreversible admission**. Their adversary model (adaptive, sees published
+state) is the same one that produced our 44.9% measurement.
+
+**Occupies our slot?** **Partially.** It owns "adaptive attacker vs published
+certificates". It does not own "admission with irreversible decisions and a memory
+bound". Any write-up must distinguish from it explicitly.
+
+### 3. arXiv:2609.34376 - Before Agents Act: Assurance-Aware Semantic Scheduling
+**Field:** evidence acquisition / operational research.
+**Solves:** joint **witness selection and scheduling** under quorum, diversity,
+freshness, deadline and resource constraints; integer-program formulation; proves
+the Assurance Scheduling Problem (ASP-DEC) **NP-hard**; gives cuts with finite
+termination and conditional global optimality; ships a catalogue of assurance
+operations and an explicit **Open Problems** appendix.
+
+**Model vs ours:** offline/plan-time selection with a cost objective, not an
+online stream with bounded memory and irreversible commits.
+
+**Occupies our slot?** **Largely.** This is the paper I was about to propose as
+"the open problem" (evidence budget allocation across components). It is not open:
+it is formulated, proved NP-hard, and solved by IP with optimality conditions.
+Anyone claiming that gap is wrong.
+
+## Read as abstracts only (not yet full text)
+
+| id | title | why it matters |
+|---|---|---|
+| 2609.34245 | Certified Multi-Source Integrity for Structured Agent Actions | the single-shot offline certifier this line would extend |
+| 2608.15810 | Anytime-Valid Admission for Compressed Serving State | closest use of "admission" + anytime-valid, different object (model serving) |
+| 2606.11632 | Sovereign Assurance Boundary: Certificate-Bound Admission | certificate-bound runtime admission for agentic infra |
+
+## Interim verdict (2026-11-18, after 3 full texts)
+
+Two of the three candidate "gaps" I proposed in earlier turns are already occupied:
+
+| candidate gap | status |
+|---|---|
+| evidence budget allocation across components | **occupied** by 2609.34376 (NP-hard + IP + optimality) |
+| adaptive adversary vs published certificates | **occupied** by 2610.10597 (matching upper/lower bounds) |
+| online + irreversible + bounded memory + competitive ratio | **not yet found** - must survive the remaining 17 reads |
+
+The third is narrow. Its only remaining claim would be: *irreversibility plus a
+memory bound changes the problem the first two papers solve*. That has not been
+established, and the burden of proof is now on that claim.
+
+## Next reads (planned, not yet done)
+
+1. Byzantine quorum systems (Malkhi & Reiter) + *maximum availability* (IPL 2002) -
+   to pin down exactly what masking quorums do and do not give.
+2. Streaming lower bounds: Assadi's semi-streaming set cover (1404.6763) and the
+   multi-pass tradeoff (1703.01847) - to see whether "irreversible decision"
+   admits the same reduction.
+3. Online budgeted allocation / online packing survey - to check the
+   "budget across items" structure.
+4. Resilient covering / interdiction / critical-node - to check the
+   "corrupt c sources" structure.
+5. Each field's newest survey, for its stated open problems.
