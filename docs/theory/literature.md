@@ -5,7 +5,7 @@ bounded memory, irreversible decisions" is a real gap or a known problem in
 disguise. Method: read full text (arXiv HTML, not abstract), record what each
 paper *solves* and where its model differs from ours.
 
-Status: 14 abstracts + **10 full texts read** (2026-11-18). Target is 20 full texts
+Status: 16 abstracts + **12 full texts read** (2026-11-18). Target is 20 full texts
 across four adjacent fields; this file grows until that is done.
 
 ## Read in full (text extracted from arXiv HTML, key sections read)
@@ -194,3 +194,46 @@ hard for a boring reason, not an interesting one.
 
 Honest default stands: **assume no gap** until the remaining 10 reads produce
 evidence otherwise.
+
+### 11. arXiv:1811.03642 - Federated Byzantine Quorum Systems
+**Solves:** formalises quorums built from per-node quorum *slices* under open
+membership (Stellar/Ripple style); proves correctness **when Byzantine nodes lie
+about their own trust choices**; shows this needs a variant where different nodes
+have different understandings of what a quorum is.
+
+**Occupies:** the "the set of trusted roots is open, and some of them lie about who
+they trust" structure. That is the closest thing in this whole ledger to our
+"roots may be corrupted" setting, and it is fully formalised with safety/liveness
+results.
+
+### 12. arXiv:2606.10345 - Supermodularity and Submodularity in Network Interdiction
+**Solves:** bilevel attacker/defender model where the attacker interdicts a set of
+components and the defender optimises on the remainder; characterises when the
+defender's optimal value is submodular or supermodular in the attacked set.
+
+**Occupies:** "an adversary removes/corrupts up to c components to maximise damage"
+is the interdiction problem, with structural (sub/supermodularity) results. Our
+"corrupt c roots" is a special case.
+
+### Verdict at 12 full texts
+
+Every ingredient of the proposed problem now has an owner:
+
+| ingredient | owner |
+|---|---|
+| quorums tolerate c Byzantine members | Malkhi & Reiter; 2610.07759 (slack accounting) |
+| open membership, members may lie | 1811.03642 (FBQS) |
+| load concentrated on the busiest root | cs/9908011 |
+| attacker removes c components to maximise damage | 2606.10345 (interdiction) |
+| online admission with a competitive ratio | 0803.2842; 2610.41136 |
+| irrevocable online decisions | 1704.08835 |
+| adaptive attacker against published state | 2610.10597 |
+| evidence acquisition and scheduling | 2609.34376 |
+| streaming covering under a space bound | 1703.01847; 1404.6763 |
+
+**There is no empty cell in this table.** The only cell-less question is the
+intersection of three known-hard ingredients, and 0803.2842 explains why that
+intersection is not attractive: without preemption the bounds are trivial.
+
+Remaining 8 reads are for completeness (surveys + the two oldest primary sources),
+not because the conclusion still looks open.
