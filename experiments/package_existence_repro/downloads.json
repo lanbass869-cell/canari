@@ -1,0 +1,1653 @@
+{
+ "unique_packages": 271,
+ "stats_obtained": 140,
+ "median_monthly": 49.5,
+ "p90_monthly": 609,
+ "max_monthly": 20925,
+ "with_any_downloads": 110,
+ "errors": {
+  "HTTP 404": 48,
+  "HTTP 429": 151,
+  "URLError": 1
+ },
+ "rows": [
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-cal",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-clawhub",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-imap",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-shopify",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-vault",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-wheel-size",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@aiwerk/mcp-server-wise",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@alexendros/proton-mail-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@anara123/mcp-weather-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/argentine-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/australian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/botswana-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/cameroonian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/dominican-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/ecuadorian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/ethiopian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/ghana-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/india-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/indonesian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/israel-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/ivorian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/jordanian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/kenya-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/malawi-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/malaysian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/moroccan-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/mozambican-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/namibian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/nepal-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/newzealand-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/nigeria-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/ot-security-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/philippine-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/russian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/senegalese-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/singapore-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/southafrica-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/srilanka-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/switzerland-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/tanzanian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/thailand-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/tunisian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/turkish-law-mcp",
+   "monthly": null,
+   "error": "HTTP 429"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/uae-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/ugandan-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/us-regulations-mcp",
+   "monthly": null,
+   "error": "HTTP 429"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/vietnamese-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/zambian-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ansvar/zimbabwe-law-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@appcraft-io/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@arxo/mcp-charter",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@arxo/mcp-code-civil",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@arxo/mcp-de-bgb",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@arxo/mcp-picc",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@asterpay/mcp-server",
+   "monthly": 142,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@authzx/mcp-gateway",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@beremaran/godot-agent-loop",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@bgorzelic/ghostlink",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@briangaoo/totem",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@calnflow/snapclap-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cognitivemyriad/vrm-local",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@collapseindex/ci1t-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cyanheads/bls-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cyanheads/eia-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cyanheads/fred-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cyanheads/gbif-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cyanheads/nominatim-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@cyanheads/uspto-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@datasynx/agentic-ai-cartography",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@datasynx/agentic-ai-shadowing",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@edestory/mcp-starmeet",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@elixium.ai/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@galaxy-stack/design-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@gaviwhatsapp/mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@gener8v/mcp-geographic-data",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ingeniux/ctnp-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@intencion/mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@itechsoftsolutions/social-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@j0hanz/code-review-analyst-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@j0hanz/fetch-url-mcp",
+   "monthly": 851,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@j0hanz/filesystem-context-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@jamesrez/valoria",
+   "monthly": 112,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@jamesrez/valoria-intelligence",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@joy-trust/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@kynth/api-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@latam-mcp/mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@littlebearapps/outlook-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@lofder/dsers-mcp-product",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@marocain/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@mehmoodqureshi/figma-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@meltingpixels/harvey-tools",
+   "monthly": 91,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@memoro/mcp-server",
+   "monthly": 123,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@merk.a2a/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@mojomo/mcp-server",
+   "monthly": 3638,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@nottiboy1337/mcp-update-hijack-poc",
+   "monthly": 89,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@oaslananka/composer",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@oaslananka/sentinel",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@openplan/mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@pasichdev/todo-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@pavelpiha/specrun",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@ramaris/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@referencime/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@scratchpadsh/mcp",
+   "monthly": null,
+   "error": "URLError"
+  },
+  {
+   "registry": "npm",
+   "package": "@seojeom/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@shirbarzur/planform-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@shmindmaster/repocontext",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@strajkpolski/mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@unifiedoffer/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@veilquota/mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@walensis/mcp-for-ynab",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@whiteintel/mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@yawlabs/nol-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "@zebpay_rajesh/zebpay-mcp-server",
+   "monthly": 130,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "@zguiyang/pi-worker-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "ace-context-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "acf-mcp",
+   "monthly": 1194,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "adobe-commerce-mcp",
+   "monthly": 666,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "apprise-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "arcane-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "ark-runtime-kernel",
+   "monthly": 300,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "bash-command-mcp",
+   "monthly": 95,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "board-and-stable-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "celestialnode-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "civicbinder-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "clarvia-mcp-server",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "coalesce-transform-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "cortex-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "crewhaus-mcp-server",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "dea-agents",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "dev953-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "drainbrain-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "dsh-codebase-chat-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "eol-check-mcp",
+   "monthly": 731,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "esrpmicrosoft-oss-mcp-test",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "festo-codesys-mcp",
+   "monthly": 64,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "figma-designer-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "finhay-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "freelance-os",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "godavaii-mcp-server",
+   "monthly": 124,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "goodstanding-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "google-researcher-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "gotify-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "gru953-crew-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "guesty-mcp-server",
+   "monthly": 439,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "ha-mcp-server",
+   "monthly": 157,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "hedera-hcs-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "image-puma",
+   "monthly": 95,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "italian-bus-search",
+   "monthly": 3006,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "jamgate",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "k8s-port-forward-mcp",
+   "monthly": 152,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "kitgrade-mcp",
+   "monthly": 60,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "lightning-fm-mcp",
+   "monthly": 76,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "local-llm-worker",
+   "monthly": 34,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "makers-page-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "marketintell",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-1c-platform-tools",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-debug-recorder",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-health-monitor",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-infra-lens",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-meet",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-sap-docs",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "mcp-ssh-tool",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "md-md-mcp-server",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "neural-memory-mcp",
+   "monthly": 457,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "omnipost-mcp",
+   "monthly": 645,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "openlookup",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "paidwithtab",
+   "monthly": 2134,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "parserail-mcp",
+   "monthly": 83,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "positif-ai",
+   "monthly": 164,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "rulestack-mcp",
+   "monthly": 64,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "rustok-agent-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "santuri-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "scriptprobe-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "silpo-mcp",
+   "monthly": 133,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "skillworks-mcp",
+   "monthly": 54,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "skolverket-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "spec-score-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "spendlog",
+   "monthly": 464,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "stacktab-mcp",
+   "monthly": 105,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "stillshipping-mcp",
+   "monthly": 50,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "synapse-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "tailscale-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "telegram-channel-scraper-mcp-server",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "temporal-continuity-mcp",
+   "monthly": 66,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "tooldrift-mcp",
+   "monthly": 49,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "unifi-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "universal-brute-workpack",
+   "monthly": 109,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "unraid-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "vaspera-hardening-mcp-server",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "vaspera-pm",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "vault-mcp-tools",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "vtex-io-mcp",
+   "monthly": 357,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "xbird-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "npm",
+   "package": "yarr-mcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "ytdl-rmcp",
+   "monthly": 0,
+   "error": null
+  },
+  {
+   "registry": "npm",
+   "package": "zotero-bridge",
+   "monthly": 113,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "agent-tripwire",
+   "monthly": 90,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "aifp",
+   "monthly": 2,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "aihawk",
+   "monthly": 67,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "aion-news-to-signal",
+   "monthly": 9,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "alloc-context",
+   "monthly": 102,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "artefact-mcp",
+   "monthly": 249,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "atlaso",
+   "monthly": 3,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "atomic-clock-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "pypi",
+   "package": "backroom-mcp",
+   "monthly": 259,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "baton-orchestrator",
+   "monthly": 3,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "c3fst-mcp-server",
+   "monthly": 82,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "cg-agent-kit",
+   "monthly": 77,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "codeintel-navigation-mcp",
+   "monthly": 3,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "codelogic-mcp-server",
+   "monthly": 25,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "contest-mcp",
+   "monthly": 110,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "contextual-engine",
+   "monthly": 35,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "cougarmap",
+   "monthly": 2,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "crosstabs-mcp",
+   "monthly": 3,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "dataraum",
+   "monthly": 8,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "db-compare-mcp",
+   "monthly": 234,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "edinet-mcp",
+   "monthly": 681,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "elesync",
+   "monthly": 104,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "elite-reasoning-mcp",
+   "monthly": 12,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "eval-integrity",
+   "monthly": 3,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "fastbcp-mcp",
+   "monthly": 37,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "fasttransfer-mcp",
+   "monthly": 41,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "fitness-influencer-mcp",
+   "monthly": 80,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "ghostqa",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "pypi",
+   "package": "glitch-grow-linkedin-ad-mcp",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "pypi",
+   "package": "grandline-mcp",
+   "monthly": 1,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "holographic-memory-mcp",
+   "monthly": 503,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "horus-flow-mcp",
+   "monthly": 182,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "huoshui-fetch",
+   "monthly": 53,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "huoshui-file-converter",
+   "monthly": 33,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "huoshui-pdf-translator",
+   "monthly": 39,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "infraveil-guard",
+   "monthly": 4,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "infraveil-mcp",
+   "monthly": 2,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "innoday",
+   "monthly": 9150,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "instinct-mcp",
+   "monthly": 14,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "labs-mcp-server",
+   "monthly": 5,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "lakexpress-mcp",
+   "monthly": 33,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "leangate",
+   "monthly": 31,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "local-faiss-mcp",
+   "monthly": 207,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "mcp-edgar",
+   "monthly": 12,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "mcp-search-server",
+   "monthly": 122,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "mcp-server-evolutiondb",
+   "monthly": 5,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "mcp-trace-inspector",
+   "monthly": 38,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "mcp-weather-augee99",
+   "monthly": 56,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "migratorxpress-mcp",
+   "monthly": 45,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "mnemex",
+   "monthly": 16,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "msmcp-azure",
+   "monthly": 8049,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "msmcp-template",
+   "monthly": 609,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "nanobanana-mcp-server",
+   "monthly": 20925,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "neopat-mcp",
+   "monthly": 23,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "numguard",
+   "monthly": 39,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "olane-cosync-local",
+   "monthly": null,
+   "error": "HTTP 404"
+  },
+  {
+   "registry": "pypi",
+   "package": "omega-memory",
+   "monthly": 6785,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "orionbelt-semantic-layer",
+   "monthly": 975,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "positif-ai",
+   "monthly": 83,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "prefect-mcp",
+   "monthly": 7266,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "regula-ai",
+   "monthly": 18,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "selvo",
+   "monthly": 11,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "signalbrain",
+   "monthly": 15,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "spineframe",
+   "monthly": 6,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "sqlite-mcp-server-enhanced",
+   "monthly": 15,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "stockfish-mcp",
+   "monthly": 150,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "stv",
+   "monthly": 325,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "tiktok-creator-mcp",
+   "monthly": 61,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "toon-parse-mcp",
+   "monthly": 184,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "twilize",
+   "monthly": 25,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "uop-mcp-server",
+   "monthly": 47,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "video-editor-mcp",
+   "monthly": 526,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "vulnfeed-mcp",
+   "monthly": 20,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "waggle-mcp",
+   "monthly": 66,
+   "error": null
+  },
+  {
+   "registry": "pypi",
+   "package": "youtube-creator-mcp",
+   "monthly": 66,
+   "error": null
+  }
+ ],
+ "by_registry": {
+  "npm": {
+   "n": 69,
+   "median": 60,
+   "max": 3638
+  },
+  "pypi": {
+   "n": 71,
+   "median": 41,
+   "max": 20925
+  }
+ }
+}
