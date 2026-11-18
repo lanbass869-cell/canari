@@ -16,7 +16,9 @@ references are not fresh mistakes — their median age is **218 days** (p90 283,
 and 83% are older than 90 days. The packages are not abandoned either: of the 140 whose
 download statistics were obtainable, the median is **49 downloads/month** and **47 exceed
 100/month**. A registry that validates only at publish time therefore keeps advertising
-unusable installs, for months, for packages people are actively using.
+unusable installs, for months, for packages people are actively using. We report
+every figure here as a **lower bound** on staleness: references that failed
+publish-time validation were never published at all, so they are invisible to us.
 
 ## 1. The claim
 
@@ -30,6 +32,10 @@ Three numbers, three measurements, one sentence:
 | RQ1 Does the install work? | run the real `npm install` / `pip download` for a 40-item sample | **39/40 fail (97.5%, CI 87.1–99.6)** |
 | RQ2 How long has it been dead? | entry age from the registry's own `publishedAt` | **median 218 d**, 83% > 90 d, max 435 d |
 | RQ3 Does anyone use it? | monthly downloads for each distinct package | **median 49/mo**, 47 packages ≥ 100/mo |
+
+All three are **lower bounds**. We can only see references that were published, so a
+registry that rejected a bad reference at publish time contributes nothing to our
+count — which means 1.19% is a floor, not a ceiling.
 
 ## 2. Background and data
 
@@ -117,7 +123,18 @@ A further 48 packages 404 on the download API, which is itself consistent with "
 package is in active use, and the exact version the registry advertises cannot be
 installed* — not *20,000 users are affected*.
 
-## 6. Why this happens
+## 6. Why this happens, and how general it is
+
+**The general form.** Any registry that validates a reference *only at publication* will
+accumulate references that later become unexecutable, at whatever rate upstream
+withdrawals occur. With no re-validation the residence time of a stale reference is
+unbounded, so by Little's law the stock grows monotonically — the registry's accuracy is
+a function of its re-check interval, not of its publish-time rigour.
+
+**MCP is a favourable instance of this class**, which matters for reading the number: the
+registry *does* validate at publish and edit time and timestamps every entry, so 1.19% is
+what staleness looks like *when the publisher is careful*. A registry that validates less
+would show more, and we cannot see the references that were rejected outright.
 
 The registry validates a version **at publish and edit time**. It does not re-check
 afterwards. Upstream unpublishes, renames, yanks or abandons a version; the registry
@@ -137,7 +154,10 @@ history intact. Deletion is a separate decision, because revocation across distr
   estimate should not be read as an exact population rate.
 - **Upper bound on age.** §4.
 - **Package-level downloads.** §5.
-- **Short re-check window.** §3 re-checks three days after the snapshot, which shows these
+- **Short re-check window.** A second full audit is scheduled for **2026-12-15**. It will
+  report (a) the new count on the same definition, (b) how many of the 267 still-broken
+  references recovered, and (c) the weekly inflow of newly broken references, from which a
+  steady-state stock can be estimated. None of those numbers are in this draft. §3 re-checks three days after the snapshot, which shows these
   are not transient but cannot show the annual inflow; a second full audit is scheduled.
 - **Snapshot drift.** The registry grows; 274 (2026-11-16) became 275 (2026-11-17) on the
   same definition. Every figure here is tied to its snapshot.
