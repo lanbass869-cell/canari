@@ -208,3 +208,36 @@ exist**. The open question is therefore not "is surplus better" (it is) but:
 
 That is a concrete, measurable optimisation problem with a published cost model,
 and it is the natural next step for this line.
+
+## Literature check (2026-11-18): the surplus result is not new
+
+I checked whether "a component citing `r+s` roots survives `s` corruptions" is a
+known structure. It is.
+
+It is the **masking quorum** property from Byzantine quorum system theory: a quorum
+system tolerates `c` Byzantine members exactly when its quorums intersect in enough
+members that `c` faulty ones cannot destroy the intersection. Malkhi & Reiter's
+Byzantine quorum systems and the follow-ups (*Byzantine quorum systems with maximum
+availability*, IPL 2002; *Synchronous Byzantine quorum systems*, Distributed
+Computing 2000) are the canonical references. (Confirmed by literature search;
+titles and abstracts read, not yet the full papers - so treat the mapping as
+strong but not yet page-verified.)
+
+**Consequence, stated plainly:**
+
+- Proposition 1 is pigeonhole - textbook.
+- Corollary 2 (surplus survives corruptions) is masking quorums - 1990s theory.
+- The three measurements (44.9% damage under skew, 59.9% admission cost for a
+  quota, 0.03% damage for one surplus witness) are **new data in this domain**, but
+  they illustrate a known structure rather than establishing a new one.
+
+**Verdict: there is no new theory here, and no new algorithm.** What Canari has is
+engineering evidence that the known structure applies to agent component registries,
+with numbers. That is worth keeping as design justification and as a measurement
+paper's motivation - it is not a theory contribution, and it must not be written up
+as one.
+
+**What would change the verdict** (unchanged from the previous section): a lower
+bound for the *online, irreversible* version with an adaptive adversary, or a
+competitive-ratio result for the evidence-budget allocation problem. Both are still
+open; neither is started.
