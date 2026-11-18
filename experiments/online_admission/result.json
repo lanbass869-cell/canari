@@ -1,0 +1,36 @@
+{
+ "n_items": 4000,
+ "attacked": 1039,
+ "corrupted_roots": 1,
+ "benign_roots": "2 (60%) or 3 (40%)",
+ "rows": [
+  {
+   "threshold": 2,
+   "admitted": 3999,
+   "false_admits": 1039,
+   "false_admit_rate": 1.0,
+   "false_rejects": 1,
+   "false_reject_rate": 0.0003,
+   "memory_kb": 196.9
+  },
+  {
+   "threshold": 3,
+   "admitted": 1201,
+   "false_admits": 0,
+   "false_admit_rate": 0.0,
+   "false_rejects": 1760,
+   "false_reject_rate": 0.5944,
+   "memory_kb": 196.9
+  },
+  {
+   "threshold": 4,
+   "admitted": 0,
+   "false_admits": 0,
+   "false_admit_rate": 0.0,
+   "false_rejects": 2961,
+   "false_reject_rate": 1.0,
+   "memory_kb": 196.9
+  }
+ ],
+ "note": "A corrupted root is still a distinct root, so a distinct-root counter cannot tell it apart from an honest one. The correct threshold is r + c; c is unknown and must be estimated online."
+}
