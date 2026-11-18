@@ -102,3 +102,27 @@ Two things follow.
 Honest boundary: this is still a measurement, not a bound. It shows that any
 analysis restricted to per-item witness counts cannot capture the failure mode; it
 does not yet say what the optimal global policy costs.
+
+## What protection costs (2026-11-18)
+
+`experiments/online_admission/diversity_policy.py`. The obvious defence against
+the previous section is a per-root dependence cap: after admitting an item, no
+single root may account for more than `q` of the admitted set.
+
+| cap q | admitted | damage if the top root is corrupted | admissions given up |
+|---|---|---|---|
+| none | 4,000 | 44.9% | - |
+| 0.30 | 3,138 | 30.0% | 21.6% |
+| 0.20 | 2,471 | 20.0% | 38.2% |
+| 0.10 | 1,605 | 10.0% | **59.9%** |
+| 0.05 | 735 | 4.9% | 81.6% |
+
+The damage column tracks the cap by construction - that is not a discovery. The
+number that matters is the last column: **cutting single-root damage from 45% to
+10% costs 60% of admissions.** The cost grows faster than the protection.
+
+This is why "just require diverse witnesses" is not an answer: at the diversity
+levels that actually bound damage, a fixed quota throws away most of the useful
+admissions. Allocating a *shared* budget across components - rather than a
+per-root quota - is the open problem, and it is the same corruption-budget
+estimation problem the first section identified, now with a measured price tag.

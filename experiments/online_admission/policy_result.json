@@ -1,0 +1,52 @@
+{
+ "n_items": 4000,
+ "roots": 200,
+ "rule": "2 distinct roots",
+ "rows": [
+  {
+   "cap": null,
+   "admitted": 4000,
+   "most_used_root": 0,
+   "items_on_it": 1796,
+   "invalidated": 1796,
+   "damage_rate": 0.449
+  },
+  {
+   "cap": 0.3,
+   "admitted": 3138,
+   "most_used_root": 0,
+   "items_on_it": 941,
+   "invalidated": 941,
+   "damage_rate": 0.2999,
+   "admission_cost_vs_nocap": 0.2155
+  },
+  {
+   "cap": 0.2,
+   "admitted": 2471,
+   "most_used_root": 0,
+   "items_on_it": 494,
+   "invalidated": 494,
+   "damage_rate": 0.1999,
+   "admission_cost_vs_nocap": 0.3822
+  },
+  {
+   "cap": 0.1,
+   "admitted": 1605,
+   "most_used_root": 0,
+   "items_on_it": 160,
+   "invalidated": 160,
+   "damage_rate": 0.0997,
+   "admission_cost_vs_nocap": 0.5988
+  },
+  {
+   "cap": 0.05,
+   "admitted": 735,
+   "most_used_root": 8,
+   "items_on_it": 36,
+   "invalidated": 36,
+   "damage_rate": 0.049,
+   "admission_cost_vs_nocap": 0.8163
+  }
+ ],
+ "note": "the cap bounds damage by construction; the number that matters is how many admissions it costs to reach a given bound"
+}
