@@ -66,3 +66,39 @@ Prove or refute: *for adaptive adversaries, any algorithm with `o(k)` memory has
 competitive ratio `Ω(k)` against the offline optimum.* A refutation would be a
 sketch-based algorithm with a better bound; either outcome is publishable, and both
 require the adaptive adversary that the current simulation does not model.
+
+## What adaptivity actually costs (2026-11-18)
+
+`experiments/online_admission/adaptive.py`. Admissions are irreversible, so the
+adversary does not have to forge anything: it can corrupt a root *after* the
+algorithm has relied on it. Measured damage is therefore **retroactive
+invalidation**, not just false admission.
+
+4,000 components, 200 roots, r = 2. Two rules, same streams:
+
+- **A** - at least 2 distinct roots (the per-item rule)
+- **B** - at least 2 distinct roots **and** at least 2 distinct root *families*
+  (the four ecosystems Canari actually reads)
+
+| root usage | rule | admitted | invalidated when the single most-used root is corrupted |
+|---|---|---|---|
+| uniform | A | 4,000 | 59 (1.47%) |
+| uniform | B | 3,018 | 46 (1.52%) |
+| **skewed (zipf 1.2)** | **A** | 4,000 | **1,796 (44.9%)** |
+| **skewed (zipf 1.2)** | **B** | 1,042 | **306 (29.4%)** |
+
+Two things follow.
+
+1. **The vulnerability is a property of the usage distribution, not of the rule.**
+   Under uniform usage both rules lose ~1.5%; under skew one corrupted root takes
+   out 45% of everything admitted. Popular roots are single points of failure and
+   no per-item check can see that.
+2. **Per-item distinctness is local; the damage function is global.** Adding the
+   family constraint cuts absolute damage from 1,796 to 306 (83% less) - and also
+   cuts admissions from 4,000 to 1,042. That trade is the whole argument for an
+   explicit *corruption-distinct class* accounting, which is the gap the A-line
+   survey identified.
+
+Honest boundary: this is still a measurement, not a bound. It shows that any
+analysis restricted to per-item witness counts cannot capture the failure mode; it
+does not yet say what the optimal global policy costs.

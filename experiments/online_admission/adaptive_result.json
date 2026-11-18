@@ -1,0 +1,34 @@
+{
+ "uniform root usage": {
+  "A": {
+   "admitted": 4000,
+   "most_relied_upon_root": 28,
+   "items_using_it": 59,
+   "retroactively_invalid_after_corrupting_that_root": 59,
+   "retroactive_invalidation_rate": 0.0147
+  },
+  "B": {
+   "admitted": 3018,
+   "most_relied_upon_root": 50,
+   "items_using_it": 46,
+   "retroactively_invalid_after_corrupting_that_root": 46,
+   "retroactive_invalidation_rate": 0.0152
+  }
+ },
+ "skewed root usage (zipf 1.2)": {
+  "A": {
+   "admitted": 4000,
+   "most_relied_upon_root": 0,
+   "items_using_it": 1796,
+   "retroactively_invalid_after_corrupting_that_root": 1796,
+   "retroactive_invalidation_rate": 0.449
+  },
+  "B": {
+   "admitted": 1042,
+   "most_relied_upon_root": 0,
+   "items_using_it": 306,
+   "retroactively_invalid_after_corrupting_that_root": 306,
+   "retroactive_invalidation_rate": 0.2937
+  }
+ }
+}
