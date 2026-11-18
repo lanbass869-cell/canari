@@ -306,6 +306,23 @@ canari-identity check npm:aether-browser pypi:aether-browser
 # exit 0 same | 1 different | 2 unknown (no repository URL, or lookup failed)
 ```
 
+```
+canari-identity clusters --store out --write out/identity
+# records 6787  clusters 0  members 0  without-repository 6787
+```
+
+`clusters` groups attestations by publishing repository, so one component
+published to two ecosystems becomes one cluster with two members. Records with
+no repository are counted separately, never folded into a cluster. It also
+reports two shapes: `repo_changed` (the same component was published from a
+different repository over time - a transfer or a takeover, either way visible)
+and `name_collision` (the same bare name from different repositories in different
+ecosystems - legal, but the consumer needs to know).
+
+The live store currently reports **0 clusters / 6,787 records without a
+repository**, because every record predates the field. That is the honest state,
+not a bug: the first scan after this change starts populating it.
+
 `unknown` is never reported as `same`: absence of a repository URL on either
 side fails the comparison rather than passing it. This is the pair verdict only;
 it does not index the ecosystem. ecosyste.ms already serves repo -> packages in

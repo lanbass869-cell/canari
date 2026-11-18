@@ -121,3 +121,79 @@ class TestSchemaAcceptsRepository:
         # Old records stay valid: absent repository means UNKNOWN, not invalid.
         from canari.schema import validate_attestation
         assert validate_attestation(self._att()) == []
+
+
+def _rec(registry, name, repo=None, version="1"):
+    subj = {"name": name, "version": version, "registry": registry,
+            "artifact_sha256": "a" * 64}
+    if repo:
+        subj["repository"] = repo
+    return {"subject": subj}
+
+
+class TestClusters:
+    def test_same_repository_is_one_cluster_across_registries(self):
+        from canari.identity import build_clusters
+        built = build_clusters([_rec("npm", "aamio", "https://github.com/o/aamio-js"),
+                                _rec("pypi", "aamio", "git+https://github.com/o/aamio-js.git")])
+        assert len(built["clusters"]) == 1
+        c = built["clusters"][0]
+        assert c["registries"] == ["npm", "pypi"]
+        assert {m["registry"] for m in c["members"]} == {"npm", "pypi"}
+
+    def test_missing_repository_is_counted_not_clustered(self):
+        from canari.identity import build_clusters
+        built = build_clusters([_rec("npm", "x"), _rec("npm", "y", "https://github.com/o/y")])
+        assert len(built["clusters"]) == 1
+        assert built["without_repository"] == 1
+
+    def test_cluster_id_is_deterministic_and_content_addressed(self):
+        from canari.identity import build_clusters
+        a = build_clusters([_rec("npm", "x", "https://github.com/o/r")])
+        b = build_clusters([_rec("pypi", "x", "https://github.com/o/r/")])
+        assert a["clusters"][0]["id"] == b["clusters"][0]["id"]
+        assert a["clusters"][0]["id"].startswith("sha256:")
+
+    def test_duplicate_member_is_not_double_counted(self):
+        from canari.identity import build_clusters
+        built = build_clusters([_rec("npm", "x", "https://github.com/o/r"),
+                                _rec("npm", "x", "https://github.com/o/r")])
+        assert len(built["clusters"][0]["members"]) == 1
+
+
+class TestConflicts:
+    def test_repository_changed_for_same_component(self):
+        from canari.identity import find_conflicts
+        got = find_conflicts([_rec("npm", "x", "https://github.com/old/x"),
+                              _rec("npm", "x", "https://github.com/new/x")])
+        assert len(got["repo_changed"]) == 1
+        assert got["repo_changed"][0]["repositories"] == [
+            "github.com/new/x", "github.com/old/x"]
+
+    def test_name_collision_across_registries(self):
+        from canari.identity import find_conflicts
+        got = find_conflicts([_rec("npm", "ato-mcp", "https://github.com/a/ato-mcp"),
+                              _rec("pypi", "ato-mcp", "https://github.com/b/ato-mcp")])
+        assert len(got["name_collision"]) == 1
+        assert got["name_collision"][0]["registries"] == ["npm", "pypi"]
+
+    def test_same_name_same_repo_is_not_a_conflict(self):
+        from canari.identity import find_conflicts
+        got = find_conflicts([_rec("npm", "aether", "https://github.com/o/r"),
+                              _rec("pypi", "aether", "https://github.com/o/r")])
+        assert got["name_collision"] == []
+
+    def test_missing_repository_never_manufactures_a_conflict(self):
+        from canari.identity import find_conflicts
+        got = find_conflicts([_rec("npm", "x"), _rec("pypi", "x", "https://github.com/o/r")])
+        assert got["name_collision"] == [] and got["repo_changed"] == []
+
+
+class TestStoreLoading:
+    def test_unreadable_file_is_reported_not_ignored(self, tmp_path):
+        from canari.identity import load_store
+        (tmp_path / "attestations").mkdir()
+        (tmp_path / "attestations" / "bad.json").write_text("{not json", encoding="utf-8")
+        records, unreadable = load_store(str(tmp_path))
+        assert records == []
+        assert len(unreadable) == 1 and "bad.json" in unreadable[0]["path"]
