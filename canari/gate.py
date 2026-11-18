@@ -46,6 +46,10 @@ class GatePolicy:
     # weaker claim than "we fetched and hashed these bytes". Policies that need
     # the stronger claim set this to True; the `artifact-only` builtin does.
     require_artifact_bytes: bool = False
+    # ★2026-11-18: require a signed identity claim that ties this record's
+    # publishing repository to the cluster the consumer trusts. Off by default:
+    # turning it on changes allow/block decisions, so it must be asked for.
+    require_identity: bool = False
 
 
 BUILTIN_POLICIES = {
@@ -107,7 +111,7 @@ def load_policy_file(path: str) -> dict:
         raise ValueError("block_finding_kinds must be a list")
     for bool_key in ("require_fresh", "require_key_valid", "require_native_provenance",
                      "fail_on_error_check", "block_on_findings", "allow_findings",
-                     "require_artifact_bytes"):
+                     "require_artifact_bytes", "require_identity"):
         if bool_key in out and not isinstance(out[bool_key], bool):
             raise ValueError("%s must be a boolean" % bool_key)
     return out
@@ -125,6 +129,47 @@ class GateDecision:
     native_provenance_present: bool = False
 
 
+def _check_identity(payload, claim_path, key_path, policy):
+    """Is this record's repository the cluster's repository?
+
+    Requires a *signed* claim. A claim we cannot verify is not evidence of
+    identity, and an attestation with no repository cannot be tied to any
+    cluster - both are reported as failures, never as a pass.
+    """
+    from canari.identity import normalize_repo, validate_claim
+    from canari.signing import verify_signed
+
+    repo = normalize_repo((payload.get("subject") or {}).get("repository"))
+    if not repo:
+        return False, ("identity required but this attestation records no publishing "
+                       "repository; identity cannot be established")
+    if not claim_path:
+        return False, ("policy %s requires an identity claim and none was supplied "
+                       "(--identity-claim PATH)" % policy.name)
+    if not os.path.exists(claim_path):
+        return False, "identity claim not found: %s" % claim_path
+    if not key_path:
+        return False, "identity claim given without a public key: signature cannot be verified"
+    try:
+        with open(claim_path, "r", encoding="utf-8") as f:
+            bundle = json.load(f)
+        with open(key_path, "r", encoding="utf-8") as f:
+            pub = json.load(f)
+    except Exception as e:
+        return False, "identity claim unreadable: %s" % str(e)[:120]
+    good, claim, err = verify_signed(bundle.get("envelope") or {}, pub)
+    if not good or not isinstance(claim, dict):
+        return False, "identity claim signature FAILED: %s" % (err or "unknown")
+    bad = validate_claim(claim)
+    if bad:
+        return False, "identity claim malformed: %s" % "; ".join(bad[:2])
+    claimed = normalize_repo((claim.get("subject") or {}).get("repository"))
+    if claimed != repo:
+        return False, ("identity mismatch: attestation publishes from %s, claim covers %s"
+                       % (repo, claimed))
+    return True, "identity confirmed: %s" % repo
+
+
 def _check_freshness(payload):
     from datetime import datetime, timezone
     expires = payload.get("expires_at", "")
@@ -140,7 +185,7 @@ def _check_freshness(payload):
 
 def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
                   policy_name="default", policy_overrides=None, policy_file=None,
-                  allow_unsigned=False):
+                  allow_unsigned=False, identity_claim_path=None):
     from dataclasses import replace
     if policy_file:
         file_def = load_policy_file(policy_file)
@@ -262,6 +307,13 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
     if not is_gate_passing(payload):
         decision = "BLOCK"
         reasons.append("verdict is %s (gate blocks)" % verdict)
+
+    if policy.require_identity or identity_claim_path:
+        ok, why = _check_identity(payload, identity_claim_path, key_path, policy)
+        if not ok:
+            if decision == "ALLOW":
+                decision = "BLOCK"
+            reasons.append(why)
 
     if policy.require_artifact_bytes and not has_byte_evidence(payload):
         if decision == "ALLOW":

@@ -28,6 +28,8 @@ def main(argv=None):
     ap.add_argument("--policy-file", default=None, help="JSON policy file")
     ap.add_argument("--key", default=None, help="public key JSON (enables signature verification)")
     ap.add_argument("--key-registry", default=None, help="key_registry.json for lifecycle checks")
+    ap.add_argument("--identity-claim", default=None,
+                    help="signed identity claim to require (see canari-identity sign)")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     ap.add_argument("--list", action="store_true", help="list all components in the store")
     a = ap.parse_args(argv)
@@ -48,7 +50,8 @@ def main(argv=None):
 
     res = check_component(a.store, a.registry, a.name, version=a.version,
                           key_path=a.key, key_registry_path=a.key_registry,
-                          policy=a.policy, policy_file=a.policy_file)
+                          policy=a.policy, policy_file=a.policy_file,
+                          identity_claim_path=a.identity_claim)
     if a.json:
         print(json.dumps(res, ensure_ascii=False, indent=1))
     else:

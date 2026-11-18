@@ -75,7 +75,8 @@ def resolve_key(store_dir, key_path=None):
 
 
 def check_component(store_dir, registry, name, version=None, key_path=None,
-                    key_registry_path=None, policy="default", policy_file=None):
+                    key_registry_path=None, policy="default", policy_file=None,
+                    identity_claim_path=None):
     """Resolve the latest attestation and run the install gate.
 
     Returns a plain dict (JSON-serializable) so CLI/MCP/other hosts share the
@@ -92,7 +93,8 @@ def check_component(store_dir, registry, name, version=None, key_path=None,
     fp, payload = hit
     dec = evaluate_gate(fp, key_path=resolve_key(store_dir, key_path),
                         key_registry_path=key_registry_path,
-                        policy_name=policy, policy_file=policy_file)
+                        policy_name=policy, policy_file=policy_file,
+                        identity_claim_path=identity_claim_path)
     s = payload.get("subject", {})
     return {"found": True, "decision": dec.decision, "reasons": dec.reasons,
             "policy": dec.policy, "verdict": dec.verdict,

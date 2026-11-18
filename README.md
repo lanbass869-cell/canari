@@ -334,6 +334,19 @@ The live store currently reports **0 clusters / 6,787 records without a
 repository**, because every record predates the field. That is the honest state,
 not a bug: the first scan after this change starts populating it.
 
+**Enforcing it at the gate is opt-in.** Passing `--identity-claim` (or setting
+`require_identity` in a policy file) makes the gate refuse unless the
+attestation's publishing repository matches a *signed* identity claim:
+
+```
+canari-gate --store out --registry npm --name foo \
+    --key out/public_key.json --identity-claim out/identity/<cluster>.identity.json
+```
+
+Default behaviour is unchanged: no flag, no new refusals. An attestation with no
+recorded repository blocks under this flag, because identity cannot be
+established from nothing - `no repository` is not `same`.
+
 `unknown` is never reported as `same`: absence of a repository URL on either
 side fails the comparison rather than passing it. This is the pair verdict only;
 it does not index the ecosystem. ecosyste.ms already serves repo -> packages in

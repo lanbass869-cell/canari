@@ -298,3 +298,87 @@ class TestClaims:
         env["payload"] = raw[:-8] + ("A" if raw[-8] != "A" else "B") + raw[-7:]
         path.write_text(_json.dumps(bundle), encoding="utf-8")
         assert main(["verify", "--claims", str(claims), "--key", str(pub)]) == 1
+
+
+class TestGateIdentity:
+    """Opt-in identity enforcement at the gate. Default behaviour must not move."""
+
+    def _setup(self, tmp_path, repo="github.com/o/r", claim_repo=None):
+        import json as _json
+        from canari.signing import (generate_keypair, save_private_key,
+                                    sign_attestation)
+        signer, pub = generate_keypair()
+        subj = {"name": "p", "version": "1", "registry": "npm",
+                "artifact_sha256": "a" * 64, "maintainers": []}
+        if repo:
+            subj["repository"] = repo
+        att = {"_type": "https://agentcheck.dev/attestation/v0.1", "subject": subj,
+               "host": {"class": "mcp", "host_version": "t"},
+               "scenario_sha256": "b" * 64,
+               "checks": [{"id": "L2.1_ARTIFACT_HASH", "verdict": "pass", "tool": "t"}],
+               "verdict": "pass", "checker": {"kind": "automation", "id": "t"},
+               "evidence_refs": [], "evidence_completeness": {
+                   "dropped_logs": 0, "missing_observers": [], "truncated_fields": []},
+               "expires_at": "2026-12-30T00:00:00Z",
+               "generated_at": "2026-11-18T00:00:00Z",
+               "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
+                             "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
+        bp = tmp_path / "att.json"
+        bp.write_text(_json.dumps(sign_attestation(att, signer)), encoding="utf-8")
+        kp = tmp_path / "pub.json"
+        kp.write_text(_json.dumps(pub.to_dict()), encoding="utf-8")
+        claim = {"_type": "https://agentcheck.dev/identity/v0.1",
+                 "subject": {"repository": claim_repo or repo or "github.com/o/r",
+                             "cluster_id": "sha256:abc"},
+                 "members": [{"registry": "npm", "name": "p", "version": "1"}],
+                 "registries": ["npm"], "method": "publishing-repository/v1",
+                 "method_note": "n", "conflicts": {"name_collision": []},
+                 "observed_at": "2026-11-18T00:00:00Z"}
+        cp = tmp_path / "claim.json"
+        cp.write_text(_json.dumps(sign_attestation(claim, signer)), encoding="utf-8")
+        return str(bp), str(kp), str(cp)
+
+    def test_default_policy_is_unaffected(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp, _cp = self._setup(tmp_path)
+        assert evaluate_gate(bp, key_path=kp).decision == "ALLOW"
+
+    def test_matching_claim_allows(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp, cp = self._setup(tmp_path)
+        d = evaluate_gate(bp, key_path=kp, identity_claim_path=cp)
+        assert d.decision == "ALLOW", d.reasons
+
+    def test_claim_for_a_different_repository_blocks(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp, cp = self._setup(tmp_path, claim_repo="github.com/other/r")
+        d = evaluate_gate(bp, key_path=kp, identity_claim_path=cp)
+        assert d.decision == "BLOCK"
+        assert any("identity mismatch" in r for r in d.reasons)
+
+    def test_attestation_without_repository_blocks(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp, cp = self._setup(tmp_path, repo=None)
+        d = evaluate_gate(bp, key_path=kp, identity_claim_path=cp)
+        assert d.decision == "BLOCK"
+        assert any("no publishing repository" in r for r in d.reasons)
+
+    def test_require_identity_without_claim_blocks(self, tmp_path):
+        from canari.gate import evaluate_gate
+        bp, kp, _cp = self._setup(tmp_path)
+        d = evaluate_gate(bp, key_path=kp,
+                          policy_overrides={"require_identity": True})
+        assert d.decision == "BLOCK"
+        assert any("--identity-claim" in r for r in d.reasons)
+
+    def test_tampered_claim_blocks(self, tmp_path):
+        import json as _json
+        from canari.gate import evaluate_gate
+        bp, kp, cp = self._setup(tmp_path)
+        claim = _json.loads(open(cp, encoding="utf-8").read())
+        env = claim["envelope"]
+        env["payload"] = env["payload"][:-6] + "ZZZZZZ"
+        open(cp, "w", encoding="utf-8").write(_json.dumps(claim))
+        d = evaluate_gate(bp, key_path=kp, identity_claim_path=cp)
+        assert d.decision == "BLOCK"
+        assert any("signature FAILED" in r for r in d.reasons)
