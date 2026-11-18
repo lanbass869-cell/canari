@@ -382,3 +382,37 @@ class TestGateIdentity:
         d = evaluate_gate(bp, key_path=kp, identity_claim_path=cp)
         assert d.decision == "BLOCK"
         assert any("signature FAILED" in r for r in d.reasons)
+
+
+class TestMonorepoIsNotSameness:
+    """Measured on real data 2026-11-18: modelcontextprotocol/servers publishes
+    mcp-server-fetch, mcp-server-git and mcp-server-time - three different
+    servers in one repository. A repository link is a project link, not proof
+    that two names are the same package."""
+
+    def test_one_repo_two_names_is_flagged_monorepo(self):
+        from canari.identity import build_clusters
+        built = build_clusters([
+            _rec("pypi", "mcp-server-fetch", "https://github.com/o/servers"),
+            _rec("pypi", "mcp-server-git", "https://github.com/o/servers"),
+        ])
+        c = built["clusters"][0]
+        assert c["kind"] == "monorepo"
+        assert c["distinct_names"] == 2
+
+    def test_single_name_is_a_package_cluster(self):
+        from canari.identity import build_clusters
+        built = build_clusters([
+            _rec("npm", "a", "https://github.com/o/r"),
+            _rec("pypi", "a", "https://github.com/o/r"),
+        ])
+        assert built["clusters"][0]["kind"] == "package"
+
+    def test_claim_carries_the_kind(self):
+        from canari.identity import build_claim
+        cluster = {"id": "sha256:abc", "repository": "github.com/o/servers",
+                   "registries": ["pypi"], "kind": "monorepo", "distinct_names": 3,
+                   "members": [{"registry": "pypi", "name": "a", "version": "1"}]}
+        claim = build_claim(cluster, {}, "2026-11-18T00:00:00Z")
+        assert claim["kind"] == "monorepo" and claim["distinct_names"] == 3
+        assert "monorepo" in claim["method_note"]

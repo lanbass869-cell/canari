@@ -25,3 +25,6 @@ docs/log/*.lock
 servers.partial.json
 experiments/*/servers.partial.json
 experiments/identity_conflict/servers.json
+
+# local probe scan output (regenerable, not a published artifact)
+_probe_identity/

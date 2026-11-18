@@ -164,11 +164,20 @@ def build_clusters(records):
     for repo, bucket in sorted(clusters.items()):
         members = sorted(bucket["members"],
                          key=lambda m: (m["registry"], m["name"], m["version"]))
+        names = sorted({m["name"] for m in members})
         out.append({
             "id": "sha256:" + _hl.sha256(repo.encode("utf-8")).hexdigest()[:24],
             "repository": repo,
             "registries": sorted({m["registry"] for m in members}),
             "members": members,
+            # ★2026-11-18 (measured on real data): one repository can publish
+            # several *different* components - `modelcontextprotocol/servers`
+            # ships fetch / git / time. A repository link is a project-family
+            # link, not a proof that two names are the same package. The count
+            # is reported so a reader can see a monorepo instead of inferring
+            # sameness from the cluster.
+            "distinct_names": len(names),
+            "kind": "monorepo" if len(names) > 1 else "package",
         })
     return {"clusters": out, "without_repository": skipped,
             "records_with_repository": sum(len(c["members"]) for c in out)}
@@ -307,6 +316,8 @@ def _clusters_cmd(a):
         "name_collision": len(conflicts["name_collision"]),
         "cross_registry_clusters": sum(1 for c in built["clusters"]
                                        if len(c["registries"]) > 1),
+        "monorepo_clusters": sum(1 for c in built["clusters"]
+                                 if c["kind"] == "monorepo"),
         "examples": conflicts["name_collision"][:5],
     }
     if a.write:
@@ -323,9 +334,9 @@ def _clusters_cmd(a):
         print("records %d  clusters %d  members %d  without-repository %d" % (
             report["records"], report["clusters"], report["members"],
             report["without_repository"]))
-        print("cross-registry clusters %d  repo-changed %d  name-collision %d" % (
+        print("cross-registry clusters %d  repo-changed %d  name-collision %d  monorepo %d" % (
             report["cross_registry_clusters"], report["repo_changed"],
-            report["name_collision"]))
+            report["name_collision"], report["monorepo_clusters"]))
         for ex in report["examples"]:
             print("  name collision: %s -> %s" % (ex["name"], " | ".join(ex["repositories"])))
     return 0
@@ -350,9 +361,14 @@ def build_claim(cluster, conflicts, observed_at):
                     "cluster_id": cluster["id"]},
         "members": cluster["members"],
         "registries": cluster["registries"],
+        "kind": cluster.get("kind", "package"),
+        "distinct_names": cluster.get("distinct_names", len(cluster["members"])),
         "method": "publishing-repository/v1",
-        "method_note": ("members share one normalised publishing repository; "
-                        "a missing repository is never treated as a match"),
+        "method_note": ("members share one normalised publishing repository; a "
+                        "missing repository is never treated as a match; one "
+                        "repository may publish several different packages "
+                        "(kind=monorepo), which is a project link, not proof that "
+                        "two names are the same package"),
         "conflicts": {"name_collision": related},
         "observed_at": observed_at,
     }

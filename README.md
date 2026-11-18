@@ -312,7 +312,13 @@ canari-identity clusters --store out --write out/identity
 ```
 
 `clusters` groups attestations by publishing repository, so one component
-published to two ecosystems becomes one cluster with two members. Records with
+published to two ecosystems becomes one cluster with two members.
+
+A repository link is **not** proof that two names are the same package: a
+monorepo publishes several. Measured on real data - `modelcontextprotocol/servers`
+ships `mcp-server-fetch`, `mcp-server-git` and `mcp-server-time`. Those land in
+one cluster and it is reported as `kind: monorepo` with `distinct_names: 3`,
+so a reader sees a project family rather than inferring sameness. Records with
 no repository are counted separately, never folded into a cluster. It also
 reports two shapes: `repo_changed` (the same component was published from a
 different repository over time - a transfer or a takeover, either way visible)
