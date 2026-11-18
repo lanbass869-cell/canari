@@ -380,9 +380,13 @@ class AppendOnlyLog:
             # bytes this reader returns -- but a consumer must know their
             # checkout mangles evidence files, because any *other* tool that
             # hashes the file directly will disagree.
+            # ★2026-11-18: this used to go to stdout, which corrupted the JSON
+            # that `canari-log audit` prints (a script doing `| jq` broke on any
+            # CRLF checkout). Diagnostics belong on stderr; stdout is the report.
+            import sys as _sys
             print("[log] WARNING: %s contains CRLF line endings; a checkout "
                   "converted evidence files. Add docs/log/** -text to "
-                  ".gitattributes." % self.entries_path)
+                  ".gitattributes." % self.entries_path, file=_sys.stderr)
         return {"ok": not errors, "size": len(entries), "root": root,
                 "last_head": lh, "errors": errors,
                 "unchained_heads": unchained,

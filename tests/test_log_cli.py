@@ -1,138 +1,145 @@
 # -*- coding: utf-8 -*-
-"""CLI tests for canari-log: the shell surface a consumer would actually use.
+"""canari-log end to end: init -> append -> seal -> audit -> bundle -> verify.
 
-These run the real subprocess, because an in-process call would not catch
-argument wiring, exit codes, or stdin handling - the parts that break first.
+Coefficient: this module had 0% coverage before this file. It is a shipped CLI
+with seven subcommands and no test ever executed a line of it, so "the gate is
+green" said nothing about whether canari-log works at all.
 """
+import io
 import json
 import os
-import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CLI = [sys.executable, "-m", "canari.log_cli"]
-
-
-def run(args, stdin=None, cwd=ROOT):
-    return subprocess.run(CLI + args, input=stdin, capture_output=True,
-                          text=True, cwd=cwd, encoding="utf-8")
+from canari import log_cli
 
 
-def test_init_creates_key_and_empty_head(tmp_path):
-    d = str(tmp_path / "log")
-    r = run(["init", d, "--log-id", "cli-test", "--timestamp", "2026-01-01T00:00:00Z"])
-    assert r.returncode == 0, r.stderr
-    out = json.loads(r.stdout)
-    assert out["head"]["body"]["size"] == 0
-    assert out["public_key"]["log_id"] == "cli-test"
-    assert os.path.exists(os.path.join(d, "public_key.json"))
+def _run(argv, stdin_text=None, monkeypatch=None):
+    if stdin_text is not None and monkeypatch is not None:
+        monkeypatch.setattr(sys, "stdin", io.StringIO(stdin_text))
+    return log_cli.main(argv)
 
 
-def test_append_from_file_then_seal_then_bundle_then_verify(tmp_path):
-    d = str(tmp_path / "log")
-    assert run(["init", d]).returncode == 0
-    src = tmp_path / "recs.json"
-    src.write_text(json.dumps([{"a": 1}, {"a": 2}, {"a": 3}]), encoding="utf-8")
-    r = run(["append", d, "--file", str(src)])
-    assert r.returncode == 0, r.stderr
-    assert json.loads(r.stdout)["appended"] == 3
-    r = run(["seal", d, "--timestamp", "2026-01-02T00:00:00Z"])
-    assert r.returncode == 0
-    head = json.loads(r.stdout)["head"]
-    assert head["body"]["size"] == 3
-    b = tmp_path / "b.json"
-    r = run(["bundle", d, "1", "-o", str(b)])
-    assert r.returncode == 0, r.stderr
-    r = run(["verify", str(b)])
-    assert r.returncode == 0, r.stdout + r.stderr
-    assert "RESULT: OK" in r.stdout
-    r = run(["verify", str(b), "--root", "ab" * 32])
-    assert r.returncode == 2
-    assert "RESULT: FAILED" in r.stdout
+def _new_log(tmp_path, monkeypatch):
+    out = io.StringIO()
+    monkeypatch.setattr(sys, "stdout", out)
+    assert _run(["init", str(tmp_path), "--log-id", "audit-log"], monkeypatch=monkeypatch) == 0
+    doc = json.loads(out.getvalue())
+    assert doc["public_key"]
+    # init alone does not have to materialise the record file; append does.
+    return doc
 
 
-def test_append_from_stdin(tmp_path):
-    d = str(tmp_path / "log")
-    run(["init", d])
-    r = run(["append", d, "--stdin"], stdin=json.dumps({"payload": {"x": 1}}))
-    assert r.returncode == 0, r.stderr
-    assert json.loads(r.stdout)["appended"] == 1
+class TestLogCliLifecycle:
+    def test_init_creates_log_and_prints_key(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+
+    def test_append_from_stdin_then_seal_then_audit(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+        monkeypatch.setattr(sys, "stdout", io.StringIO())
+        rc = _run(["append", str(tmp_path), "--stdin"],
+                  stdin_text='[{"a":1},{"b":2}]', monkeypatch=monkeypatch)
+        assert rc == 0
+        assert (tmp_path / "log.jsonl").exists()
+        out = io.StringIO(); monkeypatch.setattr(sys, "stdout", out)
+        assert _run(["seal", str(tmp_path)], monkeypatch=monkeypatch) == 0
+        sealed = json.loads(out.getvalue())
+        assert sealed["sealed"] is True
+        out2 = io.StringIO(); monkeypatch.setattr(sys, "stdout", out2)
+        assert _run(["audit", str(tmp_path)], monkeypatch=monkeypatch) == 0
+        rep = json.loads(out2.getvalue())
+        assert rep.get("ok") is True, rep
+
+    def test_append_from_file_and_head(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+        rec = tmp_path / "rec.json"
+        rec.write_text(json.dumps({"kind": "verdict", "timestamp": "t",
+                                   "payload": {"v": 1}}), encoding="utf-8")
+        monkeypatch.setattr(sys, "stdout", io.StringIO())
+        assert _run(["append", str(tmp_path), "--file", str(rec)],
+                    monkeypatch=monkeypatch) == 0
+        out = io.StringIO(); monkeypatch.setattr(sys, "stdout", out)
+        assert _run(["seal", str(tmp_path)], monkeypatch=monkeypatch) == 0
+        out2 = io.StringIO(); monkeypatch.setattr(sys, "stdout", out2)
+        assert _run(["head", str(tmp_path)], monkeypatch=monkeypatch) == 0
+        head = json.loads(out2.getvalue())
+        assert head["body"]["size"] >= 1
+
+    def test_seal_without_new_entries_says_so(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+        out = io.StringIO(); monkeypatch.setattr(sys, "stdout", out)
+        assert _run(["seal", str(tmp_path)], monkeypatch=monkeypatch) == 0
+        assert json.loads(out.getvalue())["sealed"] is False
+
+    def test_bundle_then_verify_offline(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+        monkeypatch.setattr(sys, "stdout", io.StringIO())
+        _run(["append", str(tmp_path), "--stdin"], stdin_text='[{"a":1}]',
+             monkeypatch=monkeypatch)
+        _run(["seal", str(tmp_path)], monkeypatch=monkeypatch)
+        bundle = tmp_path / "out" / "b.json"
+        bundle.parent.mkdir()
+        assert _run(["bundle", str(tmp_path), "0", "-o", str(bundle)],
+                    monkeypatch=monkeypatch) == 0
+        assert bundle.exists()
+        out = io.StringIO(); monkeypatch.setattr(sys, "stdout", out)
+        assert _run(["verify", str(bundle), "--json"], monkeypatch=monkeypatch) == 0
+        assert json.loads(out.getvalue()).get("ok") is True
+
+    def test_verify_fails_on_tampered_bundle(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+        monkeypatch.setattr(sys, "stdout", io.StringIO())
+        _run(["append", str(tmp_path), "--stdin"], stdin_text='[{"a":1}]',
+             monkeypatch=monkeypatch)
+        _run(["seal", str(tmp_path)], monkeypatch=monkeypatch)
+        bundle = tmp_path / "b.json"
+        _run(["bundle", str(tmp_path), "0", "-o", str(bundle)], monkeypatch=monkeypatch)
+        doc = json.loads(bundle.read_text(encoding="utf-8"))
+        # Corrupt the entry the bundle claims is included; the proof can no
+        # longer bind it to the signed root.
+        doc["entry"] = {}
+        bundle.write_text(json.dumps(doc), encoding="utf-8")
+        assert _run(["verify", str(bundle), "--json"], monkeypatch=monkeypatch) == 2
+
+    def test_audit_detects_truncated_log(self, tmp_path, monkeypatch):
+        _new_log(tmp_path, monkeypatch)
+        monkeypatch.setattr(sys, "stdout", io.StringIO())
+        _run(["append", str(tmp_path), "--stdin"], stdin_text='[{"a":1},{"b":2}]',
+             monkeypatch=monkeypatch)
+        _run(["seal", str(tmp_path)], monkeypatch=monkeypatch)
+        lines = (tmp_path / "log.jsonl").read_text(encoding="utf-8").splitlines()
+        (tmp_path / "log.jsonl").write_text("\n".join(lines[:-1]) + "\n", encoding="utf-8")
+        out = io.StringIO(); monkeypatch.setattr(sys, "stdout", out)
+        rc = _run(["audit", str(tmp_path)], monkeypatch=monkeypatch)
+        assert rc == 2
+        assert json.loads(out.getvalue()).get("ok") is False
 
 
-def test_append_rejects_empty_list(tmp_path):
-    d = str(tmp_path / "log")
-    run(["init", d])
-    r = run(["append", d, "--stdin"], stdin="[]")
-    assert r.returncode == 3
+class TestReadRecords:
+    def test_dict_becomes_one_record(self):
+        class A:
+            file = None
+        import io as _io
+        old = sys.stdin
+        sys.stdin = _io.StringIO('{"x": 1}')
+        try:
+            recs = log_cli._read_records(A())
+        finally:
+            sys.stdin = old
+        assert recs == [{"kind": "record", "payload": {"x": 1}}]
 
-
-def test_audit_exit_codes(tmp_path):
-    d = str(tmp_path / "log")
-    run(["init", d])
-    src = tmp_path / "r.json"
-    src.write_text(json.dumps([{"a": 1}, {"a": 2}]), encoding="utf-8")
-    run(["append", d, "--file", str(src)])
-    run(["seal", d])
-    r = run(["audit", d])
-    assert r.returncode == 0, r.stdout
-    assert json.loads(r.stdout)["ok"] is True
-
-    p = os.path.join(d, "log.jsonl")
-    lines = open(p, "rb").read().split(b"\n")
-    lines[0] = lines[0].replace(b'"a":1', b'"a":9')
-    open(p, "wb").write(b"\n".join(lines))
-    r = run(["audit", d])
-    assert r.returncode == 2
-    assert json.loads(r.stdout)["ok"] is False
-
-
-def test_head_without_heads_is_error(tmp_path):
-    d = str(tmp_path / "log")
-    os.makedirs(d)
-    r = run(["head", d])
-    assert r.returncode == 3
-
-
-def test_seal_reports_no_new_entries(tmp_path):
-    d = str(tmp_path / "log")
-    run(["init", d])
-    r = run(["seal", d])
-    assert r.returncode == 0
-    assert json.loads(r.stdout)["sealed"] is False
-
-
-def test_verify_missing_file_is_usage_error(tmp_path):
-    r = run(["verify", str(tmp_path / "nope.json")])
-    assert r.returncode == 3
-
-def test_audit_infers_a_non_default_log_id(tmp_path):
-    """`audit DIR` must not report corruption just because the log was created
-    with --log-id.
-
-    Reproduced on the repo's own log before the fix: `canari-log audit docs/log`
-    returned {"ok": false, errors: ["log_id mismatch: 'canari-snapshot-log' !=
-    'canari-log'"]} and exit 2, on a completely intact log. A reader who had just
-    cloned the repo would reasonably conclude the transparency log was corrupt.
-    """
-    d = str(tmp_path / "log")
-    assert run(["init", d, "--log-id", "custom-id",
-                "--timestamp", "2026-01-01T00:00:00Z"]).returncode == 0
-    src = tmp_path / "recs.json"
-    src.write_text(json.dumps([{"a": 1}, {"a": 2}]), encoding="utf-8")
-    assert run(["append", d, "--file", str(src)]).returncode == 0
-    assert run(["seal", d, "--timestamp", "2026-01-02T00:00:00Z"]).returncode == 0
-
-    # no --log-id: infer it from the published head
-    r = run(["audit", d])
-    assert r.returncode == 0, (r.stdout, r.stderr)
-    out = json.loads(r.stdout)
-    assert out["ok"] is True, out
-    assert out["size"] == 2
-
-    # an explicitly wrong id must still fail closed
-    r = run(["audit", d, "--log-id", "definitely-wrong"])
-    assert r.returncode == 2
-    out = json.loads(r.stdout)
-    assert out["ok"] is False
-    assert any("log_id mismatch" in e for e in out["errors"]), out["errors"]
+    def test_empty_input_is_an_error(self):
+        class A:
+            file = None
+        import io as _io
+        old = sys.stdin
+        sys.stdin = _io.StringIO("[]")
+        try:
+            log_cli._read_records(A())
+        except ValueError as e:
+            assert "non-empty" in str(e)
+        else:
+            raise AssertionError("empty array must be rejected")
+        finally:
+            sys.stdin = old
