@@ -1,38 +1,37 @@
 {
- "checkpoint": "github.com/lanbass869-cell/canari/log\n47\n0SmOLKI2G9WuulEFH5Of/yWcEY+UsEKbQPAxFsDyUNs=\n\n— github.com/lanbass869-cell/canari/log eIfAqDQJkypE8ogpWlwkh84YD9n4k4FQH3/fGPssIGhmmP1LPXb0VEc1Hmz+1mNo3wJJnB/f1yBdTm3MaxZkUpyWOws=\n",
+ "checkpoint": "github.com/lanbass869-cell/canari/log\n49\nDfa8duwSSzj+b79xy/AjHIcPWu89Ud5Y6dQNSgaCgOg=\n\n— github.com/lanbass869-cell/canari/log eIfAqKtsIArZXK+hHZXqV43nfZjD8/PtlmlIB9gpmiY/PGWfvLka8YqzYmLv5EU/UfwA3lugkVnCgkI65TbM/Vkadww=\n",
  "consistency": {
   "from_head": {
    "body": {
     "log_id": "canari-snapshot-log",
-    "prev": "fcaacae42b0a6ef3268a31afc46d7a11a359635a817cdeb9f750652cb9ab9463",
-    "root": "37dab96ae2644247ce651474204123fe8307b3ee7b87248e426a0b7143722901",
-    "size": 45,
+    "prev": "bfe5f084e774507f1b821debe0f0079f34aa522c03f455ee92bb185b7bc3437d",
+    "root": "d1298e2ca2361bd5aeba51051f939fff259c118f94b0429b40f03116c0f250db",
+    "size": 47,
     "spec": "canari-append-only-log/v1",
-    "timestamp": "2026-11-16T12:42:33Z"
+    "timestamp": "2026-11-17T13:20:38Z"
    },
    "signature": {
     "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
     "scheme": "ed25519",
-    "sig": "315eef98dd3af8862b4d0120f10fd98ac16906ae699315c0402df43649dae68143763b7f71777069d5a655a0dfa68c3e0f78858035be650e0292997707665002"
+    "sig": "5277ac69089d46b54d45447719b42e9fcac906df69a5c4033d9c3fc63196846268e31797c444e909d437017536f3261c06f1bf73a57e8c137edac5f35bfcce0d"
    }
   },
   "proof": [
-   "8e9e6b22926f6a56c3f8d378bf27a3854eb3f51e3eb96245be9ca03d05c8896e",
-   "1eef00e07e6087ad6749c5b90bcb8f01681ff23570d5f5d4fe3374584370c666",
    "4b8a9ff58b4017b62f7286a0d99b3a5509bf11d34b2882e921411bec02c9713c",
+   "96cc68d8d70bce880bed7c1e962a40fe49d482f809534214f9a90e834ce1a183",
+   "2816b694455f9875fc29a5e9e195ed50748f72ac4a2b8fc1262e4cebf0b3a71d",
    "4d858323a69219ea5bdceff9a009f7bf983daced5e1bb4f3691c8ad801143d24",
    "3c3d7945c6bdb1cbfc5b2ec25548da530ba17366208d0cd037e01de85d706e11",
+   "9c606086748dba496cb4a7de67f8a38dd50228b31fcbf9358115048d3771365b",
    "a8b69307731574920ff066e7014e35d0e624ce0458a94ffe39bdb57961adb1f2"
   ]
  },
  "entry": {
-  "data_b64": "eyJraW5kIjoic291cmNlLXNuYXBzaG90IiwicGF5bG9hZCI6eyJieXRlcyI6MTQyNTQ0NCwiY2hlY2tzIjoicGFja2FnZSByZWNvcmQgKyByZXBvc2l0b3J5IHJlYWNoYWJpbGl0eSIsImZldGNoZWRfYXQiOiIyMDI2LTExLTE3VDEzOjIwOjM4WiIsImxpY2Vuc2UiOiJDQyBCWSA0LjAiLCJwbGFpbl9ieXRlcyI6MTUyMzI3ODcsInBsYWluX3NoYTI1NiI6IjdlNWMxMmRhYTM0MjkzOGZmYjNkMzlkMDFhN2M4ZGZjYjY5MDk3NDRkZmE1ZTE5MDVmOGVhZDAzZDFkYjM3OGEiLCJyb3dzIjo2NDM1Nywic2VydmVycyI6NjUyNTUsInNoYTI1NiI6ImFhMDJjNzE1NWQyYTg2NTJlY2QxYjM2YTk1ZjM4ZjU1MGMxYjc3YTA4Nzg5MTZiNjlmNTg4NGEwMzgwZTRhMGIiLCJzb3VyY2UiOiJwcm90b2NvbHByb2JlLWV2aWRlbmNlIiwic291cmNlX2RhdGFzZXQiOiJwcm90b2NvbHByb2JlLWV2aWRlbmNlIiwic291cmNlX2Zvcm1hdCI6InByb3RvY29scHJvYmUtZXZpZGVuY2UtMSIsInNvdXJjZV9nZW5lcmF0ZWRfYXQiOiIyMDI2LTExLTE2VDE2OjA0OjEzLjk2OVoiLCJzb3VyY2VfcHJvYmVkX2F0IjoiMjAyNi0xMS0xNlQxNDoxOTo0NC45NDNaIiwic291cmNlX3NuYXBzaG90IjoiMjAyNi0xMS0xNiIsInN0YXRlcyI6eyJhbGl2ZSI6NTg3NzIsImRlYWQiOjUyNTIsInVua25vd24iOjMzM30sInVybCI6Imh0dHBzOi8vcHJvdG9jb2xwcm9iZS5jb20vYXBpL3YxL2V2aWRlbmNlIn0sInNlcSI6NDYsInNwZWMiOiJjYW5hcmktbG9nLWVudHJ5L3YxIiwidGltZXN0YW1wIjoiMjAyNi0xMS0xN1QxMzoyMDozOFoifQ==",
-  "index": 46
+  "data_b64": "eyJraW5kIjoic291cmNlLXNuYXBzaG90IiwicGF5bG9hZCI6eyJieXRlcyI6MTQ0MDUzNiwiY2hlY2tzIjoicGFja2FnZSByZWNvcmQgKyByZXBvc2l0b3J5IHJlYWNoYWJpbGl0eSIsImZldGNoZWRfYXQiOiIyMDI2LTExLTE4VDEzOjAwOjI3WiIsImxpY2Vuc2UiOiJDQyBCWSA0LjAiLCJwbGFpbl9ieXRlcyI6MTUzMzk2NzgsInBsYWluX3NoYTI1NiI6ImM0YzEwODMwYzI1Y2IxMzc4ODhhZjQ5Y2RmZjEyMjdmMTU3OTg4YTQ2MGVhZjBiN2VlZDA5ZWJlNDYwNTQzYjciLCJyb3dzIjo2NDgxNiwic2VydmVycyI6NjU5NzIsInNoYTI1NiI6ImQ1MTE5ZTRmNDJhMTUxOGY3ZjMwNjdhNjhmMTc5NGU2Y2NkNmE1NzEzZDA5NTY0MWVkNjNmZDU1MDYzYzRlMDkiLCJzb3VyY2UiOiJwcm90b2NvbHByb2JlLWV2aWRlbmNlIiwic291cmNlX2RhdGFzZXQiOiJwcm90b2NvbHByb2JlLWV2aWRlbmNlIiwic291cmNlX2Zvcm1hdCI6InByb3RvY29scHJvYmUtZXZpZGVuY2UtMSIsInNvdXJjZV9nZW5lcmF0ZWRfYXQiOiIyMDI2LTExLTE3VDE2OjEwOjU2LjMxNFoiLCJzb3VyY2VfcHJvYmVkX2F0IjoiMjAyNi0xMS0xN1QxNDoyNjowNi44NTJaIiwic291cmNlX3NuYXBzaG90IjoiMjAyNi0xMS0xNyIsInN0YXRlcyI6eyJhbGl2ZSI6NTkyMTcsImRlYWQiOjUyNjIsInVua25vd24iOjMzN30sInVybCI6Imh0dHBzOi8vcHJvdG9jb2xwcm9iZS5jb20vYXBpL3YxL2V2aWRlbmNlIn0sInNlcSI6NDgsInNwZWMiOiJjYW5hcmktbG9nLWVudHJ5L3YxIiwidGltZXN0YW1wIjoiMjAyNi0xMS0xOFQxMzowMDoyN1oifQ==",
+  "index": 48
  },
  "inclusion_proof": [
-  "2816b694455f9875fc29a5e9e195ed50748f72ac4a2b8fc1262e4cebf0b3a71d",
-  "4d858323a69219ea5bdceff9a009f7bf983daced5e1bb4f3691c8ad801143d24",
-  "3c3d7945c6bdb1cbfc5b2ec25548da530ba17366208d0cd037e01de85d706e11",
+  "03f6d5c16800278cae83c51b9e4545d5f3067b250ff5783f7a7330529a444471",
   "a8b69307731574920ff066e7014e35d0e624ce0458a94ffe39bdb57961adb1f2"
  ],
  "log_id": "canari-snapshot-log",
@@ -48,16 +47,16 @@
  "tree_head": {
   "body": {
    "log_id": "canari-snapshot-log",
-   "prev": "bfe5f084e774507f1b821debe0f0079f34aa522c03f455ee92bb185b7bc3437d",
-   "root": "d1298e2ca2361bd5aeba51051f939fff259c118f94b0429b40f03116c0f250db",
-   "size": 47,
+   "prev": "3dc7872fa2e5c525e97f73891f0d592aa7d036708cd57e4c4f7b747bc219ee33",
+   "root": "0df6bc76ec124b38fe6fbf71cbf0231c870f5aef3d51de58e9d40d4a068280e8",
+   "size": 49,
    "spec": "canari-append-only-log/v1",
-   "timestamp": "2026-11-17T13:20:38Z"
+   "timestamp": "2026-11-18T13:00:27Z"
   },
   "signature": {
    "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
    "scheme": "ed25519",
-   "sig": "5277ac69089d46b54d45447719b42e9fcac906df69a5c4033d9c3fc63196846268e31797c444e909d437017536f3261c06f1bf73a57e8c137edac5f35bfcce0d"
+   "sig": "037b39952b5ec867121e880fd67916c85b1b019adfc70ff78f0b42620bbce457db209dd8293b90bec7918c634bbb00f327041ddbc39a503a934b0b8e13a27700"
   }
  }
 }
