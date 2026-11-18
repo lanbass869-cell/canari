@@ -174,6 +174,8 @@ def main(argv=None):
     ap.add_argument("--version", default=None, help="pin an exact version")
     ap.add_argument("--policy", default="default", help="gate policy")
     ap.add_argument("--key", default=None, help="public key JSON (enables signature verification)")
+    ap.add_argument("--identity-dir", default=None,
+                    help="directory of signed identity claims (enables identity enforcement)")
     ap.add_argument("--on-unknown", choices=["allow", "block", "review"], default="allow",
                     help="what to do when the ledger has no attestation (default: allow)")
     ap.add_argument("--allow-review", action="store_true",
@@ -198,8 +200,26 @@ def main(argv=None):
     reasons = []
 
     if registry and name and os.path.isdir(a.store):
-        res = check_component(a.store, registry, name, version=version,
-                              key_path=a.key, policy=a.policy)
+        claim = None
+        if a.identity_dir:
+            from canari.consumer import latest_attestation
+            from canari.identity import claim_filename
+            hit = latest_attestation(a.store, registry, name, version=version)
+            if hit is not None:
+                repo = (hit[1].get("subject") or {}).get("repository")
+                fname = claim_filename(repo)
+                if fname and os.path.exists(os.path.join(a.identity_dir, fname)):
+                    claim = os.path.join(a.identity_dir, fname)
+        if a.identity_dir and claim is None:
+            # Same rule as canari-guard: a requested identity check that cannot
+            # find its claim is a BLOCK, not a skipped check.
+            res = {"found": True, "decision": BLOCK, "policy": a.policy,
+                   "reasons": ["identity required (--identity-dir) but no signed claim "
+                               "covers this component's publishing repository"]}
+        else:
+            extra = {"identity_claim_path": claim} if claim else {}
+            res = check_component(a.store, registry, name, version=version,
+                                  key_path=a.key, policy=a.policy, **extra)
         if not res["found"]:
             decision = _unknown_decision(a.on_unknown)
             if decision != ALLOW:

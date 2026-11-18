@@ -349,6 +349,17 @@ canari-gate --store out --registry npm --name foo \
     --key out/public_key.json --identity-claim out/identity/<cluster>.identity.json
 ```
 
+The two entry points that actually stop a package take the same switch as a
+directory, and resolve the claim themselves from the record's repository:
+
+```
+canari-guard --identity-dir out/identity -- npm install some-mcp-server
+canari-mcp-gate --store out --identity-dir out/identity -- npx -y some-server
+```
+
+With `--identity-dir` set, a component whose claim is missing is **blocked**, not
+skipped - a requested check that cannot be performed is never a pass.
+
 Default behaviour is unchanged: no flag, no new refusals. An attestation with no
 recorded repository blocks under this flag, because identity cannot be
 established from nothing - `no repository` is not `same`.

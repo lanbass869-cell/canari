@@ -107,7 +107,31 @@ def parse_install(argv):
     return out
 
 
-def _lookup(store, registry, name, version, key):
+def _identity_claim_for(store, registry, name, version, key, identity_dir):
+    """Path to the claim covering this component's repository, or None.
+
+    The claim name is content-addressed from the publishing repository, so the
+    resolution is deterministic: no index, no lookup table, no network.
+    """
+    if not identity_dir:
+        return None
+    import json as _json
+    import os as _os
+    from canari.consumer import latest_attestation
+    from canari.identity import claim_filename
+    hit = latest_attestation(store, registry, name, version=version)
+    if hit is None:
+        return None
+    _fp, payload = hit
+    repo = (payload.get("subject") or {}).get("repository")
+    fname = claim_filename(repo)
+    if not fname:
+        return None
+    path = _os.path.join(identity_dir, fname)
+    return path if _os.path.exists(path) else None
+
+
+def _lookup(store, registry, name, version, key, identity_claim=None):
     """Resolve the component in its DECLARED registry only.
 
     ★2026-11-11 (F4): this used to fall back to the npm namespace for dsh
@@ -115,7 +139,9 @@ def _lookup(store, registry, name, version, key):
     different artifacts, so an npm "pass" was silently authorising a dsh
     install. A missing dsh attestation is BLOCK, not "try npm".
     """
-    return check_component(store, registry, name, version=version, key_path=key)
+    extra = {"identity_claim_path": identity_claim} if identity_claim else {}
+    return check_component(store, registry, name, version=version, key_path=key,
+                           **extra)
 
 
 def main(argv=None):
@@ -128,6 +154,8 @@ def main(argv=None):
     ap.add_argument("--policy-file", default=None)
     ap.add_argument("--allow-review", action="store_true",
                     help="proceed when the gate returns REVIEW")
+    ap.add_argument("--identity-dir", default=None,
+                    help="directory of signed identity claims (enables identity enforcement)")
     ap.add_argument("--dry-run", action="store_true",
                     help="evaluate the gate but do not execute the command")
     ap.add_argument("cmd", nargs=argparse.REMAINDER,
@@ -143,7 +171,16 @@ def main(argv=None):
     pkgs = parse_install(cmd)
     blocked, review = [], []
     for registry, name, version in pkgs:
-        res = _lookup(a.store, registry, name, version, a.key)
+        claim = _identity_claim_for(a.store, registry, name, version, a.key, a.identity_dir)
+        if a.identity_dir and claim is None:
+            # ★2026-11-18: --identity-dir given but this component has no signed
+            # claim. Passing None through would silently skip enforcement, which
+            # is the fail-open shape this project keeps having to kill. Refuse.
+            res = {"found": True, "decision": "BLOCK", "policy": a.policy,
+                   "reasons": ["identity required (--identity-dir) but no signed claim "
+                               "covers this component's publishing repository"]}
+        else:
+            res = _lookup(a.store, registry, name, version, a.key, claim)
         line = "%s:%s%s -> %s" % (registry, name, ("@" + version) if version else "",
                                   res["decision"])
         if res["decision"] == "BLOCK":

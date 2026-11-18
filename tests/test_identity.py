@@ -233,7 +233,7 @@ def _make_store(tmp_path, repos):
                "signature": {"envelope": "DSSE", "keyid": "", "sig": "",
                              "payload_type": "https://agentcheck.dev/attestation/v0.1"}}
         b = _signed_bundle(tmp_path, att)
-        b.rename(d / ("%d.json" % i))
+        b.rename(d / ("%d_%s.bundle.json" % (i, name.replace("/", "_"))))
     kp = tmp_path / "k.pem"
     from canari.signing import save_private_key
     save_private_key(signer, str(kp))
@@ -416,3 +416,51 @@ class TestMonorepoIsNotSameness:
         claim = build_claim(cluster, {}, "2026-11-18T00:00:00Z")
         assert claim["kind"] == "monorepo" and claim["distinct_names"] == 3
         assert "monorepo" in claim["method_note"]
+
+
+class TestEntryPointsEnforceIdentity:
+    """canari-guard and canari-mcp-gate are the commands that actually stop a
+    package. `--identity-dir` must refuse when the claim for this component is
+    missing, not silently skip the check."""
+
+    def test_claim_filename_matches_what_sign_writes(self, tmp_path):
+        from canari.identity import claim_filename, cluster_id
+        repo = "https://github.com/o/r.git"
+        assert claim_filename(repo) == cluster_id(repo).split(":")[-1] + ".identity.json"
+
+    def test_identity_claim_for_resolves_by_repository(self, tmp_path):
+        from canari.guard import _identity_claim_for
+        store, key, _pub = _make_store(tmp_path, [("npm", "x", "https://github.com/o/r")])
+        idir = tmp_path / "identity"
+        idir.mkdir()
+        from canari.identity import claim_filename
+        (idir / claim_filename("https://github.com/o/r")).write_text("{}", encoding="utf-8")
+        got = _identity_claim_for(str(store), "npm", "x", None, None, str(idir))
+        assert got is not None and got.endswith(".identity.json")
+
+    def test_identity_claim_for_returns_none_without_repository(self, tmp_path):
+        from canari.guard import _identity_claim_for
+        store, _key, _pub = _make_store(tmp_path, [("npm", "y", None)])
+        idir = tmp_path / "identity"; idir.mkdir()
+        assert _identity_claim_for(str(store), "npm", "y", None, None, str(idir)) is None
+
+    def test_guard_blocks_when_identity_dir_has_no_claim(self, tmp_path, capsys):
+        from canari.guard import main
+        store, key, _pub = _make_store(tmp_path, [("npm", "x", "https://github.com/o/r")])
+        idir = tmp_path / "identity"; idir.mkdir()
+        rc = main(["--store", str(store), "--key", str(key), "--identity-dir", str(idir),
+                   "--dry-run", "--", "npm", "install", "x"])
+        out = capsys.readouterr().out
+        assert rc != 0
+        assert "no signed claim" in out
+
+    def test_mcp_gate_blocks_when_identity_dir_has_no_claim(self, tmp_path, monkeypatch):
+        import canari.mcp_gate as mg
+        store, key, _pub = _make_store(tmp_path, [("npm", "x", "https://github.com/o/r")])
+        idir = tmp_path / "identity"; idir.mkdir()
+        ran = []
+        monkeypatch.setattr(mg, "_proxy", lambda argv: ran.append(argv) or 0)
+        rc = mg.main(["--store", str(store), "--key", str(key),
+                      "--identity-dir", str(idir), "--registry", "npm", "--name", "x",
+                      "--", "node", "s.js"])
+        assert rc == 5 and ran == []

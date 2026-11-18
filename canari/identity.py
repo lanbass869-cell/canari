@@ -114,6 +114,21 @@ def classify(left, right):
     return "different", "%s and %s are different repositories" % (left, right)
 
 
+def cluster_id(repository):
+    """Content-addressed cluster id. One function, so sign/verify/gate agree."""
+    import hashlib as _hl
+    repo = normalize_repo(repository)
+    if not repo:
+        return None
+    return "sha256:" + _hl.sha256(repo.encode("utf-8")).hexdigest()[:24]
+
+
+def claim_filename(repository):
+    """The filename canari-identity sign writes for this repository."""
+    cid = cluster_id(repository)
+    return None if cid is None else cid.split(":")[-1] + ".identity.json"
+
+
 def _subject(record):
     """Accept a bare attestation, a bundle, or a statement; return the subject."""
     if not isinstance(record, dict):
@@ -166,7 +181,7 @@ def build_clusters(records):
                          key=lambda m: (m["registry"], m["name"], m["version"]))
         names = sorted({m["name"] for m in members})
         out.append({
-            "id": "sha256:" + _hl.sha256(repo.encode("utf-8")).hexdigest()[:24],
+            "id": cluster_id(repo),
             "repository": repo,
             "registries": sorted({m["registry"] for m in members}),
             "members": members,
