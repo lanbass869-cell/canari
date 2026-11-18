@@ -82,3 +82,72 @@
 据我查到的范围，没有人做过这个测量。
 
 **诚实前提**：如果闸门 1 不过，这就只是一条 GitHub issue，不是论文。我已经把这句写进杀项。
+
+---
+
+## 八、闸门 1 结果：**不通过，子问题作废**（2026-11-19）
+
+去读了 `ext-server-card` 仓库的校验器源码，答案很干脆。
+
+### 证据 1：官方校验器根本不解析 `$schema`
+
+`scripts/validate-examples.ts` 的做法：
+
+```ts
+const SCHEMA_JSON = "schema.json";                 // 本地文件
+const schema = JSON.parse(readFileSync(SCHEMA_JSON, "utf-8"));
+ajv.addSchema(schema, "schema.json");
+const validate = ajv.getSchema(`schema.json#/$defs/ServerCard`);
+```
+
+**它加载的是仓库里的本地 `schema.json`，按 `#/$defs/ServerCard` 校验。**
+全程没有一次网络请求，**从不解析卡片里的 `$schema` URL**。
+
+### 证据 2：`$schema` 只被当**字符串**检查
+
+`examples/ServerCard/invalid/wrong-schema-name.json` 的内容是：
+
+```json
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/v1/server.schema.json",
+  "name": "example-org/wrong-schema-name",
+  ...
+}
+```
+
+配的文件说明写着："References the removed registry server.json schema;
+**only `server-card.schema.json` is valid in v1**."
+
+也就是说：`$schema` 被约束成**一个特定的字符串常量**，校验器只比对字符串，
+**从不解析它指向什么**。
+
+### 结论
+
+> **那个 404 是惰性的。** `$schema` 在这个生态里实际扮演的是**版本标记**，
+> 不是"可解析的 schema 引用"。没有任何工具会去 fetch 它，所以它挂掉不影响任何行为。
+
+**按我自己第 1 条杀项：不写论文。**
+
+## 九、这个失败本身是有价值的
+
+它证明了一件事，而且是可写的：
+
+> **一个名字叫 `$schema`、格式与 JSON Schema 引用完全一致的字段，
+> 实际上只被字符串匹配、从不被解析——这种"名不副实"正是它能把 404 藏 41 天的原因。**
+
+但这是**设计批评**，不是测量论文。**最多写一条 issue，不进论文。**
+
+## 十、重新选题（按同一套标准）
+
+闸门 1 失败的教训：**先问"有没有人真的消费这个字段/这条数据"，再谈测多少。**
+
+下一个候选（按"真实危害可验证"排序）：
+
+| 候选 | 危害是否可验证 | 规模 |
+|---|---|---|
+| **注册表里 274/22,526 条引用指向装不上的版本** | ✅ **安装会硬失败**，可直接复现 | 22,526 |
+| 跨生态同名碰撞（33 对） | ⚠️ 需要证明"有人真的装错" | 134 名 |
+| 客户端零防御（0/9） | ⚠️ 需要证明危害 | 9 仓 |
+
+**推荐下一个：package existence。** 因为它的"所以呢"是**可以直接跑出来的**——
+挑几条真的 `npm install` / `pip install` 一次，看它是不是真的失败。
