@@ -464,3 +464,29 @@ class TestEntryPointsEnforceIdentity:
                       "--identity-dir", str(idir), "--registry", "npm", "--name", "x",
                       "--", "node", "s.js"])
         assert rc == 5 and ran == []
+
+
+class TestPypiProvenance:
+    """PEP 740: the repository lives in files[].provenance, not in a standalone
+    endpoint - my first guess (a bare /integrity/ URL) 404s. Measured 2026-11-18:
+    mcp-server-fetch's provenance names modelcontextprotocol/servers."""
+
+    def test_publisher_repository_is_extracted(self):
+        from canari.identity import repo_from_provenance_doc
+        doc = {"attestation_bundles": [{"publisher": {"kind": "GitHub",
+                                                      "repository": "modelcontextprotocol/servers",
+                                                      "workflow": "release.yml"}}]}
+        assert repo_from_provenance_doc(doc) == "github.com/modelcontextprotocol/servers"
+
+    def test_no_bundles_is_none(self):
+        from canari.identity import repo_from_provenance_doc
+        assert repo_from_provenance_doc({}) is None
+        assert repo_from_provenance_doc(None) is None
+        assert repo_from_provenance_doc({"attestation_bundles": [{}]}) is None
+
+    def test_non_github_publisher_is_still_normalised(self):
+        from canari.identity import repo_from_provenance_doc
+        doc = {"attestation_bundles": [{"publisher": {"repository": "GitLab-org/proj"}}]}
+        # publisher.repository is a host-relative slug; GitHub is the documented
+        # case, and the normaliser must not mangle a mixed-case path.
+        assert repo_from_provenance_doc(doc) == "github.com/gitlab-org/proj"

@@ -122,3 +122,31 @@ components stay outside identity enforcement until a different link exists
 
 Also in this sample: 253 records with a repository formed 218 clusters, 13 of them
 monorepos, 1 cross-registry, 0 name collisions, 0 repo changes.
+
+## Result 4 - PEP 740 recovers part of the PyPI gap (2026-11-18)
+
+The first guess at a provenance endpoint (`/integrity/<project>/<version>/provenance`)
+404s. The real shape, confirmed against PEP 740 and live PyPI:
+
+1. `GET https://pypi.org/simple/<project>/` with
+   `Accept: application/vnd.pypi.simple.v1+json` -> `files[].provenance` is a URL
+   (only for release files that carry attestations)
+2. `GET <that url>` -> `attestation_bundles[].publisher.repository`
+
+The publisher repository is signed by PyPI Trusted Publishing, so it is a
+*stronger* link than `project_urls` (self-declared). Worked example:
+`mcp-server-fetch` 2026.11.11 -> `modelcontextprotocol/servers`.
+
+Recovery measured on the 135 PyPI packages that had no repository in their
+metadata:
+
+| outcome | count |
+|---|---|
+| recovered a repository from provenance | **15 (11.1%)** |
+| no attestation on any file | 116 |
+| no files at all | 3 |
+| network error | 1 |
+
+So PyPI identity coverage goes from 65/200 (**32.5%**) to 80/200 (**40.0%**).
+Provenance helps, but it does not close the gap: most of these packages were not
+published through Trusted Publishing at all.

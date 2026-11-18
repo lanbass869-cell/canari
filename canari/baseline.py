@@ -38,7 +38,7 @@ from canari.npm_enum import (enumerate_top, fetch_packument, latest_version_info
                             pypi_enumerate, mcp_registry_enumerate, dsh_enumerate,
                             _opener, UA)
 from canari.native import ingest as native_ingest
-from canari.identity import normalize_repo
+from canari.identity import normalize_repo, pypi_provenance_repo
 from canari.cadence import analyze_release_cadence
 from canari.anomaly import detect_metadata_anomaly
 from canari.pypi_native import ingest_pypi as pypi_native_ingest
@@ -979,7 +979,8 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                         verdict, ["canari-m1/0.1"],
                         [x for x in ("pypi-json:" + name, _pypi_cref) if x],
                         native_prov=pn,
-                        repository=repo_from_pypi_doc(_pyjson))
+                        repository=(repo_from_pypi_doc(_pyjson)
+                                    or pypi_provenance_repo(name)))
         # A single bad package must never abort the whole registry sweep. This
         # used to raise straight out of run_multi: one package whose NAME tripped
         # the credential heuristics ("...-pypi-test") killed a 700-package run

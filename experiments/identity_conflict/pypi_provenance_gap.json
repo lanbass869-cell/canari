@@ -1,0 +1,72 @@
+{
+ "total_without": 135,
+ "recovered": 15,
+ "recovery_rate": 0.1111111111111111,
+ "failures_by_reason": {
+  "no-attestation": 116,
+  "no-files": 3,
+  "simple:URLError": 1
+ },
+ "examples": [
+  [
+   "mcp-server-colab-exec",
+   "github.com/pdwi2020/mcp-server-colab-exec"
+  ],
+  [
+   "mcp-server-doctor",
+   "github.com/uky0yang/mcp-server-doctor"
+  ],
+  [
+   "mcp-server-helm",
+   "github.com/jeff-nasseri/helm-chart-cli-mcp"
+  ],
+  [
+   "mcp-server-home-assistant",
+   "github.com/allenporter/mcp-server-home-assistant"
+  ],
+  [
+   "mcp-server-kalshi",
+   "github.com/9crusher/mcp-server-kalshi"
+  ],
+  [
+   "mcp-server-make",
+   "github.com/wrale/mcp-server-make"
+  ],
+  [
+   "mcp-server-metasearch",
+   "github.com/busigui2023/mcp-server-metasearch"
+  ],
+  [
+   "mcp-server-mql5",
+   "github.com/elliottwaves-20/mcp-server-mql5"
+  ],
+  [
+   "mcp-server-ns-bridge",
+   "github.com/eze-godoy/mcp-server-ns-bridge"
+  ],
+  [
+   "mcp-server-plaid",
+   "github.com/plaid/ai-coding-toolkit"
+  ],
+  [
+   "mcp-server-roboflow",
+   "github.com/mayankd409/roboflow-mcp-server"
+  ],
+  [
+   "mcp-server-svn",
+   "github.com/manavdesai27/mcp-server-svn"
+  ],
+  [
+   "mcp-server-telegram-bot",
+   "github.com/mirmakhamat/mcp-server-telegram-bot"
+  ],
+  [
+   "mcp-server-vyos",
+   "github.com/cacack/mcp-server-vyos"
+  ],
+  [
+   "mcp-server-zap",
+   "github.com/karacali/mcp-zap"
+  ]
+ ]
+}
