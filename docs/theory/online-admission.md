@@ -170,3 +170,41 @@ the open questions.
 
 **Deliberately not claimed:** this is pigeonhole. It is written down because it
 rules out a family of proposed defences, not because it is deep.
+
+## The operational payoff: surplus beats quotas (2026-11-18)
+
+`experiments/online_admission/surplus.py`, same skewed stream (zipf 1.2, 200 roots,
+4,000 components, threshold `r=2`). Each component cites `r+s` roots; then the
+adversary corrupts the single most-cited root.
+
+| witnesses per component | admitted | invalidated by one corrupted root | damage | extra requests |
+|---|---|---|---|---|
+| 2 (s=0) | 3,999 | 1,835 | **45.9%** | 0 |
+| 3 (**s=1**) | 4,000 | **1** | **0.03%** | 4,000 |
+| 4 (s=2) | 4,000 | 0 | 0.00% | 8,000 |
+
+Compare with the quota policy from the previous section, which needed a cap of
+`q=0.10` - giving up **59.9% of admissions** - to reach 10% damage:
+
+| defence | damage | admission cost | evidence cost |
+|---|---|---|---|
+| per-root quota q=0.10 | 10% | **-59.9%** | 0 |
+| **surplus s=1** | **0.03%** | **0** | +1 request per component |
+
+**Surplus dominates the quota**: an order of magnitude more protection, no lost
+admissions, and the price is paid in evidence rather than in access.
+
+### The honest caveat, and where the real cost hides
+
+In this stream the universe is dense (200 roots), so failing to find a third
+distinct root happened for 1 component in 4,000. That is *not* the real world. Our
+own measurement says npm MCP packages publish a repository 94.0% of the time and
+PyPI 40.0% - so for a large share of real components **the third witness may not
+exist**. The open question is therefore not "is surplus better" (it is) but:
+
+> Given a component's actual evidence supply, what surplus is attainable, and how
+> should a fixed evidence budget be allocated across components to minimise total
+> expected damage?
+
+That is a concrete, measurable optimisation problem with a published cost model,
+and it is the natural next step for this line.
