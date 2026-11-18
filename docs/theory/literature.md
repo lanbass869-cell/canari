@@ -5,7 +5,7 @@ bounded memory, irreversible decisions" is a real gap or a known problem in
 disguise. Method: read full text (arXiv HTML, not abstract), record what each
 paper *solves* and where its model differs from ours.
 
-Status: 16 abstracts + **12 full texts read** (2026-11-18). Target is 20 full texts
+Status: 16 abstracts + **16 full texts read** (2026-11-18). Target is 20 full texts
 across four adjacent fields; this file grows until that is done.
 
 ## Read in full (text extracted from arXiv HTML, key sections read)
@@ -237,3 +237,55 @@ intersection is not attractive: without preemption the bounds are trivial.
 
 Remaining 8 reads are for completeness (surveys + the two oldest primary sources),
 not because the conclusion still looks open.
+
+### 13. arXiv:2609.34245 - Certified Multi-Source Integrity for Structured Agent Actions
+**Solves:** certifies a coupled, policy-bound structured action under a
+**corruption budget that accounts for shared upstream sources**; defines
+**corruption-distinctness** explicitly; proves a *characterisation theorem* and
+gives the **maximally live safe certifier**. Ships a measurement too: of 70,966
+sanctions designations, only ~15% carry three or more issuing domains.
+
+**Occupies - and this is a correction to our own earlier survey.** The A-line report
+claimed "corruption-distinct evidence classes" was the missing piece. It is the
+title concept of this paper, with a characterisation theorem attached. That claim
+was wrong and is now corrected here.
+
+### 14. arXiv:2606.11632 - Sovereign Assurance Boundary
+**Solves:** certificate-bound runtime **admission** for agentic infrastructure, with
+an explicit threat model, trust-boundary invariants and a security analysis.
+**Occupies:** the "certificate-bound admission layer" framing in this exact domain.
+
+### 15. arXiv:2608.15810 - Anytime-Valid Admission for Compressed Serving State
+**Solves:** replaces a union-bounded risk budget with an anytime-valid ledger that
+holds at every one of 352,333 admission calls on live traffic, and **proves** a
+per-vocabulary bias-and-fluctuation bound.
+**Occupies:** "anytime-valid admission with a proven bound" - including the
+negative result that a naive first design was not sound.
+
+### 16. arXiv:2209.11936 - Online Admission Control and Rebalancing in Payment Channel Networks
+**Solves:** online admission with a **competitive ratio `2 + 1/phi`** and a matching
+**lower bound of 2**.
+**Occupies:** online admission + competitive ratio + lower bound, in a concrete
+domain - the third paper in this ledger doing exactly that shape.
+
+## Verdict at 16 full texts: no gap
+
+| our proposed angle | who already did it |
+|---|---|
+| corruption-distinct evidence classes | **2609.34245** (term + characterisation theorem) |
+| online admission with competitive ratio | 0803.2842, 2209.11936, 2610.41136 |
+| anytime-valid admission with a bound | 2608.15810 |
+| certificate-bound admission | 2606.11632 |
+| quorum tolerance / slack | Malkhi-Reiter, 2610.07759, 1811.03642 |
+| load concentration | cs/9908011 |
+| attacker removes components | 2606.10345 |
+| irrevocable online decisions | 1704.08835 |
+| evidence acquisition and scheduling | 2609.34376 |
+| streaming covering under space bounds | 1703.01847, 1404.6763 |
+
+Every angle I proposed in this project now has a paper. The remaining 4 reads are
+for completeness only.
+
+**Two of our own earlier claims were wrong and are corrected here:**
+1. "corruption-distinct evidence classes is missing" - it is 2609.34245's core concept.
+2. "evidence budget allocation is the open problem" - it is 2609.34376.
