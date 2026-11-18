@@ -162,6 +162,57 @@ def _download_sha256(tarball_url: str, timeout: int = 60):
 UA_CONST = "canari-m0/0.1 (research; repo issues)"
 
 
+def _cadence_rows(cd, clean_ref):
+    """Turn a cadence result into check rows.
+
+    None means the check could not run (version absent from upload history, or no
+    history at all). Recording that as "pass" is exactly the false-pass this module
+    used to emit, so it becomes "unsupported" with the reason attached.
+    """
+    if cd is None:
+        return [{"id": "L2.4_RELEASE_CADENCE", "verdict": "unsupported",
+                 "tool": "canari-cadence/0.1",
+                 "evidence_ref": "cadence not evaluated: version absent from upload history"}]
+    if cd:
+        return cd
+    return [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
+             "tool": "canari-cadence/0.1", "evidence_ref": clean_ref}]
+
+
+_UNRESOLVED_CHECK_VERDICTS = ("unsupported", "error", "skip")
+
+
+def _record_verdict(checks, sha):
+    """Derive the record verdict from the checks that actually ran.
+
+    Previously this was a bare ``"pass" if sha else "fail"``, so a package whose
+    tarball downloaded was recorded as passing even when every heuristic inside it
+    reported that it could not run. The verdict now follows the weakest link:
+
+        any fail                  -> fail
+        any error                 -> error
+        any unsupported / skip    -> unsupported   (something could not be checked)
+        any 'finding:'            -> pass-with-findings
+        otherwise                 -> pass
+
+    Changing this reclassifies new records; it does not rewrite the signed ones
+    already in the store, which stay as they were recorded.
+    """
+    if not sha:
+        return "fail"
+    verdicts = [c.get("verdict") for c in checks]
+    if "fail" in verdicts:
+        return "fail"
+    if "error" in verdicts:
+        return "error"
+    if any(v in _UNRESOLVED_CHECK_VERDICTS for v in verdicts):
+        return "unsupported"
+    if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
+        return "pass-with-findings"
+    return "pass"
+
+
+
 def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256: str,
                       packument: dict = None) -> dict:
     """Build one meta-only attestation for one component.
@@ -281,11 +332,9 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
             # npm cadence comes from the packument we already fetched: zero
             # extra requests, and it is the right registry.
             _cd = analyze_npm_cadence(packument, meta.get("version", ""))
-            heuristic_checks.extend(_cd or [{
-                "id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
-                "tool": "canari-cadence/0.1",
-                "evidence_ref": "no cadence anomaly detected (%d versions in packument)"
-                                % len(packument.get("time") or {})}])
+            heuristic_checks.extend(_cadence_rows(
+                _cd, "no cadence anomaly detected (%d versions in packument)"
+                     % len(packument.get("time") or {})))
         else:
             # BUG fixed 2026-11-15: this used to call analyze_release_cadence(),
             # i.e. fetch https://pypi.org/pypi/<npm-name>/json for an npm
@@ -662,10 +711,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             from canari.cadence import analyze_npm_cadence
             try:
                 _cd = analyze_npm_cadence(pack, lv["version"])
-                checks.extend(_cd or [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
-                                       "tool": "canari-cadence/0.1",
-                                       "evidence_ref": "no cadence anomaly in %d published versions"
-                                                       % (len((pack.get("time") or {})) - 2)}])
+                checks.extend(_cadence_rows(
+                    _cd, "no cadence anomaly in %d published versions"
+                         % (len((pack.get("time") or {})) - 2)))
             except Exception as _ce:
                 checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "error",
                                "tool": "canari-cadence/0.1",
@@ -706,8 +754,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
                 if _npm_corpus:
                     _row["comparison_corpus"] = _npm_corpus
                 checks.append(_row)
-            if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
-                verdict = "pass-with-findings" if sha else "fail"
+            verdict = _record_verdict(checks, sha)
             np = _with_timeout(
                 lambda _n=name, _v=lv["version"]: native_ingest(_n, _v), 90, None)
             att = _make_att(name, lv["version"], "npm", sha, "mcp", checks, verdict,
@@ -811,10 +858,9 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
         else:
             try:
                 _cd = analyze_release_cadence(name, pkg.get("version", ""), pypi_json=_pyjson)
-                checks.extend(_cd or [{"id": "L2.4_RELEASE_CADENCE", "verdict": "pass",
-                                       "tool": "canari-cadence/0.1",
-                                       "evidence_ref": "no cadence anomaly in %d releases"
-                                                       % len(_pyjson.get("releases") or {})}])
+                checks.extend(_cadence_rows(
+                    _cd, "no cadence anomaly in %d releases"
+                         % len(_pyjson.get("releases") or {})))
             except Exception as _ce:
                 checks.append({"id": "L2.4_RELEASE_CADENCE", "verdict": "error",
                                "tool": "canari-cadence/0.1",
@@ -860,9 +906,7 @@ def run_multi(npm_limit=200, pypi_limit=200, registry_limit=200, dsh_limit=100,
             if _pypi_corpus:
                 _row["comparison_corpus"] = _pypi_corpus
             checks.append(_row)
-        verdict = "pass" if sha else "fail"
-        if any((c.get("evidence_ref") or "").startswith("finding:") for c in checks):
-            verdict = "pass-with-findings"
+        verdict = _record_verdict(checks, sha)
         att = _make_att(name, pkg.get("version", ""), "pypi", sha, "mcp", checks,
                         verdict, ["canari-m1/0.1"],
                         [x for x in ("pypi-json:" + name, _pypi_cref) if x],

@@ -92,6 +92,18 @@ def parse_install(argv):
                 break
         return out
 
+    # Direct launchers. `npx -y @scope/server` / `uvx server` / `pipx run server`
+    # are how MCP servers are actually started, and they used to fall through to
+    # "no install pattern recognised; passing through" -- i.e. the guard silently
+    # allowed the most common shape. Reuse the launcher parser the stdio gate
+    # already has instead of maintaining a second copy.
+    try:
+        from canari.mcp_gate import component_of
+        ident = component_of(toks)
+        if ident:
+            out.append(ident)
+    except Exception:
+        pass
     return out
 
 

@@ -21,9 +21,10 @@ from canari import cadence, anomaly, typosquat
 class TestCleanInputsProduceNoFindings:
     """The modules themselves still return [] for clean input - that is fine."""
 
-    def test_cadence_clean_is_empty(self):
-        # no releases at all -> nothing to judge
-        assert cadence.analyze_release_cadence("p", "1.0", pypi_json={"releases": {}}) == []
+    def test_cadence_with_no_releases_cannot_be_judged(self):
+        # No releases means the version cannot be located in an upload history,
+        # so this is "could not check" (None), not "checked and clean" ([]).
+        assert cadence.analyze_release_cadence("p", "1.0", pypi_json={"releases": {}}) is None
 
     def test_cadence_accepts_prefetched_json(self):
         """Must not re-fetch when the caller passes the document (perf fix)."""

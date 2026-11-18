@@ -197,15 +197,18 @@ class TestCadence:
         class _Op:
             def open(self, req, timeout=None): raise OSError("x")
         monkeypatch.setattr(c, "_opener", lambda: _Op())
-        assert c.analyze_release_cadence("p", "1") == []
-        assert c.analyze_release_cadence("", "1") == []
-        assert c.analyze_release_cadence("p", "") == []
+        # 2026-11-18: "could not check" is None, not []. `[]` now means
+        # "evaluated and clean", so returning it here is what let the caller
+        # record a pass for a check that never ran.
+        assert c.analyze_release_cadence("p", "1") is None
+        assert c.analyze_release_cadence("", "1") is None
+        assert c.analyze_release_cadence("p", "") is None
 
     def test_version_missing(self, monkeypatch):
         import canari.cadence as c
         body = json.dumps({"releases": {"1.0": [{"upload_time_iso_8601": "2026-01-01T00:00:00Z"}]}}).encode()
         monkeypatch.setattr(c, "_opener", lambda: Op([("pypi.org", body)]))
-        assert c.analyze_release_cadence("p", "9.9") == []
+        assert c.analyze_release_cadence("p", "9.9") is None
 
 
 class TestTyposquat:

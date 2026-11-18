@@ -292,6 +292,23 @@ hundred; see [docs/analysis-corpus-dependence.md](docs/analysis-corpus-dependenc
 for the measurements. A small `size` is itself the warning: `n=1` cannot produce a
 typosquat finding at all.
 
+### Known overstatement in already-published records (2026-11-18)
+
+Until 2026-11-18 the record verdict was `"pass" if sha else "fail"`, so any record whose
+artifact downloaded was marked passing even when checks inside it reported `unsupported`.
+Re-deriving the verdict from each signed record's own checks finds:
+
+| registry | records | would be reclassified |
+|---|---|---|
+| pypi | 2,763 | 2,233 (80.8%) |
+| npm | 1,464 | 584 (39.9%) |
+
+The signed records were **not** rewritten — an append-only log that edits its own history is
+worthless. See [`docs/DISCLOSURE-false-pass-20261118.md`](docs/DISCLOSURE-false-pass-20261118.md)
+for what was affected, what changed in the code, and the one gap this audit surfaced
+(`canari-gate` resolves a record by name but never compares `artifact_sha256` against the
+bytes the user is about to install).
+
 ## Honest limitations
 
 - This is a **risk signal, not a safety guarantee**

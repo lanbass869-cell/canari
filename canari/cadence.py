@@ -45,10 +45,20 @@ def _parse_upload_time(item):
 
 
 def _cadence_from_uploads(uploads, current_version):
-    """Shared cadence logic: `uploads` is a sorted [(timestamp, version)] list."""
+    """Shared cadence logic: `uploads` is a sorted [(timestamp, version)] list.
+
+    Returns:
+      None  -- the check could not be performed (the version is not in the upload
+               history, or there is no history). Callers MUST NOT turn this into
+               "pass": that is how a record ends up claiming a check it never ran.
+      []    -- the check ran and found nothing.
+      [...] -- the check ran and produced findings.
+    """
+    if not uploads:
+        return None
     current_idx = next((i for i, (_, ver) in enumerate(uploads) if ver == current_version), None)
     if current_idx is None:
-        return []
+        return None
     current_ts = uploads[current_idx][0]
     findings = []
 
@@ -108,10 +118,10 @@ def analyze_npm_cadence(packument, current_version):
     this costs zero extra requests.
     """
     if not isinstance(packument, dict) or not current_version:
-        return []
+        return None
     times = packument.get("time") or {}
     if not isinstance(times, dict):
-        return []
+        return None
     uploads = []
     for ver, raw in times.items():
         if ver in ("created", "modified"):
@@ -132,7 +142,7 @@ def analyze_release_cadence(project, current_version, pypi_json=None):
     have taken 5+ hours for data we already had in hand).
     """
     if not project or not current_version:
-        return []
+        return None
     data = pypi_json
     if data is None:
         url = PYPI_JSON_URL.format(project=project)
@@ -141,10 +151,10 @@ def analyze_release_cadence(project, current_version, pypi_json=None):
             with _opener().open(req, timeout=20) as r:
                 data = json.loads(r.read().decode("utf-8"))
         except Exception:
-            return []
+            return None
     releases = data.get("releases", {})
     if not isinstance(releases, dict):
-        return []
+        return None
     uploads = []
     for version, files in releases.items():
         if not isinstance(files, list):
