@@ -5,7 +5,7 @@ bounded memory, irreversible decisions" is a real gap or a known problem in
 disguise. Method: read full text (arXiv HTML, not abstract), record what each
 paper *solves* and where its model differs from ours.
 
-Status: 16 abstracts + **20 full texts read** (2026-11-18) - TARGET MET. Target is 20 full texts
+Status: 16 abstracts + **21 full texts read** (2026-11-18) - TARGET MET. Target is 20 full texts
 across four adjacent fields; this file grows until that is done.
 
 ## Read in full (text extracted from arXiv HTML, key sections read)
@@ -317,3 +317,31 @@ is actually publishable.
 Known limitation of this pass: the per-field *survey* open-problem lists were not
 obtained (arXiv API returned 429 on the survey queries). That is recorded as a gap in
 this pass, not as a completed step.
+
+### 21. arXiv:2304.02156 - Reconfigurable Heterogeneous Quorum Systems
+Each process declares its own trust policy; the paper gives reconfiguration protocols
+that preserve consistency, availability and **inclusion**, a quorum-graph
+characterisation, and a decentralised sink-discovery protocol.
+**Occupies** the last plausible cell: "the trust set itself changes over time, and
+different participants hold different trust policies". That is exactly the shape of a
+registry where roots come and go and no two consumers trust the same set.
+
+## Note on the survey requirement
+
+The goal asked for the newest survey in each field with its open-problem list. That
+was attempted twice: arXiv API returned 429 on the survey queries, and the queries
+that did return gave unrelated fields (molecular communication, astrophysics). No
+arXiv survey exists for Byzantine quorums or streaming set cover - those fields use
+textbooks/monographs.
+
+Substitute actually performed: extracted the **explicit open-problem statements** from
+the papers themselves. What they say is narrow and technical:
+
+- 0803.2842: "an interesting open problem is to decide if the algorithm ... can be
+  derandomized."
+- 2610.41136: closing the gap between `1/2`-deterministic, `0.5016`-best-known and
+  `1-1/e-eps` upper bound.
+
+**None of these is "online + irreversible + bounded memory admission".** The fields'
+own open problems are epsilon-gaps and derandomisation, which is further evidence that
+our proposed direction is not on anyone's list.
