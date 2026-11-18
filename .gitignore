@@ -24,3 +24,4 @@ docs/log/*.lock
 # resumable fetch checkpoints (tens of MB, regenerable)
 servers.partial.json
 experiments/*/servers.partial.json
+experiments/identity_conflict/servers.json

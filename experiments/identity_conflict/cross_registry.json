@@ -1,0 +1,3492 @@
+{
+ "as_of": "2026-11-18",
+ "probed": 134,
+ "class_counts": {
+  "different-repo": 40,
+  "no-repo-url": 32,
+  "same-repo": 61,
+  "not-both-live": 1
+ },
+ "rows": [
+  {
+   "name": "aamio",
+   "npm_ok": true,
+   "npm_version": "0.8.0",
+   "npm_repo": "github.com/aisenseapi/aamio-js",
+   "npm_repo_field": {
+    "url": "git+https://github.com/aisenseapi/aamio-js.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "aisenseapi"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.7.0",
+   "pypi_repo": "github.com/aisenseapi/aamio-python",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/aisenseapi/aamio-python/blob/main/CHANGELOG.md",
+     "Homepage": "https://aamio.at",
+     "Issues": "https://github.com/aisenseapi/aamio-python/issues",
+     "Reference": "https://aamio.at/api.md",
+     "Source": "https://github.com/aisenseapi/aamio-python"
+    },
+    "home_page": null
+   },
+   "pypi_author": "AI SENSE AS",
+   "class": "different-repo"
+  },
+  {
+   "name": "adam-mcp",
+   "npm_ok": true,
+   "npm_version": "0.5.0",
+   "npm_repo": "github.com/arudchayan/adam-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Arudchayan/adam-mcp.git",
+    "type": "git",
+    "directory": "packages/mcp"
+   },
+   "npm_maintainers": [
+    "arudchayan"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.1",
+   "pypi_repo": "github.com/strangeadvancedmarketing/adam",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/strangeadvancedmarketing/Adam/tree/master/mcp-server",
+     "Homepage": "https://github.com/strangeadvancedmarketing/Adam",
+     "Repository": "https://github.com/strangeadvancedmarketing/Adam"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  },
+  {
+   "name": "aditum-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "bernt-aditum"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://aditumdata.com"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Aditum Data",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "aether-browser",
+   "npm_ok": true,
+   "npm_version": "0.2.2",
+   "npm_repo": "github.com/aetherai3/agent-browser",
+   "npm_repo_field": {
+    "url": "git+https://github.com/AetherAI3/agent-browser.git",
+    "type": "git",
+    "directory": "clients/node"
+   },
+   "npm_maintainers": [
+    "ather-ai-llc"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.2",
+   "pypi_repo": "github.com/aetherai3/agent-browser",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/AetherAI3/agent-browser/blob/main/CHANGELOG.md",
+     "Homepage": "https://github.com/AetherAI3/agent-browser",
+     "Issues": "https://github.com/AetherAI3/agent-browser/issues",
+     "Repository": "https://github.com/AetherAI3/agent-browser"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Aether AI <aetherai@aethersystems.net>",
+   "class": "same-repo"
+  },
+  {
+   "name": "ai-netcafe",
+   "npm_ok": true,
+   "npm_version": "1.6.0",
+   "npm_repo": "github.com/mario03690/ai-netcafe",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/mario03690/ai-netcafe.git"
+   },
+   "npm_maintainers": [
+    "qqq3261"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.6.1",
+   "pypi_repo": "github.com/mario03690/netcafe-sdk",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Cost dataset": "https://ainetcafe.com/costs",
+     "Documentation": "https://ainetcafe.com/llms.txt",
+     "Homepage": "https://ainetcafe.com/mcp.html",
+     "Repository": "https://github.com/mario03690/netcafe-sdk"
+    },
+    "home_page": null
+   },
+   "pypi_author": "AI NetCafe <mario154156@gmail.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "ai-voice-bridge",
+   "npm_ok": true,
+   "npm_version": "0.1.5",
+   "npm_repo": "github.com/tomorrow-you/voice-bridge",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/Tomorrow-You/voice-bridge.git"
+   },
+   "npm_maintainers": [
+    "warmerdam"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.5",
+   "pypi_repo": "github.com/tomorrow-you/voice-bridge",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/Tomorrow-You/voice-bridge",
+     "Issues": "https://github.com/Tomorrow-You/voice-bridge/issues",
+     "Repository": "https://github.com/Tomorrow-You/voice-bridge"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Tomorrow You LLC",
+   "class": "same-repo"
+  },
+  {
+   "name": "aipaygen-mcp",
+   "npm_ok": true,
+   "npm_version": "2.1.0",
+   "npm_repo": "github.com/damien829/aipaygen",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Damien829/aipaygen.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "damien809"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "2.1.0",
+   "pypi_repo": "github.com/damien829/aipaygen",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://aipaygen.com/docs",
+     "Homepage": "https://aipaygen.com",
+     "Repository": "https://github.com/Damien829/aipaygen/tree/rebuild/python/aipaygen-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "AiPayGen <hello@aipaygen.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "airlox",
+   "npm_ok": true,
+   "npm_version": "0.1.6",
+   "npm_repo": "github.com/claudezss/airlox",
+   "npm_repo_field": {
+    "url": "git+https://github.com/claudezss/airlox.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "claudezss"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.6",
+   "pypi_repo": "github.com/claudezss/airlox",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/claudezss/airlox",
+     "Source": "https://github.com/claudezss/airlox"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "apiguru-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.65",
+   "npm_repo": "github.com/apiguru-app/agent-kit",
+   "npm_repo_field": {
+    "url": "git+https://github.com/apiguru-app/agent-kit.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "apiguru-app"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.65",
+   "pypi_repo": "github.com/apiguru-app/agent-kit",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://dash.apiguru.app/docs",
+     "Homepage": "https://apiguru.app",
+     "Source": "https://github.com/apiguru-app/agent-kit"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Apiguru <support@apiguru.app>",
+   "class": "same-repo"
+  },
+  {
+   "name": "arch-diagram-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.0",
+   "npm_repo": "github.com/apatilgtn/architecture-diagrams",
+   "npm_repo_field": {
+    "url": "git+https://github.com/apatilgtn/architecture-diagrams.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "apatilgtn"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/apatilgtn/architecture-diagrams/blob/main/docs/USER_GUIDE.md",
+     "Homepage": "https://github.com/apatilgtn/architecture-diagrams",
+     "Issues": "https://github.com/apatilgtn/architecture-diagrams/issues"
+    },
+    "home_page": null
+   },
+   "pypi_author": "apatilgtn",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "ato-mcp",
+   "npm_ok": true,
+   "npm_version": "2.3.1",
+   "npm_repo": "github.com/william-laverty/ato-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/william-laverty/ato-mcp.git",
+    "type": "git",
+    "directory": "packages/mcp"
+   },
+   "npm_maintainers": [
+    "williamlaverty"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.8.32",
+   "pypi_repo": "github.com/bigred97/ato-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/Bigred97/ato-mcp/blob/main/CHANGELOG.md",
+     "Documentation": "https://ausdata.io/sources/ato/",
+     "Homepage": "https://ausdata.io",
+     "Issues": "https://github.com/Bigred97/ato-mcp/issues",
+     "PyPI": "https://pypi.org/project/ato-mcp/",
+     "Repository": "https://github.com/Bigred97/ato-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Harry Vass",
+   "class": "different-repo"
+  },
+  {
+   "name": "ats-jobs-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.1",
+   "npm_repo": "github.com/vovikp/ats-jobs-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/VovikP/ats-jobs-mcp.git",
+    "directory": "mcp"
+   },
+   "npm_maintainers": [
+    "volodymyrpsnow"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.0",
+   "pypi_repo": "github.com/groundtruthtools/ats-jobs-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://companyfacts.dev/llms.txt",
+     "Homepage": "https://companyfacts.dev",
+     "Remote MCP": "https://companyfacts.dev/mcp",
+     "Source": "https://github.com/groundtruthtools/ats-jobs-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  },
+  {
+   "name": "authority-risk-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": "github.com/realspap/authority-risk-oracle-showcase",
+   "npm_repo_field": {
+    "url": "git+https://github.com/RealSpap/authority-risk-oracle-showcase.git",
+    "type": "git",
+    "directory": "packages/authority-risk-mcp/npm"
+   },
+   "npm_maintainers": [
+    "realspap"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": "github.com/realspap/authority-risk-oracle-showcase",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/RealSpap/authority-risk-oracle-showcase",
+     "Issues": "https://github.com/RealSpap/authority-risk-oracle-showcase/issues",
+     "Source": "https://github.com/RealSpap/authority-risk-oracle-showcase/tree/main/packages/authority-risk-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "RealSpap",
+   "class": "same-repo"
+  },
+  {
+   "name": "b4n1-web",
+   "npm_ok": true,
+   "npm_version": "0.16.2",
+   "npm_repo": "github.com/b4n1-com/b4n1-web",
+   "npm_repo_field": {
+    "url": "git+https://github.com/B4N1-com/b4n1-web.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "b4n1"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.16.2",
+   "pypi_repo": "github.com/b4n1-com/b4n1-web",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://b4n1.com",
+     "Repository": "https://github.com/B4N1-com/b4n1-web"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Bani Montoya <banimontoya@gmail.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "babelwrap-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": "github.com/babelwrap/babelwrap-mcp-js",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/babelwrap/babelwrap-mcp-js.git"
+   },
+   "npm_maintainers": [
+    "soulfir"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": "github.com/babelwrap/babelwrap-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://babelwrap.com/docs/mcp",
+     "Homepage": "https://babelwrap.com",
+     "Issues": "https://github.com/babelwrap/babelwrap-mcp/issues",
+     "Repository": "https://github.com/babelwrap/babelwrap-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Pedro M. Fernandes",
+   "class": "different-repo"
+  },
+  {
+   "name": "blenderlens-mcp",
+   "npm_ok": true,
+   "npm_version": "0.2.0",
+   "npm_repo": "github.com/pzalutski-pixel/blenderlens-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/pzalutski-pixel/blenderlens-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "pzalutski"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.0",
+   "pypi_repo": "github.com/pzalutski-pixel/blenderlens-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/pzalutski-pixel/blenderlens-mcp",
+     "Issues": "https://github.com/pzalutski-pixel/blenderlens-mcp/issues",
+     "Repository": "https://github.com/pzalutski-pixel/blenderlens-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Peter Zalutski",
+   "class": "same-repo"
+  },
+  {
+   "name": "brevi",
+   "npm_ok": true,
+   "npm_version": "0.28.2",
+   "npm_repo": "github.com/ets-public/brevi",
+   "npm_repo_field": {
+    "url": "git+https://github.com/ets-public/brevi.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "ruinwmd"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.28.2",
+   "pypi_repo": "github.com/ets-public/brevi",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/ets-public/brevi/blob/main/CHANGELOG.md",
+     "Documentation": "https://brevi-lang.org/docs/",
+     "Homepage": "https://brevi-lang.org",
+     "Issues": "https://github.com/ets-public/brevi/issues",
+     "Source": "https://github.com/ets-public/brevi"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "cam-verdict",
+   "npm_ok": true,
+   "npm_version": "1.0.0",
+   "npm_repo": "github.com/kau17033/cam-product-viability-standard",
+   "npm_repo_field": {
+    "url": "git+https://github.com/kau17033/cam-product-viability-standard.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "camviability"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.0",
+   "pypi_repo": "github.com/kau17033/cam-product-viability-standard",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://kau17033.github.io/cam-product-viability-standard/",
+     "Repository": "https://github.com/kau17033/cam-product-viability-standard"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "cartesia-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.7",
+   "npm_repo": "github.com/mrfentmen/awesome-servers",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/awesome-servers.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.34.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "cisa-kev-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/mrfentmen/cisa-kev-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/cisa-kev-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.8",
+   "pypi_repo": "github.com/csoai-org/cisa-kev-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://meok.ai",
+     "Repository": "https://github.com/CSOAI-ORG/cisa-kev-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "MEOK AI Labs <hello@meok.ai>",
+   "class": "different-repo"
+  },
+  {
+   "name": "cited-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": "github.com/impowerdlifestyle-code/cited-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/impowerdlifestyle-code/cited-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "voreliai"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.8.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "Cited <support@youcited.com>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "clearcote-mcp",
+   "npm_ok": true,
+   "npm_version": "0.3.1",
+   "npm_repo": "github.com/clearcotelabs/clearcote-browser",
+   "npm_repo_field": {
+    "url": "git+https://github.com/clearcotelabs/clearcote-browser.git",
+    "type": "git",
+    "directory": "mcp/npm"
+   },
+   "npm_maintainers": [
+    "dormic97"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.1",
+   "pypi_repo": "github.com/clearcotelabs/clearcote-browser",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/clearcotelabs/clearcote-browser",
+     "Source": "https://github.com/clearcotelabs/clearcote-browser/tree/main/mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "codebase-memory-mcp",
+   "npm_ok": true,
+   "npm_version": "0.12.1",
+   "npm_repo": "github.com/deusdata/codebase-memory-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/DeusData/codebase-memory-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "deusdata"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.12.1",
+   "pypi_repo": "github.com/deusdata/codebase-memory-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/DeusData/codebase-memory-mcp",
+     "Issues": "https://github.com/DeusData/codebase-memory-mcp/issues",
+     "Repository": "https://github.com/DeusData/codebase-memory-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "codeix",
+   "npm_ok": true,
+   "npm_version": "0.5.0",
+   "npm_repo": "github.com/montanetech/codeix",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/montanetech/codeix.git"
+   },
+   "npm_maintainers": [
+    "montane.tech"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.5.0",
+   "pypi_repo": "github.com/montanetech/codeix",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://codeix.dev/spec/",
+     "Homepage": "https://codeix.dev",
+     "Issues": "https://github.com/montanetech/codeix/issues",
+     "Repository": "https://github.com/montanetech/codeix"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Montane Tech",
+   "class": "same-repo"
+  },
+  {
+   "name": "contextpull",
+   "npm_ok": true,
+   "npm_version": "0.2.1",
+   "npm_repo": "github.com/mi2arun/contextpull",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/mi2arun/contextpull.git",
+    "directory": "sdk/typescript"
+   },
+   "npm_maintainers": [
+    "mi2arun"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.1",
+   "pypi_repo": "github.com/mi2arun/contextpull",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/mi2arun/contextpull/tree/main/docs",
+     "Homepage": "https://github.com/mi2arun/contextpull",
+     "Repository": "https://github.com/mi2arun/contextpull"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Arunkumar S",
+   "class": "same-repo"
+  },
+  {
+   "name": "convertfilefast-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.5",
+   "npm_repo": "github.com/mltcorp/convertfilefast-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/MLTCorp/convertfilefast-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "sincron"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.6",
+   "pypi_repo": "github.com/mltcorp/convertfilefast-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://www.convertfilefast.com/en/use-case/mcp-server",
+     "Homepage": "https://www.convertfilefast.com",
+     "Repository": "https://github.com/MLTCorp/convertfilefast-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "ConvertFileFast",
+   "class": "same-repo"
+  },
+  {
+   "name": "cuba-memorys",
+   "npm_ok": true,
+   "npm_version": "0.30.0",
+   "npm_repo": "github.com/leandropg19/memorys",
+   "npm_repo_field": {
+    "url": "git+https://github.com/LeandroPG19/Memorys.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "leandropg1019"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.32.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "data-aggregator-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.4",
+   "npm_repo": "github.com/vpatser1/mcp-servers",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/vpatser1/mcp-servers.git",
+    "directory": "data-aggregator"
+   },
+   "npm_maintainers": [
+    "aivp"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.76.0",
+   "pypi_repo": "github.com/musharna/data-aggregator-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/musharna/data-aggregator-mcp/blob/main/CHANGELOG.md",
+     "Homepage": "https://github.com/musharna/data-aggregator-mcp",
+     "Issues": "https://github.com/musharna/data-aggregator-mcp/issues",
+     "Repository": "https://github.com/musharna/data-aggregator-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Jaret Arnold",
+   "class": "different-repo"
+  },
+  {
+   "name": "deputy-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.6",
+   "npm_repo": "https://razin.ai/deputy",
+   "npm_repo_field": {
+    "url": "https://razin.ai/deputy/",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "zain_raisan"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.4.2",
+   "pypi_repo": "github.com/augbastos/deputy-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/augbastos/deputy-mcp/blob/main/CHANGELOG.md",
+     "Homepage": "https://github.com/augbastos/deputy-mcp",
+     "Issues": "https://github.com/augbastos/deputy-mcp/issues",
+     "Repository": "https://github.com/augbastos/deputy-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Augusto Bastos",
+   "class": "different-repo"
+  },
+  {
+   "name": "diagrams-mcp-server",
+   "npm_ok": true,
+   "npm_version": "0.11.0",
+   "npm_repo": "github.com/mohammad-emad-dev/diagrams-mcp-server",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mohammad-emad-dev/diagrams-mcp-server.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mohammad-dev1"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.0",
+   "pypi_repo": "github.com/byteoverdev/diagrams-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Bug Tracker": "https://github.com/ByteOverDev/diagrams-mcp/issues",
+     "Homepage": "https://github.com/ByteOverDev/diagrams-mcp",
+     "Repository": "https://github.com/ByteOverDev/diagrams-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Mykola Skrypets <nick@byteover.dev>",
+   "class": "different-repo"
+  },
+  {
+   "name": "docalyze-mcp-server",
+   "npm_ok": true,
+   "npm_version": "0.2.1",
+   "npm_repo": "github.com/lunarperovskite/docalyze-mcp-server",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/LunarPerovskite/docalyze-mcp-server.git"
+   },
+   "npm_maintainers": [
+    "lunarperovskite"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.1",
+   "pypi_repo": "github.com/lunarperovskite/docalyze-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Repository": "https://github.com/LunarPerovskite/docalyze-mcp-server"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Juan Esteban Mosquera",
+   "class": "same-repo"
+  },
+  {
+   "name": "ebay-mcp",
+   "npm_ok": true,
+   "npm_version": "2.0.11",
+   "npm_repo": "github.com/yosefhayim/ebay-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/YosefHayim/ebay-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "yosefsabag"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "Keith Cunic",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "ecb-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.1",
+   "npm_repo": "github.com/scka-de/ecb-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/scka-de/ecb-mcp.git"
+   },
+   "npm_maintainers": [
+    "scka-de"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "Mohammad Abbasi",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "edgar-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/danishashko/edgar-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/danishashko/edgar-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "danielshashko"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.12",
+   "pypi_repo": "github.com/henrysouchien/edgar-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://docs.edgarparser.com/changelog",
+     "Documentation": "https://docs.edgarparser.com",
+     "Homepage": "https://github.com/henrysouchien/edgar-mcp",
+     "Hosted API": "https://www.edgarparser.com",
+     "Issues": "https://github.com/henrysouchien/edgar-mcp/issues",
+     "MCP Setup": "https://docs.edgarparser.com/mcp",
+     "Source": "https://github.com/henrysouchien/edgar-mcp",
+     "Tool Reference": "https://docs.edgarparser.com/tools"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  },
+  {
+   "name": "encode-toolkit",
+   "npm_ok": true,
+   "npm_version": "0.3.4",
+   "npm_repo": "github.com/ammawla/encode-toolkit",
+   "npm_repo_field": {
+    "url": "git+https://github.com/ammawla/encode-toolkit.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "ammawla"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.4",
+   "pypi_repo": "github.com/ammawla/encode-toolkit",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/ammawla/encode-toolkit",
+     "Issues": "https://github.com/ammawla/encode-toolkit/issues",
+     "Repository": "https://github.com/ammawla/encode-toolkit"
+    },
+    "home_page": null
+   },
+   "pypi_author": "\"Dr. Alex M. Mawla, PhD\" <ammawla@ucdavis.edu>",
+   "class": "same-repo"
+  },
+  {
+   "name": "ephemeris-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/tensorlink-ai/ephemeris-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/TensorLink-AI/ephemeris-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "christensor"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.0",
+   "pypi_repo": "github.com/scottchronicity/ephemeris-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/scottchronicity/ephemeris-mcp#readme",
+     "Homepage": "https://github.com/scottchronicity/ephemeris-mcp",
+     "Issues": "https://github.com/scottchronicity/ephemeris-mcp/issues",
+     "Repository": "https://github.com/scottchronicity/ephemeris-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Scott Carroll <scott@rippleroot.studios>",
+   "class": "different-repo"
+  },
+  {
+   "name": "failecho-mcp",
+   "npm_ok": true,
+   "npm_version": "0.2.3",
+   "npm_repo": "github.com/failecho/failecho",
+   "npm_repo_field": {
+    "url": "git+https://github.com/FailEcho/failecho.git",
+    "type": "git",
+    "directory": "npm-relay"
+   },
+   "npm_maintainers": [
+    "fuyuki0"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.3",
+   "pypi_repo": "github.com/failecho/failecho",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://failecho.com/setup",
+     "Homepage": "https://failecho.com",
+     "Source": "https://github.com/FailEcho/failecho"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "fatsecret-mcp",
+   "npm_ok": true,
+   "npm_version": "0.0.10",
+   "npm_repo": "github.com/fliptheweb/fatsecret-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/fliptheweb/fatsecret-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "fliptheweb"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.0",
+   "pypi_repo": "github.com/jaronskijakub/fatsecret-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/jaronskijakub/fatsecret-mcp/blob/main/CHANGELOG.md",
+     "Documentation": "https://github.com/jaronskijakub/fatsecret-mcp/tree/main/docs",
+     "Issues": "https://github.com/jaronskijakub/fatsecret-mcp/issues",
+     "Repository": "https://github.com/jaronskijakub/fatsecret-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Jakub Jaroński",
+   "class": "different-repo"
+  },
+  {
+   "name": "fattureincloud-mcp",
+   "npm_ok": true,
+   "npm_version": "0.5.1",
+   "npm_repo": "github.com/niccolosalvini/fattureincloud-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/NiccoloSalvini/fattureincloud-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "niccolo_salvini"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "2.0.0",
+   "pypi_repo": "github.com/aringad/fattureincloud-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Author": "https://media-form.it",
+     "Homepage": "https://github.com/aringad/fattureincloud-mcp",
+     "Issues": "https://github.com/aringad/fattureincloud-mcp/issues",
+     "Repository": "https://github.com/aringad/fattureincloud-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "\"Mediaform s.c.r.l.\" <info@media-form.it>",
+   "class": "different-repo"
+  },
+  {
+   "name": "fetch-price",
+   "npm_ok": true,
+   "npm_version": "1.0.2",
+   "npm_repo": "github.com/fusionx212/fetch-price",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/fusionx212/fetch-price.git"
+   },
+   "npm_maintainers": [
+    "policyandplay"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.2",
+   "pypi_repo": "github.com/fusionx212/fetch-price",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://fetch-price.com",
+     "Repository": "https://github.com/fusionx212/fetch-price"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "fpl-mcp-server",
+   "npm_ok": true,
+   "npm_version": "0.2.0",
+   "npm_repo": "github.com/gilbertkamau/fpl_mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/GilbertKamau/fpl_mcp.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "gilbertkamau"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.3",
+   "pypi_repo": "github.com/nguyenanhducs/fpl-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/nguyenanhducs/fpl-mcp-server#readme",
+     "Homepage": "https://github.com/nguyenanhducs/fpl-mcp-server",
+     "Issues": "https://github.com/nguyenanhducs/fpl-mcp-server/issues",
+     "Repository": "https://github.com/nguyenanhducs/fpl-mcp-server"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Anh Duc Nguyen",
+   "class": "different-repo"
+  },
+  {
+   "name": "ghostfox",
+   "npm_ok": true,
+   "npm_version": "0.9.3",
+   "npm_repo": "github.com/autokeren/ghostfox",
+   "npm_repo_field": {
+    "url": "git+https://github.com/autokeren/ghostfox.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "autokeren"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.9.3",
+   "pypi_repo": "github.com/autokeren/ghostfox",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Repository": "https://github.com/autokeren/ghostfox"
+    },
+    "home_page": null
+   },
+   "pypi_author": "autokeren",
+   "class": "same-repo"
+  },
+  {
+   "name": "godot-mcp-server",
+   "npm_ok": true,
+   "npm_version": "0.6.1",
+   "npm_repo": "github.com/tomyud1/godot-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/tomyud1/godot-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "tomyud"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.2",
+   "pypi_repo": "github.com/sterion66/godot-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/sterion66/godot-mcp-server#readme",
+     "Issues": "https://github.com/sterion66/godot-mcp-server/issues",
+     "Repository": "https://github.com/sterion66/godot-mcp-server"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Godot MCP Server contributors",
+   "class": "different-repo"
+  },
+  {
+   "name": "godotlens-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.0",
+   "npm_repo": "github.com/pzalutski-pixel/godotlens-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/pzalutski-pixel/godotlens-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "pzalutski"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.0",
+   "pypi_repo": "github.com/pzalutski-pixel/godotlens-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/pzalutski-pixel/godotlens-mcp",
+     "Issues": "https://github.com/pzalutski-pixel/godotlens-mcp/issues",
+     "Repository": "https://github.com/pzalutski-pixel/godotlens-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Peter Zalutski",
+   "class": "same-repo"
+  },
+  {
+   "name": "google-sheets-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.2",
+   "npm_repo": "github.com/domdomegg/google-sheets-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/domdomegg/google-sheets-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "domdomegg"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.6",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/henilcalagiya/google-sheets-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Henil C Alagiya <henilalagiya@gmail.com>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "gopher-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "courtimusprime"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.10.2",
+   "pypi_repo": "github.com/cameronrye/gopher-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/cameronrye/gopher-mcp/blob/main/CHANGELOG.md",
+     "Documentation": "https://cameronrye.github.io/gopher-mcp",
+     "Homepage": "https://github.com/cameronrye/gopher-mcp",
+     "Issues": "https://github.com/cameronrye/gopher-mcp/issues",
+     "Repository": "https://github.com/cameronrye/gopher-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Cameron Rye <c@meron.io>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "gotify-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.6",
+   "npm_repo": "github.com/mrfentmen/awesome-servers",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/awesome-servers.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.2",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "grim-mcp",
+   "npm_ok": true,
+   "npm_version": "0.6.3",
+   "npm_repo": "github.com/abduljabbarbxr/grim",
+   "npm_repo_field": {
+    "url": "git+https://github.com/AbduljabbarBXR/grim.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "tawakkul"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.6.3",
+   "pypi_repo": "github.com/abduljabbarbxr/grim",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://tawakkul-labs.co.ke",
+     "Issues": "https://github.com/AbduljabbarBXR/grim/issues",
+     "Repository": "https://github.com/AbduljabbarBXR/grim"
+    },
+    "home_page": null
+   },
+   "pypi_author": "AbduljabbarBXR",
+   "class": "same-repo"
+  },
+  {
+   "name": "gulliver-mcp",
+   "npm_ok": true,
+   "npm_version": "0.3.0",
+   "npm_repo": "github.com/laaielichter/gulliver",
+   "npm_repo_field": {
+    "url": "git+https://github.com/laaielichter/Gulliver.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "laaielichter"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.4.0",
+   "pypi_repo": "github.com/laaielichter/gulliver",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/laaielichter/Gulliver/blob/main/CHANGELOG.md",
+     "Documentation": "https://github.com/laaielichter/Gulliver#readme",
+     "Homepage": "https://laaielichter.github.io/Gulliver/",
+     "Issues": "https://github.com/laaielichter/Gulliver/issues",
+     "Source": "https://github.com/laaielichter/Gulliver"
+    },
+    "home_page": null
+   },
+   "pypi_author": "laaielichter",
+   "class": "same-repo"
+  },
+  {
+   "name": "holographic-memory-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.2",
+   "npm_repo": "github.com/writerslogic/holographic-memory",
+   "npm_repo_field": {
+    "url": "git+https://github.com/writerslogic/holographic-memory.git",
+    "type": "git",
+    "directory": "integrations/mcp/npm"
+   },
+   "npm_maintainers": [
+    "davidcondrey"
+   ],
+   "pypi_ok": false,
+   "class": "not-both-live"
+  },
+  {
+   "name": "hongkong-company-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.4",
+   "npm_repo": "github.com/86hc-compliance/hongkong-company-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/86hc-compliance/hongkong-company-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "86hc"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.4",
+   "pypi_repo": "github.com/86hc-compliance/hongkong-company-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://www.86hc.com/user",
+     "Homepage": "https://www.86hc.com",
+     "Issues": "https://github.com/86hc-compliance/hongkong-company-mcp/issues",
+     "Registry": "https://registry.modelcontextprotocol.io/v0.1/servers/com.86hc/hongkong-company",
+     "Repository": "https://github.com/86hc-compliance/hongkong-company-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "\"HC Business (恒诚商务)\" <support@86hc.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "hscope",
+   "npm_ok": true,
+   "npm_version": "0.1.3",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "moongioh"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.3",
+   "pypi_repo": "github.com/moongioh/harness-scope",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/moongioh/harness-scope/blob/main/CHANGELOG.md",
+     "Homepage": "https://github.com/moongioh/harness-scope",
+     "Source": "https://github.com/moongioh/harness-scope"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "hvtracker-mcp",
+   "npm_ok": true,
+   "npm_version": "0.4.0",
+   "npm_repo": "github.com/yugantm/hvtracker-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/YugantM/hvtracker-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "yugantm"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.4.0",
+   "pypi_repo": "github.com/yugantm/hvtracker-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://hvtracker.net",
+     "Issues": "https://github.com/YugantM/hvtracker-mcp/issues",
+     "Repository": "https://github.com/YugantM/hvtracker-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "YugantM",
+   "class": "same-repo"
+  },
+  {
+   "name": "insider-signals-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/tradestarv5/insider-signals",
+   "npm_repo_field": {
+    "url": "git+https://github.com/TradestarV5/insider-signals.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "tradestarinsider"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.0",
+   "pypi_repo": "github.com/tradestarv5/insider-signals",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://www.tradestarinsider.com",
+     "MCP server": "https://mcp.tradestarinsider.com/mcp",
+     "Repository": "https://github.com/TradestarV5/insider-signals",
+     "Status page": "https://status.tradestarinsider.com"
+    },
+    "home_page": null
+   },
+   "pypi_author": "TradeStar Insider",
+   "class": "same-repo"
+  },
+  {
+   "name": "jail-mcp",
+   "npm_ok": true,
+   "npm_version": "1.4.0",
+   "npm_repo": "github.com/mefengl/jail-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mefengl/jail-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mefengl"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.4.0",
+   "pypi_repo": "github.com/mefengl/jail-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://jail.li",
+     "Repository": "https://github.com/mefengl/jail-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "JAIL",
+   "class": "same-repo"
+  },
+  {
+   "name": "juriset-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.3",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "juriset"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.3",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://juriset.dev/docs",
+     "Homepage": "https://juriset.dev"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "keyshot-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.0",
+   "npm_repo": "github.com/truman-t3/keyshot-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/truman-t3/keyshot-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "trumantu"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/lfoletti/keyshot-mcp/blob/main/CHANGELOG.md",
+     "Homepage": "https://github.com/lfoletti/keyshot-mcp",
+     "Issues": "https://github.com/lfoletti/keyshot-mcp/issues"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Lauro Foletti",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "kicad-mcp-pro",
+   "npm_ok": true,
+   "npm_version": "4.19.0",
+   "npm_repo": "github.com/oaslananka/kicad-mcp-pro",
+   "npm_repo_field": {
+    "url": "git+https://github.com/oaslananka/kicad-mcp-pro.git",
+    "type": "git",
+    "directory": "packages/mcp-npm"
+   },
+   "npm_maintainers": [
+    "oaslananka"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "4.19.0",
+   "pypi_repo": "github.com/oaslananka/kicad-mcp-pro",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Bug Tracker": "https://github.com/oaslananka/kicad-mcp-pro/issues",
+     "Changelog": "https://github.com/oaslananka/kicad-mcp-pro/blob/main/CHANGELOG.md",
+     "Documentation": "https://oaslananka.github.io/kicad-mcp-pro",
+     "Funding": "https://github.com/sponsors/oaslananka",
+     "Homepage": "https://github.com/oaslananka/kicad-mcp-pro",
+     "Repository": "https://github.com/oaslananka/kicad-mcp-pro"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Osman Aslan",
+   "class": "same-repo"
+  },
+  {
+   "name": "kitsune-mcp",
+   "npm_ok": true,
+   "npm_version": "0.24.0",
+   "npm_repo": "github.com/kaiser-data/kitsune-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/kaiser-data/kitsune-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "kaiser-data"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.24.0",
+   "pypi_repo": "github.com/kaiser-data/kitsune-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://kaiser-data.github.io/kitsune-mcp/",
+     "Homepage": "https://kaiser-data.github.io/kitsune-mcp/",
+     "Issues": "https://github.com/kaiser-data/kitsune-mcp/issues",
+     "Repository": "https://github.com/kaiser-data/kitsune-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Kitsune MCP Contributors",
+   "class": "same-repo"
+  },
+  {
+   "name": "korea-data-mcp",
+   "npm_ok": true,
+   "npm_version": "0.2.1",
+   "npm_repo": "github.com/lichtsalz/korea-data",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/lichtsalz/korea-data.git",
+    "directory": "mcp"
+   },
+   "npm_maintainers": [
+    "lichtsalz"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": "github.com/choiyounggi/korea-data-suite",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://api.korea-data.cloud",
+     "Repository": "https://github.com/choiyounggi/korea-data-suite"
+    },
+    "home_page": null
+   },
+   "pypi_author": "choiyounggi",
+   "class": "different-repo"
+  },
+  {
+   "name": "kshana-mcp",
+   "npm_ok": true,
+   "npm_version": "0.41.0",
+   "npm_repo": "github.com/ashfordeou/kshana",
+   "npm_repo_field": {
+    "url": "git+https://github.com/ashfordeOU/kshana.git",
+    "type": "git",
+    "directory": "packaging/mcp/npm"
+   },
+   "npm_maintainers": [
+    "ashfordeou"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.41.0",
+   "pypi_repo": "github.com/ashfordeou/kshana",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://kshana.dev",
+     "Issues": "https://github.com/ashfordeOU/kshana/issues",
+     "Repository": "https://github.com/ashfordeOU/kshana"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Ashforde OÜ <contact@ashforde.org>",
+   "class": "same-repo"
+  },
+  {
+   "name": "kubernetes-mcp-server",
+   "npm_ok": true,
+   "npm_version": "0.1.3",
+   "npm_repo": "github.com/containers/kubernetes-mcp-server",
+   "npm_repo_field": {
+    "url": "git+https://github.com/containers/kubernetes-mcp-server.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "manusa"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.3",
+   "pypi_repo": "github.com/containers/kubernetes-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/containers/kubernetes-mcp-server",
+     "Repository": "https://github.com/containers/kubernetes-mcp-server"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Marc Nuri <marc@marcnuri.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "linkwarden-mcp",
+   "npm_ok": true,
+   "npm_version": "0.4.0",
+   "npm_repo": "github.com/ni-c/linkwarden-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/ni-c/linkwarden-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "ni-c"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.6",
+   "pypi_repo": "github.com/flumpiey/linkwarden-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/flumpiey/linkwarden-mcp",
+     "Issues": "https://github.com/flumpiey/linkwarden-mcp/issues",
+     "Repository": "https://github.com/flumpiey/linkwarden-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Dru Connold <dru@connold.co.za>",
+   "class": "different-repo"
+  },
+  {
+   "name": "lionscraper",
+   "npm_ok": true,
+   "npm_version": "1.0.6",
+   "npm_repo": "github.com/dowant/lionscraper-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/dowant/lionscraper-mcp.git",
+    "directory": "packages/node"
+   },
+   "npm_maintainers": [
+    "dowant"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.6",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://www.lionscraper.com/"
+    },
+    "home_page": null
+   },
+   "pypi_author": "LionScraper",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "loremfile",
+   "npm_ok": true,
+   "npm_version": "0.2.2",
+   "npm_repo": "github.com/kumarprabhashanand/loremfile",
+   "npm_repo_field": {
+    "url": "git+https://github.com/kumarprabhashanand/loremfile.git",
+    "type": "git",
+    "directory": "client-js"
+   },
+   "npm_maintainers": [
+    "prabhash_me"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.2",
+   "pypi_repo": "github.com/kumarprabhashanand/loremfile",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://loremfile.dev",
+     "Issues": "https://github.com/kumarprabhashanand/loremfile/issues",
+     "Source": "https://github.com/kumarprabhashanand/loremfile"
+    },
+    "home_page": null
+   },
+   "pypi_author": "the loremfile.dev contributors",
+   "class": "same-repo"
+  },
+  {
+   "name": "magnifica-humanitas-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.4",
+   "npm_repo": "github.com/grinnellian/magnifica-humanitas-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/grinnellian/magnifica-humanitas-mcp.git"
+   },
+   "npm_maintainers": [
+    "grimalkin_llc"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.4",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "marketplaces-mcp-ru",
+   "npm_ok": true,
+   "npm_version": "0.7.0",
+   "npm_repo": "github.com/ilyautov/marketplaces-mcp-ru",
+   "npm_repo_field": {
+    "url": "git+https://github.com/ilyautov/marketplaces-mcp-ru.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "ilyautov"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.7.0",
+   "pypi_repo": "github.com/ilyautov/marketplaces-mcp-ru",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/ilyautov/marketplaces-mcp-ru/blob/main/CHANGELOG.md",
+     "Documentation": "https://marketplaces-mcp-ru.aifrontier.tech/",
+     "Homepage": "https://marketplaces-mcp-ru.aifrontier.tech/",
+     "Issues": "https://github.com/ilyautov/marketplaces-mcp-ru/issues",
+     "Repository": "https://github.com/ilyautov/marketplaces-mcp-ru"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "massed-compute-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/massed-compute/massed-compute-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/Massed-Compute/massed-compute-mcp.git"
+   },
+   "npm_maintainers": [
+    "yung00se"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.0",
+   "pypi_repo": "github.com/massed-compute/massed-compute-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://vm-docs.massedcompute.com/docs/category/mcp",
+     "Homepage": "https://github.com/Massed-Compute/massed-compute-mcp",
+     "Issues": "https://github.com/Massed-Compute/massed-compute-mcp/issues",
+     "Repository": "https://github.com/Massed-Compute/massed-compute-mcp.git"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Massed Compute",
+   "class": "same-repo"
+  },
+  {
+   "name": "maven-decoder-mcp",
+   "npm_ok": true,
+   "npm_version": "1.3.2",
+   "npm_repo": "github.com/salitaba/maven-decoder-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/salitaba/maven-decoder-mcp.git"
+   },
+   "npm_maintainers": [
+    "ali79taba"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.3.2",
+   "pypi_repo": "github.com/salitaba/maven-decoder-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Bug Tracker": "https://github.com/salitaba/maven-decoder-mcp/issues",
+     "Documentation": "https://github.com/salitaba/maven-decoder-mcp#readme",
+     "Homepage": "https://github.com/salitaba/maven-decoder-mcp",
+     "Repository": "https://github.com/salitaba/maven-decoder-mcp.git"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Ali Tabatabaei <ali79taba@gmail.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "mcp-google-forms",
+   "npm_ok": true,
+   "npm_version": "1.3.2",
+   "npm_repo": "github.com/a1-x-tech/mcp-google-forms",
+   "npm_repo_field": {
+    "url": "git+https://github.com/A1-x-Tech/mcp-google-forms.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "gistrec"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.1",
+   "pypi_repo": "github.com/kamarusama/mcp-google-forms",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Funding": "https://ko-fi.com/kamaru",
+     "Homepage": "https://github.com/KamaruSama/mcp-google-forms",
+     "Issues": "https://github.com/KamaruSama/mcp-google-forms/issues",
+     "Repository": "https://github.com/KamaruSama/mcp-google-forms"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Kamaru <k.kamarux@gmail.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "mcp-google-search-console",
+   "npm_ok": true,
+   "npm_version": "1.3.2",
+   "npm_repo": "github.com/a1-x-tech/mcp-google-search-console",
+   "npm_repo_field": {
+    "url": "git+https://github.com/A1-x-Tech/mcp-google-search-console.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "gistrec"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "4.0.0",
+   "pypi_repo": "github.com/acamolese/google-search-console-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/acamolese/google-search-console-mcp#readme",
+     "Homepage": "https://github.com/acamolese/google-search-console-mcp",
+     "Issues": "https://github.com/acamolese/google-search-console-mcp/issues",
+     "PyPI": "https://pypi.org/project/mcp-google-search-console/",
+     "Release notes": "https://github.com/acamolese/google-search-console-mcp/releases",
+     "Repository": "https://github.com/acamolese/google-search-console-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Andrea Camolese",
+   "class": "different-repo"
+  },
+  {
+   "name": "mcp-memory-graph",
+   "npm_ok": true,
+   "npm_version": "2.10.3",
+   "npm_repo": "github.com/yonasvalentin/mcp-memory-graph",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/YonasValentin/mcp-memory-graph.git"
+   },
+   "npm_maintainers": [
+    "yonas-valentin-dev"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": "github.com/retrorobai/mcp-memory-graph",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Issues": "https://github.com/RetroRobAI/mcp-memory-graph/issues",
+     "Repository": "https://github.com/RetroRobAI/mcp-memory-graph"
+    },
+    "home_page": null
+   },
+   "pypi_author": "RetroRobAI <rlgjr1971@gmail.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "mcp-seo-auditor",
+   "npm_ok": true,
+   "npm_version": "0.1.5",
+   "npm_repo": "github.com/petrovicistefan/mcp-seo-auditor",
+   "npm_repo_field": {
+    "url": "git+https://github.com/petrovicistefan/mcp-seo-auditor.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "petrovicistefan"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.5",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "Stefan Petrovici",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "mcp-server-agentpay",
+   "npm_ok": true,
+   "npm_version": "1.1.2",
+   "npm_repo": "github.com/joepangallo/agent-pay",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/joepangallo/agent-pay.git"
+   },
+   "npm_maintainers": [
+    "leddconsulting"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.3",
+   "pypi_repo": "github.com/yyxqqq777/mcp-server-agentpay",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/yyxqqq777/mcp-server-agentpay#readme",
+     "Homepage": "https://github.com/yyxqqq777/mcp-server-agentpay",
+     "Issues": "https://github.com/yyxqqq777/mcp-server-agentpay/issues",
+     "Repository": "https://github.com/yyxqqq777/mcp-server-agentpay"
+    },
+    "home_page": null
+   },
+   "pypi_author": "yyx <yunxuan517@gmail.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "memegician-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/notysoty/memegician-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Notysoty/memegician-mcp.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "notysoty"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.0",
+   "pypi_repo": "github.com/notysoty/memegician-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://memegician.ai/mcp-server",
+     "Issues": "https://github.com/Notysoty/memegician-mcp/issues",
+     "Repository": "https://github.com/Notysoty/memegician-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Memegician <support@memegician.ai>",
+   "class": "same-repo"
+  },
+  {
+   "name": "memory-industry",
+   "npm_ok": true,
+   "npm_version": "0.30.0",
+   "npm_repo": "github.com/leandropg19/memorys",
+   "npm_repo_field": {
+    "url": "git+https://github.com/LeandroPG19/Memorys.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "leandropg1019"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.32.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "meteoswiss-mcp",
+   "npm_ok": true,
+   "npm_version": "4.2.1",
+   "npm_repo": "github.com/eins78/meteoswiss-llm-tools",
+   "npm_repo_field": {
+    "url": "git+https://github.com/eins78/meteoswiss-llm-tools.git",
+    "type": "git",
+    "directory": "packages/meteoswiss-mcp"
+   },
+   "npm_maintainers": [
+    "eins78"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.7.0",
+   "pypi_repo": "github.com/malkreide/meteoswiss-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/malkreide/meteoswiss-mcp",
+     "Issues": "https://github.com/malkreide/meteoswiss-mcp/issues",
+     "Repository": "https://github.com/malkreide/meteoswiss-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  },
+  {
+   "name": "mindupload",
+   "npm_ok": true,
+   "npm_version": "1.18.0",
+   "npm_repo": "github.com/voidborn-industries/mindupload-sdk-js",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Voidborn-Industries/mindupload-sdk-js.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "voidborn"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.18.0",
+   "pypi_repo": "github.com/voidborn-industries/mindupload-sdk-python",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://docs.mindupload.app",
+     "Homepage": "https://mindupload.app",
+     "MCP": "https://docs.mindupload.app/mcp",
+     "Source": "https://github.com/Voidborn-Industries/mindupload-sdk-python",
+     "Status": "https://status.mindupload.app"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Mind Upload",
+   "class": "different-repo"
+  },
+  {
+   "name": "minion-desktop",
+   "npm_ok": true,
+   "npm_version": "1.1.1",
+   "npm_repo": "github.com/apophisss/minion",
+   "npm_repo_field": {
+    "url": "git+https://github.com/apophisss/minion.git",
+    "type": "git",
+    "directory": "clients/typescript"
+   },
+   "npm_maintainers": [
+    "ofiz"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/apophisss/minion/blob/main/CHANGELOG.md",
+     "Documentation": "https://github.com/apophisss/minion/tree/main/docs",
+     "Homepage": "https://github.com/apophisss/minion",
+     "Issues": "https://github.com/apophisss/minion/issues"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Minion contributors",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "mishmar",
+   "npm_ok": true,
+   "npm_version": "0.5.3",
+   "npm_repo": "github.com/mishmar-io/mishmar",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mishmar-io/mishmar.git",
+    "type": "git",
+    "directory": "typescript"
+   },
+   "npm_maintainers": [
+    "mishmar_io"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.5.3",
+   "pypi_repo": "github.com/mishmar-io/mishmar",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://mishmar.io",
+     "Source": "https://github.com/mishmar-io/mishmar"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "model-shunt",
+   "npm_ok": true,
+   "npm_version": "1.2.1",
+   "npm_repo": "github.com/yasmanycastillo/model-shunt",
+   "npm_repo_field": {
+    "url": "git+https://github.com/yasmanycastillo/model-shunt.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "yasmanycastillo"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "yasmanycastillo",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "mtg-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.2",
+   "npm_repo": "github.com/mrfentmen/mtg-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/mtg-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.3",
+   "pypi_repo": "github.com/wtfregia/mtg-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/wtfregia/mtg-mcp",
+     "Issues": "https://github.com/wtfregia/mtg-mcp/issues",
+     "Repository": "https://github.com/wtfregia/mtg-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "wtfregia <wtfregia@users.noreply.github.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "netlens-mcp",
+   "npm_ok": true,
+   "npm_version": "0.2.3",
+   "npm_repo": "github.com/pzalutski-pixel/netlens-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/pzalutski-pixel/netlens-mcp.git"
+   },
+   "npm_maintainers": [
+    "pzalutski"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.3",
+   "pypi_repo": "github.com/pzalutski-pixel/netlens-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/pzalutski-pixel/netlens-mcp",
+     "Issues": "https://github.com/pzalutski-pixel/netlens-mcp/issues",
+     "Repository": "https://github.com/pzalutski-pixel/netlens-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Peter Zalutski",
+   "class": "same-repo"
+  },
+  {
+   "name": "ng-postcode-mcp",
+   "npm_ok": true,
+   "npm_version": "0.4.3",
+   "npm_repo": "github.com/adeniyikayodee/ng-postcode",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Adeniyikayodee/ng-postcode.git",
+    "type": "git",
+    "directory": "js/packages/ng-postcode-mcp"
+   },
+   "npm_maintainers": [
+    "adeniyikayode_"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.6.3",
+   "pypi_repo": "github.com/adeniyikayodee/ng-postcode",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://adeniyikayodee.github.io/ng-postcode/",
+     "Issues": "https://github.com/Adeniyikayodee/ng-postcode/issues",
+     "Repository": "https://github.com/Adeniyikayodee/ng-postcode"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Kayode Adeniyi",
+   "class": "same-repo"
+  },
+  {
+   "name": "nullprint-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.7",
+   "npm_repo": "github.com/nullprintai/nullprint-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/nullprintai/nullprint-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "nullprintai"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.7",
+   "pypi_repo": "github.com/nullprintai/nullprint-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://nullprint.ai/docs/mcp/",
+     "Homepage": "https://nullprint.ai",
+     "Source": "https://github.com/nullprintai/nullprint-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Nullprint <support@nullprint.ai>",
+   "class": "same-repo"
+  },
+  {
+   "name": "ohm-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.1",
+   "npm_repo": "github.com/murugarajr/ohm-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/Murugarajr/ohm-mcp.git"
+   },
+   "npm_maintainers": [
+    "ohmraj"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://www.ohm-mcp.dev"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Murugaraj <murugarajr@gmail.com>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "open-agent-search",
+   "npm_ok": true,
+   "npm_version": "1.0.5",
+   "npm_repo": "github.com/jayanth-mkv/open-agent-search",
+   "npm_repo_field": {
+    "url": "git+https://github.com/jayanth-mkv/open-agent-search.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "jayanth-mkv"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.5",
+   "pypi_repo": "github.com/jayanth-mkv/open-agent-search",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://jayanth-mkv.github.io/open-agent-search/",
+     "Homepage": "https://github.com/Jayanth-MKV/open-agent-search",
+     "Issues": "https://github.com/Jayanth-MKV/open-agent-search/issues",
+     "Repository": "https://github.com/Jayanth-MKV/open-agent-search"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Xplormity Collective",
+   "class": "same-repo"
+  },
+  {
+   "name": "openai-ads-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.7",
+   "npm_repo": "github.com/trakkr-aisearch/openai-ads-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/trakkr-aisearch/openai-ads-mcp.git",
+    "directory": "typescript"
+   },
+   "npm_maintainers": [
+    "trakkr"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.7",
+   "pypi_repo": "github.com/trakkr-aisearch/openai-ads-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://trakkr.ai",
+     "Issues": "https://github.com/trakkr-aisearch/openai-ads-mcp/issues",
+     "Repository": "https://github.com/trakkr-aisearch/openai-ads-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Trakkr <hello@trakkr.ai>",
+   "class": "same-repo"
+  },
+  {
+   "name": "openroad-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/the-openroad-project/openroad-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/The-OpenROAD-Project/openroad-mcp.git"
+   },
+   "npm_maintainers": [
+    "jluarprecisioninno"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.6.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "Precision Innovations <it-support@precisioninno.com>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "opentargets-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.3",
+   "npm_repo": "github.com/mrfentmen/awesome-mcps",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/awesome-mcps.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.7.0",
+   "pypi_repo": "github.com/nickzren/opentargets-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/nickzren/opentargets-mcp#readme",
+     "Homepage": "https://github.com/nickzren/opentargets-mcp",
+     "Repository": "https://github.com/nickzren/opentargets-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Nick Ren",
+   "class": "different-repo"
+  },
+  {
+   "name": "otx-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.1",
+   "npm_repo": "github.com/mrfentmen/awesome-mcps",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/awesome-mcps.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.2.0",
+   "pypi_repo": "github.com/w0h1v/mcp-otx",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/w0h1v/mcp-otx/blob/main/CHANGELOG.md",
+     "Documentation": "https://w0h1v.github.io/mcp-otx/",
+     "Homepage": "https://w0h1v.github.io/mcp-otx/",
+     "Issues": "https://github.com/w0h1v/mcp-otx/issues",
+     "Repository": "https://github.com/w0h1v/mcp-otx"
+    },
+    "home_page": null
+   },
+   "pypi_author": "w0h1v",
+   "class": "different-repo"
+  },
+  {
+   "name": "pagewatch-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": "github.com/toolshedlabs-hash/pagewatch-mcp-node",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/toolshedlabs-hash/pagewatch-mcp-node.git"
+   },
+   "npm_maintainers": [
+    "toolshedlabs"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "perfume-mcp",
+   "npm_ok": true,
+   "npm_version": "2.6.1",
+   "npm_repo": "github.com/10ml-com/perfume-finder-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/10ml-com/perfume-finder-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "10ml"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "2.6.1",
+   "pypi_repo": "github.com/10ml-com/perfume-finder-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://mcp.10ml.com",
+     "Homepage": "https://mcp.10ml.com",
+     "Issues": "https://github.com/10ml-com/perfume-finder-mcp/issues",
+     "Repository": "https://github.com/10ml-com/perfume-finder-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "10ML Team <contact@10ml.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "placeroot",
+   "npm_ok": true,
+   "npm_version": "0.12.0",
+   "npm_repo": "github.com/chuofringer/placeroot",
+   "npm_repo_field": {
+    "url": "git+https://github.com/chuofringer/placeroot.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "chuofringer"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.12.0",
+   "pypi_repo": "github.com/chuofringer/placeroot",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/chuofringer/placeroot/blob/main/CHANGELOG.md",
+     "Documentation": "https://placeroot.dev/how-it-works.html",
+     "Homepage": "https://placeroot.dev",
+     "Issues": "https://github.com/chuofringer/placeroot/issues",
+     "Repository": "https://github.com/chuofringer/placeroot"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Vibe Mapper <chuo.fringer@gmail.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "pmwallets",
+   "npm_ok": true,
+   "npm_version": "0.9.1",
+   "npm_repo": "github.com/polymarketwallets/pmwallets-node",
+   "npm_repo_field": {
+    "url": "git+https://github.com/polymarketwallets/pmwallets-node.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "pmwallets"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.9.0",
+   "pypi_repo": "github.com/polymarketwallets/pmwallets-python",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://pmwallets.com/docs",
+     "Issues": "https://github.com/polymarketwallets/pmwallets-python/issues",
+     "Repository": "https://github.com/polymarketwallets/pmwallets-python"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  },
+  {
+   "name": "pmwallets-copytrade",
+   "npm_ok": true,
+   "npm_version": "0.8.0",
+   "npm_repo": "github.com/polymarketwallets/polymarket-copy-trading-bot",
+   "npm_repo_field": {
+    "url": "git+https://github.com/polymarketwallets/polymarket-copy-trading-bot.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "pmwallets"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.8.0",
+   "pypi_repo": "github.com/polymarketwallets/polymarket-copy-trading-bot-python",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://pmwallets.com/copy-trading",
+     "Issues": "https://github.com/polymarketwallets/polymarket-copy-trading-bot-python/issues",
+     "Repository": "https://github.com/polymarketwallets/polymarket-copy-trading-bot-python"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  },
+  {
+   "name": "podman-mcp-server",
+   "npm_ok": true,
+   "npm_version": "0.0.15",
+   "npm_repo": "github.com/manusa/podman-mcp-server",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/manusa/podman-mcp-server.git"
+   },
+   "npm_maintainers": [
+    "manusa"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.0.15",
+   "pypi_repo": "github.com/manusa/podman-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/manusa/podman-mcp-server",
+     "Repository": "https://github.com/manusa/podman-mcp-server"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Marc Nuri <marc@marcnuri.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "pomera-ai-commander",
+   "npm_ok": true,
+   "npm_version": "1.5.1",
+   "npm_repo": "github.com/matbanik/pomera-ai-commander",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/matbanik/Pomera-AI-Commander.git"
+   },
+   "npm_maintainers": [
+    "matbanik"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.5.1",
+   "pypi_repo": "github.com/matbanik/pomera-ai-commander",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/matbanik/Pomera-AI-Commander/releases",
+     "Documentation": "https://github.com/matbanik/Pomera-AI-Commander#readme",
+     "Homepage": "https://github.com/matbanik/Pomera-AI-Commander",
+     "Issues": "https://github.com/matbanik/Pomera-AI-Commander/issues",
+     "Repository": "https://github.com/matbanik/Pomera-AI-Commander"
+    },
+    "home_page": null
+   },
+   "pypi_author": "matbanik <matbanik@users.noreply.github.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "porkbun-mcp",
+   "npm_ok": true,
+   "npm_version": "0.4.0",
+   "npm_repo": "github.com/korobkov-v/porkbun-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/korobkov-v/porkbun-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "v_korobkov"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.2",
+   "pypi_repo": "github.com/major/porkbun-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/major/porkbun-mcp",
+     "Repository": "https://github.com/major/porkbun-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Major Hayden",
+   "class": "different-repo"
+  },
+  {
+   "name": "positif-ai",
+   "npm_ok": true,
+   "npm_version": "0.6.0",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "radlab"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.6.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://positif.ai/docs/",
+     "Homepage": "https://positif.ai"
+    },
+    "home_page": null
+   },
+   "pypi_author": "RADLAB LLC",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "psycgod-sage",
+   "npm_ok": true,
+   "npm_version": "2.6.2",
+   "npm_repo": "github.com/psycgod/sage",
+   "npm_repo_field": {
+    "url": "git+https://github.com/PsYcGoD/sage.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "psyc_god"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "2.6.2",
+   "pypi_repo": "github.com/psycgod/sage",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Dashboard": "https://sage.api.marketingstudios.in/dashboard",
+     "Homepage": "https://github.com/PsYcGoD/sage",
+     "Issues": "https://github.com/PsYcGoD/sage/issues",
+     "Repository": "https://github.com/PsYcGoD/sage"
+    },
+    "home_page": null
+   },
+   "pypi_author": "PsYcGoD",
+   "class": "same-repo"
+  },
+  {
+   "name": "quickbooks-mcp",
+   "npm_ok": true,
+   "npm_version": "0.12.0",
+   "npm_repo": "github.com/laf-rge/quickbooks-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/laf-rge/quickbooks-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "laf-rge"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": "github.com/nyxtoolsdev/quickbooks-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/NyxToolsDev/quickbooks-mcp-server#readme",
+     "Homepage": "https://github.com/NyxToolsDev/quickbooks-mcp-server",
+     "Issues": "https://github.com/NyxToolsDev/quickbooks-mcp-server/issues",
+     "Repository": "https://github.com/NyxToolsDev/quickbooks-mcp-server"
+    },
+    "home_page": null
+   },
+   "pypi_author": "NyxTools · LEW Enterprises LLC",
+   "class": "different-repo"
+  },
+  {
+   "name": "rapidworkers-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": "github.com/rapidworkers-io/rapidworkers",
+   "npm_repo_field": {
+    "url": "git+https://github.com/RapidWorkers-io/rapidworkers.git",
+    "type": "git",
+    "directory": "typescript/mcp"
+   },
+   "npm_maintainers": [
+    "rapidworkers"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": "github.com/rapidworkers-io/rapidworkers",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://www.rapidworkers.io/developers/#mcp",
+     "Homepage": "https://www.rapidworkers.io/mcp/",
+     "Issues": "https://github.com/RapidWorkers-io/rapidworkers/issues",
+     "Source": "https://github.com/RapidWorkers-io/rapidworkers"
+    },
+    "home_page": null
+   },
+   "pypi_author": "RapidWorkers",
+   "class": "same-repo"
+  },
+  {
+   "name": "registry-mcp",
+   "npm_ok": true,
+   "npm_version": "0.4.2",
+   "npm_repo": "github.com/foretak/registry-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/foretak/registry-mcp.git",
+    "directory": "packages/npm/registry-mcp"
+   },
+   "npm_maintainers": [
+    "foretak"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.4.2",
+   "pypi_repo": "github.com/foretak/registry-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/foretak/registry-mcp/releases",
+     "Documentation": "https://api.foretak.dev/llms-full.txt",
+     "Homepage": "https://api.foretak.dev",
+     "Issues": "https://github.com/foretak/registry-mcp/issues",
+     "MCP endpoint": "https://api.foretak.dev/mcp",
+     "REST API": "https://api.foretak.dev/openapi.json",
+     "Repository": "https://github.com/foretak/registry-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Kim",
+   "class": "same-repo"
+  },
+  {
+   "name": "robinhood-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.1",
+   "npm_repo": "github.com/nirholas/robinhood-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/nirholas/robinhood-mcp.git"
+   },
+   "npm_maintainers": [
+    "three-ws"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.2",
+   "pypi_repo": "github.com/verygoodplugins/robinhood-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://verygoodplugins.com/?utm_source=github",
+     "Repository": "https://github.com/verygoodplugins/robinhood-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Jack Arturo <jack@verygoodplugins.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "ros-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.1",
+   "npm_repo": "github.com/husain-zaidi/ros-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/husain-zaidi/ROS-MCP.git"
+   },
+   "npm_maintainers": [
+    "husain-zaidi"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "3.1.2",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "Rohit John Varghese, Jungsoo Lee, Youngmok Yun, Stefano Dalla Gasperina",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "rundeck-mcp-server",
+   "npm_ok": true,
+   "npm_version": "1.0.4",
+   "npm_repo": "github.com/mariomorenodev/rundeck-mcp-server",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/mariomorenodev/rundeck-mcp-server.git"
+   },
+   "npm_maintainers": [
+    "mariomorenodev"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "asklokesh <lokeshmure@live.com>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "sabline-lang",
+   "npm_ok": true,
+   "npm_version": "8.8.0",
+   "npm_repo": "github.com/gowrishankar-infra/sabline-lang",
+   "npm_repo_field": {
+    "url": "git+https://github.com/gowrishankar-infra/sabline-lang.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "pgshankar"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "8.8.0",
+   "pypi_repo": "github.com/gowrishankar-infra/sabline-lang",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/gowrishankar-infra/sabline-lang/blob/main/CHANGELOG.md",
+     "Documentation": "https://sabline.dev/",
+     "Homepage": "https://sabline.dev/",
+     "Source": "https://github.com/gowrishankar-infra/sabline-lang"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Palakurthi Gowri Shankar",
+   "class": "same-repo"
+  },
+  {
+   "name": "scento-perfume-api",
+   "npm_ok": true,
+   "npm_version": "1.0.1",
+   "npm_repo": "github.com/scento-com/perfume-mcp-server",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Scento-com/perfume-mcp-server.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "scento"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.1",
+   "pypi_repo": "github.com/scento-com/perfume-mcp-server",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://www.scento.com/developers",
+     "Homepage": "https://www.scento.com/developers",
+     "Issues": "https://github.com/Scento-com/perfume-mcp-server/issues",
+     "Repository": "https://github.com/Scento-com/perfume-mcp-server",
+     "Website": "https://www.scento.com"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Scento <contact@scento.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "scopus-mcp",
+   "npm_ok": true,
+   "npm_version": "0.5.1",
+   "npm_repo": "github.com/anddrrew/scopus-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Anddrrew/scopus-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "anddrrew"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.8",
+   "pypi_repo": "github.com/qwe4559999/scopus-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/qwe4559999/scopus-mcp/blob/main/README.md",
+     "Homepage": "https://github.com/qwe4559999/scopus-mcp",
+     "Issues": "https://github.com/qwe4559999/scopus-mcp/issues",
+     "Repository": "https://github.com/qwe4559999/scopus-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "thinktraveller",
+   "class": "different-repo"
+  },
+  {
+   "name": "sendmux-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.0",
+   "npm_repo": "github.com/sendmux/sendmux-sdk",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Sendmux/sendmux-sdk.git",
+    "type": "git",
+    "directory": "packages/ts/mcp"
+   },
+   "npm_maintainers": [
+    "roshanroyjnz91"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "2.2.0",
+   "pypi_repo": "github.com/sendmux/sendmux-sdk",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Repository": "https://github.com/Sendmux/sendmux-sdk"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "servicenow-mcp-server",
+   "npm_ok": true,
+   "npm_version": "2.1.10",
+   "npm_repo": "github.com/happy-technologies-llc/mcp-servicenow-nodejs",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Happy-Technologies-LLC/mcp-servicenow-nodejs.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "nczitzer"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "asklokesh <lokeshmure@live.com>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "skim-mcp",
+   "npm_ok": true,
+   "npm_version": "0.2.5",
+   "npm_repo": "github.com/jessiejanie/skim402",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/JessieJanie/skim402.git"
+   },
+   "npm_maintainers": [
+    "skim402"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": "github.com/helloderekg/skim-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/helloderekg/skim-mcp/blob/main/CHANGELOG.md",
+     "Homepage": "https://github.com/helloderekg/skim-mcp",
+     "Issues": "https://github.com/helloderekg/skim-mcp/issues",
+     "Repository": "https://github.com/helloderekg/skim-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "skim contributors",
+   "class": "different-repo"
+  },
+  {
+   "name": "speedrun-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.2",
+   "npm_repo": "github.com/mrfentmen/speedrun-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/speedrun-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.3.4",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/williamcodes/speedrun-mcp",
+     "Issues": "https://github.com/williamcodes/speedrun-mcp/issues",
+     "speedrun.com API": "https://github.com/speedruncomorg/api"
+    },
+    "home_page": null
+   },
+   "pypi_author": "William Jeffries",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "stackexchange-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/mrfentmen/stackexchange-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/stackexchange-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.2",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/YashLimbani/stackexchange-mcp",
+     "Issues": "https://github.com/YashLimbani/stackexchange-mcp/issues"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Yash Limbani",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "supercarto",
+   "npm_ok": true,
+   "npm_version": "0.7.0",
+   "npm_repo": "github.com/unselfisheologism/supercarto",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Unselfisheologism/supercarto.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "jeff9james"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.7.0",
+   "pypi_repo": "github.com/unselfisheologism/supercarto",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Benchmark": "https://github.com/Unselfisheologism/supercarto/blob/master/docs/benchmark.md",
+     "Homepage": "https://github.com/Unselfisheologism/supercarto",
+     "Issues": "https://github.com/Unselfisheologism/supercarto/issues",
+     "Repository": "https://github.com/Unselfisheologism/supercarto"
+    },
+    "home_page": null
+   },
+   "pypi_author": "supercarto contributors",
+   "class": "same-repo"
+  },
+  {
+   "name": "superlocalmemory",
+   "npm_ok": true,
+   "npm_version": "4.2.19",
+   "npm_repo": "github.com/qualixar/superlocalmemory",
+   "npm_repo_field": {
+    "url": "git+https://github.com/qualixar/superlocalmemory.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "varun369"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "4.2.19",
+   "pypi_repo": "github.com/qualixar/superlocalmemory",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/qualixar/superlocalmemory/wiki",
+     "Homepage": "https://superlocalmemory.com",
+     "Issues": "https://github.com/qualixar/superlocalmemory/issues",
+     "Repository": "https://github.com/qualixar/superlocalmemory"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Varun Pratap Bhardwaj <admin@superlocalmemory.com>",
+   "class": "same-repo"
+  },
+  {
+   "name": "swissco-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.1",
+   "npm_repo": "github.com/prospex-ch/swissco-cli",
+   "npm_repo_field": {
+    "url": "git+https://github.com/prospex-ch/swissco-cli.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "prospex"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": "github.com/prospex-ch/swissco-cli",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://swissco-mcp.readthedocs.io",
+     "Homepage": "https://prospex.ch",
+     "Repository": "https://github.com/prospex-ch/swissco-cli"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Prospex",
+   "class": "same-repo"
+  },
+  {
+   "name": "tapebasis",
+   "npm_ok": true,
+   "npm_version": "1.1.2",
+   "npm_repo": "github.com/giraygokirmak/tapebasis",
+   "npm_repo_field": {
+    "url": "git+https://github.com/giraygokirmak/tapebasis.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "giraygokirmak"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.2",
+   "pypi_repo": "github.com/giraygokirmak/tapebasis",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Repository": "https://github.com/giraygokirmak/tapebasis"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Giray Gokirmak <giray@gokirmak.gen.tr>",
+   "class": "same-repo"
+  },
+  {
+   "name": "tapetide-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.9",
+   "npm_repo": "github.com/tapetide-hq/nse-bse-indian-stock-market-data-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Tapetide-hq/nse-bse-indian-stock-market-data-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "tapetide_hq"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.1",
+   "pypi_repo": "github.com/tapetide-hq/nse-bse-indian-stock-market-data-mcp-python",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://tapetide.com/mcp",
+     "Homepage": "https://tapetide.com/mcp",
+     "Issues": "https://github.com/Tapetide-hq/nse-bse-indian-stock-market-data-mcp-python/issues",
+     "Repository": "https://github.com/Tapetide-hq/nse-bse-indian-stock-market-data-mcp-python",
+     "npm package": "https://www.npmjs.com/package/tapetide-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Tapetide <hello@tapetide.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "telegram-slack-mcp",
+   "npm_ok": true,
+   "npm_version": "0.5.1",
+   "npm_repo": "github.com/nileshpatil6/telegram-slack-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/nileshpatil6/telegram-slack-mcp.git"
+   },
+   "npm_maintainers": [
+    "nileshpatil6"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.2",
+   "pypi_repo": "github.com/nileshpatil6/telegram-slack-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/nileshpatil6/telegram-slack-mcp",
+     "Issues": "https://github.com/nileshpatil6/telegram-slack-mcp/issues",
+     "Repository": "https://github.com/nileshpatil6/telegram-slack-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "nileshpatil6",
+   "class": "same-repo"
+  },
+  {
+   "name": "threatcluster-mcp",
+   "npm_ok": true,
+   "npm_version": "0.2.7",
+   "npm_repo": "github.com/jam0k/threat-intelligence-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Jam0k/Threat-Intelligence-MCP.git",
+    "type": "git",
+    "directory": "node"
+   },
+   "npm_maintainers": [
+    "threatcluster"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.7",
+   "pypi_repo": "github.com/jam0k/threat-intelligence-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/Jam0k/Threat-Intelligence-MCP/blob/main/CHANGELOG.md",
+     "Documentation": "https://threatcluster.io/integrations/mcp",
+     "Homepage": "https://threatcluster.io/integrations/mcp",
+     "Source": "https://github.com/Jam0k/Threat-Intelligence-MCP"
+    },
+    "home_page": null
+   },
+   "pypi_author": "ThreatCluster",
+   "class": "same-repo"
+  },
+  {
+   "name": "tokensafe",
+   "npm_ok": true,
+   "npm_version": "4.2.5",
+   "npm_repo": "github.com/tokensafe-dev/tokensafe",
+   "npm_repo_field": {
+    "url": "git+https://github.com/tokensafe-dev/tokensafe.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "nekosin4eg"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "4.2.5",
+   "pypi_repo": "github.com/tokensafe-dev/tokensafe",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://tokensafe.dev",
+     "Homepage": "https://tokensafe.dev",
+     "Issues": "https://github.com/tokensafe-dev/tokensafe/issues",
+     "Repository": "https://github.com/tokensafe-dev/tokensafe"
+    },
+    "home_page": null
+   },
+   "pypi_author": "TokenSafe Team <support@tokensafe.dev>",
+   "class": "same-repo"
+  },
+  {
+   "name": "tracker-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.0",
+   "npm_repo": "github.com/sdamarketing/tracker_mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/sdamarketing/tracker_mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "alekhm"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.8.6",
+   "pypi_repo": "github.com/butyavk/tracker-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Changelog": "https://github.com/butyavk/tracker-mcp/blob/main/CHANGELOG.md",
+     "Homepage": "https://butyavk.github.io/tracker-mcp/",
+     "Issues": "https://github.com/butyavk/tracker-mcp/issues",
+     "Repository": "https://github.com/butyavk/tracker-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Ivan Rykov",
+   "class": "different-repo"
+  },
+  {
+   "name": "uniprot-mcp",
+   "npm_ok": true,
+   "npm_version": "1.1.0",
+   "npm_repo": "github.com/mrfentmen/uniprot-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/uniprot-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": "github.com/josefdc/uniprot-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://github.com/josefdc/Uniprot-MCP#readme",
+     "Homepage": "https://github.com/josefdc/Uniprot-MCP",
+     "Issues": "https://github.com/josefdc/Uniprot-MCP/issues",
+     "Repository": "https://github.com/josefdc/Uniprot-MCP"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Jose Duarte <josepipe0909@gmail.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "usgs-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.1",
+   "npm_repo": "github.com/mrfentmen/awesome-servers",
+   "npm_repo_field": {
+    "url": "git+https://github.com/mrfentmen/awesome-servers.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "mrfentmen"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.2",
+   "pypi_repo": "github.com/oceanmodeling/ocean-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Bug Tracker": "https://github.com/oceanmodeling/ocean-mcp/issues",
+     "Changelog": "https://github.com/oceanmodeling/ocean-mcp/releases",
+     "Documentation": "https://github.com/oceanmodeling/ocean-mcp/tree/main/servers/usgs-mcp",
+     "Homepage": "https://github.com/oceanmodeling/ocean-mcp",
+     "Repository": "https://github.com/oceanmodeling/ocean-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Mansur Ali Jisan <mansur.jisan@noaa.gov>",
+   "class": "different-repo"
+  },
+  {
+   "name": "vaper-club-mcp",
+   "npm_ok": true,
+   "npm_version": "1.0.1",
+   "npm_repo": "github.com/vaperclub/vaper-club-agent",
+   "npm_repo_field": {
+    "url": "git+https://github.com/VaperClub/vaper-club-agent.git",
+    "type": "git",
+    "directory": "mcp-server"
+   },
+   "npm_maintainers": [
+    "vaperclub"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.0.1",
+   "pypi_repo": "github.com/vaperclub/vaper-club-agent",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://vaper.club",
+     "Issues": "https://github.com/VaperClub/vaper-club-agent/issues",
+     "Repository": "https://github.com/VaperClub/vaper-club-agent"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "same-repo"
+  },
+  {
+   "name": "velaris-lang",
+   "npm_ok": true,
+   "npm_version": "8.6.0",
+   "npm_repo": "github.com/gowrishankar-infra/sabline-lang",
+   "npm_repo_field": {
+    "url": "git+https://github.com/gowrishankar-infra/sabline-lang.git",
+    "type": "git",
+    "directory": "packaging/farewell/npm/velaris-lang"
+   },
+   "npm_maintainers": [
+    "pgshankar"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "8.6.0",
+   "pypi_repo": "github.com/gowrishankar-infra/sabline-lang",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://sabline.dev/",
+     "Source": "https://github.com/gowrishankar-infra/sabline-lang",
+     "The package": "https://pypi.org/project/sabline-lang/",
+     "What moved where": "https://sabline.dev/renamed.html"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Palakurthi Gowri Shankar",
+   "class": "same-repo"
+  },
+  {
+   "name": "verbative-memory",
+   "npm_ok": true,
+   "npm_version": "1.1.3",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "verbative"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "1.1.3",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://verbative.de/docs/memory",
+     "Homepage": "https://verbative.de/memory"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Verbative <info@verbative.de>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "verity-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.0",
+   "npm_repo": "github.com/clawdio777/verity",
+   "npm_repo_field": {
+    "url": "git+https://github.com/Clawdio777/verity.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "clawdio777"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.4.2",
+   "pypi_repo": "github.com/meloliva14/verity-mcp",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://veritylayer.dev",
+     "Repository": "https://github.com/meloliva14/verity-mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Verity Labs <veritylayer@gmail.com>",
+   "class": "different-repo"
+  },
+  {
+   "name": "void-os",
+   "npm_ok": true,
+   "npm_version": "0.1.0",
+   "npm_repo": null,
+   "npm_repo_field": {
+    "url": null
+   },
+   "npm_maintainers": [
+    "demos-ra"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {},
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "warehouse-mcp",
+   "npm_ok": true,
+   "npm_version": "0.4.2",
+   "npm_repo": "github.com/kalehdoo/warehouse-mcp",
+   "npm_repo_field": {
+    "type": "git",
+    "url": "git+https://github.com/kalehdoo/warehouse-mcp.git"
+   },
+   "npm_maintainers": [
+    "kalehdoo"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.0",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Homepage": "https://github.com/tantn89/warehouse-mcp",
+     "Issues": "https://github.com/tantn89/warehouse-mcp/issues"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Tan Tran",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "windsock-mcp",
+   "npm_ok": true,
+   "npm_version": "0.1.2",
+   "npm_repo": "github.com/team-windsock/windsock-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/team-windsock/windsock-mcp.git",
+    "type": "git",
+    "directory": "npm"
+   },
+   "npm_maintainers": [
+    "windsock"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.1.1",
+   "pypi_repo": null,
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://windsock.ai/mcp",
+     "Homepage": "https://windsock.ai/mcp",
+     "Support": "https://windsock.ai/contact"
+    },
+    "home_page": null
+   },
+   "pypi_author": "Windsock <team@windsock.ai>",
+   "class": "no-repo-url"
+  },
+  {
+   "name": "writ-mcp",
+   "npm_ok": true,
+   "npm_version": "1.2.0",
+   "npm_repo": "github.com/usewrit/writ-mcp",
+   "npm_repo_field": {
+    "url": "git+https://github.com/usewrit/writ-mcp.git",
+    "type": "git"
+   },
+   "npm_maintainers": [
+    "benjamingarciamtl"
+   ],
+   "pypi_ok": true,
+   "pypi_version": "0.2.5",
+   "pypi_repo": "github.com/withwrit/pywrit",
+   "pypi_repo_field": {
+    "project_urls": {
+     "Documentation": "https://docs.withwrit.com",
+     "Homepage": "https://withwrit.com",
+     "Repository": "https://github.com/withwrit/pywrit/tree/main/mcp"
+    },
+    "home_page": null
+   },
+   "pypi_author": "",
+   "class": "different-repo"
+  }
+ ]
+}

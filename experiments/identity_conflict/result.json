@@ -1,0 +1,2717 @@
+{
+ "servers": 66509,
+ "identifiers": 22243,
+ "identifiers_claimed_by_multiple_servers": 508,
+ "bare_names_in_both_npm_and_pypi": 134,
+ "multi_owner_examples": {
+  "npm|@4da/mcp-server": [
+   "io.github.4DA-Systems/4da-mcp-server",
+   "io.github.runyourempire/4da-mcp-server"
+  ],
+  "npm|@aartiq/servicenow-mcp": [
+   "io.github.aartiq/servicenow-mcp",
+   "io.github.habenani/servicenow-mcp"
+  ],
+  "npm|@abyssbugg/sourcery": [
+   "io.github.abyssbugg-labs/sourcery",
+   "io.github.abyssbugg/sourcery"
+  ],
+  "npm|@agenium/mcp-server": [
+   "io.github.Aganium/mcp-server",
+   "io.github.chorghemaruti64-creator/agenium-mcp-server"
+  ],
+  "npm|@ai-capabilities-suite/mcp-debugger-server": [
+   "io.github.Digital-Defiance/mcp-debugger",
+   "io.github.DigitalDefiance/ts-mcp-debugger"
+  ],
+  "npm|@aicanvas/mcp": [
+   "io.github.aicanvas-me/aicanvas",
+   "io.github.uiNerd16/aicanvas"
+  ],
+  "npm|@ainecto/mcp": [
+   "com.ainecto/mcp",
+   "io.github.codelives/ainecto"
+  ],
+  "npm|@allratestoday/mcp-server": [
+   "io.github.cahthuranag/mcp-server",
+   "io.github.cahthuranag/realtime-exchange-rate-mcp"
+  ],
+  "npm|@ansvar/us-regulations-mcp": [
+   "eu.ansvar/us-regulations-mcp",
+   "io.github.Ansvar-Systems/us-regulations-mcp"
+  ],
+  "npm|@apocdata-info/mcp-server": [
+   "io.github.ApocData/mcp-server",
+   "io.github.hanjialeGit/mcp-server"
+  ]
+ },
+ "cross_registry_examples": {
+  "aamio": [
+   "npm",
+   "pypi"
+  ],
+  "adam-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "aditum-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "aether-browser": [
+   "npm",
+   "pypi"
+  ],
+  "ai-netcafe": [
+   "npm",
+   "pypi"
+  ],
+  "ai-voice-bridge": [
+   "npm",
+   "pypi"
+  ],
+  "aipaygen-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "airlox": [
+   "npm",
+   "pypi"
+  ],
+  "apiguru-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "arch-diagram-mcp": [
+   "npm",
+   "pypi"
+  ]
+ },
+ "as_of": "2026-11-18",
+ "pages": 666,
+ "complete": true,
+ "all_multi_owner": {
+  "npm|@buywhere/mcp-server": [
+   "ai.buywhere/buywhere-mcp",
+   "io.github.BuyWhere/buywhere-mcp"
+  ],
+  "pypi|unraid-mcp": [
+   "ai.dinglebear/unraid-mcp",
+   "tv.tootie/unraid-mcp"
+  ],
+  "npm|@getmarrow/mcp": [
+   "ai.getmarrow/marrow",
+   "io.github.getmarrow/marrow"
+  ],
+  "pypi|greyridge-x402-tools": [
+   "ai.greyridgesignals/tech-risk",
+   "io.github.rezearcher/tech-risk"
+  ],
+  "npm|@knowall-ai/reverie": [
+   "ai.knowall/reverie",
+   "io.github.knowall-ai/reverie"
+  ],
+  "npm|lithtrix-mcp": [
+   "ai.lithtrix/lithtrix-mcp",
+   "io.github.learningloons-hash/lithtrix",
+   "io.github.lithtrix/lithtrix"
+  ],
+  "npm|@llmintel/mcp": [
+   "ai.llmintel/llmintel",
+   "ai.llmintel/model-lifecycle"
+  ],
+  "npm|@orangepro/mcp-server": [
+   "ai.orangepro/mcp",
+   "io.github.OrangeproAI/orangepro"
+  ],
+  "npm|@perplexity-ai/mcp-server": [
+   "ai.perplexity/mcp-server",
+   "io.github.perplexityai/mcp-server"
+  ],
+  "npm|starsinger-mcp": [
+   "ai.starsinger/starsinger-mcp",
+   "io.github.starsinger-ai/starsinger-mcp"
+  ],
+  "npm|@traderouter/trade-router-mcp": [
+   "ai.traderouter/trade-router-mcp",
+   "io.github.TradeRouter/trade-router-mcp"
+  ],
+  "npm|@trusty-squire/mcp": [
+   "ai.trustysquire/trusty-squire",
+   "io.github.Trusty-Squire/mcp"
+  ],
+  "npm|guildctl": [
+   "app.lasers.guildcontrol/discord",
+   "io.github.j-256/guildcontrol"
+  ],
+  "pypi|oddsrail": [
+   "app.oddsrail/polymarket-kalshi-arbitrage",
+   "app.oddsrail/polymarket-kalshi-trading",
+   "io.github.hmesutozsoy/oddsrail",
+   "io.github.hmesutozsoy/oddsrail-polymarket-kalshi"
+  ],
+  "npm|@odyssey365/mcp-server": [
+   "app.odyssey365/mcp-server",
+   "io.github.Odyssey365/mcp-server"
+  ],
+  "npm|provably-fair-mcp": [
+   "app.promptcoin/giveaway-raffle-winner-picker",
+   "app.promptcoin/provably-fair"
+  ],
+  "pypi|mcp-proxy-for-aws": [
+   "aws.api.us-east-1.ecs-mcp/server",
+   "aws.api.us-east-1.eks-mcp/server",
+   "io.github.aws/aws-mcp",
+   "io.github.aws/mcp-proxy-for-aws"
+  ],
+  "npm|@scope-bid/scope-aec-mcp": [
+   "bid.scope/aec",
+   "io.github.scope-bid/scope-aec-mcp"
+  ],
+  "npm|@scope-bid/scope-claims-mcp": [
+   "bid.scope/claims",
+   "io.github.scope-bid/scope-claims-mcp"
+  ],
+  "npm|@scope-bid/scope-mcp": [
+   "bid.scope/legal",
+   "io.github.scope-bid/scope-mcp"
+  ],
+  "pypi|agent-tools-mcp": [
+   "cloud.agent-tools/agent-tools-mcp",
+   "io.github.AgentTools-Cloud/agent-tools-mcp"
+  ],
+  "pypi|solana-snipe-bot-mcp": [
+   "co.solsniperbot/solana-snipe-bot-mcp",
+   "io.github.Solara-Snipe-Bot/solana-snipe-bot-mcp"
+  ],
+  "npm|@truncus/mcp-server": [
+   "co.truncus/mcp-server",
+   "io.github.codevanmoose/truncus-mcp-server"
+  ],
+  "pypi|bls-oews-mcp": [
+   "com.1102tools/bls-oews-mcp",
+   "io.github.1102tools/bls-oews-mcp"
+  ],
+  "pypi|ecfr-mcp": [
+   "com.1102tools/ecfr-mcp",
+   "io.github.1102tools/ecfr-mcp"
+  ],
+  "pypi|federal-register-mcp": [
+   "com.1102tools/federal-register-mcp",
+   "io.github.1102tools/federal-register-mcp"
+  ],
+  "pypi|gsa-calc-mcp": [
+   "com.1102tools/gsa-calc-mcp",
+   "io.github.1102tools/gsa-calc-mcp"
+  ],
+  "pypi|gsa-perdiem-mcp": [
+   "com.1102tools/gsa-perdiem-mcp",
+   "io.github.1102tools/gsa-perdiem-mcp"
+  ],
+  "pypi|regulationsgov-mcp": [
+   "com.1102tools/regulations-gov-mcp",
+   "io.github.1102tools/regulations-gov-mcp"
+  ],
+  "pypi|sam-gov-mcp": [
+   "com.1102tools/sam-gov-mcp",
+   "io.github.1102tools/sam-gov-mcp"
+  ],
+  "pypi|usaspending-gov-mcp": [
+   "com.1102tools/usaspending-gov-mcp",
+   "io.github.1102tools/usaspending-gov-mcp"
+  ],
+  "npm|@ainecto/mcp": [
+   "com.ainecto/mcp",
+   "io.github.codelives/ainecto"
+  ],
+  "npm|altmetric-mcp": [
+   "com.altmetric.mcp/altmetric-mcp",
+   "io.github.altmetric/altmetric-mcp"
+  ],
+  "npm|@arcnautical/mcp": [
+   "com.arcnautical/mcp",
+   "io.github.SaltyTaro/arcnautical"
+  ],
+  "npm|reviewable-artifacts-mcp": [
+   "com.bereviewable/reviewable-artifacts",
+   "io.github.garrietv/reviewable-artifacts"
+  ],
+  "npm|@bitsbound/mcp-server": [
+   "com.bitsbound/contract-analysis",
+   "com.bitsbound/contract-automation",
+   "io.github.taytrom/bitsbound-contract-automation"
+  ],
+  "npm|@bounceprotect/mcp": [
+   "com.bounceprotect.www/mcp",
+   "io.github.fahassan00/bounceprotect"
+  ],
+  "npm|chartforge-mcp": [
+   "com.chartforgeai/chartforge",
+   "io.github.crawde/chartforge"
+  ],
+  "npm|@clauderecallhq/cli": [
+   "com.clauderecall/recall",
+   "io.github.clauderecallhq/recall"
+  ],
+  "npm|@n747ai/clearedindex-mcp-server": [
+   "com.clearedindex/mcp",
+   "io.github.N747AI/clearedindex"
+  ],
+  "npm|@cloudinary/asset-management-mcp": [
+   "com.cloudinary/asset-management-mcp",
+   "io.github.cloudinary/asset-management-mcp"
+  ],
+  "npm|@codmir/mcp": [
+   "com.codmir/mcp",
+   "io.github.jobrayan/codmir"
+  ],
+  "pypi|coinrailz-mcp": [
+   "com.coinrailz/mcp",
+   "io.github.tdnupe3/coinrailz"
+  ],
+  "npm|correctover-mcp-server": [
+   "com.correctover/mcp-server",
+   "io.github.Correctover/correctover-mcp-server",
+   "io.github.Correctover/mcp"
+  ],
+  "npm|@ctruhtech/verse-mcp": [
+   "com.ctruh.verse/verse",
+   "io.github.dev-vinayagastya/verse-mcp"
+  ],
+  "pypi|ddg-agent-services-mcp": [
+   "com.daedalusdevelopmentgroup/ddg-agent-services-mcp",
+   "io.github.daedalusdevelopmentgroup/ddg-agent-services-mcp"
+  ],
+  "npm|deepsearch-x402-mcp": [
+   "com.deepsearch.x402/korean-stocks",
+   "io.github.DeepSearch-Common/korean-stocks"
+  ],
+  "npm|docfork": [
+   "com.docfork/docfork-mcp",
+   "io.github.docfork/docfork"
+  ],
+  "npm|@echosaw/mcp-server": [
+   "com.echosaw/mcp-server",
+   "io.github.matthew-b-simpson/echosaw"
+  ],
+  "npm|execbro": [
+   "com.execbro/execbro",
+   "io.github.igorzheludkov/execbro"
+  ],
+  "npm|@fidacy/mcp": [
+   "com.fidacy/ai-agent-firewall",
+   "com.fidacy/mcp",
+   "io.github.lucaslubi/fidacy-mcp"
+  ],
+  "npm|@fairquery/agent-trust-mcp": [
+   "com.getfairquery/agent-trust-mcp",
+   "io.github.fairquery/fairquery-agent-trust-mcp"
+  ],
+  "npm|@fairquery/company-jobs-feed-mcp": [
+   "com.getfairquery/company-jobs-feed-mcp",
+   "io.github.fairquery/company-jobs-feed-mcp"
+  ],
+  "npm|@gitscrum-studio/mcp-server": [
+   "com.gitscrum/mcp",
+   "io.github.gitscrum-core/mcp-server"
+  ],
+  "pypi|graqle": [
+   "com.graqle/graqle",
+   "io.github.quantamixsol/graqle"
+  ],
+  "npm|pdfkit-mcp": [
+   "com.hellobasestation/pdfkit",
+   "io.github.benhuang21828/pdfkit"
+  ],
+  "npm|@ilovevideoeditor/mcp-server": [
+   "com.ilovevideoeditor/mcp-server",
+   "io.github.ilovevideoeditor/mcp-server"
+  ],
+  "npm|mcp-server-insumer": [
+   "com.insumermodel/insumer",
+   "io.github.douglasborthwick-crypto/insumer"
+  ],
+  "npm|@kekwanulabs/syncline-mcp-server": [
+   "com.kekwanu/syncline-mcp-server",
+   "run.syncline/mcp-server"
+  ],
+  "pypi|matrix-compute-mcp": [
+   "com.matrix-compute/matrix-compute-mcp",
+   "dev.pages.matrix-compute-website/matrix-compute-mcp"
+  ],
+  "npm|@metrxbot/mcp-server": [
+   "com.metrxbot/mcp-server",
+   "io.github.metrxbots/mcp-server"
+  ],
+  "npm|@microsoft/esrp-release-test-integration": [
+   "com.microsoft.esrp/esrp-oss-mcp-test",
+   "com.microsoft/esrp-oss-mcp-test"
+  ],
+  "pypi|esrp_release_test": [
+   "com.microsoft.esrp/esrp-oss-mcp-test",
+   "com.microsoft/esrp-oss-mcp-test"
+  ],
+  "npm|@mnemopay/sdk": [
+   "com.mnemopay/sdk",
+   "io.github.mnemopay/sdk"
+  ],
+  "npm|prometiam-risk-mcp": [
+   "com.prometiam/risk-mcp",
+   "io.github.matiasmaquieira96/risk-mcp"
+  ],
+  "npm|prospectapis-mcp": [
+   "com.prospectapis/prospectapis-mcp",
+   "io.github.ProspectAPIs/prospectapis-mcp"
+  ],
+  "npm|@pulsemcp/pulse-fetch": [
+   "com.pulsemcp.servers/pulse-fetch",
+   "com.pulsemcp/pulse-fetch"
+  ],
+  "npm|@pyunto/tm-mcp": [
+   "com.pyunto/time-management",
+   "io.github.pyunto/tm-mcp"
+  ],
+  "npm|quanttogo-mcp": [
+   "com.quanttogo/quanttogo-mcp",
+   "io.github.michaeljiangmingfeng-debug/quanttogo-mcp"
+  ],
+  "pypi|rationalbloks-mcp": [
+   "com.rationalbloks/mcp",
+   "io.github.rationalbloks/rationalbloks-mcp"
+  ],
+  "npm|@scopeblind/passport": [
+   "com.scopeblind/passport",
+   "io.github.tomjwxf/scopeblind-passport"
+  ],
+  "npm|protect-mcp": [
+   "com.scopeblind/protect-mcp",
+   "io.github.tomjwxf/protect-mcp"
+  ],
+  "npm|@scopeblind/verify-mcp": [
+   "com.scopeblind/verify-mcp",
+   "io.github.tomjwxf/verify-mcp"
+  ],
+  "npm|@servicialo/mcp-server": [
+   "com.servicialo/mcp-server",
+   "io.github.danioni/servicialo"
+  ],
+  "npm|@sourcey/mcp-server": [
+   "com.sourcey/sourcey",
+   "io.github.sourcey/mcp-server"
+  ],
+  "npm|@tengence/geo-mcp": [
+   "com.tengence/geo",
+   "io.github.tengence-team/geo"
+  ],
+  "npm|intelthreadlinqs-mcp": [
+   "com.threadlinqs/intelthreadlinqs-mcp",
+   "io.github.threadlinqs-cmd/intelthreadlinqs-mcp"
+  ],
+  "npm|callwright": [
+   "com.topness/callwright",
+   "io.github.topness-msft/callwright"
+  ],
+  "npm|reel-estate-mcp": [
+   "com.tryreelestate/reel-estate-mcp",
+   "io.github.TryReelEstate/reel-estate-mcp"
+  ],
+  "npm|@wa-campaigns/agent-toolkit": [
+   "com.wa-campaigns/campaigns",
+   "com.wa-campaigns/whatsapp-campaigns"
+  ],
+  "npm|@webeyez/mcp-server": [
+   "com.webeyez/webeyez",
+   "io.github.Webeyez-analytics/webeyez-mcp-server"
+  ],
+  "npm|xcodebuildmcp": [
+   "com.xcodebuildmcp/XcodeBuildMCP",
+   "io.github.cameroncooke/XcodeBuildMCP"
+  ],
+  "pypi|animica-mcp": [
+   "dev.animica/animica",
+   "io.github.animicaorg/animica",
+   "org.animica/animica"
+  ],
+  "pypi|augments-mcp-server": [
+   "dev.augments/mcp",
+   "io.github.augmnt/augments-mcp-server"
+  ],
+  "pypi|deadends-dev": [
+   "dev.deadends/deadends-dev",
+   "io.github.dbwls99706/deadends-dev"
+  ],
+  "npm|@fentz26/envcp": [
+   "dev.fentz.envcp/envcp",
+   "io.github.fentz26/envcp"
+  ],
+  "npm|@flarelink/mcp": [
+   "dev.flarelink/mcp",
+   "io.github.flarelink-dev/mcp"
+  ],
+  "npm|@ikenga/mcp-iyke": [
+   "dev.ikenga/mcp-iyke",
+   "io.github.Royalti-io/ikenga-pkg-mcp-iyke"
+  ],
+  "pypi|shephouse-yt-mcp": [
+   "dev.pages.shephouse-guides/shephouse-yt-mcp",
+   "io.github.shephouse-actors/shephouse-yt-mcp"
+  ],
+  "npm|@quantrisk/mcp-server": [
+   "dev.quantrisk/mcp-server",
+   "io.github.78degrees/quantrisk"
+  ],
+  "npm|@smartergpt/lex-mcp": [
+   "dev.smartergpt/lex",
+   "io.github.Guffawaffle/lex"
+  ],
+  "npm|live-translate-mcp": [
+   "dev.waxberry/live-translate-mcp",
+   "io.github.jolucashornung/live-translate-mcp"
+  ],
+  "npm|@ansvar/us-regulations-mcp": [
+   "eu.ansvar/us-regulations-mcp",
+   "io.github.Ansvar-Systems/us-regulations-mcp"
+  ],
+  "pypi|boundra-mcp": [
+   "io.boundra/boundra",
+   "io.github.gobeyondfj-cmd/boundra"
+  ],
+  "npm|@fairseal/mcp-server": [
+   "io.fairseal/mcp-server",
+   "io.github.ned-del/fairseal-mcp-server"
+  ],
+  "npm|@flowcontent/mcp-server": [
+   "io.flowcontent/mcp-server",
+   "io.github.Mahfod-dev/flowcontent"
+  ],
+  "npm|flurryport": [
+   "io.flurryport/flurryport",
+   "io.flurryport/webhooks-and-rooms"
+  ],
+  "npm|@formio/uag": [
+   "io.form/formio-uag",
+   "io.form/uag"
+  ],
+  "npm|@gildara/mcp-server": [
+   "io.gildara/mcp-server",
+   "io.github.Gildaraio/mcp-server"
+  ],
+  "npm|agentfolio-mcp-server": [
+   "io.github.0xbrainkid/agentfolio",
+   "io.github.0xbrainkid/agentfolio-mcp-server"
+  ],
+  "npm|@rubric-protocol/mcp-server": [
+   "io.github.0xsims/rubric-mcp",
+   "io.github.0xsims/rubric-protocol"
+  ],
+  "pypi|inquisitor-mcp": [
+   "io.github.1111111111111111111114oLvT2/inquisitor",
+   "io.github.iamalisson/inquisitor"
+  ],
+  "npm|@4da/mcp-server": [
+   "io.github.4DA-Systems/4da-mcp-server",
+   "io.github.runyourempire/4da-mcp-server"
+  ],
+  "npm|@guardbee/mcp-a2a-auditor": [
+   "io.github.4hmetuyar/a2a-auditor",
+   "io.github.GuardBee/a2a-auditor"
+  ],
+  "npm|@guardbee/mcp-agent-graph-auditor": [
+   "io.github.4hmetuyar/agent-graph-auditor",
+   "io.github.GuardBee/agent-graph-auditor"
+  ],
+  "npm|@guardbee/mcp-ai-code-scanner": [
+   "io.github.4hmetuyar/ai-code-scanner",
+   "io.github.GuardBee/ai-code-scanner"
+  ],
+  "npm|@guardbee/mcp-compliance-checker": [
+   "io.github.4hmetuyar/compliance-checker",
+   "io.github.GuardBee/compliance-checker"
+  ],
+  "npm|@guardbee/mcp-db-gateway": [
+   "io.github.4hmetuyar/db-gateway",
+   "io.github.GuardBee/db-gateway"
+  ],
+  "npm|@guardbee/mcp-dependency-auditor": [
+   "io.github.4hmetuyar/dependency-auditor",
+   "io.github.GuardBee/dependency-auditor"
+  ],
+  "npm|@guardbee/mcp-dns-intelligence": [
+   "io.github.4hmetuyar/dns-intelligence",
+   "io.github.GuardBee/dns-intelligence"
+  ],
+  "npm|@guardbee/mcp-elicitation-auditor": [
+   "io.github.4hmetuyar/elicitation-auditor",
+   "io.github.GuardBee/elicitation-auditor"
+  ],
+  "npm|@guardbee/mcp-llm-redteam": [
+   "io.github.4hmetuyar/llm-redteam",
+   "io.github.GuardBee/llm-redteam"
+  ],
+  "npm|@guardbee/mcp-config-auditor": [
+   "io.github.4hmetuyar/mcp-config-auditor",
+   "io.github.GuardBee/mcp-config-auditor"
+  ],
+  "npm|@guardbee/mcp-server-auditor": [
+   "io.github.4hmetuyar/mcp-server-auditor",
+   "io.github.GuardBee/mcp-server-auditor"
+  ],
+  "npm|@guardbee/mcp-memory-poisoning-scanner": [
+   "io.github.4hmetuyar/memory-poisoning-scanner",
+   "io.github.GuardBee/memory-poisoning-scanner"
+  ],
+  "npm|@guardbee/mcp-model-scanner": [
+   "io.github.4hmetuyar/model-scanner",
+   "io.github.GuardBee/model-scanner"
+  ],
+  "npm|@guardbee/mcp-oauth-auditor": [
+   "io.github.4hmetuyar/oauth-auditor",
+   "io.github.GuardBee/oauth-auditor"
+  ],
+  "npm|@guardbee/mcp-prompt-injection-scanner": [
+   "io.github.4hmetuyar/prompt-injection-scanner",
+   "io.github.GuardBee/prompt-injection-scanner"
+  ],
+  "npm|@guardbee/mcp-prompt-leak-scanner": [
+   "io.github.4hmetuyar/prompt-leak-scanner",
+   "io.github.GuardBee/prompt-leak-scanner"
+  ],
+  "npm|@guardbee/mcp-rug-pull-detector": [
+   "io.github.4hmetuyar/rug-pull-detector",
+   "io.github.GuardBee/rug-pull-detector"
+  ],
+  "npm|@guardbee/mcp-secret-scanner": [
+   "io.github.4hmetuyar/secret-scanner",
+   "io.github.GuardBee/secret-scanner"
+  ],
+  "npm|@guardbee/mcp-security-proxy": [
+   "io.github.4hmetuyar/security-proxy",
+   "io.github.GuardBee/security-proxy"
+  ],
+  "npm|@guardbee/security-suite": [
+   "io.github.4hmetuyar/security-suite",
+   "io.github.GuardBee/security-suite"
+  ],
+  "npm|@guardbee/mcp-slopsquat-scanner": [
+   "io.github.4hmetuyar/slopsquat-scanner",
+   "io.github.GuardBee/slopsquat-scanner"
+  ],
+  "npm|@guardbee/mcp-ssl-inspector": [
+   "io.github.4hmetuyar/ssl-inspector",
+   "io.github.GuardBee/ssl-inspector"
+  ],
+  "npm|@guardbee/mcp-tool-poisoning-scanner": [
+   "io.github.4hmetuyar/tool-poisoning-scanner",
+   "io.github.GuardBee/tool-poisoning-scanner"
+  ],
+  "npm|@guardbee/mcp-toxic-flow-auditor": [
+   "io.github.4hmetuyar/toxic-flow-auditor",
+   "io.github.GuardBee/toxic-flow-auditor"
+  ],
+  "npm|@guardbee/mcp-unbounded-consumption-auditor": [
+   "io.github.4hmetuyar/unbounded-consumption-auditor",
+   "io.github.GuardBee/unbounded-consumption-auditor"
+  ],
+  "npm|@guardbee/mcp-vector-store-scanner": [
+   "io.github.4hmetuyar/vector-store-scanner",
+   "io.github.GuardBee/vector-store-scanner"
+  ],
+  "npm|@guardbee/mcp-vulnerability-scanner": [
+   "io.github.4hmetuyar/vulnerability-scanner",
+   "io.github.GuardBee/vulnerability-scanner"
+  ],
+  "npm|geomelon-mcp": [
+   "io.github.930m310n/geomelon-mcp",
+   "io.github.930m310n/mcp"
+  ],
+  "pypi|mcp-openai-pro": [
+   "io.github.AceDataCloud/mcp-gpt-image",
+   "io.github.AceDataCloud/mcp-openai"
+  ],
+  "npm|finance-data-mcp": [
+   "io.github.AdityaSBisht/finance-mcp",
+   "io.github.adididitagain/finance-mcp"
+  ],
+  "npm|@agenium/mcp-server": [
+   "io.github.Aganium/mcp-server",
+   "io.github.chorghemaruti64-creator/agenium-mcp-server"
+  ],
+  "pypi|aggrete": [
+   "io.github.Aggrete/aggrete",
+   "io.github.aggrete/aggrete"
+  ],
+  "npm|aidimag": [
+   "io.github.AiDimag/aidimag",
+   "io.github.anup-khanal/aidimag"
+  ],
+  "npm|@tixxly-ai/travel-mcp": [
+   "io.github.Akinduko/travel-mcp",
+   "io.github.TeamTixxly/tixxly"
+  ],
+  "pypi|cloudprice-mcp": [
+   "io.github.Albaker-Group/cloudprice-mcp",
+   "io.github.alialbaker/cloudprice-mcp"
+  ],
+  "npm|scala-mcp-server": [
+   "io.github.Alessandro114/scala-ai-os",
+   "io.github.Alessandro114/scala-score"
+  ],
+  "npm|uisandbox-mcp": [
+   "io.github.AlexanderKaan/uisandbox",
+   "io.github.Ideelab/uisandbox"
+  ],
+  "npm|@apocdata-info/mcp-server": [
+   "io.github.ApocData/mcp-server",
+   "io.github.hanjialeGit/mcp-server"
+  ],
+  "npm|@archstone/cli": [
+   "io.github.Archstone-Romania/archstone",
+   "io.github.NousVigil/archstone"
+  ],
+  "npm|@atlasent/mcp-server": [
+   "io.github.AtlaSent/mcp-server",
+   "io.github.Atlasent/mcp-server"
+  ],
+  "pypi|writ-mcp": [
+   "io.github.AvenueDAdmin/writ",
+   "io.github.withwrit/writ"
+  ],
+  "npm|@avi-total-recall/total-recall": [
+   "io.github.Avi-Bendetsky/total-recall",
+   "io.github.BAS-More/total-recall"
+  ],
+  "npm|@basicbit/vrchat-mcp": [
+   "io.github.BASIC-BIT/vrchat-mcp",
+   "io.github.BITRATE-Labs/vrchat-mcp"
+  ],
+  "pypi|litellm-mcp": [
+   "io.github.BerriAI/litellm-mcp",
+   "io.github.shin-bot-litellm/litellm-mcp"
+  ],
+  "npm|ghost-publisher-mcp": [
+   "io.github.BlogFactoryHQ/ghost-publisher",
+   "io.github.BoraGkc/ghost-publisher"
+  ],
+  "pypi|bosco-labs-data-mcp": [
+   "io.github.Bosco-Labs/bosco-labs-data",
+   "io.github.PB7-debug/bosco-labs-data"
+  ],
+  "pypi|spudcoach": [
+   "io.github.BrendanL79/spudcoach",
+   "io.github.brendanlefebvre/spudcoach"
+  ],
+  "npm|@burtthecoder/mcp-shodan": [
+   "io.github.BurtTheCoder/shodan",
+   "io.github.w0h1v/shodan"
+  ],
+  "npm|@burtthecoder/mcp-virustotal": [
+   "io.github.BurtTheCoder/virustotal",
+   "io.github.w0h1v/virustotal"
+  ],
+  "npm|chatpush-mcp-server": [
+   "io.github.ChatPush/mcp-chatpush",
+   "io.github.ChatPush/whatsapp-telegram-max-sms"
+  ],
+  "pypi|flyto-indexer": [
+   "io.github.ChesterHsu/flyto-indexer",
+   "io.github.flytohub/flyto-indexer"
+  ],
+  "pypi|local-gpu-imagegen": [
+   "io.github.ChevalGrand520/local-gpu-imagegen",
+   "io.github.zc4578980-tech/local-gpu-imagegen"
+  ],
+  "npm|chia-mcp": [
+   "io.github.Chia-Network/chia-mcp",
+   "io.github.danieljperry/chia-mcp"
+  ],
+  "npm|@clocknext/mcp": [
+   "io.github.ClockNext/mcp",
+   "io.github.Clocknext-Inc/mcp",
+   "io.github.Clocknext/mcp"
+  ],
+  "npm|coalesce-transform-mcp": [
+   "io.github.Coalesce-Software-Inc/coalesce-transform",
+   "io.github.jessemarshall/coalesce-transform"
+  ],
+  "npm|portkey-admin-mcp": [
+   "io.github.CodesWhat/portkey-admin-mcp",
+   "io.github.s-b-e-n-s-o-n/portkey-admin-mcp"
+  ],
+  "pypi|agent-coherence": [
+   "io.github.Cohexa-ai/stale-write-guard-fs",
+   "io.github.cohexa-ai/stale-write-guard-fs"
+  ],
+  "npm|payflowagent-mcp": [
+   "io.github.Coinlooter/mcp",
+   "net.payflowagent/mcp"
+  ],
+  "npm|ccs-mcp-server": [
+   "io.github.Correctover/ccs",
+   "io.github.DSHCorrectover/ccs-mcp-server"
+  ],
+  "pypi|couchbase-mcp-server": [
+   "io.github.Couchbase-Ecosystem/mcp-server-couchbase",
+   "io.github.couchbase/mcp-server-couchbase"
+  ],
+  "npm|@cubiczan/codesentinel-mcp": [
+   "io.github.Cubiczan/codesentinel",
+   "io.github.icohangar-ops/codesentinel-mcp"
+  ],
+  "npm|@davincibets/mcp-server": [
+   "io.github.DaVinciPicks/davincibets-mcp",
+   "io.github.Leonardo-Engineering/davincibets-mcp"
+  ],
+  "npm|packkit-mcp": [
+   "io.github.DanMat/packkit-mcp",
+   "io.github.PackkitJS/packkit-mcp",
+   "io.github.PackkitLabs/packkit-mcp"
+  ],
+  "npm|@paretools/build": [
+   "io.github.Dave-London/build",
+   "io.github.Dave-London/pare-build"
+  ],
+  "npm|@paretools/cargo": [
+   "io.github.Dave-London/cargo",
+   "io.github.Dave-London/pare-cargo"
+  ],
+  "npm|@paretools/docker": [
+   "io.github.Dave-London/docker",
+   "io.github.Dave-London/pare-docker"
+  ],
+  "npm|@paretools/git": [
+   "io.github.Dave-London/git",
+   "io.github.Dave-London/pare-git"
+  ],
+  "npm|@paretools/github": [
+   "io.github.Dave-London/github",
+   "io.github.Dave-London/pare-github"
+  ],
+  "npm|@paretools/go": [
+   "io.github.Dave-London/go",
+   "io.github.Dave-London/pare-go"
+  ],
+  "npm|@paretools/http": [
+   "io.github.Dave-London/http",
+   "io.github.Dave-London/pare-http"
+  ],
+  "npm|@paretools/lint": [
+   "io.github.Dave-London/lint",
+   "io.github.Dave-London/pare-lint"
+  ],
+  "npm|@paretools/make": [
+   "io.github.Dave-London/make",
+   "io.github.Dave-London/pare-make"
+  ],
+  "npm|@paretools/npm": [
+   "io.github.Dave-London/npm",
+   "io.github.Dave-London/pare-npm"
+  ],
+  "npm|@paretools/python": [
+   "io.github.Dave-London/pare-python",
+   "io.github.Dave-London/python"
+  ],
+  "npm|@paretools/search": [
+   "io.github.Dave-London/pare-search",
+   "io.github.Dave-London/search"
+  ],
+  "npm|@paretools/test": [
+   "io.github.Dave-London/pare-test",
+   "io.github.Dave-London/test"
+  ],
+  "pypi|carmaker-mcp": [
+   "io.github.De-Ioannidis/carmaker-mcp",
+   "io.github.dimitr-io/carmaker-mcp"
+  ],
+  "pypi|mcp-fiscal-brasil": [
+   "io.github.DeHor-Labs/mcp-fiscal-brasil",
+   "io.github.nikolasdehor/mcp-fiscal-brasil"
+  ],
+  "npm|@wan27/cli": [
+   "io.github.DieselNiu/wan27-mcp",
+   "io.github.NotUsingGithub/wan27-mcp"
+  ],
+  "npm|@diffci.com/diffci": [
+   "io.github.DiffCI/diffci",
+   "io.github.adityankale190895/diffci"
+  ],
+  "npm|@ai-capabilities-suite/mcp-debugger-server": [
+   "io.github.Digital-Defiance/mcp-debugger",
+   "io.github.DigitalDefiance/ts-mcp-debugger"
+  ],
+  "npm|dingdawg-compliance": [
+   "io.github.DingDawg-dev/dingdawg-compliance",
+   "io.github.dingdawg/dingdawg-compliance"
+  ],
+  "npm|dingdawg-finance-agent": [
+   "io.github.DingDawg-dev/dingdawg-finance-agent",
+   "io.github.dingdawg/dingdawg-finance-agent"
+  ],
+  "npm|dingdawg-healthcare-agent": [
+   "io.github.DingDawg-dev/dingdawg-healthcare-agent",
+   "io.github.dingdawg/dingdawg-healthcare-agent"
+  ],
+  "pypi|locus-mcp": [
+   "io.github.EDKarlsson/locus",
+   "io.github.Nano-Nimbus/locus"
+  ],
+  "pypi|open-notebook-mcp": [
+   "io.github.Epochal-dev/open-notebook",
+   "io.github.PiotrAleksander/open-notebook"
+  ],
+  "npm|feishu-user-plugin": [
+   "io.github.EthanQC/feishu-user-plugin",
+   "io.github.zhuzhen-team/feishu-user-plugin"
+  ],
+  "npm|visual-memory-context-server": [
+   "io.github.GabrielaHdzMicrosoft/mcp-server",
+   "io.github.opencontext-team/mcp-server"
+  ],
+  "npm|@garl-protocol/mcp-server": [
+   "io.github.Garl-Protocol/agent-trust",
+   "io.github.Garl-Protocol/mcp-server"
+  ],
+  "npm|ani-mcp": [
+   "io.github.GavMason/ani-mcp",
+   "io.github.gavxm/ani-mcp"
+  ],
+  "pypi|docker-mcp-server": [
+   "io.github.GavinLucas/docker-mcp-server",
+   "io.github.L337-org/docker-mcp-server"
+  ],
+  "pypi|odoo-linter": [
+   "io.github.GetFluvo/odoo-lint",
+   "io.github.bosd/odoo-lint"
+  ],
+  "npm|dawnmere-connector": [
+   "io.github.Hadeva-Dev/dawnmere-connector",
+   "io.github.LF-Labs-Inc/dawnmere-connector"
+  ],
+  "npm|ris-mcp-ts": [
+   "io.github.Honeyfield-Org/ris",
+   "io.github.philrox/ris"
+  ],
+  "npm|dejared-mcp": [
+   "io.github.HuynhKhanh1402/dejared",
+   "io.github.hqkh4nh/dejared"
+  ],
+  "pypi|imagin-studio-api-docs-mcp": [
+   "io.github.IMAGIN-studio/api-docs-mcp",
+   "io.github.IMAGINstudio/api-docs-mcp"
+  ],
+  "npm|@imagin.studio/api-docs-mcp": [
+   "io.github.IMAGIN-studio/api-docs-mcp",
+   "io.github.IMAGINstudio/api-docs-mcp"
+  ],
+  "pypi|ionis-mcp": [
+   "io.github.IONIS-AI/ionis-mcp",
+   "io.github.qso-graph/ionis-mcp"
+  ],
+  "npm|opengrok-mcp-server": [
+   "io.github.IcyHot09/opengrok",
+   "io.github.IcyHot09/opengrok-mcp-server"
+  ],
+  "npm|servicenow-mcp-ai": [
+   "io.github.IvanBBaev/servicenow-mcp-ai",
+   "io.github.LeassTaTT/servicenow-mcp-ai"
+  ],
+  "npm|agentic-os-mcp": [
+   "io.github.Jarroslav/agentic-os",
+   "io.github.kinnister/agentic-os"
+  ],
+  "npm|@synmerco/mcp-server": [
+   "io.github.JoeSRQ/mcp-server",
+   "io.github.JoeSRQ/synmerco"
+  ],
+  "pypi|nouz-mcp": [
+   "io.github.KVANTRA-dev/NOUZ-MCP",
+   "io.github.Semiotronika/NOUZ-MCP"
+  ],
+  "npm|paprika3d": [
+   "io.github.Keeno-Corp/paprika3d",
+   "io.github.paprika3d/paprika3d"
+  ],
+  "pypi|krystalview-mcp": [
+   "io.github.KrystalView/krystalview",
+   "io.github.McSlaine/krystalview"
+  ],
+  "npm|better-bear": [
+   "io.github.KuvopLLC/better-bear",
+   "io.github.mreider/better-bear"
+  ],
+  "npm|@kyanitelabs/epoch": [
+   "io.github.KyaniteLabs/Epoch",
+   "tech.kyanitelabs/epoch"
+  ],
+  "pypi|kinocut": [
+   "io.github.KyaniteLabs/kinocut",
+   "tech.kyanitelabs/kinocut"
+  ],
+  "npm|@vorim/mcp-server": [
+   "io.github.Kzino/vorim-mcp-server",
+   "io.github.Vorim-AI-Labs/vorim-mcp-server"
+  ],
+  "npm|@urbankitstudio/mcp-atlas": [
+   "io.github.LEOyrh/mcp-atlas",
+   "io.github.urbankitstudio/mcp-atlas"
+  ],
+  "npm|mcp-server-madeonsol": [
+   "io.github.LamboPoewert/madeonsol",
+   "io.github.MadeOnSol/madeonsol"
+  ],
+  "npm|cuba-memorys": [
+   "io.github.LeandroPG19/cuba-memorys",
+   "io.github.LeandroPG19/memory-industry"
+  ],
+  "pypi|cuba-memorys": [
+   "io.github.LeandroPG19/cuba-memorys",
+   "io.github.LeandroPG19/memory-industry"
+  ],
+  "npm|@replenishradar/mcp-server": [
+   "io.github.Limited-Horizon/replenishradar",
+   "io.github.ReplenishRadar/MCP"
+  ],
+  "pypi|heu-mcp": [
+   "io.github.Lucav21/heu-mcp",
+   "io.github.lucavisconti211-debug/heu-mcp"
+  ],
+  "npm|@usekaval/mcp": [
+   "io.github.LufeMC/kaval",
+   "io.github.usekaval/kaval"
+  ],
+  "pypi|omx-hyperliquid": [
+   "io.github.Lumen-Founder/omx",
+   "io.github.Lumen-Founder/omx-hyperliquid-trading"
+  ],
+  "pypi|mcpower-proxy": [
+   "io.github.MCPower-Security/mcpower-proxy",
+   "io.github.ai-mcpower/mcpower-proxy"
+  ],
+  "pypi|mcp-plots": [
+   "io.github.MR901/mcp-plots",
+   "io.github.MR901/plots-mcp"
+  ],
+  "npm|@manycontacts/mcp": [
+   "io.github.ManyContacts/whatsapp-business",
+   "io.github.ManyContacts/whatsapp-mcp"
+  ],
+  "pypi|tinysuite-search": [
+   "io.github.MarcellM01/tinysearch",
+   "io.github.TinySuiteHQ/tinysearch"
+  ],
+  "pypi|crypto-signals-mcp": [
+   "io.github.MarcinDudekDev/crypto-signals-mcp",
+   "io.github.agenthustler/crypto-signals-mcp"
+  ],
+  "npm|yourimageshare-mcp": [
+   "io.github.MediaShareORG/yourimageshare",
+   "io.github.yourimageshare/yourimageshare"
+  ],
+  "pypi|agent-memguard": [
+   "io.github.MerakOsiris/memoryguard",
+   "io.github.irisxc4/memoryguard"
+  ],
+  "pypi|token-savior-recall": [
+   "io.github.Mibayy/token-savior",
+   "io.github.Mibayy/token-savior-recall"
+  ],
+  "pypi|midos-mcp": [
+   "io.github.MidOSresearch/midos",
+   "io.github.MidOSresearch/midos-mcp"
+  ],
+  "npm|@misarmail/mcp": [
+   "io.github.Misar-AI/misarmail-mcp",
+   "io.github.mrgulshanyadav/misarmail-mcp"
+  ],
+  "npm|@mojomo/mcp-server": [
+   "io.github.MojoMo-io/mcp-server",
+   "io.mojomo/agent-marketplace"
+  ],
+  "npm|nandi-proxmox-mcp": [
+   "io.github.NANDI-Services/nandi-proxmox-mcp",
+   "io.github.PapiScholz/nandi-proxmox-mcp"
+  ],
+  "pypi|nativ-mcp": [
+   "io.github.Nativ-Technologies/nativ",
+   "io.github.ashish-nativ/nativ"
+  ],
+  "pypi|mcp-broker": [
+   "io.github.NavinAgrawal/mcp-broker",
+   "io.github.doricstack/mcp-broker"
+  ],
+  "pypi|neo-mcp": [
+   "io.github.NeoAIResearch/neo-mcp",
+   "io.github.NeoResearchAI/MCPServer"
+  ],
+  "pypi|nexusfeed-mcp": [
+   "io.github.NexusFeed/nexusfeed-abc",
+   "io.github.NexusFeed/nexusfeed-ltl"
+  ],
+  "npm|@nullclear/mcp": [
+   "io.github.Nullclear-Protocol/nullclear",
+   "io.github.mithgalalfayez/nullclear"
+  ],
+  "npm|mneme-mcp-server": [
+   "io.github.OnourImpram/mneme",
+   "io.github.TheGoatPsy/mneme"
+  ],
+  "pypi|openosint": [
+   "io.github.OpenOSINT/openosint",
+   "io.github.SonoTommy/openosint"
+  ],
+  "npm|legalithm-mcp-server": [
+   "io.github.PedramMadani/legalithm-mcp-server",
+   "io.github.legalithm/legalithm-mcp-server"
+  ],
+  "npm|@ponzu_app/mcp": [
+   "io.github.PonzuTech/ponzu",
+   "io.github.YuzuKyouma/ponzu"
+  ],
+  "npm|sf-intelligence": [
+   "io.github.PranavNagrecha/salesforce-intelligence",
+   "io.github.PranavNagrecha/sf-intelligence"
+  ],
+  "npm|@provenonce/mcp": [
+   "io.github.ProvenonceAI/provenonce",
+   "io.github.jarekpiot/provenonce"
+  ],
+  "npm|@qbtlabs/openmm-mcp": [
+   "io.github.QBT-Labs/openmm-mcp",
+   "io.github.adacapo21/openmm-mcp"
+  ],
+  "npm|@r2rlabs/reins": [
+   "io.github.R2Rlabs/hyperliquid-reins",
+   "io.github.R2Rlabs/reins"
+  ],
+  "pypi|pynet-mcp-bridge": [
+   "io.github.RAEN-DT/pynet-mcp-bridge",
+   "io.github.rafa2403nunez-droid/pynet-mcp-bridge"
+  ],
+  "npm|rigshare-mcp": [
+   "io.github.RPER2001/rigshare",
+   "io.github.rigshare-hq/rigshare"
+  ],
+  "pypi|quellgeist": [
+   "io.github.Rajeev-Shyam/quellgeist-commits",
+   "io.github.Rajeev-Shyam/quellgeist-logs",
+   "io.github.Rajeev-Shyam/quellgeist-metrics"
+  ],
+  "pypi|nova3d-mcp": [
+   "io.github.RareSense/Nova3D",
+   "io.github.RareSense/nova3d-mcp"
+  ],
+  "pypi|bartram-companies-house": [
+   "io.github.RobertAlsop/charity-commission",
+   "io.github.RobertAlsop/companies-house",
+   "io.github.RobertAlsop/environment-agency",
+   "io.github.RobertAlsop/fca-register"
+  ],
+  "npm|@slp-dev1/qwen-dap-mcp": [
+   "io.github.SLP-DEV1/qwen-dap-mcp",
+   "io.github.spk-c/qwen-dap-mcp"
+  ],
+  "npm|@samarth-23-eng/india-mcp": [
+   "io.github.Samarth-23-eng/india-mcp",
+   "io.github.Samarth-23-eng/india-mcp-banking",
+   "io.github.Samarth-23-eng/india-mcp-gst",
+   "io.github.Samarth-23-eng/india-mcp-railways",
+   "io.github.Samarth-23-eng/india-mcp-rto"
+  ],
+  "pypi|laserfiche-mcp": [
+   "io.github.SamuelSHernandez/laserfiche-mcp",
+   "io.github.adventist-gc/laserfiche-mcp"
+  ],
+  "pypi|satoshiapi-mcp": [
+   "io.github.SatoshiAPI/satoshi-btc-api",
+   "io.satoshiapi/mcp"
+  ],
+  "npm|sceneview-mcp": [
+   "io.github.SceneView/mcp",
+   "io.github.ThomasGorisse/sceneview",
+   "io.github.sceneview/mcp"
+  ],
+  "npm|knowmind": [
+   "io.github.Schubeler-Consulting/knowmind",
+   "io.github.WhoSoEverM8/knowmind"
+  ],
+  "npm|shinjuku-shield": [
+   "io.github.ShinjukuStaition/shinjuku-mcp",
+   "io.github.ShinjukuStaition/shinjuku-shield"
+  ],
+  "npm|bridgistic-mcp-server": [
+   "io.github.Shubochandrosarker/bridgistic",
+   "io.github.Wordpressistic/bridgistic"
+  ],
+  "npm|senado-br-mcp": [
+   "io.github.SidneyBissoli/senado-br-mcp",
+   "io.github.SidneyBissoli/senado-br-mcp-cloudflare"
+  ],
+  "pypi|scrimba-teaching-mcp": [
+   "io.github.Skills03/scrimba-teaching",
+   "io.github.srikrishna235/scrimba-teaching-mcp"
+  ],
+  "pypi|mcpbridge-wrapper": [
+   "io.github.SoundBlaster/mcpbridge-wrapper",
+   "io.github.SoundBlaster/xcode-mcpbridge-wrapper"
+  ],
+  "npm|@tethral/acr-mcp": [
+   "io.github.Tethral-Inc/acr",
+   "io.github.TethralAI/acr"
+  ],
+  "npm|nory-mcp-server": [
+   "io.github.TheMemeBanker/nory-mcp-server",
+   "io.github.TheMemeBanker/nory-x402"
+  ],
+  "npm|auxiliar-mcp": [
+   "io.github.Tlalvarez/auxiliar-mcp",
+   "io.github.auxiliar-ai/auxiliar-mcp"
+  ],
+  "pypi|korean-tax-mcp": [
+   "io.github.UpstageAI/korean-tax-mcp",
+   "io.github.seungmiyoon/korean-tax-mcp"
+  ],
+  "npm|slashvibe-mcp": [
+   "io.github.VibeCodingInc/vibe-mcp",
+   "io.github.brightseth/vibe"
+  ],
+  "pypi|quarry-db": [
+   "io.github.Wangggym/quarry",
+   "io.github.yiminspace/quarry"
+  ],
+  "pypi|wechat-devtools-mcp": [
+   "io.github.WaterTian/wechat-devtools",
+   "io.github.WaterTian/wechat-devtools-mcp"
+  ],
+  "npm|weavatrix": [
+   "io.github.Weavatrix/weavatrix",
+   "io.github.sergii-ziborov/weavatrix"
+  ],
+  "npm|weavatrix-online": [
+   "io.github.Weavatrix/weavatrix-online",
+   "io.github.sergii-ziborov/weavatrix-online"
+  ],
+  "npm|weavatrix-refactor": [
+   "io.github.Weavatrix/weavatrix-refactor",
+   "io.github.sergii-ziborov/weavatrix-refactor"
+  ],
+  "npm|@webba_tech/capslane-mcp": [
+   "io.github.Webba-Creative-Technologies/capslane",
+   "io.github.WebbaLuca/capslane"
+  ],
+  "pypi|xlide-mcp": [
+   "io.github.WilliamSmithEdward/xlide-excel-office-vba-mcp",
+   "io.github.WilliamSmithEdward/xlide-mcp"
+  ],
+  "npm|wjttc": [
+   "io.github.Wolfe-Jam/WJTTC",
+   "one.faf/wjttc"
+  ],
+  "npm|claude-faf-mcp": [
+   "io.github.Wolfe-Jam/claude-faf-mcp",
+   "one.faf/claude-faf-mcp"
+  ],
+  "npm|faf-mcp": [
+   "io.github.Wolfe-Jam/faf-mcp",
+   "one.faf/faf-mcp"
+  ],
+  "pypi|gemini-faf-mcp": [
+   "io.github.Wolfe-Jam/gemini-faf-mcp",
+   "one.faf/gemini-faf-mcp"
+  ],
+  "npm|grok-faf-mcp": [
+   "io.github.Wolfe-Jam/grok-faf-mcp",
+   "one.faf/grok-faf-mcp"
+  ],
+  "npm|@yuanhuakk/js-reverse-mcp": [
+   "io.github.YuanHuakk/JSReverser-MCP",
+   "io.github.YuanHuakk/js-reverse-mcp"
+  ],
+  "pypi|a4a-mcp": [
+   "io.github.a4a-network/a4a-mcp",
+   "network.a4a/a4a-mcp"
+  ],
+  "npm|@aartiq/servicenow-mcp": [
+   "io.github.aartiq/servicenow-mcp",
+   "io.github.habenani/servicenow-mcp"
+  ],
+  "pypi|kube-noob": [
+   "io.github.aashishmahajan/kube-noob",
+   "io.github.kube-noob/kube-noob"
+  ],
+  "npm|@abyssbugg/sourcery": [
+   "io.github.abyssbugg-labs/sourcery",
+   "io.github.abyssbugg/sourcery"
+  ],
+  "npm|acf-mcp": [
+   "io.github.acfstandard/acf-mcp",
+   "io.github.aiconsulting06000-tech/acf-mcp"
+  ],
+  "pypi|agentraas": [
+   "io.github.agentraas/agentraas",
+   "io.github.sumedhchatse/agentraas"
+  ],
+  "npm|goyondo-mcp": [
+   "io.github.agteo/goyondo",
+   "run.goyondo/goyondo"
+  ],
+  "npm|flutter-skill": [
+   "io.github.ai-dashboad/flutter-skill",
+   "io.github.telsav/flutter-skill"
+  ],
+  "npm|@aicanvas/mcp": [
+   "io.github.aicanvas-me/aicanvas",
+   "io.github.uiNerd16/aicanvas"
+  ],
+  "pypi|air-blackbox-mcp": [
+   "io.github.airblackbox/air-blackbox-mcp",
+   "io.github.shotwellj/air-blackbox"
+  ],
+  "npm|arduino-mcp-server": [
+   "io.github.akshatnerella/arduino-mcp-server",
+   "io.github.hardware-mcp/arduino-mcp-server"
+  ],
+  "npm|@typesensekit/mcp": [
+   "io.github.akshitkrnagpal/typesensekit",
+   "io.github.typesensekit/typesensekit"
+  ],
+  "pypi|fast-mcp-telegram": [
+   "io.github.alexeyleshchenko/fast-mcp-telegram",
+   "io.github.leshchenko1979/fast-mcp-telegram"
+  ],
+  "npm|marketnow-mcp": [
+   "io.github.alicelabs-llc/marketnow",
+   "io.github.edgarfloresguerra2011-a11y/marketnow",
+   "site.marketnow/marketnow"
+  ],
+  "pypi|otgate": [
+   "io.github.alikup-ai/otgate",
+   "io.github.alikup-ai/otgate-opcua"
+  ],
+  "npm|mail-index": [
+   "io.github.alunsoldantarctica/mail-index",
+   "io.github.unsoldgroup/mail-index"
+  ],
+  "npm|mcp-listen": [
+   "io.github.analyticsinmotion/mcp-listen",
+   "io.github.decibri/mcp-listen"
+  ],
+  "npm|@zerodust/mcp-server": [
+   "io.github.andresdefi/zerodust",
+   "io.github.zerodustxyz/zerodust"
+  ],
+  "npm|guildbook-mcp": [
+   "io.github.andrewnexa-hub/guildbook-mcp",
+   "io.github.guildbook-ai/guildbook-mcp"
+  ],
+  "npm|imessage-mcp": [
+   "io.github.anipotts/imessage-mcp",
+   "io.github.anipottsbuilds/imessage-mcp"
+  ],
+  "pypi|mcp-webgate": [
+   "io.github.annibale-x/mcp-webgate",
+   "io.github.x-hannibal/mcp-webgate",
+   "io.github.x-monk/mcp-webgate"
+  ],
+  "pypi|anp2-mcp-server": [
+   "io.github.anp2dev/anp2-mcp-server",
+   "io.github.anp2protocol/anp2-mcp-server"
+  ],
+  "pypi|pm-mcp-servers": [
+   "io.github.antnewman/pm-analyse",
+   "io.github.antnewman/pm-data",
+   "io.github.antnewman/pm-validate"
+  ],
+  "pypi|mcp-pfsense": [
+   "io.github.antonio-mello-ai/mcp-pfsense",
+   "io.github.felhen-ai/mcp-pfsense"
+  ],
+  "pypi|mcp-proxmox": [
+   "io.github.antonio-mello-ai/mcp-proxmox",
+   "io.github.felhen-ai/mcp-proxmox"
+  ],
+  "pypi|wemo-mcp-server": [
+   "io.github.apiarya/wemo",
+   "io.github.qrussell/wemo"
+  ],
+  "pypi|mcp-server-appwrite": [
+   "io.github.appwrite/mcp",
+   "io.github.appwrite/mcp-for-api"
+  ],
+  "npm|arc-1": [
+   "io.github.arc-mcp/arc-1",
+   "io.github.marianfoo/arc-1"
+  ],
+  "pypi|arifos": [
+   "io.github.ariffazil/aaa-mcp",
+   "io.github.ariffazil/arifos",
+   "io.github.ariffazil/arifos-mcp"
+  ],
+  "npm|mcp-yandex-direct": [
+   "io.github.askads/mcp-yandex-direct",
+   "io.github.gistrec/mcp-yandex-direct"
+  ],
+  "pypi|mcp-agenttrust": [
+   "io.github.assister-xyz/agenttrust",
+   "io.github.vitaliiserbynassisterr/agenttrust"
+  ],
+  "npm|myinstants-mcp": [
+   "io.github.austenstone/myinstants",
+   "io.github.austenstone/myinstants-mcp"
+  ],
+  "pypi|mcp-server-for-oscal": [
+   "io.github.awslabs/mcp-server-for-oscal",
+   "io.github.dfkunstler/mcp-server-for-oscal"
+  ],
+  "npm|@axionquant/mcp": [
+   "io.github.axionquant/axionquant",
+   "io.github.axionquant/mcp"
+  ],
+  "npm|signoff-cli": [
+   "io.github.ayuanxx-max/signoff",
+   "io.github.ayuanxx-max/signoff-cli"
+  ],
+  "npm|@b2bsearch/mcp": [
+   "io.github.b2bsearch/mcp",
+   "io.github.keyvwin/mcp"
+  ],
+  "npm|polydev-ai": [
+   "io.github.backspacevenkat/perspectives",
+   "io.github.polydev-ai/polydev"
+  ],
+  "pypi|crosstabs": [
+   "io.github.barangaroo/crosstabs",
+   "io.github.crosstabs/crosstabs"
+  ],
+  "npm|@paystage/mcp": [
+   "io.github.base-buzz/mcp",
+   "xyz.paystage/mcp"
+  ],
+  "npm|@paystage/preflight": [
+   "io.github.base-buzz/preflight",
+   "xyz.paystage/preflight"
+  ],
+  "pypi|bawbel-scanner": [
+   "io.github.bawbel/bawbel-scanner",
+   "io.github.bawbel/scanner"
+  ],
+  "npm|pdf-suite-mcp": [
+   "io.github.beepboop2025/pdf-suite-mcp",
+   "io.github.beepboop2025/pdf-toolkit-mcp"
+  ],
+  "npm|@temporal-cortex/cortex-mcp": [
+   "io.github.billylui/temporal-cortex-mcp",
+   "io.github.temporal-cortex/mcp"
+  ],
+  "pypi|blackdome-mcp": [
+   "io.github.blackdome-ai/blackdome",
+   "io.github.blackdome-ai/blackdome-mcp"
+  ],
+  "pypi|recon-tool": [
+   "io.github.blisspixel/recon",
+   "io.github.pueo-labs/recon"
+  ],
+  "npm|@apollo_ai/mcp-proxy": [
+   "io.github.bnmbnmai/apollo-proxy",
+   "team.apolloai/intelligence"
+  ],
+  "npm|crazyseo": [
+   "io.github.bolidee/crazyseo",
+   "io.github.d08m/crazyseo"
+  ],
+  "npm|@brain-bbqs/neuro-mcp": [
+   "io.github.brain-bbqs/neuro",
+   "io.github.brain-bbqs/neuro-mcp"
+  ],
+  "pypi|byteplant-mcp": [
+   "io.github.byteplant-dev/byteplant-mcp",
+   "io.github.byteplant-devops/byteplant-mcp"
+  ],
+  "npm|@allratestoday/mcp-server": [
+   "io.github.cahthuranag/mcp-server",
+   "io.github.cahthuranag/realtime-exchange-rate-mcp"
+  ],
+  "npm|agent-device": [
+   "io.github.callstack/agent-device",
+   "io.github.callstackincubator/agent-device"
+  ],
+  "npm|tuningengines-cli": [
+   "io.github.cerebrixos-org/tuning-engines",
+   "io.github.cerebrixos/tuning-engines"
+  ],
+  "pypi|finops-mcp": [
+   "io.github.chaandannn/finops-mcp",
+   "io.github.getnable/finops-mcp"
+  ],
+  "npm|mcpbrowser": [
+   "io.github.cherchyk/browser",
+   "io.github.cherchyk/mcpbrowser"
+  ],
+  "pypi|bernstein": [
+   "io.github.chernistry/bernstein",
+   "io.github.sipyourdrink-ltd/bernstein"
+  ],
+  "npm|@vibeads/mcp": [
+   "io.github.chiranj/mcp",
+   "io.github.vibeads/mcp"
+  ],
+  "npm|fluxmail": [
+   "io.github.churichard/fluxmail",
+   "io.github.fluxmailai/fluxmail"
+  ],
+  "npm|coinopai-mcp": [
+   "io.github.clawdbotworker/coinopai-mcp",
+   "io.github.forgemeshlabs/coinopai-mcp"
+  ],
+  "npm|cloudgpu-mcp": [
+   "io.github.cloudgpu-app/cloudgpu-mcp",
+   "io.github.mrhy7176/cloudgpu-mcp"
+  ],
+  "npm|@contextstream/mcp-server": [
+   "io.github.contextstream/mcp-server",
+   "io.github.contextstreamio/mcp-server"
+  ],
+  "pypi|convergeqa-mcp": [
+   "io.github.convergeqa/compare",
+   "io.github.convergeqa/reviews"
+  ],
+  "pypi|bee-sdk": [
+   "io.github.cuilabs/bee",
+   "io.github.heossihq/bee-public"
+  ],
+  "npm|@ethora/mcp-server": [
+   "io.github.dappros/ethora-mcp-cli",
+   "io.github.dappros/ethora-mcp-server"
+  ],
+  "npm|@darkmatterhub/mcp-server": [
+   "io.github.darkmatter-hub/mcp-server",
+   "io.github.darkmatter-hub/verifiable-agent-audit-trail"
+  ],
+  "npm|@davidweb3-ctrl/mcp-git-enhanced": [
+   "io.github.davidweb3-ctrl/git-enhanced",
+   "io.github.davidweb3-ctrl/mcp-git-enhanced"
+  ],
+  "npm|@dbhq/heliograph": [
+   "io.github.dbhq-uk/heliograph",
+   "io.github.heliograph-io/heliograph"
+  ],
+  "npm|delimit-cli": [
+   "io.github.delimit-ai/delimit",
+   "io.github.delimit-ai/delimit-mcp-server"
+  ],
+  "pypi|attestlayer": [
+   "io.github.dev-prathap/attest",
+   "io.github.dev-prathap/attest-proxy"
+  ],
+  "npm|landmines": [
+   "io.github.devanshranjan10/landmines",
+   "tech.landmine/landmine"
+  ],
+  "pypi|biz-dfch-specmgr": [
+   "io.github.dfch/biz-dfch-specmgr",
+   "io.github.dfch/biz.dfch.specmgr"
+  ],
+  "pypi|grandline-mcp": [
+   "io.github.dmsnavin/grandline-mcp",
+   "io.github.luzomi/grandline-mcp"
+  ],
+  "pypi|dns-aid": [
+   "io.github.dns-aid/dns-aid",
+   "io.github.infobloxopen/dns-aid"
+  ],
+  "pypi|mcp-office": [
+   "io.github.dosev-ai/mcp-office-excel",
+   "io.github.dosev-ai/mcp-office-powerpoint",
+   "io.github.dosev-ai/mcp-office-word"
+  ],
+  "npm|mcp-sputnikx-market": [
+   "io.github.drivenbymyai-max/sputnikx-market",
+   "xyz.sputnikx/market"
+  ],
+  "npm|e2e": [
+   "io.github.e2e-inc/e2e",
+   "io.github.tester-army/e2e"
+  ],
+  "npm|@elisym/elisym-mcp": [
+   "io.github.elisymlabs/elisym-mcp",
+   "io.github.elisymprotocol/elisym-mcp"
+  ],
+  "npm|n8n-manager-mcp": [
+   "io.github.ellmos-ai/n8n-manager-mcp",
+   "io.github.lukisch/n8n-manager-mcp"
+  ],
+  "npm|@skillfm/mcp": [
+   "io.github.ericm1018/skillfm",
+   "io.github.ericm1018/skillfm-ai-health-token-usage-byok-cost-cleanup"
+  ],
+  "pypi|odoo-mcp": [
+   "io.github.erpipe-org/mcp-odoo",
+   "io.github.tuanle96/mcp-odoo"
+  ],
+  "npm|octoboost-mcp-server": [
+   "io.github.eugenregehr/geo-seo-analyzer-octoboost",
+   "io.github.eugenregehr/octoboost"
+  ],
+  "npm|boondmanager-mcp-server": [
+   "io.github.fauguste/boondmanager-mcp-server",
+   "io.github.silamir/boondmanager-mcp-server"
+  ],
+  "npm|@mnema/code": [
+   "io.github.felipesauer/mnema",
+   "io.github.mnema-work/mnema"
+  ],
+  "npm|@jeff-nasseri/revolut-mcp": [
+   "io.github.fingentic/revolut-mcp",
+   "io.github.jeff-nasseri/revolut-mcp"
+  ],
+  "pypi|mcp-au-nsw": [
+   "io.github.fisher98kim/nsw-fuel",
+   "io.github.fisher98kim/nsw-licences",
+   "io.github.fisher98kim/nsw-roads",
+   "io.github.fisher98kim/nsw-transport"
+  ],
+  "npm|@formhaus/mcp": [
+   "io.github.formhaus-dev/formhaus",
+   "io.github.ignsm/formhaus"
+  ],
+  "npm|phaedo-mcp": [
+   "io.github.galavoxx/phaedo-mcp",
+   "io.github.phaedo-labs/phaedo-mcp"
+  ],
+  "npm|anyhook-mcp": [
+   "io.github.gba3124/mcp",
+   "net.anyhook/anyhook"
+  ],
+  "npm|@gera-services/mcp-gera-clinic": [
+   "io.github.geraservicesuk/mcp-gera-clinic",
+   "services.gera/mcp-gera-clinic"
+  ],
+  "npm|@gera-services/mcp-gera-nexus": [
+   "io.github.geraservicesuk/mcp-gera-nexus",
+   "services.gera/mcp-gera-nexus"
+  ],
+  "npm|@gera-services/mcp-gera-skills": [
+   "io.github.geraservicesuk/mcp-gera-skills",
+   "services.gera/mcp-gera-skills"
+  ],
+  "pypi|unripe": [
+   "io.github.glumly/unripe",
+   "io.github.texWoW/unripe"
+  ],
+  "npm|roast-my-design-system": [
+   "io.github.gregkozakiewicz/roast-my-design-system",
+   "io.github.pencilrebel/roast-my-design-system"
+  ],
+  "npm|handinloop-mcp-server": [
+   "io.github.handinloop/handinloop-mcp-server",
+   "io.github.lesofi/handinloop-mcp-server"
+  ],
+  "npm|edition-mcp-server": [
+   "io.github.hiroshic9-png/edition-api",
+   "io.github.hiroshic9-png/japan-business-operations"
+  ],
+  "pypi|irl-gateway": [
+   "io.github.horkos-labs/irl-gateway",
+   "io.github.macropulse-lab/irl-gateway",
+   "io.github.norve-labs/irl-gateway"
+  ],
+  "npm|@droidagentkit/launcher": [
+   "io.github.iVamsi/android-agent-kit",
+   "io.github.iVamsi/droidagentkit"
+  ],
+  "pypi|clio-kit": [
+   "io.github.iowarp/adios-mcp",
+   "io.github.iowarp/arxiv-mcp",
+   "io.github.iowarp/chronolog-mcp",
+   "io.github.iowarp/compression-mcp",
+   "io.github.iowarp/darshan-mcp",
+   "io.github.iowarp/geo-mcp",
+   "io.github.iowarp/geojson-mcp",
+   "io.github.iowarp/hdf5-mcp",
+   "io.github.iowarp/jarvis-mcp",
+   "io.github.iowarp/lmod-mcp",
+   "io.github.iowarp/ndp-mcp",
+   "io.github.iowarp/node-hardware-mcp",
+   "io.github.iowarp/pandas-mcp",
+   "io.github.iowarp/parallel-sort-mcp",
+   "io.github.iowarp/paraview-mcp",
+   "io.github.iowarp/parquet-mcp",
+   "io.github.iowarp/plot-mcp",
+   "io.github.iowarp/sac-mcp",
+   "io.github.iowarp/scientific-catalog-mcp",
+   "io.github.iowarp/seismic-mcp",
+   "io.github.iowarp/seismology-mcp",
+   "io.github.iowarp/slurm-mcp",
+   "io.github.iowarp/spack-mcp",
+   "io.github.iowarp/terrain-mcp",
+   "io.github.iowarp/web-mcp"
+  ],
+  "npm|@stackguide/mcp-server": [
+   "io.github.isucorp-taimiralain/stackguide-mcp",
+   "io.github.taimiralain/stackguide-mcp"
+  ],
+  "npm|@kechlab/verdict-mcp": [
+   "io.github.jeannicolasdavid1979/verdict-mcp",
+   "io.github.jeannicolasdavid1979/verdictl402"
+  ],
+  "pypi|mcp-server-mikrotik": [
+   "io.github.jeff-nasseri/mikrotik-mcp",
+   "io.github.wiresage/mikrotik-mcp"
+  ],
+  "npm|@booboo-brain/cli": [
+   "io.github.jessedu29260-netizen/booboo",
+   "io.github.jessymariau/booboo"
+  ],
+  "npm|rasterly-mcp": [
+   "io.github.jhonychain/rasterly-mcp",
+   "io.github.rasterly-dev/rasterly-mcp"
+  ],
+  "pypi|kindex": [
+   "io.github.jmcentire/kindex",
+   "io.github.wandercom/kindex"
+  ],
+  "npm|@jmthomasofficial/x402-mcp-server": [
+   "io.github.jmthomasofficial/x402-agent-tools",
+   "io.github.jmthomasofficial/x402-mcp-server"
+  ],
+  "npm|smart-web-mcp": [
+   "io.github.jojo-labs/smart-web",
+   "io.github.rich-jojo/smart-web"
+  ],
+  "npm|web-task-api": [
+   "io.github.jojo-labs/web-task-api",
+   "io.github.rich-jojo/web-task-api"
+  ],
+  "npm|@locus-dev/mcp-server": [
+   "io.github.jonybur-oc/mcp-server",
+   "io.github.jonybur/mcp-server"
+  ],
+  "npm|dokploy-mcp-server": [
+   "io.github.jordanburke/dokploy-mcp-server",
+   "io.github.sapientsai/dokploy-mcp-server"
+  ],
+  "pypi|mdcx": [
+   "io.github.jorgell23-sys/markdown-document-search",
+   "io.github.jorgell23-sys/mdcx"
+  ],
+  "npm|k-data-mcp": [
+   "io.github.juh5ng/k-data-mcp",
+   "io.github.juh5ng/korea-stock-research-mcp"
+  ],
+  "npm|@kakunin/mcp": [
+   "io.github.kakunin-ai/kakunin",
+   "io.github.nqzai/kakunin"
+  ],
+  "npm|@trustmodel/mcp-server": [
+   "io.github.karlmehta/trustmodel-mcp",
+   "io.github.pdxlab/trustmodel-mcp"
+  ],
+  "pypi|sayou-opendart-mcp": [
+   "io.github.kcw2034-sayouzone/mcp-opendart-server",
+   "io.github.kcw2034-sayouzone/sayou-opendart-mcp"
+  ],
+  "npm|trackly-cli": [
+   "io.github.kevinastuhuaman/trackly",
+   "io.github.trackly-app/trackly"
+  ],
+  "npm|aiterm-mcp": [
+   "io.github.kitepon-rgb/aiterm-mcp",
+   "io.github.kitepon/aiterm-mcp"
+  ],
+  "npm|yaver-cli": [
+   "io.github.kivanccakmak/yaver",
+   "io.github.yaver-io/yaver"
+  ],
+  "npm|@mcp-z/mcp-pdf": [
+   "io.github.kmalakoff/mcp-pdf",
+   "io.github.mcp-z/mcp-pdf"
+  ],
+  "npm|@kulybaba/mcp-weather-server": [
+   "io.github.kulybaba/weather",
+   "io.github.kulybaba/weather-mcp"
+  ],
+  "npm|visus-mcp": [
+   "io.github.leochong/visus-mcp",
+   "io.github.visus-mcp/visus-mcp"
+  ],
+  "npm|@setluca/mcp": [
+   "io.github.leonardomso/luca-mcp",
+   "io.github.setluca/luca-mcp"
+  ],
+  "pypi|agents-fleet": [
+   "io.github.lion-zhang/fleet",
+   "io.github.sinolion/fleet"
+  ],
+  "npm|search-rotation": [
+   "io.github.localfoundry/search-rotation",
+   "io.github.robin-bially/search-rotation"
+  ],
+  "npm|@unclick/mcp-server": [
+   "io.github.malamutemayhem/unclick-mcp-server",
+   "world.unclick/mcp-server"
+  ],
+  "pypi|adcirc-mcp": [
+   "io.github.mansurjisan/adcirc-mcp",
+   "io.github.oceanmodeling/adcirc-mcp"
+  ],
+  "pypi|coops-mcp": [
+   "io.github.mansurjisan/coops-mcp",
+   "io.github.oceanmodeling/coops-mcp"
+  ],
+  "pypi|erddap-mcp": [
+   "io.github.mansurjisan/erddap-mcp",
+   "io.github.oceanmodeling/erddap-mcp"
+  ],
+  "pypi|goes-mcp": [
+   "io.github.mansurjisan/goes-mcp",
+   "io.github.oceanmodeling/goes-mcp"
+  ],
+  "pypi|nhc-mcp": [
+   "io.github.mansurjisan/nhc-mcp",
+   "io.github.oceanmodeling/nhc-mcp"
+  ],
+  "pypi|ofs-mcp": [
+   "io.github.mansurjisan/ofs-mcp",
+   "io.github.oceanmodeling/ofs-mcp"
+  ],
+  "pypi|recon-mcp": [
+   "io.github.mansurjisan/recon-mcp",
+   "io.github.oceanmodeling/recon-mcp"
+  ],
+  "pypi|rtofs-mcp": [
+   "io.github.mansurjisan/rtofs-mcp",
+   "io.github.oceanmodeling/rtofs-mcp"
+  ],
+  "pypi|schism-mcp": [
+   "io.github.mansurjisan/schism-mcp",
+   "io.github.oceanmodeling/schism-mcp"
+  ],
+  "pypi|stofs-mcp": [
+   "io.github.mansurjisan/stofs-mcp",
+   "io.github.oceanmodeling/stofs-mcp"
+  ],
+  "pypi|usgs-mcp": [
+   "io.github.mansurjisan/usgs-mcp",
+   "io.github.oceanmodeling/usgs-mcp"
+  ],
+  "pypi|ww3-mcp": [
+   "io.github.mansurjisan/ww3-mcp",
+   "io.github.oceanmodeling/ww3-mcp"
+  ],
+  "pypi|mcp-biomodelling-servers": [
+   "io.github.marcorusc/BioMASS",
+   "io.github.marcorusc/MaBoSS",
+   "io.github.marcorusc/NeKo",
+   "io.github.marcorusc/PhysiCell"
+  ],
+  "npm|cad-mcp-server": [
+   "io.github.mattmohandiss/cad-mcp-server",
+   "io.github.ottonic/cad-mcp-server"
+  ],
+  "npm|@memi-design/cli": [
+   "io.github.memi-design/memi",
+   "io.github.sarveshsea/memi"
+  ],
+  "npm|material-simulator-mcp": [
+   "io.github.meszarosjan/material-simulator-mcp",
+   "io.github.meszarosjan/steel-metallurgy-material-simulator-mcp"
+  ],
+  "npm|minia2a-mcp": [
+   "io.github.minia2a/minia2a-mcp",
+   "uk.minia2a/minia2a-mcp"
+  ],
+  "npm|nockchain-mcp": [
+   "io.github.mizuki0x/nockchain-mcp",
+   "io.github.winter0x/nockchain-mcp"
+  ],
+  "pypi|justfill-mcp": [
+   "io.github.mrmaciej1/justfill",
+   "io.github.mrmaciej1/justfill-pdf-forms"
+  ],
+  "npm|mcp-connectwise-psa": [
+   "io.github.mspstack/mcp-connectwise-psa",
+   "io.github.selic/mcp-connectwise-psa"
+  ],
+  "npm|mcp-itglue": [
+   "io.github.mspstack/mcp-itglue",
+   "io.github.selic/mcp-itglue"
+  ],
+  "npm|mcp-planner": [
+   "io.github.mspstack/mcp-planner",
+   "io.github.selic/mcp-planner"
+  ],
+  "npm|@muggleai/works": [
+   "io.github.multiplex-ai/muggle",
+   "io.github.multiplex-ai/muggleai"
+  ],
+  "npm|munim-computer-use": [
+   "io.github.munimtechnologies/computer-use",
+   "io.github.munimtechnologies/munim-computer-use"
+  ],
+  "npm|wick-mcp": [
+   "io.github.myleshorton/wick",
+   "io.github.wickproject/wick"
+  ],
+  "npm|@n24q02m/email": [
+   "io.github.n24q02m/better-email-mcp",
+   "io.github.n24q02m/email"
+  ],
+  "npm|@n24q02m/notion": [
+   "io.github.n24q02m/better-notion-mcp",
+   "io.github.n24q02m/notion"
+  ],
+  "pypi|n24q02m-telegram": [
+   "io.github.n24q02m/better-telegram-mcp",
+   "io.github.n24q02m/telegram"
+  ],
+  "npm|@n24q02m/workspace": [
+   "io.github.n24q02m/better-workspace-mcp",
+   "io.github.n24q02m/workspace"
+  ],
+  "pypi|mcp-multi-poc": [
+   "io.github.nithishr/mcp-multi-poc-alpha",
+   "io.github.nithishr/mcp-multi-poc-beta",
+   "io.github.nithishr/mcp-multi-poc-beta-script"
+  ],
+  "npm|@roveapi/mcp": [
+   "io.github.noncelogic/mcp",
+   "io.github.noncelogic/rove"
+  ],
+  "npm|nx-mcp": [
+   "io.github.nrwl/nx-console",
+   "io.github.nrwl/nx-mcp"
+  ],
+  "pypi|ocm-mcp-server": [
+   "io.github.ocm-mcp-server/ocm-mcp-server",
+   "io.github.sandeepbazar/ocm-mcp-server"
+  ],
+  "pypi|omega-memory": [
+   "io.github.omega-memory/core",
+   "io.github.omega-memory/omega-memory"
+  ],
+  "npm|@themelt/mcp-server": [
+   "io.github.omer907/mcp-server",
+   "io.github.omer907/melt-mcp-server"
+  ],
+  "npm|@openscout/scout": [
+   "io.github.openscout-app/scout",
+   "io.github.oscout/scout"
+  ],
+  "npm|lupa-mcp": [
+   "io.github.paeyoungpark-web/lupa-mcp",
+   "io.github.under71/lupa-mcp"
+  ],
+  "npm|pairbook-mcp": [
+   "io.github.pairbook-io/pairbook-mcp",
+   "io.github.vj88-coder/pairbook-mcp"
+  ],
+  "npm|@palveron/mcp-server": [
+   "io.github.palveron/governance-gateway",
+   "io.github.palveron/mcp-server"
+  ],
+  "npm|@payclaw/mcp-server": [
+   "io.github.payclaw/payclaw",
+   "io.github.payclaw/spend"
+  ],
+  "npm|in-memoria": [
+   "io.github.pi22by7/in-memoria",
+   "me.pi22by7/in-memoria"
+  ],
+  "npm|krs-poland-mcp-server": [
+   "io.github.pkolawa/krs-poland-mcp-server",
+   "io.github.pkolawa/mcp-krs-poland"
+  ],
+  "pypi|memoraeu-mcp": [
+   "io.github.pquattro/memoraeu",
+   "io.github.pquattro/memoraeu-mcp"
+  ],
+  "npm|@prismnetwork/mcp": [
+   "io.github.prismnetwork-tech/mcp",
+   "tech.prismnetwork/mcp"
+  ],
+  "npm|selenium-webdriver-mcp": [
+   "io.github.pshivapr/selenium-mcp",
+   "io.github.pshivapr/selenium-webdriver-mcp"
+  ],
+  "npm|superlocalmemory": [
+   "io.github.qualixar/superlocalmemory",
+   "io.github.varun369/superlocalmemory"
+  ],
+  "npm|vidlens-mcp": [
+   "io.github.rajanrengasamy/vidlens-mcp",
+   "io.github.thatsrajan/vidlens-mcp"
+  ],
+  "pypi|whoop-mcp-server": [
+   "io.github.rajdeepmondaldotcom/whoop-mcp",
+   "io.github.rajdeepmondaldotcom/whoop-mcp-server"
+  ],
+  "npm|@relayprotocol/relay-mcp": [
+   "io.github.relayprotocol/relay-mcp",
+   "io.github.reservoirprotocol/relay-mcp"
+  ],
+  "npm|@respawn-app/tool-filter-mcp": [
+   "io.github.respawn-app/tool-filter-mcp",
+   "io.github.respawn-llc/tool-filter-mcp"
+  ],
+  "pypi|cadloop": [
+   "io.github.richardofortune/cadloop-openscad",
+   "io.github.richardofortune/cadloop-slicer"
+  ],
+  "npm|spoken-mcp": [
+   "io.github.roberttomko/spoken",
+   "io.github.spokenmd/spoken"
+  ],
+  "npm|polopan-products-mcp": [
+   "io.github.rofoso-com/mcp",
+   "io.github.rofoso-com/polopan-fashion-mcp"
+  ],
+  "npm|base64-forge-mcp": [
+   "io.github.ryudi84/base64",
+   "io.github.ryudi84/base64-forge-mcp"
+  ],
+  "npm|changelog-forge-mcp": [
+   "io.github.ryudi84/changelog",
+   "io.github.ryudi84/changelog-forge-mcp"
+  ],
+  "npm|color-forge-mcp": [
+   "io.github.ryudi84/color",
+   "io.github.ryudi84/color-forge-mcp"
+  ],
+  "npm|cron-forge-mcp": [
+   "io.github.ryudi84/cron",
+   "io.github.ryudi84/cron-forge-mcp"
+  ],
+  "npm|diff-forge-mcp": [
+   "io.github.ryudi84/diff",
+   "io.github.ryudi84/diff-forge-mcp"
+  ],
+  "npm|env-forge-mcp": [
+   "io.github.ryudi84/env",
+   "io.github.ryudi84/env-forge-mcp"
+  ],
+  "npm|gradient-forge-mcp": [
+   "io.github.ryudi84/gradient",
+   "io.github.ryudi84/gradient-forge-mcp"
+  ],
+  "npm|hash-forge-mcp": [
+   "io.github.ryudi84/hash",
+   "io.github.ryudi84/hash-forge-mcp"
+  ],
+  "npm|ip-calc-mcp": [
+   "io.github.ryudi84/ip-calc",
+   "io.github.ryudi84/ip-calc-mcp"
+  ],
+  "npm|json-forge-mcp": [
+   "io.github.ryudi84/json",
+   "io.github.ryudi84/json-forge-mcp"
+  ],
+  "npm|jwt-forge-mcp": [
+   "io.github.ryudi84/jwt",
+   "io.github.ryudi84/jwt-forge-mcp"
+  ],
+  "npm|lorem-forge-mcp": [
+   "io.github.ryudi84/lorem",
+   "io.github.ryudi84/lorem-forge-mcp"
+  ],
+  "npm|markdown-forge-mcp": [
+   "io.github.ryudi84/markdown",
+   "io.github.ryudi84/markdown-forge-mcp"
+  ],
+  "npm|meta-forge-mcp": [
+   "io.github.ryudi84/meta",
+   "io.github.ryudi84/meta-forge-mcp"
+  ],
+  "npm|password-forge-mcp": [
+   "io.github.ryudi84/password",
+   "io.github.ryudi84/password-forge-mcp"
+  ],
+  "npm|readme-forge-mcp": [
+   "io.github.ryudi84/readme",
+   "io.github.ryudi84/readme-forge-mcp"
+  ],
+  "npm|regex-lab-mcp": [
+   "io.github.ryudi84/regex-lab",
+   "io.github.ryudi84/regex-lab-mcp"
+  ],
+  "npm|shadow-forge-mcp": [
+   "io.github.ryudi84/shadow",
+   "io.github.ryudi84/shadow-forge-mcp"
+  ],
+  "npm|timestamp-forge-mcp": [
+   "io.github.ryudi84/timestamp",
+   "io.github.ryudi84/timestamp-forge-mcp"
+  ],
+  "npm|uuid-forge-mcp": [
+   "io.github.ryudi84/uuid",
+   "io.github.ryudi84/uuid-forge-mcp"
+  ],
+  "npm|bharatlas-mcp": [
+   "io.github.sathya-sankaran/bharatlas-mcp",
+   "io.github.urbanmorph/bharatlas-mcp"
+  ],
+  "pypi|sauce-api-mcp": [
+   "io.github.saucelabs-sample-test-frameworks/sauce-api-mcp",
+   "io.github.saucelabs/sauce-api-mcp"
+  ],
+  "npm|tapd-mcp-server": [
+   "io.github.scizuixiangsis/tapd-mcp-server",
+   "io.github.sun-jingtao/tapd-mcp-server"
+  ],
+  "npm|@seldonframe/mcp": [
+   "io.github.seldonframe/mcp",
+   "io.github.seldonframe/seldonframe-mcp"
+  ],
+  "npm|@sena-labs/oz-mcp-server": [
+   "io.github.sena-labs/oz-mcp-server",
+   "io.github.sena-labs/warp-ozbridge"
+  ],
+  "npm|@shashwatgtmalpha/gtm-alpha-mcp-server": [
+   "io.github.shashwatgtm/gtm-alpha-consultant",
+   "io.github.shashwatgtm/gtm-alpha-mcp-server"
+  ],
+  "pypi|smriti-memcore": [
+   "io.github.shivamtyagi18/smriti-memory",
+   "io.github.smriti-memcore/smriti-memory"
+  ],
+  "npm|@sota-io/mcp": [
+   "io.github.sota-deploy/sota",
+   "io.sota/mcp"
+  ],
+  "npm|specshield-mcp-server": [
+   "io.github.specshield-io/specshield-mcp-server",
+   "io.github.specshield26/specshield-mcp-server"
+  ],
+  "npm|@arispay/payagent-mcp": [
+   "io.github.stevemilton/payagent-mcp",
+   "io.github.stevemilton/x402-payagent-mcp"
+  ],
+  "npm|wacrew-mcp": [
+   "io.github.sumioshi/wacrew",
+   "io.github.sumioshi/wacrew-whatsapp-mcp"
+  ],
+  "pypi|superclonica-mcp": [
+   "io.github.superclonica-tts/superclonica-mcp",
+   "io.github.superclonica/superclonica-mcp"
+  ],
+  "npm|@superlcr/hs": [
+   "io.github.superlcr/bilibili-huasheng-video",
+   "io.github.superlcr/hs"
+  ],
+  "npm|tabula-mcp": [
+   "io.github.tabulacredit/tabula-mcp",
+   "io.github.tradetabula/tabula-mcp"
+  ],
+  "npm|@takiguchi-yu/google-workspace-mcp-server": [
+   "io.github.takiguchi-yu/google-workspace-mcp",
+   "io.github.takiguchi-yu/google-workspace-mcp-server"
+  ],
+  "pypi|vivesca": [
+   "io.github.terry-li-hm/vivesca",
+   "org.vivesca/vivesca"
+  ],
+  "npm|aiagentsbay-mcp": [
+   "io.github.thomasjumper/agentbay-mcp",
+   "io.github.thomasjumper/stremai"
+  ],
+  "npm|@thunderbit/mcp-server": [
+   "io.github.thunderbit-com/thunderbit-mcp-server",
+   "io.github.thunderbit-open/thunderbit-mcp-server"
+  ],
+  "npm|upkeep-mcp": [
+   "io.github.tiagocalado600/upkeep-mcp",
+   "io.github.tiagocalado86/upkeep-mcp"
+  ],
+  "npm|playwright-e2e-mcp": [
+   "io.github.trajectiq-ai/E2E",
+   "io.github.xsignon-secure/E2E"
+  ],
+  "pypi|twzrd-agent-intel": [
+   "io.github.twzrd-sol/twzrd-agent-intel",
+   "xyz.twzrd.intel/twzrd-agent-intel"
+  ],
+  "npm|clawpay-mcp": [
+   "io.github.up2itnow0822/clawpay",
+   "io.github.up2itnow0822/clawpay-mcp"
+  ],
+  "pypi|vaara": [
+   "io.github.vaaraio/vaara",
+   "io.github.vaaraio/vaara-server"
+  ],
+  "npm|@veriko-mx/mcp": [
+   "io.github.veriko-mx-labs/veriko",
+   "mx.veriko/veriko"
+  ],
+  "pypi|gonzalgo": [
+   "io.github.vince-gonzalez/gonzalgo",
+   "io.github.zengineco/gonzalgo"
+  ],
+  "npm|@vibo-dev/vibo-mcp": [
+   "io.github.vnbochkarev-netizen/vibo-mcp",
+   "io.github.vnbochkarev-netizen/vibo-memory"
+  ],
+  "npm|@respira/wordpress-mcp-server": [
+   "io.github.webmyc/respira-wordpress",
+   "press.respira/respira-wordpress"
+  ],
+  "pypi|hyperliquid-price-mcp": [
+   "io.github.wesseltl/crypto-price-mcp",
+   "io.github.wesseltl/price-data-mcp"
+  ],
+  "npm|turno-browser": [
+   "io.github.william-monroy/turno-browser",
+   "io.github.wimo-dev/turno-browser"
+  ],
+  "npm|goldbean-mcp": [
+   "io.github.wuzenghai616-lang/goldbean",
+   "xyz.goldbean-api/goldbean-mcp"
+  ],
+  "npm|x402-video-mcp": [
+   "io.github.x402-video/mcp",
+   "io.github.x402-video/seedance-video-generation"
+  ],
+  "npm|sparda-mcp": [
+   "io.github.zakariagharzouli/sparda-mcp",
+   "io.github.zyx77550/sparda-mcp"
+  ],
+  "npm|inkmap-mcp": [
+   "io.github.zhiyuanvision-lang/inkmap",
+   "io.github.zhiyuanvision-lang/inkmap-markdown-mindmap-markmap"
+  ]
+ },
+ "all_cross_registry": {
+  "memegician-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "positif-ai": [
+   "npm",
+   "pypi"
+  ],
+  "windsock-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "apiguru-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "writ-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "aamio": [
+   "npm",
+   "pypi"
+  ],
+  "ato-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "swissco-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "vaper-club-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "perfume-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "hongkong-company-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "aditum-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "ai-netcafe": [
+   "npm",
+   "pypi"
+  ],
+  "failecho-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "scento-perfume-api": [
+   "npm",
+   "pypi"
+  ],
+  "tapetide-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "insider-signals-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "cited-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "juriset-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "pagewatch-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "tokensafe": [
+   "npm",
+   "pypi"
+  ],
+  "ephemeris-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "mcp-google-forms": [
+   "npm",
+   "pypi"
+  ],
+  "mcp-google-search-console": [
+   "npm",
+   "pypi"
+  ],
+  "grim-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "ng-postcode-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "aether-browser": [
+   "npm",
+   "pypi"
+  ],
+  "scopus-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "minion-desktop": [
+   "npm",
+   "pypi"
+  ],
+  "adam-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "b4n1-web": [
+   "npm",
+   "pypi"
+  ],
+  "cisa-kev-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "verity-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "gopher-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "aipaygen-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "codebase-memory-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "fpl-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "threatcluster-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "skim-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "cuba-memorys": [
+   "npm",
+   "pypi"
+  ],
+  "memory-industry": [
+   "npm",
+   "pypi"
+  ],
+  "docalyze-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "convertfilefast-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "massed-compute-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "ohm-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "fattureincloud-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "quickbooks-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "psycgod-sage": [
+   "npm",
+   "pypi"
+  ],
+  "authority-risk-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "mcp-memory-graph": [
+   "npm",
+   "pypi"
+  ],
+  "sendmux-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "openroad-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "supercarto": [
+   "npm",
+   "pypi"
+  ],
+  "mindupload": [
+   "npm",
+   "pypi"
+  ],
+  "ats-jobs-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "stackexchange-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "ebay-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "hvtracker-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "encode-toolkit": [
+   "npm",
+   "pypi"
+  ],
+  "arch-diagram-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "kshana-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "rundeck-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "servicenow-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "deputy-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "ghostfox": [
+   "npm",
+   "pypi"
+  ],
+  "babelwrap-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "tracker-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "cartesia-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "korea-data-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "placeroot": [
+   "npm",
+   "pypi"
+  ],
+  "airlox": [
+   "npm",
+   "pypi"
+  ],
+  "clearcote-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "kubernetes-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "edgar-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "void-os": [
+   "npm",
+   "pypi"
+  ],
+  "google-sheets-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "lionscraper": [
+   "npm",
+   "pypi"
+  ],
+  "ai-voice-bridge": [
+   "npm",
+   "pypi"
+  ],
+  "meteoswiss-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "brevi": [
+   "npm",
+   "pypi"
+  ],
+  "fatsecret-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "linkwarden-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "registry-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "fetch-price": [
+   "npm",
+   "pypi"
+  ],
+  "tapebasis": [
+   "npm",
+   "pypi"
+  ],
+  "sabline-lang": [
+   "npm",
+   "pypi"
+  ],
+  "velaris-lang": [
+   "npm",
+   "pypi"
+  ],
+  "magnifica-humanitas-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "ros-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "marketplaces-mcp-ru": [
+   "npm",
+   "pypi"
+  ],
+  "open-agent-search": [
+   "npm",
+   "pypi"
+  ],
+  "mcp-server-agentpay": [
+   "npm",
+   "pypi"
+  ],
+  "uniprot-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "kitsune-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "warehouse-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "cam-verdict": [
+   "npm",
+   "pypi"
+  ],
+  "porkbun-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "loremfile": [
+   "npm",
+   "pypi"
+  ],
+  "gulliver-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "keyshot-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "usgs-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "podman-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "pomera-ai-commander": [
+   "npm",
+   "pypi"
+  ],
+  "jail-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "contextpull": [
+   "npm",
+   "pypi"
+  ],
+  "mishmar": [
+   "npm",
+   "pypi"
+  ],
+  "ecb-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "diagrams-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "codeix": [
+   "npm",
+   "pypi"
+  ],
+  "hscope": [
+   "npm",
+   "pypi"
+  ],
+  "gotify-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "mtg-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "opentargets-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "otx-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "speedrun-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "data-aggregator-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "telegram-slack-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "robinhood-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "nullprint-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "kicad-mcp-pro": [
+   "npm",
+   "pypi"
+  ],
+  "mcp-seo-auditor": [
+   "npm",
+   "pypi"
+  ],
+  "pmwallets": [
+   "npm",
+   "pypi"
+  ],
+  "pmwallets-copytrade": [
+   "npm",
+   "pypi"
+  ],
+  "blenderlens-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "godotlens-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "netlens-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "superlocalmemory": [
+   "npm",
+   "pypi"
+  ],
+  "maven-decoder-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "godot-mcp-server": [
+   "npm",
+   "pypi"
+  ],
+  "openai-ads-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "verbative-memory": [
+   "npm",
+   "pypi"
+  ],
+  "holographic-memory-mcp": [
+   "npm",
+   "pypi"
+  ],
+  "model-shunt": [
+   "npm",
+   "pypi"
+  ],
+  "rapidworkers-mcp": [
+   "npm",
+   "pypi"
+  ]
+ }
+}

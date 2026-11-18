@@ -1,0 +1,166 @@
+{
+ "multi_publisher_count": 371,
+ "examples": {
+  "npm|@4da/mcp-server": [
+   "io.github.4DA-Systems",
+   "io.github.runyourempire"
+  ],
+  "npm|@aartiq/servicenow-mcp": [
+   "io.github.aartiq",
+   "io.github.habenani"
+  ],
+  "npm|@abyssbugg/sourcery": [
+   "io.github.abyssbugg",
+   "io.github.abyssbugg-labs"
+  ],
+  "npm|@agenium/mcp-server": [
+   "io.github.Aganium",
+   "io.github.chorghemaruti64-creator"
+  ],
+  "npm|@ai-capabilities-suite/mcp-debugger-server": [
+   "io.github.Digital-Defiance",
+   "io.github.DigitalDefiance"
+  ],
+  "npm|@aicanvas/mcp": [
+   "io.github.aicanvas-me",
+   "io.github.uiNerd16"
+  ],
+  "npm|@ainecto/mcp": [
+   "com.ainecto",
+   "io.github.codelives"
+  ],
+  "npm|@ansvar/us-regulations-mcp": [
+   "eu.ansvar",
+   "io.github.Ansvar-Systems"
+  ],
+  "npm|@apocdata-info/mcp-server": [
+   "io.github.ApocData",
+   "io.github.hanjialeGit"
+  ],
+  "npm|@apollo_ai/mcp-proxy": [
+   "io.github.bnmbnmai",
+   "team.apolloai"
+  ],
+  "npm|@archstone/cli": [
+   "io.github.Archstone-Romania",
+   "io.github.NousVigil"
+  ],
+  "npm|@arcnautical/mcp": [
+   "com.arcnautical",
+   "io.github.SaltyTaro"
+  ],
+  "npm|@atlasent/mcp-server": [
+   "io.github.AtlaSent",
+   "io.github.Atlasent"
+  ],
+  "npm|@avi-total-recall/total-recall": [
+   "io.github.Avi-Bendetsky",
+   "io.github.BAS-More"
+  ],
+  "npm|@b2bsearch/mcp": [
+   "io.github.b2bsearch",
+   "io.github.keyvwin"
+  ],
+  "npm|@basicbit/vrchat-mcp": [
+   "io.github.BASIC-BIT",
+   "io.github.BITRATE-Labs"
+  ],
+  "npm|@bitsbound/mcp-server": [
+   "com.bitsbound",
+   "io.github.taytrom"
+  ],
+  "npm|@booboo-brain/cli": [
+   "io.github.jessedu29260-netizen",
+   "io.github.jessymariau"
+  ],
+  "npm|@bounceprotect/mcp": [
+   "com.bounceprotect.www",
+   "io.github.fahassan00"
+  ],
+  "npm|@burtthecoder/mcp-shodan": [
+   "io.github.BurtTheCoder",
+   "io.github.w0h1v"
+  ],
+  "npm|@burtthecoder/mcp-virustotal": [
+   "io.github.BurtTheCoder",
+   "io.github.w0h1v"
+  ],
+  "npm|@buywhere/mcp-server": [
+   "ai.buywhere",
+   "io.github.BuyWhere"
+  ],
+  "npm|@clauderecallhq/cli": [
+   "com.clauderecall",
+   "io.github.clauderecallhq"
+  ],
+  "npm|@clocknext/mcp": [
+   "io.github.ClockNext",
+   "io.github.Clocknext",
+   "io.github.Clocknext-Inc"
+  ],
+  "npm|@cloudinary/asset-management-mcp": [
+   "com.cloudinary",
+   "io.github.cloudinary"
+  ],
+  "npm|@codmir/mcp": [
+   "com.codmir",
+   "io.github.jobrayan"
+  ],
+  "npm|@contextstream/mcp-server": [
+   "io.github.contextstream",
+   "io.github.contextstreamio"
+  ],
+  "npm|@ctruhtech/verse-mcp": [
+   "com.ctruh.verse",
+   "io.github.dev-vinayagastya"
+  ],
+  "npm|@cubiczan/codesentinel-mcp": [
+   "io.github.Cubiczan",
+   "io.github.icohangar-ops"
+  ],
+  "npm|@davincibets/mcp-server": [
+   "io.github.DaVinciPicks",
+   "io.github.Leonardo-Engineering"
+  ],
+  "npm|@dbhq/heliograph": [
+   "io.github.dbhq-uk",
+   "io.github.heliograph-io"
+  ],
+  "npm|@diffci.com/diffci": [
+   "io.github.DiffCI",
+   "io.github.adityankale190895"
+  ],
+  "npm|@echosaw/mcp-server": [
+   "com.echosaw",
+   "io.github.matthew-b-simpson"
+  ],
+  "npm|@elisym/elisym-mcp": [
+   "io.github.elisymlabs",
+   "io.github.elisymprotocol"
+  ],
+  "npm|@fairquery/agent-trust-mcp": [
+   "com.getfairquery",
+   "io.github.fairquery"
+  ],
+  "npm|@fairquery/company-jobs-feed-mcp": [
+   "com.getfairquery",
+   "io.github.fairquery"
+  ],
+  "npm|@fairseal/mcp-server": [
+   "io.fairseal",
+   "io.github.ned-del"
+  ],
+  "npm|@fentz26/envcp": [
+   "dev.fentz.envcp",
+   "io.github.fentz26"
+  ],
+  "npm|@fidacy/mcp": [
+   "com.fidacy",
+   "io.github.lucaslubi"
+  ],
+  "npm|@flarelink/mcp": [
+   "dev.flarelink",
+   "io.github.flarelink-dev"
+  ]
+ }
+}

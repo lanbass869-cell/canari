@@ -1,0 +1,171 @@
+{
+ "different_repo": 40,
+ "different_owner": 33,
+ "cases": [
+  {
+   "name": "adam-mcp",
+   "npm_repo": "github.com/arudchayan/adam-mcp",
+   "pypi_repo": "github.com/strangeadvancedmarketing/adam"
+  },
+  {
+   "name": "ato-mcp",
+   "npm_repo": "github.com/william-laverty/ato-mcp",
+   "pypi_repo": "github.com/bigred97/ato-mcp"
+  },
+  {
+   "name": "ats-jobs-mcp",
+   "npm_repo": "github.com/vovikp/ats-jobs-mcp",
+   "pypi_repo": "github.com/groundtruthtools/ats-jobs-mcp"
+  },
+  {
+   "name": "cisa-kev-mcp",
+   "npm_repo": "github.com/mrfentmen/cisa-kev-mcp",
+   "pypi_repo": "github.com/csoai-org/cisa-kev-mcp"
+  },
+  {
+   "name": "data-aggregator-mcp",
+   "npm_repo": "github.com/vpatser1/mcp-servers",
+   "pypi_repo": "github.com/musharna/data-aggregator-mcp"
+  },
+  {
+   "name": "deputy-mcp",
+   "npm_repo": "https://razin.ai/deputy",
+   "pypi_repo": "github.com/augbastos/deputy-mcp"
+  },
+  {
+   "name": "diagrams-mcp-server",
+   "npm_repo": "github.com/mohammad-emad-dev/diagrams-mcp-server",
+   "pypi_repo": "github.com/byteoverdev/diagrams-mcp"
+  },
+  {
+   "name": "edgar-mcp",
+   "npm_repo": "github.com/danishashko/edgar-mcp",
+   "pypi_repo": "github.com/henrysouchien/edgar-mcp"
+  },
+  {
+   "name": "ephemeris-mcp",
+   "npm_repo": "github.com/tensorlink-ai/ephemeris-mcp",
+   "pypi_repo": "github.com/scottchronicity/ephemeris-mcp"
+  },
+  {
+   "name": "fatsecret-mcp",
+   "npm_repo": "github.com/fliptheweb/fatsecret-mcp",
+   "pypi_repo": "github.com/jaronskijakub/fatsecret-mcp"
+  },
+  {
+   "name": "fattureincloud-mcp",
+   "npm_repo": "github.com/niccolosalvini/fattureincloud-mcp",
+   "pypi_repo": "github.com/aringad/fattureincloud-mcp"
+  },
+  {
+   "name": "fpl-mcp-server",
+   "npm_repo": "github.com/gilbertkamau/fpl_mcp",
+   "pypi_repo": "github.com/nguyenanhducs/fpl-mcp-server"
+  },
+  {
+   "name": "godot-mcp-server",
+   "npm_repo": "github.com/tomyud1/godot-mcp",
+   "pypi_repo": "github.com/sterion66/godot-mcp-server"
+  },
+  {
+   "name": "korea-data-mcp",
+   "npm_repo": "github.com/lichtsalz/korea-data",
+   "pypi_repo": "github.com/choiyounggi/korea-data-suite"
+  },
+  {
+   "name": "linkwarden-mcp",
+   "npm_repo": "github.com/ni-c/linkwarden-mcp",
+   "pypi_repo": "github.com/flumpiey/linkwarden-mcp"
+  },
+  {
+   "name": "mcp-google-forms",
+   "npm_repo": "github.com/a1-x-tech/mcp-google-forms",
+   "pypi_repo": "github.com/kamarusama/mcp-google-forms"
+  },
+  {
+   "name": "mcp-google-search-console",
+   "npm_repo": "github.com/a1-x-tech/mcp-google-search-console",
+   "pypi_repo": "github.com/acamolese/google-search-console-mcp"
+  },
+  {
+   "name": "mcp-memory-graph",
+   "npm_repo": "github.com/yonasvalentin/mcp-memory-graph",
+   "pypi_repo": "github.com/retrorobai/mcp-memory-graph"
+  },
+  {
+   "name": "mcp-server-agentpay",
+   "npm_repo": "github.com/joepangallo/agent-pay",
+   "pypi_repo": "github.com/yyxqqq777/mcp-server-agentpay"
+  },
+  {
+   "name": "meteoswiss-mcp",
+   "npm_repo": "github.com/eins78/meteoswiss-llm-tools",
+   "pypi_repo": "github.com/malkreide/meteoswiss-mcp"
+  },
+  {
+   "name": "mtg-mcp",
+   "npm_repo": "github.com/mrfentmen/mtg-mcp",
+   "pypi_repo": "github.com/wtfregia/mtg-mcp"
+  },
+  {
+   "name": "opentargets-mcp",
+   "npm_repo": "github.com/mrfentmen/awesome-mcps",
+   "pypi_repo": "github.com/nickzren/opentargets-mcp"
+  },
+  {
+   "name": "otx-mcp",
+   "npm_repo": "github.com/mrfentmen/awesome-mcps",
+   "pypi_repo": "github.com/w0h1v/mcp-otx"
+  },
+  {
+   "name": "porkbun-mcp",
+   "npm_repo": "github.com/korobkov-v/porkbun-mcp",
+   "pypi_repo": "github.com/major/porkbun-mcp"
+  },
+  {
+   "name": "quickbooks-mcp",
+   "npm_repo": "github.com/laf-rge/quickbooks-mcp",
+   "pypi_repo": "github.com/nyxtoolsdev/quickbooks-mcp-server"
+  },
+  {
+   "name": "robinhood-mcp",
+   "npm_repo": "github.com/nirholas/robinhood-mcp",
+   "pypi_repo": "github.com/verygoodplugins/robinhood-mcp"
+  },
+  {
+   "name": "scopus-mcp",
+   "npm_repo": "github.com/anddrrew/scopus-mcp",
+   "pypi_repo": "github.com/qwe4559999/scopus-mcp"
+  },
+  {
+   "name": "skim-mcp",
+   "npm_repo": "github.com/jessiejanie/skim402",
+   "pypi_repo": "github.com/helloderekg/skim-mcp"
+  },
+  {
+   "name": "tracker-mcp",
+   "npm_repo": "github.com/sdamarketing/tracker_mcp",
+   "pypi_repo": "github.com/butyavk/tracker-mcp"
+  },
+  {
+   "name": "uniprot-mcp",
+   "npm_repo": "github.com/mrfentmen/uniprot-mcp",
+   "pypi_repo": "github.com/josefdc/uniprot-mcp"
+  },
+  {
+   "name": "usgs-mcp",
+   "npm_repo": "github.com/mrfentmen/awesome-servers",
+   "pypi_repo": "github.com/oceanmodeling/ocean-mcp"
+  },
+  {
+   "name": "verity-mcp",
+   "npm_repo": "github.com/clawdio777/verity",
+   "pypi_repo": "github.com/meloliva14/verity-mcp"
+  },
+  {
+   "name": "writ-mcp",
+   "npm_repo": "github.com/usewrit/writ-mcp",
+   "pypi_repo": "github.com/withwrit/pywrit"
+  }
+ ]
+}

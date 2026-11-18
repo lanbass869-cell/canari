@@ -13,12 +13,10 @@ Nothing is written outside this directory. Re-run: python probe.py
 """
 import json
 import os
-import sys
 import time
 import urllib.parse
 import urllib.request
-from collections import defaultdict, Counter
-from concurrent.futures import ThreadPoolExecutor
+from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SERVERS = os.path.join(HERE, "servers.json")
