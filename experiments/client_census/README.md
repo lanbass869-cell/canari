@@ -16,9 +16,16 @@ are excluded rather than half-scanned.
 
 **10,158 source files** (`.py .ts .tsx .js .jsx .go`) were scanned, excluding
 `node_modules`, `dist`, `build`, tests, docs, examples and fixtures. Five capability
-families were matched with literal patterns, and **every hit was then read by hand** —
-this step is not optional: the raw grep produced 1,887 hits of which roughly 1,880
-were false positives (see below).
+families were matched with literal patterns, and the hits were then read by hand — this
+step is not optional: the grep produced **2,088 hits**, essentially all of them false
+positives (see below).
+
+> **Provenance note (2026-11-18).** The figure previously printed here was 1,887, which
+> does not match the artifact: `census_raw.json` → `counts` sums to **2,088** across the
+> five families (PINNING 1,131 / ATTESTATION 850 / ENDPOINT_CHANGE 104 / TLS_DISABLED 3 /
+> ALLOWLIST 0). Also note what the artifact actually stores: `scan.py` keeps at most
+> **five example hits per family per repository** (68 rows in total), so the JSON lets you
+> spot-check the pattern quality but does not let you replay the full hand-read.
 
 | family | what it would mean |
 |---|---|
@@ -76,7 +83,7 @@ absent.**
 
 ## False positives, and why they had to be read by hand
 
-The literal patterns produced 1,887 hits. Almost all were unrelated:
+The literal patterns produced 2,088 hits. Almost all were unrelated:
 
 - `PINNING` 995 hits in LibreChat: agent **context** fingerprints
   (`computeAgentRequestFingerprint`), not certificate pinning.

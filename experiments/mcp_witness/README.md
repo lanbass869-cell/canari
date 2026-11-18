@@ -81,9 +81,12 @@ Treating registry / endpoint domain / repository as three witnesses:
 
 | | this census (MCP) | 2609.34245 (npm) |
 |---|---|---|
-| apparent witnesses (mean) | 2.24 | 3 (by construction) |
-| corruption-distinct after collapsing shared origin | **2.24** | **~2** |
+| apparent witnesses (mean) | **2.24** | 3 (by construction) |
+| corruption-distinct after collapsing shared origin | **2.24** | ~2 |
 | collapse factor beta = (apparent - distinct) / apparent | **0.000** | ~0.33 |
+| servers with all three witnesses | 100 / 368 | — |
+
+Rows: 11 with one witness, 257 with two, 100 with three.
 
 beta is zero because the three control domains really are different parties: the
 registry operator, whoever holds the endpoint's domain, and the repository
@@ -93,7 +96,15 @@ almost nothing to collapse.
 **The asymmetry with npm is the point.** npm's third witness (repository
 back-reference) is served by the same platform that built the provenance, so it
 collapses. MCP's third witness is a *domain*, which the registry does not own and
-cannot mint - and 84% of servers actually use it.
+cannot mint - and most servers actually use it.
+
+> **Provenance note (2026-11-18).** `w2` and `tls_ok` are derived from
+> `tls_probe.json` (300 of 310 hosts completed TLS with a valid certificate) and
+> joined by host. An earlier revision of `servers.json` carried `w2`/`tls_ok` as
+> `false` on every row because those fields were never updated after the probe ran;
+> the file has been regenerated from the probe results, so the JSON and this table
+> now agree. The 2.24 figure was correct all along - it was the artifact that was
+> stale.
 
 ## Limits
 
