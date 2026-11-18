@@ -1,0 +1,339 @@
+{
+ "csv": "E:\\Temp\\tbdig\\canari\\docs\\research\\data\\package-existence-20261117.csv",
+ "summary": {
+  "package-gone": {
+   "n": 20,
+   "reproduced": 20,
+   "rate": 1.0,
+   "unexpected_installs": 0
+  },
+  "version-absent": {
+   "n": 20,
+   "reproduced": 19,
+   "rate": 0.95,
+   "unexpected_installs": 1
+  }
+ },
+ "results": [
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@aiwerk/mcp-server-cal",
+   "version": "1.0.6",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@alexendros/proton-mail-mcp",
+   "version": "0.1.2",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@ansvar/ethiopian-law-mcp",
+   "version": "1.0.0",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@ansvar/kenya-law-mcp",
+   "version": "1.1.0",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@ansvar/nigeria-law-mcp",
+   "version": "1.0.1",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@ansvar/srilanka-law-mcp",
+   "version": "1.0.0",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@ansvar/us-regulations-mcp",
+   "version": "1.2.2",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@arxo/mcp-code-civil",
+   "version": "0.1.10",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@cognitivemyriad/vrm-local",
+   "version": "0.1.2",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@cyanheads/uspto-mcp-server",
+   "version": "0.1.2",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@ingeniux/ctnp-mcp",
+   "version": "0.7.7",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@latam-mcp/mcp",
+   "version": "0.1.1",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@oaslananka/sentinel",
+   "version": "1.0.0",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@shirbarzur/planform-mcp-server",
+   "version": "1.0.7",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "npm",
+   "identifier": "@yawlabs/nol-mcp",
+   "version": "0.1.1",
+   "installed_unexpectedly": false,
+   "error": "404 not found"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "pypi",
+   "identifier": "backroom-mcp",
+   "version": "0.1.1",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "pypi",
+   "identifier": "dataraum",
+   "version": "0.2.1",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "pypi",
+   "identifier": "grandline-mcp",
+   "version": "0.2.1",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "pypi",
+   "identifier": "lakexpress-mcp",
+   "version": "0.1.6",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "package-gone",
+   "registry": "pypi",
+   "identifier": "olane-cosync-local",
+   "version": "0.2.0",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "@asterpay/mcp-server",
+   "version": "1.0.1",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "@nottiboy1337/mcp-update-hijack-poc",
+   "version": "1.0.1",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "arcane-rmcp",
+   "version": "0.4.2",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "clarvia-mcp-server",
+   "version": "1.1.2",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "dev953-mcp",
+   "version": "1.2.0",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "figma-designer-mcp",
+   "version": "0.3.6",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "gotify-rmcp",
+   "version": "0.1.3",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "jamgate",
+   "version": "0.20.0",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "marketintell",
+   "version": "0.2.1",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "mcp-sap-docs",
+   "version": "0.3.9",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "paidwithtab",
+   "version": "3.0.0",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "scriptprobe-mcp",
+   "version": "0.1.0",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "stacktab-mcp",
+   "version": "0.1.0",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "tooldrift-mcp",
+   "version": "0.1.0",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "npm",
+   "identifier": "vtex-io-mcp",
+   "version": "0.1.8",
+   "installed_unexpectedly": false,
+   "error": "ETARGET no matching version"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "pypi",
+   "identifier": "artefact-mcp",
+   "version": "0.3.3",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "pypi",
+   "identifier": "fitness-influencer-mcp",
+   "version": "1.3.0",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "pypi",
+   "identifier": "local-faiss-mcp",
+   "version": "0.2.0-rc.3",
+   "installed_unexpectedly": true,
+   "error": "DOWNLOADED (unexpected)"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "pypi",
+   "identifier": "numguard",
+   "version": "0.1.1",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  },
+  {
+   "expected": "version-absent",
+   "registry": "pypi",
+   "identifier": "stv",
+   "version": "0.4.1",
+   "installed_unexpectedly": false,
+   "error": "no matching distribution"
+  }
+ ]
+}

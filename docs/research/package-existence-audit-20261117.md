@@ -36,6 +36,29 @@ Full list: [`data/package-existence-20261117.csv`](data/package-existence-202611
 [`data/package-existence-20261117.json`](data/package-existence-20261117.json)
 (same data plus the denominators and the exclusions below).
 
+## Correction (2026-11-19): PEP 440 normalisation
+
+Re-running the real install for a 40-item sample exposed a defect in this audit.
+PyPI keys `releases` by **PEP 440 normal form**, but the audit compared the registry's
+raw version string. So an entry declaring `0.2.0-rc.3` (pip normalises it to `0.2.0rc3`)
+was counted as "version not published" even though it installs fine.
+
+Checking all 32 PyPI `version-absent` rows:
+
+| item | count |
+|---|---|
+| raw version != PEP 440 normal form | **7** |
+| confirmed installable under the normal form | **6** (verified: the normalised key exists and has files) |
+| unverified (network error at check time) | 1 |
+
+**So the published total of 274 is an overcount by at least 6: the corrected figure is
+at most 268 (1.19%), not 274 (1.22%).** The audit code now compares the normalised form
+before reporting a version absent (`canari/registry_audit.py`, tests in
+`tests/test_pep440_normalisation.py`).
+
+The `package-gone` category (151 rows) is unaffected: those are HTTP 404 on the package
+itself, where no version spelling helps.
+
 ## What this is not
 
 - **This is not a report of a publish-time validation failure.** The registry does check

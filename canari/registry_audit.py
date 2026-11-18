@@ -196,6 +196,23 @@ def check_one(item):
         else:
             releases = data.get("releases") or {}
             present = bool(releases.get(version))     # a version with no files is not installable
+            if not present:
+                # ★2026-11-19: PyPI keys releases by PEP 440 normal form. A registry
+                # entry declaring "0.2.0-rc.3" or "v0.1.1" is installable (pip normalises
+                # it) but the raw string is not a key, so the audit counted it as
+                # missing. Six such false positives were found by re-running the real
+                # install; compare the normalised form before calling it absent.
+                try:
+                    from packaging.version import Version, InvalidVersion
+                    norm = None
+                    try:
+                        norm = str(Version(version))
+                    except InvalidVersion:
+                        norm = None
+                    if norm and norm != version:
+                        present = bool(releases.get(norm))
+                except ImportError:      # packaging missing: keep the raw comparison
+                    pass
     return {
         "registry": reg, "identifier": ident, "version": version,
         "status": classify(version, status, present),
