@@ -174,3 +174,96 @@ def test_weekly_step_carries_history_across_runs(tmp_path, monkeypatch):
     assert second["confirmed_findings"] == 1, (
         "the second spaced observation is what makes the verdict")
     assert second["findings"][0]["verdict"] == "INCONSISTENT_CONFIRMED"
+
+
+# ------------------------------------------------------------------ pagination
+#
+# Live run 2026-11-19: `--limit 600` died with HTTP 422 because the registry
+# rejects any page size above 100. Every test above used small fixtures, so none
+# of them could have caught it. These do.
+
+
+class _FakeResp:
+    def __init__(self, payload):
+        self._payload = payload
+
+    def read(self):
+        return json.dumps(self._payload).encode("utf-8")
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def _fake_urllib(monkeypatch, opener):
+    """Patch the module's urllib namespace without inventing a new one.
+
+    The first version replaced the whole `urllib` attribute with a synthetic
+    object, which dropped `urllib.parse` -- so the test failed inside the fake
+    rather than in the code under test.
+    """
+    import urllib.parse as real_parse
+
+    fake = type("U", (), {
+        "request": type("R", (), {
+            "urlopen": staticmethod(opener),
+            "Request": __import__("urllib.request", fromlist=["Request"]).Request,
+        }),
+        "parse": real_parse,
+    })
+    monkeypatch.setattr(mon, "urllib", fake)
+
+
+def _install_registry(monkeypatch, pages, record):
+    def fake_urlopen(req, timeout=None):
+        record.append(req.full_url)
+        return _FakeResp(pages.pop(0))
+    _fake_urllib(monkeypatch, fake_urlopen)
+
+
+def test_fetch_registry_never_asks_for_more_than_the_api_allows(monkeypatch):
+    """The server rejects limit > 100 with 422. The client must page instead."""
+    urls = []
+    _install_registry(monkeypatch, [
+        {"servers": [{"n": i} for i in range(100)], "metadata": {"nextCursor": "c1"}},
+        {"servers": [{"n": i} for i in range(100, 200)], "metadata": {}},
+    ], urls)
+
+    got = mon.fetch_registry(150)
+    assert len(got["servers"]) == 150
+    assert len(urls) == 2
+    for u in urls:
+        assert "limit=100" in u or "limit=" not in u, u
+        assert "limit=150" not in u, "a page larger than the cap is a 422: %s" % u
+    assert "cursor=c1" in urls[1]
+
+
+def test_fetch_registry_stops_when_the_cursor_runs_out(monkeypatch):
+    urls = []
+    _install_registry(monkeypatch, [
+        {"servers": [{"n": 1}], "metadata": {"nextCursor": "c1"}},
+        {"servers": [{"n": 2}], "metadata": {}},
+    ], urls)
+    got = mon.fetch_registry(500)
+    assert len(got["servers"]) == 2
+    assert len(urls) == 2
+
+
+def test_fetch_registry_has_a_hard_page_cap(monkeypatch):
+    """A server that always hands back a cursor must not loop forever."""
+    urls = []
+
+    class Loop:
+        def __init__(self):
+            self.n = 0
+
+        def __call__(self, req, timeout=None):
+            self.n += 1
+            return _FakeResp({"servers": [{"n": self.n}],
+                              "metadata": {"nextCursor": "c%d" % self.n}})
+
+    _fake_urllib(monkeypatch, Loop())
+    got = mon.fetch_registry(10000, max_pages=3)
+    assert len(got["servers"]) == 3

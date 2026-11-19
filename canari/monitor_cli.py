@@ -20,6 +20,7 @@ import json
 import os
 import sys
 import time
+import urllib.parse
 import urllib.request
 
 from canari.endpoint_history import (
@@ -34,11 +35,37 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REGISTRY = "https://registry.modelcontextprotocol.io/v0/servers?limit=%d"
 
 
-def fetch_registry(limit):
-    req = urllib.request.Request(REGISTRY % limit,
-                                 headers={"User-Agent": "canari-monitor/0.1"})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        return json.loads(r.read().decode("utf-8"))
+# The API rejects limit > 100 with HTTP 422 ("expected number"). Asking for
+# 600 in one request therefore fails at runtime while every small-fixture test
+# passes, which is exactly how that bug got here.
+REGISTRY_PAGE_LIMIT = 100
+REGISTRY_PAGE_URL = "https://registry.modelcontextprotocol.io/v0/servers?limit=%d"
+
+
+def fetch_registry(limit, page_size=None, max_pages=200):
+    """Read up to `limit` registry records, following the API's cursor.
+
+    The server caps a page at 100, so a single request for more is rejected
+    rather than truncated. `max_pages` is a hard stop so a server that keeps
+    handing back a cursor cannot make this run forever.
+    """
+    page_size = min(page_size or REGISTRY_PAGE_LIMIT, REGISTRY_PAGE_LIMIT)
+    out, cursor, pages = [], None, 0
+    while len(out) < limit and pages < max_pages:
+        url = REGISTRY_PAGE_URL % page_size
+        if cursor:
+            url += "&cursor=" + urllib.parse.quote(cursor, safe="")
+        req = urllib.request.Request(url,
+                                     headers={"User-Agent": "canari-monitor/0.1"})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            page = json.loads(r.read().decode("utf-8"))
+        batch = page.get("servers") or []
+        out.extend(batch)
+        pages += 1
+        cursor = (page.get("metadata") or {}).get("nextCursor")
+        if not cursor or not batch:
+            break
+    return {"servers": out[:limit], "metadata": {"pages": pages}}
 
 
 def targets(data, skip_hosts=()):
