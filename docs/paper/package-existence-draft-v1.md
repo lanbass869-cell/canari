@@ -1,5 +1,7 @@
 # The registry publishes installs that fail
 
+> **Superseded by `main.tex`.** The LaTeX source is now the authoritative draft; this Markdown file keeps the original numbers, including the 151/123 split that the two corrections replaced with 219/48. Read `main.pdf` for the current text.
+
 **Draft v1 — 2026-11-19. Numbers carry their snapshot date and denominator.**
 Target: FSE 2027 IVR (4 pages + 1 page references), 2027-02-12 AoE.
 

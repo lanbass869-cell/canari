@@ -22,6 +22,8 @@ first pass for network reasons and were retried individually until **0 were unkn
 
 ## Result
 
+> **Superseded split.** The 151 / 123 split below is the *first-pass* classification. A later re-check found two defects in our own classifier: PyPI PEP 440 normalisation (7 rows) and npm tombstones (68 rows). The corrected split is **219 package-gone / 48 version-absent**; see the two correction sections at the end. The table is kept as published.
+
 | outcome | references | share |
 |---|---|---|
 | version resolves | 22,247 | 98.78% |
