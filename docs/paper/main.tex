@@ -53,16 +53,20 @@ The corpus is the full pagination of the registry's \texttt{?version=latest} end
 2026-11-16: 654 pages, 65{,}340 latest records, de-duplicated to 22{,}526 distinct
 \texttt{(registry, identifier, version)} references across 22{,}384 servers. Each reference
 was resolved against the publisher's own registry: the npm \texttt{versions} map and the
-PyPI \texttt{releases} map, requiring at least one file. 274 references did not resolve:
-151 where the package returns HTTP 404 and 123 where the package exists but the version
-does not.
+PyPI \texttt{releases} map, requiring at least one file. 274 references did not resolve.
 
-\paragraph{A correction we made mid-study.} PyPI keys \texttt{releases} by PEP~440 normal
-form~\cite{pep440}, and our first check compared the raw registry string. Seven of the 32 PyPI
-version-absent rows are normalisation-sensitive and six are confirmed installable under the
-normalised key, so the corrected figure is \emph{at most} 268 (1.19\%), not 274. The 151
-package-gone rows are unaffected. The correction is reported rather than quietly applied
-because it changes the denominator of every subsequent number.
+\paragraph{Two corrections we made mid-study.} Both came from re-running the real thing
+rather than from reading our own code.
+\emph{(i) PEP~440.} PyPI keys \texttt{releases} by normal form~\cite{pep440} and our first
+check compared the raw registry string; seven of the 32 PyPI version-absent rows are
+normalisation-sensitive and six are confirmed installable, so six were not defects.
+\emph{(ii) npm tombstones.} An unpublished unscoped package still answers \texttt{200} on
+the package endpoint, with an empty \texttt{versions} map and a \texttt{time.unpublished}
+object. We read that \texttt{200} as ``package exists'', so 68 tombstones were filed as
+\emph{version} absent. After both corrections the unresolvable set is \textbf{267}:
+\textbf{219} packages gone and \textbf{48} versions absent (1.19\%). The total barely
+moved; the \emph{split} moved a lot, and with it the story --- this is overwhelmingly
+wholesale removal, not version drift.
 
 \section{Does the Install Work?}
 We sampled 20 rows from each failure class at equal spacing over the sorted list --- not

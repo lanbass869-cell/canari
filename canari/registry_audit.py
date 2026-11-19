@@ -192,7 +192,17 @@ def check_one(item):
     present = False
     if status == 200 and isinstance(data, dict):
         if reg == "npm":
-            present = version in (data.get("versions") or {})
+            versions = data.get("versions") or {}
+            present = version in versions
+            # ★2026-11-19: an unpublished unscoped npm package keeps a tombstone -
+            # GET returns 200 with an empty `versions` map and a `time.unpublished`
+            # object. Treating that as "package exists, version missing" is wrong:
+            # the package is gone and no version can be published under that name.
+            if not versions or (data.get("time") or {}).get("unpublished"):
+                return {
+                    "registry": reg, "identifier": ident, "version": version,
+                    "status": "package-gone", "http": status, "servers": names,
+                }
         else:
             releases = data.get("releases") or {}
             present = bool(releases.get(version))     # a version with no files is not installable
