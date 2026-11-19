@@ -4,6 +4,9 @@
 
 所有数字都标了口径和快照日期。凡是没核实过的，文中直接写"没查"。
 
+> 需要一页纸版本（英文，可直接给面试官/审稿人）见 [docs/PROJECT-SUMMARY-EN.md](PROJECT-SUMMARY-EN.md)。
+> 该文件的每个数字都由 `scripts/check_doc_numbers.py` 在质量门里自动核对（51 项）。
+
 ---
 
 ## 零、一句话

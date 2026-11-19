@@ -5,7 +5,8 @@
 2. test suite green
 3. line coverage >= 85%
 4. paper numbers still match their artifacts
-5. mutation kill rate >= 90% (equivalent mutants excluded)
+5. the one-page summary still states those same numbers
+6. mutation kill rate >= 90% (equivalent mutants excluded)
 
 This mirrors every gate in .github/workflows/ci.yml. Run it before pushing:
   python scripts/quality_gate.py
@@ -58,6 +59,13 @@ def main(argv=None):
     rc = run([PY, os.path.join("scripts", "check_paper_numbers.py")])
     if rc != 0:
         failures.append("paper numbers vs artifacts (rc=%d)" % rc)
+
+    # Same rule for the one-page summary: it is the document most likely to be
+    # handed to someone who will not check it, so every figure in it is pinned to
+    # the artefact that produced it AND to the exact phrase it appears in.
+    rc = run([PY, os.path.join("scripts", "check_doc_numbers.py")])
+    if rc != 0:
+        failures.append("summary numbers vs artifacts (rc=%d)" % rc)
 
     if not a.skip_mutation:
         rc = run([PY, os.path.join("scripts", "mutation_sweep.py"),

@@ -53,10 +53,12 @@ signs a verdict per component, keeps the whole supersession history, and exposes
 install-time gate that other programs can call. It is not a scanner (no home-grown
 detection engine), not a platform (no accounts, no community) and not an LLM product.
 
-New here? Read **[docs/PROJECT-STORY-20261119.md](docs/PROJECT-STORY-20261119.md)** — a
-full account of what was built between 2026-11-08 and 2026-11-19, with every number
-carrying its source and snapshot date, including the four times our own figures drifted,
-the sampling artefact that turned 84% into 94.78%, and the 66.6% false-pass disclosure.
+New here? Start with **[docs/PROJECT-SUMMARY-EN.md](docs/PROJECT-SUMMARY-EN.md)** — one page,
+every number re-derived from an artefact on 2026-11-19 (21 automated checks, 0 failures).
+
+For the full account — day-by-day history, the four times our own figures drifted, the
+sampling artefact that turned 84% into 94.78%, and the 66.6% false-pass disclosure — read
+**[docs/PROJECT-STORY-20261119.md](docs/PROJECT-STORY-20261119.md)**.
 
 ## Open dataset
 
