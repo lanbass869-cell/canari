@@ -20,7 +20,7 @@
 
 - **2026-11-08** 项目开工，最初叫 `agentcheck`（第一个 commit `1e054f9` 仍在）
 - 同日改名 **Canari**（金丝雀预警意象，commit `770654c`）
-  - 命名前做过撞名扫描：Watchtower 撞 Docker 24.5k 星项目 + 博世 + fzn0x 三个同赛道项目且 PyPI 名被占；
+  - 命名前做过撞名扫描（2026-11-08 记录）：Watchtower 撞 Docker 24.5k 星项目（现查 containrrr/watchtower 24,582★）+ 博世 + fzn0x 三个同赛道项目且 PyPI 名被占；
     Canari 裸名被 Maltego 框架占，但该框架在威胁情报圈，与 agent 供应链无交集
   - schema 的 `_type` URI 保留 `agentcheck.dev` 未改——**schema 是真相源**，改名不改已签发的记录格式
 
@@ -265,8 +265,8 @@ https://69ai.ai/mcp
 | PyPI 最新版 | 0.1.4（2026-11-17），5 个版本 |
 | PyPI 近 30 天下载 | **629**（pypistats，2026-11-19 查） |
 | PyPI 近 7 天 | 493 |
-| MCP 官方 Registry | 已收录（0.1.1，status=active） |
-| Glama | 已索引，评级 B |
+| MCP 官方 Registry | 已收录：`io.github.lanbass869-cell/canari` v0.1.3，status=active，isLatest=true |
+| Glama | 已索引并认领；badge 原文 "rated B"（tool definitions B / 3 tools / maintenance B） |
 | 外部 review / 用户反馈 | **0** |
 
 ## 十、诚实的水平评估
