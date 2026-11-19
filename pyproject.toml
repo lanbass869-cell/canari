@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "canari-mcp"
-version = "0.1.4"
+dynamic = ["version"]
 description = "Canari - agent component verification ledger: signed, offline-verifiable attestations for MCP servers and agent skills"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -22,6 +22,9 @@ dependencies = [
     "jsonschema>=4.0",
     "in-toto>=3.1",
 ]
+
+[tool.setuptools.dynamic]
+version = {attr = "canari.__version__"}
 
 [project.optional-dependencies]
 dev = ["pytest>=7", "cbor2>=5.6"]

@@ -267,3 +267,87 @@ def test_fetch_registry_has_a_hard_page_cap(monkeypatch):
     _fake_urllib(monkeypatch, Loop())
     got = mon.fetch_registry(10000, max_pages=3)
     assert len(got["servers"]) == 3
+
+
+# ------------------------------------------------- coverage must not freeze
+#
+# The first version of weekly_step took targets(data)[:max_probe] -- always the
+# first N endpoints, and the registry paginates in name order. Measured on
+# 2026-11-19, those first 40 were .ae/.ad/.africa/.agency/.ac/.academy with zero
+# .com, .dev, .io or .ai, against a real distribution where .com alone is 17,393
+# of 46,325. Same shape as the 84%-vs-94.78% artefact. These tests pin the fix.
+
+def _store(tmp_path):
+    return str(tmp_path)
+
+
+def test_rotation_reaches_endpoints_outside_the_first_page(tmp_path, monkeypatch):
+    """Two runs with the same registry must probe different endpoints."""
+    servers = [{"server": {"name": "n%02d" % i,
+                           "remotes": [{"url": "https://h%02d.example/mcp" % i}]}}
+               for i in range(20)]
+    seen = []
+
+    def fake_probe(url, timeout):
+        seen.append(url)
+        return {"checked_at": "2026-01-01T00:00:00Z", "outcome": "alive",
+                "http_status": 200, "error": None}
+
+    monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": servers})
+    monkeypatch.setattr(mon, "probe_endpoint", fake_probe)
+
+    mon.weekly_step(_store(tmp_path), limit=100, max_probe=4, timeout=1, delay=0,
+                    resume_share=0)
+    first = list(seen)
+    seen.clear()
+    mon.weekly_step(_store(tmp_path), limit=100, max_probe=4, timeout=1, delay=0,
+                    resume_share=0)
+    second = list(seen)
+
+    assert first and second
+    assert first != second, (
+        "the monitor probed the same slice twice: %r" % (first,))
+    assert not set(first) & set(second), (
+        "the two runs overlapped; rotation is not advancing: %r / %r" % (first, second))
+
+
+def test_rotation_wraps_around_instead_of_running_off_the_end(tmp_path, monkeypatch):
+    servers = [{"server": {"name": "n%d" % i,
+                           "remotes": [{"url": "https://h%d.example/mcp" % i}]}}
+               for i in range(6)]
+    seen = []
+    monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": servers})
+    monkeypatch.setattr(mon, "probe_endpoint",
+                        lambda url, timeout: seen.append(url) or {
+                            "checked_at": "2026-01-01T00:00:00Z", "outcome": "alive",
+                            "http_status": 200, "error": None})
+    for _ in range(4):
+        mon.weekly_step(_store(tmp_path), limit=100, max_probe=2, timeout=1, delay=0,
+                        resume_share=0)
+    assert len(seen) == 8, "expected 4 runs x 2 probes"
+    assert len(set(seen)) == 6, "rotation should wrap and cover all 6: %r" % (sorted(set(seen)),)
+
+
+def test_open_verdicts_are_re_probed_so_a_streak_can_advance(tmp_path, monkeypatch):
+    """A pending failure must be re-observed, not rotated away from."""
+    servers = [{"server": {"name": "flaky",
+                           "remotes": [{"url": "https://flaky.example/mcp"}]}}
+               for _ in range(1)]
+    outcomes = iter([
+        {"checked_at": "2026-01-01T00:00:00Z", "outcome": "not_mcp",
+         "http_status": 200, "error": None},
+    ])
+    monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": servers})
+    monkeypatch.setattr(mon, "probe_endpoint", lambda url, timeout: next(outcomes))
+
+    first = mon.weekly_step(_store(tmp_path), limit=100, max_probe=4, timeout=1, delay=0)
+    assert first["confirmed_findings"] == 0
+
+    # second run: only one candidate exists, so resume + rotation must pick it again
+    monkeypatch.setattr(mon, "probe_endpoint",
+                        lambda url, timeout: {"checked_at": "2026-01-01T07:00:00Z",
+                                              "outcome": "not_mcp",
+                                              "http_status": 200, "error": None})
+    second = mon.weekly_step(_store(tmp_path), limit=100, max_probe=4, timeout=1, delay=0)
+    assert second["confirmed_findings"] == 1, (
+        "a pending failure must be re-probed until it confirms or clears")

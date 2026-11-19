@@ -177,18 +177,60 @@ def main(argv=None):
                   int(a.min_gap_hours * 3600))
 
 
-def weekly_step(store_dir, limit=600, max_probe=40, timeout=12, delay=0.2):
+def weekly_step(store_dir, limit=600, max_probe=40, timeout=12, delay=0.2,
+                resume_share=0.5):
     """The whole weekly endpoint-monitor step, as one callable.
 
-    run_weekly.py calls this so the schedule runs the monitor without a second
-    entry point, and so the step can be tested without running a full scan.
-    Returns the report document.
+    Two jobs pull in opposite directions:
+
+      * a streak verdict needs the SAME endpoint observed again and again, so
+        endpoints with an unfinished verdict must be re-probed every run;
+      * a monitor that only ever re-probes its first N endpoints measures
+        nothing about the rest, and the registry paginates in name order, so
+        "the first N" is a systematically biased slice -- that is exactly how
+        the 2026-11-16 census measured 84% and then 94.78% once it paged
+        fully (the first 800 names were all a*).
+
+    So the budget is split: up to `resume_share` of it goes to endpoints whose
+    verdict is still open, and the remainder is drawn from a cursor that
+    advances every run and wraps, so coverage spreads instead of freezing.
     """
     history_path = os.path.join(store_dir, "endpoint_history.json")
     out_path = os.path.join(store_dir, "endpoint_verdicts.json")
     history = EndpointHistory(history_path)
     data = fetch_registry(limit)
-    todo = targets(data)[:max_probe]
+    everything = targets(data)
+
+    if not everything:
+        return report(history, out_path, DEFAULT_MIN_OBSERVATIONS,
+                      DEFAULT_MIN_GAP_SECONDS)
+
+    by_url = {url: (entry, url) for entry, url in everything}
+    verdicts = history.all_verdicts()
+
+    # 1) finish the streaks we already started
+    resume_budget = max(0, int(max_probe * resume_share))
+    resume = []
+    for url, verdict in verdicts.items():
+        if len(resume) >= resume_budget:
+            break
+        if verdict.get("verdict") == "CONSISTENT":
+            continue
+        if url in by_url and url not in {u for _, u in resume}:
+            resume.append(by_url[url])
+
+    # 2) spend the rest on a rotating slice, skipping what we already picked
+    remaining = max_probe - len(resume)
+    picked = {u for _, u in resume}
+    fresh = [t for t in everything if t[1] not in picked]
+    rotated = []
+    if fresh and remaining > 0:
+        start = history.scan_offset() % len(fresh)
+        for i in range(min(remaining, len(fresh))):
+            rotated.append(fresh[(start + i) % len(fresh)])
+        history.set_scan_offset((start + len(rotated)) % len(fresh))
+
+    todo = resume + rotated
     if todo:
         probe_all(todo, timeout, history, delay)
     return report(history, out_path, DEFAULT_MIN_OBSERVATIONS,

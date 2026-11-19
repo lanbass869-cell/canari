@@ -227,7 +227,7 @@ class EndpointHistory:
                     return doc
             except Exception:
                 pass
-        return {"schema": "canari.endpoint-history/1", "endpoints": {}}
+        return {"schema": "canari.endpoint-history/1", "endpoints": {}, "scan_offset": 0}
 
     def record(self, url, probe):
         """Record one probe result for `url`. Returns the stored observation."""
@@ -239,6 +239,13 @@ class EndpointHistory:
         }
         self._data.setdefault("endpoints", {}).setdefault(url, []).append(observation)
         return observation
+
+    def scan_offset(self):
+        """Where the rotating coverage cursor left off (0 for a fresh history)."""
+        return int(self._data.get("scan_offset", 0) or 0)
+
+    def set_scan_offset(self, value):
+        self._data["scan_offset"] = int(value)
 
     def observations(self, url):
         return list(self._data.get("endpoints", {}).get(url, []))
