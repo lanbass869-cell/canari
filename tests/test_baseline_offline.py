@@ -87,14 +87,18 @@ class TestBuildAttestation:
         att = build_attestation("pkg-d", self._meta(), {"description": ""}, SCENARIO)
         assert att["verdict"] == "pass-with-findings"
 
-    def test_expires_7_days(self):
+    def test_expiry_exceeds_the_scan_cadence(self):
+        # was 7 days for a 7-day scan -- zero margin, so one late run expired
+        # every record and the gate blocked everything. The TTL must cover at
+        # least two scan cycles.
         att = build_attestation("pkg-e", self._meta(), {"description": "d"}, SCENARIO)
         assert att["expires_at"] > att["generated_at"]
-        # roughly 7 days
         import datetime
         g = datetime.datetime.strptime(att["generated_at"], "%Y-%m-%dT%H:%M:%SZ")
         e = datetime.datetime.strptime(att["expires_at"], "%Y-%m-%dT%H:%M:%SZ")
-        assert 6.9 < (e - g).total_seconds() / 86400 < 7.1
+        days = (e - g).total_seconds() / 86400
+        assert days >= 14, (
+            "TTL is %.1f days for a weekly scan: one missed run blocks the gate" % days)
 
     def test_scenario_hash_recorded(self):
         att = build_attestation("pkg-f", self._meta(), {"description": "d"}, SCENARIO)

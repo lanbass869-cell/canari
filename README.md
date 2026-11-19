@@ -165,6 +165,15 @@ canari-gate --store out --registry dsh-registry --name aegis --policy paranoid -
 canari-gate --store out --list
 ```
 
+> **What this gate actually covers.** It is a verdict lookup, not a universal
+> installer check: a component we have never scanned is `not found`, and the
+> default policy turns that into BLOCK (fail-closed). The reference store holds
+> **1,437 components** -- 66 of the MCP Registry's 22,384 servers (0.29%), plus
+> 239 npm and 611 PyPI packages out of ecosystems orders of magnitude larger.
+> In practice it behaves as a **1,437-entry allowlist**: anything outside it is
+> refused rather than cleared. Treat BLOCK on an uncovered package as "unknown",
+> not as "unsafe", and scan it yourself before concluding anything.
+
 ### 2. Record another scanner's result as a signed, timestamped attestation
 
 **Live example:** [20 PyPI MCP servers, scanned by bandit, recorded and signed](https://lanbass869-cell.github.io/canari/scan/) - every record on that page

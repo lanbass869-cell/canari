@@ -92,16 +92,39 @@ canari-verify --chain attestations/     # whole supersession DAG
 No network, no account, no service. Then verify the snapshot itself against
 `MANIFEST.json` (5196 sha256 entries).
 
+## Read this before quoting a `pass`
+
+**1,578 of the 2,823 `pass` records in this snapshot carry at least one
+non-pass check** (`skip`, `unsupported` or `fail`) inside their own `checks`
+array. Until 2026-11-18 the record verdict was computed as
+`"pass" if sha else "fail"`, so any record whose artifact downloaded was
+marked passing even when the checks inside it never ran.
+
+The signed records were deliberately **not** rewritten -- an append-only log
+that edits its own history is worthless. So if you need a verdict you can
+trust, do not read `predicate.verdict` alone: re-derive it from
+`predicate.checks` (any `fail` -> fail, any `error` -> error, any
+`skip`/`unsupported` -> unsupported, otherwise pass), which is exactly what
+`canari.gate` does. Full write-up:
+[`docs/DISCLOSURE-false-pass-20261118.md`](../docs/DISCLOSURE-false-pass-20261118.md).
+
+**62.9% of this snapshot is past its `expires_at` as of 2026-11-19** (it was
+cut 2026-11-13 with a 7-day TTL). The gate's `default` policy requires
+freshness, so consuming this snapshot as-is will block most components --
+that is the policy working, not a bug. Refresh with your own scan, or use
+`--policy lax` if you only want a structural reading.
+
 ## Honest limits
 
-- **Risk signal, not a safety guarantee.** `pass` means our checks found
-  nothing, not that the component is safe.
+- **Risk signal, not a safety guarantee.** `pass` means our checks reported no
+  findings, not that the component is safe -- and see the section above for
+  the 1,578 records where "no findings" actually means "checks did not run".
 - **Sample, not census.** Coverage is what the registries expose publicly; this
   is a sample of each ecosystem.
 - **Signature proves origin, not correctness.** A valid signature proves the
   ledger produced the record - not that the verdict is right.
 - **Weekly cadence, and records go stale.** Every attestation carries
-  `expires_at` (7 days). `MANIFEST.json.generated_at` says when this snapshot
+  `expires_at` (14 days as of 2026-11-19; earlier snapshots used 7). `MANIFEST.json.generated_at` says when this snapshot
   was cut.
 - **581 of the 1417 components carry no artifact `sha256`** (521 dsh.so +
   60 MCP Registry). Those sources publish identity but no downloadable

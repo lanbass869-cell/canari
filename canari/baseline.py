@@ -71,25 +71,45 @@ def payload_digest_of(predicate):
     return payload_digest(predicate or {})
 
 
-def _with_timeout(fn, timeout_s, default=None):
-    """Run fn() with a hard wall-clock budget. On timeout return default.
+def _with_timeout(fn, timeout_s, default=None, outcome=None):
+    """Run fn() with a hard wall-clock budget.
+
+    Returns `default` on timeout or on an exception, because every call site
+    wants a fallback rather than a crash.
+
+    ★2026-11-19: it used to return default for BOTH cases with no way to tell
+    them apart, and swallowed the exception object entirely. Callers that care
+    (native provenance ingest) could therefore not distinguish "the upstream
+    has nothing" from "our call blew up" -- the exact silent-degradation class
+    this project keeps fixing elsewhere. Pass a dict as `outcome` and it is
+    filled with `{"status": "ok"|"timeout"|"error", "error": ...}`.
+
     The worker thread is a daemon: it cannot be killed, but it no longer blocks
-    the scan (process exit reaps it)."""
+    the scan (process exit reaps it).
+    """
     import threading
     box = {}
+
     def _run():
         try:
             box["value"] = fn()
         except Exception as e:
             box["error"] = e
+
     t = threading.Thread(target=_run, daemon=True)
     t.start()
     t.join(timeout_s)
     if t.is_alive():
         print("[timeout] call exceeded %ss - degraded to default" % timeout_s)
+        if outcome is not None:
+            outcome.update(status="timeout", error=None)
         return default
     if "error" in box:
+        if outcome is not None:
+            outcome.update(status="error", error=box["error"])
         return default
+    if outcome is not None:
+        outcome.update(status="ok", error=None)
     return box.get("value", default)
 
 
@@ -118,9 +138,17 @@ def _runner_source_digest() -> str:
     return h.hexdigest()
 
 
+# ★2026-11-19: this used to be 7 days, which is exactly the scan cadence.
+# That left zero margin: one late or failed weekly run and every record expired
+# before the next one could refresh it, so the gate would block everything
+# (default policy has require_fresh=True). 14 days gives one full cadence of
+# slack, and the gate still refuses anything older than two cycles.
+ATTESTATION_TTL_DAYS = 14
+
+
 def _expiry():
     return (datetime.datetime.now(datetime.timezone.utc)
-            + datetime.timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            + datetime.timedelta(days=ATTESTATION_TTL_DAYS)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _sha512_integrity_to_hex(integrity: str):
@@ -238,7 +266,7 @@ def _record_verdict(checks, sha):
 
 
 def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256: str,
-                      packument: dict = None) -> dict:
+                      packument: dict = None, dead: DeadLetterLog = None) -> dict:
     """Build one meta-only attestation for one component.
 
     `packument` is the npm packument this attestation was derived from. It is
@@ -317,11 +345,39 @@ def build_attestation(name: str, meta: dict, search_meta: dict, scenario_sha256:
             for c in checks)
         verdict = "pass-with-findings" if has_findings else "pass"
 
+    # ★2026-11-19: this used to swallow every exception and leave native_prov
+    # as None, so "upstream publishes no attestation" and "our ingestion is
+    # broken" produced byte-identical records and nobody could tell them apart.
+    # The outcome is now recorded as an explicit check: pass when we looked and
+    # found nothing, error when we could not look at all.
+    # When no log is supplied the record still gets the L1.3 check, but nothing
+    # is persisted: build_attestation is called from tests and from paths that
+    # have no store, and silently appending to the production dead-letter file
+    # from a unit test would be exactly the kind of side effect to avoid.
     native_prov = None
-    try:
-        native_prov = _with_timeout(lambda: native_ingest(name, meta.get("version", "")), 90, None)
-    except Exception:
+    native_status, native_detail = "unsupported", "not attempted"
+    _outcome = {}
+    native_prov = _with_timeout(
+        lambda: native_ingest(name, meta.get("version", "")), 90, None,
+        outcome=_outcome)
+    if _outcome.get("status") == "ok":
+        native_status = "pass"
+        native_detail = ("native attestation found" if native_prov
+                         else "queried: no native attestation published")
+    else:
         native_prov = None
+        native_status = "error"
+        if _outcome.get("status") == "timeout":
+            native_detail = "native ingestion timed out after 90s"
+        else:
+            err = _outcome.get("error")
+            native_detail = "native ingestion failed: %s: %s" % (
+                type(err).__name__, str(err)[:160])
+        if dead is not None:
+            dead.record("native_ingest", "%s@%s" % (name, meta.get("version", "")),
+                        native_detail, registry=meta.get("registry", ""))
+    checks.append({"id": "L1.3_NATIVE_PROVENANCE", "verdict": native_status,
+                   "tool": "canari-native/0.1", "evidence_ref": native_detail})
 
     result = {
         "_type": _PREDICATE_TYPE,
@@ -413,6 +469,9 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
     lock = FileLock(os.path.join(out_dir, "run"))
     lock.__enter__()
     state = StateStore(os.path.join(out_dir, "state.json"))
+    # ★2026-11-19: a failed native ingestion must leave a record, not just a
+    # missing field (see the L1.3 check in build_attestation).
+    dead = DeadLetterLog(os.path.join(out_dir, "dead_letters.json"))
 
     key_path = os.path.join(out_dir, "private_key.pem")
     if signer is None:
@@ -483,7 +542,8 @@ def run(limit: int = 50, signer=None, pub_key=None, out_dir: str = None) -> dict
             continue
         import time as _t
         _t.sleep(1)  # politeness: npm CDN throttles rapid sequential tarball fetches
-        att = build_attestation(name, meta, pkg, scenario_sha256, packument=pack)
+        att = build_attestation(name, meta, pkg, scenario_sha256, packument=pack,
+                                dead=dead)
         _prev = state.get_component("npm:" + name) or state.get_component(name)
         if _prev and _prev.get("attestation_digest"):
             _pd = _prev["attestation_digest"]

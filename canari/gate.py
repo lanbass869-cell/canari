@@ -52,6 +52,9 @@ class GatePolicy:
     require_identity: bool = False
 
 
+# Warn (do not block) when a still-valid record has this little time left.
+EXPIRING_SOON_DAYS = 2
+
 BUILTIN_POLICIES = {
     "default": GatePolicy(name="default"),
     "strict": GatePolicy(
@@ -127,6 +130,9 @@ class GateDecision:
     fresh: bool = True
     key_valid: bool = True
     native_provenance_present: bool = False
+    # Non-blocking signals: a record that is valid but close to expiry, so a
+    # stalled scan is visible before it turns into a blanket BLOCK.
+    warnings: list = field(default_factory=list)
 
 
 def _check_identity(payload, claim_path, key_path, policy):
@@ -171,15 +177,30 @@ def _check_identity(payload, claim_path, key_path, policy):
 
 
 def _check_freshness(payload):
-    from datetime import datetime, timezone
+    """Return (fresh, reason).
+
+    ★2026-11-19: also reports a record that is still valid but close to the
+    edge. The scan is weekly and records used to expire weekly, so the first
+    sign of a stalled pipeline was "everything blocks". A warning at two days
+    out turns a silent cliff into a visible countdown.
+    """
+    from datetime import datetime, timezone, timedelta
     expires = payload.get("expires_at", "")
     if not expires:
         # F10: an attestation with no expiry cannot be shown to be current.
         # Treating "missing" as "fresh" turned a data problem into a pass.
         return False, "no expires_at recorded (freshness cannot be established)"
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now_dt = datetime.now(timezone.utc)
+    now = now_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
     if now > expires:
         return False, "attestation expired at %s (now %s)" % (expires, now)
+    try:
+        exp_dt = datetime.strptime(expires, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return True, None
+    if exp_dt - now_dt <= timedelta(days=EXPIRING_SOON_DAYS):
+        return True, ("valid but expires in %s -- the scan pipeline may be behind"
+                      % str(exp_dt - now_dt).split(".")[0])
     return True, None
 
 
@@ -331,11 +352,16 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
 
     # F11: `fresh` must exist for every policy, not only require_fresh ones.
     fresh = True
+    warnings = []
     if policy.require_fresh:
         fresh, reason = _check_freshness(payload)
         if not fresh:
             decision = "BLOCK"
             reasons.append("stale: %s" % reason)
+        elif reason:
+            # Still valid, but close to the edge: surface it without changing
+            # the decision, so a stalled scan is visible before it blocks.
+            warnings.append(reason)
 
     key_valid = True
     if policy.require_key_valid and key_registry_path and os.path.exists(key_registry_path):
@@ -401,4 +427,5 @@ def evaluate_gate(bundle_path, key_path=None, key_registry_path=None,
 
     return GateDecision(decision=decision, reasons=reasons, policy=policy_name,
                         verdict=verdict, subject=subject_name, key_valid=key_valid,
-                        native_provenance_present=native_present, fresh=fresh)
+                        native_provenance_present=native_present, fresh=fresh,
+                        warnings=warnings)

@@ -14,12 +14,15 @@ def test_now_format():
     assert re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", _now())
 
 
-def test_expiry_is_seven_days_after_now():
-    from canari.baseline import _now, _expiry
+def test_expiry_is_attestation_ttl_after_now():
+    # ★2026-11-19: was 7 days against a 7-day scan, which left zero margin.
+    # The TTL now has to cover at least two scan cycles.
+    from canari.baseline import ATTESTATION_TTL_DAYS, _now, _expiry
     import datetime as dt
     def p(s): return dt.datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ")
     delta = p(_expiry()) - p(_now())
-    assert abs(delta.total_seconds() - 7 * 86400) < 120
+    assert abs(delta.total_seconds() - ATTESTATION_TTL_DAYS * 86400) < 120
+    assert ATTESTATION_TTL_DAYS >= 14
 
 
 def test_sha512_integrity_roundtrip():

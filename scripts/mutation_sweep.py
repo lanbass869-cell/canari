@@ -148,27 +148,44 @@ def main(argv=None):
     except Exception as _e:
         print('batch2 load failed:', _e)
         all_muts = MUTATIONS
-    killed = survived = skipped = equiv = 0
+    killed = survived = skipped = 0
+    # 2026-11-19: equivalents used to be subtracted from a denominator that
+    # already excluded them, so the rate could exceed 100%. Measured here:
+    # killed=47 survived=1 equivalent=2 rendered as "102%". Equivalents are now
+    # tracked by verdict and removed from BOTH sides: an equivalent mutant is
+    # neither a kill nor a miss.
+    equiv_killed = equiv_survived = 0
     print("%-32s %-9s %s" % ("mutant", "verdict", "note"))
     for m in all_muts:
         label, verdict, note = run_mutant(*m)
         print("%-32s %-9s %s" % (label, verdict, note))
-        if "(EQUIV)" in label:
-            equiv += 1
+        is_equiv = "(EQUIV)" in label
         if verdict == "KILLED":
             killed += 1
+            if is_equiv:
+                equiv_killed += 1
         elif verdict == "SURVIVED":
             survived += 1
+            if is_equiv:
+                equiv_survived += 1
         else:
             skipped += 1
-    total = killed + survived - equiv  # equivalent mutants cannot be killed
-    rate = 100.0 * killed / total if total else 0.0
-    print("\n%d mutants, killed=%d survived=%d equivalent=%d skipped=%d | kill rate %.0f%%" % (
-        len(all_muts), killed, survived, equiv, skipped, rate))
+
+    equiv = equiv_killed + equiv_survived
+    real_killed = killed - equiv_killed
+    real_survived = survived - equiv_survived
+    total = real_killed + real_survived
+    rate = (100.0 * real_killed / total) if total else 0.0
+    assert 0.0 <= rate <= 100.0, "kill rate out of range: %r" % (rate,)
+    print("")
+    print("%d mutants: %d killed, %d survived, %d equivalent (%d killed / %d survived), %d skipped"
+          % (len(all_muts), killed, survived, equiv, equiv_killed,
+             equiv_survived, skipped))
+    print("kill rate %.1f%% over %d non-equivalent mutants" % (rate, total))
     if a.min_kill and rate < a.min_kill:
-        print("kill rate %.0f%% is below the required %.0f%%" % (rate, a.min_kill))
+        print("kill rate %.1f%% is below the required %.0f%%" % (rate, a.min_kill))
         return 1
-    return 1 if (survived - equiv) > 0 else 0
+    return 1 if real_survived > 0 else 0
 
 
 if __name__ == "__main__":
