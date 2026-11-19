@@ -6,14 +6,14 @@
 
 \begin{document}
 
-\title{Registries That Never Look Again: Stale Install Instructions in an Agent Component Registry}
+\title[Registries That Never Look Again]{Registries That Never Look Again: Stale Install Instructions in an Agent Component Registry}
 
 \begin{abstract}
 Agent component registries tell a client \emph{what to install}. We measured whether that
 instruction still works. On one production registry's snapshot of 2026-11-16 (65{,}340
 latest records, 22{,}526 distinct npm/PyPI references) 274 references named a package or
 version that did not resolve; after correcting one normalisation defect the figure is at
-most 268 (1.19\%). Running the actual install command for 40 of them failed 39 times
+most 267 (1.19\%). Running the actual install command for 40 of them failed 39 times
 (97.5\%, Wilson 95\% CI 87.1--99.6\%). The entries carrying those references are not fresh
 mistakes: their median age is 218 days (p90 283, max 435) and 83\% are older than 90 days.
 The packages are not abandoned either --- of the 140 whose download statistics were
@@ -57,7 +57,7 @@ PyPI \texttt{releases} map, requiring at least one file. 274 references did not 
 
 \paragraph{Two corrections we made mid-study.} Both came from re-running the real thing.
 \emph{(i) PEP~440}: PyPI keys \texttt{releases} by normal form~\cite{pep440} and we compared
-the raw string, so six of the 32 PyPI version-absent rows were not defects.
+the raw string, so seven of the 32 PyPI version-absent rows were not defects.
 \emph{(ii) npm tombstones}: an unpublished unscoped package still answers \texttt{200} with
 an empty \texttt{versions} map and a \texttt{time.unpublished} object, which we read as
 ``package exists'', filing 68 tombstones as \emph{version} absent. Corrected:
@@ -164,7 +164,7 @@ re-validation duty for an index or a registry.
 
 \section{Conclusion}
 A registry that validates once and never again accumulates instructions that no longer
-work. In one production snapshot that accumulation is already measurable: 268 unresolved
+work. In one production snapshot that accumulation is already measurable: 267 unresolved
 references at most, 39 of 40 sampled installs failing when actually executed, a median
 entry age of seven months, and 47 affected packages still receiving over a hundred
 downloads a month. The fix is cheap and does not require deleting history.

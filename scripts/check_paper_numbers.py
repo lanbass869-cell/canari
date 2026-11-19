@@ -8,6 +8,7 @@ the JSON that produced them, so a future edit cannot silently drift.
 """
 import json
 import os
+import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -52,10 +53,40 @@ def main():
     check("three-day recheck still broken (267)", 267, rec["still_broken"], "recovery.json still_broken")
     check("three-day recheck recovered (7)", 7, rec["recovered"], "recovery.json recovered")
 
-    # the paper must actually contain the numbers it claims
+    # Presence is not consistency. 268 survived in the abstract and the conclusion while
+    # the body said 267 because the check only asked "does the number appear somewhere".
+    # So: (a) the paper must not contain any superseded value, and (b) every statement of
+    # the same quantity must agree — one distinct value across the whole manuscript.
     tex = open(PAPER, encoding="utf-8").read()
-    for token in ["39", "97.5", "218", "219", "48", "267", "1.19", "49.5"]:
-        checks.append(("paper mentions %s" % token, True, token in tex, True, "docs/paper/main.tex"))
+
+    for stale_value, why in [("268", "274-7=267"), ("151", "pre-tombstone split"),
+                             ("123", "pre-tombstone split")]:
+        present = stale_value in tex
+        checks.append(("paper has no stale %s (%s)" % (stale_value, why), False, present,
+                       present is False, "docs/paper/main.tex"))
+
+    # All phrasings that state the total unresolvable count, grouped by quantity.
+    # Line breaks fall inside these phrases in the .tex source, so match across newlines.
+    total_patterns = [
+        r"at\s+most (\d+)\s*\(",
+        r"\\textbf\{(\d+)\} unresolvable",
+        r"(\d+) unresolved\s+references",
+    ]
+    seen_totals = sorted({m.group(1) for pat in total_patterns for m in re.finditer(pat, tex)})
+    checks.append(("single unresolvable total across paper", ["267"], seen_totals,
+                   seen_totals == ["267"], "docs/paper/main.tex (all statements)"))
+
+    pep = re.search(r"so (\w+) of the 32 PyPI version-absent rows were not defects", tex)
+    words = {"six": 6, "seven": 7}
+    pep_n = words.get(pep.group(1)) if pep else None
+    checks.append(("PEP 440 false positives stated as 7", 7, pep_n, pep_n == 7,
+                   "docs/paper/main.tex verbatim"))
+    checks.append(("274 - PEP440(7) == reported total", "267", str(src_rows := 274 - 7),
+                   src_rows == 267, "audit report arithmetic"))
+
+    checks.append(("267 == 219+48", 267, counts["package-gone"] + counts["version-absent"],
+                   counts["package-gone"] + counts["version-absent"] == 267,
+                   "tombstone_reclass.json status_counts"))
 
     width = max(len(c[0]) for c in checks)
     bad = 0
