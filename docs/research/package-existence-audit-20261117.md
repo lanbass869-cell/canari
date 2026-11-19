@@ -59,6 +59,34 @@ before reporting a version absent (`canari/registry_audit.py`, tests in
 The `package-gone` category (151 rows) is unaffected: those are HTTP 404 on the package
 itself, where no version spelling helps.
 
+## Second correction (2026-11-19): npm tombstones
+
+Re-checking the 274 rows a second time found a second defect in our own classifier. An
+**unpublished unscoped npm package keeps a tombstone**: `GET /<name>` still answers `200`,
+with `versions: {}` and a `time.unpublished` object. The audit read that `200` as "package
+exists", so those rows were filed as *version* absent.
+
+Verified live on 2026-11-19:
+
+| package | HEAD | GET | versions | time.unpublished |
+|---|---|---|---|---|
+| `ace-context-mcp` | 200 | 200 | 0 | `{time: 2026-08-05T17:24:17.672Z, versions: [0.1.0, 0.1.1]}` |
+| `stillshipping-mcp` | 200 | 200 | 0 | `{time: 2026-10-29T01:59:04.927Z, versions: [0.1.0, 0.1.1]}` |
+| `mcp-server-fetch` (control) | 200 | 200 | 1 | none |
+
+Re-classifying all 274 rows with tombstone detection:
+
+| bucket | published | corrected |
+|---|---|---|
+| package gone | 151 | **219** |
+| version absent | 123 | **48** |
+| rows that changed bucket | - | 75 |
+
+**The total is unchanged; the split is not.** Combined with the PEP 440 correction the
+unresolvable set is 267, of which 219 are wholesale removal and only 48 are version drift.
+That matters for the remedy: a drifted version can be republished, a removed package name
+cannot.
+
 ## What this is not
 
 - **This is not a report of a publish-time validation failure.** The registry does check
