@@ -193,7 +193,38 @@ canari-drift --store out --write out/drift
 
 `run_weekly.py` writes this report automatically after every scan.
 
-### 3. Use it from any MCP host (dsh, Codex, Claude, ...)
+### 3. Endpoint decay, judged from a streak rather than a single probe
+
+A probe answers "what did this endpoint do at that moment", not "is this entry
+dead". Treating one failed probe as a death certificate is a mistake that has
+already been made and corrected in public: of 52 hosts that failed at least once
+in a ten-day window, 27 (51.9%) answered again later
+([registry#1692](https://github.com/modelcontextprotocol/registry/issues/1692)) —
+which is why that issue asks for *n consecutive failures separated in time*,
+not one.
+
+```
+canari-monitor --max-probe 50                    # probe, append, re-derive
+canari-monitor --report-only                     # re-derive from history only
+```
+
+A verdict needs repeated, **time-separated** confirmations (default: 2, at least
+6 h apart), so a burst of probes counts once. A success ends the run, and a
+record with both a success and a failure is reported as `FLAPPING` rather than
+rounded to broken. Two failure classes are never merged:
+
+| verdict | means |
+|---|---|
+| `INCONSISTENT_CONFIRMED` | the endpoint answered, and the answer was not MCP — the *declaration* is wrong |
+| `UNAVAILABLE_CONFIRMED` | the endpoint did not answer — *availability*, not a wrong declaration |
+| `FLAPPING` | both succeeded and failed in the record, too few spaced confirmations to call it |
+| `INSUFFICIENT_EVIDENCE` | first failure, or a burst of probes inside one window |
+| `NEUTRAL_ONLY` | 401/403, 5xx, unsupported protocol — we could not look, so there is no finding |
+
+`401`, `5xx`, an unsupported protocol version and a partial handshake are
+recorded but never accumulate: "we could not look" is not "it is broken".
+
+### 4. Use it from any MCP host (dsh, Codex, Claude, ...)
 
 `canari-mcp` speaks MCP over stdio (zero dependencies) and exposes three tools:
 `gate_check`, `verify_bundle`, `store_summary`.

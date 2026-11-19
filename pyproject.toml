@@ -38,6 +38,7 @@ canari-registry-audit = "canari.registry_audit:main"
 canari-identity = "canari.identity:main"
 canari-ingest-sarif = "canari.sarif_ingest:main"
 canari-log = "canari.log_cli:main"
+canari-monitor = "canari.monitor_cli:main"
 
 [project.urls]
 Homepage = "https://github.com/lanbass869-cell/canari"

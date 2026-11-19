@@ -37,7 +37,8 @@ def _run(args, cwd=ROOT, timeout=180):
 
 # ------------------------------------------------------------------ A: CLIs
 CLIS = ["baseline", "verify_cli", "gate_cli", "drift_cli", "mcp_server", "guard",
-        "mcp_gate", "registry_audit", "sarif_ingest", "log_cli", "identity"]
+        "mcp_gate", "registry_audit", "sarif_ingest", "log_cli", "identity",
+        "monitor_cli"]
 # `python -m canari` dispatches to verify_cli through canari/__main__.py; it is a
 # separate code path (module-level sys.exit) and gets its own check.
 BARE = "canari"

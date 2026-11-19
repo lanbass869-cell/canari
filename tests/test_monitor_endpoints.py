@@ -14,7 +14,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pytest  # noqa: E402
 
-from scripts import monitor_endpoints as mon  # noqa: E402
+from canari import monitor_cli as mon  # noqa: E402
+
+# The script at scripts/monitor_endpoints.py is a thin shim; test the module that
+# actually ships in the wheel, because that is what `canari-monitor` runs.
 
 
 def _obs(outcome, hour):
@@ -88,6 +91,7 @@ def test_probe_all_saves_after_every_probe_so_a_kill_keeps_evidence(tmp_path, mo
 
 
 def test_max_probe_caps_the_work(tmp_path, monkeypatch):
+    # fetch_registry is patched on the module `main` actually calls, so no network.
     monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": [
         {"server": {"name": "a", "remotes": [{"url": "https://a/mcp"}]}},
         {"server": {"name": "b", "remotes": [{"url": "https://b/mcp"}]}},
