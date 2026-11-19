@@ -4,7 +4,8 @@
 1. lint (ruff, the same rule set CI uses)
 2. test suite green
 3. line coverage >= 85%
-4. mutation kill rate >= 90% (equivalent mutants excluded)
+4. paper numbers still match their artifacts
+5. mutation kill rate >= 90% (equivalent mutants excluded)
 
 This mirrors every gate in .github/workflows/ci.yml. Run it before pushing:
   python scripts/quality_gate.py
@@ -50,6 +51,13 @@ def main(argv=None):
               "--cov-fail-under=%s" % a.cov_min])
     if rc != 0:
         failures.append("tests/coverage (rc=%d, min %.0f%%)" % (rc, a.cov_min))
+
+    # The paper's headline numbers must still match the JSON artifacts that produced
+    # them. Three drifts were found by hand before this check existed (PEP 440 false
+    # positives, the tombstone bucket split, and a 49 vs 49.5 download median).
+    rc = run([PY, os.path.join("scripts", "check_paper_numbers.py")])
+    if rc != 0:
+        failures.append("paper numbers vs artifacts (rc=%d)" % rc)
 
     if not a.skip_mutation:
         rc = run([PY, os.path.join("scripts", "mutation_sweep.py"),
