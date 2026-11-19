@@ -57,7 +57,7 @@ PyPI \texttt{releases} map, requiring at least one file. 274 references did not 
 does not.
 
 \paragraph{A correction we made mid-study.} PyPI keys \texttt{releases} by PEP~440 normal
-form, and our first check compared the raw registry string. Seven of the 32 PyPI
+form~\cite{pep440}, and our first check compared the raw registry string. Seven of the 32 PyPI
 version-absent rows are normalisation-sensitive and six are confirmed installable under the
 normalised key, so the corrected figure is \emph{at most} 268 (1.19\%), not 274. The 151
 package-gone rows are unaffected. The correction is reported rather than quietly applied
@@ -149,11 +149,17 @@ of new breakage. \textbf{Residual normalisation risk} in npm version strings was
 exhaustively ruled out.
 
 \section{Related Work}
-Registry health has been studied for npm and PyPI in two lines: dependency confusion and
-typosquatting (adversarial naming), and name-reuse after unpublishing (availability of a
-name). Both measure \emph{malice}. This paper measures whether the registry's own
-instruction still resolves --- a failure with no adversary and no victim of intent, only a
-stale pointer.
+Two adjacent lines study agent supply chains. One maps the risks and the open problems of the
+LLM supply chain as a whole~\cite{llmsupplychain}; the other certifies a structured action
+against several evidence sources under a corruption budget~\cite{multisource}. Both assume
+the inputs they receive are the current ones. This paper asks the prior question --- whether
+the registry's own instruction still resolves --- and finds a failure with no adversary and
+no intent, only a stale pointer.
+
+The distribution formats themselves are specified: PEP~440 defines how Python versions are
+normalised (the defect this paper had to correct)~\cite{pep440}, and PEP~740 defines how
+publishers attach attestations to release files~\cite{pep740}. Neither specifies a
+re-validation duty for an index or a registry.
 
 \section{Conclusion}
 A registry that validates once and never again accumulates instructions that no longer
@@ -161,5 +167,28 @@ work. In one production snapshot that accumulation is already measurable: 268 un
 references at most, 39 of 40 sampled installs failing when actually executed, a median
 entry age of seven months, and 47 affected packages still receiving over a hundred
 downloads a month. The fix is cheap and does not require deleting history.
+
+
+\begin{thebibliography}{9}
+\bibitem{pep440} Python Software Foundation.
+\newblock {PEP} 440: Version Identification and Dependency Specification.
+\newblock \url{https://peps.python.org/pep-0440/}
+
+\bibitem{pep740} Python Software Foundation.
+\newblock {PEP} 740: Index support for digital attestations.
+\newblock \url{https://peps.python.org/pep-0740/}
+
+\bibitem{llmsupplychain} Q.~Hu, X.~Xie, S.~Chen, and L.~Ma.
+\newblock Large Language Model Supply Chain: Open Problems From the Security Perspective.
+\newblock arXiv:2411.01604, 2024.
+
+\bibitem{multisource} A.~Pandey, A.~Jain, L.~Chen, C.~Maple, and C.~Panchev.
+\newblock Certified Multi-Source Integrity for Structured Agent Actions.
+\newblock arXiv:2609.34245, 2026.
+
+\bibitem{registry} Model Context Protocol.
+\newblock Registry specification and server metadata (\texttt{server.json}).
+\newblock \url{https://github.com/modelcontextprotocol/registry}
+\end{thebibliography}
 
 \end{document}

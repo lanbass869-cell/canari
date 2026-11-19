@@ -29,6 +29,14 @@ Source: https://conf.researchr.org/track/fse-2027/fse-2027-ideas-visions-and-ref
 
 ## Local toolchain status
 
-No pdflatex, xelatex, or latexmk on this machine (checked 2026-11-19). The .tex source can
-be written but **cannot be compiled here**; it needs Overleaf or a TeX install. Do not claim
-"compiles" until a real compile has been run.
+No pdflatex, xelatex, or latexmk on this machine (checked 2026-11-19), **but tectonic
+0.17.0 is present at `E:\RUANJIAN\_runtime\tectonic\tectonic.exe`** and it compiles this
+document:
+
+```
+cd docs/paper && E:\RUANJIAN\_runtime\tectonic\tectonic.exe -X compile main.tex
+```
+
+Verified 2026-11-19: **main.pdf produced, 3 pages total** (body + references together),
+against a limit of 4 pages of body plus 1 page of references. Tectonic fetches the acmart
+class from its bundle on first run, so the first compile needs network.
