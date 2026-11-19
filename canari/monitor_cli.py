@@ -150,5 +150,23 @@ def main(argv=None):
                   int(a.min_gap_hours * 3600))
 
 
+def weekly_step(store_dir, limit=600, max_probe=40, timeout=12, delay=0.2):
+    """The whole weekly endpoint-monitor step, as one callable.
+
+    run_weekly.py calls this so the schedule runs the monitor without a second
+    entry point, and so the step can be tested without running a full scan.
+    Returns the report document.
+    """
+    history_path = os.path.join(store_dir, "endpoint_history.json")
+    out_path = os.path.join(store_dir, "endpoint_verdicts.json")
+    history = EndpointHistory(history_path)
+    data = fetch_registry(limit)
+    todo = targets(data)[:max_probe]
+    if todo:
+        probe_all(todo, timeout, history, delay)
+    return report(history, out_path, DEFAULT_MIN_OBSERVATIONS,
+                  DEFAULT_MIN_GAP_SECONDS)
+
+
 if __name__ == "__main__":
     sys.exit(0 if main() is not None else 1)

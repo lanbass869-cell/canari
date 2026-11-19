@@ -65,6 +65,23 @@ try:
             len(rep["findings_added"]), len(rep["findings_removed"]), fp))
     except Exception as e:
         _log("drift report failed: %s" % e)
+    # Endpoint decay: probe a slice each run and re-derive streak verdicts.
+    # One run never confirms anything by design (a verdict needs two
+    # observations at least --min-gap-hours apart), so early runs reporting
+    # zero findings is the mechanism working, not a failure to detect.
+    try:
+        from canari.monitor_cli import weekly_step
+        doc = weekly_step(
+            os.path.join(HERE, "out"),
+            limit=int(os.environ.get("CANARI_MON_LIMIT", "600")),
+            max_probe=int(os.environ.get("CANARI_MON_PROBE", "40")),
+            timeout=int(os.environ.get("CANARI_MON_TIMEOUT", "12")),
+        )
+        _log("endpoint monitor: observed=%d confirmed=%d counts=%s" % (
+            doc["endpoints_observed"], doc["confirmed_findings"],
+            doc["verdict_counts"]))
+    except Exception as e:
+        _log("endpoint monitor failed: %s" % e)
     _log("weekly scan completed OK")
 except Exception as e:
     _log("FATAL: %s" % e)

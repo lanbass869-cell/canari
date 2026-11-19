@@ -123,3 +123,54 @@ def test_targets_deduplicate_urls_across_entries():
         {"server": {"name": "b", "remotes": [{"url": "https://same/mcp"}]}},
     ]}
     assert len(mon.targets(data)) == 1
+
+
+def test_weekly_step_runs_end_to_end_and_writes_both_files(tmp_path, monkeypatch):
+    """The weekly hook must actually probe, persist, and report, not just return."""
+    monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": [
+        {"server": {"name": "a", "remotes": [{"url": "https://a/mcp"}]}},
+        {"server": {"name": "b", "remotes": [{"url": "https://b/mcp"}]}},
+    ]})
+    monkeypatch.setattr(mon, "probe_endpoint",
+                        lambda url, timeout: {"checked_at": "2026-01-01T00:00:00Z",
+                                              "outcome": "alive", "http_status": 200,
+                                              "error": None})
+    doc = mon.weekly_step(str(tmp_path), limit=10, max_probe=2, timeout=1, delay=0)
+
+    assert (tmp_path / "endpoint_history.json").exists()
+    assert (tmp_path / "endpoint_verdicts.json").exists()
+    assert doc["endpoints_observed"] == 2
+    assert doc["confirmed_findings"] == 0, (
+        "one successful probe each is CONSISTENT, never a finding")
+
+
+def test_weekly_step_with_no_probes_still_produces_a_report(tmp_path, monkeypatch):
+    """A registry that returns nothing must not crash the weekly job."""
+    monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": []})
+    doc = mon.weekly_step(str(tmp_path), limit=10, max_probe=5, timeout=1, delay=0)
+    assert doc["endpoints_observed"] == 0
+    assert doc["confirmed_findings"] == 0
+    assert (tmp_path / "endpoint_verdicts.json").exists()
+
+
+def test_weekly_step_carries_history_across_runs(tmp_path, monkeypatch):
+    """Two separate runs must accumulate into one history, which is the only way
+    a verdict can ever be reached under a weekly schedule."""
+    seq = iter([
+        {"checked_at": "2026-01-01T00:00:00Z", "outcome": "not_mcp",
+         "http_status": 200, "error": None},
+        {"checked_at": "2026-01-01T07:00:00Z", "outcome": "not_mcp",
+         "http_status": 200, "error": None},
+    ])
+    monkeypatch.setattr(mon, "fetch_registry", lambda limit: {"servers": [
+        {"server": {"name": "a", "remotes": [{"url": "https://a/mcp"}]}}]})
+    monkeypatch.setattr(mon, "probe_endpoint", lambda url, timeout: next(seq))
+
+    first = mon.weekly_step(str(tmp_path), limit=5, max_probe=1, timeout=1, delay=0)
+    assert first["confirmed_findings"] == 0, (
+        "the first run must not be able to confirm anything on its own")
+
+    second = mon.weekly_step(str(tmp_path), limit=5, max_probe=1, timeout=1, delay=0)
+    assert second["confirmed_findings"] == 1, (
+        "the second spaced observation is what makes the verdict")
+    assert second["findings"][0]["verdict"] == "INCONSISTENT_CONFIRMED"
