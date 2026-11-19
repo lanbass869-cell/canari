@@ -46,6 +46,18 @@ artifacts; see `docs/release-process.md` to verify the signed release.
 canari-gate --store out --list
 ```
 
+## What this is, end to end
+
+**Canari is a verdict ledger for AI agent components.** It scans four ecosystems weekly,
+signs a verdict per component, keeps the whole supersession history, and exposes an
+install-time gate that other programs can call. It is not a scanner (no home-grown
+detection engine), not a platform (no accounts, no community) and not an LLM product.
+
+New here? Read **[docs/PROJECT-STORY-20261119.md](docs/PROJECT-STORY-20261119.md)** — a
+full account of what was built between 2026-11-08 and 2026-11-19, with every number
+carrying its source and snapshot date, including the four times our own figures drifted,
+the sampling artefact that turned 84% into 94.78%, and the 66.6% false-pass disclosure.
+
 ## Open dataset
 
 `dataset/` is the published snapshot of the ledger under **CC-BY-4.0**: **5170 signed
