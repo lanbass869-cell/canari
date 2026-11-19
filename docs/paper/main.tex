@@ -17,7 +17,7 @@ most 268 (1.19\%). Running the actual install command for 40 of them failed 39 t
 (97.5\%, Wilson 95\% CI 87.1--99.6\%). The entries carrying those references are not fresh
 mistakes: their median age is 218 days (p90 283, max 435) and 83\% are older than 90 days.
 The packages are not abandoned either --- of the 140 whose download statistics were
-obtainable, the median is 49 downloads per month and 47 exceed 100. A registry that
+obtainable, the median is 49.5 downloads per month and 47 exceed 100. A registry that
 validates only at publication therefore keeps advertising unusable installs, for months,
 for packages people use. Our counts of broken references are \emph{lower bounds}: those rejected at
 publish time were never published and are invisible to us.
@@ -43,7 +43,7 @@ Question & Measurement & Result\\
 \midrule
 Does the install work? & run \texttt{npm install} / \texttt{pip download} for 40 & 39/40 fail (97.5\%)\\
 How long dead? & entry age from the registry's own timestamp & median 218 d\\
-Does anyone use it? & monthly downloads per package & median 49/mo; 47 $\geq$ 100\\
+Does anyone use it? & monthly downloads per package & median 49.5/mo; 47 $\geq$ 100\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -113,7 +113,7 @@ broken for seven months.
 \section{Does Anyone Use It?}
 Monthly downloads for the 271 distinct packages, from the npm downloads API and PyPI
 download statistics, throttled after rate limits: 140 packages returned statistics with a
-median of 49 downloads per month (p90 666, max 20{,}925), and 47 packages exceed 100 per
+median of 49.5 downloads per month (p90 666, max 20{,}925), and 47 packages exceed 100 per
 month. A further 48 packages return 404 on the download API, which is itself consistent
 with ``gone''.
 
