@@ -179,3 +179,32 @@ longer work. In the MCP Registry's 2026-11-16 snapshot that accumulation is alre
 measurable: 274 references, 39/40 of a sample failing when actually executed, a median
 entry age of seven months, and 47 affected packages still receiving 100+ downloads a
 month. The fix is cheap and does not require deleting history.
+
+---
+
+## Appendix for the 2026-12-15 run (not part of the paper body)
+
+The paper commits to a second full audit reporting three numbers. Those numbers come from
+one command, which is now implemented and tested:
+
+```
+python -m canari.audit_delta --before <history/2026-11-17.json> --after <history/2026-12-15.json>
+```
+
+It reports, on `(registry, identifier, normalised version)` keys:
+
+| field | meaning |
+|---|---|
+| `before_broken` / `after_broken` / `net` | stock on the same definition |
+| `recovered` | broken before, resolves now |
+| `new` | resolves before, broken now |
+| `persistent` | broken in both |
+| `inflow_per_week` | `new / weeks between snapshots` |
+
+Version strings are PEP 440-normalised before keying, so the audit's own normalisation fix
+does not show up as spurious "recovery". Tests: `tests/test_audit_delta.py` (4 cases,
+including the `0.2.0-rc.3` vs `0.2.0rc3` case).
+
+**When the 12-15 run lands**, replace the sentence in §7 that promises these numbers with
+the measured values, and report `inflow_per_week` in §6 next to the Little's-law argument.
+
