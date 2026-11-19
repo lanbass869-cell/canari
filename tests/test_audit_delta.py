@@ -55,3 +55,86 @@ class TestDelta:
         after = snap("2026-12-15", [("npm", "a", "1", "package-gone")])
         d = delta(before, after)
         assert d["inflow_per_week"] is None
+
+
+# ---------------------------------------------------------------------------
+# The CLI half was never tested (coverage 56%, missing 79-97). It is the part
+# the paper actually invokes on 2026-12-15, so it needs to work on real files:
+#   python -m canari.audit_delta --before A.json --after B.json [--json]
+# ---------------------------------------------------------------------------
+import json  # noqa: E402
+
+from canari import audit_delta  # noqa: E402
+
+
+def _write(tmp_path, name, doc):
+    p = tmp_path / name
+    p.write_text(json.dumps(doc), encoding="utf-8")
+    return str(p)
+
+
+def test_cli_human_output(tmp_path, capsys):
+    before = _write(tmp_path, "a.json", snap("2026-11-16", [
+        ("npm", "gone", "1.0.0", "package-gone"),
+        ("npm", "stays", "1.0.0", "version-absent"),
+    ]))
+    after = _write(tmp_path, "b.json", snap("2026-12-15", [
+        ("npm", "stays", "1.0.0", "version-absent"),
+        ("npm", "fresh", "2.0.0", "package-gone"),
+    ]))
+    rc = audit_delta.main(["--before", before, "--after", after])
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert "2026-11-16 -> 2026-12-15" in out
+    assert "29 days" in out
+    assert "recovered 1   new 1   persistent 1" in out
+    assert "inflow" in out
+
+
+def test_cli_json_output_is_machine_readable(tmp_path, capsys):
+    before = _write(tmp_path, "a.json", snap("2026-11-16", [
+        ("npm", "x", "1.0.0", "package-gone"),
+    ]))
+    after = _write(tmp_path, "b.json", snap("2026-11-16", [
+        ("npm", "x", "1.0.0", "package-gone"),
+    ]))
+    rc = audit_delta.main(["--before", before, "--after", after, "--json"])
+    assert rc == 0
+    doc = json.loads(capsys.readouterr().out)
+    assert doc["persistent"] == 1
+    assert doc["recovered"] == 0
+    assert doc["new"] == 0
+    assert doc["days_between"] == 0
+    # zero days must not divide by zero
+    assert doc["inflow_per_week"] is None
+
+
+def test_cli_rejects_a_missing_file(tmp_path):
+    before = _write(tmp_path, "a.json", snap("2026-11-16", []))
+    with __import__("pytest").raises(FileNotFoundError):
+        audit_delta.main(["--before", before,
+                          "--after", str(tmp_path / "does-not-exist.json")])
+
+
+def test_unreadable_as_of_gives_no_inflow_rather_than_a_guess(tmp_path):
+    before = _write(tmp_path, "a.json", {"as_of": "not-a-date",
+                                         "rows": [{"registry": "npm",
+                                                   "identifier": "x",
+                                                   "version": "1",
+                                                   "status": "package-gone"}]})
+    after = _write(tmp_path, "b.json", snap("2026-12-15", []))
+    doc = delta(json.load(open(before, encoding="utf-8")),
+                json.load(open(after, encoding="utf-8")))
+    assert doc["days_between"] is None
+    assert doc["inflow_per_week"] is None
+
+
+def test_version_normalisation_keeps_one_row_from_flapping(tmp_path):
+    """The audit's own PEP 440 fix rewrites some version strings; a delta must
+    not read the rewrite as a recovery plus a new breakage."""
+    before = snap("2026-11-16", [("pypi", "pkg", "0.2.0-rc.3", "version-absent")])
+    after = snap("2026-12-15", [("pypi", "pkg", "0.2.0rc3", "version-absent")])
+    doc = delta(before, after)
+    assert doc["recovered"] == 0
+    assert doc["new"] == 0
+    assert doc["persistent"] == 1

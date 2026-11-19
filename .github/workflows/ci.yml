@@ -39,3 +39,23 @@ jobs:
           python-version: "3.12"
       - run: pip install ruff
       - run: ruff check . --select E9,F63,F7,F82
+
+  # The ten network tests (npm sigstore / PyPI PEP 740 native provenance) are
+  # skipped by default because they hit the open internet. Nothing in this
+  # workflow ever set CANARI_NETWORK_TESTS, so the real ingestion path was
+  # never exercised by CI at all -- found 2026-11-19. They run here, in their
+  # own job, so an upstream API change shows up as a red check instead of as
+  # silently missing data (npm provenance was 52.5%, PyPI 0%, and nothing
+  # could tell "upstream publishes none" from "we broke").
+  network:
+    runs-on: ubuntu-24.04
+    continue-on-error: true   # upstream flakiness must not block a merge
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]" pytest-cov hypothesis
+      - env:
+          CANARI_NETWORK_TESTS: "1"
+        run: python -m pytest tests -q -m network --tb=short
