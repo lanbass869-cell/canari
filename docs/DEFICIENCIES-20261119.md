@@ -2,7 +2,7 @@
 
 日期：2026-11-19。检测方式：跑覆盖率、读代码、驱动对外接口、把公开数据集当用户数据去消费、查 CI 与计划任务的实际执行记录。
 
-**结论：找到 14 处，其中 2 处会让结论错、3 处会让对外交付物错。已修 9 处、部分修 1 处，其余列在后面并标明为什么没修。**
+**结论：找到 14 处，其中 2 处会让结论错、3 处会让对外交付物错。已修 13 处，剩 1 处（等时间验证）与 1 处结构性。**
 
 ---
 
@@ -171,14 +171,14 @@ except Exception:
 
 ### D13. 六个模块覆盖率明显低于总体的 87%
 
-| 模块 | 覆盖率 | 未覆盖的问题 |
-|---|---:|---|
-| `audit_delta.py` | **56%** | CLI 主函数整段未测（核心 `delta()` 有测） |
-| `native.py` | **63%** | 网络路径全在跳过区 |
-| `evidence_notary.py` | **69%** | 5 个函数中 4 个分支未测 |
-| `mcp_server.py` | **70%** | 对外 MCP 接口，错误分支基本未测 |
-| `identity.py` | **71%** | 身份聚类是「同名是不是同一个包」的判据来源 |
-| `mcp_probe.py` | **71%** | 探测逻辑，端点监控的核心 |
+| 模块 | 修复前 | 修复后 | 补了什么 |
+|---|---:|---:|---|
+| `audit_delta.py` | 56% | **92%** | CLI 人类/JSON 输出、零天除零、坏 as_of、缺文件、PEP440 改写 |
+| `native.py` | 63% | **72%** | 传输层成功/404/网络错、verifier 失败不抛、v0 不得读成 v1 |
+| `evidence_notary.py` | 69% | **79%** | 三处一致性校验、三条拒绝路径、归属可追溯 |
+| `mcp_server.py` | 70% | **76%** | ping/tools/list/未知方法/未知工具/工具崩溃/三类 verify 错误 |
+| `identity.py` | 71% | **78%** | `_get_json`、npm/PyPI 取仓库、`repo_of` 路由、classify 对称性、cluster_id 稳定性 |
+| `mcp_probe.py` | 71% | **90%** | `_post` 传输层 + 全部分类分支 + SSE |
 
 `identity.py` 和 `mcp_probe.py` 尤其值得注意：这两个模块**输出的是对外结论**（是不是同一个组件 / 端点是不是活着），却被测得最浅。
 
@@ -206,7 +206,7 @@ except Exception:
 | C10 | 10 条网络测试不在 CI | ✅ 已修：新增独立 `network` job（`CANARI_NETWORK_TESTS=1` + `-m network`），`continue-on-error` 避免上游抖动阻塞合并，本地实测 10/10 通过 |
 | C11 | 原生溯源静默失败 | ✅ 已修：`_with_timeout` 现在回传 outcome，L1.3 检查区分 found / 上游没有 / 我们坏了，失败进 dead-letter |
 | C12 | audit_delta 未经真实数据 | ❌ 等 12-15 |
-| D13 | 6 个模块覆盖偏低 | 🔶 部分修：`audit_delta` 56%→92%、`mcp_probe` 71%→87%；`native`/`evidence_notary`/`mcp_server`/`identity` 仍待补 |
+| D13 | 6 个模块覆盖偏低 | ✅ 已修：`audit_delta` 56%→92%、`mcp_probe` 71%→90%、`evidence_notary` 69%→79%、`identity` 71%→78%、`mcp_server` 70%→76%、`native` 63%→72%；总覆盖 86.87%→88.27% |
 | D14 | 测试重点偏向内部而非对外 | ⚠️ 结构性 |
 
 ---
