@@ -1,0 +1,165 @@
+\documentclass[acmsmall,screen,review,anonymous]{acmart}
+
+\setcopyright{none}
+\acmConference[FSE 2027]{FSE 2027 Ideas, Visions and Reflections}{February 2027}{}
+
+\begin{document}
+
+\title{Registries That Never Look Again: Stale Install Instructions in an Agent Component Registry}
+
+\begin{abstract}
+Agent component registries tell a client \emph{what to install}. We measured whether that
+instruction still works. On one production registry's snapshot of 2026-11-16 (65{,}340
+latest records, 22{,}526 distinct npm/PyPI references) 274 references named a package or
+version that did not resolve; after correcting one normalisation defect the figure is at
+most 268 (1.19\%). Running the actual install command for 40 of them failed 39 times
+(97.5\%, Wilson 95\% CI 87.1--99.6\%). The entries carrying those references are not fresh
+mistakes: their median age is 218 days (p90 283, max 435) and 83\% are older than 90 days.
+The packages are not abandoned either --- of the 140 whose download statistics were
+obtainable, the median is 49 downloads per month and 47 exceed 100. A registry that
+validates only at publication therefore keeps advertising unusable installs, for months,
+for packages people use. Every figure is a \emph{lower bound}: references rejected at
+publish time were never published and are invisible to us.
+\end{abstract}
+
+\keywords{software registries, package installation, staleness, measurement}
+
+\maketitle
+
+\section{The Claim}
+A registry entry is an instruction. This paper asks three questions about that instruction:
+does it work, how long has it not worked, and is anyone following it? Table~\ref{tab:rq}
+gives the answers. All three are lower bounds, because we can only observe references that
+were published at all.
+
+\begin{table}[t]
+\caption{Three questions, three measurements, one snapshot (2026-11-16).}
+\label{tab:rq}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Question & Measurement & Result\\
+\midrule
+Does the install work? & run \texttt{npm install} / \texttt{pip download} for 40 & 39/40 fail (97.5\%)\\
+How long dead? & entry age from the registry's own timestamp & median 218 d\\
+Does anyone use it? & monthly downloads per package & median 49/mo; 47 $\geq$ 100\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Corpus}
+The corpus is the full pagination of the registry's \texttt{?version=latest} endpoint on
+2026-11-16: 654 pages, 65{,}340 latest records, de-duplicated to 22{,}526 distinct
+\texttt{(registry, identifier, version)} references across 22{,}384 servers. Each reference
+was resolved against the publisher's own registry: the npm \texttt{versions} map and the
+PyPI \texttt{releases} map, requiring at least one file. 274 references did not resolve:
+151 where the package returns HTTP 404 and 123 where the package exists but the version
+does not.
+
+\paragraph{A correction we made mid-study.} PyPI keys \texttt{releases} by PEP~440 normal
+form, and our first check compared the raw registry string. Seven of the 32 PyPI
+version-absent rows are normalisation-sensitive and six are confirmed installable under the
+normalised key, so the corrected figure is \emph{at most} 268 (1.19\%), not 274. The 151
+package-gone rows are unaffected. The correction is reported rather than quietly applied
+because it changes the denominator of every subsequent number.
+
+\section{Does the Install Work?}
+We sampled 20 rows from each failure class at equal spacing over the sorted list --- not
+hand-picked --- and executed:
+\begin{quote}\small
+\texttt{npm install <name>@<ver> --dry-run --ignore-scripts}\\
+\texttt{python -m pip download <name>==<ver> --no-deps}
+\end{quote}
+Table~\ref{tab:repro} reports the outcome. Both failure modes are covered, and they fail
+with different error classes: npm \texttt{404} and \texttt{ETARGET notarget}, pip
+\texttt{No matching distribution}. The single non-failing case is the PEP~440 case above,
+so it is evidence for the correction rather than against the finding.
+
+\begin{table}[t]
+\caption{Real install attempts, equal-spaced sample of the published list.}
+\label{tab:repro}
+\small
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+class & $n$ & reproduced & rate & 95\% Wilson CI\\
+\midrule
+package-gone & 20 & 20 & 100\% & 83.9--100\%\\
+version-absent & 20 & 19 & 95\% & 76.4--99.1\%\\
+\midrule
+all & 40 & 39 & 97.5\% & 87.1--99.6\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{They are not transient.} Re-resolving all 274 references three days later gives
+267 still broken and seven ``recovered'' --- and all seven are exactly the PEP~440 cases.
+There were \emph{zero} upstream repairs in three days.
+
+\section{How Long Has It Been Dead?}
+Joining the 274 references back to the snapshot yields 311 entries (a reference can appear
+under several servers). Reading each entry's own
+\texttt{\_meta[...].publishedAt}: minimum 2.0 days, p25 128, \textbf{median 218} (7.2
+months), p75 266, p90 283, maximum 435 days; 96.8\% are older than 30 days and 83.3\%
+older than 90. Split by class, package-gone has a median of 245 days and version-absent
+192.
+
+\paragraph{How to read it.} \texttt{publishedAt} is when the registry published the entry,
+which cannot precede the upstream disappearance. Entry age is therefore an \emph{upper
+bound} on the break duration, not the duration itself: the claim is that the registry kept
+a dead reference for at least a median of seven months, not that the install has been
+broken for seven months.
+
+\section{Does Anyone Use It?}
+Monthly downloads for the 271 distinct packages, from the npm downloads API and PyPI
+download statistics, throttled after rate limits: 140 packages returned statistics with a
+median of 49 downloads per month (p90 666, max 20{,}925), and 47 packages exceed 100 per
+month. A further 48 packages return 404 on the download API, which is itself consistent
+with ``gone''.
+
+\paragraph{How to read it.} Downloads are per \emph{package}, not per \emph{version}. The
+20{,}925 downloads of the busiest package are overwhelmingly other versions. The claim is
+that the package is in active use and the exact version the registry advertises cannot be
+installed --- not that twenty thousand users are affected.
+
+\section{Why This Happens, and How General It Is}
+\paragraph{The general form.} Any registry that validates a reference \emph{only at
+publication} accumulates references that later become unexecutable, at whatever rate
+upstream withdrawals occur. Without re-validation the residence time of a stale reference
+is unbounded, so by Little's law the stock grows monotonically: registry accuracy is a
+function of the re-check interval, not of publish-time rigour.
+
+\paragraph{This registry is a favourable instance.} It does validate at publish and edit
+time and timestamps every entry, so 1.19\% is what staleness looks like \emph{when the
+publisher is careful}. A registry that validates less would show more, and the references
+rejected outright never appear in our count.
+
+\paragraph{The cheap fix.} Re-run the existing validation on a schedule and record the
+outcome in metadata (\texttt{lastVerifiedAt}, \texttt{verificationStatus} $\in$ \{ok,
+package-missing, version-missing\}), leaving the entry's history intact. Deletion is a
+separate decision: revocation across distributions is not the registry's call alone.
+
+\section{Threats to Validity}
+\textbf{Sample size.} RQ1 uses 40 of 274 references; the interval is reported and the point
+estimate should not be read as an exact population rate. \textbf{Upper bound on age} and
+\textbf{package-level downloads} are as discussed above. \textbf{Snapshot drift}: 274 on
+2026-11-16 became 275 on 2026-11-17 under the same definition. \textbf{Short re-check
+window}: three days shows these are not transient but cannot show annual inflow; a second
+full audit on 2026-12-15 will report the new count, the recovery count and the weekly inflow
+of new breakage. \textbf{Residual normalisation risk} in npm version strings was not
+exhaustively ruled out.
+
+\section{Related Work}
+Registry health has been studied for npm and PyPI in two lines: dependency confusion and
+typosquatting (adversarial naming), and name-reuse after unpublishing (availability of a
+name). Both measure \emph{malice}. This paper measures whether the registry's own
+instruction still resolves --- a failure with no adversary and no victim of intent, only a
+stale pointer.
+
+\section{Conclusion}
+A registry that validates once and never again accumulates instructions that no longer
+work. In one production snapshot that accumulation is already measurable: 268 unresolved
+references at most, 39 of 40 sampled installs failing when actually executed, a median
+entry age of seven months, and 47 affected packages still receiving over a hundred
+downloads a month. The fix is cheap and does not require deleting history.
+
+\end{document}
