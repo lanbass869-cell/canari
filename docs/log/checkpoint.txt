@@ -1,5 +1,5 @@
 github.com/lanbass869-cell/canari/log
-51
-Pj91aRdwDZYYoQg6KDYA8sXT1zESLBT/9XMJeTznnyo=
+53
+ov1/XE7wle2/5N79Gdf4aFYw6azspeC6gYh1QwAeYAc=
 
-— github.com/lanbass869-cell/canari/log eIfAqMCFlXlcNejvBzJOnYw8cjDJPZQzjXKDLxbVgmrI311DOX4DXstDNjM/vM5NRkhGCevOnnZL1Yt0XFT7W63l8gY=
+— github.com/lanbass869-cell/canari/log eIfAqDA+nHd5Zp8IRGJPQ/AEqEJvZTceaQqljCR9ZEWOZJ086O9livrClrTg3jG2swtqIylilxWy18S1gvhTTbAVIwk=

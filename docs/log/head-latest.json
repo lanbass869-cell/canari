@@ -6,36 +6,36 @@
   "last_head": {
    "body": {
     "log_id": "canari-snapshot-log",
-    "prev": "582c75fe7ae471e4f89dbd1b69e4cfb5351449eaf69a41d742fa7e6c3fcb9045",
-    "root": "3e3f756917700d9618a1083a283600f2c5d3d731122c14fff57309793ce79f2a",
-    "size": 51,
+    "prev": "839970efe7f97e99eaa655293fda1af335526789de05fdd10a14279163d1805c",
+    "root": "a2fd7f5c4ef095edbfe4defd19d7f8685630e9aceca5e0ba81887543001e6007",
+    "size": 53,
     "spec": "canari-append-only-log/v1",
-    "timestamp": "2026-11-19T12:59:42Z"
+    "timestamp": "2026-11-20T12:51:53Z"
    },
    "signature": {
     "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
     "scheme": "ed25519",
-    "sig": "14388be21e7678b0312d4ab2fad8e8cc0909b67d442c9a20ca013fba818b1473546ead0a6fb09d553688bb63cdf9219b98bf46067733d1b848c6c4bc0c955900"
+    "sig": "196b756b78892587d0fab967da282e2a3a636c4f22848adfff9ee7da2c1118b5478e43734fb6bd0c10d73d92e40707e8a8afda4dd711ea81ad1ed136e5d4770d"
    }
   },
   "ok": true,
-  "root": "3e3f756917700d9618a1083a283600f2c5d3d731122c14fff57309793ce79f2a",
-  "size": 51,
+  "root": "a2fd7f5c4ef095edbfe4defd19d7f8685630e9aceca5e0ba81887543001e6007",
+  "size": 53,
   "unchained_heads": 4
  },
  "head": {
   "body": {
    "log_id": "canari-snapshot-log",
-   "prev": "582c75fe7ae471e4f89dbd1b69e4cfb5351449eaf69a41d742fa7e6c3fcb9045",
-   "root": "3e3f756917700d9618a1083a283600f2c5d3d731122c14fff57309793ce79f2a",
-   "size": 51,
+   "prev": "839970efe7f97e99eaa655293fda1af335526789de05fdd10a14279163d1805c",
+   "root": "a2fd7f5c4ef095edbfe4defd19d7f8685630e9aceca5e0ba81887543001e6007",
+   "size": 53,
    "spec": "canari-append-only-log/v1",
-   "timestamp": "2026-11-19T12:59:42Z"
+   "timestamp": "2026-11-20T12:51:53Z"
   },
   "signature": {
    "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
    "scheme": "ed25519",
-   "sig": "14388be21e7678b0312d4ab2fad8e8cc0909b67d442c9a20ca013fba818b1473546ead0a6fb09d553688bb63cdf9219b98bf46067733d1b848c6c4bc0c955900"
+   "sig": "196b756b78892587d0fab967da282e2a3a636c4f22848adfff9ee7da2c1118b5478e43734fb6bd0c10d73d92e40707e8a8afda4dd711ea81ad1ed136e5d4770d"
   }
  }
 }
