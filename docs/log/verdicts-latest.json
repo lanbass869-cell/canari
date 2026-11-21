@@ -6,38 +6,38 @@
   "last_head": {
    "body": {
     "log_id": "canari-snapshot-log",
-    "prev": "839970efe7f97e99eaa655293fda1af335526789de05fdd10a14279163d1805c",
-    "root": "a2fd7f5c4ef095edbfe4defd19d7f8685630e9aceca5e0ba81887543001e6007",
-    "size": 53,
+    "prev": "dbc08510dfc0adc8dbe5dcdc1ef109d0b796408e35e970d0f0412fc93e0d483d",
+    "root": "45928adc8238f84627609da0adbb569174c32b38c1276936c3c5ad9c8e2bb07b",
+    "size": 55,
     "spec": "canari-append-only-log/v1",
-    "timestamp": "2026-11-20T12:51:53Z"
+    "timestamp": "2026-11-21T12:36:56Z"
    },
    "signature": {
     "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
     "scheme": "ed25519",
-    "sig": "196b756b78892587d0fab967da282e2a3a636c4f22848adfff9ee7da2c1118b5478e43734fb6bd0c10d73d92e40707e8a8afda4dd711ea81ad1ed136e5d4770d"
+    "sig": "9e3a533a73d0eb4a1a9dc0f3c0a38b72919af9eadb0333a8403afc7e06b428e3d5bb6a3c13b201239eee26c8772094d35c764e1fce805bc7d14f628144f2e105"
    }
   },
   "ok": true,
-  "root": "a2fd7f5c4ef095edbfe4defd19d7f8685630e9aceca5e0ba81887543001e6007",
-  "size": 53,
+  "root": "45928adc8238f84627609da0adbb569174c32b38c1276936c3c5ad9c8e2bb07b",
+  "size": 55,
   "unchained_heads": 4
  },
  "head": {
   "body": {
    "log_id": "canari-snapshot-log",
-   "prev": "839970efe7f97e99eaa655293fda1af335526789de05fdd10a14279163d1805c",
-   "root": "a2fd7f5c4ef095edbfe4defd19d7f8685630e9aceca5e0ba81887543001e6007",
-   "size": 53,
+   "prev": "dbc08510dfc0adc8dbe5dcdc1ef109d0b796408e35e970d0f0412fc93e0d483d",
+   "root": "45928adc8238f84627609da0adbb569174c32b38c1276936c3c5ad9c8e2bb07b",
+   "size": 55,
    "spec": "canari-append-only-log/v1",
-   "timestamp": "2026-11-20T12:51:53Z"
+   "timestamp": "2026-11-21T12:36:56Z"
   },
   "signature": {
    "keyid": "81a26c41adc140bacd06c98472a2260a9d75fb18cdc39ccda903129fa78c922b",
    "scheme": "ed25519",
-   "sig": "196b756b78892587d0fab967da282e2a3a636c4f22848adfff9ee7da2c1118b5478e43734fb6bd0c10d73d92e40707e8a8afda4dd711ea81ad1ed136e5d4770d"
+   "sig": "9e3a533a73d0eb4a1a9dc0f3c0a38b72919af9eadb0333a8403afc7e06b428e3d5bb6a3c13b201239eee26c8772094d35c764e1fce805bc7d14f628144f2e105"
   }
  },
  "log_dir": "/home/runner/work/canari/canari/docs/log",
- "size": 53
+ "size": 55
 }
